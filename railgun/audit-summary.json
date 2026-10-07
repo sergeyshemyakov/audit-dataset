@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4.0",
+  "schema_version": "1.5.0",
   "project": "railgun",
   "reports": [
     {
@@ -35,13 +35,9 @@
                     "url": "https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "CVF-41"
-                  ],
-                  "highest_reported_finding_severity": "Major"
+                  ]
                 },
                 {
                   "revision": {
@@ -52,14 +48,9 @@
                     "url": "https://github.com/Railgun-Privacy/contract/releases/tag/v0.0.1"
                   },
                   "status": "partially_audited_with_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
-                  "follows": "6281cb0dac6a6e0da743e3ba56c437803657872d",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "CVF-41"
-                  ],
-                  "highest_reported_finding_severity": "Major"
+                  ]
                 }
               ]
             },
@@ -73,10 +64,7 @@
                     "timestamp": "2021-05-26T02:07:17Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"
                   },
-                  "status": "not_audited",
-                  "review_phase": "initial audit",
-                  "coverage": "not reviewed (CVF-28): compiler stubs for the circomlib-generated Poseidon library",
-                  "major_findings": 0
+                  "status": "not_audited"
                 }
               ]
             },
@@ -91,13 +79,9 @@
                     "url": "https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "CVF-9"
-                  ],
-                  "highest_reported_finding_severity": "Major"
+                  ]
                 },
                 {
                   "revision": {
@@ -107,12 +91,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/contract/releases/tag/v0.0.1"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
-                  "follows": "6281cb0dac6a6e0da743e3ba56c437803657872d",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Minor"
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -127,14 +106,10 @@
                     "url": "https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 2,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "CVF-58",
                     "CVF-60"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 },
                 {
                   "revision": {
@@ -144,12 +119,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/contract/releases/tag/v0.0.1"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
-                  "follows": "6281cb0dac6a6e0da743e3ba56c437803657872d",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -163,11 +133,7 @@
                     "timestamp": "2021-05-26T02:07:17Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Minor"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -177,12 +143,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/contract/releases/tag/v0.0.1"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
-                  "follows": "6281cb0dac6a6e0da743e3ba56c437803657872d",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Minor"
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -196,11 +157,7 @@
                     "timestamp": "2021-05-26T02:07:17Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Minor"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -215,14 +172,10 @@
                     "url": "https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 2,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "CVF-20",
                     "CVF-21"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 },
                 {
                   "revision": {
@@ -232,12 +185,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/contract/releases/tag/v0.0.1"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
-                  "follows": "6281cb0dac6a6e0da743e3ba56c437803657872d",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -256,11 +204,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/circuits/commit/2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Minor"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -270,11 +214,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/circuits/releases/tag/v0.0.1"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
-                  "follows": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -288,11 +228,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/circuits/commit/2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Minor"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -302,11 +238,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/circuits/releases/tag/v0.0.1"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
-                  "follows": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -320,11 +252,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/circuits/commit/2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Minor"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -334,11 +262,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/circuits/releases/tag/v0.0.1"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
-                  "follows": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -352,10 +276,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/circuits/commit/2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -365,11 +286,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/circuits/releases/tag/v0.0.1"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
-                  "follows": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -383,10 +300,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/circuits/commit/2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -396,11 +310,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/circuits/releases/tag/v0.0.1"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of fixes for the reported findings in release v0.0.1",
-                  "follows": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -436,11 +346,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -454,10 +360,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -471,10 +374,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -488,10 +388,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -505,11 +402,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -523,10 +416,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -540,10 +430,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -557,11 +444,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -575,11 +458,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -593,11 +472,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -611,11 +486,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -629,10 +500,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -646,10 +514,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -663,10 +528,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -680,10 +542,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -697,10 +556,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -714,10 +570,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -731,10 +584,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -748,10 +598,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -765,10 +612,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -782,11 +626,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Low"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -800,11 +640,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Low"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -818,10 +654,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -835,10 +668,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -874,10 +704,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -891,10 +718,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -908,10 +732,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -925,10 +746,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -942,10 +760,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -959,10 +774,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -976,10 +788,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -993,10 +802,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1010,10 +816,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1027,11 +830,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1045,10 +844,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1062,10 +858,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1079,10 +872,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1096,10 +886,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1113,10 +900,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1130,11 +914,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1148,11 +928,7 @@
                     "timestamp": "2021-08-10T13:04:05Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Low"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -1188,11 +964,7 @@
                     "timestamp": "2021-10-10T11:42:08Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/0418a0f1bf0e58e5b3bab8870112b7648ff20aca"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1201,11 +973,7 @@
                     "timestamp": "2021-11-20T15:05:09Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/97af307fa1d737d4526323acc3d0ef372c703417"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "full file (re-audit at last commit)",
-                  "follows": "0418a0f1bf0e58e5b3bab8870112b7648ff20aca",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1219,10 +987,7 @@
                     "timestamp": "2021-10-10T11:42:08Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/0418a0f1bf0e58e5b3bab8870112b7648ff20aca"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1231,11 +996,7 @@
                     "timestamp": "2021-11-20T15:05:09Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/97af307fa1d737d4526323acc3d0ef372c703417"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "full file (re-audit at last commit)",
-                  "follows": "0418a0f1bf0e58e5b3bab8870112b7648ff20aca",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1249,11 +1010,7 @@
                     "timestamp": "2021-10-10T11:42:08Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/0418a0f1bf0e58e5b3bab8870112b7648ff20aca"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Low"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1262,11 +1019,7 @@
                     "timestamp": "2021-11-20T15:05:09Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/97af307fa1d737d4526323acc3d0ef372c703417"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "full file (re-audit at last commit)",
-                  "follows": "0418a0f1bf0e58e5b3bab8870112b7648ff20aca",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -1302,11 +1055,7 @@
                     "timestamp": "2022-04-18T10:11:11Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/62401e1a64b9af968d85b8f5347f1a72cc56862c"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at the audited commit.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1320,10 +1069,7 @@
                     "timestamp": "2022-04-18T10:11:11Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/62401e1a64b9af968d85b8f5347f1a72cc56862c"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at the audited commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1337,10 +1083,7 @@
                     "timestamp": "2022-04-18T10:11:11Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/62401e1a64b9af968d85b8f5347f1a72cc56862c"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at the audited commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1354,10 +1097,7 @@
                     "timestamp": "2022-04-18T10:11:11Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/62401e1a64b9af968d85b8f5347f1a72cc56862c"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at the audited commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1371,10 +1111,7 @@
                     "timestamp": "2022-04-18T10:11:11Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/62401e1a64b9af968d85b8f5347f1a72cc56862c"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at the audited commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1388,10 +1125,7 @@
                     "timestamp": "2022-04-18T10:11:11Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/62401e1a64b9af968d85b8f5347f1a72cc56862c"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at the audited commit; the report lists the file as 'RokenBlacklist.sol' (typo).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1405,11 +1139,7 @@
                     "timestamp": "2022-04-18T10:11:11Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/62401e1a64b9af968d85b8f5347f1a72cc56862c"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at the audited commit.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -1465,10 +1195,7 @@
                     "timestamp": "2022-03-18T09:00:45Z",
                     "url": "https://github.com/Railgun-Privacy/circuits-v2/commit/67cd4ce7f49afd1dfae67c8e2d59ddf87ec3de43"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Review of the v2 joinsplit circuits and libraries under src (March 22-29, 2022); findings concern joinsplit.circom and public-input-hash.circom and none of them is attributed High.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -1488,15 +1215,11 @@
                     "url": "https://github.com/Railgun-Privacy/contract/commit/b74eeb69ca2614212c8060a3460fd05c28bb17e3"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review (August 22-29, 2022); three High access-control findings (setVotingKey, callVote, executeProposal callable by anyone) plus a vote front-running finding, all stated as resolved without a fix revision.",
-                  "major_findings": 3,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "SetVotingKey in Voting.sol can be set by anyone",
                     "CallVote in Voting.sol can be called by anyone",
                     "ExecuteProposal in Voting.sol can be called by anyone"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 }
               ]
             },
@@ -1510,10 +1233,7 @@
                     "timestamp": "2022-08-22T03:27:09Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/b74eeb69ca2614212c8060a3460fd05c28bb17e3"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review (August 22-29, 2022); no findings are located in this file. The executive summary calls the treasury scope 'Treasury.sol' but the scope list names GovernorRewards.sol.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -1549,11 +1269,7 @@
                     "timestamp": null,
                     "url": "https://github.com/Railgun-Privacy/contract/commit/d73c1da62c624fe083417342ce3e64748572bde9"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at the stated last commit; low and informational findings were resolved or acknowledged after a fix review whose revision is not stated.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Low"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -1589,10 +1305,7 @@
                     "timestamp": "2022-11-12T23:05:11Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/4385ec73bf7d0da283123e8a3ac3900216cfc3f0"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at the stated last commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1606,11 +1319,7 @@
                     "timestamp": "2022-11-12T23:05:11Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/4385ec73bf7d0da283123e8a3ac3900216cfc3f0"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at the stated last commit; one Medium finding (unshield preimage validation) resolved and informational storage-layout findings, without a stated fix revision.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1624,11 +1333,7 @@
                     "timestamp": "2022-11-12T23:05:11Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/4385ec73bf7d0da283123e8a3ac3900216cfc3f0"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at the stated last commit; one Medium finding (re-entrancy in transact) resolved without a stated fix revision.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -1664,11 +1369,7 @@
                     "timestamp": "2023-01-24T01:04:27Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/a49a82d1589426ece9f6b463c51635002f542e65"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at the stated last commit; Medium centralization-risk finding resolved by planned governance ownership, other fixes reviewed without a stated fix revision.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1682,11 +1383,7 @@
                     "timestamp": "2023-01-24T01:04:27Z",
                     "url": "https://github.com/Railgun-Privacy/contract/commit/a49a82d1589426ece9f6b463c51635002f542e65"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at the stated last commit; Medium canExecute ambiguity finding resolved, other fixes reviewed without a stated fix revision.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }

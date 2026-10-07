@@ -83,7 +83,7 @@ Commit dates use Git committer timestamps (UTC).
 
 ### Repository: <a href="https://github.com/Consensys/linea-contracts-audit"><code>Consensys/linea-contracts-audit</code></a>
 
-_Commit dates unavailable: 2 commit(s) have no timestamp._
+_Commit dates unavailable: 2 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -108,7 +108,7 @@ _Commit dates unavailable: 2 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/Consensys/zkevm-monorepo"><code>Consensys/zkevm-monorepo</code></a>
 
-_Commit dates unavailable: 11 commit(s) have no timestamp._
+_Commit dates unavailable: 1 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -148,7 +148,7 @@ _Commit dates unavailable: 11 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/Consensys/zkevm-monorepo"><code>Consensys/zkevm-monorepo</code></a>
 
-_Commit dates unavailable: 11 commit(s) have no timestamp._
+_Commit dates unavailable: 7 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -248,7 +248,7 @@ _Commit dates unavailable: 11 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/Consensys/zkevm-monorepo"><code>Consensys/zkevm-monorepo</code></a>
 
-_Commit dates unavailable: 11 commit(s) have no timestamp._
+_Commit dates unavailable: 2 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -352,7 +352,7 @@ _Commit dates unavailable: 11 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/Consensys/linea-tokens"><code>Consensys/linea-tokens</code></a>
 
-_Commit dates unavailable: 10 commit(s) have no timestamp._
+_Commit dates unavailable: 4 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -379,7 +379,7 @@ _Commit dates unavailable: 10 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/Consensys/linea-tokens"><code>Consensys/linea-tokens</code></a>
 
-_Commit dates unavailable: 10 commit(s) have no timestamp._
+_Commit dates unavailable: 4 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -527,7 +527,7 @@ _Commit dates unavailable: 10 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/Consensys/linea-token-bridge"><code>Consensys/linea-token-bridge</code></a>
 
-_Commit dates unavailable: 9 commit(s) have no timestamp._
+_Commit dates unavailable: 9 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -542,8 +542,6 @@ _Commit dates unavailable: 9 commit(s) have no timestamp._
 | <a href="https://github.com/Consensys/linea-token-bridge/blob/0f9c5bb5e9ec261bff8e688ddd224896d298963c/contracts/TokenBridge.sol"><code>0f9c5bb5e9ec261bff8e688ddd224896d298963c</code></a> | — | <code>contracts/TokenBridge.sol</code><br><code>contracts/interfaces/ITokenBridge.sol</code> |
 
 ### Repository: <a href="https://github.com/Consensys/zkevm-monorepo"><code>Consensys/zkevm-monorepo</code></a>
-
-_Commit dates unavailable: 11 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -625,7 +623,7 @@ _Commit dates unavailable: 11 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/Consensys/linea-tokens"><code>Consensys/linea-tokens</code></a>
 
-_Commit dates unavailable: 10 commit(s) have no timestamp._
+_Commit dates unavailable: 8 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |

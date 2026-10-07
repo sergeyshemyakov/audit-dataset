@@ -122,8 +122,6 @@ Commit dates use Git committer timestamps (UTC).
 
 ### Repository: <a href="https://github.com/celo-org/staked-celo"><code>celo-org/staked-celo</code></a>
 
-_Commit dates unavailable: 2 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/celo-org/staked-celo/blob/32c0e18751f9040bca1356a2caff0dc4028bb866/contracts/Vote.sol"><code>32c0e18751f9040bca1356a2caff0dc4028bb866</code></a> | March 4, 2024 | <code>contracts/Vote.sol</code><br><code>contracts/Account.sol</code><br><code>contracts/SpecificGroupStrategy.sol</code> |
@@ -181,8 +179,6 @@ _Commit dates unavailable: 2 commit(s) have no timestamp._
 - Description: Verilog Solutions reviewed nine pull requests (#72, #74, #75, #80, #82, #88, #93, #97, #120) to the celo-org/staked-celo liquid staking contracts, covering validator deprecation and health checks, governance voting for stCELO holders, storage compatibility, support for more than 10 validator groups, and default/specific group voting strategies. The engagement was a PR-diff review; no High or Medium findings were reported (one Low and five Informational, all resolved in PRs #119 and #122).
 
 ### Repository: <a href="https://github.com/celo-org/staked-celo"><code>celo-org/staked-celo</code></a>
-
-_Commit dates unavailable: 2 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -296,7 +292,7 @@ _Commit dates unavailable: 2 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/celo-org/staked-celo"><code>celo-org/staked-celo</code></a>
 
-_Commit dates unavailable: 2 commit(s) have no timestamp._
+_Commit dates unavailable: 2 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |

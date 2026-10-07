@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4.0",
+  "schema_version": "1.5.0",
   "project": "uniswapv3",
   "reports": [
     {
@@ -30,11 +30,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/NoDelegateCall.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -48,11 +44,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/UniswapV3Factory.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -67,13 +59,9 @@
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/UniswapV3Pool.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file (manual review, unit tests, Echidna end-to-end properties)",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "TOB-UNI-005"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 }
               ]
             },
@@ -87,11 +75,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/UniswapV3PoolDeployer.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -105,11 +89,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/BitMath.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -123,11 +103,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/FullMath.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -141,11 +117,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/LiquidityMath.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -159,11 +131,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/LowGasSafeMath.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -177,11 +145,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/Oracle.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "brief review limited to cardinality-increase monotonicity; other Oracle functions not explored",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -195,11 +159,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/Position.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -213,11 +173,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SafeCast.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -231,11 +187,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SecondsOutside.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "review of bit-shift/wordPos math and cross/clear functions; secondsInside not explored",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -249,11 +201,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SqrtPriceMath.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "manual review of getAmount0/1Delta and getNextSqrtPriceFromInput/Output; getNextSqrtPriceFromAmount0RoundingUp/1RoundingDown not checked",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -267,11 +215,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/SwapMath.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "review of computeSwapStep for all exactIn/zeroForOne cases and rounding; final feeAmount computation not explored",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -285,11 +229,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/Tick.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -303,11 +243,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/TickBitmap.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "manual review of position/flip logic and Echidna testing; nextInitializedTickWithinOneWord not explored",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -321,11 +257,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/TickMath.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "manual review of tick/price conversions and Echidna testing; assembly inside getTickAtSqrtRatio not explored",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -340,13 +272,9 @@
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/TransferHelper.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "TOB-UNI-009"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 }
               ]
             },
@@ -360,11 +288,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/libraries/UnsafeMath.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "High"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -401,11 +325,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/NoDelegateCall.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -420,11 +340,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/UniswapV3Factory.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -439,11 +355,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/UniswapV3Pool.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -458,11 +370,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/UniswapV3PoolDeployer.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -477,11 +385,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/IERC20Minimal.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -496,11 +400,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/IUniswapV3Factory.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -509,11 +409,7 @@
                     "timestamp": "2021-03-22T16:17:48Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/c3e2b3c938f50892b413422901cdac99a27c43a2/contracts/interfaces/IUniswapV3Factory.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
-                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -528,11 +424,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/IUniswapV3Pool.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -547,11 +439,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/IUniswapV3PoolDeployer.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -560,11 +448,7 @@
                     "timestamp": "2021-03-22T19:11:50Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/interfaces/IUniswapV3PoolDeployer.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
-                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -579,11 +463,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/callback/IUniswapV3FlashCallback.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -592,11 +472,7 @@
                     "timestamp": "2021-03-22T19:11:50Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/interfaces/callback/IUniswapV3FlashCallback.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
-                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -611,11 +487,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/callback/IUniswapV3MintCallback.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -624,11 +496,7 @@
                     "timestamp": "2021-03-22T19:11:50Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/interfaces/callback/IUniswapV3MintCallback.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
-                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -643,11 +511,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/callback/IUniswapV3SwapCallback.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -662,11 +526,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/pool/IUniswapV3PoolActions.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -675,11 +535,7 @@
                     "timestamp": "2021-03-22T19:11:50Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/interfaces/pool/IUniswapV3PoolActions.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
-                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -694,11 +550,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -713,11 +565,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/pool/IUniswapV3PoolEvents.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -726,11 +574,7 @@
                     "timestamp": "2021-03-16T19:28:04Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/7445e61f17a7c1233bcabcdc920f0473793f6d78/contracts/interfaces/pool/IUniswapV3PoolEvents.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "client-reported fix for Minor findings; auditor status left as Info (not marked verified)",
-                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -745,11 +589,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/pool/IUniswapV3PoolImmutables.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -764,11 +604,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -783,11 +619,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/interfaces/pool/IUniswapV3PoolState.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -796,11 +628,7 @@
                     "timestamp": "2021-03-22T19:11:50Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/interfaces/pool/IUniswapV3PoolState.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
-                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -815,11 +643,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/BitMath.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -834,11 +658,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/FixedPoint128.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -853,11 +673,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/FixedPoint96.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -872,11 +688,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/FullMath.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -885,11 +697,7 @@
                     "timestamp": "2021-03-05T07:18:03Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/fc783807986595e33cdfc6ac82479535a42b955b/contracts/libraries/FullMath.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
-                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -904,11 +712,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/LiquidityMath.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -923,11 +727,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/LowGasSafeMath.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -942,11 +742,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/Oracle.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -955,11 +751,7 @@
                     "timestamp": "2021-03-22T19:11:50Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/libraries/Oracle.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
-                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -974,11 +766,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/Position.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -993,11 +781,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/SafeCast.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1012,11 +796,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/SecondsOutside.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1025,11 +805,7 @@
                     "timestamp": "2021-03-22T19:11:50Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/libraries/SecondsOutside.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
-                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1044,11 +820,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/SqrtPriceMath.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1057,11 +829,7 @@
                     "timestamp": "2021-03-16T19:28:04Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/7445e61f17a7c1233bcabcdc920f0473793f6d78/contracts/libraries/SqrtPriceMath.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "client-reported fix for Minor findings; auditor status left as Info (not marked verified)",
-                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1070,11 +838,7 @@
                     "timestamp": "2021-03-22T19:11:50Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/libraries/SqrtPriceMath.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
-                  "follows": "7445e61f17a7c1233bcabcdc920f0473793f6d78",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1089,11 +853,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/SwapMath.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1102,11 +862,7 @@
                     "timestamp": "2021-03-16T19:28:04Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/7445e61f17a7c1233bcabcdc920f0473793f6d78/contracts/libraries/SwapMath.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "client-reported fix for Minor findings; auditor status left as Info (not marked verified)",
-                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1121,11 +877,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/Tick.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1134,11 +886,7 @@
                     "timestamp": "2021-03-22T19:11:50Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/libraries/Tick.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
-                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1153,11 +901,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/TickBitmap.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1172,11 +916,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/TickMath.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1185,11 +925,7 @@
                     "timestamp": "2021-03-22T19:11:50Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/contracts/libraries/TickMath.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of the fixes for the reported findings (auditor status Fixed)",
-                  "follows": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1204,11 +940,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/TransferHelper.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1223,11 +955,7 @@
                     "timestamp": "2021-02-23T16:37:26Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/v1.0.0-beta.3/contracts/libraries/UnsafeMath.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Moderate"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -1264,14 +992,10 @@
                     "url": "https://github.com/Uniswap/v3-periphery/blob/8ad273f45cd42e04b5f8f15b6f4da57827122273/contracts/NonfungiblePositionManager.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 2,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "CVF-26",
                     "CVF-24"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 },
                 {
                   "revision": {
@@ -1281,11 +1005,7 @@
                     "url": "https://github.com/Uniswap/v3-periphery/blob/987842552ede76d428e60116672fb0ff67fe551e/contracts/NonfungiblePositionManager.sol"
                   },
                   "status": "partially_audited_with_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of the fix for the Critical decreaseLiquidity finding; the Major missing-token-existence-check finding remains open",
-                  "follows": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "CVF-24"
                   ]
                 }
@@ -1302,13 +1022,9 @@
                     "url": "https://github.com/Uniswap/v3-periphery/blob/8ad273f45cd42e04b5f8f15b6f4da57827122273/contracts/SwapRouter.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "full file",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "CVF-7"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 },
                 {
                   "revision": {
@@ -1317,11 +1033,7 @@
                     "timestamp": "2021-04-14T16:40:17Z",
                     "url": "https://github.com/Uniswap/v3-periphery/blob/2353765fe799b987ac5236971398fcb0be2bc5c0/contracts/SwapRouter.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "verification of the fix for the Critical exact-input payer finding",
-                  "follows": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }

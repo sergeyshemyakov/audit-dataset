@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4.0",
+  "schema_version": "1.5.0",
   "project": "morph",
   "reports": [
     {
@@ -87,14 +87,10 @@
                     "url": "https://github.com/morph-l2/morph/tree/1f623e0eaece566ef92a22615ab8ddff9bcee206/contracts/contracts"
                   },
                   "status": "partially_audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Contracts part of the morph repository target at the audit commit: review focused on the L1/L2 staking system, Rollup, the cross-domain messengers, message queue, withdrawal tree and L2 governance; the RLP encoding of L1 messages and the low-level batch commitment assembly were deprioritized. High TOB-MORPH-1 (L2/staking/L2Staking.sol) and TOB-MORPH-7 (L1/rollup/Rollup.sol) are located here.",
-                  "major_findings": 2,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "TOB-MORPH-1",
                     "TOB-MORPH-7"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 }
               ]
             },
@@ -108,10 +104,7 @@
                     "timestamp": "2024-04-29T08:11:32Z",
                     "url": "https://github.com/morph-l2/morph/blob/1f623e0eaece566ef92a22615ab8ddff9bcee206/contracts/contracts/L1/rollup/L1MessageQueueWithGasPriceOracle.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Reviewed as part of the message queue; the RLP encoding of L1 messages used for the transaction hash was explicitly deprioritized (coverage limitation).",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -126,13 +119,9 @@
                     "url": "https://github.com/morph-l2/morph/blob/1f623e0eaece566ef92a22615ab8ddff9bcee206/contracts/contracts/L1/rollup/Rollup.sol"
                   },
                   "status": "partially_audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Rollup batch commit, challenge, pause and finalization logic reviewed; the low-level calldata-to-memory assembly of batch commitments was deprioritized. High TOB-MORPH-7 and Informational TOB-MORPH-8 target this file.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "TOB-MORPH-7"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 }
               ]
             },
@@ -146,11 +135,7 @@
                     "timestamp": "2024-04-29T08:11:32Z",
                     "url": "https://github.com/morph-l2/morph/blob/1f623e0eaece566ef92a22615ab8ddff9bcee206/contracts/contracts/L1/staking/L1Staking.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Reviewed as part of the staking system; Informational TOB-MORPH-5 (stale data not pruned) partly targets this file.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -164,11 +149,7 @@
                     "timestamp": "2024-04-29T08:11:32Z",
                     "url": "https://github.com/morph-l2/morph/blob/1f623e0eaece566ef92a22615ab8ddff9bcee206/contracts/contracts/L2/staking/Distribute.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Reviewed as part of the staking reward distribution; Low TOB-MORPH-4 and TOB-MORPH-10 and Informational TOB-MORPH-5 target this file.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Low"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -182,11 +163,7 @@
                     "timestamp": "2024-04-29T08:11:32Z",
                     "url": "https://github.com/morph-l2/morph/blob/1f623e0eaece566ef92a22615ab8ddff9bcee206/contracts/contracts/L2/staking/Gov.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "L2 governance proposal and voting logic reviewed; Medium TOB-MORPH-6 targets this file.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -201,13 +178,9 @@
                     "url": "https://github.com/morph-l2/morph/blob/1f623e0eaece566ef92a22615ab8ddff9bcee206/contracts/contracts/L2/staking/L2Staking.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "L2 staking, delegation and sequencer-set maintenance reviewed; High TOB-MORPH-1 and Informational TOB-MORPH-2 target this file.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "TOB-MORPH-1"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 }
               ]
             },
@@ -221,11 +194,7 @@
                     "timestamp": "2024-04-29T08:11:32Z",
                     "url": "https://github.com/morph-l2/morph/blob/1f623e0eaece566ef92a22615ab8ddff9bcee206/contracts/contracts/L2/system/L2TxFeeVault.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Informational TOB-MORPH-9 (missing access control on withdraw) targets this file.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -239,11 +208,7 @@
                     "timestamp": "2024-04-29T08:11:32Z",
                     "url": "https://github.com/morph-l2/morph/blob/1f623e0eaece566ef92a22615ab8ddff9bcee206/contracts/contracts/L2/system/MorphToken.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Token minting logic reviewed; Informational TOB-MORPH-3 targets this file.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -257,10 +222,7 @@
                     "timestamp": "2024-04-29T08:11:32Z",
                     "url": "https://github.com/morph-l2/morph/tree/1f623e0eaece566ef92a22615ab8ddff9bcee206/node"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "L2 node part of the morph repository target: L1 syncer, executor and batch cache, block derivation from blob data and block proposal/validation/commitment flows reviewed; no findings.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -274,10 +236,7 @@
                     "timestamp": "2024-05-14T11:35:11Z",
                     "url": "https://github.com/morph-l2/morph/blob/e5d414db5fe43b1bdf0c2ccad4ab45cfc2186d7a/contracts/contracts/l2/staking/L2Staking.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #282 head: fix of High TOB-MORPH-1 (undelegation state manipulation) verified as resolved; only the fix was reviewed. File path renamed from L2/staking/L2Staking.sol.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -286,11 +245,7 @@
                     "timestamp": "2024-05-15T06:38:42Z",
                     "url": "https://github.com/morph-l2/morph/blob/39c368fb01febab79bac60f7c8a2fa371fe3e19b/contracts/contracts/l2/staking/L2Staking.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #275 head (includes the merged PR #282): fix of Informational TOB-MORPH-2 (staker removal and sequencer set update) verified as resolved.",
-                  "follows": "e5d414db5fe43b1bdf0c2ccad4ab45cfc2186d7a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -299,11 +254,7 @@
                     "timestamp": "2024-05-15T06:51:26Z",
                     "url": "https://github.com/morph-l2/morph/blob/d33fa720878757d293c04093d978f3c237eca241/contracts/contracts/l2/staking/L2Staking.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #277 head: minting and claim changes for TOB-MORPH-3 and TOB-MORPH-10 verified as resolved.",
-                  "follows": "39c368fb01febab79bac60f7c8a2fa371fe3e19b",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -317,10 +268,7 @@
                     "timestamp": "2024-05-13T10:11:21Z",
                     "url": "https://github.com/morph-l2/morph/blob/737307a212af66ecd7720f72b78214d0a0184d95/contracts/contracts/l2/staking/Distribute.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #308 head: fix of Informational TOB-MORPH-5 (stale delegator data not migrated) verified as resolved. File path renamed from L2/staking/Distribute.sol.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -329,11 +277,7 @@
                     "timestamp": "2024-05-14T11:35:33Z",
                     "url": "https://github.com/morph-l2/morph/blob/c9cee3c4cca9e80882b952c8c3f3c6c4fcc0f269/contracts/contracts/l2/staking/Distribute.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #281 head: fix of Low TOB-MORPH-4 (reward claims reverting) verified as resolved.",
-                  "follows": "737307a212af66ecd7720f72b78214d0a0184d95",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -342,11 +286,7 @@
                     "timestamp": "2024-05-15T06:51:26Z",
                     "url": "https://github.com/morph-l2/morph/blob/d33fa720878757d293c04093d978f3c237eca241/contracts/contracts/l2/staking/Distribute.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #277 head: fix of Low TOB-MORPH-10 (commission claim end epoch) and TOB-MORPH-3 verified as resolved.",
-                  "follows": "c9cee3c4cca9e80882b952c8c3f3c6c4fcc0f269",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -360,10 +300,7 @@
                     "timestamp": "2024-05-15T06:51:26Z",
                     "url": "https://github.com/morph-l2/morph/blob/d33fa720878757d293c04093d978f3c237eca241/contracts/contracts/l2/system/MorphToken.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #277 head: fix of Informational TOB-MORPH-3 (minting in the current epoch) verified as resolved. File path renamed from L2/system/MorphToken.sol.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -377,10 +314,7 @@
                     "timestamp": "2024-05-13T10:11:21Z",
                     "url": "https://github.com/morph-l2/morph/blob/737307a212af66ecd7720f72b78214d0a0184d95/contracts/contracts/l1/staking/L1Staking.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #308 head: pruning of the stakers structure on slashing and withdrawal (TOB-MORPH-5) verified as resolved. File path renamed from L1/staking/L1Staking.sol.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -394,10 +328,7 @@
                     "timestamp": "2024-05-14T09:43:18Z",
                     "url": "https://github.com/morph-l2/morph/blob/950270a55a66d31be11acea821c0ecb9128f6f2d/contracts/contracts/l2/staking/Gov.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #304 head: fix of Medium TOB-MORPH-6 (only current sequencer votes counted) verified as resolved. File path renamed from L2/staking/Gov.sol.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -412,13 +343,9 @@
                     "url": "https://github.com/morph-l2/morph/blob/74276bdb7a3f3ed0a4a718361f5e473121db9e83/contracts/contracts/l1/rollup/Rollup.sol"
                   },
                   "status": "partially_audited_with_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #301 head: the team's own fix for challenge resolution in batch reverting, noted in the fix review of TOB-MORPH-8 (which remains unresolved by design). This branch does not contain the PR #300 fix, so High TOB-MORPH-7 is still open. File path renamed from L1/rollup/Rollup.sol.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "TOB-MORPH-7"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -427,11 +354,7 @@
                     "timestamp": "2024-05-14T11:36:58Z",
                     "url": "https://github.com/morph-l2/morph/blob/49a022693ffc54415ed9085891cd2ce6b9c44619/contracts/contracts/l1/rollup/Rollup.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #300 head: fix of High TOB-MORPH-7 (challenges possible after unpausing) verified as resolved; Informational TOB-MORPH-8 unresolved.",
-                  "follows": "74276bdb7a3f3ed0a4a718361f5e473121db9e83",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -445,10 +368,7 @@
                     "timestamp": "2024-05-14T11:37:15Z",
                     "url": "https://github.com/morph-l2/morph/blob/f444050c54cff3406d40cc2ddfcb247d78686984/contracts/contracts/l2/system/L2TxFeeVault.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #303 head: fix of Informational TOB-MORPH-9 (owner-only withdraw) verified as resolved. File path renamed from L2/system/L2TxFeeVault.sol.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -462,10 +382,7 @@
                     "timestamp": "2024-06-18T08:21:28Z",
                     "url": "https://github.com/morph-l2/morph/tree/34a892188644b8916907db154d9f16dc9d3912b0/tx-submitter"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Transaction submitter target (listed separately at this commit): selection of the sequencer responsible for batch submission and well-formedness of L1 transactions reviewed; no findings.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -485,13 +402,9 @@
                     "url": "https://github.com/morph-l2/go-ethereum/blob/03fd4c3e771de55015d913680e1cc0209cc92b10/miner/worker.go"
                   },
                   "status": "partially_audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Target of High TOB-MORPH-11 (failed L2 transactions added to the skipped L1 transaction list). The go-ethereum target was reviewed only for Morph's changes (block creation, block validation, blockchain and consensus engine); the circuit capacity checker implementation was out of scope.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "TOB-MORPH-11"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 }
               ]
             },
@@ -505,10 +418,7 @@
                     "timestamp": "2024-06-21T05:47:17Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/060418ec4f28b18676cbc6926dd30d72101f7fe1/miner/morph_worker.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "go-ethereum PR #99 head: fix of High TOB-MORPH-11 verified as resolved; the block production logic formerly in miner/worker.go now lives in this file.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -544,10 +454,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/L1CrossDomainMessenger.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -556,11 +463,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/L1CrossDomainMessenger.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -574,10 +477,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/gateways/EnforcedTxGateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -586,11 +486,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/gateways/EnforcedTxGateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -604,10 +500,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/gateways/L1CustomERC20Gateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -616,11 +509,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/gateways/L1CustomERC20Gateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -634,10 +523,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/gateways/L1ERC1155Gateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -646,11 +532,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/gateways/L1ERC1155Gateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -664,10 +546,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/gateways/L1ERC20Gateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -676,11 +555,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/gateways/L1ERC20Gateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -694,10 +569,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/gateways/L1ERC721Gateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -706,11 +578,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/gateways/L1ERC721Gateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -724,10 +592,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/gateways/L1ETHGateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -736,11 +601,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/gateways/L1ETHGateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -754,10 +615,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/gateways/L1GatewayRouter.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -766,11 +624,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/gateways/L1GatewayRouter.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -785,13 +639,9 @@
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/gateways/L1ReverseCustomGateway.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file at the audited commit. High H-1 (onDropMessage transfers instead of minting the burned tokens) is located here; the report also references the inherited L1ERC20Gateway.sol onDropMessage.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "H-1"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -800,11 +650,7 @@
                     "timestamp": "2024-10-08T07:18:16Z",
                     "url": "https://github.com/morph-l2/morph/blob/a6e044a7dd326856d01887ff6583d7a202983b57/contracts/contracts/l1/gateways/L1ReverseCustomGateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #562 head: fix of High H-1 (onDropMessage mints the tokens back). Only the fix was considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -813,11 +659,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/gateways/L1ReverseCustomGateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "a6e044a7dd326856d01887ff6583d7a202983b57",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -831,10 +673,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/gateways/L1StandardERC20Gateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -843,11 +682,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/gateways/L1StandardERC20Gateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -861,10 +696,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/gateways/L1WETHGateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -873,11 +705,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/gateways/L1WETHGateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -891,10 +719,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/gateways/usdc/L1USDCGateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -903,11 +728,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/gateways/usdc/L1USDCGateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -921,10 +742,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/rollup/L1MessageQueueWithGasPriceOracle.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -933,11 +751,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/rollup/L1MessageQueueWithGasPriceOracle.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -951,10 +765,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/rollup/MultipleVersionRollupVerifier.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -963,11 +774,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/rollup/MultipleVersionRollupVerifier.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -982,13 +789,9 @@
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/rollup/Rollup.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file at the audited commit. High H-2 (fake prevStateRoot not checked at commit) is located here.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "H-2"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -998,14 +801,9 @@
                     "url": "https://github.com/morph-l2/morph/blob/de5c880f37db19f25cd9ee68d996ec03cef65514/contracts/contracts/l1/rollup/Rollup.sol"
                   },
                   "status": "partially_audited_with_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #558 head: fix of Medium M-6 (challenges tied to the batch header to avoid L1 reorg issues); High H-2 still open. Only the fix was considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "H-2"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -1015,14 +813,9 @@
                     "url": "https://github.com/morph-l2/morph/blob/2d29b175034d9da9f0ca8fe320586e6114a1f4e7/contracts/contracts/l1/rollup/Rollup.sol"
                   },
                   "status": "partially_audited_with_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #561 head: fix of Medium M-11 (inChallenge reset in revertBatch); High H-2 still open. Only the fix was considered.",
-                  "follows": "de5c880f37db19f25cd9ee68d996ec03cef65514",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "H-2"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -1032,14 +825,9 @@
                     "url": "https://github.com/morph-l2/morph/blob/47fb39eca6e4c39c38aaf39a57bbb7466fcd8d99/contracts/contracts/l1/rollup/Rollup.sol"
                   },
                   "status": "partially_audited_with_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #577 head: fix of Medium M-4 (finalization window update for batches committed during a challenge); High H-2 still open. Only the fix was considered.",
-                  "follows": "2d29b175034d9da9f0ca8fe320586e6114a1f4e7",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "H-2"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -1048,11 +836,7 @@
                     "timestamp": "2024-10-30T07:17:24Z",
                     "url": "https://github.com/morph-l2/morph/blob/cb54ba2583f606153a46dab1d937496f1744889f/contracts/contracts/l1/rollup/Rollup.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #616 head: fix of High H-2 (commitBatch checks prevStateRoot against the parent batch). Only the fix was considered.",
-                  "follows": "47fb39eca6e4c39c38aaf39a57bbb7466fcd8d99",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1061,11 +845,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/rollup/Rollup.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "cb54ba2583f606153a46dab1d937496f1744889f",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1079,10 +859,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l1/staking/L1Staking.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1091,11 +868,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l1/staking/L1Staking.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1109,10 +882,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/L2CrossDomainMessenger.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1121,11 +891,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/L2CrossDomainMessenger.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1139,10 +905,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/gateways/L2CustomERC20Gateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1151,11 +914,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/gateways/L2CustomERC20Gateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1169,10 +928,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/gateways/L2ERC1155Gateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1181,11 +937,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/gateways/L2ERC1155Gateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1199,10 +951,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/gateways/L2ERC20Gateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1211,11 +960,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/gateways/L2ERC20Gateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1229,10 +974,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/gateways/L2ERC721Gateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1241,11 +983,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/gateways/L2ERC721Gateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1259,10 +997,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/gateways/L2ETHGateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1271,11 +1006,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/gateways/L2ETHGateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1289,10 +1020,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/gateways/L2GatewayRouter.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1301,11 +1029,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/gateways/L2GatewayRouter.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1319,10 +1043,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/gateways/L2ReverseCustomGateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1331,11 +1052,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/gateways/L2ReverseCustomGateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1349,10 +1066,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/gateways/L2StandardERC20Gateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1361,11 +1075,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/gateways/L2StandardERC20Gateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1379,10 +1089,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/gateways/L2WETHGateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1391,11 +1098,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/gateways/L2WETHGateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1409,10 +1112,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/gateways/L2WithdrawLockERC20Gateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1421,11 +1121,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/gateways/L2WithdrawLockERC20Gateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1439,10 +1135,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/gateways/usdc/L2USDCGateway.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1451,11 +1144,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/gateways/usdc/L2USDCGateway.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1469,10 +1158,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/staking/Distribute.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1481,11 +1167,7 @@
                     "timestamp": "2024-09-09T09:30:37Z",
                     "url": "https://github.com/morph-l2/morph/blob/44551ef9e6caea73e0a2493a29c98d4bd8d159cf/contracts/contracts/l2/staking/Distribute.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #516 head: fix of Medium M-8 (commission claimable after unstaking). Only the fix was considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1494,11 +1176,7 @@
                     "timestamp": "2024-11-15T06:54:37Z",
                     "url": "https://github.com/morph-l2/morph/blob/846319a83f0f4716d8ae9fa59e56bfa243b26c69/contracts/contracts/l2/staking/Distribute.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #594 head: fix of Medium M-7 (delegator rewards lost after claimAll and re-delegation). Only the fix was considered.",
-                  "follows": "44551ef9e6caea73e0a2493a29c98d4bd8d159cf",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1507,11 +1185,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/staking/Distribute.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "846319a83f0f4716d8ae9fa59e56bfa243b26c69",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1525,10 +1199,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/staking/Gov.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1537,11 +1208,7 @@
                     "timestamp": "2024-11-14T05:10:15Z",
                     "url": "https://github.com/morph-l2/morph/blob/62fa3513445528019295098307dd95e7948a6e6d/contracts/contracts/l2/staking/Gov.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #603 head: fix of Medium M-10 (proposal pruning DoS). Only the fix was considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1550,11 +1217,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/staking/Gov.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "62fa3513445528019295098307dd95e7948a6e6d",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1568,10 +1231,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/staking/L2Staking.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1580,11 +1240,7 @@
                     "timestamp": "2024-09-09T09:30:37Z",
                     "url": "https://github.com/morph-l2/morph/blob/44551ef9e6caea73e0a2493a29c98d4bd8d159cf/contracts/contracts/l2/staking/L2Staking.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "PR #516 head: fix of Medium M-8 (stakers losing commission after unstaking). Only the fix was considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1593,11 +1249,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/staking/L2Staking.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "44551ef9e6caea73e0a2493a29c98d4bd8d159cf",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1611,10 +1263,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/staking/Record.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1623,11 +1272,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/staking/Record.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1641,10 +1286,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/staking/Sequencer.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1653,11 +1295,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/staking/Sequencer.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1671,10 +1309,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/system/GasPriceOracle.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1683,11 +1318,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/system/GasPriceOracle.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1701,10 +1332,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/system/L2ToL1MessagePasser.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1713,11 +1341,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/system/L2ToL1MessagePasser.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1731,10 +1355,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/system/L2TxFeeVault.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1743,11 +1364,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/system/L2TxFeeVault.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1761,10 +1378,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/system/MorphToken.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1773,11 +1387,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/system/MorphToken.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1791,10 +1401,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/l2/system/WrappedEther.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1803,11 +1410,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/l2/system/WrappedEther.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1821,10 +1424,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/CrossDomainMessenger.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1833,11 +1433,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/CrossDomainMessenger.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1851,10 +1447,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/External.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1863,11 +1456,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/External.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1881,10 +1470,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/codec/BatchHeaderCodecV0.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1893,11 +1479,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/codec/BatchHeaderCodecV0.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1911,10 +1493,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/codec/ChunkCodecV0.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -1928,10 +1507,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/common/AddressAliasHelper.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1940,11 +1516,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/common/AddressAliasHelper.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1958,10 +1530,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/common/OwnableBase.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1970,11 +1539,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/common/OwnableBase.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1988,10 +1553,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/common/Tree.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2000,11 +1562,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/common/Tree.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2018,10 +1576,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/common/Types.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2030,11 +1585,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/common/Types.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2048,10 +1599,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/common/Verify.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2060,11 +1608,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/common/Verify.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2078,10 +1622,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/common/Whitelist.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2090,11 +1631,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/common/Whitelist.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2108,10 +1645,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/gateway/GatewayBase.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2120,11 +1654,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/gateway/GatewayBase.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2138,10 +1668,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/staking/Staking.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2150,11 +1677,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/staking/Staking.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2168,10 +1691,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/token/MorphStandardERC20.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2180,11 +1700,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/token/MorphStandardERC20.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2198,10 +1714,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/token/MorphStandardERC20Factory.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2210,11 +1723,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/token/MorphStandardERC20Factory.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2228,10 +1737,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/verifier/RollupVerifier.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2240,11 +1746,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/verifier/RollupVerifier.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2258,10 +1760,7 @@
                     "timestamp": "2024-08-29T09:27:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769/contracts/contracts/libraries/verifier/ZkEvmVerifierV1.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (public contest)",
-                  "coverage": "Contest scope file reviewed at the audited commit; no High finding located here.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2270,11 +1769,7 @@
                     "timestamp": "2024-11-15T07:21:05Z",
                     "url": "https://github.com/morph-l2/morph/blob/c56fb938a8a3da81d1e8979b2c49a9d7b3acc7ec/contracts/contracts/libraries/verifier/ZkEvmVerifierV1.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Final commit stated by the report after the protocol team's fixes (no High or Medium issue left unfixed or unacknowledged); only the fixes were considered.",
-                  "follows": "22ca805e2d09c9d0bddb3e8a52ddd7d3435ce769",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -2331,13 +1826,9 @@
                     "url": "https://github.com/morph-l2/morph/blob/26233deddf5c77e811a73cfcfb797a2579ed9112/contracts/contracts/l2/system/L2TokenRegistry.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "File introduced by the Emerald upgrade after Version 0; reviewed in full at Version 1. High 2.1.1 (onlyAllowed modifier ineffective when the allow list is disabled) and Medium 2.1.2 and Low 2.1.4 are located here.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "2.1.1"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -2346,11 +1837,7 @@
                     "timestamp": "2025-12-17T10:13:44Z",
                     "url": "https://github.com/morph-l2/morph/blob/e64256ee2109d4fcd3f4c6d90aec8abc46a751e7/contracts/contracts/l2/system/L2TokenRegistry.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit: fix of High 2.1.1 (onlyAllowed access control) and Medium 2.1.2 verified as fixed; only the fix changes were reviewed.",
-                  "follows": "26233deddf5c77e811a73cfcfb797a2579ed9112",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -2371,10 +1858,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2383,11 +1867,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/accounts/abi/bind/base.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; file unchanged since Version 1.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2403,10 +1883,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2415,11 +1892,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/accounts/external/backend.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; file unchanged since Version 1.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2435,10 +1908,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2447,11 +1917,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/core/types/receipt.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; only the changes fixing the reported issues were reviewed.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2467,10 +1933,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2479,11 +1942,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/core/state_processor.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; file unchanged since Version 1.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2499,10 +1958,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2511,11 +1967,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/core/tx_list.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; only the changes fixing the reported issues were reviewed.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2531,10 +1983,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2543,11 +1992,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/core/tx_pool.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; file unchanged since Version 1.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2561,10 +2006,7 @@
                     "timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/42d39732bb88bef91c1743efcf10db40ae6b990a/core/types/alt_fee_tx.go"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "File introduced by the Emerald upgrade after Version 0; reviewed in full at Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2573,11 +2015,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/core/types/alt_fee_tx.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; file unchanged since Version 1.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2591,10 +2029,7 @@
                     "timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/42d39732bb88bef91c1743efcf10db40ae6b990a/core/types/token_fee.go"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "File introduced by the Emerald upgrade after Version 0; reviewed in full at Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2603,11 +2038,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/core/types/token_fee.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; only the changes fixing the reported issues were reviewed.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2623,10 +2054,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2635,11 +2063,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/core/types/transaction.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; file unchanged since Version 1.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2655,10 +2079,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2667,11 +2088,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/internal/ethapi/api.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; file unchanged since Version 1.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2687,10 +2104,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2699,11 +2113,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/internal/ethapi/transaction_args.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; only the changes fixing the reported issues were reviewed.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2719,10 +2129,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2731,11 +2138,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/light/txpool.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; file unchanged since Version 1.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2751,10 +2154,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2763,11 +2163,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/core/state_transition.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; only the changes fixing the reported issues were reviewed.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2781,10 +2177,7 @@
                     "timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/42d39732bb88bef91c1743efcf10db40ae6b990a/core/token_gas.go"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "File introduced by the Emerald upgrade after Version 0; reviewed in full at Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2793,11 +2186,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/core/token_gas.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; only the changes fixing the reported issues were reviewed.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2811,10 +2200,7 @@
                     "timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/42d39732bb88bef91c1743efcf10db40ae6b990a/rollup/fees/token_info.go"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "File introduced by the Emerald upgrade after Version 0; reviewed in full at Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2823,11 +2209,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/rollup/fees/token_info.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; only the changes fixing the reported issues were reviewed.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2841,10 +2223,7 @@
                     "timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/42d39732bb88bef91c1743efcf10db40ae6b990a/rollup/fees/rate.go"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "File introduced by the Emerald upgrade after Version 0; reviewed in full at Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2853,11 +2232,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/rollup/fees/rate.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; only the changes fixing the reported issues were reviewed.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2873,10 +2248,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2885,11 +2257,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/rollup/fees/rollup_fee.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; file unchanged since Version 1.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2903,10 +2271,7 @@
                     "timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/42d39732bb88bef91c1743efcf10db40ae6b990a/rollup/fees/token_transfer.go"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "File introduced by the Emerald upgrade after Version 0; reviewed in full at Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2915,11 +2280,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/rollup/fees/token_transfer.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; only the changes fixing the reported issues were reviewed.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2935,10 +2296,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2947,11 +2305,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/signer/core/apitypes/types.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; file unchanged since Version 1.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2967,10 +2321,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2979,11 +2330,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/core/vm/contracts.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; only the changes fixing the reported issues were reviewed.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2997,10 +2344,7 @@
                     "timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/42d39732bb88bef91c1743efcf10db40ae6b990a/crypto/secp256r1/verifier.go"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "File introduced by the Emerald upgrade after Version 0; reviewed in full at Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3009,11 +2353,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/crypto/secp256r1/verifier.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; only the changes fixing the reported issues were reviewed.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3029,10 +2369,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -3041,11 +2378,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/core/vm/eips.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; file unchanged since Version 1.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3061,10 +2394,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -3073,11 +2403,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/core/vm/jump_table.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; file unchanged since Version 1.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3093,10 +2419,7 @@
                     "end_timestamp": "2025-11-21T04:05:43Z",
                     "url": "https://github.com/morph-l2/go-ethereum/compare/62fcaab9b7a732eea298f45d97234d718b522b13...42d39732bb88bef91c1743efcf10db40ae6b990a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial audit (diff)",
-                  "coverage": "Only the Emerald upgrade changes between Version 0 and Version 1 were reviewed; code up to Version 0 is out of scope.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -3105,11 +2428,7 @@
                     "timestamp": "2025-12-22T05:16:33Z",
                     "url": "https://github.com/morph-l2/go-ethereum/blob/64e9dcd01e673d9a25efc91090b81f46150cab3c/core/vm/opcodes.go"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Version 2 fix commit; file unchanged since Version 1.",
-                  "follows": "42d39732bb88bef91c1743efcf10db40ae6b990a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }

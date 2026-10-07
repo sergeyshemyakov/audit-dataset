@@ -1,7 +1,6 @@
 {
-  "schema_version": "1.1.0",
-  "project": "uniswapv3",
-  "audit_summary": "../audit-summary.json",
+  "schema_version": "2.0.0",
+  "collection": "uniswapv3",
   "sources": [
     {
       "repository": "Uniswap/v3-core",
@@ -11,13 +10,10 @@
       "commit": "7445e61f17a7c1233bcabcdc920f0473793f6d78",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolEvents.sol/7445e61f17a7c1233bcabcdc920f0473793f6d78/IUniswapV3PoolEvents.sol",
+          "path": "contracts/interfaces/pool/IUniswapV3PoolEvents.sol",
           "git_object": "6ab5635e08fae9e777c5f29ad5476a3c58a04627",
           "git_mode": "100644",
-          "sha256": "677a3032626b2fddf0995d016cebadd34878dfe633a85ad316447eb9127f7de9",
-          "units": [
-            "IUniswapV3PoolEvents"
-          ]
+          "sha256": "677a3032626b2fddf0995d016cebadd34878dfe633a85ad316447eb9127f7de9"
         }
       ]
     },
@@ -29,13 +25,10 @@
       "commit": "7445e61f17a7c1233bcabcdc920f0473793f6d78",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/SqrtPriceMath.sol/7445e61f17a7c1233bcabcdc920f0473793f6d78/SqrtPriceMath.sol",
+          "path": "contracts/libraries/SqrtPriceMath.sol",
           "git_object": "4bfa46d66bfb66ac52a8503e3ba5f41396523e91",
           "git_mode": "100644",
-          "sha256": "b2f6a071d9e898b021c7ec636d231c150f9d6a8d18189c3597dd2a4f02306aec",
-          "units": [
-            "SqrtPriceMath"
-          ]
+          "sha256": "b2f6a071d9e898b021c7ec636d231c150f9d6a8d18189c3597dd2a4f02306aec"
         }
       ]
     },
@@ -47,13 +40,10 @@
       "commit": "7445e61f17a7c1233bcabcdc920f0473793f6d78",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/SwapMath.sol/7445e61f17a7c1233bcabcdc920f0473793f6d78/SwapMath.sol",
+          "path": "contracts/libraries/SwapMath.sol",
           "git_object": "c591e458d873a3debce92ae8a0925e576c950a17",
           "git_mode": "100644",
-          "sha256": "af59abc5645149816fdcb0870b0206e0be1cf7202c7d28bfb4bf37b646360690",
-          "units": [
-            "SwapMath"
-          ]
+          "sha256": "af59abc5645149816fdcb0870b0206e0be1cf7202c7d28bfb4bf37b646360690"
         }
       ]
     },
@@ -65,13 +55,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/NoDelegateCall.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/NoDelegateCall.sol",
+          "path": "contracts/NoDelegateCall.sol",
           "git_object": "daac1671a4c72a826ae7acda2acb0e879eb27be1",
           "git_mode": "100644",
-          "sha256": "92f35609cfe9b07b5bbb3d90f084fcd419d2b790182959eeb078ef3f01c1f166",
-          "units": [
-            "NoDelegateCall"
-          ]
+          "sha256": "92f35609cfe9b07b5bbb3d90f084fcd419d2b790182959eeb078ef3f01c1f166"
         }
       ]
     },
@@ -83,13 +70,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/UniswapV3Factory.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/UniswapV3Factory.sol",
+          "path": "contracts/UniswapV3Factory.sol",
           "git_object": "23180b7552881a096ba2a79f2df23474d7ce0a58",
           "git_mode": "100644",
-          "sha256": "62c49d281f82bd3057fb39ed4bff0ccffc766b1f12cfbd3b1c4d7df6a5bad72e",
-          "units": [
-            "UniswapV3Factory"
-          ]
+          "sha256": "62c49d281f82bd3057fb39ed4bff0ccffc766b1f12cfbd3b1c4d7df6a5bad72e"
         }
       ]
     },
@@ -101,13 +85,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/UniswapV3Pool.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/UniswapV3Pool.sol",
+          "path": "contracts/UniswapV3Pool.sol",
           "git_object": "8b73b231ad62e0454438d8dfee751054effc7311",
           "git_mode": "100644",
-          "sha256": "0781e190621c02ee29efa7bacf9f0fbd091ddeb65aa11d108ff1e4f0ff37be92",
-          "units": [
-            "UniswapV3Pool"
-          ]
+          "sha256": "0781e190621c02ee29efa7bacf9f0fbd091ddeb65aa11d108ff1e4f0ff37be92"
         }
       ]
     },
@@ -119,13 +100,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/UniswapV3PoolDeployer.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/UniswapV3PoolDeployer.sol",
+          "path": "contracts/UniswapV3PoolDeployer.sol",
           "git_object": "b1fb3381997d085ef88fd04ba77bf01f151f2a6d",
           "git_mode": "100644",
-          "sha256": "3960f57b59facbefcfd409776030bd7d1cece907c36261f4b74315a1ed56e285",
-          "units": [
-            "UniswapV3PoolDeployer"
-          ]
+          "sha256": "3960f57b59facbefcfd409776030bd7d1cece907c36261f4b74315a1ed56e285"
         }
       ]
     },
@@ -137,13 +115,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/BitMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/BitMath.sol",
+          "path": "contracts/libraries/BitMath.sol",
           "git_object": "31f2b156951301af87b461187aea132e757bd149",
           "git_mode": "100644",
-          "sha256": "b8ae680e37b35d8b6efc9d47c9f771cf9c9765d769ccbfec790e0d939eeb5160",
-          "units": [
-            "BitMath"
-          ]
+          "sha256": "b8ae680e37b35d8b6efc9d47c9f771cf9c9765d769ccbfec790e0d939eeb5160"
         }
       ]
     },
@@ -155,13 +130,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/FullMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/FullMath.sol",
+          "path": "contracts/libraries/FullMath.sol",
           "git_object": "f907e250e8aa5504a99e625bb5aff9ca61530b72",
           "git_mode": "100644",
-          "sha256": "59e2c4dd79bce86fd588a7dec2d113224d0917acdccf2334a7bb350c1bf59b08",
-          "units": [
-            "FullMath"
-          ]
+          "sha256": "59e2c4dd79bce86fd588a7dec2d113224d0917acdccf2334a7bb350c1bf59b08"
         }
       ]
     },
@@ -173,13 +145,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/LiquidityMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/LiquidityMath.sol",
+          "path": "contracts/libraries/LiquidityMath.sol",
           "git_object": "fdd052a0cb471d30bfdbcb8973d98570029cfd34",
           "git_mode": "100644",
-          "sha256": "805cedb46beeeb3300c3d32fc5e6e89dfb41aaac750929e3f2e07e7f5721a1e9",
-          "units": [
-            "LiquidityMath"
-          ]
+          "sha256": "805cedb46beeeb3300c3d32fc5e6e89dfb41aaac750929e3f2e07e7f5721a1e9"
         }
       ]
     },
@@ -191,13 +160,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/LowGasSafeMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/LowGasSafeMath.sol",
+          "path": "contracts/libraries/LowGasSafeMath.sol",
           "git_object": "092a067f397a8e1cbe86333fa0e68644ac4d4875",
           "git_mode": "100644",
-          "sha256": "74d5db120ce62a2c25d113de0d12b2e442719bdac6034ecd040250a36c2df145",
-          "units": [
-            "LowGasSafeMath"
-          ]
+          "sha256": "74d5db120ce62a2c25d113de0d12b2e442719bdac6034ecd040250a36c2df145"
         }
       ]
     },
@@ -209,13 +175,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/Oracle.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/Oracle.sol",
+          "path": "contracts/libraries/Oracle.sol",
           "git_object": "6c8c152ab39fbf294833316d360680b56688462f",
           "git_mode": "100644",
-          "sha256": "2ea406266cc477ad04cf58d7ca065069d533a68d1a269c0cd69f6e7826d11434",
-          "units": [
-            "Oracle"
-          ]
+          "sha256": "2ea406266cc477ad04cf58d7ca065069d533a68d1a269c0cd69f6e7826d11434"
         }
       ]
     },
@@ -227,13 +190,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/Position.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/Position.sol",
+          "path": "contracts/libraries/Position.sol",
           "git_object": "99cec4ae7239ed22c7b4496707094cdf193e5e61",
           "git_mode": "100644",
-          "sha256": "8f65e14f68ccfbd6273e0b02c8de29766caeb3aeeae339a794c77bb0478a9d8b",
-          "units": [
-            "Position"
-          ]
+          "sha256": "8f65e14f68ccfbd6273e0b02c8de29766caeb3aeeae339a794c77bb0478a9d8b"
         }
       ]
     },
@@ -245,13 +205,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/SafeCast.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/SafeCast.sol",
+          "path": "contracts/libraries/SafeCast.sol",
           "git_object": "24d640afd8331952a551f49034bc6c49889218f6",
           "git_mode": "100644",
-          "sha256": "cbc69a2f2235d3087de07156fc927cff0dc01fc9217f038c18e43e01db3b4171",
-          "units": [
-            "SafeCast"
-          ]
+          "sha256": "cbc69a2f2235d3087de07156fc927cff0dc01fc9217f038c18e43e01db3b4171"
         }
       ]
     },
@@ -263,13 +220,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/SecondsOutside.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/SecondsOutside.sol",
+          "path": "contracts/libraries/SecondsOutside.sol",
           "git_object": "69a037def232491c901858471221604f2ba74e92",
           "git_mode": "100644",
-          "sha256": "7f5d0f3af0e19bc9411167bab11afc8fdae9ff2673646cc2a07a2e7a8ff43519",
-          "units": [
-            "SecondsOutside"
-          ]
+          "sha256": "7f5d0f3af0e19bc9411167bab11afc8fdae9ff2673646cc2a07a2e7a8ff43519"
         }
       ]
     },
@@ -281,13 +235,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/SqrtPriceMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/SqrtPriceMath.sol",
+          "path": "contracts/libraries/SqrtPriceMath.sol",
           "git_object": "dff037bede246a9a2a24c77ba5301dfc0fb5dac3",
           "git_mode": "100644",
-          "sha256": "d7d5aedccaca2edaee0b341d0a0fc87b99112ecb9194f1128b1ab17e811fe2c7",
-          "units": [
-            "SqrtPriceMath"
-          ]
+          "sha256": "d7d5aedccaca2edaee0b341d0a0fc87b99112ecb9194f1128b1ab17e811fe2c7"
         }
       ]
     },
@@ -299,13 +250,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/SwapMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/SwapMath.sol",
+          "path": "contracts/libraries/SwapMath.sol",
           "git_object": "4ae6dca6a61af50629e5a535d30f497351804052",
           "git_mode": "100644",
-          "sha256": "32eebbe906e6f702b505baa11aa3d3eef9d515235d595f0d1719181d04aba7de",
-          "units": [
-            "SwapMath"
-          ]
+          "sha256": "32eebbe906e6f702b505baa11aa3d3eef9d515235d595f0d1719181d04aba7de"
         }
       ]
     },
@@ -317,13 +265,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/Tick.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/Tick.sol",
+          "path": "contracts/libraries/Tick.sol",
           "git_object": "98de0e6b04689e623f27ee43493dc79199bd9adf",
           "git_mode": "100644",
-          "sha256": "0846222dcadb634230e63ce237472e46b4ddc87ece33deea1377c273d05b4743",
-          "units": [
-            "Tick"
-          ]
+          "sha256": "0846222dcadb634230e63ce237472e46b4ddc87ece33deea1377c273d05b4743"
         }
       ]
     },
@@ -335,13 +280,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/TickBitmap.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/TickBitmap.sol",
+          "path": "contracts/libraries/TickBitmap.sol",
           "git_object": "e9dc67358ebae55a4fe439e7b0c894b565dd056a",
           "git_mode": "100644",
-          "sha256": "946cc3382859a6a2933bc955915c305f51a1d0e775cc4a74e1f66ab222ea5195",
-          "units": [
-            "TickBitmap"
-          ]
+          "sha256": "946cc3382859a6a2933bc955915c305f51a1d0e775cc4a74e1f66ab222ea5195"
         }
       ]
     },
@@ -353,13 +295,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/TickMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/TickMath.sol",
+          "path": "contracts/libraries/TickMath.sol",
           "git_object": "b1c3ae9b4af71b031b35bc9169ea02b92b1247fb",
           "git_mode": "100644",
-          "sha256": "657a26eb3913bfde908d59017d6c2c9cf69fcf6aa573e4117424fbb25c960590",
-          "units": [
-            "TickMath"
-          ]
+          "sha256": "657a26eb3913bfde908d59017d6c2c9cf69fcf6aa573e4117424fbb25c960590"
         }
       ]
     },
@@ -371,13 +310,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/TransferHelper.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/TransferHelper.sol",
+          "path": "contracts/libraries/TransferHelper.sol",
           "git_object": "25c2c7bac4cf88fa530efc6dd76be05fcfa83482",
           "git_mode": "100644",
-          "sha256": "2afe26f6f7a87bb489beeeb63365fcd82503b2c8a7f48a6e5f6788a5af48cd8e",
-          "units": [
-            "TransferHelper"
-          ]
+          "sha256": "2afe26f6f7a87bb489beeeb63365fcd82503b2c8a7f48a6e5f6788a5af48cd8e"
         }
       ]
     },
@@ -389,13 +325,10 @@
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/UnsafeMath.sol/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/UnsafeMath.sol",
+          "path": "contracts/libraries/UnsafeMath.sol",
           "git_object": "34d6e4c7e2692d2edc02fa89862192e681bfb424",
           "git_mode": "100644",
-          "sha256": "cbedc38bb8f45021221b9b9bca15aac1c94d7b9acdc437f5f7d89f1e17ee24bd",
-          "units": [
-            "UnsafeMath"
-          ]
+          "sha256": "cbedc38bb8f45021221b9b9bca15aac1c94d7b9acdc437f5f7d89f1e17ee24bd"
         }
       ]
     },
@@ -407,13 +340,10 @@
       "commit": "c3e2b3c938f50892b413422901cdac99a27c43a2",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/IUniswapV3Factory.sol/c3e2b3c938f50892b413422901cdac99a27c43a2/IUniswapV3Factory.sol",
+          "path": "contracts/interfaces/IUniswapV3Factory.sol",
           "git_object": "6b2857581277ffd7ff83c1aa87633e840fd4817c",
           "git_mode": "100644",
-          "sha256": "7161f1041579c07f5014a542383a6cb1493a2ea49851afb62a3ddbc8e5629112",
-          "units": [
-            "IUniswapV3Factory"
-          ]
+          "sha256": "7161f1041579c07f5014a542383a6cb1493a2ea49851afb62a3ddbc8e5629112"
         }
       ]
     },
@@ -425,13 +355,10 @@
       "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/IUniswapV3PoolDeployer.sol/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/IUniswapV3PoolDeployer.sol",
+          "path": "contracts/interfaces/IUniswapV3PoolDeployer.sol",
           "git_object": "72096c1ff597f8541f78763455fb53bcdc77ac4d",
           "git_mode": "100644",
-          "sha256": "643d19fde0341e305b553444013dd0b3e58b9d23768ef254d6bccc65ae72cfae",
-          "units": [
-            "IUniswapV3PoolDeployer"
-          ]
+          "sha256": "643d19fde0341e305b553444013dd0b3e58b9d23768ef254d6bccc65ae72cfae"
         }
       ]
     },
@@ -443,13 +370,10 @@
       "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/IUniswapV3FlashCallback.sol",
+          "path": "contracts/interfaces/callback/IUniswapV3FlashCallback.sol",
           "git_object": "18e54c4e12cc471449b6e003bdee85360787ef5a",
           "git_mode": "100644",
-          "sha256": "abec35f27ee0d1247eabd013883419a191be0493f80b27d6d6c8c80c350a9e27",
-          "units": [
-            "IUniswapV3FlashCallback"
-          ]
+          "sha256": "abec35f27ee0d1247eabd013883419a191be0493f80b27d6d6c8c80c350a9e27"
         }
       ]
     },
@@ -461,13 +385,10 @@
       "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/callback/IUniswapV3MintCallback.sol/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/IUniswapV3MintCallback.sol",
+          "path": "contracts/interfaces/callback/IUniswapV3MintCallback.sol",
           "git_object": "85447e84f9b6493eb9699086ed3be2edc52467a0",
           "git_mode": "100644",
-          "sha256": "79854434600da677c9bbb19fd998d06fefe9d14a4ecb5ee724415c395490fb01",
-          "units": [
-            "IUniswapV3MintCallback"
-          ]
+          "sha256": "79854434600da677c9bbb19fd998d06fefe9d14a4ecb5ee724415c395490fb01"
         }
       ]
     },
@@ -479,13 +400,10 @@
       "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolActions.sol/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/IUniswapV3PoolActions.sol",
+          "path": "contracts/interfaces/pool/IUniswapV3PoolActions.sol",
           "git_object": "44fb61c24aaf14e4a767ee6eece840e807b3c35b",
           "git_mode": "100644",
-          "sha256": "4259e75892fe25343d24805f1bfdf2c9da3160fe7c9c5e80815467cb0b19c8c3",
-          "units": [
-            "IUniswapV3PoolActions"
-          ]
+          "sha256": "4259e75892fe25343d24805f1bfdf2c9da3160fe7c9c5e80815467cb0b19c8c3"
         }
       ]
     },
@@ -497,13 +415,10 @@
       "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolState.sol/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/IUniswapV3PoolState.sol",
+          "path": "contracts/interfaces/pool/IUniswapV3PoolState.sol",
           "git_object": "a24a3535b341353914c8bbdd68aac481bf3951d3",
           "git_mode": "100644",
-          "sha256": "3e7ee8adf2a14bae2df73adfb6116a11b08f930defba75bf9e92803bd644b7a0",
-          "units": [
-            "IUniswapV3PoolState"
-          ]
+          "sha256": "3e7ee8adf2a14bae2df73adfb6116a11b08f930defba75bf9e92803bd644b7a0"
         }
       ]
     },
@@ -515,13 +430,10 @@
       "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/Oracle.sol/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/Oracle.sol",
+          "path": "contracts/libraries/Oracle.sol",
           "git_object": "de21189da7e920493de17f650c9f091642aeb3b4",
           "git_mode": "100644",
-          "sha256": "e04c32cba412fb318e8e12cb713631d1707a74877816f35b70c31600352560e9",
-          "units": [
-            "Oracle"
-          ]
+          "sha256": "e04c32cba412fb318e8e12cb713631d1707a74877816f35b70c31600352560e9"
         }
       ]
     },
@@ -533,13 +445,10 @@
       "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/SecondsOutside.sol/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/SecondsOutside.sol",
+          "path": "contracts/libraries/SecondsOutside.sol",
           "git_object": "4c9c258712ad80683d7095a2a5e6803c5dd2f960",
           "git_mode": "100644",
-          "sha256": "e371344ef2258c63472d6a087908b7110476f16d6a34764daca44ffafa653a53",
-          "units": [
-            "SecondsOutside"
-          ]
+          "sha256": "e371344ef2258c63472d6a087908b7110476f16d6a34764daca44ffafa653a53"
         }
       ]
     },
@@ -551,13 +460,10 @@
       "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/SqrtPriceMath.sol/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/SqrtPriceMath.sol",
+          "path": "contracts/libraries/SqrtPriceMath.sol",
           "git_object": "80bdb8c1306a14e9098cf0f6e4a386dc8f9a9c2b",
           "git_mode": "100644",
-          "sha256": "7e7fc4afc9dbd9266a7fb42ba228967ebf4a21cf01231b34e8d005adcbd60c4b",
-          "units": [
-            "SqrtPriceMath"
-          ]
+          "sha256": "7e7fc4afc9dbd9266a7fb42ba228967ebf4a21cf01231b34e8d005adcbd60c4b"
         }
       ]
     },
@@ -569,13 +475,10 @@
       "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/Tick.sol/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/Tick.sol",
+          "path": "contracts/libraries/Tick.sol",
           "git_object": "802c1a86812351dda81ab11d5cc384b07a8fa531",
           "git_mode": "100644",
-          "sha256": "3447f5cd929b018d401aee1a6df47409a9ff4315d9582fa673fd0c50b4336751",
-          "units": [
-            "Tick"
-          ]
+          "sha256": "3447f5cd929b018d401aee1a6df47409a9ff4315d9582fa673fd0c50b4336751"
         }
       ]
     },
@@ -587,13 +490,10 @@
       "commit": "d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/TickMath.sol/d6fe02aaa6b4e30e03b5a0efa51b200e3c7e6bdc/TickMath.sol",
+          "path": "contracts/libraries/TickMath.sol",
           "git_object": "378e44528caeb7fa0ce2f86b8a39f6d0785a0925",
           "git_mode": "100644",
-          "sha256": "f1f1eec54bf89a7283caeda374f054d3a5df5e424287bb327d23b833decacb10",
-          "units": [
-            "TickMath"
-          ]
+          "sha256": "f1f1eec54bf89a7283caeda374f054d3a5df5e424287bb327d23b833decacb10"
         }
       ]
     },
@@ -605,13 +505,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/NoDelegateCall.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/NoDelegateCall.sol",
+          "path": "contracts/NoDelegateCall.sol",
           "git_object": "daac1671a4c72a826ae7acda2acb0e879eb27be1",
           "git_mode": "100644",
-          "sha256": "92f35609cfe9b07b5bbb3d90f084fcd419d2b790182959eeb078ef3f01c1f166",
-          "units": [
-            "NoDelegateCall"
-          ]
+          "sha256": "92f35609cfe9b07b5bbb3d90f084fcd419d2b790182959eeb078ef3f01c1f166"
         }
       ]
     },
@@ -623,13 +520,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/UniswapV3Factory.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/UniswapV3Factory.sol",
+          "path": "contracts/UniswapV3Factory.sol",
           "git_object": "23180b7552881a096ba2a79f2df23474d7ce0a58",
           "git_mode": "100644",
-          "sha256": "62c49d281f82bd3057fb39ed4bff0ccffc766b1f12cfbd3b1c4d7df6a5bad72e",
-          "units": [
-            "UniswapV3Factory"
-          ]
+          "sha256": "62c49d281f82bd3057fb39ed4bff0ccffc766b1f12cfbd3b1c4d7df6a5bad72e"
         }
       ]
     },
@@ -641,13 +535,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/UniswapV3Pool.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/UniswapV3Pool.sol",
+          "path": "contracts/UniswapV3Pool.sol",
           "git_object": "afc842f19b4190c7b672c4e702ccdf18725d4b82",
           "git_mode": "100644",
-          "sha256": "5f19a41b53e8243f5f57df0afed0948646d34a6f3fc7e1439b9dd506dd430c07",
-          "units": [
-            "UniswapV3Pool"
-          ]
+          "sha256": "5f19a41b53e8243f5f57df0afed0948646d34a6f3fc7e1439b9dd506dd430c07"
         }
       ]
     },
@@ -659,13 +550,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/UniswapV3PoolDeployer.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/UniswapV3PoolDeployer.sol",
+          "path": "contracts/UniswapV3PoolDeployer.sol",
           "git_object": "b1fb3381997d085ef88fd04ba77bf01f151f2a6d",
           "git_mode": "100644",
-          "sha256": "3960f57b59facbefcfd409776030bd7d1cece907c36261f4b74315a1ed56e285",
-          "units": [
-            "UniswapV3PoolDeployer"
-          ]
+          "sha256": "3960f57b59facbefcfd409776030bd7d1cece907c36261f4b74315a1ed56e285"
         }
       ]
     },
@@ -677,13 +565,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/IERC20Minimal.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IERC20Minimal.sol",
+          "path": "contracts/interfaces/IERC20Minimal.sol",
           "git_object": "1780b40cf7775b7204759629211776d70fb62aa4",
           "git_mode": "100644",
-          "sha256": "b7b65aa128ceb68c9f8eb10daa6080209038c3309b2b6e6c6b7bfac2c0e57d91",
-          "units": [
-            "IERC20Minimal"
-          ]
+          "sha256": "b7b65aa128ceb68c9f8eb10daa6080209038c3309b2b6e6c6b7bfac2c0e57d91"
         }
       ]
     },
@@ -695,13 +580,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/IUniswapV3Factory.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3Factory.sol",
+          "path": "contracts/interfaces/IUniswapV3Factory.sol",
           "git_object": "ec7a698ab9144c1f2a978207903027d397460ba5",
           "git_mode": "100644",
-          "sha256": "e61eb73e83062876b874749e776d5e5ed3db0a3a13f9da686d089983d04d4aaa",
-          "units": [
-            "IUniswapV3Factory"
-          ]
+          "sha256": "e61eb73e83062876b874749e776d5e5ed3db0a3a13f9da686d089983d04d4aaa"
         }
       ]
     },
@@ -713,13 +595,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3Pool.sol",
+          "path": "contracts/interfaces/IUniswapV3Pool.sol",
           "git_object": "38ee067ab63c3933fa25e5aca0136b01c9db0545",
           "git_mode": "100644",
-          "sha256": "0969bd309931340052cc4a2bcbd359254facc10c2d0e4ad7439df81a1954c550",
-          "units": [
-            "IUniswapV3Pool"
-          ]
+          "sha256": "0969bd309931340052cc4a2bcbd359254facc10c2d0e4ad7439df81a1954c550"
         }
       ]
     },
@@ -731,13 +610,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/IUniswapV3PoolDeployer.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3PoolDeployer.sol",
+          "path": "contracts/interfaces/IUniswapV3PoolDeployer.sol",
           "git_object": "5b279d81c59afe6bcbeff00cf9cd8d0e2b288df3",
           "git_mode": "100644",
-          "sha256": "8d8dc34b6afce3e57df3411bf6b79a67641a853b1e1dbb9131eb3f355be9934f",
-          "units": [
-            "IUniswapV3PoolDeployer"
-          ]
+          "sha256": "8d8dc34b6afce3e57df3411bf6b79a67641a853b1e1dbb9131eb3f355be9934f"
         }
       ]
     },
@@ -749,13 +625,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/callback/IUniswapV3FlashCallback.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3FlashCallback.sol",
+          "path": "contracts/interfaces/callback/IUniswapV3FlashCallback.sol",
           "git_object": "1656b3672c6b964ca005bca6cc9c31f4dc1415d7",
           "git_mode": "100644",
-          "sha256": "c482170f191b0f841843cfa8a96a3667b3fe88c2870404e8845f539f6020a9f7",
-          "units": [
-            "IUniswapV3FlashCallback"
-          ]
+          "sha256": "c482170f191b0f841843cfa8a96a3667b3fe88c2870404e8845f539f6020a9f7"
         }
       ]
     },
@@ -767,13 +640,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/callback/IUniswapV3MintCallback.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3MintCallback.sol",
+          "path": "contracts/interfaces/callback/IUniswapV3MintCallback.sol",
           "git_object": "45361c52c14eea2b3ac2fddc34176c4ed46aca2f",
           "git_mode": "100644",
-          "sha256": "beeb8862fa79568f350884f4e8c6c9fde1d2c92ee5fd8b4b12cb4d64cfd70489",
-          "units": [
-            "IUniswapV3MintCallback"
-          ]
+          "sha256": "beeb8862fa79568f350884f4e8c6c9fde1d2c92ee5fd8b4b12cb4d64cfd70489"
         }
       ]
     },
@@ -785,13 +655,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3SwapCallback.sol",
+          "path": "contracts/interfaces/callback/IUniswapV3SwapCallback.sol",
           "git_object": "5464243e6fd6626dcf9bda669e2a66da226d58b6",
           "git_mode": "100644",
-          "sha256": "ab4d103e33c25d53197c2bff02039310039a151d9494886ae5eafbbbe22a3d5c",
-          "units": [
-            "IUniswapV3SwapCallback"
-          ]
+          "sha256": "ab4d103e33c25d53197c2bff02039310039a151d9494886ae5eafbbbe22a3d5c"
         }
       ]
     },
@@ -803,13 +670,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolActions.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3PoolActions.sol",
+          "path": "contracts/interfaces/pool/IUniswapV3PoolActions.sol",
           "git_object": "e1895988286d1e85dea503430c27b8a56437c7e2",
           "git_mode": "100644",
-          "sha256": "db7a0c8965ea8044adcc4210f633153bb7c8ff1eea77b6d734ea2f06203dea61",
-          "units": [
-            "IUniswapV3PoolActions"
-          ]
+          "sha256": "db7a0c8965ea8044adcc4210f633153bb7c8ff1eea77b6d734ea2f06203dea61"
         }
       ]
     },
@@ -821,13 +685,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3PoolDerivedState.sol",
+          "path": "contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol",
           "git_object": "1a59de42c5d0983d397019c658cfc6bc55c538ad",
           "git_mode": "100644",
-          "sha256": "3dee97b0e184db441ec05ffc3cc45c3296a1460cf8a73f483140cda5e0f2f18b",
-          "units": [
-            "IUniswapV3PoolDerivedState"
-          ]
+          "sha256": "3dee97b0e184db441ec05ffc3cc45c3296a1460cf8a73f483140cda5e0f2f18b"
         }
       ]
     },
@@ -839,13 +700,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolEvents.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3PoolEvents.sol",
+          "path": "contracts/interfaces/pool/IUniswapV3PoolEvents.sol",
           "git_object": "9c438f65115662ba493bb64799fea89a10f0efde",
           "git_mode": "100644",
-          "sha256": "9fd19dcbb66b631964a6bece98fa9bee199ffc626b995669f602e796f39850ac",
-          "units": [
-            "IUniswapV3PoolEvents"
-          ]
+          "sha256": "9fd19dcbb66b631964a6bece98fa9bee199ffc626b995669f602e796f39850ac"
         }
       ]
     },
@@ -857,13 +715,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolImmutables.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3PoolImmutables.sol",
+          "path": "contracts/interfaces/pool/IUniswapV3PoolImmutables.sol",
           "git_object": "f7c87028768ab9490b4bc281ef0179d83a1e1252",
           "git_mode": "100644",
-          "sha256": "a4cc134ec1c0e4e70867b269aeced1f859b08587f05c8f26aee96a4111ebb5b3",
-          "units": [
-            "IUniswapV3PoolImmutables"
-          ]
+          "sha256": "a4cc134ec1c0e4e70867b269aeced1f859b08587f05c8f26aee96a4111ebb5b3"
         }
       ]
     },
@@ -875,13 +730,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3PoolOwnerActions.sol",
+          "path": "contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol",
           "git_object": "f316ba46b5f646a84297390dedcfd4e4369afb9c",
           "git_mode": "100644",
-          "sha256": "da09f7b7c4be9a9f3b03c57b604747a396328da8e9df46d7946b0ceb36c2ba0f",
-          "units": [
-            "IUniswapV3PoolOwnerActions"
-          ]
+          "sha256": "da09f7b7c4be9a9f3b03c57b604747a396328da8e9df46d7946b0ceb36c2ba0f"
         }
       ]
     },
@@ -893,13 +745,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/interfaces/pool/IUniswapV3PoolState.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/IUniswapV3PoolState.sol",
+          "path": "contracts/interfaces/pool/IUniswapV3PoolState.sol",
           "git_object": "17f7c073b8723ae77cefae864cfa88cc25376000",
           "git_mode": "100644",
-          "sha256": "a2504f93f71a6eae270f9cc539d5cea81c70b81ff8541f4228cfea09388aed2b",
-          "units": [
-            "IUniswapV3PoolState"
-          ]
+          "sha256": "a2504f93f71a6eae270f9cc539d5cea81c70b81ff8541f4228cfea09388aed2b"
         }
       ]
     },
@@ -911,13 +760,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/BitMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/BitMath.sol",
+          "path": "contracts/libraries/BitMath.sol",
           "git_object": "31f2b156951301af87b461187aea132e757bd149",
           "git_mode": "100644",
-          "sha256": "b8ae680e37b35d8b6efc9d47c9f771cf9c9765d769ccbfec790e0d939eeb5160",
-          "units": [
-            "BitMath"
-          ]
+          "sha256": "b8ae680e37b35d8b6efc9d47c9f771cf9c9765d769ccbfec790e0d939eeb5160"
         }
       ]
     },
@@ -929,13 +775,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/FixedPoint128.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/FixedPoint128.sol",
+          "path": "contracts/libraries/FixedPoint128.sol",
           "git_object": "8aa1e5b61ce8db63b3205555cbba846c5fa5c2b0",
           "git_mode": "100644",
-          "sha256": "3bab10561cf14f6ff55ea36d1260bef62fc9d25b2f31a7031782b49b7d680bc6",
-          "units": [
-            "FixedPoint128"
-          ]
+          "sha256": "3bab10561cf14f6ff55ea36d1260bef62fc9d25b2f31a7031782b49b7d680bc6"
         }
       ]
     },
@@ -947,13 +790,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/FixedPoint96.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/FixedPoint96.sol",
+          "path": "contracts/libraries/FixedPoint96.sol",
           "git_object": "1138570bc167aaf339de5de829f134b49c5497f9",
           "git_mode": "100644",
-          "sha256": "e9ef347af6c7e0f0a58f6fc81de3b83d23aa33785c3e1bf36d9d0642d81652e7",
-          "units": [
-            "FixedPoint96"
-          ]
+          "sha256": "e9ef347af6c7e0f0a58f6fc81de3b83d23aa33785c3e1bf36d9d0642d81652e7"
         }
       ]
     },
@@ -965,13 +805,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/FullMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/FullMath.sol",
+          "path": "contracts/libraries/FullMath.sol",
           "git_object": "f907e250e8aa5504a99e625bb5aff9ca61530b72",
           "git_mode": "100644",
-          "sha256": "59e2c4dd79bce86fd588a7dec2d113224d0917acdccf2334a7bb350c1bf59b08",
-          "units": [
-            "FullMath"
-          ]
+          "sha256": "59e2c4dd79bce86fd588a7dec2d113224d0917acdccf2334a7bb350c1bf59b08"
         }
       ]
     },
@@ -983,13 +820,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/LiquidityMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/LiquidityMath.sol",
+          "path": "contracts/libraries/LiquidityMath.sol",
           "git_object": "fdd052a0cb471d30bfdbcb8973d98570029cfd34",
           "git_mode": "100644",
-          "sha256": "805cedb46beeeb3300c3d32fc5e6e89dfb41aaac750929e3f2e07e7f5721a1e9",
-          "units": [
-            "LiquidityMath"
-          ]
+          "sha256": "805cedb46beeeb3300c3d32fc5e6e89dfb41aaac750929e3f2e07e7f5721a1e9"
         }
       ]
     },
@@ -1001,13 +835,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/LowGasSafeMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/LowGasSafeMath.sol",
+          "path": "contracts/libraries/LowGasSafeMath.sol",
           "git_object": "092a067f397a8e1cbe86333fa0e68644ac4d4875",
           "git_mode": "100644",
-          "sha256": "74d5db120ce62a2c25d113de0d12b2e442719bdac6034ecd040250a36c2df145",
-          "units": [
-            "LowGasSafeMath"
-          ]
+          "sha256": "74d5db120ce62a2c25d113de0d12b2e442719bdac6034ecd040250a36c2df145"
         }
       ]
     },
@@ -1019,13 +850,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/Oracle.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/Oracle.sol",
+          "path": "contracts/libraries/Oracle.sol",
           "git_object": "6c8c152ab39fbf294833316d360680b56688462f",
           "git_mode": "100644",
-          "sha256": "2ea406266cc477ad04cf58d7ca065069d533a68d1a269c0cd69f6e7826d11434",
-          "units": [
-            "Oracle"
-          ]
+          "sha256": "2ea406266cc477ad04cf58d7ca065069d533a68d1a269c0cd69f6e7826d11434"
         }
       ]
     },
@@ -1037,13 +865,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/Position.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/Position.sol",
+          "path": "contracts/libraries/Position.sol",
           "git_object": "31e0b82a55ba9666a44d59abc2be2938b883f01a",
           "git_mode": "100644",
-          "sha256": "4f2706470f899bd27d3b07324771323ae70918255e575e342841e071195d1a9b",
-          "units": [
-            "Position"
-          ]
+          "sha256": "4f2706470f899bd27d3b07324771323ae70918255e575e342841e071195d1a9b"
         }
       ]
     },
@@ -1055,13 +880,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/SafeCast.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/SafeCast.sol",
+          "path": "contracts/libraries/SafeCast.sol",
           "git_object": "24d640afd8331952a551f49034bc6c49889218f6",
           "git_mode": "100644",
-          "sha256": "cbc69a2f2235d3087de07156fc927cff0dc01fc9217f038c18e43e01db3b4171",
-          "units": [
-            "SafeCast"
-          ]
+          "sha256": "cbc69a2f2235d3087de07156fc927cff0dc01fc9217f038c18e43e01db3b4171"
         }
       ]
     },
@@ -1073,13 +895,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/SecondsOutside.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/SecondsOutside.sol",
+          "path": "contracts/libraries/SecondsOutside.sol",
           "git_object": "69a037def232491c901858471221604f2ba74e92",
           "git_mode": "100644",
-          "sha256": "7f5d0f3af0e19bc9411167bab11afc8fdae9ff2673646cc2a07a2e7a8ff43519",
-          "units": [
-            "SecondsOutside"
-          ]
+          "sha256": "7f5d0f3af0e19bc9411167bab11afc8fdae9ff2673646cc2a07a2e7a8ff43519"
         }
       ]
     },
@@ -1091,13 +910,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/SqrtPriceMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/SqrtPriceMath.sol",
+          "path": "contracts/libraries/SqrtPriceMath.sol",
           "git_object": "dff037bede246a9a2a24c77ba5301dfc0fb5dac3",
           "git_mode": "100644",
-          "sha256": "d7d5aedccaca2edaee0b341d0a0fc87b99112ecb9194f1128b1ab17e811fe2c7",
-          "units": [
-            "SqrtPriceMath"
-          ]
+          "sha256": "d7d5aedccaca2edaee0b341d0a0fc87b99112ecb9194f1128b1ab17e811fe2c7"
         }
       ]
     },
@@ -1109,13 +925,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/SwapMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/SwapMath.sol",
+          "path": "contracts/libraries/SwapMath.sol",
           "git_object": "4ae6dca6a61af50629e5a535d30f497351804052",
           "git_mode": "100644",
-          "sha256": "32eebbe906e6f702b505baa11aa3d3eef9d515235d595f0d1719181d04aba7de",
-          "units": [
-            "SwapMath"
-          ]
+          "sha256": "32eebbe906e6f702b505baa11aa3d3eef9d515235d595f0d1719181d04aba7de"
         }
       ]
     },
@@ -1127,13 +940,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/Tick.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/Tick.sol",
+          "path": "contracts/libraries/Tick.sol",
           "git_object": "98de0e6b04689e623f27ee43493dc79199bd9adf",
           "git_mode": "100644",
-          "sha256": "0846222dcadb634230e63ce237472e46b4ddc87ece33deea1377c273d05b4743",
-          "units": [
-            "Tick"
-          ]
+          "sha256": "0846222dcadb634230e63ce237472e46b4ddc87ece33deea1377c273d05b4743"
         }
       ]
     },
@@ -1145,13 +955,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/TickBitmap.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/TickBitmap.sol",
+          "path": "contracts/libraries/TickBitmap.sol",
           "git_object": "e9dc67358ebae55a4fe439e7b0c894b565dd056a",
           "git_mode": "100644",
-          "sha256": "946cc3382859a6a2933bc955915c305f51a1d0e775cc4a74e1f66ab222ea5195",
-          "units": [
-            "TickBitmap"
-          ]
+          "sha256": "946cc3382859a6a2933bc955915c305f51a1d0e775cc4a74e1f66ab222ea5195"
         }
       ]
     },
@@ -1163,13 +970,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/TickMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/TickMath.sol",
+          "path": "contracts/libraries/TickMath.sol",
           "git_object": "b1c3ae9b4af71b031b35bc9169ea02b92b1247fb",
           "git_mode": "100644",
-          "sha256": "657a26eb3913bfde908d59017d6c2c9cf69fcf6aa573e4117424fbb25c960590",
-          "units": [
-            "TickMath"
-          ]
+          "sha256": "657a26eb3913bfde908d59017d6c2c9cf69fcf6aa573e4117424fbb25c960590"
         }
       ]
     },
@@ -1181,13 +985,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/TransferHelper.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/TransferHelper.sol",
+          "path": "contracts/libraries/TransferHelper.sol",
           "git_object": "25c2c7bac4cf88fa530efc6dd76be05fcfa83482",
           "git_mode": "100644",
-          "sha256": "2afe26f6f7a87bb489beeeb63365fcd82503b2c8a7f48a6e5f6788a5af48cd8e",
-          "units": [
-            "TransferHelper"
-          ]
+          "sha256": "2afe26f6f7a87bb489beeeb63365fcd82503b2c8a7f48a6e5f6788a5af48cd8e"
         }
       ]
     },
@@ -1199,13 +1000,10 @@
       "commit": "e8de69a550d579c475f52d59a6fb2f7ef9e7f364",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/UnsafeMath.sol/e8de69a550d579c475f52d59a6fb2f7ef9e7f364/UnsafeMath.sol",
+          "path": "contracts/libraries/UnsafeMath.sol",
           "git_object": "34d6e4c7e2692d2edc02fa89862192e681bfb424",
           "git_mode": "100644",
-          "sha256": "cbedc38bb8f45021221b9b9bca15aac1c94d7b9acdc437f5f7d89f1e17ee24bd",
-          "units": [
-            "UnsafeMath"
-          ]
+          "sha256": "cbedc38bb8f45021221b9b9bca15aac1c94d7b9acdc437f5f7d89f1e17ee24bd"
         }
       ]
     },
@@ -1217,13 +1015,10 @@
       "commit": "fc783807986595e33cdfc6ac82479535a42b955b",
       "files": [
         {
-          "file": "Uniswap/v3-core/contracts/libraries/FullMath.sol/fc783807986595e33cdfc6ac82479535a42b955b/FullMath.sol",
+          "path": "contracts/libraries/FullMath.sol",
           "git_object": "34f837dd5c614280e3d37355cb9c25d1c3cc2d42",
           "git_mode": "100644",
-          "sha256": "ede3c73d45eafa304d755572f9756873e366415b84f4b6671d980f91783a0c49",
-          "units": [
-            "FullMath"
-          ]
+          "sha256": "ede3c73d45eafa304d755572f9756873e366415b84f4b6671d980f91783a0c49"
         }
       ]
     },
@@ -1235,13 +1030,10 @@
       "commit": "2353765fe799b987ac5236971398fcb0be2bc5c0",
       "files": [
         {
-          "file": "Uniswap/v3-periphery/contracts/SwapRouter.sol/2353765fe799b987ac5236971398fcb0be2bc5c0/SwapRouter.sol",
+          "path": "contracts/SwapRouter.sol",
           "git_object": "f61b6577cbf85eb1c90701feba4a192cfc86afd6",
           "git_mode": "100644",
-          "sha256": "7c1d988b21b032764fb592b05114632d4794972df5d2ce167cb460ca1df86448",
-          "units": [
-            "SwapRouter"
-          ]
+          "sha256": "7c1d988b21b032764fb592b05114632d4794972df5d2ce167cb460ca1df86448"
         }
       ]
     },
@@ -1253,13 +1045,10 @@
       "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
       "files": [
         {
-          "file": "Uniswap/v3-periphery/contracts/NonfungiblePositionManager.sol/8ad273f45cd42e04b5f8f15b6f4da57827122273/NonfungiblePositionManager.sol",
+          "path": "contracts/NonfungiblePositionManager.sol",
           "git_object": "9d1e2a51022efad52dcc33f7724930cd91d2dfcd",
           "git_mode": "100644",
-          "sha256": "6835253b2d1fd3176581f8184b686ab25a2496986ba4e29ba7fbbb92f557a9b8",
-          "units": [
-            "NonfungiblePositionManager"
-          ]
+          "sha256": "6835253b2d1fd3176581f8184b686ab25a2496986ba4e29ba7fbbb92f557a9b8"
         }
       ]
     },
@@ -1271,13 +1060,10 @@
       "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
       "files": [
         {
-          "file": "Uniswap/v3-periphery/contracts/SwapRouter.sol/8ad273f45cd42e04b5f8f15b6f4da57827122273/SwapRouter.sol",
+          "path": "contracts/SwapRouter.sol",
           "git_object": "d60adeef48c5bcf1500a6c7496e485a6c44d77ec",
           "git_mode": "100644",
-          "sha256": "8b28002997556cac589c3b82983ef0e36413111bd1e3f153e4646c2e5ad903c7",
-          "units": [
-            "SwapRouter"
-          ]
+          "sha256": "8b28002997556cac589c3b82983ef0e36413111bd1e3f153e4646c2e5ad903c7"
         }
       ]
     },
@@ -1289,13 +1075,10 @@
       "commit": "987842552ede76d428e60116672fb0ff67fe551e",
       "files": [
         {
-          "file": "Uniswap/v3-periphery/contracts/NonfungiblePositionManager.sol/987842552ede76d428e60116672fb0ff67fe551e/NonfungiblePositionManager.sol",
+          "path": "contracts/NonfungiblePositionManager.sol",
           "git_object": "907688ac9cde0cb04fc0277cd722a4b1ab518c97",
           "git_mode": "100644",
-          "sha256": "fbf2a33eea15fc702c50e13161da85304e57fdebfcaa82e769ba48ef7c822321",
-          "units": [
-            "NonfungiblePositionManager"
-          ]
+          "sha256": "fbf2a33eea15fc702c50e13161da85304e57fdebfcaa82e769ba48ef7c822321"
         }
       ]
     }

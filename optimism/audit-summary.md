@@ -58,8 +58,6 @@ Commit dates use Git committer timestamps (UTC).
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/ae1ac05d7032422a71caf25d16f6e548df5b8d7f"><code>ae1ac05d7032422a71caf25d16f6e548df5b8d7f</code></a> | May 4, 2021 | <code>packages/contracts/contracts/optimistic-ethereum/libraries/trie/Lib_MerkleTrie.sol</code> |
@@ -98,8 +96,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | _None recorded_ | — | _None recorded_ |
@@ -127,8 +123,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | _None recorded_ | — | _None recorded_ |
@@ -141,8 +135,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: OpenZeppelin audit of nineteen listed Solidity files in the optimism monorepo covering the Bedrock L1/L2 messengers, bridges, portal, output oracle, proxies and the periphery ERC721 bridges; no Critical or High issues were found. Fixes were reviewed in the separate optimism-audit-fixes repository, which is not publicly accessible.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -163,8 +155,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/2a7be367634f147736f960eb2f38a77291cdfcad"><code>2a7be367634f147736f960eb2f38a77291cdfcad</code></a> | July 29, 2022 | <code>packages/contracts-periphery/contracts/universal/drippie</code> (recursive directory)<br><code>packages/contracts-periphery/contracts/universal/AssetReceiver.sol</code><br><code>packages/contracts-periphery/contracts/universal/Transactor.sol</code> |
@@ -179,8 +169,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Trail of Bits review of Optimism&#x27;s testing strategy: documentation of invariants and Echidna property tests for Bedrock contracts (OptimismPortal, ResourceMetering, L2OutputOracle and libraries) plus Go fuzz/unit tests for op-node, op-e2e and op-geth. One Undetermined-severity finding; the Go components are offchain.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -208,8 +196,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/1bfe79f20b37a77c1158e7c5fdbff2ae109e0a1d"><code>1bfe79f20b37a77c1158e7c5fdbff2ae109e0a1d</code></a> | November 11, 2022 | <code>packages/contracts-bedrock/contracts/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/contracts/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/contracts/L1/ResourceMetering.sol</code> |
@@ -233,8 +219,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Public Sherlock contest on the Bedrock release covering the L1 contracts, L2 predeploys, op-node and op-geth at a fixed monorepo commit, with three High findings in OptimismPortal withdrawal finalization. No fix-review commit is given; op-node and op-geth are offchain and not recorded as source coverage.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -281,8 +265,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 | _None recorded_ | — | _None recorded_ |
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -332,8 +314,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/d1651bb22645ebd41ac4bb2ab4786f9a56fc1003"><code>d1651bb22645ebd41ac4bb2ab4786f9a56fc1003</code></a> | December 7, 2023 | <code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/universal/ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/universal/StandardBridge.sol</code> |
@@ -350,8 +330,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/e6ef3a900c42c8722e72c2e2314027f85d12ced5"><code>e6ef3a900c42c8722e72c2e2314027f85d12ced5</code></a> | January 22, 2024 | <code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/universal/FeeVault.sol</code><br><code>packages/contracts-bedrock/src/universal/ERC721Bridge.sol</code> |
@@ -364,8 +342,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Public Sherlock contest on the fault proof system&#x27;s L1 contracts (OptimismPortal2, DisputeGameFactory, FaultDisputeGame, DelayedWETH, WETH98) at a fixed monorepo commit, with four Medium and no High findings. FaultDisputeGame resolution logic was explicitly excluded from the contest scope.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -386,8 +362,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/48393a6a1ea32efac65bb3ce6617cf101ad88225"><code>48393a6a1ea32efac65bb3ce6617cf101ad88225</code></a> | May 10, 2024 | <code>packages/contracts-bedrock/src/Safe/LivenessGuard.sol</code><br><code>packages/contracts-bedrock/src/Safe/LivenessModule.sol</code> |
@@ -407,8 +381,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | _None recorded_ | — | _None recorded_ |
@@ -421,8 +393,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Cantina Managed review, commissioned by Base, of the Cannon onchain MIPS single-step verifier MIPS.sol and its MIPSInstructions library at a fixed optimism monorepo commit, with one Critical and one High finding in MIPS.sol. All client responses are acknowledgements and no fix commit is given.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -437,8 +407,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/1f7081798ce2d49b8643514663d10681cb853a3d"><code>1f7081798ce2d49b8643514663d10681cb853a3d</code></a> | June 3, 2024 | <code>packages/contracts-bedrock/src/dispute</code> (recursive directory)<br><code>packages/contracts-bedrock/src/cannon/PreimageOracle.sol</code><br><code>packages/contracts-bedrock/src/cannon/PreimageKeyLib.sol</code><br><code>packages/contracts-bedrock/src/cannon/MIPS.sol</code> (explicitly not audited) |
@@ -451,8 +419,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Two-day 3DOC Security review of pull request 12050 adding F_GETFD syscall support to the Cannon MIPS VM in both the Go implementation and the onchain MIPS, MIPS2 and MIPSSyscalls contracts. No findings; the single reported item was withdrawn as a false positive.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -467,7 +433,7 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
+_Commit dates unavailable: 1 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -484,8 +450,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/2f17e6b67c61de5d8073d556272796d201bc740b"><code>2f17e6b67c61de5d8073d556272796d201bc740b</code></a> | December 16, 2024 | <code>packages/contracts-bedrock/src/safe/DeputyPauseModule.sol</code> |
@@ -498,8 +462,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Offbeat Security review for Optimism Labs of the incident-response changes to the dispute game and portal contracts (OptimismPortal2, AnchorStateRegistry, FaultDisputeGame, DelayedWETH, OPContractsManager and libraries) at monorepo commits 984bae9 and ce2ce43, covering anchor state handling, game validation and bond distribution. One Low and three Informational findings; L-01 and I-01 fixes in PRs #14144 and #14139 were verified.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -517,8 +479,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/b8c011f18c79d735e01168345fc1c6f02fac584f"><code>b8c011f18c79d735e01168345fc1c6f02fac584f</code></a> | January 22, 2025 | <code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Memory.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Syscalls.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64State.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Instructions.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Arch.sol</code> |
@@ -532,8 +492,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Spearbit review of the 64-bit multithreaded Cannon fault-proof VM (MIPS64 Solidity contracts and the Go mipsevm implementation) at a fixed monorepo commit. One High finding (futex value width) in MIPS64.sol, fixed in pull request 13453; a Medium SLL/SLLV finding is carried over from the parallel Base review.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -559,8 +517,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/8d0dd96e494b2ba154587877351e87788336a4ec"><code>8d0dd96e494b2ba154587877351e87788336a4ec</code></a> | February 25, 2025 | <code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L2/L2StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/libraries/EOA.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/safe/DeputyPauseModule.sol</code> |
@@ -574,8 +530,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Spearbit review (Jan 21 to Feb 21, 2025) of the Optimism Upgrade 13 L1 contracts at a single optimism commit, covering the OPContractsManager upgrade/addGameType flows, AnchorStateRegistry, FaultDisputeGame, OptimismPortal2 and SystemConfig changes. No Critical or High findings; 2 Medium, 6 Low and 11 Informational issues with fix PRs verified.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -597,8 +551,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/6c80f23ab3074b5c66ff06e390ae2448bd4d2240"><code>6c80f23ab3074b5c66ff06e390ae2448bd4d2240</code></a> | February 7, 2025 | <code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainTokenBridge.sol</code><br><code>packages/contracts-bedrock/src/L2/CrossL2Inbox.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainWETH.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortalInterop.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfigInterop.sol</code><br><code>packages/contracts-bedrock/src/L2/L1BlockInterop.sol</code><br><code>packages/contracts-bedrock/src/L1/SharedLockbox.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/L2/ETHLiquidity.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ToL2CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainERC20.sol</code> |
@@ -611,8 +563,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Cantina Managed review (Mar 18-29, 2025) of the Optimism interop fault-proof program logic: op-program super root state transition and cross-chain message consolidation, together with the shared op-supervisor cross-safety checks and super root encoding in op-service, at commit 9d86edb5. Two Critical and two High findings; the report declares no explicit file list, so paths are those where findings locate.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -648,8 +598,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/e4b921c9dbf8cd3a8db20ef4f15e0e2aa495fcc3"><code>e4b921c9dbf8cd3a8db20ef4f15e0e2aa495fcc3</code></a> | March 19, 2025 | <code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/L1/ETHLockbox.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/safe/DeputyGuardianModule.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/libraries/Hashing.sol</code><br><code>packages/contracts-bedrock/src/libraries/Encoding.sol</code><br><code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/SuperFaultDisputeGame.sol</code> (explicitly not audited)<br><code>packages/contracts-bedrock/src/dispute/SuperPermissionedDisputeGame.sol</code> (explicitly not audited) |
@@ -664,8 +612,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | _None recorded_ | — | _None recorded_ |
@@ -679,8 +625,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | _None recorded_ | — | _None recorded_ |
@@ -693,8 +637,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Spearbit five-day review of the Optimism monorepo contracts-bedrock changes for the interop-ready OptimismPortal2 / Upgrade 16 (SuperchainConfig pause model, ETHLockbox migration, ReinitializableBase upgrades, OPContractsManager) at commit 7cd84fed, followed by a fix review of PR 15939. Five Low, one Gas and eight Informational findings and no Critical, High or Medium issues; the report declares no explicit file list.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -718,8 +660,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/7cd84fed9554193c2dcd683e1ff2d0e2605448f6"><code>7cd84fed9554193c2dcd683e1ff2d0e2605448f6</code></a> | May 6, 2025 | <code>packages/contracts-bedrock/src/L1/ETHLockbox.sol</code><br><code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/ProtocolVersions.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/dispute/DelayedWETH.sol</code><br><code>packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol</code><br><code>packages/contracts-bedrock/src/dispute/SuperFaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/SuperPermissionedDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/libraries/Encoding.sol</code><br><code>packages/contracts-bedrock/src/libraries/Hashing.sol</code><br><code>packages/contracts-bedrock/src/safe/DeputyPauseModule.sol</code> |
@@ -741,8 +681,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/689111fca9a10e6670ba0b5c7f1a549a212c855b"><code>689111fca9a10e6670ba0b5c7f1a549a212c855b</code></a> | May 29, 2025 | <code>cannon/mipsevm/arch/arch64.go</code><br><code>cannon/mipsevm/iface.go</code><br><code>cannon/mipsevm/versions/state.go</code><br><code>cannon/mipsevm/versions/version.go</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64State.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Syscalls.sol</code><br><code>cannon/mipsevm/multithreaded/mips.go</code><br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code> |
@@ -756,8 +694,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Solo Spearbit/Cantina fix review (Zigtur) of three OP Labs pull requests (#16341, #16346, #16384) on commit 7f7b9abb that add eventfd2 syscall support and correct the V0/A3 register convention for syscall errors in the Cannon Go MIPS64 VM and the onchain MIPS64 contracts, needed for the Go 1.23 runtime. Both fixes were confirmed accurate; no new findings were reported.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -774,8 +710,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Spearbit four-day review of the VerifyOPCM.s.sol Foundry script at commit 731280c6 and of whether it correctly verifies the OPContractsManager.sol contract at commit 54c19f6a for Upgrade 16. One Medium, one Low and one Informational finding, all acknowledged; no Critical or High issues and no fix review.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -814,8 +748,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/475801690f7a451469ee4da87b5fe3c54c92f372"><code>475801690f7a451469ee4da87b5fe3c54c92f372</code></a> | September 8, 2025 | <code>packages/contracts-bedrock/src/cannon/libraries/MIPS64State.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Syscalls.sol</code><br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code> |
@@ -830,8 +762,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Cantina Managed review (Oct 15-19, 2025) of the Optimism revenue-sharing / FeeSplitter feature developed by Wonderland in the optimism monorepo at commit 989afa81, covering the FeeSplitter, FeeVault, L1Withdrawer, SuperchainRevSharesCalculator and FeesDepositor contracts, their interfaces, genesis scripts and op-deployer tooling. No Critical, High or Medium issues were found; fixes were verified holistically at commit f1fcd964.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -855,8 +785,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/aeed7033f7f739d8ecd4bd70a42ff09013bbc91e"><code>aeed7033f7f739d8ecd4bd70a42ff09013bbc91e</code></a> | October 16, 2025 | <code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L2/GasPriceOracle.sol</code><br><code>packages/contracts-bedrock/src/L2/L1Block.sol</code><br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Instructions.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64State.sol</code><br><code>packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol</code><br><code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/PermissionedDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/lib/Types.sol</code><br><code>packages/contracts-bedrock/src/libraries/DevFeatures.sol</code><br><code>packages/contracts-bedrock/src/libraries/Encoding.sol</code><br><code>packages/contracts-bedrock/src/universal/OptimismMintableERC20.sol</code><br><code>packages/contracts-bedrock/src/universal/OptimismMintableERC20Factory.sol</code> |
@@ -871,8 +799,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/1f888ede1940fce20f71db89fc13039fdd96757e"><code>1f888ede1940fce20f71db89fc13039fdd96757e</code></a> | October 30, 2025 | <code>packages/contracts-bedrock/scripts/deploy/DeployConfig.s.sol</code><br><code>packages/contracts-bedrock/scripts/deploy/DeployOPChain.s.sol</code><br><code>packages/contracts-bedrock/scripts/L2Genesis.s.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L2/L1BlockCGT.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ToL1MessagePasserCGT.sol</code><br><code>packages/contracts-bedrock/src/L2/LiquidityController.sol</code><br><code>packages/contracts-bedrock/src/L2/NativeAssetLiquidity.sol</code> |
@@ -885,8 +811,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Spearbit review of the SaferSafes Safe extensions in the optimism monorepo at commit cb54822c: LivenessModule2.sol, TimelockGuard.sol and SaferSafes.sol under packages/contracts-bedrock/src/safe. No Critical or High issues; one Medium and two Low findings, with fixes landed in PRs 18147 and 18172 and verified by Spearbit.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -902,8 +826,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Cantina Managed review of the Optimism U18 upgrade at commit 87d406db, covering the contracts-bedrock dispute (DisputeGameFactory creator pattern, V2/Super/zk games), L1 (OPCM, portal, SystemConfig, FeesDepositor), L2 fee vault/splitter/CGT predeploys, libraries and Safe modules. No Critical, High or Medium issues were found; 4 Low, 1 Gas and 2 Informational findings, all acknowledged.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -924,8 +846,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/c390d771c65d783503f82fb76fb0b1d8628c605b"><code>c390d771c65d783503f82fb76fb0b1d8628c605b</code></a> | March 26, 2026 | <code>rust/kona/bin/client/src/single.rs</code><br><code>rust/kona/crates/proof/proof/src/sync.rs</code><br><code>rust/kona/crates/protocol/protocol/src/batch/reader.rs</code><br><code>rust/kona/crates/protocol/protocol/src/brotli.rs</code> |
@@ -938,8 +858,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Cantina Managed review of the PolicyEngineStaking contract, its interface and deployment script in contracts-bedrock at commit 60679313, followed by a holistic fix review at commit 13c74c6d. No Critical, High or Medium issues; 1 Low and 9 Informational findings, 9 fixed and 1 acknowledged.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -955,8 +873,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"><code>7cbcb58ffb7322343f0ed6b926f65bea7630ce3e</code></a> | May 1, 2026 | <code>packages/contracts-bedrock/src/L2/L2ContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtils.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeVault.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/StandardValidatorUtils.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerMigrationValidator.sol</code><br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManagerStandardValidator.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerV2.sol</code><br><code>packages/contracts-bedrock/src/dispute/PermissionedDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code> |
@@ -969,8 +885,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Cantina Managed re-review of the OP Stack L2 interop predeploys (CrossL2Inbox, L2ToL2CrossDomainMessenger, SuperchainETHBridge, ETHLiquidity) and their supporting libraries (Hashing, TransientContext, SafeSend) at commit fa9974a2. The review found 4 Low and 25 Informational issues and no Critical, High or Medium findings; several documentation/code fixes were verified.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -990,8 +904,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Cantina Managed review of the OPCMv2 contracts in contracts-bedrock (OPContractsManagerV2, Migrator, Utils, UtilsCaller, Container and the VerifyOPCM script) at commit a00b3972, with fix verification of PRs #19271, #19272, #19281, #19285, #20289 and #20371. No Critical or High issues; 1 Medium, 6 Low and 15 Informational findings, 21 fixed and 1 acknowledged.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -1013,8 +925,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Cantina Managed review of the Upgrade 20 (super-roots) L1 contract changes at commit 7799a246, covering the super fault dispute games, OPContractsManagerV2 and its validator/utility contracts, OptimismPortal2, SystemConfig, SuperchainConfig and related interfaces and libraries. The review found 6 Low and 8 Informational issues and no Critical, High or Medium findings; four Low fixes were verified.
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |

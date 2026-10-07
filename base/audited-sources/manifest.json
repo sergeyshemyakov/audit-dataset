@@ -1,7 +1,6 @@
 {
-  "schema_version": "1.1.0",
-  "project": "base",
-  "audit_summary": "../audit-summary.json",
+  "schema_version": "2.0.0",
+  "collection": "base",
   "sources": [
     {
       "repository": "base/contracts",
@@ -11,13 +10,10 @@
       "commit": "1237b5fdba49f16f6a40129c8b0713e85c943bf2",
       "files": [
         {
-          "file": "base/contracts/src/L1/ProtocolVersions.sol/1237b5fdba49f16f6a40129c8b0713e85c943bf2/ProtocolVersions.sol",
+          "path": "src/L1/ProtocolVersions.sol",
           "git_object": "88c27b176408c0a700bb8098a7128c616adb03fa",
           "git_mode": "100644",
-          "sha256": "2b84b0035082ed3698292b0685d3f6b6b67fd617824f479f57c4d70c24b59c74",
-          "units": [
-            "ProtocolVersions"
-          ]
+          "sha256": "2b84b0035082ed3698292b0685d3f6b6b67fd617824f479f57c4d70c24b59c74"
         }
       ]
     },
@@ -29,13 +25,10 @@
       "commit": "180fa2c099b096ecb93e433709653236ac7c17af",
       "files": [
         {
-          "file": "base/contracts/src/L1/proofs/DisputeGameFactory.sol/180fa2c099b096ecb93e433709653236ac7c17af/DisputeGameFactory.sol",
+          "path": "src/L1/proofs/DisputeGameFactory.sol",
           "git_object": "c79f3e9a45b1ce89a22b59b023270090f5d0827d",
           "git_mode": "100644",
-          "sha256": "66f9a7c17129a265882572193b94a98b9c8240d620864a314d7df382647734ef",
-          "units": [
-            "DisputeGameFactory"
-          ]
+          "sha256": "66f9a7c17129a265882572193b94a98b9c8240d620864a314d7df382647734ef"
         }
       ]
     },
@@ -47,13 +40,10 @@
       "commit": "18f8939e8915b924608267453d71e1dee38d0edc",
       "files": [
         {
-          "file": "base/contracts/src/L1/proofs/tee/NitroEnclaveVerifier.sol/18f8939e8915b924608267453d71e1dee38d0edc/NitroEnclaveVerifier.sol",
+          "path": "src/L1/proofs/tee/NitroEnclaveVerifier.sol",
           "git_object": "27d23c5fe15fe0a0f4ef43662d29627da05d22ba",
           "git_mode": "100644",
-          "sha256": "8fe30e1ba40352b3333126588c964ec7136df7a6c665d89c1a810d2097773aa2",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "8fe30e1ba40352b3333126588c964ec7136df7a6c665d89c1a810d2097773aa2"
         }
       ]
     },
@@ -65,13 +55,10 @@
       "commit": "1901048ff08f344b8371cf7f20a43f28896b3c48",
       "files": [
         {
-          "file": "base/contracts/src/L1/proofs/AggregateVerifier.sol/1901048ff08f344b8371cf7f20a43f28896b3c48/AggregateVerifier.sol",
+          "path": "src/L1/proofs/AggregateVerifier.sol",
           "git_object": "6f864792e2a2b8aedd3dfa29b00ddb0a83110010",
           "git_mode": "100644",
-          "sha256": "48b7a97e1fc3f15a37a2956f324c05dd573a6fe0d99f1897dd683985347bbf9d",
-          "units": [
-            "AggregateVerifier"
-          ]
+          "sha256": "48b7a97e1fc3f15a37a2956f324c05dd573a6fe0d99f1897dd683985347bbf9d"
         }
       ]
     },
@@ -83,13 +70,10 @@
       "commit": "1ad3bf22a7c67df143b5b9697e9c5de8f7d705af",
       "files": [
         {
-          "file": "base/contracts/src/L1/ProtocolVersions.sol/1ad3bf22a7c67df143b5b9697e9c5de8f7d705af/ProtocolVersions.sol",
+          "path": "src/L1/ProtocolVersions.sol",
           "git_object": "ec69f7c61ec5f77edb1613b8f0cccffb4a1c4508",
           "git_mode": "100644",
-          "sha256": "d0ec36bacfb88e5b6231a935ec9b6cf36f55e57ea26f04d82e2e83a8ce0cff99",
-          "units": [
-            "ProtocolVersions"
-          ]
+          "sha256": "d0ec36bacfb88e5b6231a935ec9b6cf36f55e57ea26f04d82e2e83a8ce0cff99"
         }
       ]
     },
@@ -101,13 +85,10 @@
       "commit": "2007b3126c2e8b6bb8ff607ecfeac8b8f5a53129",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/AggregateVerifier.sol/2007b3126c2e8b6bb8ff607ecfeac8b8f5a53129/AggregateVerifier.sol",
+          "path": "src/multiproof/AggregateVerifier.sol",
           "git_object": "5770cc16b1f4b2ae646a2a88e06ba4b8461e732a",
           "git_mode": "100644",
-          "sha256": "9d2a0956b890b54a5d36ebc348f88527504883ffb754675b67b9e3e46021eba4",
-          "units": [
-            "AggregateVerifier"
-          ]
+          "sha256": "9d2a0956b890b54a5d36ebc348f88527504883ffb754675b67b9e3e46021eba4"
         }
       ]
     },
@@ -119,13 +100,10 @@
       "commit": "2421afdd332a98e9b45c6caf0a2e26b896b17e0d",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/NitroEnclaveVerifier.sol/2421afdd332a98e9b45c6caf0a2e26b896b17e0d/NitroEnclaveVerifier.sol",
+          "path": "src/multiproof/tee/NitroEnclaveVerifier.sol",
           "git_object": "d774a9a180c2b72361d9b4b2775aac772a593c41",
           "git_mode": "100644",
-          "sha256": "1f62ab85ab6cdc263bd408cabb5552d152004da9a839c93c144261b0153f2e8a",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "1f62ab85ab6cdc263bd408cabb5552d152004da9a839c93c144261b0153f2e8a"
         }
       ]
     },
@@ -137,13 +115,10 @@
       "commit": "2421afdd332a98e9b45c6caf0a2e26b896b17e0d",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/TEEProverRegistry.sol/2421afdd332a98e9b45c6caf0a2e26b896b17e0d/TEEProverRegistry.sol",
+          "path": "src/multiproof/tee/TEEProverRegistry.sol",
           "git_object": "616bb5140e7ed9c093524903d00b930c750bc29a",
           "git_mode": "100644",
-          "sha256": "c8df93b73a6dde7b68f9956be7cd033af5efd450acbb070c3400f6150028453a",
-          "units": [
-            "TEEProverRegistry"
-          ]
+          "sha256": "c8df93b73a6dde7b68f9956be7cd033af5efd450acbb070c3400f6150028453a"
         }
       ]
     },
@@ -155,13 +130,10 @@
       "commit": "2421afdd332a98e9b45c6caf0a2e26b896b17e0d",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/TEEVerifier.sol/2421afdd332a98e9b45c6caf0a2e26b896b17e0d/TEEVerifier.sol",
+          "path": "src/multiproof/tee/TEEVerifier.sol",
           "git_object": "ba61a30c547a2dc2e7da9b023f3aff047431ad3b",
           "git_mode": "100644",
-          "sha256": "c0f7edac740cb2634204c04cd80ff20c0cfec563993327960a7c1713deb3ca2a",
-          "units": [
-            "TEEVerifier"
-          ]
+          "sha256": "c0f7edac740cb2634204c04cd80ff20c0cfec563993327960a7c1713deb3ca2a"
         }
       ]
     },
@@ -173,13 +145,10 @@
       "commit": "2726c7986dc610a310a389b26b81ed9134d5d524",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/NitroEnclaveVerifier.sol/2726c7986dc610a310a389b26b81ed9134d5d524/NitroEnclaveVerifier.sol",
+          "path": "src/multiproof/tee/NitroEnclaveVerifier.sol",
           "git_object": "2cd18b3afbda824088599e8371cd58d312d5a3b1",
           "git_mode": "100644",
-          "sha256": "389b15e2c9495364abccadf5177bc8eeedb796c1abf194341879b2e9187b3f4e",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "389b15e2c9495364abccadf5177bc8eeedb796c1abf194341879b2e9187b3f4e"
         }
       ]
     },
@@ -191,13 +160,10 @@
       "commit": "34a0a33f7ea45b7a7629442acb9bb37e1e8ef5ff",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/NitroEnclaveVerifier.sol/34a0a33f7ea45b7a7629442acb9bb37e1e8ef5ff/NitroEnclaveVerifier.sol",
+          "path": "src/multiproof/tee/NitroEnclaveVerifier.sol",
           "git_object": "684012ce4c2407a389d00881405a06a6d439a3be",
           "git_mode": "100644",
-          "sha256": "43ba227072865e50eede32710555d6f81d4d9e854f1ba860948c12fb73b2f2c9",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "43ba227072865e50eede32710555d6f81d4d9e854f1ba860948c12fb73b2f2c9"
         }
       ]
     },
@@ -209,13 +175,10 @@
       "commit": "365dc57bf2467fe13c939031f0a461c0f26c5348",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/NitroEnclaveVerifier.sol/365dc57bf2467fe13c939031f0a461c0f26c5348/NitroEnclaveVerifier.sol",
+          "path": "src/multiproof/tee/NitroEnclaveVerifier.sol",
           "git_object": "d6f7069b5e54144835c102b771d0b6bc9281d00d",
           "git_mode": "100644",
-          "sha256": "8e07fb2aff15912d2ff0e71acfaf67931d9d3bf0f7cff84903fb9340cc58f030",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "8e07fb2aff15912d2ff0e71acfaf67931d9d3bf0f7cff84903fb9340cc58f030"
         }
       ]
     },
@@ -227,13 +190,10 @@
       "commit": "37edf9219d7c18dd1df9fa4a8c17dc6f08048636",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/NitroEnclaveVerifier.sol/37edf9219d7c18dd1df9fa4a8c17dc6f08048636/NitroEnclaveVerifier.sol",
+          "path": "src/multiproof/tee/NitroEnclaveVerifier.sol",
           "git_object": "24cf1c854390c7ef250db3f02b6c48cf62cfec82",
           "git_mode": "100644",
-          "sha256": "59e75ade94b1864875bbd19470f7d60422694dfeeaef2fc6aed7f4e8d14a2a30",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "59e75ade94b1864875bbd19470f7d60422694dfeeaef2fc6aed7f4e8d14a2a30"
         }
       ]
     },
@@ -245,13 +205,10 @@
       "commit": "4719a373330c45c5cc9ad458f876c11f963ddea9",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/NitroEnclaveVerifier.sol/4719a373330c45c5cc9ad458f876c11f963ddea9/NitroEnclaveVerifier.sol",
+          "path": "src/multiproof/tee/NitroEnclaveVerifier.sol",
           "git_object": "8bb7d87f8cb15cb7f9d77c6772a4d4836ee69beb",
           "git_mode": "100644",
-          "sha256": "0eaa22a451421edbbe5a01592e3a9ce16a2778b7593d291543a183994f1ab6c4",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "0eaa22a451421edbbe5a01592e3a9ce16a2778b7593d291543a183994f1ab6c4"
         }
       ]
     },
@@ -263,13 +220,10 @@
       "commit": "488feae7e25a6f869dff2e1174987a68f992f941",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/AggregateVerifier.sol/488feae7e25a6f869dff2e1174987a68f992f941/AggregateVerifier.sol",
+          "path": "src/multiproof/AggregateVerifier.sol",
           "git_object": "225de96633da4f7ebd7a184bb116ed1c152e5d8d",
           "git_mode": "100644",
-          "sha256": "a304c940cb7962515477a58b24ebaac9f42a26a3c489730e67a37dda47333ef6",
-          "units": [
-            "AggregateVerifier"
-          ]
+          "sha256": "a304c940cb7962515477a58b24ebaac9f42a26a3c489730e67a37dda47333ef6"
         }
       ]
     },
@@ -281,13 +235,10 @@
       "commit": "4f7acda51dba4165361b292ae08c119f5bfa1f0d",
       "files": [
         {
-          "file": "base/contracts/src/L1/ProtocolVersions.sol/4f7acda51dba4165361b292ae08c119f5bfa1f0d/ProtocolVersions.sol",
+          "path": "src/L1/ProtocolVersions.sol",
           "git_object": "9a3b1aa767b666cbc7bf2e80d36a65f899ab7eef",
           "git_mode": "100644",
-          "sha256": "05ffcb3acf23bab36d9e778605f256c99841ff9e9d0afb0391679f1ae3a79740",
-          "units": [
-            "ProtocolVersions"
-          ]
+          "sha256": "05ffcb3acf23bab36d9e778605f256c99841ff9e9d0afb0391679f1ae3a79740"
         }
       ]
     },
@@ -299,13 +250,10 @@
       "commit": "4f7acda51dba4165361b292ae08c119f5bfa1f0d",
       "files": [
         {
-          "file": "base/contracts/src/L1/proofs/AggregateVerifier.sol/4f7acda51dba4165361b292ae08c119f5bfa1f0d/AggregateVerifier.sol",
+          "path": "src/L1/proofs/AggregateVerifier.sol",
           "git_object": "788e70fb600f643d8cfa5b21538e5adfce564c88",
           "git_mode": "100644",
-          "sha256": "29b4671315b732c2acb3f102293645793cae5e1b0bcf7a68a608d52ff1f7c799",
-          "units": [
-            "AggregateVerifier"
-          ]
+          "sha256": "29b4671315b732c2acb3f102293645793cae5e1b0bcf7a68a608d52ff1f7c799"
         }
       ]
     },
@@ -317,13 +265,10 @@
       "commit": "567a3a06f3454b801d4e4ad5d47ce7bcff699429",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/NitroEnclaveVerifier.sol/567a3a06f3454b801d4e4ad5d47ce7bcff699429/NitroEnclaveVerifier.sol",
+          "path": "src/multiproof/tee/NitroEnclaveVerifier.sol",
           "git_object": "f1e2efcd2417ba476ed8f3e38a2836ebd4057395",
           "git_mode": "100644",
-          "sha256": "d064f7c8c0b3bfe9d8fe4a328aaa16f398318e8b5a69e874759134a9ba1d49c1",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "d064f7c8c0b3bfe9d8fe4a328aaa16f398318e8b5a69e874759134a9ba1d49c1"
         }
       ]
     },
@@ -335,13 +280,10 @@
       "commit": "5b64d918a5943e670e406f64e500507066576313",
       "files": [
         {
-          "file": "base/contracts/src/L1/proofs/tee/TEEProverRegistry.sol/5b64d918a5943e670e406f64e500507066576313/TEEProverRegistry.sol",
+          "path": "src/L1/proofs/tee/TEEProverRegistry.sol",
           "git_object": "a575647f8e84235de1e531b79e82cd0495236d8f",
           "git_mode": "100644",
-          "sha256": "8924d5942432b5892c68e49df0d87551d415069f0080685627ad4bae1ce23ea3",
-          "units": [
-            "TEEProverRegistry"
-          ]
+          "sha256": "8924d5942432b5892c68e49df0d87551d415069f0080685627ad4bae1ce23ea3"
         }
       ]
     },
@@ -353,13 +295,10 @@
       "commit": "620122010f3344cb61bfcb249cdeebb8138d29bf",
       "files": [
         {
-          "file": "base/contracts/src/L1/ProtocolVersions.sol/620122010f3344cb61bfcb249cdeebb8138d29bf/ProtocolVersions.sol",
+          "path": "src/L1/ProtocolVersions.sol",
           "git_object": "868721328ef4a46dde091fdb7f17af638d427ffe",
           "git_mode": "100644",
-          "sha256": "c782bb37983df6fd67eb9abcfed878f05ffce66c96a00c9359f6631ce9000124",
-          "units": [
-            "ProtocolVersions"
-          ]
+          "sha256": "c782bb37983df6fd67eb9abcfed878f05ffce66c96a00c9359f6631ce9000124"
         }
       ]
     },
@@ -371,13 +310,10 @@
       "commit": "63547f76fbbc23ca81e8eef80ad6486d339c73f7",
       "files": [
         {
-          "file": "base/contracts/src/L1/OptimismPortal2.sol/63547f76fbbc23ca81e8eef80ad6486d339c73f7/OptimismPortal2.sol",
+          "path": "src/L1/OptimismPortal2.sol",
           "git_object": "531f5a3c46e5aff3d9064f07233e77d9aafab6f8",
           "git_mode": "100644",
-          "sha256": "cd131dc5e006ed5ea3770e0a073811e86c6ee6a9eabfc5296f5ba4b7a55f62a2",
-          "units": [
-            "OptimismPortal2"
-          ]
+          "sha256": "cd131dc5e006ed5ea3770e0a073811e86c6ee6a9eabfc5296f5ba4b7a55f62a2"
         }
       ]
     },
@@ -389,13 +325,10 @@
       "commit": "63547f76fbbc23ca81e8eef80ad6486d339c73f7",
       "files": [
         {
-          "file": "base/contracts/src/L1/SystemConfig.sol/63547f76fbbc23ca81e8eef80ad6486d339c73f7/SystemConfig.sol",
+          "path": "src/L1/SystemConfig.sol",
           "git_object": "51c975dbaf40b3c23c3df1a7a797c675d5e313fe",
           "git_mode": "100644",
-          "sha256": "fa0fad100ac558c45feee1dc9efdbbd086fc1a3e98c016cc40e96cd46e85db6c",
-          "units": [
-            "SystemConfig"
-          ]
+          "sha256": "fa0fad100ac558c45feee1dc9efdbbd086fc1a3e98c016cc40e96cd46e85db6c"
         }
       ]
     },
@@ -407,13 +340,10 @@
       "commit": "63547f76fbbc23ca81e8eef80ad6486d339c73f7",
       "files": [
         {
-          "file": "base/contracts/src/libraries/Features.sol/63547f76fbbc23ca81e8eef80ad6486d339c73f7/Features.sol",
+          "path": "src/libraries/Features.sol",
           "git_object": "c630885fb4e245b398ad5e2a21fd54ddab371bd6",
           "git_mode": "100644",
-          "sha256": "b0774e1ea9c237d1319a34a10e2583b4ad51e937abd91be8856b84c7f1c1484d",
-          "units": [
-            "Features"
-          ]
+          "sha256": "b0774e1ea9c237d1319a34a10e2583b4ad51e937abd91be8856b84c7f1c1484d"
         }
       ]
     },
@@ -425,13 +355,10 @@
       "commit": "6f078c3b6ce51773c8fe1584b22b7c295cbbbdb8",
       "files": [
         {
-          "file": "base/contracts/src/L1/ProtocolVersions.sol/6f078c3b6ce51773c8fe1584b22b7c295cbbbdb8/ProtocolVersions.sol",
+          "path": "src/L1/ProtocolVersions.sol",
           "git_object": "607401ef9e20e2408ddbdeaf77a353bdfa634136",
           "git_mode": "100644",
-          "sha256": "a89798692f41192dbb89567c13ca8ed017f4122a0944faa2aa27ea44b01b1a0c",
-          "units": [
-            "ProtocolVersions"
-          ]
+          "sha256": "a89798692f41192dbb89567c13ca8ed017f4122a0944faa2aa27ea44b01b1a0c"
         }
       ]
     },
@@ -443,13 +370,10 @@
       "commit": "794d2198e2a9caac0592c0d67079676b73f321e6",
       "files": [
         {
-          "file": "base/contracts/src/L1/ProtocolVersions.sol/794d2198e2a9caac0592c0d67079676b73f321e6/ProtocolVersions.sol",
+          "path": "src/L1/ProtocolVersions.sol",
           "git_object": "02ab8aae9154ff564e00dd24de23774cb2c0677b",
           "git_mode": "100644",
-          "sha256": "3b00102a351dc40520da9d170b90adac4c85b06514576e3e5748e78bd595852e",
-          "units": [
-            "ProtocolVersions"
-          ]
+          "sha256": "3b00102a351dc40520da9d170b90adac4c85b06514576e3e5748e78bd595852e"
         }
       ]
     },
@@ -461,13 +385,10 @@
       "commit": "7acbf62ec2c0c5c167e747e885c069cf2dbf049a",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/TEEProverRegistry.sol/7acbf62ec2c0c5c167e747e885c069cf2dbf049a/TEEProverRegistry.sol",
+          "path": "src/multiproof/tee/TEEProverRegistry.sol",
           "git_object": "51de6782b0525d7287936167fb9886c74e786bc2",
           "git_mode": "100644",
-          "sha256": "168c9b4c5a4e0db6f1ef17ceffc66d72e422d1178d4d64134afbf4b7cd3cdaee",
-          "units": [
-            "TEEProverRegistry"
-          ]
+          "sha256": "168c9b4c5a4e0db6f1ef17ceffc66d72e422d1178d4d64134afbf4b7cd3cdaee"
         }
       ]
     },
@@ -479,13 +400,10 @@
       "commit": "7ee57f61f2e4d7866a337e3e897d6eea1587a6d8",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/NitroEnclaveVerifier.sol/7ee57f61f2e4d7866a337e3e897d6eea1587a6d8/NitroEnclaveVerifier.sol",
+          "path": "src/multiproof/tee/NitroEnclaveVerifier.sol",
           "git_object": "a8064121de19dc4d7f46678a5ce16926d4252141",
           "git_mode": "100644",
-          "sha256": "32cc9c9bb46cb5a812009ed5da32b2a2288e3e5e1987d6a133021714f16201cb",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "32cc9c9bb46cb5a812009ed5da32b2a2288e3e5e1987d6a133021714f16201cb"
         }
       ]
     },
@@ -497,13 +415,10 @@
       "commit": "8e1fa6c4cef744edb1025440f7020e27d25519ab",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/AggregateVerifier.sol/8e1fa6c4cef744edb1025440f7020e27d25519ab/AggregateVerifier.sol",
+          "path": "src/multiproof/AggregateVerifier.sol",
           "git_object": "30142622b952f70f925ba9aa89091bcdea6a131b",
           "git_mode": "100644",
-          "sha256": "880ba4577870b4572ff6d2015ba79120f93ad65956c4ed357b05fe89ac0781f5",
-          "units": [
-            "AggregateVerifier"
-          ]
+          "sha256": "880ba4577870b4572ff6d2015ba79120f93ad65956c4ed357b05fe89ac0781f5"
         }
       ]
     },
@@ -515,13 +430,10 @@
       "commit": "a94f57ac648e546fc3ce03789f541975817066f4",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/TEEProverRegistry.sol/a94f57ac648e546fc3ce03789f541975817066f4/TEEProverRegistry.sol",
+          "path": "src/multiproof/tee/TEEProverRegistry.sol",
           "git_object": "d52e260d87b062d8739b9f79f79d460d71af960b",
           "git_mode": "100644",
-          "sha256": "05722a1bbf4de26ced87c545d91248cb1f61e7e5e21619556b7ab32cbedb2c42",
-          "units": [
-            "TEEProverRegistry"
-          ]
+          "sha256": "05722a1bbf4de26ced87c545d91248cb1f61e7e5e21619556b7ab32cbedb2c42"
         }
       ]
     },
@@ -533,13 +445,10 @@
       "commit": "a94f57ac648e546fc3ce03789f541975817066f4",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/TEEVerifier.sol/a94f57ac648e546fc3ce03789f541975817066f4/TEEVerifier.sol",
+          "path": "src/multiproof/tee/TEEVerifier.sol",
           "git_object": "73878af8087cb30090532e063d39ebc97cc42f1f",
           "git_mode": "100644",
-          "sha256": "2cb27c54c1bfb1658c3672c87cebad0867ac78a62f962b0731dcfd701e9b324a",
-          "units": [
-            "TEEVerifier"
-          ]
+          "sha256": "2cb27c54c1bfb1658c3672c87cebad0867ac78a62f962b0731dcfd701e9b324a"
         }
       ]
     },
@@ -551,13 +460,10 @@
       "commit": "b6c4689b8f814bf23fb915ac1d68a537d707ae4e",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/AggregateVerifier.sol/b6c4689b8f814bf23fb915ac1d68a537d707ae4e/AggregateVerifier.sol",
+          "path": "src/multiproof/AggregateVerifier.sol",
           "git_object": "43bac056e773bce91f318767a151a39aa2d85b9a",
           "git_mode": "100644",
-          "sha256": "99df60985ecd22b5478cc481c32c338e021160d00bbd5a5a6f22336216c29f12",
-          "units": [
-            "AggregateVerifier"
-          ]
+          "sha256": "99df60985ecd22b5478cc481c32c338e021160d00bbd5a5a6f22336216c29f12"
         }
       ]
     },
@@ -569,13 +475,10 @@
       "commit": "b6c4689b8f814bf23fb915ac1d68a537d707ae4e",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/Verifier.sol/b6c4689b8f814bf23fb915ac1d68a537d707ae4e/Verifier.sol",
+          "path": "src/multiproof/Verifier.sol",
           "git_object": "a792f11ddc6745f4d014964d5ffcb52c178ea5e9",
           "git_mode": "100644",
-          "sha256": "4ffe223bb8b3a054c7ea2e19d93f5a080d2038e560467e0bfd116a5ae202ae43",
-          "units": [
-            "Verifier"
-          ]
+          "sha256": "4ffe223bb8b3a054c7ea2e19d93f5a080d2038e560467e0bfd116a5ae202ae43"
         }
       ]
     },
@@ -587,13 +490,10 @@
       "commit": "b6c4689b8f814bf23fb915ac1d68a537d707ae4e",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/NitroEnclaveVerifier.sol/b6c4689b8f814bf23fb915ac1d68a537d707ae4e/NitroEnclaveVerifier.sol",
+          "path": "src/multiproof/tee/NitroEnclaveVerifier.sol",
           "git_object": "e6c758b643c27837b8ff7aa0456ae3c72e79f544",
           "git_mode": "100644",
-          "sha256": "55b42c69ab6809d9c0d5513f7eac76a35f1732da2c778e7dfc0c87d9b4ec3e94",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "55b42c69ab6809d9c0d5513f7eac76a35f1732da2c778e7dfc0c87d9b4ec3e94"
         }
       ]
     },
@@ -605,13 +505,10 @@
       "commit": "b6c4689b8f814bf23fb915ac1d68a537d707ae4e",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/TEEProverRegistry.sol/b6c4689b8f814bf23fb915ac1d68a537d707ae4e/TEEProverRegistry.sol",
+          "path": "src/multiproof/tee/TEEProverRegistry.sol",
           "git_object": "616bb5140e7ed9c093524903d00b930c750bc29a",
           "git_mode": "100644",
-          "sha256": "c8df93b73a6dde7b68f9956be7cd033af5efd450acbb070c3400f6150028453a",
-          "units": [
-            "TEEProverRegistry"
-          ]
+          "sha256": "c8df93b73a6dde7b68f9956be7cd033af5efd450acbb070c3400f6150028453a"
         }
       ]
     },
@@ -623,13 +520,10 @@
       "commit": "b6c4689b8f814bf23fb915ac1d68a537d707ae4e",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/TEEVerifier.sol/b6c4689b8f814bf23fb915ac1d68a537d707ae4e/TEEVerifier.sol",
+          "path": "src/multiproof/tee/TEEVerifier.sol",
           "git_object": "ba61a30c547a2dc2e7da9b023f3aff047431ad3b",
           "git_mode": "100644",
-          "sha256": "c0f7edac740cb2634204c04cd80ff20c0cfec563993327960a7c1713deb3ca2a",
-          "units": [
-            "TEEVerifier"
-          ]
+          "sha256": "c0f7edac740cb2634204c04cd80ff20c0cfec563993327960a7c1713deb3ca2a"
         }
       ]
     },
@@ -641,13 +535,10 @@
       "commit": "bb0e64b8c194f71b711302433aad1c4a09e66b8d",
       "files": [
         {
-          "file": "base/contracts/src/L1/proofs/AggregateVerifier.sol/bb0e64b8c194f71b711302433aad1c4a09e66b8d/AggregateVerifier.sol",
+          "path": "src/L1/proofs/AggregateVerifier.sol",
           "git_object": "9e2358e293a0c014372031908a4d7311ecc88e0e",
           "git_mode": "100644",
-          "sha256": "b193825ec0b3d6c916dde519458ca93b3230e2b216013d97f8eaa969999b753b",
-          "units": [
-            "AggregateVerifier"
-          ]
+          "sha256": "b193825ec0b3d6c916dde519458ca93b3230e2b216013d97f8eaa969999b753b"
         }
       ]
     },
@@ -659,13 +550,10 @@
       "commit": "c3f30fb234c82694ab524808a3da709be6cad3d7",
       "files": [
         {
-          "file": "base/contracts/src/L1/ProtocolVersions.sol/c3f30fb234c82694ab524808a3da709be6cad3d7/ProtocolVersions.sol",
+          "path": "src/L1/ProtocolVersions.sol",
           "git_object": "93988f28238f5d083c23ed13e21c36ab8281b05a",
           "git_mode": "100644",
-          "sha256": "c85f9ab5de2bef878451afa37762ef62d41bccad53804fa56951a9b9ae7a6e93",
-          "units": [
-            "ProtocolVersions"
-          ]
+          "sha256": "c85f9ab5de2bef878451afa37762ef62d41bccad53804fa56951a9b9ae7a6e93"
         }
       ]
     },
@@ -677,13 +565,10 @@
       "commit": "dd587c9adc84a768eb540a88ef479275c5db97e9",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/AggregateVerifier.sol/dd587c9adc84a768eb540a88ef479275c5db97e9/AggregateVerifier.sol",
+          "path": "src/multiproof/AggregateVerifier.sol",
           "git_object": "f6fc3f96c6b90a90087af93d4297326965253402",
           "git_mode": "100644",
-          "sha256": "05a8cd825071acf771d427f618f3963cdce49a527ae880b69729a99c3c9f6751",
-          "units": [
-            "AggregateVerifier"
-          ]
+          "sha256": "05a8cd825071acf771d427f618f3963cdce49a527ae880b69729a99c3c9f6751"
         }
       ]
     },
@@ -695,13 +580,10 @@
       "commit": "e0bc512193da3714f40611efb47e19ea4b38d43c",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/NitroEnclaveVerifier.sol/e0bc512193da3714f40611efb47e19ea4b38d43c/NitroEnclaveVerifier.sol",
+          "path": "src/multiproof/tee/NitroEnclaveVerifier.sol",
           "git_object": "b38a6ca9d18d7a34d05259c6303a3e26ed5e0be5",
           "git_mode": "100644",
-          "sha256": "6a6acaf7427f20162c9acce185ebaa74f32e72d9639b3de248742146e7aed484",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "6a6acaf7427f20162c9acce185ebaa74f32e72d9639b3de248742146e7aed484"
         }
       ]
     },
@@ -713,13 +595,10 @@
       "commit": "e225648a7ed538e7e28c041d44f3b7a606ba7743",
       "files": [
         {
-          "file": "base/contracts/src/L1/proofs/tee/NitroEnclaveVerifier.sol/e225648a7ed538e7e28c041d44f3b7a606ba7743/NitroEnclaveVerifier.sol",
+          "path": "src/L1/proofs/tee/NitroEnclaveVerifier.sol",
           "git_object": "56b0d043e2c74a70749c19299198313eeefe5455",
           "git_mode": "100644",
-          "sha256": "2e225a774a20fe00c124e258c8bb71cd6a25f54e5db1b563b2ef2cc796b97e1a",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "2e225a774a20fe00c124e258c8bb71cd6a25f54e5db1b563b2ef2cc796b97e1a"
         }
       ]
     },
@@ -731,13 +610,10 @@
       "commit": "e225648a7ed538e7e28c041d44f3b7a606ba7743",
       "files": [
         {
-          "file": "base/contracts/src/L1/proofs/tee/TEEProverRegistry.sol/e225648a7ed538e7e28c041d44f3b7a606ba7743/TEEProverRegistry.sol",
+          "path": "src/L1/proofs/tee/TEEProverRegistry.sol",
           "git_object": "84d64efc59a7800d26c3434e01a7afa0c6f733f2",
           "git_mode": "100644",
-          "sha256": "10ef4da7aa4b386bd2e621287065b336b7fccf019940dd7769f48bc6ccccee18",
-          "units": [
-            "TEEProverRegistry"
-          ]
+          "sha256": "10ef4da7aa4b386bd2e621287065b336b7fccf019940dd7769f48bc6ccccee18"
         }
       ]
     },
@@ -749,13 +625,10 @@
       "commit": "e86119a9a748696564ff3f49b8425a7084d0a862",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/NitroEnclaveVerifier.sol/e86119a9a748696564ff3f49b8425a7084d0a862/NitroEnclaveVerifier.sol",
+          "path": "src/multiproof/tee/NitroEnclaveVerifier.sol",
           "git_object": "fd8cbb4d43654b77a63dd8c0c63ecbaa59d30b96",
           "git_mode": "100644",
-          "sha256": "dd7e2a797e40187b081579d853470d28eb5d57798826e78c589747f313961a79",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "dd7e2a797e40187b081579d853470d28eb5d57798826e78c589747f313961a79"
         }
       ]
     },
@@ -767,13 +640,10 @@
       "commit": "eb82db789553e32566b6653ece48508c3ef5a2ea",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/NitroEnclaveVerifier.sol/eb82db789553e32566b6653ece48508c3ef5a2ea/NitroEnclaveVerifier.sol",
+          "path": "src/multiproof/tee/NitroEnclaveVerifier.sol",
           "git_object": "dcdcd9a642a5211e284fbed68ac3caca59fc2e9d",
           "git_mode": "100644",
-          "sha256": "449d578ddb25b07fb3808f9cd811b7afeeab02b284180c8dceac7d14d3c6bf47",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "449d578ddb25b07fb3808f9cd811b7afeeab02b284180c8dceac7d14d3c6bf47"
         }
       ]
     },
@@ -785,13 +655,10 @@
       "commit": "f7d447e2fe146a095677a123cbf8763c6e9c9546",
       "files": [
         {
-          "file": "base/contracts/src/L1/ProtocolVersions.sol/f7d447e2fe146a095677a123cbf8763c6e9c9546/ProtocolVersions.sol",
+          "path": "src/L1/ProtocolVersions.sol",
           "git_object": "78b7cf450cfef63d639eba2396783f1d116dee08",
           "git_mode": "100644",
-          "sha256": "ccbfc9133dc9803461aa8ee7aed12df44ee825e1dfd43a009d72b67b49cf0aa7",
-          "units": [
-            "ProtocolVersions"
-          ]
+          "sha256": "ccbfc9133dc9803461aa8ee7aed12df44ee825e1dfd43a009d72b67b49cf0aa7"
         }
       ]
     },
@@ -803,13 +670,10 @@
       "commit": "f88f8d0e7aa7ddb8629464d19ed6d72ec8345d3e",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/TEEProverRegistry.sol/f88f8d0e7aa7ddb8629464d19ed6d72ec8345d3e/TEEProverRegistry.sol",
+          "path": "src/multiproof/tee/TEEProverRegistry.sol",
           "git_object": "5a39fa6ddaf3afbd4bed55006139e7efb9f594e0",
           "git_mode": "100644",
-          "sha256": "9e4a1fe5bd18d65da07155baf8b47f58ed8e49aac4d452efda09843d9c2d6331",
-          "units": [
-            "TEEProverRegistry"
-          ]
+          "sha256": "9e4a1fe5bd18d65da07155baf8b47f58ed8e49aac4d452efda09843d9c2d6331"
         }
       ]
     },
@@ -821,13 +685,10 @@
       "commit": "f9a515350c91e2915088b2fb5ef41ff2b32dad01",
       "files": [
         {
-          "file": "base/contracts/src/L1/proofs/tee/TEEProverRegistry.sol/f9a515350c91e2915088b2fb5ef41ff2b32dad01/TEEProverRegistry.sol",
+          "path": "src/L1/proofs/tee/TEEProverRegistry.sol",
           "git_object": "e708a081a504ebb145b9bceebd2e96846684676e",
           "git_mode": "100644",
-          "sha256": "0ce6db76873cc6a372ba4b24f4028eb8b0b149402469ebf633a4eed23aee2120",
-          "units": [
-            "TEEProverRegistry"
-          ]
+          "sha256": "0ce6db76873cc6a372ba4b24f4028eb8b0b149402469ebf633a4eed23aee2120"
         }
       ]
     },
@@ -839,13 +700,10 @@
       "commit": "ffe2af8cbffefa44bbb1a3917507f8bd8ebec7a2",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/AggregateVerifier.sol/ffe2af8cbffefa44bbb1a3917507f8bd8ebec7a2/AggregateVerifier.sol",
+          "path": "src/multiproof/AggregateVerifier.sol",
           "git_object": "197a0a09bee0e417c65efcd7b5089fd4401f95fa",
           "git_mode": "100644",
-          "sha256": "60906f216891ba512e1b7fcb208dc9200782d53f793e83f0c9074577d21a41b5",
-          "units": [
-            "AggregateVerifier"
-          ]
+          "sha256": "60906f216891ba512e1b7fcb208dc9200782d53f793e83f0c9074577d21a41b5"
         }
       ]
     },
@@ -857,13 +715,10 @@
       "commit": "ffe2af8cbffefa44bbb1a3917507f8bd8ebec7a2",
       "files": [
         {
-          "file": "base/contracts/src/multiproof/tee/NitroEnclaveVerifier.sol/ffe2af8cbffefa44bbb1a3917507f8bd8ebec7a2/NitroEnclaveVerifier.sol",
+          "path": "src/multiproof/tee/NitroEnclaveVerifier.sol",
           "git_object": "0a624380f50413263b5ffacdc7ddfca0e914d509",
           "git_mode": "100644",
-          "sha256": "75b30994026720bd433337d4b04bacb928a322e3176ce5df91de9311543f6f25",
-          "units": [
-            "NitroEnclaveVerifier"
-          ]
+          "sha256": "75b30994026720bd433337d4b04bacb928a322e3176ce5df91de9311543f6f25"
         }
       ]
     },
@@ -875,13 +730,10 @@
       "commit": "02eaa7beca194fafcd0fe9394476fa7260266309",
       "files": [
         {
-          "file": "base/nitro-validator/src/NitroValidator.sol/02eaa7beca194fafcd0fe9394476fa7260266309/NitroValidator.sol",
+          "path": "src/NitroValidator.sol",
           "git_object": "503f8254d0911cd8c05b539aa1b6b3fdc921debc",
           "git_mode": "100644",
-          "sha256": "4a6ee3b038eda2765b09dc6909865b4c4730a26ebfd8efd3816bc550f5a70c39",
-          "units": [
-            "NitroValidator"
-          ]
+          "sha256": "4a6ee3b038eda2765b09dc6909865b4c4730a26ebfd8efd3816bc550f5a70c39"
         }
       ]
     },
@@ -893,14 +745,10 @@
       "commit": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
       "files": [
         {
-          "file": "base/nitro-validator/src/Asn1Decode.sol/05294ec098f7f38ef33b2d2470cfbbd08186b943/Asn1Decode.sol",
+          "path": "src/Asn1Decode.sol",
           "git_object": "6e4f27fe667d74516c41f251521dc40168441bb3",
           "git_mode": "100644",
-          "sha256": "7f25adff492fe52b2032ea7074e560740590564730490ed0c9ec2f9812eff1db",
-          "units": [
-            "LibAsn1Ptr",
-            "Asn1Decode"
-          ]
+          "sha256": "7f25adff492fe52b2032ea7074e560740590564730490ed0c9ec2f9812eff1db"
         }
       ]
     },
@@ -912,14 +760,10 @@
       "commit": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
       "files": [
         {
-          "file": "base/nitro-validator/src/CborDecode.sol/05294ec098f7f38ef33b2d2470cfbbd08186b943/CborDecode.sol",
+          "path": "src/CborDecode.sol",
           "git_object": "ae1f8277d3f1ea9e40e23939a73b83383006104b",
           "git_mode": "100644",
-          "sha256": "8545bf73f1f2021d7975d8ba74e066122fd4b8dc179109fa1e311a9178110d85",
-          "units": [
-            "LibCborElement",
-            "CborDecode"
-          ]
+          "sha256": "8545bf73f1f2021d7975d8ba74e066122fd4b8dc179109fa1e311a9178110d85"
         }
       ]
     },
@@ -931,13 +775,10 @@
       "commit": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
       "files": [
         {
-          "file": "base/nitro-validator/src/CertManager.sol/05294ec098f7f38ef33b2d2470cfbbd08186b943/CertManager.sol",
+          "path": "src/CertManager.sol",
           "git_object": "29ecfd0795545bf5527bb9787226ad366c6392b3",
           "git_mode": "100644",
-          "sha256": "be96e15c3e31472e8b46c1e9c5065ecc1a59caee2c0c603e95816701b8c3a80b",
-          "units": [
-            "CertManager"
-          ]
+          "sha256": "be96e15c3e31472e8b46c1e9c5065ecc1a59caee2c0c603e95816701b8c3a80b"
         }
       ]
     },
@@ -949,13 +790,10 @@
       "commit": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
       "files": [
         {
-          "file": "base/nitro-validator/src/ECDSA384Curve.sol/05294ec098f7f38ef33b2d2470cfbbd08186b943/ECDSA384Curve.sol",
+          "path": "src/ECDSA384Curve.sol",
           "git_object": "8e19b03bcff5c89f9d7355ca86e0a23f6ba655e7",
           "git_mode": "100644",
-          "sha256": "4cd20f3c4f442a65ac6bdc19ce9479f467736e77356ed56e87f554daac61d599",
-          "units": [
-            "ECDSA384Curve"
-          ]
+          "sha256": "4cd20f3c4f442a65ac6bdc19ce9479f467736e77356ed56e87f554daac61d599"
         }
       ]
     },
@@ -967,13 +805,10 @@
       "commit": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
       "files": [
         {
-          "file": "base/nitro-validator/src/ICertManager.sol/05294ec098f7f38ef33b2d2470cfbbd08186b943/ICertManager.sol",
+          "path": "src/ICertManager.sol",
           "git_object": "636c3baefdc2cd61c5b837931fb24baf8e96a5b5",
           "git_mode": "100644",
-          "sha256": "b274558cecfa4306290f4958a0c3085acac8c377f2a19faa10b0a0ffa42f2959",
-          "units": [
-            "ICertManager"
-          ]
+          "sha256": "b274558cecfa4306290f4958a0c3085acac8c377f2a19faa10b0a0ffa42f2959"
         }
       ]
     },
@@ -985,13 +820,10 @@
       "commit": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
       "files": [
         {
-          "file": "base/nitro-validator/src/IP384Verifier.sol/05294ec098f7f38ef33b2d2470cfbbd08186b943/IP384Verifier.sol",
+          "path": "src/IP384Verifier.sol",
           "git_object": "151287746dcf23d1701ca3a2a7f9c75e37bb9526",
           "git_mode": "100644",
-          "sha256": "03cbe0e39011b6f4c3b4e702ff632a066772baffdf0227f4f0c3a4e812ce3817",
-          "units": [
-            "IP384Verifier"
-          ]
+          "sha256": "03cbe0e39011b6f4c3b4e702ff632a066772baffdf0227f4f0c3a4e812ce3817"
         }
       ]
     },
@@ -1003,13 +835,10 @@
       "commit": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
       "files": [
         {
-          "file": "base/nitro-validator/src/NitroValidator.sol/05294ec098f7f38ef33b2d2470cfbbd08186b943/NitroValidator.sol",
+          "path": "src/NitroValidator.sol",
           "git_object": "bbb691f819d70c053ec2afdfb6e4f78e1dcbf3af",
           "git_mode": "100644",
-          "sha256": "20ad2eaf4f514e507d1e0dba09a7a976c9852ac382626c27fcf4b5d309d93e8e",
-          "units": [
-            "NitroValidator"
-          ]
+          "sha256": "20ad2eaf4f514e507d1e0dba09a7a976c9852ac382626c27fcf4b5d309d93e8e"
         }
       ]
     },
@@ -1021,13 +850,10 @@
       "commit": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
       "files": [
         {
-          "file": "base/nitro-validator/src/P384Verifier.sol/05294ec098f7f38ef33b2d2470cfbbd08186b943/P384Verifier.sol",
+          "path": "src/P384Verifier.sol",
           "git_object": "d81530330319ab9f9e934ef4765a11de16ad7daa",
           "git_mode": "100644",
-          "sha256": "4781f71d1ea94aa54e37922e73e6f113444fda4df327f57be151c077bce37481",
-          "units": [
-            "P384Verifier"
-          ]
+          "sha256": "4781f71d1ea94aa54e37922e73e6f113444fda4df327f57be151c077bce37481"
         }
       ]
     },
@@ -1039,14 +865,10 @@
       "commit": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
       "files": [
         {
-          "file": "base/nitro-validator/src/vendor/ECDSA384.sol/05294ec098f7f38ef33b2d2470cfbbd08186b943/ECDSA384.sol",
+          "path": "src/vendor/ECDSA384.sol",
           "git_object": "7c33ad7112b463e7f67238af4efe795f2e032230",
           "git_mode": "100644",
-          "sha256": "ee8b6f6471adbe4af335713e05508da8668b1323a44fbfef7db16a29a17dd3f0",
-          "units": [
-            "ECDSA384",
-            "U384"
-          ]
+          "sha256": "ee8b6f6471adbe4af335713e05508da8668b1323a44fbfef7db16a29a17dd3f0"
         }
       ]
     },
@@ -1058,13 +880,10 @@
       "commit": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
       "files": [
         {
-          "file": "base/nitro-validator/src/vendor/MemoryUtils.sol/05294ec098f7f38ef33b2d2470cfbbd08186b943/MemoryUtils.sol",
+          "path": "src/vendor/MemoryUtils.sol",
           "git_object": "39a899ca9d2cc9851e469d6de61cc71c5d81beae",
           "git_mode": "100644",
-          "sha256": "d502bd5636eab0929347767ee91d2ba635d7eac665dbfd4f27e9f91269f020f6",
-          "units": [
-            "MemoryUtils"
-          ]
+          "sha256": "d502bd5636eab0929347767ee91d2ba635d7eac665dbfd4f27e9f91269f020f6"
         }
       ]
     },
@@ -1076,13 +895,10 @@
       "commit": "16f39f9c734cbc3fc38bf7a63b7b30883a251ede",
       "files": [
         {
-          "file": "base/nitro-validator/src/LibBytes.sol/16f39f9c734cbc3fc38bf7a63b7b30883a251ede/LibBytes.sol",
+          "path": "src/LibBytes.sol",
           "git_object": "657f50774932c42121d4b890dae67b28b289ae4b",
           "git_mode": "100644",
-          "sha256": "e9d9f1d1168f035728ed741a66ee60bea33664741fdb1f7ecb1ce75a211a6bfb",
-          "units": [
-            "LibBytes"
-          ]
+          "sha256": "e9d9f1d1168f035728ed741a66ee60bea33664741fdb1f7ecb1ce75a211a6bfb"
         }
       ]
     },
@@ -1094,14 +910,10 @@
       "commit": "228f461a8d5c8e94e48c701f8a4ee7cce0f81b6a",
       "files": [
         {
-          "file": "base/nitro-validator/src/Asn1Decode.sol/228f461a8d5c8e94e48c701f8a4ee7cce0f81b6a/Asn1Decode.sol",
+          "path": "src/Asn1Decode.sol",
           "git_object": "2472b9d6f7e04ce39a5479b309512ccc9eea311e",
           "git_mode": "100644",
-          "sha256": "a138a22d6d15576a8a2a9f0043910275138f5791c2b0f3b4f972cbf640a5b5f2",
-          "units": [
-            "LibAsn1Ptr",
-            "Asn1Decode"
-          ]
+          "sha256": "a138a22d6d15576a8a2a9f0043910275138f5791c2b0f3b4f972cbf640a5b5f2"
         }
       ]
     },
@@ -1113,13 +925,10 @@
       "commit": "309bd7ce730c3377ad9cc2ff4f70a964c0c3bd55",
       "files": [
         {
-          "file": "base/nitro-validator/src/CertManager.sol/309bd7ce730c3377ad9cc2ff4f70a964c0c3bd55/CertManager.sol",
+          "path": "src/CertManager.sol",
           "git_object": "3805e3768e271f478ce03b830f409d2f09aff00b",
           "git_mode": "100644",
-          "sha256": "3b7d4972d701ab4dbee1e070396955504c43432b5ac10bb5aa76b3cbce4819d2",
-          "units": [
-            "CertManager"
-          ]
+          "sha256": "3b7d4972d701ab4dbee1e070396955504c43432b5ac10bb5aa76b3cbce4819d2"
         }
       ]
     },
@@ -1131,13 +940,10 @@
       "commit": "4083124dc04c8020ea16876b750d6fcbc72330d4",
       "files": [
         {
-          "file": "base/nitro-validator/src/NitroValidator.sol/4083124dc04c8020ea16876b750d6fcbc72330d4/NitroValidator.sol",
+          "path": "src/NitroValidator.sol",
           "git_object": "29a2edf77d6b7997da64c0df2190f47152d51e52",
           "git_mode": "100644",
-          "sha256": "0d4e47007b8b0bc0c23ca6e80d47a594811478b20162c740d7e336e5fe023861",
-          "units": [
-            "NitroValidator"
-          ]
+          "sha256": "0d4e47007b8b0bc0c23ca6e80d47a594811478b20162c740d7e336e5fe023861"
         }
       ]
     },
@@ -1149,14 +955,10 @@
       "commit": "41884e693873d2af0eb676794b243861452d2185",
       "files": [
         {
-          "file": "base/nitro-validator/src/vendor/ECDSA384.sol/41884e693873d2af0eb676794b243861452d2185/ECDSA384.sol",
+          "path": "src/vendor/ECDSA384.sol",
           "git_object": "24dfde2c4fd273415ba140894034f92cad02a72d",
           "git_mode": "100644",
-          "sha256": "15e18d963f76e39873016f053b14b8e500b3777c9ab42867b822b59e60f50d68",
-          "units": [
-            "ECDSA384",
-            "U384"
-          ]
+          "sha256": "15e18d963f76e39873016f053b14b8e500b3777c9ab42867b822b59e60f50d68"
         }
       ]
     },
@@ -1168,14 +970,10 @@
       "commit": "43a3c100cf6d42a4bcf23e1b39a7569dd5268b5b",
       "files": [
         {
-          "file": "base/nitro-validator/src/Asn1Decode.sol/43a3c100cf6d42a4bcf23e1b39a7569dd5268b5b/Asn1Decode.sol",
+          "path": "src/Asn1Decode.sol",
           "git_object": "dc5a8e85ce1cd7225baa904fa11edab3abe74f8e",
           "git_mode": "100644",
-          "sha256": "99e3c1c45621dc9067521658dfa897ce5074f9c2e12abda460deb0a2d427e0d5",
-          "units": [
-            "LibAsn1Ptr",
-            "Asn1Decode"
-          ]
+          "sha256": "99e3c1c45621dc9067521658dfa897ce5074f9c2e12abda460deb0a2d427e0d5"
         }
       ]
     },
@@ -1187,14 +985,10 @@
       "commit": "4fb64d279abe3233d713683c091cfee0563a4939",
       "files": [
         {
-          "file": "base/nitro-validator/src/Asn1Decode.sol/4fb64d279abe3233d713683c091cfee0563a4939/Asn1Decode.sol",
+          "path": "src/Asn1Decode.sol",
           "git_object": "f2d1e6db6e84ae832a1c71aedc96d2f38e866f5d",
           "git_mode": "100644",
-          "sha256": "63d4e2a5ab1f2ca4f454dbc206fe815fc6ccf063948f387b3db8e3cee58ad183",
-          "units": [
-            "LibAsn1Ptr",
-            "Asn1Decode"
-          ]
+          "sha256": "63d4e2a5ab1f2ca4f454dbc206fe815fc6ccf063948f387b3db8e3cee58ad183"
         }
       ]
     },
@@ -1206,13 +1000,10 @@
       "commit": "5a9d2b177fc825bd2d4e47b60aabf7ee136610f1",
       "files": [
         {
-          "file": "base/nitro-validator/src/Sha2Ext.sol/5a9d2b177fc825bd2d4e47b60aabf7ee136610f1/Sha2Ext.sol",
+          "path": "src/Sha2Ext.sol",
           "git_object": "a10e8d5867771abefd2804db4de8a8ed21005f45",
           "git_mode": "100644",
-          "sha256": "31b428b1c484d4dac80d8cd3031f90a73121342423df30df37a34fa9669e4c3b",
-          "units": [
-            "Sha2Ext"
-          ]
+          "sha256": "31b428b1c484d4dac80d8cd3031f90a73121342423df30df37a34fa9669e4c3b"
         }
       ]
     },
@@ -1224,14 +1015,10 @@
       "commit": "6516f1976bbde723f3783ec204d38c9b666d286e",
       "files": [
         {
-          "file": "base/nitro-validator/src/CborDecode.sol/6516f1976bbde723f3783ec204d38c9b666d286e/CborDecode.sol",
+          "path": "src/CborDecode.sol",
           "git_object": "22ac5545c2d5daf304e14f1379955966ad161887",
           "git_mode": "100644",
-          "sha256": "aa568b7132f59ac71f79a924a97bd99ac20c19d9636f89875da382bdf8296b85",
-          "units": [
-            "LibCborElement",
-            "CborDecode"
-          ]
+          "sha256": "aa568b7132f59ac71f79a924a97bd99ac20c19d9636f89875da382bdf8296b85"
         }
       ]
     },
@@ -1243,13 +1030,10 @@
       "commit": "6f3ea135539b33eb19bd42b53432f190969e741c",
       "files": [
         {
-          "file": "base/nitro-validator/src/CertManager.sol/6f3ea135539b33eb19bd42b53432f190969e741c/CertManager.sol",
+          "path": "src/CertManager.sol",
           "git_object": "1de1f018337cd1d26b63c0e41369276d22494823",
           "git_mode": "100644",
-          "sha256": "39aee9044a1edede06a2a766f42e1124bd8caa4eb55bff4e884132800637d444",
-          "units": [
-            "CertManager"
-          ]
+          "sha256": "39aee9044a1edede06a2a766f42e1124bd8caa4eb55bff4e884132800637d444"
         }
       ]
     },
@@ -1261,14 +1045,10 @@
       "commit": "7879d9b667e576e39edc9803e1660b4ddb89d934",
       "files": [
         {
-          "file": "base/nitro-validator/src/Asn1Decode.sol/7879d9b667e576e39edc9803e1660b4ddb89d934/Asn1Decode.sol",
+          "path": "src/Asn1Decode.sol",
           "git_object": "b8e8febf85347bc1e5137aad5a74af15de16360d",
           "git_mode": "100644",
-          "sha256": "2398f3153540dc9e48501093cd7fdd19f2a2e05874a5459bf01da60cd4a3b16d",
-          "units": [
-            "LibAsn1Ptr",
-            "Asn1Decode"
-          ]
+          "sha256": "2398f3153540dc9e48501093cd7fdd19f2a2e05874a5459bf01da60cd4a3b16d"
         }
       ]
     },
@@ -1280,14 +1060,10 @@
       "commit": "7879d9b667e576e39edc9803e1660b4ddb89d934",
       "files": [
         {
-          "file": "base/nitro-validator/src/CborDecode.sol/7879d9b667e576e39edc9803e1660b4ddb89d934/CborDecode.sol",
+          "path": "src/CborDecode.sol",
           "git_object": "96f4e6fac90baf811c67a03d1da7b5648dd065fc",
           "git_mode": "100644",
-          "sha256": "cba31a535d635ae737f2ee7993c85009b6be1c78481490fc0dce0ef1a7afcc93",
-          "units": [
-            "LibCborElement",
-            "CborDecode"
-          ]
+          "sha256": "cba31a535d635ae737f2ee7993c85009b6be1c78481490fc0dce0ef1a7afcc93"
         }
       ]
     },
@@ -1299,13 +1075,10 @@
       "commit": "7879d9b667e576e39edc9803e1660b4ddb89d934",
       "files": [
         {
-          "file": "base/nitro-validator/src/CertManager.sol/7879d9b667e576e39edc9803e1660b4ddb89d934/CertManager.sol",
+          "path": "src/CertManager.sol",
           "git_object": "3dc29291ce9da54bfced38c1101500f250841706",
           "git_mode": "100644",
-          "sha256": "cd8c20efffc525b20e2a02a0a9592d927e35f1c9cdfae2ea51b3766c31fd9e73",
-          "units": [
-            "CertManager"
-          ]
+          "sha256": "cd8c20efffc525b20e2a02a0a9592d927e35f1c9cdfae2ea51b3766c31fd9e73"
         }
       ]
     },
@@ -1317,13 +1090,10 @@
       "commit": "7879d9b667e576e39edc9803e1660b4ddb89d934",
       "files": [
         {
-          "file": "base/nitro-validator/src/ECDSA384Curve.sol/7879d9b667e576e39edc9803e1660b4ddb89d934/ECDSA384Curve.sol",
+          "path": "src/ECDSA384Curve.sol",
           "git_object": "c99115c0f17ade4edf62e6de509ebd3d280d3b30",
           "git_mode": "100644",
-          "sha256": "aebd349d1a18b1962c926fd32298a2369ba02c9d071b3006833a980efd8b8e09",
-          "units": [
-            "ECDSA384Curve"
-          ]
+          "sha256": "aebd349d1a18b1962c926fd32298a2369ba02c9d071b3006833a980efd8b8e09"
         }
       ]
     },
@@ -1335,13 +1105,10 @@
       "commit": "7879d9b667e576e39edc9803e1660b4ddb89d934",
       "files": [
         {
-          "file": "base/nitro-validator/src/ICertManager.sol/7879d9b667e576e39edc9803e1660b4ddb89d934/ICertManager.sol",
+          "path": "src/ICertManager.sol",
           "git_object": "545ae42debe3e3590370da9515026bf71e078f16",
           "git_mode": "100644",
-          "sha256": "bcc1b69f256284db080d32ccd9595c52692b7b6a39f99d590dba92f8ae6e1608",
-          "units": [
-            "ICertManager"
-          ]
+          "sha256": "bcc1b69f256284db080d32ccd9595c52692b7b6a39f99d590dba92f8ae6e1608"
         }
       ]
     },
@@ -1353,13 +1120,10 @@
       "commit": "7879d9b667e576e39edc9803e1660b4ddb89d934",
       "files": [
         {
-          "file": "base/nitro-validator/src/LibBytes.sol/7879d9b667e576e39edc9803e1660b4ddb89d934/LibBytes.sol",
+          "path": "src/LibBytes.sol",
           "git_object": "dfbe2884b20ea5b8c013aec195455d3905cc805b",
           "git_mode": "100644",
-          "sha256": "5ec222a9b03d1bd084dc157176f29c424e5f4dd37ef2b60ed6170ecccda652d4",
-          "units": [
-            "LibBytes"
-          ]
+          "sha256": "5ec222a9b03d1bd084dc157176f29c424e5f4dd37ef2b60ed6170ecccda652d4"
         }
       ]
     },
@@ -1371,13 +1135,10 @@
       "commit": "7879d9b667e576e39edc9803e1660b4ddb89d934",
       "files": [
         {
-          "file": "base/nitro-validator/src/NitroValidator.sol/7879d9b667e576e39edc9803e1660b4ddb89d934/NitroValidator.sol",
+          "path": "src/NitroValidator.sol",
           "git_object": "07f2a52aa7603d14807dbf878f78bbff9a543563",
           "git_mode": "100644",
-          "sha256": "cf4d030f0831dc7862295f4c7d5d8286734b91247b8ba19206c930196ac10d47",
-          "units": [
-            "NitroValidator"
-          ]
+          "sha256": "cf4d030f0831dc7862295f4c7d5d8286734b91247b8ba19206c930196ac10d47"
         }
       ]
     },
@@ -1389,13 +1150,10 @@
       "commit": "7879d9b667e576e39edc9803e1660b4ddb89d934",
       "files": [
         {
-          "file": "base/nitro-validator/src/Sha2Ext.sol/7879d9b667e576e39edc9803e1660b4ddb89d934/Sha2Ext.sol",
+          "path": "src/Sha2Ext.sol",
           "git_object": "3382d6261c63d1671196c8ab9f25f72f77a27973",
           "git_mode": "100644",
-          "sha256": "991fed86590bb9709b63ea7ae63914341e373cc7b0f4479b4d02d758d3069a08",
-          "units": [
-            "Sha2Ext"
-          ]
+          "sha256": "991fed86590bb9709b63ea7ae63914341e373cc7b0f4479b4d02d758d3069a08"
         }
       ]
     },
@@ -1407,14 +1165,10 @@
       "commit": "7ad540b7a2b89abf6f00534103e9334ffb79f640",
       "files": [
         {
-          "file": "base/nitro-validator/src/Asn1Decode.sol/7ad540b7a2b89abf6f00534103e9334ffb79f640/Asn1Decode.sol",
+          "path": "src/Asn1Decode.sol",
           "git_object": "5ed05cf170d46370cb4b2b0c1f1c58f4735599b1",
           "git_mode": "100644",
-          "sha256": "5c1b45c7a9501c37b5ffc2b347d990691976b6b6b49f369066ce0b68b29b0d20",
-          "units": [
-            "LibAsn1Ptr",
-            "Asn1Decode"
-          ]
+          "sha256": "5c1b45c7a9501c37b5ffc2b347d990691976b6b6b49f369066ce0b68b29b0d20"
         }
       ]
     },
@@ -1426,13 +1180,10 @@
       "commit": "7dd8c275b743783546a003a36a452ab65495b1fd",
       "files": [
         {
-          "file": "base/nitro-validator/src/ICertManager.sol/7dd8c275b743783546a003a36a452ab65495b1fd/ICertManager.sol",
+          "path": "src/ICertManager.sol",
           "git_object": "844be6ba9468ef5de589d21fcbf0b57ad5aff7df",
           "git_mode": "100644",
-          "sha256": "270f9cd8dae3d9db940e5ebfe5f4c1f003ba1ad95bddb46168e9e2c42014f280",
-          "units": [
-            "ICertManager"
-          ]
+          "sha256": "270f9cd8dae3d9db940e5ebfe5f4c1f003ba1ad95bddb46168e9e2c42014f280"
         }
       ]
     },
@@ -1444,13 +1195,10 @@
       "commit": "7dd8c275b743783546a003a36a452ab65495b1fd",
       "files": [
         {
-          "file": "base/nitro-validator/src/NitroValidator.sol/7dd8c275b743783546a003a36a452ab65495b1fd/NitroValidator.sol",
+          "path": "src/NitroValidator.sol",
           "git_object": "9cb57bc1cd5ac24fb0c9daa100cf8c39f60be901",
           "git_mode": "100644",
-          "sha256": "5ec3e9a7e9bc38a40d786eae32712492a81e9d7e61f8da87d37f069a94ec278e",
-          "units": [
-            "NitroValidator"
-          ]
+          "sha256": "5ec3e9a7e9bc38a40d786eae32712492a81e9d7e61f8da87d37f069a94ec278e"
         }
       ]
     },
@@ -1462,13 +1210,10 @@
       "commit": "7f3fcebfcff61a767d0fff34a009a0d738ea09b2",
       "files": [
         {
-          "file": "base/nitro-validator/src/CertManager.sol/7f3fcebfcff61a767d0fff34a009a0d738ea09b2/CertManager.sol",
+          "path": "src/CertManager.sol",
           "git_object": "551a33898fbfac5922d994f2126c3292d7430eeb",
           "git_mode": "100644",
-          "sha256": "8152501c133a769f30bc82378ef0f3a557da3dc2337317dfb083ebc6e0b20c76",
-          "units": [
-            "CertManager"
-          ]
+          "sha256": "8152501c133a769f30bc82378ef0f3a557da3dc2337317dfb083ebc6e0b20c76"
         }
       ]
     },
@@ -1480,13 +1225,10 @@
       "commit": "889ef791c6cdbf5aa5353f73a8573d0522309cd0",
       "files": [
         {
-          "file": "base/nitro-validator/src/CertManager.sol/889ef791c6cdbf5aa5353f73a8573d0522309cd0/CertManager.sol",
+          "path": "src/CertManager.sol",
           "git_object": "0841230350bf510c9a29253131cd0c14011aef14",
           "git_mode": "100644",
-          "sha256": "39ede7e3437fdd8c17602892e0a554406b0c358fc3c195ab3a3e23aa6e947ede",
-          "units": [
-            "CertManager"
-          ]
+          "sha256": "39ede7e3437fdd8c17602892e0a554406b0c358fc3c195ab3a3e23aa6e947ede"
         }
       ]
     },
@@ -1498,13 +1240,10 @@
       "commit": "926e574de773f88f0dab5f3890ef6e4e8dcdaadb",
       "files": [
         {
-          "file": "base/nitro-validator/src/CertManager.sol/926e574de773f88f0dab5f3890ef6e4e8dcdaadb/CertManager.sol",
+          "path": "src/CertManager.sol",
           "git_object": "47488e6c0b92bdbce8c75d296195a73678b3e48e",
           "git_mode": "100644",
-          "sha256": "c47928304ae48c0e4484412e731b40fae9fa6111d122c321c240febcb2500c36",
-          "units": [
-            "CertManager"
-          ]
+          "sha256": "c47928304ae48c0e4484412e731b40fae9fa6111d122c321c240febcb2500c36"
         }
       ]
     },
@@ -1516,13 +1255,10 @@
       "commit": "988f5f56cb3a77d8e68477fb64143ea0ea372081",
       "files": [
         {
-          "file": "base/nitro-validator/src/NitroValidator.sol/988f5f56cb3a77d8e68477fb64143ea0ea372081/NitroValidator.sol",
+          "path": "src/NitroValidator.sol",
           "git_object": "85786b86ac5ca4e06a5b2ebd549a96daedf652ce",
           "git_mode": "100644",
-          "sha256": "0d5b60735eb4ba0120ba6420312758b589bf6ea996ba97f1b782c46f613faa58",
-          "units": [
-            "NitroValidator"
-          ]
+          "sha256": "0d5b60735eb4ba0120ba6420312758b589bf6ea996ba97f1b782c46f613faa58"
         }
       ]
     },
@@ -1534,13 +1270,10 @@
       "commit": "a5468062012ec3a9409fb01a3caae16182ae6bec",
       "files": [
         {
-          "file": "base/nitro-validator/src/NitroValidator.sol/a5468062012ec3a9409fb01a3caae16182ae6bec/NitroValidator.sol",
+          "path": "src/NitroValidator.sol",
           "git_object": "1dd3d0b6b86399740afb907cf6a92907e70cb402",
           "git_mode": "100644",
-          "sha256": "d4845cf528dbb89c9e1719f19c376b382c8124a6f4c00767dd634191499274b3",
-          "units": [
-            "NitroValidator"
-          ]
+          "sha256": "d4845cf528dbb89c9e1719f19c376b382c8124a6f4c00767dd634191499274b3"
         }
       ]
     },
@@ -1552,14 +1285,10 @@
       "commit": "b146321dc081e61198268902269ccdf73c7e2d16",
       "files": [
         {
-          "file": "base/nitro-validator/src/Asn1Decode.sol/b146321dc081e61198268902269ccdf73c7e2d16/Asn1Decode.sol",
+          "path": "src/Asn1Decode.sol",
           "git_object": "3ef7383051d39ef2d5154b32218e837a36a78073",
           "git_mode": "100644",
-          "sha256": "066b48b4b5f6ab140711743c3a2ab9a30f260155fb27ea1d56f7591c9e06ed6e",
-          "units": [
-            "LibAsn1Ptr",
-            "Asn1Decode"
-          ]
+          "sha256": "066b48b4b5f6ab140711743c3a2ab9a30f260155fb27ea1d56f7591c9e06ed6e"
         }
       ]
     },
@@ -1571,13 +1300,10 @@
       "commit": "b893ee0d63375c486538faf58e0110f4d868dbf8",
       "files": [
         {
-          "file": "base/nitro-validator/src/NitroValidator.sol/b893ee0d63375c486538faf58e0110f4d868dbf8/NitroValidator.sol",
+          "path": "src/NitroValidator.sol",
           "git_object": "c2b07ac795b9b741b73c32ac8a21a547afd7be62",
           "git_mode": "100644",
-          "sha256": "92b0466dbedfc55b9994d2622e1d9e38d99d808ac424c937d1aca32cf41db1d7",
-          "units": [
-            "NitroValidator"
-          ]
+          "sha256": "92b0466dbedfc55b9994d2622e1d9e38d99d808ac424c937d1aca32cf41db1d7"
         }
       ]
     },
@@ -1589,13 +1315,10 @@
       "commit": "beea09924af75564c6e6dd91fc4b4cf9cf5ed203",
       "files": [
         {
-          "file": "base/nitro-validator/src/CertManager.sol/beea09924af75564c6e6dd91fc4b4cf9cf5ed203/CertManager.sol",
+          "path": "src/CertManager.sol",
           "git_object": "23c38bfb1028917a0384293dd2a29e1cbf89c8c9",
           "git_mode": "100644",
-          "sha256": "b0eb030da60c5692521ee5f30aea7f5fe59e25c8a4a0b21eb2d3a48c656491e9",
-          "units": [
-            "CertManager"
-          ]
+          "sha256": "b0eb030da60c5692521ee5f30aea7f5fe59e25c8a4a0b21eb2d3a48c656491e9"
         }
       ]
     },
@@ -1607,13 +1330,10 @@
       "commit": "c17a2f192b5824eb4dd7aeea5da475d537527b4d",
       "files": [
         {
-          "file": "base/nitro-validator/src/CertManager.sol/c17a2f192b5824eb4dd7aeea5da475d537527b4d/CertManager.sol",
+          "path": "src/CertManager.sol",
           "git_object": "aaceb65d2685d2da8f08bc4f14a63d407062920f",
           "git_mode": "100644",
-          "sha256": "0bc60115b42fc6f974013aee90ca05e2bbca3ba72f7953999bc1ccc34f90ad9a",
-          "units": [
-            "CertManager"
-          ]
+          "sha256": "0bc60115b42fc6f974013aee90ca05e2bbca3ba72f7953999bc1ccc34f90ad9a"
         }
       ]
     },
@@ -1625,13 +1345,10 @@
       "commit": "c5c7298d04bf41ed4af1118d0b9bc628c2d5d8cd",
       "files": [
         {
-          "file": "base/nitro-validator/src/CertManager.sol/c5c7298d04bf41ed4af1118d0b9bc628c2d5d8cd/CertManager.sol",
+          "path": "src/CertManager.sol",
           "git_object": "4305778247c7b6c9d8d04c8e0c0466b3a1026de1",
           "git_mode": "100644",
-          "sha256": "aa0cb270966af79f3c28c3b5b306c6e2f57f527c84c7c3eda8af882a95d6c054",
-          "units": [
-            "CertManager"
-          ]
+          "sha256": "aa0cb270966af79f3c28c3b5b306c6e2f57f527c84c7c3eda8af882a95d6c054"
         }
       ]
     },
@@ -1643,13 +1360,10 @@
       "commit": "c7ba4451cbf814c6fee3e9a05eb13b35499262ff",
       "files": [
         {
-          "file": "base/nitro-validator/src/CertManager.sol/c7ba4451cbf814c6fee3e9a05eb13b35499262ff/CertManager.sol",
+          "path": "src/CertManager.sol",
           "git_object": "bc925ac176d637335357ab8f40eda16dda49caaf",
           "git_mode": "100644",
-          "sha256": "0f041ca18064579242f439dfd41c76b6ff7f27389ea31d4362c054c524aefdba",
-          "units": [
-            "CertManager"
-          ]
+          "sha256": "0f041ca18064579242f439dfd41c76b6ff7f27389ea31d4362c054c524aefdba"
         }
       ]
     },
@@ -1661,13 +1375,10 @@
       "commit": "c7ba4451cbf814c6fee3e9a05eb13b35499262ff",
       "files": [
         {
-          "file": "base/nitro-validator/src/NitroValidator.sol/c7ba4451cbf814c6fee3e9a05eb13b35499262ff/NitroValidator.sol",
+          "path": "src/NitroValidator.sol",
           "git_object": "c48c0133117004e8e546b42a70eb1907ddaa9b51",
           "git_mode": "100644",
-          "sha256": "48491bac48fdfd02e9901634219b51a76458fcb3735e653d421fd8bad87a8085",
-          "units": [
-            "NitroValidator"
-          ]
+          "sha256": "48491bac48fdfd02e9901634219b51a76458fcb3735e653d421fd8bad87a8085"
         }
       ]
     },
@@ -1679,13 +1390,10 @@
       "commit": "d5443c18e67258e0108b5a1e34c5e5b054f33604",
       "files": [
         {
-          "file": "base/nitro-validator/src/NitroValidator.sol/d5443c18e67258e0108b5a1e34c5e5b054f33604/NitroValidator.sol",
+          "path": "src/NitroValidator.sol",
           "git_object": "51d5a418289cb056adc39c40643959a2196835da",
           "git_mode": "100644",
-          "sha256": "ab639904ce483b552f69fa1ac743aad96f68ecdcabd0a5cfa1d80798ec906dfc",
-          "units": [
-            "NitroValidator"
-          ]
+          "sha256": "ab639904ce483b552f69fa1ac743aad96f68ecdcabd0a5cfa1d80798ec906dfc"
         }
       ]
     },
@@ -1697,13 +1405,10 @@
       "commit": "d7e7cd77a473dfbf03306ae9dd5558e1b6e16a78",
       "files": [
         {
-          "file": "base/nitro-validator/src/CertManager.sol/d7e7cd77a473dfbf03306ae9dd5558e1b6e16a78/CertManager.sol",
+          "path": "src/CertManager.sol",
           "git_object": "987446dce7b75a86cbc392befd34100d6fffd6b8",
           "git_mode": "100644",
-          "sha256": "837f52d1aad0a5405db205acdfb736d44dc11ad3360e8f884dc0b7996b4bd624",
-          "units": [
-            "CertManager"
-          ]
+          "sha256": "837f52d1aad0a5405db205acdfb736d44dc11ad3360e8f884dc0b7996b4bd624"
         }
       ]
     },
@@ -1715,14 +1420,10 @@
       "commit": "eb0702b22e44dd301e2437118fac45b987ccea3f",
       "files": [
         {
-          "file": "base/nitro-validator/src/Asn1Decode.sol/eb0702b22e44dd301e2437118fac45b987ccea3f/Asn1Decode.sol",
+          "path": "src/Asn1Decode.sol",
           "git_object": "9924db2535319211ffa640136560d7f82f40da45",
           "git_mode": "100644",
-          "sha256": "5ed81db27bd8f0e88de5fa9162e1ef1cd07ea14863084b571846a65aced7a9c4",
-          "units": [
-            "LibAsn1Ptr",
-            "Asn1Decode"
-          ]
+          "sha256": "5ed81db27bd8f0e88de5fa9162e1ef1cd07ea14863084b571846a65aced7a9c4"
         }
       ]
     },
@@ -1734,13 +1435,10 @@
       "commit": "f020b6308a741806e2a07b8bba50ad921ba61b8e",
       "files": [
         {
-          "file": "base/nitro-validator/src/CertManager.sol/f020b6308a741806e2a07b8bba50ad921ba61b8e/CertManager.sol",
+          "path": "src/CertManager.sol",
           "git_object": "b8d5ffa0a2baee3cc81c0f465888a8b9cd69983e",
           "git_mode": "100644",
-          "sha256": "b7a4940b77a6f2527ac0a30958847c40a9e1d222d7b09c76cd19396221bc1a99",
-          "units": [
-            "CertManager"
-          ]
+          "sha256": "b7a4940b77a6f2527ac0a30958847c40a9e1d222d7b09c76cd19396221bc1a99"
         }
       ]
     },
@@ -1752,13 +1450,10 @@
       "commit": "f020b6308a741806e2a07b8bba50ad921ba61b8e",
       "files": [
         {
-          "file": "base/nitro-validator/src/ICertManager.sol/f020b6308a741806e2a07b8bba50ad921ba61b8e/ICertManager.sol",
+          "path": "src/ICertManager.sol",
           "git_object": "fe72c5c8261c668dd073cb8b144a6243918bfeb5",
           "git_mode": "100644",
-          "sha256": "420022bce229d34c398f59926766770622bc217d814dab08327ffefab5808f65",
-          "units": [
-            "ICertManager"
-          ]
+          "sha256": "420022bce229d34c398f59926766770622bc217d814dab08327ffefab5808f65"
         }
       ]
     },
@@ -1770,13 +1465,10 @@
       "commit": "f8120158957072a2a96f386d91aa34749a48037f",
       "files": [
         {
-          "file": "base/nitro-validator/src/NitroValidator.sol/f8120158957072a2a96f386d91aa34749a48037f/NitroValidator.sol",
+          "path": "src/NitroValidator.sol",
           "git_object": "ec60f8836b076533e46b3f12793640e3d6efc60f",
           "git_mode": "100644",
-          "sha256": "27b578707741fab248260f439fab734ec4899df1a10e5ac69fa5e61061307875",
-          "units": [
-            "NitroValidator"
-          ]
+          "sha256": "27b578707741fab248260f439fab734ec4899df1a10e5ac69fa5e61061307875"
         }
       ]
     },
@@ -1788,86 +1480,58 @@
       "commit": "156d495b8a2841a2990aa790dc97a934429bbc3f",
       "files": [
         {
-          "file": "base/op-enclave/contracts/src/156d495b8a2841a2990aa790dc97a934429bbc3f/DeployChain.sol",
+          "path": "contracts/src/DeployChain.sol",
           "git_object": "872f8635b6ae7ee45da5833972bc55a515ecdd38",
           "git_mode": "100644",
-          "sha256": "5cbe4c07ee63d60b6b3611578cc661ef01018b298e0e8fe41c5c702fc2476a8b",
-          "units": [
-            "DeployChain"
-          ]
+          "sha256": "5cbe4c07ee63d60b6b3611578cc661ef01018b298e0e8fe41c5c702fc2476a8b"
         },
         {
-          "file": "base/op-enclave/contracts/src/156d495b8a2841a2990aa790dc97a934429bbc3f/OutputOracle.sol",
+          "path": "contracts/src/OutputOracle.sol",
           "git_object": "e6fcfa23193e2799154f44ee8d8c5e33a47d8e81",
           "git_mode": "100644",
-          "sha256": "14dae4e0dd75f9c5eca65c0815d5a3605bea754feb73f99bd236e94a0a6ea46d",
-          "units": [
-            "OutputOracle"
-          ]
+          "sha256": "14dae4e0dd75f9c5eca65c0815d5a3605bea754feb73f99bd236e94a0a6ea46d"
         },
         {
-          "file": "base/op-enclave/contracts/src/156d495b8a2841a2990aa790dc97a934429bbc3f/OwnableConfig.sol",
+          "path": "contracts/src/OwnableConfig.sol",
           "git_object": "44736d1e2b43632545a4f0ba607cae07731c3665",
           "git_mode": "100644",
-          "sha256": "e108ec22073fb09664097834cb4b23df996a3810938750e9362870c41840d3cd",
-          "units": [
-            "OwnableConfig"
-          ]
+          "sha256": "e108ec22073fb09664097834cb4b23df996a3810938750e9362870c41840d3cd"
         },
         {
-          "file": "base/op-enclave/contracts/src/156d495b8a2841a2990aa790dc97a934429bbc3f/OwnerConfig.sol",
+          "path": "contracts/src/OwnerConfig.sol",
           "git_object": "b91cecf919f463509bc65f669c1099f22b4adc4e",
           "git_mode": "100644",
-          "sha256": "8636e1bed75597f06003d05d508fd05d3795c749f25a642370b517f7a06bbe2c",
-          "units": [
-            "OwnerConfig"
-          ]
+          "sha256": "8636e1bed75597f06003d05d508fd05d3795c749f25a642370b517f7a06bbe2c"
         },
         {
-          "file": "base/op-enclave/contracts/src/156d495b8a2841a2990aa790dc97a934429bbc3f/Portal.sol",
+          "path": "contracts/src/Portal.sol",
           "git_object": "3b85ea09555100d2f72c07acd2d5bfb0cd62c710",
           "git_mode": "100644",
-          "sha256": "20b0e197d92bc03458b42c53a08425aaf057853c09296e47815f31ea58a22ef5",
-          "units": [
-            "Portal"
-          ]
+          "sha256": "20b0e197d92bc03458b42c53a08425aaf057853c09296e47815f31ea58a22ef5"
         },
         {
-          "file": "base/op-enclave/contracts/src/156d495b8a2841a2990aa790dc97a934429bbc3f/ResolvingProxy.sol",
+          "path": "contracts/src/ResolvingProxy.sol",
           "git_object": "6a15aba8181bb31ab79ac886d456a09e10c3214d",
           "git_mode": "100644",
-          "sha256": "2d0f6da8590e9a3516cf714775cae7f7c47aee4bf313039e7dc1d5286b71f1ce",
-          "units": [
-            "IResolver",
-            "ResolvingProxy"
-          ]
+          "sha256": "2d0f6da8590e9a3516cf714775cae7f7c47aee4bf313039e7dc1d5286b71f1ce"
         },
         {
-          "file": "base/op-enclave/contracts/src/156d495b8a2841a2990aa790dc97a934429bbc3f/ResolvingProxyFactory.sol",
+          "path": "contracts/src/ResolvingProxyFactory.sol",
           "git_object": "6b17fc36427d141004360af757e61f890846d3c7",
           "git_mode": "100644",
-          "sha256": "7820f50badc98351da47164ecc10953cb6057b002890fa8997a7609fb45bc7f5",
-          "units": [
-            "ResolvingProxyFactory"
-          ]
+          "sha256": "7820f50badc98351da47164ecc10953cb6057b002890fa8997a7609fb45bc7f5"
         },
         {
-          "file": "base/op-enclave/contracts/src/156d495b8a2841a2990aa790dc97a934429bbc3f/SystemConfigGlobal.sol",
+          "path": "contracts/src/SystemConfigGlobal.sol",
           "git_object": "01bf09932349405069d579b3e8439df944e1b058",
           "git_mode": "100644",
-          "sha256": "b40b56ad216822cefba2774495ba9b059c2917c641d97369165d99a3ae69ddf8",
-          "units": [
-            "SystemConfigGlobal"
-          ]
+          "sha256": "b40b56ad216822cefba2774495ba9b059c2917c641d97369165d99a3ae69ddf8"
         },
         {
-          "file": "base/op-enclave/contracts/src/156d495b8a2841a2990aa790dc97a934429bbc3f/SystemConfigOwnable.sol",
+          "path": "contracts/src/SystemConfigOwnable.sol",
           "git_object": "2c77e2d8e45c5689ce4c302b407349b3ada966a3",
           "git_mode": "100644",
-          "sha256": "f60a3d25a9280995ab4c0ead710d6bab3bd935e3765ba00e199d5f907d9355b7",
-          "units": [
-            "SystemConfigOwnable"
-          ]
+          "sha256": "f60a3d25a9280995ab4c0ead710d6bab3bd935e3765ba00e199d5f907d9355b7"
         }
       ]
     },
@@ -1879,86 +1543,58 @@
       "commit": "4a7e36a0860ba408f2f5538ea7a9a117987d08d6",
       "files": [
         {
-          "file": "base/op-enclave/contracts/src/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/DeployChain.sol",
+          "path": "contracts/src/DeployChain.sol",
           "git_object": "872f8635b6ae7ee45da5833972bc55a515ecdd38",
           "git_mode": "100644",
-          "sha256": "5cbe4c07ee63d60b6b3611578cc661ef01018b298e0e8fe41c5c702fc2476a8b",
-          "units": [
-            "DeployChain"
-          ]
+          "sha256": "5cbe4c07ee63d60b6b3611578cc661ef01018b298e0e8fe41c5c702fc2476a8b"
         },
         {
-          "file": "base/op-enclave/contracts/src/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/OutputOracle.sol",
+          "path": "contracts/src/OutputOracle.sol",
           "git_object": "6f5a04b229fd7d6b3e5eaee6ff446ab890916175",
           "git_mode": "100644",
-          "sha256": "4866c070436c481c6902cd4b9532bfe5e6f7d5ce984da5dcb4a411048111d36a",
-          "units": [
-            "OutputOracle"
-          ]
+          "sha256": "4866c070436c481c6902cd4b9532bfe5e6f7d5ce984da5dcb4a411048111d36a"
         },
         {
-          "file": "base/op-enclave/contracts/src/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/OwnableConfig.sol",
+          "path": "contracts/src/OwnableConfig.sol",
           "git_object": "44736d1e2b43632545a4f0ba607cae07731c3665",
           "git_mode": "100644",
-          "sha256": "e108ec22073fb09664097834cb4b23df996a3810938750e9362870c41840d3cd",
-          "units": [
-            "OwnableConfig"
-          ]
+          "sha256": "e108ec22073fb09664097834cb4b23df996a3810938750e9362870c41840d3cd"
         },
         {
-          "file": "base/op-enclave/contracts/src/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/OwnerConfig.sol",
+          "path": "contracts/src/OwnerConfig.sol",
           "git_object": "b91cecf919f463509bc65f669c1099f22b4adc4e",
           "git_mode": "100644",
-          "sha256": "8636e1bed75597f06003d05d508fd05d3795c749f25a642370b517f7a06bbe2c",
-          "units": [
-            "OwnerConfig"
-          ]
+          "sha256": "8636e1bed75597f06003d05d508fd05d3795c749f25a642370b517f7a06bbe2c"
         },
         {
-          "file": "base/op-enclave/contracts/src/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/Portal.sol",
+          "path": "contracts/src/Portal.sol",
           "git_object": "c2db5d5d742518ee88d19dae91521b2b08c49021",
           "git_mode": "100644",
-          "sha256": "a7c97ee75adae49bc97afe241fff4b500985990e51b80ea40df4a805f40f242c",
-          "units": [
-            "Portal"
-          ]
+          "sha256": "a7c97ee75adae49bc97afe241fff4b500985990e51b80ea40df4a805f40f242c"
         },
         {
-          "file": "base/op-enclave/contracts/src/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/ResolvingProxy.sol",
+          "path": "contracts/src/ResolvingProxy.sol",
           "git_object": "6a15aba8181bb31ab79ac886d456a09e10c3214d",
           "git_mode": "100644",
-          "sha256": "2d0f6da8590e9a3516cf714775cae7f7c47aee4bf313039e7dc1d5286b71f1ce",
-          "units": [
-            "IResolver",
-            "ResolvingProxy"
-          ]
+          "sha256": "2d0f6da8590e9a3516cf714775cae7f7c47aee4bf313039e7dc1d5286b71f1ce"
         },
         {
-          "file": "base/op-enclave/contracts/src/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/ResolvingProxyFactory.sol",
+          "path": "contracts/src/ResolvingProxyFactory.sol",
           "git_object": "6b17fc36427d141004360af757e61f890846d3c7",
           "git_mode": "100644",
-          "sha256": "7820f50badc98351da47164ecc10953cb6057b002890fa8997a7609fb45bc7f5",
-          "units": [
-            "ResolvingProxyFactory"
-          ]
+          "sha256": "7820f50badc98351da47164ecc10953cb6057b002890fa8997a7609fb45bc7f5"
         },
         {
-          "file": "base/op-enclave/contracts/src/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/SystemConfigGlobal.sol",
+          "path": "contracts/src/SystemConfigGlobal.sol",
           "git_object": "01bf09932349405069d579b3e8439df944e1b058",
           "git_mode": "100644",
-          "sha256": "b40b56ad216822cefba2774495ba9b059c2917c641d97369165d99a3ae69ddf8",
-          "units": [
-            "SystemConfigGlobal"
-          ]
+          "sha256": "b40b56ad216822cefba2774495ba9b059c2917c641d97369165d99a3ae69ddf8"
         },
         {
-          "file": "base/op-enclave/contracts/src/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/SystemConfigOwnable.sol",
+          "path": "contracts/src/SystemConfigOwnable.sol",
           "git_object": "1d517e870fc943159dbc85398db24f86e8429cfd",
           "git_mode": "100644",
-          "sha256": "6412906f86cc704a1c03f4b122cc8041d728c7df9bc166187432bed95d691dc8",
-          "units": [
-            "SystemConfigOwnable"
-          ]
+          "sha256": "6412906f86cc704a1c03f4b122cc8041d728c7df9bc166187432bed95d691dc8"
         }
       ]
     },
@@ -1970,157 +1606,106 @@
       "commit": "4a7e36a0860ba408f2f5538ea7a9a117987d08d6",
       "files": [
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/.dockerignore",
+          "path": "op-enclave/.dockerignore",
           "git_object": "94143827ed065ca0d7d5be1b765d255c5c32cd9a",
           "git_mode": "100644",
-          "sha256": "c750b6d776c1db92b55fcecbb51c80be008aae877e78a28691b3ae79be9ea63e",
-          "units": [
-            ".dockerignore"
-          ]
+          "sha256": "c750b6d776c1db92b55fcecbb51c80be008aae877e78a28691b3ae79be9ea63e"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/Dockerfile",
+          "path": "op-enclave/Dockerfile",
           "git_object": "26bdb232466dcbda909a94d285496730519c8583",
           "git_mode": "100644",
-          "sha256": "645286daa74de6e0a0ec993734c6de84daa6dfe074f77ea48eabdad1d39b7413",
-          "units": [
-            "Dockerfile"
-          ]
+          "sha256": "645286daa74de6e0a0ec993734c6de84daa6dfe074f77ea48eabdad1d39b7413"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/cmd/enclave/main.go",
+          "path": "op-enclave/cmd/enclave/main.go",
           "git_object": "69455adaceac443f8e77eb3d11f94085410310b6",
           "git_mode": "100644",
-          "sha256": "15e4927787d3da8e47f29488e2b1e7e18e4b0fb0f7bff45446109beac25000c6",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "15e4927787d3da8e47f29488e2b1e7e18e4b0fb0f7bff45446109beac25000c6"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/cmd/server/main.go",
+          "path": "op-enclave/cmd/server/main.go",
           "git_object": "08ec932ff655b864e624db39599b493c130e0233",
           "git_mode": "100644",
-          "sha256": "6c715fa3b517ccb2dca5f5785f131e419756f0c597b6fcea733b8fe41e953e00",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "6c715fa3b517ccb2dca5f5785f131e419756f0c597b6fcea733b8fe41e953e00"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/eif/cmdline-aarch64",
+          "path": "op-enclave/eif/cmdline-aarch64",
           "git_object": "ea78dd00ede940217bb223877dd99557a3a1b5fc",
           "git_mode": "100644",
-          "sha256": "b2863fac918fe57e9083ef434e8ac09a01ab97673f3d14c0afc1c017758ceb44",
-          "units": [
-            "cmdline-aarch64"
-          ]
+          "sha256": "b2863fac918fe57e9083ef434e8ac09a01ab97673f3d14c0afc1c017758ceb44"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/eif/cmdline-x86_64",
+          "path": "op-enclave/eif/cmdline-x86_64",
           "git_object": "942025a9811181533d9cf7a672bd9fadcf58c028",
           "git_mode": "100644",
-          "sha256": "10e182738c73d88854c480aa22032474cfc9e82443d39ce92bf5fa1684fee68d",
-          "units": [
-            "cmdline-x86_64"
-          ]
+          "sha256": "10e182738c73d88854c480aa22032474cfc9e82443d39ce92bf5fa1684fee68d"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/eif/init-ramdisk.yaml",
+          "path": "op-enclave/eif/init-ramdisk.yaml",
           "git_object": "5c53cb3980e64afc1044fa1b4f2bf0ed9b1cf215",
           "git_mode": "100644",
-          "sha256": "194a7cd33263836a658e20df10884de12305e061e9548a2bf5f4807ec3381071",
-          "units": [
-            "init-ramdisk.yaml"
-          ]
+          "sha256": "194a7cd33263836a658e20df10884de12305e061e9548a2bf5f4807ec3381071"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/eif/user-ramdisk.yaml",
+          "path": "op-enclave/eif/user-ramdisk.yaml",
           "git_object": "abd9f3a6232be78dbdaea70cf5584dc0a2487819",
           "git_mode": "100644",
-          "sha256": "4eb3773c7f98a671df7e6e1d7c38922cd878e74cd5218525fc98c9888462649d",
-          "units": [
-            "user-ramdisk.yaml"
-          ]
+          "sha256": "4eb3773c7f98a671df7e6e1d7c38922cd878e74cd5218525fc98c9888462649d"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/enclave/client.go",
+          "path": "op-enclave/enclave/client.go",
           "git_object": "c9056db74eba51036e9b48f386038fd122f62b5b",
           "git_mode": "100644",
-          "sha256": "6e9a9162066adfe3ff03ff4b1245e55a0a78f38f6f7cd3c880413830b5ce1334",
-          "units": [
-            "client.go"
-          ]
+          "sha256": "6e9a9162066adfe3ff03ff4b1245e55a0a78f38f6f7cd3c880413830b5ce1334"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/enclave/config.go",
+          "path": "op-enclave/enclave/config.go",
           "git_object": "552fa32a19b62d536e873333c9e4fd41154cd2bd",
           "git_mode": "100644",
-          "sha256": "5133bd0664f058a1f205767e539051aab7784c4aa1d0b3b3d746164524bb3e30",
-          "units": [
-            "config.go"
-          ]
+          "sha256": "5133bd0664f058a1f205767e539051aab7784c4aa1d0b3b3d746164524bb3e30"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/enclave/l1_receipts_fetcher.go",
+          "path": "op-enclave/enclave/l1_receipts_fetcher.go",
           "git_object": "4187b42a0161e59908b649f393153007a091ab52",
           "git_mode": "100644",
-          "sha256": "5a05bd4cb2c1c170de5855db216f85896fc1ba06a25f1fdaa73e4e10e0b4aeed",
-          "units": [
-            "l1_receipts_fetcher.go"
-          ]
+          "sha256": "5a05bd4cb2c1c170de5855db216f85896fc1ba06a25f1fdaa73e4e10e0b4aeed"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/enclave/l2_system_config_fetcher.go",
+          "path": "op-enclave/enclave/l2_system_config_fetcher.go",
           "git_object": "34d022d5e23172d621d265638042f0885ed0b74b",
           "git_mode": "100644",
-          "sha256": "e99d3c23ed030e234face2563b3978e984bd79648cbca62cda3742a08dd115e8",
-          "units": [
-            "l2_system_config_fetcher.go"
-          ]
+          "sha256": "e99d3c23ed030e234face2563b3978e984bd79648cbca62cda3742a08dd115e8"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/enclave/rpc.go",
+          "path": "op-enclave/enclave/rpc.go",
           "git_object": "756ef5dafe7bd71d202287ed27ed5460810cfd67",
           "git_mode": "100644",
-          "sha256": "ff357df6ba69719e31c3c15c5a04af0a4813150b0cd74d7d13e7d56ced3b4da2",
-          "units": [
-            "rpc.go"
-          ]
+          "sha256": "ff357df6ba69719e31c3c15c5a04af0a4813150b0cd74d7d13e7d56ced3b4da2"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/enclave/server.go",
+          "path": "op-enclave/enclave/server.go",
           "git_object": "76b79efab569eeabe240cd7f654f8604cdeb48c6",
           "git_mode": "100644",
-          "sha256": "c7e941b6aadbce97789610e7d98aca3bc4b07d43188842c716255193315c47ec",
-          "units": [
-            "server.go"
-          ]
+          "sha256": "c7e941b6aadbce97789610e7d98aca3bc4b07d43188842c716255193315c47ec"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/enclave/stateless.go",
+          "path": "op-enclave/enclave/stateless.go",
           "git_object": "aab7e80aedb987d740cb9fef2d7fb024d0490e46",
           "git_mode": "100644",
-          "sha256": "eb36ecf645135ee458dc320e920d10beb7c76774e8501b8ca75ff87a31705a5d",
-          "units": [
-            "stateless.go"
-          ]
+          "sha256": "eb36ecf645135ee458dc320e920d10beb7c76774e8501b8ca75ff87a31705a5d"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/go.mod",
+          "path": "op-enclave/go.mod",
           "git_object": "b3157296c6366f58a59c78ca8aa3966cfa092d34",
           "git_mode": "100644",
-          "sha256": "b81487b03c260300de012699e88852c8c661b4210bf18396f60851b47e3e683c",
-          "units": [
-            "go.mod"
-          ]
+          "sha256": "b81487b03c260300de012699e88852c8c661b4210bf18396f60851b47e3e683c"
         },
         {
-          "file": "base/op-enclave/op-enclave/4a7e36a0860ba408f2f5538ea7a9a117987d08d6/go.sum",
+          "path": "op-enclave/go.sum",
           "git_object": "4314cd45e69471858a4f264535a043403e66808d",
           "git_mode": "100644",
-          "sha256": "f7bd87c6018863ab300cbb8bdf8895c6046f22d209a7171809fc946d584af6c5",
-          "units": [
-            "go.sum"
-          ]
+          "sha256": "f7bd87c6018863ab300cbb8bdf8895c6046f22d209a7171809fc946d584af6c5"
         }
       ]
     },
@@ -2132,157 +1717,106 @@
       "commit": "628aa61032c428a3e8f28e3f2925a758a545fc54",
       "files": [
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/.dockerignore",
+          "path": "op-enclave/.dockerignore",
           "git_object": "94143827ed065ca0d7d5be1b765d255c5c32cd9a",
           "git_mode": "100644",
-          "sha256": "c750b6d776c1db92b55fcecbb51c80be008aae877e78a28691b3ae79be9ea63e",
-          "units": [
-            ".dockerignore"
-          ]
+          "sha256": "c750b6d776c1db92b55fcecbb51c80be008aae877e78a28691b3ae79be9ea63e"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/Dockerfile",
+          "path": "op-enclave/Dockerfile",
           "git_object": "26bdb232466dcbda909a94d285496730519c8583",
           "git_mode": "100644",
-          "sha256": "645286daa74de6e0a0ec993734c6de84daa6dfe074f77ea48eabdad1d39b7413",
-          "units": [
-            "Dockerfile"
-          ]
+          "sha256": "645286daa74de6e0a0ec993734c6de84daa6dfe074f77ea48eabdad1d39b7413"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/cmd/enclave/main.go",
+          "path": "op-enclave/cmd/enclave/main.go",
           "git_object": "69455adaceac443f8e77eb3d11f94085410310b6",
           "git_mode": "100644",
-          "sha256": "15e4927787d3da8e47f29488e2b1e7e18e4b0fb0f7bff45446109beac25000c6",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "15e4927787d3da8e47f29488e2b1e7e18e4b0fb0f7bff45446109beac25000c6"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/cmd/server/main.go",
+          "path": "op-enclave/cmd/server/main.go",
           "git_object": "08ec932ff655b864e624db39599b493c130e0233",
           "git_mode": "100644",
-          "sha256": "6c715fa3b517ccb2dca5f5785f131e419756f0c597b6fcea733b8fe41e953e00",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "6c715fa3b517ccb2dca5f5785f131e419756f0c597b6fcea733b8fe41e953e00"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/eif/cmdline-aarch64",
+          "path": "op-enclave/eif/cmdline-aarch64",
           "git_object": "ea78dd00ede940217bb223877dd99557a3a1b5fc",
           "git_mode": "100644",
-          "sha256": "b2863fac918fe57e9083ef434e8ac09a01ab97673f3d14c0afc1c017758ceb44",
-          "units": [
-            "cmdline-aarch64"
-          ]
+          "sha256": "b2863fac918fe57e9083ef434e8ac09a01ab97673f3d14c0afc1c017758ceb44"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/eif/cmdline-x86_64",
+          "path": "op-enclave/eif/cmdline-x86_64",
           "git_object": "942025a9811181533d9cf7a672bd9fadcf58c028",
           "git_mode": "100644",
-          "sha256": "10e182738c73d88854c480aa22032474cfc9e82443d39ce92bf5fa1684fee68d",
-          "units": [
-            "cmdline-x86_64"
-          ]
+          "sha256": "10e182738c73d88854c480aa22032474cfc9e82443d39ce92bf5fa1684fee68d"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/eif/init-ramdisk.yaml",
+          "path": "op-enclave/eif/init-ramdisk.yaml",
           "git_object": "5c53cb3980e64afc1044fa1b4f2bf0ed9b1cf215",
           "git_mode": "100644",
-          "sha256": "194a7cd33263836a658e20df10884de12305e061e9548a2bf5f4807ec3381071",
-          "units": [
-            "init-ramdisk.yaml"
-          ]
+          "sha256": "194a7cd33263836a658e20df10884de12305e061e9548a2bf5f4807ec3381071"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/eif/user-ramdisk.yaml",
+          "path": "op-enclave/eif/user-ramdisk.yaml",
           "git_object": "abd9f3a6232be78dbdaea70cf5584dc0a2487819",
           "git_mode": "100644",
-          "sha256": "4eb3773c7f98a671df7e6e1d7c38922cd878e74cd5218525fc98c9888462649d",
-          "units": [
-            "user-ramdisk.yaml"
-          ]
+          "sha256": "4eb3773c7f98a671df7e6e1d7c38922cd878e74cd5218525fc98c9888462649d"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/enclave/client.go",
+          "path": "op-enclave/enclave/client.go",
           "git_object": "0af7eac61bfd3e0c0a5c48a546b252a68be65a49",
           "git_mode": "100644",
-          "sha256": "4b03f48643ff1fbb6f4f2bfed4d5d0e88c397e2c5c432a30c8a176462f77ad75",
-          "units": [
-            "client.go"
-          ]
+          "sha256": "4b03f48643ff1fbb6f4f2bfed4d5d0e88c397e2c5c432a30c8a176462f77ad75"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/enclave/config.go",
+          "path": "op-enclave/enclave/config.go",
           "git_object": "a72c96eec85f576e41a2bda9ebfa5d96f6b71dd2",
           "git_mode": "100644",
-          "sha256": "e12003cf859d27dd9274ce86a6c3769a2c87837f88badd78953833a523454307",
-          "units": [
-            "config.go"
-          ]
+          "sha256": "e12003cf859d27dd9274ce86a6c3769a2c87837f88badd78953833a523454307"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/enclave/l1_receipts_fetcher.go",
+          "path": "op-enclave/enclave/l1_receipts_fetcher.go",
           "git_object": "4187b42a0161e59908b649f393153007a091ab52",
           "git_mode": "100644",
-          "sha256": "5a05bd4cb2c1c170de5855db216f85896fc1ba06a25f1fdaa73e4e10e0b4aeed",
-          "units": [
-            "l1_receipts_fetcher.go"
-          ]
+          "sha256": "5a05bd4cb2c1c170de5855db216f85896fc1ba06a25f1fdaa73e4e10e0b4aeed"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/enclave/l2_system_config_fetcher.go",
+          "path": "op-enclave/enclave/l2_system_config_fetcher.go",
           "git_object": "34d022d5e23172d621d265638042f0885ed0b74b",
           "git_mode": "100644",
-          "sha256": "e99d3c23ed030e234face2563b3978e984bd79648cbca62cda3742a08dd115e8",
-          "units": [
-            "l2_system_config_fetcher.go"
-          ]
+          "sha256": "e99d3c23ed030e234face2563b3978e984bd79648cbca62cda3742a08dd115e8"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/enclave/rpc.go",
+          "path": "op-enclave/enclave/rpc.go",
           "git_object": "991d9f551dc4d8f67a3e4c4d035b28a141450338",
           "git_mode": "100644",
-          "sha256": "c4000a48e6c85149b0885e51b0272590e18191cca3af3af8ad4ad43d4221fc3d",
-          "units": [
-            "rpc.go"
-          ]
+          "sha256": "c4000a48e6c85149b0885e51b0272590e18191cca3af3af8ad4ad43d4221fc3d"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/enclave/server.go",
+          "path": "op-enclave/enclave/server.go",
           "git_object": "950307a2d461b56b004a7f9ddc058ababc73efa6",
           "git_mode": "100644",
-          "sha256": "2891a7f5ab21ab62bf8d742d49a48fbdfbb133ef6201afd709a5f9db1b30efa0",
-          "units": [
-            "server.go"
-          ]
+          "sha256": "2891a7f5ab21ab62bf8d742d49a48fbdfbb133ef6201afd709a5f9db1b30efa0"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/enclave/stateless.go",
+          "path": "op-enclave/enclave/stateless.go",
           "git_object": "a6121f2ee638da743fb350cdfa79eef8fd33a5fa",
           "git_mode": "100644",
-          "sha256": "8a43ba13000b79ad3a6b586d7f3ef703ca28046ee7d8a7129e7c8385510628a4",
-          "units": [
-            "stateless.go"
-          ]
+          "sha256": "8a43ba13000b79ad3a6b586d7f3ef703ca28046ee7d8a7129e7c8385510628a4"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/go.mod",
+          "path": "op-enclave/go.mod",
           "git_object": "a14d488d02451a7c0cce5660d66d82101f325f9f",
           "git_mode": "100644",
-          "sha256": "d56b65095ecf7fa433d0b55bb8807d6885eec3a4451b0f667aadc5488bf7b06d",
-          "units": [
-            "go.mod"
-          ]
+          "sha256": "d56b65095ecf7fa433d0b55bb8807d6885eec3a4451b0f667aadc5488bf7b06d"
         },
         {
-          "file": "base/op-enclave/op-enclave/628aa61032c428a3e8f28e3f2925a758a545fc54/go.sum",
+          "path": "op-enclave/go.sum",
           "git_object": "e4c229563558579cd94015a75823530eba7b2bb9",
           "git_mode": "100644",
-          "sha256": "82aba96886162d8902ced25e495e48d5bfd2c287265a559f7e3652712008a1ff",
-          "units": [
-            "go.sum"
-          ]
+          "sha256": "82aba96886162d8902ced25e495e48d5bfd2c287265a559f7e3652712008a1ff"
         }
       ]
     },
@@ -2294,86 +1828,58 @@
       "commit": "69990879c401bf3d859e9665772c90f93517dbeb",
       "files": [
         {
-          "file": "base/op-enclave/contracts/src/69990879c401bf3d859e9665772c90f93517dbeb/DeployChain.sol",
+          "path": "contracts/src/DeployChain.sol",
           "git_object": "872f8635b6ae7ee45da5833972bc55a515ecdd38",
           "git_mode": "100644",
-          "sha256": "5cbe4c07ee63d60b6b3611578cc661ef01018b298e0e8fe41c5c702fc2476a8b",
-          "units": [
-            "DeployChain"
-          ]
+          "sha256": "5cbe4c07ee63d60b6b3611578cc661ef01018b298e0e8fe41c5c702fc2476a8b"
         },
         {
-          "file": "base/op-enclave/contracts/src/69990879c401bf3d859e9665772c90f93517dbeb/OutputOracle.sol",
+          "path": "contracts/src/OutputOracle.sol",
           "git_object": "40c6e9d2a2951e7d94adcba52641b4076709a56d",
           "git_mode": "100644",
-          "sha256": "8325bfed31bdb59e9012d70756ba85b1e8e7b7f3ed3f851c60da2291cd256d71",
-          "units": [
-            "OutputOracle"
-          ]
+          "sha256": "8325bfed31bdb59e9012d70756ba85b1e8e7b7f3ed3f851c60da2291cd256d71"
         },
         {
-          "file": "base/op-enclave/contracts/src/69990879c401bf3d859e9665772c90f93517dbeb/OwnableConfig.sol",
+          "path": "contracts/src/OwnableConfig.sol",
           "git_object": "44736d1e2b43632545a4f0ba607cae07731c3665",
           "git_mode": "100644",
-          "sha256": "e108ec22073fb09664097834cb4b23df996a3810938750e9362870c41840d3cd",
-          "units": [
-            "OwnableConfig"
-          ]
+          "sha256": "e108ec22073fb09664097834cb4b23df996a3810938750e9362870c41840d3cd"
         },
         {
-          "file": "base/op-enclave/contracts/src/69990879c401bf3d859e9665772c90f93517dbeb/OwnerConfig.sol",
+          "path": "contracts/src/OwnerConfig.sol",
           "git_object": "b91cecf919f463509bc65f669c1099f22b4adc4e",
           "git_mode": "100644",
-          "sha256": "8636e1bed75597f06003d05d508fd05d3795c749f25a642370b517f7a06bbe2c",
-          "units": [
-            "OwnerConfig"
-          ]
+          "sha256": "8636e1bed75597f06003d05d508fd05d3795c749f25a642370b517f7a06bbe2c"
         },
         {
-          "file": "base/op-enclave/contracts/src/69990879c401bf3d859e9665772c90f93517dbeb/Portal.sol",
+          "path": "contracts/src/Portal.sol",
           "git_object": "c2db5d5d742518ee88d19dae91521b2b08c49021",
           "git_mode": "100644",
-          "sha256": "a7c97ee75adae49bc97afe241fff4b500985990e51b80ea40df4a805f40f242c",
-          "units": [
-            "Portal"
-          ]
+          "sha256": "a7c97ee75adae49bc97afe241fff4b500985990e51b80ea40df4a805f40f242c"
         },
         {
-          "file": "base/op-enclave/contracts/src/69990879c401bf3d859e9665772c90f93517dbeb/ResolvingProxy.sol",
+          "path": "contracts/src/ResolvingProxy.sol",
           "git_object": "6a15aba8181bb31ab79ac886d456a09e10c3214d",
           "git_mode": "100644",
-          "sha256": "2d0f6da8590e9a3516cf714775cae7f7c47aee4bf313039e7dc1d5286b71f1ce",
-          "units": [
-            "IResolver",
-            "ResolvingProxy"
-          ]
+          "sha256": "2d0f6da8590e9a3516cf714775cae7f7c47aee4bf313039e7dc1d5286b71f1ce"
         },
         {
-          "file": "base/op-enclave/contracts/src/69990879c401bf3d859e9665772c90f93517dbeb/ResolvingProxyFactory.sol",
+          "path": "contracts/src/ResolvingProxyFactory.sol",
           "git_object": "6b17fc36427d141004360af757e61f890846d3c7",
           "git_mode": "100644",
-          "sha256": "7820f50badc98351da47164ecc10953cb6057b002890fa8997a7609fb45bc7f5",
-          "units": [
-            "ResolvingProxyFactory"
-          ]
+          "sha256": "7820f50badc98351da47164ecc10953cb6057b002890fa8997a7609fb45bc7f5"
         },
         {
-          "file": "base/op-enclave/contracts/src/69990879c401bf3d859e9665772c90f93517dbeb/SystemConfigGlobal.sol",
+          "path": "contracts/src/SystemConfigGlobal.sol",
           "git_object": "01bf09932349405069d579b3e8439df944e1b058",
           "git_mode": "100644",
-          "sha256": "b40b56ad216822cefba2774495ba9b059c2917c641d97369165d99a3ae69ddf8",
-          "units": [
-            "SystemConfigGlobal"
-          ]
+          "sha256": "b40b56ad216822cefba2774495ba9b059c2917c641d97369165d99a3ae69ddf8"
         },
         {
-          "file": "base/op-enclave/contracts/src/69990879c401bf3d859e9665772c90f93517dbeb/SystemConfigOwnable.sol",
+          "path": "contracts/src/SystemConfigOwnable.sol",
           "git_object": "1d517e870fc943159dbc85398db24f86e8429cfd",
           "git_mode": "100644",
-          "sha256": "6412906f86cc704a1c03f4b122cc8041d728c7df9bc166187432bed95d691dc8",
-          "units": [
-            "SystemConfigOwnable"
-          ]
+          "sha256": "6412906f86cc704a1c03f4b122cc8041d728c7df9bc166187432bed95d691dc8"
         }
       ]
     },
@@ -2385,86 +1891,58 @@
       "commit": "6e37ce2036c58f6d555001d5f02d81627f5a0428",
       "files": [
         {
-          "file": "base/op-enclave/contracts/src/6e37ce2036c58f6d555001d5f02d81627f5a0428/DeployChain.sol",
+          "path": "contracts/src/DeployChain.sol",
           "git_object": "f3a48a1ed844c1e54b516c7ffab2a473a1abea26",
           "git_mode": "100644",
-          "sha256": "1f70da47ed5f5dac23c819b09f4b0b8926af393e8fe713ada3ab3e116ead001e",
-          "units": [
-            "DeployChain"
-          ]
+          "sha256": "1f70da47ed5f5dac23c819b09f4b0b8926af393e8fe713ada3ab3e116ead001e"
         },
         {
-          "file": "base/op-enclave/contracts/src/6e37ce2036c58f6d555001d5f02d81627f5a0428/OutputOracle.sol",
+          "path": "contracts/src/OutputOracle.sol",
           "git_object": "4fe1b11fdd7ba03bdd1634afa13a278a7bde0f5c",
           "git_mode": "100644",
-          "sha256": "04c36e97762197e7e85da86d638176b375ef884c0ae028dfcea0ab2dbda7988f",
-          "units": [
-            "OutputOracle"
-          ]
+          "sha256": "04c36e97762197e7e85da86d638176b375ef884c0ae028dfcea0ab2dbda7988f"
         },
         {
-          "file": "base/op-enclave/contracts/src/6e37ce2036c58f6d555001d5f02d81627f5a0428/OwnableConfig.sol",
+          "path": "contracts/src/OwnableConfig.sol",
           "git_object": "44736d1e2b43632545a4f0ba607cae07731c3665",
           "git_mode": "100644",
-          "sha256": "e108ec22073fb09664097834cb4b23df996a3810938750e9362870c41840d3cd",
-          "units": [
-            "OwnableConfig"
-          ]
+          "sha256": "e108ec22073fb09664097834cb4b23df996a3810938750e9362870c41840d3cd"
         },
         {
-          "file": "base/op-enclave/contracts/src/6e37ce2036c58f6d555001d5f02d81627f5a0428/OwnerConfig.sol",
+          "path": "contracts/src/OwnerConfig.sol",
           "git_object": "b91cecf919f463509bc65f669c1099f22b4adc4e",
           "git_mode": "100644",
-          "sha256": "8636e1bed75597f06003d05d508fd05d3795c749f25a642370b517f7a06bbe2c",
-          "units": [
-            "OwnerConfig"
-          ]
+          "sha256": "8636e1bed75597f06003d05d508fd05d3795c749f25a642370b517f7a06bbe2c"
         },
         {
-          "file": "base/op-enclave/contracts/src/6e37ce2036c58f6d555001d5f02d81627f5a0428/Portal.sol",
+          "path": "contracts/src/Portal.sol",
           "git_object": "c2db5d5d742518ee88d19dae91521b2b08c49021",
           "git_mode": "100644",
-          "sha256": "a7c97ee75adae49bc97afe241fff4b500985990e51b80ea40df4a805f40f242c",
-          "units": [
-            "Portal"
-          ]
+          "sha256": "a7c97ee75adae49bc97afe241fff4b500985990e51b80ea40df4a805f40f242c"
         },
         {
-          "file": "base/op-enclave/contracts/src/6e37ce2036c58f6d555001d5f02d81627f5a0428/ResolvingProxy.sol",
+          "path": "contracts/src/ResolvingProxy.sol",
           "git_object": "6a15aba8181bb31ab79ac886d456a09e10c3214d",
           "git_mode": "100644",
-          "sha256": "2d0f6da8590e9a3516cf714775cae7f7c47aee4bf313039e7dc1d5286b71f1ce",
-          "units": [
-            "IResolver",
-            "ResolvingProxy"
-          ]
+          "sha256": "2d0f6da8590e9a3516cf714775cae7f7c47aee4bf313039e7dc1d5286b71f1ce"
         },
         {
-          "file": "base/op-enclave/contracts/src/6e37ce2036c58f6d555001d5f02d81627f5a0428/ResolvingProxyFactory.sol",
+          "path": "contracts/src/ResolvingProxyFactory.sol",
           "git_object": "6b17fc36427d141004360af757e61f890846d3c7",
           "git_mode": "100644",
-          "sha256": "7820f50badc98351da47164ecc10953cb6057b002890fa8997a7609fb45bc7f5",
-          "units": [
-            "ResolvingProxyFactory"
-          ]
+          "sha256": "7820f50badc98351da47164ecc10953cb6057b002890fa8997a7609fb45bc7f5"
         },
         {
-          "file": "base/op-enclave/contracts/src/6e37ce2036c58f6d555001d5f02d81627f5a0428/SystemConfigGlobal.sol",
+          "path": "contracts/src/SystemConfigGlobal.sol",
           "git_object": "01bf09932349405069d579b3e8439df944e1b058",
           "git_mode": "100644",
-          "sha256": "b40b56ad216822cefba2774495ba9b059c2917c641d97369165d99a3ae69ddf8",
-          "units": [
-            "SystemConfigGlobal"
-          ]
+          "sha256": "b40b56ad216822cefba2774495ba9b059c2917c641d97369165d99a3ae69ddf8"
         },
         {
-          "file": "base/op-enclave/contracts/src/6e37ce2036c58f6d555001d5f02d81627f5a0428/SystemConfigOwnable.sol",
+          "path": "contracts/src/SystemConfigOwnable.sol",
           "git_object": "1d517e870fc943159dbc85398db24f86e8429cfd",
           "git_mode": "100644",
-          "sha256": "6412906f86cc704a1c03f4b122cc8041d728c7df9bc166187432bed95d691dc8",
-          "units": [
-            "SystemConfigOwnable"
-          ]
+          "sha256": "6412906f86cc704a1c03f4b122cc8041d728c7df9bc166187432bed95d691dc8"
         }
       ]
     },
@@ -2476,31 +1954,22 @@
       "commit": "8f28fbb6a30f4bcae8057a61e72120423554baca",
       "files": [
         {
-          "file": "base/op-enclave/op-batcher/8f28fbb6a30f4bcae8057a61e72120423554baca/batcher/batch_submitter.go",
+          "path": "op-batcher/batcher/batch_submitter.go",
           "git_object": "45fff74d015e9445c72c4e529d7234ceff443839",
           "git_mode": "100644",
-          "sha256": "9911f1630c7cf0a213f78ff5ba34ae06af4ec67990feee159b88031c81457180",
-          "units": [
-            "batch_submitter.go"
-          ]
+          "sha256": "9911f1630c7cf0a213f78ff5ba34ae06af4ec67990feee159b88031c81457180"
         },
         {
-          "file": "base/op-enclave/op-batcher/8f28fbb6a30f4bcae8057a61e72120423554baca/batcher/channel_out.go",
+          "path": "op-batcher/batcher/channel_out.go",
           "git_object": "441e2853bc95be2dc9b88002a3f2431c4255a6b2",
           "git_mode": "100644",
-          "sha256": "c5c76da6568315363f90dfedc1ca32213ceccd8eef9d0ca941561b2c6e3a4e6b",
-          "units": [
-            "channel_out.go"
-          ]
+          "sha256": "c5c76da6568315363f90dfedc1ca32213ceccd8eef9d0ca941561b2c6e3a4e6b"
         },
         {
-          "file": "base/op-enclave/op-batcher/8f28fbb6a30f4bcae8057a61e72120423554baca/cmd/main.go",
+          "path": "op-batcher/cmd/main.go",
           "git_object": "d4a6595a06ae813132a3eb1f264d0fab94a1009d",
           "git_mode": "100644",
-          "sha256": "78e298681a32b6e01787105baefce39df66165a4ed4576704f63fefd64f2375d",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "78e298681a32b6e01787105baefce39df66165a4ed4576704f63fefd64f2375d"
         }
       ]
     },
@@ -2512,86 +1981,58 @@
       "commit": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
       "files": [
         {
-          "file": "base/op-enclave/contracts/src/98d346dd0e1cdbde75fba01efd36a07e7cf24391/DeployChain.sol",
+          "path": "contracts/src/DeployChain.sol",
           "git_object": "872f8635b6ae7ee45da5833972bc55a515ecdd38",
           "git_mode": "100644",
-          "sha256": "5cbe4c07ee63d60b6b3611578cc661ef01018b298e0e8fe41c5c702fc2476a8b",
-          "units": [
-            "DeployChain"
-          ]
+          "sha256": "5cbe4c07ee63d60b6b3611578cc661ef01018b298e0e8fe41c5c702fc2476a8b"
         },
         {
-          "file": "base/op-enclave/contracts/src/98d346dd0e1cdbde75fba01efd36a07e7cf24391/OutputOracle.sol",
+          "path": "contracts/src/OutputOracle.sol",
           "git_object": "4fe1b11fdd7ba03bdd1634afa13a278a7bde0f5c",
           "git_mode": "100644",
-          "sha256": "04c36e97762197e7e85da86d638176b375ef884c0ae028dfcea0ab2dbda7988f",
-          "units": [
-            "OutputOracle"
-          ]
+          "sha256": "04c36e97762197e7e85da86d638176b375ef884c0ae028dfcea0ab2dbda7988f"
         },
         {
-          "file": "base/op-enclave/contracts/src/98d346dd0e1cdbde75fba01efd36a07e7cf24391/OwnableConfig.sol",
+          "path": "contracts/src/OwnableConfig.sol",
           "git_object": "44736d1e2b43632545a4f0ba607cae07731c3665",
           "git_mode": "100644",
-          "sha256": "e108ec22073fb09664097834cb4b23df996a3810938750e9362870c41840d3cd",
-          "units": [
-            "OwnableConfig"
-          ]
+          "sha256": "e108ec22073fb09664097834cb4b23df996a3810938750e9362870c41840d3cd"
         },
         {
-          "file": "base/op-enclave/contracts/src/98d346dd0e1cdbde75fba01efd36a07e7cf24391/OwnerConfig.sol",
+          "path": "contracts/src/OwnerConfig.sol",
           "git_object": "b91cecf919f463509bc65f669c1099f22b4adc4e",
           "git_mode": "100644",
-          "sha256": "8636e1bed75597f06003d05d508fd05d3795c749f25a642370b517f7a06bbe2c",
-          "units": [
-            "OwnerConfig"
-          ]
+          "sha256": "8636e1bed75597f06003d05d508fd05d3795c749f25a642370b517f7a06bbe2c"
         },
         {
-          "file": "base/op-enclave/contracts/src/98d346dd0e1cdbde75fba01efd36a07e7cf24391/Portal.sol",
+          "path": "contracts/src/Portal.sol",
           "git_object": "c2db5d5d742518ee88d19dae91521b2b08c49021",
           "git_mode": "100644",
-          "sha256": "a7c97ee75adae49bc97afe241fff4b500985990e51b80ea40df4a805f40f242c",
-          "units": [
-            "Portal"
-          ]
+          "sha256": "a7c97ee75adae49bc97afe241fff4b500985990e51b80ea40df4a805f40f242c"
         },
         {
-          "file": "base/op-enclave/contracts/src/98d346dd0e1cdbde75fba01efd36a07e7cf24391/ResolvingProxy.sol",
+          "path": "contracts/src/ResolvingProxy.sol",
           "git_object": "6a15aba8181bb31ab79ac886d456a09e10c3214d",
           "git_mode": "100644",
-          "sha256": "2d0f6da8590e9a3516cf714775cae7f7c47aee4bf313039e7dc1d5286b71f1ce",
-          "units": [
-            "IResolver",
-            "ResolvingProxy"
-          ]
+          "sha256": "2d0f6da8590e9a3516cf714775cae7f7c47aee4bf313039e7dc1d5286b71f1ce"
         },
         {
-          "file": "base/op-enclave/contracts/src/98d346dd0e1cdbde75fba01efd36a07e7cf24391/ResolvingProxyFactory.sol",
+          "path": "contracts/src/ResolvingProxyFactory.sol",
           "git_object": "6b17fc36427d141004360af757e61f890846d3c7",
           "git_mode": "100644",
-          "sha256": "7820f50badc98351da47164ecc10953cb6057b002890fa8997a7609fb45bc7f5",
-          "units": [
-            "ResolvingProxyFactory"
-          ]
+          "sha256": "7820f50badc98351da47164ecc10953cb6057b002890fa8997a7609fb45bc7f5"
         },
         {
-          "file": "base/op-enclave/contracts/src/98d346dd0e1cdbde75fba01efd36a07e7cf24391/SystemConfigGlobal.sol",
+          "path": "contracts/src/SystemConfigGlobal.sol",
           "git_object": "01bf09932349405069d579b3e8439df944e1b058",
           "git_mode": "100644",
-          "sha256": "b40b56ad216822cefba2774495ba9b059c2917c641d97369165d99a3ae69ddf8",
-          "units": [
-            "SystemConfigGlobal"
-          ]
+          "sha256": "b40b56ad216822cefba2774495ba9b059c2917c641d97369165d99a3ae69ddf8"
         },
         {
-          "file": "base/op-enclave/contracts/src/98d346dd0e1cdbde75fba01efd36a07e7cf24391/SystemConfigOwnable.sol",
+          "path": "contracts/src/SystemConfigOwnable.sol",
           "git_object": "1d517e870fc943159dbc85398db24f86e8429cfd",
           "git_mode": "100644",
-          "sha256": "6412906f86cc704a1c03f4b122cc8041d728c7df9bc166187432bed95d691dc8",
-          "units": [
-            "SystemConfigOwnable"
-          ]
+          "sha256": "6412906f86cc704a1c03f4b122cc8041d728c7df9bc166187432bed95d691dc8"
         }
       ]
     },
@@ -2603,31 +2044,22 @@
       "commit": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
       "files": [
         {
-          "file": "base/op-enclave/op-batcher/98d346dd0e1cdbde75fba01efd36a07e7cf24391/batcher/batch_submitter.go",
+          "path": "op-batcher/batcher/batch_submitter.go",
           "git_object": "45fff74d015e9445c72c4e529d7234ceff443839",
           "git_mode": "100644",
-          "sha256": "9911f1630c7cf0a213f78ff5ba34ae06af4ec67990feee159b88031c81457180",
-          "units": [
-            "batch_submitter.go"
-          ]
+          "sha256": "9911f1630c7cf0a213f78ff5ba34ae06af4ec67990feee159b88031c81457180"
         },
         {
-          "file": "base/op-enclave/op-batcher/98d346dd0e1cdbde75fba01efd36a07e7cf24391/batcher/channel_out.go",
+          "path": "op-batcher/batcher/channel_out.go",
           "git_object": "76f2d007b4a9b5e90f2339631ca5409e36327c19",
           "git_mode": "100644",
-          "sha256": "c034f13db1ece1b382a3d53624330e599a72442facd7c91e3c806727ab7fda4e",
-          "units": [
-            "channel_out.go"
-          ]
+          "sha256": "c034f13db1ece1b382a3d53624330e599a72442facd7c91e3c806727ab7fda4e"
         },
         {
-          "file": "base/op-enclave/op-batcher/98d346dd0e1cdbde75fba01efd36a07e7cf24391/cmd/main.go",
+          "path": "op-batcher/cmd/main.go",
           "git_object": "d4a6595a06ae813132a3eb1f264d0fab94a1009d",
           "git_mode": "100644",
-          "sha256": "78e298681a32b6e01787105baefce39df66165a4ed4576704f63fefd64f2375d",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "78e298681a32b6e01787105baefce39df66165a4ed4576704f63fefd64f2375d"
         }
       ]
     },
@@ -2639,157 +2071,106 @@
       "commit": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
       "files": [
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/.dockerignore",
+          "path": "op-enclave/.dockerignore",
           "git_object": "94143827ed065ca0d7d5be1b765d255c5c32cd9a",
           "git_mode": "100644",
-          "sha256": "c750b6d776c1db92b55fcecbb51c80be008aae877e78a28691b3ae79be9ea63e",
-          "units": [
-            ".dockerignore"
-          ]
+          "sha256": "c750b6d776c1db92b55fcecbb51c80be008aae877e78a28691b3ae79be9ea63e"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/Dockerfile",
+          "path": "op-enclave/Dockerfile",
           "git_object": "26bdb232466dcbda909a94d285496730519c8583",
           "git_mode": "100644",
-          "sha256": "645286daa74de6e0a0ec993734c6de84daa6dfe074f77ea48eabdad1d39b7413",
-          "units": [
-            "Dockerfile"
-          ]
+          "sha256": "645286daa74de6e0a0ec993734c6de84daa6dfe074f77ea48eabdad1d39b7413"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/cmd/enclave/main.go",
+          "path": "op-enclave/cmd/enclave/main.go",
           "git_object": "69455adaceac443f8e77eb3d11f94085410310b6",
           "git_mode": "100644",
-          "sha256": "15e4927787d3da8e47f29488e2b1e7e18e4b0fb0f7bff45446109beac25000c6",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "15e4927787d3da8e47f29488e2b1e7e18e4b0fb0f7bff45446109beac25000c6"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/cmd/server/main.go",
+          "path": "op-enclave/cmd/server/main.go",
           "git_object": "08ec932ff655b864e624db39599b493c130e0233",
           "git_mode": "100644",
-          "sha256": "6c715fa3b517ccb2dca5f5785f131e419756f0c597b6fcea733b8fe41e953e00",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "6c715fa3b517ccb2dca5f5785f131e419756f0c597b6fcea733b8fe41e953e00"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/eif/cmdline-aarch64",
+          "path": "op-enclave/eif/cmdline-aarch64",
           "git_object": "ea78dd00ede940217bb223877dd99557a3a1b5fc",
           "git_mode": "100644",
-          "sha256": "b2863fac918fe57e9083ef434e8ac09a01ab97673f3d14c0afc1c017758ceb44",
-          "units": [
-            "cmdline-aarch64"
-          ]
+          "sha256": "b2863fac918fe57e9083ef434e8ac09a01ab97673f3d14c0afc1c017758ceb44"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/eif/cmdline-x86_64",
+          "path": "op-enclave/eif/cmdline-x86_64",
           "git_object": "942025a9811181533d9cf7a672bd9fadcf58c028",
           "git_mode": "100644",
-          "sha256": "10e182738c73d88854c480aa22032474cfc9e82443d39ce92bf5fa1684fee68d",
-          "units": [
-            "cmdline-x86_64"
-          ]
+          "sha256": "10e182738c73d88854c480aa22032474cfc9e82443d39ce92bf5fa1684fee68d"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/eif/init-ramdisk.yaml",
+          "path": "op-enclave/eif/init-ramdisk.yaml",
           "git_object": "5c53cb3980e64afc1044fa1b4f2bf0ed9b1cf215",
           "git_mode": "100644",
-          "sha256": "194a7cd33263836a658e20df10884de12305e061e9548a2bf5f4807ec3381071",
-          "units": [
-            "init-ramdisk.yaml"
-          ]
+          "sha256": "194a7cd33263836a658e20df10884de12305e061e9548a2bf5f4807ec3381071"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/eif/user-ramdisk.yaml",
+          "path": "op-enclave/eif/user-ramdisk.yaml",
           "git_object": "abd9f3a6232be78dbdaea70cf5584dc0a2487819",
           "git_mode": "100644",
-          "sha256": "4eb3773c7f98a671df7e6e1d7c38922cd878e74cd5218525fc98c9888462649d",
-          "units": [
-            "user-ramdisk.yaml"
-          ]
+          "sha256": "4eb3773c7f98a671df7e6e1d7c38922cd878e74cd5218525fc98c9888462649d"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/enclave/client.go",
+          "path": "op-enclave/enclave/client.go",
           "git_object": "c9056db74eba51036e9b48f386038fd122f62b5b",
           "git_mode": "100644",
-          "sha256": "6e9a9162066adfe3ff03ff4b1245e55a0a78f38f6f7cd3c880413830b5ce1334",
-          "units": [
-            "client.go"
-          ]
+          "sha256": "6e9a9162066adfe3ff03ff4b1245e55a0a78f38f6f7cd3c880413830b5ce1334"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/enclave/config.go",
+          "path": "op-enclave/enclave/config.go",
           "git_object": "552fa32a19b62d536e873333c9e4fd41154cd2bd",
           "git_mode": "100644",
-          "sha256": "5133bd0664f058a1f205767e539051aab7784c4aa1d0b3b3d746164524bb3e30",
-          "units": [
-            "config.go"
-          ]
+          "sha256": "5133bd0664f058a1f205767e539051aab7784c4aa1d0b3b3d746164524bb3e30"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/enclave/l1_receipts_fetcher.go",
+          "path": "op-enclave/enclave/l1_receipts_fetcher.go",
           "git_object": "4187b42a0161e59908b649f393153007a091ab52",
           "git_mode": "100644",
-          "sha256": "5a05bd4cb2c1c170de5855db216f85896fc1ba06a25f1fdaa73e4e10e0b4aeed",
-          "units": [
-            "l1_receipts_fetcher.go"
-          ]
+          "sha256": "5a05bd4cb2c1c170de5855db216f85896fc1ba06a25f1fdaa73e4e10e0b4aeed"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/enclave/l2_system_config_fetcher.go",
+          "path": "op-enclave/enclave/l2_system_config_fetcher.go",
           "git_object": "34d022d5e23172d621d265638042f0885ed0b74b",
           "git_mode": "100644",
-          "sha256": "e99d3c23ed030e234face2563b3978e984bd79648cbca62cda3742a08dd115e8",
-          "units": [
-            "l2_system_config_fetcher.go"
-          ]
+          "sha256": "e99d3c23ed030e234face2563b3978e984bd79648cbca62cda3742a08dd115e8"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/enclave/rpc.go",
+          "path": "op-enclave/enclave/rpc.go",
           "git_object": "756ef5dafe7bd71d202287ed27ed5460810cfd67",
           "git_mode": "100644",
-          "sha256": "ff357df6ba69719e31c3c15c5a04af0a4813150b0cd74d7d13e7d56ced3b4da2",
-          "units": [
-            "rpc.go"
-          ]
+          "sha256": "ff357df6ba69719e31c3c15c5a04af0a4813150b0cd74d7d13e7d56ced3b4da2"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/enclave/server.go",
+          "path": "op-enclave/enclave/server.go",
           "git_object": "c80abc7b24c914b7c43b633b959fa645afe138ec",
           "git_mode": "100644",
-          "sha256": "5c8ad9c450cb4f6144127e28a624a87999976f79d32638b083a478029cbdd2a6",
-          "units": [
-            "server.go"
-          ]
+          "sha256": "5c8ad9c450cb4f6144127e28a624a87999976f79d32638b083a478029cbdd2a6"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/enclave/stateless.go",
+          "path": "op-enclave/enclave/stateless.go",
           "git_object": "aab7e80aedb987d740cb9fef2d7fb024d0490e46",
           "git_mode": "100644",
-          "sha256": "eb36ecf645135ee458dc320e920d10beb7c76774e8501b8ca75ff87a31705a5d",
-          "units": [
-            "stateless.go"
-          ]
+          "sha256": "eb36ecf645135ee458dc320e920d10beb7c76774e8501b8ca75ff87a31705a5d"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/go.mod",
+          "path": "op-enclave/go.mod",
           "git_object": "b3157296c6366f58a59c78ca8aa3966cfa092d34",
           "git_mode": "100644",
-          "sha256": "b81487b03c260300de012699e88852c8c661b4210bf18396f60851b47e3e683c",
-          "units": [
-            "go.mod"
-          ]
+          "sha256": "b81487b03c260300de012699e88852c8c661b4210bf18396f60851b47e3e683c"
         },
         {
-          "file": "base/op-enclave/op-enclave/98d346dd0e1cdbde75fba01efd36a07e7cf24391/go.sum",
+          "path": "op-enclave/go.sum",
           "git_object": "4314cd45e69471858a4f264535a043403e66808d",
           "git_mode": "100644",
-          "sha256": "f7bd87c6018863ab300cbb8bdf8895c6046f22d209a7171809fc946d584af6c5",
-          "units": [
-            "go.sum"
-          ]
+          "sha256": "f7bd87c6018863ab300cbb8bdf8895c6046f22d209a7171809fc946d584af6c5"
         }
       ]
     },
@@ -2801,94 +2182,64 @@
       "commit": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
       "files": [
         {
-          "file": "base/op-enclave/op-proposer/98d346dd0e1cdbde75fba01efd36a07e7cf24391/cmd/main.go",
+          "path": "op-proposer/cmd/main.go",
           "git_object": "d03a4664ec780ad5de3417c77dadab6ecc5c461c",
           "git_mode": "100644",
-          "sha256": "d4bbe52c43f9b19cbdb8cf5cc0481dc3c65c0faee170472737a4544fa4366f6c",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "d4bbe52c43f9b19cbdb8cf5cc0481dc3c65c0faee170472737a4544fa4366f6c"
         },
         {
-          "file": "base/op-enclave/op-proposer/98d346dd0e1cdbde75fba01efd36a07e7cf24391/flags/flags.go",
+          "path": "op-proposer/flags/flags.go",
           "git_object": "c928a50c6f4d3499f8a89158445c3f04d570ce62",
           "git_mode": "100644",
-          "sha256": "61e9f8dbc802727c59379a47e234af375f19a2653ba63995fe61e01291a52475",
-          "units": [
-            "flags.go"
-          ]
+          "sha256": "61e9f8dbc802727c59379a47e234af375f19a2653ba63995fe61e01291a52475"
         },
         {
-          "file": "base/op-enclave/op-proposer/98d346dd0e1cdbde75fba01efd36a07e7cf24391/metrics/metrics.go",
+          "path": "op-proposer/metrics/metrics.go",
           "git_object": "33d4b94f960049a4eecd0672c7a4811a4b0ffcfc",
           "git_mode": "100644",
-          "sha256": "785efcc189520374f27e728b38d50a2228c02e6dfa75032662774ff25ee2a8ff",
-          "units": [
-            "metrics.go"
-          ]
+          "sha256": "785efcc189520374f27e728b38d50a2228c02e6dfa75032662774ff25ee2a8ff"
         },
         {
-          "file": "base/op-enclave/op-proposer/98d346dd0e1cdbde75fba01efd36a07e7cf24391/proposer/clients.go",
+          "path": "op-proposer/proposer/clients.go",
           "git_object": "494d499ec2e97ab128e9865001a93298b1ebd6f6",
           "git_mode": "100644",
-          "sha256": "3a58c17f6bdaa2ee35a5159a8612cefc8377d8f238225ba9e1225e48efc4dac0",
-          "units": [
-            "clients.go"
-          ]
+          "sha256": "3a58c17f6bdaa2ee35a5159a8612cefc8377d8f238225ba9e1225e48efc4dac0"
         },
         {
-          "file": "base/op-enclave/op-proposer/98d346dd0e1cdbde75fba01efd36a07e7cf24391/proposer/config.go",
+          "path": "op-proposer/proposer/config.go",
           "git_object": "284ab72507adbd51dcd8156bd58371f9efcce962",
           "git_mode": "100644",
-          "sha256": "50d670c025fca9b91a7698c8dc841e21fa9c510ac075ccb46ecad3aabcba56ba",
-          "units": [
-            "config.go"
-          ]
+          "sha256": "50d670c025fca9b91a7698c8dc841e21fa9c510ac075ccb46ecad3aabcba56ba"
         },
         {
-          "file": "base/op-enclave/op-proposer/98d346dd0e1cdbde75fba01efd36a07e7cf24391/proposer/driver.go",
+          "path": "op-proposer/proposer/driver.go",
           "git_object": "fbee87997d4d521be8d337e6293350c8c068fa4e",
           "git_mode": "100644",
-          "sha256": "517902754c9e7dd11e6fcfa1d2e4221d5b8957111e1f141b4cd181921e395343",
-          "units": [
-            "driver.go"
-          ]
+          "sha256": "517902754c9e7dd11e6fcfa1d2e4221d5b8957111e1f141b4cd181921e395343"
         },
         {
-          "file": "base/op-enclave/op-proposer/98d346dd0e1cdbde75fba01efd36a07e7cf24391/proposer/l2_output_submitter.go",
+          "path": "op-proposer/proposer/l2_output_submitter.go",
           "git_object": "639305a8fc73b416287c97fb3af4f9f00b298135",
           "git_mode": "100644",
-          "sha256": "c8cfc3014bda30de2328f2f34036c8bf845d551c26a8d14b0ea8fa9a4e117fed",
-          "units": [
-            "l2_output_submitter.go"
-          ]
+          "sha256": "c8cfc3014bda30de2328f2f34036c8bf845d551c26a8d14b0ea8fa9a4e117fed"
         },
         {
-          "file": "base/op-enclave/op-proposer/98d346dd0e1cdbde75fba01efd36a07e7cf24391/proposer/prover.go",
+          "path": "op-proposer/proposer/prover.go",
           "git_object": "564d87203ad81c9a9ee0dfefc3955257e1f603e4",
           "git_mode": "100644",
-          "sha256": "7e5c98766144f4d675cc0184f048aeef80e5d7448f4f41abebe285a7df41ee60",
-          "units": [
-            "prover.go"
-          ]
+          "sha256": "7e5c98766144f4d675cc0184f048aeef80e5d7448f4f41abebe285a7df41ee60"
         },
         {
-          "file": "base/op-enclave/op-proposer/98d346dd0e1cdbde75fba01efd36a07e7cf24391/proposer/reth_client.go",
+          "path": "op-proposer/proposer/reth_client.go",
           "git_object": "0dc8368f38af5b97b4fe176be44c02554c05082f",
           "git_mode": "100644",
-          "sha256": "d74b9eac22a194070a16fec9a2b669196dcab914f29f0838041edecb2f162f4e",
-          "units": [
-            "reth_client.go"
-          ]
+          "sha256": "d74b9eac22a194070a16fec9a2b669196dcab914f29f0838041edecb2f162f4e"
         },
         {
-          "file": "base/op-enclave/op-proposer/98d346dd0e1cdbde75fba01efd36a07e7cf24391/proposer/service.go",
+          "path": "op-proposer/proposer/service.go",
           "git_object": "6ca6415666dc0060bd17ed2cff99c55f426949ef",
           "git_mode": "100644",
-          "sha256": "0c296f504e952ed7bbc7ab5e2facb8974be59f02dfd55bbb4610e1b89f6edd2c",
-          "units": [
-            "service.go"
-          ]
+          "sha256": "0c296f504e952ed7bbc7ab5e2facb8974be59f02dfd55bbb4610e1b89f6edd2c"
         }
       ]
     },
@@ -2900,40 +2251,28 @@
       "commit": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
       "files": [
         {
-          "file": "base/op-enclave/op-withdrawer/98d346dd0e1cdbde75fba01efd36a07e7cf24391/example/README.md",
+          "path": "op-withdrawer/example/README.md",
           "git_object": "4c85d6e36841ccf2e794912e12730dcb7eb18260",
           "git_mode": "100644",
-          "sha256": "8c0f1ce3adc8691325396f6b13fbd551cdbe1dfa4df0162cc6bda07583b814fa",
-          "units": [
-            "README.md"
-          ]
+          "sha256": "8c0f1ce3adc8691325396f6b13fbd551cdbe1dfa4df0162cc6bda07583b814fa"
         },
         {
-          "file": "base/op-enclave/op-withdrawer/98d346dd0e1cdbde75fba01efd36a07e7cf24391/example/main.go",
+          "path": "op-withdrawer/example/main.go",
           "git_object": "25e5b20eac9c1c6604578e78bff6655cf78ef137",
           "git_mode": "100644",
-          "sha256": "6950753813ff3f1fef814c8876cae8e16a5addccbf6796160c9535cc825b4ecb",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "6950753813ff3f1fef814c8876cae8e16a5addccbf6796160c9535cc825b4ecb"
         },
         {
-          "file": "base/op-enclave/op-withdrawer/98d346dd0e1cdbde75fba01efd36a07e7cf24391/main.go",
+          "path": "op-withdrawer/main.go",
           "git_object": "7dedbee4676e35db7d2ba424964a1372798f4f17",
           "git_mode": "100644",
-          "sha256": "426533958650af5f078d934970a213ac7b9530780ab2571903f4c12933f9c6cf",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "426533958650af5f078d934970a213ac7b9530780ab2571903f4c12933f9c6cf"
         },
         {
-          "file": "base/op-enclave/op-withdrawer/98d346dd0e1cdbde75fba01efd36a07e7cf24391/withdrawals/withdrawals.go",
+          "path": "op-withdrawer/withdrawals/withdrawals.go",
           "git_object": "11acd6fdfeecf3d48deb37fbca98c44bc88f2a0d",
           "git_mode": "100644",
-          "sha256": "418bda49fcf4d20ad97f0ec523e2653ee9f4b39fa64ff7c50d6688b7713f2271",
-          "units": [
-            "withdrawals.go"
-          ]
+          "sha256": "418bda49fcf4d20ad97f0ec523e2653ee9f4b39fa64ff7c50d6688b7713f2271"
         }
       ]
     },
@@ -2945,94 +2284,64 @@
       "commit": "ab2d40808ad61afe26e423285e650c723e877570",
       "files": [
         {
-          "file": "base/op-enclave/op-proposer/ab2d40808ad61afe26e423285e650c723e877570/cmd/main.go",
+          "path": "op-proposer/cmd/main.go",
           "git_object": "d03a4664ec780ad5de3417c77dadab6ecc5c461c",
           "git_mode": "100644",
-          "sha256": "d4bbe52c43f9b19cbdb8cf5cc0481dc3c65c0faee170472737a4544fa4366f6c",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "d4bbe52c43f9b19cbdb8cf5cc0481dc3c65c0faee170472737a4544fa4366f6c"
         },
         {
-          "file": "base/op-enclave/op-proposer/ab2d40808ad61afe26e423285e650c723e877570/flags/flags.go",
+          "path": "op-proposer/flags/flags.go",
           "git_object": "c928a50c6f4d3499f8a89158445c3f04d570ce62",
           "git_mode": "100644",
-          "sha256": "61e9f8dbc802727c59379a47e234af375f19a2653ba63995fe61e01291a52475",
-          "units": [
-            "flags.go"
-          ]
+          "sha256": "61e9f8dbc802727c59379a47e234af375f19a2653ba63995fe61e01291a52475"
         },
         {
-          "file": "base/op-enclave/op-proposer/ab2d40808ad61afe26e423285e650c723e877570/metrics/metrics.go",
+          "path": "op-proposer/metrics/metrics.go",
           "git_object": "33d4b94f960049a4eecd0672c7a4811a4b0ffcfc",
           "git_mode": "100644",
-          "sha256": "785efcc189520374f27e728b38d50a2228c02e6dfa75032662774ff25ee2a8ff",
-          "units": [
-            "metrics.go"
-          ]
+          "sha256": "785efcc189520374f27e728b38d50a2228c02e6dfa75032662774ff25ee2a8ff"
         },
         {
-          "file": "base/op-enclave/op-proposer/ab2d40808ad61afe26e423285e650c723e877570/proposer/clients.go",
+          "path": "op-proposer/proposer/clients.go",
           "git_object": "494d499ec2e97ab128e9865001a93298b1ebd6f6",
           "git_mode": "100644",
-          "sha256": "3a58c17f6bdaa2ee35a5159a8612cefc8377d8f238225ba9e1225e48efc4dac0",
-          "units": [
-            "clients.go"
-          ]
+          "sha256": "3a58c17f6bdaa2ee35a5159a8612cefc8377d8f238225ba9e1225e48efc4dac0"
         },
         {
-          "file": "base/op-enclave/op-proposer/ab2d40808ad61afe26e423285e650c723e877570/proposer/config.go",
+          "path": "op-proposer/proposer/config.go",
           "git_object": "284ab72507adbd51dcd8156bd58371f9efcce962",
           "git_mode": "100644",
-          "sha256": "50d670c025fca9b91a7698c8dc841e21fa9c510ac075ccb46ecad3aabcba56ba",
-          "units": [
-            "config.go"
-          ]
+          "sha256": "50d670c025fca9b91a7698c8dc841e21fa9c510ac075ccb46ecad3aabcba56ba"
         },
         {
-          "file": "base/op-enclave/op-proposer/ab2d40808ad61afe26e423285e650c723e877570/proposer/driver.go",
+          "path": "op-proposer/proposer/driver.go",
           "git_object": "65504bc8ad18b92071efcb452970a0519aa0b6a6",
           "git_mode": "100644",
-          "sha256": "e501cdea528176676356d11fbf6f13adb04cd946e85cd29107642130d42e8dd9",
-          "units": [
-            "driver.go"
-          ]
+          "sha256": "e501cdea528176676356d11fbf6f13adb04cd946e85cd29107642130d42e8dd9"
         },
         {
-          "file": "base/op-enclave/op-proposer/ab2d40808ad61afe26e423285e650c723e877570/proposer/l2_output_submitter.go",
+          "path": "op-proposer/proposer/l2_output_submitter.go",
           "git_object": "639305a8fc73b416287c97fb3af4f9f00b298135",
           "git_mode": "100644",
-          "sha256": "c8cfc3014bda30de2328f2f34036c8bf845d551c26a8d14b0ea8fa9a4e117fed",
-          "units": [
-            "l2_output_submitter.go"
-          ]
+          "sha256": "c8cfc3014bda30de2328f2f34036c8bf845d551c26a8d14b0ea8fa9a4e117fed"
         },
         {
-          "file": "base/op-enclave/op-proposer/ab2d40808ad61afe26e423285e650c723e877570/proposer/prover.go",
+          "path": "op-proposer/proposer/prover.go",
           "git_object": "564d87203ad81c9a9ee0dfefc3955257e1f603e4",
           "git_mode": "100644",
-          "sha256": "7e5c98766144f4d675cc0184f048aeef80e5d7448f4f41abebe285a7df41ee60",
-          "units": [
-            "prover.go"
-          ]
+          "sha256": "7e5c98766144f4d675cc0184f048aeef80e5d7448f4f41abebe285a7df41ee60"
         },
         {
-          "file": "base/op-enclave/op-proposer/ab2d40808ad61afe26e423285e650c723e877570/proposer/reth_client.go",
+          "path": "op-proposer/proposer/reth_client.go",
           "git_object": "0dc8368f38af5b97b4fe176be44c02554c05082f",
           "git_mode": "100644",
-          "sha256": "d74b9eac22a194070a16fec9a2b669196dcab914f29f0838041edecb2f162f4e",
-          "units": [
-            "reth_client.go"
-          ]
+          "sha256": "d74b9eac22a194070a16fec9a2b669196dcab914f29f0838041edecb2f162f4e"
         },
         {
-          "file": "base/op-enclave/op-proposer/ab2d40808ad61afe26e423285e650c723e877570/proposer/service.go",
+          "path": "op-proposer/proposer/service.go",
           "git_object": "6ca6415666dc0060bd17ed2cff99c55f426949ef",
           "git_mode": "100644",
-          "sha256": "0c296f504e952ed7bbc7ab5e2facb8974be59f02dfd55bbb4610e1b89f6edd2c",
-          "units": [
-            "service.go"
-          ]
+          "sha256": "0c296f504e952ed7bbc7ab5e2facb8974be59f02dfd55bbb4610e1b89f6edd2c"
         }
       ]
     },
@@ -3044,40 +2353,28 @@
       "commit": "bfd6dbd91c5b06eb4c539e3c1bab25211d54137e",
       "files": [
         {
-          "file": "base/op-enclave/op-withdrawer/bfd6dbd91c5b06eb4c539e3c1bab25211d54137e/example/README.md",
+          "path": "op-withdrawer/example/README.md",
           "git_object": "4c85d6e36841ccf2e794912e12730dcb7eb18260",
           "git_mode": "100644",
-          "sha256": "8c0f1ce3adc8691325396f6b13fbd551cdbe1dfa4df0162cc6bda07583b814fa",
-          "units": [
-            "README.md"
-          ]
+          "sha256": "8c0f1ce3adc8691325396f6b13fbd551cdbe1dfa4df0162cc6bda07583b814fa"
         },
         {
-          "file": "base/op-enclave/op-withdrawer/bfd6dbd91c5b06eb4c539e3c1bab25211d54137e/example/main.go",
+          "path": "op-withdrawer/example/main.go",
           "git_object": "80234fd59b799471b656eca04ada26c7b9f47af5",
           "git_mode": "100644",
-          "sha256": "098a9d8b2d393a8a8ed8017bc7d311d2c3b1e0df59ca7c8ad7ada59203ce9d74",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "098a9d8b2d393a8a8ed8017bc7d311d2c3b1e0df59ca7c8ad7ada59203ce9d74"
         },
         {
-          "file": "base/op-enclave/op-withdrawer/bfd6dbd91c5b06eb4c539e3c1bab25211d54137e/main.go",
+          "path": "op-withdrawer/main.go",
           "git_object": "a9590fc3f0e23466086175b20c2f7a8536caa046",
           "git_mode": "100644",
-          "sha256": "61d77e127ca5049cf6774f425273dd1cd1ad4a902e4f1d5717db07a53730fd09",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "61d77e127ca5049cf6774f425273dd1cd1ad4a902e4f1d5717db07a53730fd09"
         },
         {
-          "file": "base/op-enclave/op-withdrawer/bfd6dbd91c5b06eb4c539e3c1bab25211d54137e/withdrawals/withdrawals.go",
+          "path": "op-withdrawer/withdrawals/withdrawals.go",
           "git_object": "11acd6fdfeecf3d48deb37fbca98c44bc88f2a0d",
           "git_mode": "100644",
-          "sha256": "418bda49fcf4d20ad97f0ec523e2653ee9f4b39fa64ff7c50d6688b7713f2271",
-          "units": [
-            "withdrawals.go"
-          ]
+          "sha256": "418bda49fcf4d20ad97f0ec523e2653ee9f4b39fa64ff7c50d6688b7713f2271"
         }
       ]
     },
@@ -3089,86 +2386,58 @@
       "commit": "c6fe9fbd38074a6463eea57003f5f646e6e8f982",
       "files": [
         {
-          "file": "base/op-enclave/contracts/src/c6fe9fbd38074a6463eea57003f5f646e6e8f982/DeployChain.sol",
+          "path": "contracts/src/DeployChain.sol",
           "git_object": "872f8635b6ae7ee45da5833972bc55a515ecdd38",
           "git_mode": "100644",
-          "sha256": "5cbe4c07ee63d60b6b3611578cc661ef01018b298e0e8fe41c5c702fc2476a8b",
-          "units": [
-            "DeployChain"
-          ]
+          "sha256": "5cbe4c07ee63d60b6b3611578cc661ef01018b298e0e8fe41c5c702fc2476a8b"
         },
         {
-          "file": "base/op-enclave/contracts/src/c6fe9fbd38074a6463eea57003f5f646e6e8f982/OutputOracle.sol",
+          "path": "contracts/src/OutputOracle.sol",
           "git_object": "4fe1b11fdd7ba03bdd1634afa13a278a7bde0f5c",
           "git_mode": "100644",
-          "sha256": "04c36e97762197e7e85da86d638176b375ef884c0ae028dfcea0ab2dbda7988f",
-          "units": [
-            "OutputOracle"
-          ]
+          "sha256": "04c36e97762197e7e85da86d638176b375ef884c0ae028dfcea0ab2dbda7988f"
         },
         {
-          "file": "base/op-enclave/contracts/src/c6fe9fbd38074a6463eea57003f5f646e6e8f982/OwnableConfig.sol",
+          "path": "contracts/src/OwnableConfig.sol",
           "git_object": "44736d1e2b43632545a4f0ba607cae07731c3665",
           "git_mode": "100644",
-          "sha256": "e108ec22073fb09664097834cb4b23df996a3810938750e9362870c41840d3cd",
-          "units": [
-            "OwnableConfig"
-          ]
+          "sha256": "e108ec22073fb09664097834cb4b23df996a3810938750e9362870c41840d3cd"
         },
         {
-          "file": "base/op-enclave/contracts/src/c6fe9fbd38074a6463eea57003f5f646e6e8f982/OwnerConfig.sol",
+          "path": "contracts/src/OwnerConfig.sol",
           "git_object": "b91cecf919f463509bc65f669c1099f22b4adc4e",
           "git_mode": "100644",
-          "sha256": "8636e1bed75597f06003d05d508fd05d3795c749f25a642370b517f7a06bbe2c",
-          "units": [
-            "OwnerConfig"
-          ]
+          "sha256": "8636e1bed75597f06003d05d508fd05d3795c749f25a642370b517f7a06bbe2c"
         },
         {
-          "file": "base/op-enclave/contracts/src/c6fe9fbd38074a6463eea57003f5f646e6e8f982/Portal.sol",
+          "path": "contracts/src/Portal.sol",
           "git_object": "0f87e8d67d27e0da6fda4d67bdc928867ad3d60e",
           "git_mode": "100644",
-          "sha256": "b3175f5c85227dc241fb008108f91e17334b4fab8f7a9440ae4a11402347f08c",
-          "units": [
-            "Portal"
-          ]
+          "sha256": "b3175f5c85227dc241fb008108f91e17334b4fab8f7a9440ae4a11402347f08c"
         },
         {
-          "file": "base/op-enclave/contracts/src/c6fe9fbd38074a6463eea57003f5f646e6e8f982/ResolvingProxy.sol",
+          "path": "contracts/src/ResolvingProxy.sol",
           "git_object": "6a15aba8181bb31ab79ac886d456a09e10c3214d",
           "git_mode": "100644",
-          "sha256": "2d0f6da8590e9a3516cf714775cae7f7c47aee4bf313039e7dc1d5286b71f1ce",
-          "units": [
-            "IResolver",
-            "ResolvingProxy"
-          ]
+          "sha256": "2d0f6da8590e9a3516cf714775cae7f7c47aee4bf313039e7dc1d5286b71f1ce"
         },
         {
-          "file": "base/op-enclave/contracts/src/c6fe9fbd38074a6463eea57003f5f646e6e8f982/ResolvingProxyFactory.sol",
+          "path": "contracts/src/ResolvingProxyFactory.sol",
           "git_object": "6b17fc36427d141004360af757e61f890846d3c7",
           "git_mode": "100644",
-          "sha256": "7820f50badc98351da47164ecc10953cb6057b002890fa8997a7609fb45bc7f5",
-          "units": [
-            "ResolvingProxyFactory"
-          ]
+          "sha256": "7820f50badc98351da47164ecc10953cb6057b002890fa8997a7609fb45bc7f5"
         },
         {
-          "file": "base/op-enclave/contracts/src/c6fe9fbd38074a6463eea57003f5f646e6e8f982/SystemConfigGlobal.sol",
+          "path": "contracts/src/SystemConfigGlobal.sol",
           "git_object": "01bf09932349405069d579b3e8439df944e1b058",
           "git_mode": "100644",
-          "sha256": "b40b56ad216822cefba2774495ba9b059c2917c641d97369165d99a3ae69ddf8",
-          "units": [
-            "SystemConfigGlobal"
-          ]
+          "sha256": "b40b56ad216822cefba2774495ba9b059c2917c641d97369165d99a3ae69ddf8"
         },
         {
-          "file": "base/op-enclave/contracts/src/c6fe9fbd38074a6463eea57003f5f646e6e8f982/SystemConfigOwnable.sol",
+          "path": "contracts/src/SystemConfigOwnable.sol",
           "git_object": "1d517e870fc943159dbc85398db24f86e8429cfd",
           "git_mode": "100644",
-          "sha256": "6412906f86cc704a1c03f4b122cc8041d728c7df9bc166187432bed95d691dc8",
-          "units": [
-            "SystemConfigOwnable"
-          ]
+          "sha256": "6412906f86cc704a1c03f4b122cc8041d728c7df9bc166187432bed95d691dc8"
         }
       ]
     },
@@ -3180,157 +2449,106 @@
       "commit": "de236915c001d6a1d05ae22b1e369564cad5e44a",
       "files": [
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/.dockerignore",
+          "path": "op-enclave/.dockerignore",
           "git_object": "94143827ed065ca0d7d5be1b765d255c5c32cd9a",
           "git_mode": "100644",
-          "sha256": "c750b6d776c1db92b55fcecbb51c80be008aae877e78a28691b3ae79be9ea63e",
-          "units": [
-            ".dockerignore"
-          ]
+          "sha256": "c750b6d776c1db92b55fcecbb51c80be008aae877e78a28691b3ae79be9ea63e"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/Dockerfile",
+          "path": "op-enclave/Dockerfile",
           "git_object": "26bdb232466dcbda909a94d285496730519c8583",
           "git_mode": "100644",
-          "sha256": "645286daa74de6e0a0ec993734c6de84daa6dfe074f77ea48eabdad1d39b7413",
-          "units": [
-            "Dockerfile"
-          ]
+          "sha256": "645286daa74de6e0a0ec993734c6de84daa6dfe074f77ea48eabdad1d39b7413"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/cmd/enclave/main.go",
+          "path": "op-enclave/cmd/enclave/main.go",
           "git_object": "69455adaceac443f8e77eb3d11f94085410310b6",
           "git_mode": "100644",
-          "sha256": "15e4927787d3da8e47f29488e2b1e7e18e4b0fb0f7bff45446109beac25000c6",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "15e4927787d3da8e47f29488e2b1e7e18e4b0fb0f7bff45446109beac25000c6"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/cmd/server/main.go",
+          "path": "op-enclave/cmd/server/main.go",
           "git_object": "08ec932ff655b864e624db39599b493c130e0233",
           "git_mode": "100644",
-          "sha256": "6c715fa3b517ccb2dca5f5785f131e419756f0c597b6fcea733b8fe41e953e00",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "6c715fa3b517ccb2dca5f5785f131e419756f0c597b6fcea733b8fe41e953e00"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/eif/cmdline-aarch64",
+          "path": "op-enclave/eif/cmdline-aarch64",
           "git_object": "ea78dd00ede940217bb223877dd99557a3a1b5fc",
           "git_mode": "100644",
-          "sha256": "b2863fac918fe57e9083ef434e8ac09a01ab97673f3d14c0afc1c017758ceb44",
-          "units": [
-            "cmdline-aarch64"
-          ]
+          "sha256": "b2863fac918fe57e9083ef434e8ac09a01ab97673f3d14c0afc1c017758ceb44"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/eif/cmdline-x86_64",
+          "path": "op-enclave/eif/cmdline-x86_64",
           "git_object": "942025a9811181533d9cf7a672bd9fadcf58c028",
           "git_mode": "100644",
-          "sha256": "10e182738c73d88854c480aa22032474cfc9e82443d39ce92bf5fa1684fee68d",
-          "units": [
-            "cmdline-x86_64"
-          ]
+          "sha256": "10e182738c73d88854c480aa22032474cfc9e82443d39ce92bf5fa1684fee68d"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/eif/init-ramdisk.yaml",
+          "path": "op-enclave/eif/init-ramdisk.yaml",
           "git_object": "5c53cb3980e64afc1044fa1b4f2bf0ed9b1cf215",
           "git_mode": "100644",
-          "sha256": "194a7cd33263836a658e20df10884de12305e061e9548a2bf5f4807ec3381071",
-          "units": [
-            "init-ramdisk.yaml"
-          ]
+          "sha256": "194a7cd33263836a658e20df10884de12305e061e9548a2bf5f4807ec3381071"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/eif/user-ramdisk.yaml",
+          "path": "op-enclave/eif/user-ramdisk.yaml",
           "git_object": "abd9f3a6232be78dbdaea70cf5584dc0a2487819",
           "git_mode": "100644",
-          "sha256": "4eb3773c7f98a671df7e6e1d7c38922cd878e74cd5218525fc98c9888462649d",
-          "units": [
-            "user-ramdisk.yaml"
-          ]
+          "sha256": "4eb3773c7f98a671df7e6e1d7c38922cd878e74cd5218525fc98c9888462649d"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/enclave/client.go",
+          "path": "op-enclave/enclave/client.go",
           "git_object": "c9056db74eba51036e9b48f386038fd122f62b5b",
           "git_mode": "100644",
-          "sha256": "6e9a9162066adfe3ff03ff4b1245e55a0a78f38f6f7cd3c880413830b5ce1334",
-          "units": [
-            "client.go"
-          ]
+          "sha256": "6e9a9162066adfe3ff03ff4b1245e55a0a78f38f6f7cd3c880413830b5ce1334"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/enclave/config.go",
+          "path": "op-enclave/enclave/config.go",
           "git_object": "552fa32a19b62d536e873333c9e4fd41154cd2bd",
           "git_mode": "100644",
-          "sha256": "5133bd0664f058a1f205767e539051aab7784c4aa1d0b3b3d746164524bb3e30",
-          "units": [
-            "config.go"
-          ]
+          "sha256": "5133bd0664f058a1f205767e539051aab7784c4aa1d0b3b3d746164524bb3e30"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/enclave/l1_receipts_fetcher.go",
+          "path": "op-enclave/enclave/l1_receipts_fetcher.go",
           "git_object": "4187b42a0161e59908b649f393153007a091ab52",
           "git_mode": "100644",
-          "sha256": "5a05bd4cb2c1c170de5855db216f85896fc1ba06a25f1fdaa73e4e10e0b4aeed",
-          "units": [
-            "l1_receipts_fetcher.go"
-          ]
+          "sha256": "5a05bd4cb2c1c170de5855db216f85896fc1ba06a25f1fdaa73e4e10e0b4aeed"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/enclave/l2_system_config_fetcher.go",
+          "path": "op-enclave/enclave/l2_system_config_fetcher.go",
           "git_object": "34d022d5e23172d621d265638042f0885ed0b74b",
           "git_mode": "100644",
-          "sha256": "e99d3c23ed030e234face2563b3978e984bd79648cbca62cda3742a08dd115e8",
-          "units": [
-            "l2_system_config_fetcher.go"
-          ]
+          "sha256": "e99d3c23ed030e234face2563b3978e984bd79648cbca62cda3742a08dd115e8"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/enclave/rpc.go",
+          "path": "op-enclave/enclave/rpc.go",
           "git_object": "756ef5dafe7bd71d202287ed27ed5460810cfd67",
           "git_mode": "100644",
-          "sha256": "ff357df6ba69719e31c3c15c5a04af0a4813150b0cd74d7d13e7d56ced3b4da2",
-          "units": [
-            "rpc.go"
-          ]
+          "sha256": "ff357df6ba69719e31c3c15c5a04af0a4813150b0cd74d7d13e7d56ced3b4da2"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/enclave/server.go",
+          "path": "op-enclave/enclave/server.go",
           "git_object": "1fb0d9f7c1c6d3d4a559028fb676b0d508c69d2a",
           "git_mode": "100644",
-          "sha256": "4d478f04e25ab9964c27925ad1707c821c6a01c8a8b292172037c736f4e1e7a3",
-          "units": [
-            "server.go"
-          ]
+          "sha256": "4d478f04e25ab9964c27925ad1707c821c6a01c8a8b292172037c736f4e1e7a3"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/enclave/stateless.go",
+          "path": "op-enclave/enclave/stateless.go",
           "git_object": "aab7e80aedb987d740cb9fef2d7fb024d0490e46",
           "git_mode": "100644",
-          "sha256": "eb36ecf645135ee458dc320e920d10beb7c76774e8501b8ca75ff87a31705a5d",
-          "units": [
-            "stateless.go"
-          ]
+          "sha256": "eb36ecf645135ee458dc320e920d10beb7c76774e8501b8ca75ff87a31705a5d"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/go.mod",
+          "path": "op-enclave/go.mod",
           "git_object": "b3157296c6366f58a59c78ca8aa3966cfa092d34",
           "git_mode": "100644",
-          "sha256": "b81487b03c260300de012699e88852c8c661b4210bf18396f60851b47e3e683c",
-          "units": [
-            "go.mod"
-          ]
+          "sha256": "b81487b03c260300de012699e88852c8c661b4210bf18396f60851b47e3e683c"
         },
         {
-          "file": "base/op-enclave/op-enclave/de236915c001d6a1d05ae22b1e369564cad5e44a/go.sum",
+          "path": "op-enclave/go.sum",
           "git_object": "4314cd45e69471858a4f264535a043403e66808d",
           "git_mode": "100644",
-          "sha256": "f7bd87c6018863ab300cbb8bdf8895c6046f22d209a7171809fc946d584af6c5",
-          "units": [
-            "go.sum"
-          ]
+          "sha256": "f7bd87c6018863ab300cbb8bdf8895c6046f22d209a7171809fc946d584af6c5"
         }
       ]
     },
@@ -3342,40 +2560,28 @@
       "commit": "e1f2146f8fe8fe9604fc51b938d24c7865cf7dc4",
       "files": [
         {
-          "file": "base/op-enclave/op-withdrawer/e1f2146f8fe8fe9604fc51b938d24c7865cf7dc4/example/README.md",
+          "path": "op-withdrawer/example/README.md",
           "git_object": "4c85d6e36841ccf2e794912e12730dcb7eb18260",
           "git_mode": "100644",
-          "sha256": "8c0f1ce3adc8691325396f6b13fbd551cdbe1dfa4df0162cc6bda07583b814fa",
-          "units": [
-            "README.md"
-          ]
+          "sha256": "8c0f1ce3adc8691325396f6b13fbd551cdbe1dfa4df0162cc6bda07583b814fa"
         },
         {
-          "file": "base/op-enclave/op-withdrawer/e1f2146f8fe8fe9604fc51b938d24c7865cf7dc4/example/main.go",
+          "path": "op-withdrawer/example/main.go",
           "git_object": "0ef0c468046c430eb0b12a359e672ed94578ce3f",
           "git_mode": "100644",
-          "sha256": "afb7505a004013c3204d169c50c352272b6285436f8f1ec10f65c84b1c34c4c4",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "afb7505a004013c3204d169c50c352272b6285436f8f1ec10f65c84b1c34c4c4"
         },
         {
-          "file": "base/op-enclave/op-withdrawer/e1f2146f8fe8fe9604fc51b938d24c7865cf7dc4/main.go",
+          "path": "op-withdrawer/main.go",
           "git_object": "0b79901fe2f90c129f54fbc58c9062acd8e80889",
           "git_mode": "100644",
-          "sha256": "21eed13e65ce038f11febc19cf10ced58627fed30e586fb9d24fafc7f7db802e",
-          "units": [
-            "main.go"
-          ]
+          "sha256": "21eed13e65ce038f11febc19cf10ced58627fed30e586fb9d24fafc7f7db802e"
         },
         {
-          "file": "base/op-enclave/op-withdrawer/e1f2146f8fe8fe9604fc51b938d24c7865cf7dc4/withdrawals/withdrawals.go",
+          "path": "op-withdrawer/withdrawals/withdrawals.go",
           "git_object": "817f06f9f36b21de12ae63f08fe64b1819ff00a7",
           "git_mode": "100644",
-          "sha256": "4213d34c039a6df96c593dbe92ab027b6edb2dc746ed667ae75f9e77609489fc",
-          "units": [
-            "withdrawals.go"
-          ]
+          "sha256": "4213d34c039a6df96c593dbe92ab027b6edb2dc746ed667ae75f9e77609489fc"
         }
       ]
     }

@@ -1,0 +1,10 @@
+[
+  {
+    "type": "verifier",
+    "name": "Tornado Cash verifier v2.1",
+    "link": "https://github.com/tornadocash/tornado-core/tree/v2.1/circuits",
+    "commit": "a533ad9ffb62163a42d4fa9a09984c5dd4e5c41d",
+    "address": "eth:0xce172ce1F20EC0B3728c9965470eaf994A03557A",
+    "path": "tornado-core-v2.1-circuits"
+  }
+]

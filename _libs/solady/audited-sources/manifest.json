@@ -1,7 +1,6 @@
 {
-  "schema_version": "1.1.0",
-  "project": "Solady",
-  "audit_summary": "../audit-summary.json",
+  "schema_version": "2.0.0",
+  "collection": "_libs/solady",
   "sources": [
     {
       "repository": "Vectorized/solady",
@@ -11,13 +10,10 @@
       "commit": "120a9cdcaf3d944d4f396502ef8ab370ba3eba4c",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC20Votes.sol/120a9cdcaf3d944d4f396502ef8ab370ba3eba4c/ERC20Votes.sol",
+          "path": "src/tokens/ERC20Votes.sol",
           "git_object": "28aace93727fbe366ec6a1f5de1bdc91f290804e",
           "git_mode": "100644",
-          "sha256": "c1338d51c1a7a16c7674702d7426b45a2da24ebace5b3d0944a5b4dce90d8d6c",
-          "units": [
-            "ERC20Votes"
-          ]
+          "sha256": "c1338d51c1a7a16c7674702d7426b45a2da24ebace5b3d0944a5b4dce90d8d6c"
         }
       ]
     },
@@ -29,13 +25,10 @@
       "commit": "12f35e0e06352c3ef2f4be2e4e73513673151b6f",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/Timelock.sol/12f35e0e06352c3ef2f4be2e4e73513673151b6f/Timelock.sol",
+          "path": "src/accounts/Timelock.sol",
           "git_object": "75c377617afafa26101d180757f7e57f5d0ffcda",
           "git_mode": "100644",
-          "sha256": "33106793e48dd6085e9de696635879ad44c4153d1224ebf8769ff60f65a29521",
-          "units": [
-            "Timelock"
-          ]
+          "sha256": "33106793e48dd6085e9de696635879ad44c4153d1224ebf8769ff60f65a29521"
         }
       ]
     },
@@ -47,13 +40,10 @@
       "commit": "131f6118068ab638dacebea9ec44d59b7e0f2c42",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/UUPSUpgradeable.sol/131f6118068ab638dacebea9ec44d59b7e0f2c42/UUPSUpgradeable.sol",
+          "path": "src/utils/UUPSUpgradeable.sol",
           "git_object": "26492d53bb0c0622fae9ba42cff02581544a95dc",
           "git_mode": "100644",
-          "sha256": "3b9bbe4bc48bc47721b38499d3b3d97a20915c9d636ab04b97b568bf5192ed5d",
-          "units": [
-            "UUPSUpgradeable"
-          ]
+          "sha256": "3b9bbe4bc48bc47721b38499d3b3d97a20915c9d636ab04b97b568bf5192ed5d"
         }
       ]
     },
@@ -65,13 +55,10 @@
       "commit": "159696cbc2341b20c9d1063f942bd450b1f82b2a",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/ERC7821.sol/159696cbc2341b20c9d1063f942bd450b1f82b2a/ERC7821.sol",
+          "path": "src/accounts/ERC7821.sol",
           "git_object": "2de98ee2529f1ef062cf582b06bfb6e6a71fecde",
           "git_mode": "100644",
-          "sha256": "a4c793e7d6733fe62a2301e8d5b13e9c8c843f48cf085a46d2c3c004bb42b9ec",
-          "units": [
-            "ERC7821"
-          ]
+          "sha256": "a4c793e7d6733fe62a2301e8d5b13e9c8c843f48cf085a46d2c3c004bb42b9ec"
         }
       ]
     },
@@ -83,13 +70,10 @@
       "commit": "175e4e71a7622836a127377dec0b28c92fb4789a",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/Receiver.sol/175e4e71a7622836a127377dec0b28c92fb4789a/Receiver.sol",
+          "path": "src/accounts/Receiver.sol",
           "git_object": "aa8af05268d6b64d050720c654f467aa0852bb37",
           "git_mode": "100644",
-          "sha256": "89e4c8cc650a381985f64ccc8d86e896d4a984bd3ab882b83c07ec737a636685",
-          "units": [
-            "Receiver"
-          ]
+          "sha256": "89e4c8cc650a381985f64ccc8d86e896d4a984bd3ab882b83c07ec737a636685"
         }
       ]
     },
@@ -101,13 +85,10 @@
       "commit": "17cba0487dd4e8781153bbbaf7a48cc3bcdc67a2",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SignatureCheckerLib.sol/17cba0487dd4e8781153bbbaf7a48cc3bcdc67a2/SignatureCheckerLib.sol",
+          "path": "src/utils/SignatureCheckerLib.sol",
           "git_object": "ad37db4dbe2e767ee7bd91d96a3bcb8f777090ad",
           "git_mode": "100644",
-          "sha256": "fd23c309a534c8e08218e21056a3a9a953ba283d13bf78e0859863b1a3f13b90",
-          "units": [
-            "SignatureCheckerLib"
-          ]
+          "sha256": "fd23c309a534c8e08218e21056a3a9a953ba283d13bf78e0859863b1a3f13b90"
         }
       ]
     },
@@ -119,13 +100,10 @@
       "commit": "19009cfa459b9cde0665c6fb017de8fd702ed2c8",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/ext/delegatexyz/DelegateCheckerLib.sol/19009cfa459b9cde0665c6fb017de8fd702ed2c8/DelegateCheckerLib.sol",
+          "path": "src/utils/ext/delegatexyz/DelegateCheckerLib.sol",
           "git_object": "7ca3eb242f3fde3a6c79db2a2cb7a0c82260f3a0",
           "git_mode": "100644",
-          "sha256": "7b81bb8db488d7e72f2954b96a19834dc5eba2e7a16bd402f95f837257eb27f0",
-          "units": [
-            "DelegateCheckerLib"
-          ]
+          "sha256": "7b81bb8db488d7e72f2954b96a19834dc5eba2e7a16bd402f95f837257eb27f0"
         }
       ]
     },
@@ -137,13 +115,10 @@
       "commit": "1f023f7a8d61d82c002d19feeb530a87ec84c97c",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/LibClone.sol/1f023f7a8d61d82c002d19feeb530a87ec84c97c/LibClone.sol",
+          "path": "src/utils/LibClone.sol",
           "git_object": "4ff230035c0491de6ca4a5e7845fba38749bda51",
           "git_mode": "100644",
-          "sha256": "b1a6fd195ba93560a01af6b294deef59a50425a083566e0383778a1f13731fcc",
-          "units": [
-            "LibClone"
-          ]
+          "sha256": "b1a6fd195ba93560a01af6b294deef59a50425a083566e0383778a1f13731fcc"
         }
       ]
     },
@@ -155,13 +130,10 @@
       "commit": "21b9371d592e61ca8d5af3cd1a0186eaf4de1989",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/LibERC7579.sol/21b9371d592e61ca8d5af3cd1a0186eaf4de1989/LibERC7579.sol",
+          "path": "src/accounts/LibERC7579.sol",
           "git_object": "5eef4ea2aaf1702973bfc62e3a6202c7b2ae551a",
           "git_mode": "100644",
-          "sha256": "15c6450326ae12590584e19320ac7a25349c0dc4982edb173a73a1f4ba416b25",
-          "units": [
-            "LibERC7579"
-          ]
+          "sha256": "15c6450326ae12590584e19320ac7a25349c0dc4982edb173a73a1f4ba416b25"
         }
       ]
     },
@@ -173,13 +145,10 @@
       "commit": "22385ac7b31c27f95b25ee73b3618251386d8fd2",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SignatureCheckerLib.sol/22385ac7b31c27f95b25ee73b3618251386d8fd2/SignatureCheckerLib.sol",
+          "path": "src/utils/SignatureCheckerLib.sol",
           "git_object": "d7eae8ae73365fdf82059cb4a427b7a745acffbe",
           "git_mode": "100644",
-          "sha256": "f108a5b53c0f816b2a73bc061dc82342ec8718507fd9a70be0a19a084abf995e",
-          "units": [
-            "SignatureCheckerLib"
-          ]
+          "sha256": "f108a5b53c0f816b2a73bc061dc82342ec8718507fd9a70be0a19a084abf995e"
         }
       ]
     },
@@ -191,13 +160,10 @@
       "commit": "22bcb1df823b329eb15eef7871d63042dd246489",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/Initializable.sol/22bcb1df823b329eb15eef7871d63042dd246489/Initializable.sol",
+          "path": "src/utils/Initializable.sol",
           "git_object": "9cb4234bf6bd88c48ea3f05a936fade72bbc0aee",
           "git_mode": "100644",
-          "sha256": "991811fccb4708e38ba41931959d1b71e59e2192a37f5c79da0cbe1b3ab00f4b",
-          "units": [
-            "Initializable"
-          ]
+          "sha256": "991811fccb4708e38ba41931959d1b71e59e2192a37f5c79da0cbe1b3ab00f4b"
         }
       ]
     },
@@ -209,13 +175,10 @@
       "commit": "23df112333dc707fab92557a12c2e377d3e53ae4",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/LibERC7579.sol/23df112333dc707fab92557a12c2e377d3e53ae4/LibERC7579.sol",
+          "path": "src/accounts/LibERC7579.sol",
           "git_object": "e7a601ab9a626571fbb60cb25e9c621c0d2d20ab",
           "git_mode": "100644",
-          "sha256": "16066d5f144afd06d1e7012751cb8944b65871a2d749e850f0ee66f8d2f67451",
-          "units": [
-            "LibERC7579"
-          ]
+          "sha256": "16066d5f144afd06d1e7012751cb8944b65871a2d749e850f0ee66f8d2f67451"
         }
       ]
     },
@@ -227,13 +190,10 @@
       "commit": "2442629add9689ddef2076e96cf190dcabb94d87",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/UUPSUpgradeable.sol/2442629add9689ddef2076e96cf190dcabb94d87/UUPSUpgradeable.sol",
+          "path": "src/utils/UUPSUpgradeable.sol",
           "git_object": "f9f8b93b8466c915c2603753249d3837094c8866",
           "git_mode": "100644",
-          "sha256": "89b84343a04717332c22707915d8604d97beba99427c0cfb1f0898ade6489aa8",
-          "units": [
-            "UUPSUpgradeable"
-          ]
+          "sha256": "89b84343a04717332c22707915d8604d97beba99427c0cfb1f0898ade6489aa8"
         }
       ]
     },
@@ -245,13 +205,10 @@
       "commit": "2781e800f8f7f723618c2a6ce279292eef23a827",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/ERC4337.sol/2781e800f8f7f723618c2a6ce279292eef23a827/ERC4337.sol",
+          "path": "src/accounts/ERC4337.sol",
           "git_object": "d30db8cec3980203f52a5c4d8087c815a56048e9",
           "git_mode": "100644",
-          "sha256": "c9f30e9358ed9a10d37ccbceacd118c95bd914478a3cd14921b5981caab81e34",
-          "units": [
-            "ERC4337"
-          ]
+          "sha256": "c9f30e9358ed9a10d37ccbceacd118c95bd914478a3cd14921b5981caab81e34"
         }
       ]
     },
@@ -263,13 +220,10 @@
       "commit": "3598aa3e280c36f607e35d5b2ccd601ae7bafc55",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/MerkleProofLib.sol/3598aa3e280c36f607e35d5b2ccd601ae7bafc55/MerkleProofLib.sol",
+          "path": "src/utils/MerkleProofLib.sol",
           "git_object": "72535684d91f5932798dd2b1ff25df31677b9625",
           "git_mode": "100644",
-          "sha256": "2d4c40928fe82732be9997bacfed54d0b4ac1b6b4f36f8c11ad9508cf3adc31b",
-          "units": [
-            "MerkleProofLib"
-          ]
+          "sha256": "2d4c40928fe82732be9997bacfed54d0b4ac1b6b4f36f8c11ad9508cf3adc31b"
         }
       ]
     },
@@ -281,13 +235,10 @@
       "commit": "37a79cebb0f12472cc339a726d6f385ec534d056",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC1155.sol/37a79cebb0f12472cc339a726d6f385ec534d056/ERC1155.sol",
+          "path": "src/tokens/ERC1155.sol",
           "git_object": "c35e295ad7bdbbd30d8f22e346c14c3f090afae4",
           "git_mode": "100644",
-          "sha256": "97a00b1b0835f229ef7885f9c84c3797ce3b4b0ea3e6e983918ba81505823f6a",
-          "units": [
-            "ERC1155"
-          ]
+          "sha256": "97a00b1b0835f229ef7885f9c84c3797ce3b4b0ea3e6e983918ba81505823f6a"
         }
       ]
     },
@@ -299,13 +250,10 @@
       "commit": "37a79cebb0f12472cc339a726d6f385ec534d056",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC20.sol/37a79cebb0f12472cc339a726d6f385ec534d056/ERC20.sol",
+          "path": "src/tokens/ERC20.sol",
           "git_object": "1043fd954baf5ae17d19986e02cf1a5ce478ce3e",
           "git_mode": "100644",
-          "sha256": "5faaab3bcba8e32cb68d087ea8b009e17a732dfba6dd2fb6ba26fb24d9aebf94",
-          "units": [
-            "ERC20"
-          ]
+          "sha256": "5faaab3bcba8e32cb68d087ea8b009e17a732dfba6dd2fb6ba26fb24d9aebf94"
         }
       ]
     },
@@ -317,13 +265,10 @@
       "commit": "37a79cebb0f12472cc339a726d6f385ec534d056",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC721.sol/37a79cebb0f12472cc339a726d6f385ec534d056/ERC721.sol",
+          "path": "src/tokens/ERC721.sol",
           "git_object": "d76a0f19f7865e006a02f8a065784e3f8d893e4f",
           "git_mode": "100644",
-          "sha256": "991bdcec235d059ef90a006789ee5a208da9cdf2de736e1bcb716c37bc6c84b9",
-          "units": [
-            "ERC721"
-          ]
+          "sha256": "991bdcec235d059ef90a006789ee5a208da9cdf2de736e1bcb716c37bc6c84b9"
         }
       ]
     },
@@ -335,13 +280,10 @@
       "commit": "37a79cebb0f12472cc339a726d6f385ec534d056",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/EIP712.sol/37a79cebb0f12472cc339a726d6f385ec534d056/EIP712.sol",
+          "path": "src/utils/EIP712.sol",
           "git_object": "7dcb271c1401e1ba8b27d2136391b17f6df345eb",
           "git_mode": "100644",
-          "sha256": "1a713d75e1cb47f3a81736b606de6a67d8a02d853ce24f009b2a8ef642f97ba9",
-          "units": [
-            "EIP712"
-          ]
+          "sha256": "1a713d75e1cb47f3a81736b606de6a67d8a02d853ce24f009b2a8ef642f97ba9"
         }
       ]
     },
@@ -353,13 +295,10 @@
       "commit": "37a79cebb0f12472cc339a726d6f385ec534d056",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/MerkleProofLib.sol/37a79cebb0f12472cc339a726d6f385ec534d056/MerkleProofLib.sol",
+          "path": "src/utils/MerkleProofLib.sol",
           "git_object": "13fe93a196b40e520c61ff6c8feb87663a9254de",
           "git_mode": "100644",
-          "sha256": "160adf7afcf5049c48f7890b2a3f61a275676217a866a9681e8009ee8d06daf2",
-          "units": [
-            "MerkleProofLib"
-          ]
+          "sha256": "160adf7afcf5049c48f7890b2a3f61a275676217a866a9681e8009ee8d06daf2"
         }
       ]
     },
@@ -371,13 +310,10 @@
       "commit": "37a79cebb0f12472cc339a726d6f385ec534d056",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SafeTransferLib.sol/37a79cebb0f12472cc339a726d6f385ec534d056/SafeTransferLib.sol",
+          "path": "src/utils/SafeTransferLib.sol",
           "git_object": "30feacba9542708cb4eeed38dd80d36d2324a2e1",
           "git_mode": "100644",
-          "sha256": "3a1e4c03d4af08bde7abc47dd2cece72c494e8be853b5f39a867d8e1c3266cc8",
-          "units": [
-            "SafeTransferLib"
-          ]
+          "sha256": "3a1e4c03d4af08bde7abc47dd2cece72c494e8be853b5f39a867d8e1c3266cc8"
         }
       ]
     },
@@ -389,13 +325,10 @@
       "commit": "37a79cebb0f12472cc339a726d6f385ec534d056",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SignatureCheckerLib.sol/37a79cebb0f12472cc339a726d6f385ec534d056/SignatureCheckerLib.sol",
+          "path": "src/utils/SignatureCheckerLib.sol",
           "git_object": "0eebae883462805db338bbfa42dcdd5377a8afb5",
           "git_mode": "100644",
-          "sha256": "32b6b007140fb4a5c122a5dd21621c08ed1e2a5b326a791c253bb2d4b57d74a2",
-          "units": [
-            "SignatureCheckerLib"
-          ]
+          "sha256": "32b6b007140fb4a5c122a5dd21621c08ed1e2a5b326a791c253bb2d4b57d74a2"
         }
       ]
     },
@@ -407,13 +340,10 @@
       "commit": "3dedb8fc8c4e9b96ff11caba9ae72c2d2aea488c",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/DynamicArrayLib.sol/3dedb8fc8c4e9b96ff11caba9ae72c2d2aea488c/DynamicArrayLib.sol",
+          "path": "src/utils/DynamicArrayLib.sol",
           "git_object": "f6f3e2f054fd2e879d949b6cfde537319d6b81d7",
           "git_mode": "100644",
-          "sha256": "e1e7cf52737c61a975b9be08737b255c9fdd737af5ff4e09673fb0e77df60f9f",
-          "units": [
-            "DynamicArrayLib"
-          ]
+          "sha256": "e1e7cf52737c61a975b9be08737b255c9fdd737af5ff4e09673fb0e77df60f9f"
         }
       ]
     },
@@ -425,13 +355,10 @@
       "commit": "43f9d49815c8126d92771b26bd9bdbe2dbea87a5",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/FixedPointMathLib.sol/43f9d49815c8126d92771b26bd9bdbe2dbea87a5/FixedPointMathLib.sol",
+          "path": "src/utils/FixedPointMathLib.sol",
           "git_object": "5fab31c6bfaf871134b5273f60950dbdb6b8a68d",
           "git_mode": "100644",
-          "sha256": "b285a0520bd5a77d6dfababad1da6b65663ea1ac7ef1fba07157d0972865852b",
-          "units": [
-            "FixedPointMathLib"
-          ]
+          "sha256": "b285a0520bd5a77d6dfababad1da6b65663ea1ac7ef1fba07157d0972865852b"
         }
       ]
     },
@@ -443,13 +370,10 @@
       "commit": "494a6cbe4eb077b1332bcc2c17b7a8ad5b3e082f",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/P256.sol/494a6cbe4eb077b1332bcc2c17b7a8ad5b3e082f/P256.sol",
+          "path": "src/utils/P256.sol",
           "git_object": "9bb0ef0a1130d35fcb697b314544596e8121356a",
           "git_mode": "100644",
-          "sha256": "e86b0f188f887b44618bea3b0f96dca5352ae2d3f4daa9d65b580d58300293f2",
-          "units": [
-            "P256"
-          ]
+          "sha256": "e86b0f188f887b44618bea3b0f96dca5352ae2d3f4daa9d65b580d58300293f2"
         }
       ]
     },
@@ -461,13 +385,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/ERC4337.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/ERC4337.sol",
+          "path": "src/accounts/ERC4337.sol",
           "git_object": "029a791adf85bb1a1d825994d0dbb34012a75ba4",
           "git_mode": "100644",
-          "sha256": "1f774446e6cb630756fa205e75cfbb40c9f686bf86d6036d9ee81d09ae856e33",
-          "units": [
-            "ERC4337"
-          ]
+          "sha256": "1f774446e6cb630756fa205e75cfbb40c9f686bf86d6036d9ee81d09ae856e33"
         }
       ]
     },
@@ -479,13 +400,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/ERC4337Factory.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/ERC4337Factory.sol",
+          "path": "src/accounts/ERC4337Factory.sol",
           "git_object": "9409409b575005ad3f3052458b44fa716400c73d",
           "git_mode": "100644",
-          "sha256": "303a0be58b16a5d796acd93ce2326ff721351ea91450285c409d4a198cb7aed2",
-          "units": [
-            "ERC4337Factory"
-          ]
+          "sha256": "303a0be58b16a5d796acd93ce2326ff721351ea91450285c409d4a198cb7aed2"
         }
       ]
     },
@@ -497,13 +415,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/ERC7821.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/ERC7821.sol",
+          "path": "src/accounts/ERC7821.sol",
           "git_object": "3ecd68e8768a140992402bfbe5daed3d9a1ef17c",
           "git_mode": "100644",
-          "sha256": "c3db3ed2810dff23ea22b6aba502e28a7d46855f1584fc974d4ef51840c341bc",
-          "units": [
-            "ERC7821"
-          ]
+          "sha256": "c3db3ed2810dff23ea22b6aba502e28a7d46855f1584fc974d4ef51840c341bc"
         }
       ]
     },
@@ -515,13 +430,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/LibERC7579.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/LibERC7579.sol",
+          "path": "src/accounts/LibERC7579.sol",
           "git_object": "c2b7a1555681ee69ec0feaadc57c20a36263b781",
           "git_mode": "100644",
-          "sha256": "a6abc33e02232cfe9e93f2dcea2170fae661a9a78ab5da23ce7c35120b6c80a6",
-          "units": [
-            "LibERC7579"
-          ]
+          "sha256": "a6abc33e02232cfe9e93f2dcea2170fae661a9a78ab5da23ce7c35120b6c80a6"
         }
       ]
     },
@@ -533,13 +445,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/Receiver.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/Receiver.sol",
+          "path": "src/accounts/Receiver.sol",
           "git_object": "91e4a21f1985a0be102516157f18f4c08bc5d56c",
           "git_mode": "100644",
-          "sha256": "91d6757d7912472fb074c6bf0e5c296a234939d3401ddb9e93b1bb40742b0d30",
-          "units": [
-            "Receiver"
-          ]
+          "sha256": "91d6757d7912472fb074c6bf0e5c296a234939d3401ddb9e93b1bb40742b0d30"
         }
       ]
     },
@@ -551,13 +460,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/Timelock.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/Timelock.sol",
+          "path": "src/accounts/Timelock.sol",
           "git_object": "c249cac5922b7e57e887db08d917401c4d48c22b",
           "git_mode": "100644",
-          "sha256": "fddd973cfccb0839a45699897b3c1d9fc306b0c5e78131ae1fbc0ac7c5e61199",
-          "units": [
-            "Timelock"
-          ]
+          "sha256": "fddd973cfccb0839a45699897b3c1d9fc306b0c5e78131ae1fbc0ac7c5e61199"
         }
       ]
     },
@@ -569,13 +475,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/auth/EnumerableRoles.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/EnumerableRoles.sol",
+          "path": "src/auth/EnumerableRoles.sol",
           "git_object": "59afefc7332fd8fa84ae5e8f3e7d72e22eb6be27",
           "git_mode": "100644",
-          "sha256": "221be7ad576eb2c02f6073e93733e2fd23d20e5881228bd518987cbda934f2fa",
-          "units": [
-            "EnumerableRoles"
-          ]
+          "sha256": "221be7ad576eb2c02f6073e93733e2fd23d20e5881228bd518987cbda934f2fa"
         }
       ]
     },
@@ -587,13 +490,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC1155.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/ERC1155.sol",
+          "path": "src/tokens/ERC1155.sol",
           "git_object": "91e1ce80a1131231f037a35d8087258b4fb156af",
           "git_mode": "100644",
-          "sha256": "501b13aa841b62d916f31cb6ee79d8ac0d271a5dd61f31d4af9bbb25cd16d2fd",
-          "units": [
-            "ERC1155"
-          ]
+          "sha256": "501b13aa841b62d916f31cb6ee79d8ac0d271a5dd61f31d4af9bbb25cd16d2fd"
         }
       ]
     },
@@ -605,13 +505,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC20.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/ERC20.sol",
+          "path": "src/tokens/ERC20.sol",
           "git_object": "e0569e3c9905ab2ccf2fe58d21df140e74b75295",
           "git_mode": "100644",
-          "sha256": "7c210e320b9af37941676ea20e735546ba7910615dddc3d24df3d177c568c129",
-          "units": [
-            "ERC20"
-          ]
+          "sha256": "7c210e320b9af37941676ea20e735546ba7910615dddc3d24df3d177c568c129"
         }
       ]
     },
@@ -623,13 +520,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC20Votes.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/ERC20Votes.sol",
+          "path": "src/tokens/ERC20Votes.sol",
           "git_object": "4f4bb7ef11be80341a200d518f031122d359d621",
           "git_mode": "100644",
-          "sha256": "f88b108a405969dfc80b66d48431db87726cfef2b74bd4a59cc0dca4775687e9",
-          "units": [
-            "ERC20Votes"
-          ]
+          "sha256": "f88b108a405969dfc80b66d48431db87726cfef2b74bd4a59cc0dca4775687e9"
         }
       ]
     },
@@ -641,13 +535,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC721.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/ERC721.sol",
+          "path": "src/tokens/ERC721.sol",
           "git_object": "f16e3d29b8b91bbabc15cf5db0b6dbee84b857af",
           "git_mode": "100644",
-          "sha256": "c06254b27b6629a650789bce45664d20f424de401e3d8878cb95298d951a1d63",
-          "units": [
-            "ERC721"
-          ]
+          "sha256": "c06254b27b6629a650789bce45664d20f424de401e3d8878cb95298d951a1d63"
         }
       ]
     },
@@ -659,13 +550,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/DynamicArrayLib.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/DynamicArrayLib.sol",
+          "path": "src/utils/DynamicArrayLib.sol",
           "git_object": "7f46acd7a340af0b6a9b30a126b71b8893fcc556",
           "git_mode": "100644",
-          "sha256": "efa15ae1b180745ceb85896890b5d37ffe7cc2c07faeb4104cb9d84d0b4bac8c",
-          "units": [
-            "DynamicArrayLib"
-          ]
+          "sha256": "efa15ae1b180745ceb85896890b5d37ffe7cc2c07faeb4104cb9d84d0b4bac8c"
         }
       ]
     },
@@ -677,13 +565,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/EIP712.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/EIP712.sol",
+          "path": "src/utils/EIP712.sol",
           "git_object": "f77ee14983252149849ceda20ad398a42bcd4eb3",
           "git_mode": "100644",
-          "sha256": "f06ff054e08f38b98af687241537d5b635d9071d2d788649bedea883ccfb8d93",
-          "units": [
-            "EIP712"
-          ]
+          "sha256": "f06ff054e08f38b98af687241537d5b635d9071d2d788649bedea883ccfb8d93"
         }
       ]
     },
@@ -695,13 +580,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/EnumerableSetLib.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/EnumerableSetLib.sol",
+          "path": "src/utils/EnumerableSetLib.sol",
           "git_object": "c0216b68268bad0cf3d6ba4c006d091a8e601564",
           "git_mode": "100644",
-          "sha256": "6c7d7af967385388f0c6df52ff3e71bdc5bb10204a611be3e34024f34cc253e7",
-          "units": [
-            "EnumerableSetLib"
-          ]
+          "sha256": "6c7d7af967385388f0c6df52ff3e71bdc5bb10204a611be3e34024f34cc253e7"
         }
       ]
     },
@@ -713,13 +595,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/Initializable.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/Initializable.sol",
+          "path": "src/utils/Initializable.sol",
           "git_object": "11c6207c00178590dfd4b32c73190c4fccd3341b",
           "git_mode": "100644",
-          "sha256": "4ace6e64eb99135471e86025dafcd127f7ffa42b01efacffb8d43ea8fbcf22a8",
-          "units": [
-            "Initializable"
-          ]
+          "sha256": "4ace6e64eb99135471e86025dafcd127f7ffa42b01efacffb8d43ea8fbcf22a8"
         }
       ]
     },
@@ -731,13 +610,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/LibClone.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/LibClone.sol",
+          "path": "src/utils/LibClone.sol",
           "git_object": "d9f1d0c15d8a3cc42661ff5a0ff7efbe994d4ba9",
           "git_mode": "100644",
-          "sha256": "e04ab5c44c6184029ac5a82ff23d25452f82ff51abd5eb8d6e8804e45ae706cb",
-          "units": [
-            "LibClone"
-          ]
+          "sha256": "e04ab5c44c6184029ac5a82ff23d25452f82ff51abd5eb8d6e8804e45ae706cb"
         }
       ]
     },
@@ -749,13 +625,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/LibTransient.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/LibTransient.sol",
+          "path": "src/utils/LibTransient.sol",
           "git_object": "471e4920a65c8c1eff8e4165ea9bcd1151b341f6",
           "git_mode": "100644",
-          "sha256": "161749f275a40993c660841d0e891927381df30272377b5ab683839d03c8fa98",
-          "units": [
-            "LibTransient"
-          ]
+          "sha256": "161749f275a40993c660841d0e891927381df30272377b5ab683839d03c8fa98"
         }
       ]
     },
@@ -767,13 +640,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/Lifebuoy.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/Lifebuoy.sol",
+          "path": "src/utils/Lifebuoy.sol",
           "git_object": "c8602e0bd1f0ef9d0dd53c3df36fd2fe2c343210",
           "git_mode": "100644",
-          "sha256": "42612c61b984c4d2bc0154b75b6987941af4ccd1137eb2204928394b812216cd",
-          "units": [
-            "Lifebuoy"
-          ]
+          "sha256": "42612c61b984c4d2bc0154b75b6987941af4ccd1137eb2204928394b812216cd"
         }
       ]
     },
@@ -785,13 +655,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/MinHeapLib.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/MinHeapLib.sol",
+          "path": "src/utils/MinHeapLib.sol",
           "git_object": "c8c7ed374b8f2d1897259bbea4f846166516254a",
           "git_mode": "100644",
-          "sha256": "c13c411cc350f9c42733bae9b2fa101c9d114eee08472205686e430e4f3d781c",
-          "units": [
-            "MinHeapLib"
-          ]
+          "sha256": "c13c411cc350f9c42733bae9b2fa101c9d114eee08472205686e430e4f3d781c"
         }
       ]
     },
@@ -803,13 +670,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/Multicallable.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/Multicallable.sol",
+          "path": "src/utils/Multicallable.sol",
           "git_object": "5c2dcfd3ab7699a8f5c1ba0c1f546cf925257826",
           "git_mode": "100644",
-          "sha256": "06a12e386a8ff5fd976c6ac0a174737f0abdd9983b19743a3141eaf53b0216a7",
-          "units": [
-            "Multicallable"
-          ]
+          "sha256": "06a12e386a8ff5fd976c6ac0a174737f0abdd9983b19743a3141eaf53b0216a7"
         }
       ]
     },
@@ -821,13 +685,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/P256.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/P256.sol",
+          "path": "src/utils/P256.sol",
           "git_object": "5da5a0f45eeefaf35a8b837455bfabe65d4e62ae",
           "git_mode": "100644",
-          "sha256": "e746a3ce3c9646c45ab5507f0eea66a4f34eb636c797fec49dbca498815ae4e3",
-          "units": [
-            "P256"
-          ]
+          "sha256": "e746a3ce3c9646c45ab5507f0eea66a4f34eb636c797fec49dbca498815ae4e3"
         }
       ]
     },
@@ -839,13 +700,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/RedBlackTreeLib.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/RedBlackTreeLib.sol",
+          "path": "src/utils/RedBlackTreeLib.sol",
           "git_object": "ade5da88f52db6ce277293b9067b581fdcca8194",
           "git_mode": "100644",
-          "sha256": "ba8950efbf0c558b81803a1f2396963c4d01f45d1f1a19b381f875d0a538c3ed",
-          "units": [
-            "RedBlackTreeLib"
-          ]
+          "sha256": "ba8950efbf0c558b81803a1f2396963c4d01f45d1f1a19b381f875d0a538c3ed"
         }
       ]
     },
@@ -857,13 +715,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SafeTransferLib.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/SafeTransferLib.sol",
+          "path": "src/utils/SafeTransferLib.sol",
           "git_object": "cab9f586bc6edaf505d028e545578b8f58477237",
           "git_mode": "100644",
-          "sha256": "e52a2e5ef4f3089334c97888d8e5965fae002f71b8bb85dae16a0471194e4253",
-          "units": [
-            "SafeTransferLib"
-          ]
+          "sha256": "e52a2e5ef4f3089334c97888d8e5965fae002f71b8bb85dae16a0471194e4253"
         }
       ]
     },
@@ -875,13 +730,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SignatureCheckerLib.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/SignatureCheckerLib.sol",
+          "path": "src/utils/SignatureCheckerLib.sol",
           "git_object": "531d79354ea5984538ec92a7639b6c7756996ca8",
           "git_mode": "100644",
-          "sha256": "8a427921585a3beec568739b4efe79a15e8c316ea18d4405eeb7104f8a730b84",
-          "units": [
-            "SignatureCheckerLib"
-          ]
+          "sha256": "8a427921585a3beec568739b4efe79a15e8c316ea18d4405eeb7104f8a730b84"
         }
       ]
     },
@@ -893,13 +745,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/UUPSUpgradeable.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/UUPSUpgradeable.sol",
+          "path": "src/utils/UUPSUpgradeable.sol",
           "git_object": "eeac9a4f280abba57cdb6af357d4fa3ad56f7ef7",
           "git_mode": "100644",
-          "sha256": "70d63d1a1b612af41ef181b905f05207edd29183a5084669a56e1b73025d96a7",
-          "units": [
-            "UUPSUpgradeable"
-          ]
+          "sha256": "70d63d1a1b612af41ef181b905f05207edd29183a5084669a56e1b73025d96a7"
         }
       ]
     },
@@ -911,13 +760,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/WebAuthn.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/WebAuthn.sol",
+          "path": "src/utils/WebAuthn.sol",
           "git_object": "b6417a27d96438dab3a97c4cbea267ee91f4334d",
           "git_mode": "100644",
-          "sha256": "3c1f6b6479e5b76e00960856fa56af1a52228e35006117cc85dfdf81461b4d0c",
-          "units": [
-            "WebAuthn"
-          ]
+          "sha256": "3c1f6b6479e5b76e00960856fa56af1a52228e35006117cc85dfdf81461b4d0c"
         }
       ]
     },
@@ -929,13 +775,10 @@
       "commit": "4c895b961d45c53a49ed500cfc76868b7ee1328b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/ext/delegatexyz/DelegateCheckerLib.sol/4c895b961d45c53a49ed500cfc76868b7ee1328b/DelegateCheckerLib.sol",
+          "path": "src/utils/ext/delegatexyz/DelegateCheckerLib.sol",
           "git_object": "d626bbf5b5d14bd147297bd2d4013a200e928400",
           "git_mode": "100644",
-          "sha256": "582fe7a9311c0625a7c493a79d2e386117a9f68c19ca1681685d0e31c61c3d79",
-          "units": [
-            "DelegateCheckerLib"
-          ]
+          "sha256": "582fe7a9311c0625a7c493a79d2e386117a9f68c19ca1681685d0e31c61c3d79"
         }
       ]
     },
@@ -947,13 +790,10 @@
       "commit": "55e4501c920ce9068513e573429e1f8e3ab3849e",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/Timelock.sol/55e4501c920ce9068513e573429e1f8e3ab3849e/Timelock.sol",
+          "path": "src/accounts/Timelock.sol",
           "git_object": "2a71425d229b6910406f0b6cf0ea6d10ded3189f",
           "git_mode": "100644",
-          "sha256": "fcc57a03741aa19cbe8cbd27ac0e81ff3ec2eafacb7e64fe8fb3276442ed04b0",
-          "units": [
-            "Timelock"
-          ]
+          "sha256": "fcc57a03741aa19cbe8cbd27ac0e81ff3ec2eafacb7e64fe8fb3276442ed04b0"
         }
       ]
     },
@@ -965,13 +805,10 @@
       "commit": "580419f2b8513323f79a44e62cf85092f581ecca",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/LibERC7579.sol/580419f2b8513323f79a44e62cf85092f581ecca/LibERC7579.sol",
+          "path": "src/accounts/LibERC7579.sol",
           "git_object": "249801226e190f13d34742f662f0c84700ffe1fe",
           "git_mode": "100644",
-          "sha256": "2663c9ec6d895f6485f59af0810c699dec4ba323d9c14b04543565b269601e7d",
-          "units": [
-            "LibERC7579"
-          ]
+          "sha256": "2663c9ec6d895f6485f59af0810c699dec4ba323d9c14b04543565b269601e7d"
         }
       ]
     },
@@ -983,13 +820,10 @@
       "commit": "582e0cc30970720f5cd8c8e7669e4ffa82c9ec43",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/RedBlackTreeLib.sol/582e0cc30970720f5cd8c8e7669e4ffa82c9ec43/RedBlackTreeLib.sol",
+          "path": "src/utils/RedBlackTreeLib.sol",
           "git_object": "d0b55b116924ea50c9fb78bac2fb14f3780e7659",
           "git_mode": "100644",
-          "sha256": "75e0e1ba216d55837e1e259ac78c16248895f1b3566ded983a68906403bb0aec",
-          "units": [
-            "RedBlackTreeLib"
-          ]
+          "sha256": "75e0e1ba216d55837e1e259ac78c16248895f1b3566ded983a68906403bb0aec"
         }
       ]
     },
@@ -1001,13 +835,10 @@
       "commit": "5da5bd872349f97ac9b197fd9402da2e8f2c98b2",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SafeTransferLib.sol/5da5bd872349f97ac9b197fd9402da2e8f2c98b2/SafeTransferLib.sol",
+          "path": "src/utils/SafeTransferLib.sol",
           "git_object": "ad0ccd6dde7e8ebdccb2c60e63b3bcd6092d3299",
           "git_mode": "100644",
-          "sha256": "8d1cac0e32445ec45f0aa055d47d8b19edc3534ab8853d47a0bfb111cf07a601",
-          "units": [
-            "SafeTransferLib"
-          ]
+          "sha256": "8d1cac0e32445ec45f0aa055d47d8b19edc3534ab8853d47a0bfb111cf07a601"
         }
       ]
     },
@@ -1019,13 +850,10 @@
       "commit": "66bf970c10aa529402620d3e6a2de12138e84558",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/Lifebuoy.sol/66bf970c10aa529402620d3e6a2de12138e84558/Lifebuoy.sol",
+          "path": "src/utils/Lifebuoy.sol",
           "git_object": "cb27db2bd5fa54fe40f9307d5c1829225543eeb7",
           "git_mode": "100644",
-          "sha256": "e5834bf2cdac6deece4dacea8808d8f7ee479325d33de5c8cf9ea1731b424231",
-          "units": [
-            "Lifebuoy"
-          ]
+          "sha256": "e5834bf2cdac6deece4dacea8808d8f7ee479325d33de5c8cf9ea1731b424231"
         }
       ]
     },
@@ -1037,13 +865,10 @@
       "commit": "7175c21f95255dc7711ce84cc32080a41864abd6",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC721.sol/7175c21f95255dc7711ce84cc32080a41864abd6/ERC721.sol",
+          "path": "src/tokens/ERC721.sol",
           "git_object": "042c4c3d8a2384505a15460a1b7405ce5b597b60",
           "git_mode": "100644",
-          "sha256": "ce1a89cde7b44e3d024fb1a3ca48528921a7ebec767ec75bf8f16f447944aee9",
-          "units": [
-            "ERC721"
-          ]
+          "sha256": "ce1a89cde7b44e3d024fb1a3ca48528921a7ebec767ec75bf8f16f447944aee9"
         }
       ]
     },
@@ -1055,13 +880,10 @@
       "commit": "75727e9fa861fe7313c1fb0e5fba76c87d501b3e",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/LibClone.sol/75727e9fa861fe7313c1fb0e5fba76c87d501b3e/LibClone.sol",
+          "path": "src/utils/LibClone.sol",
           "git_object": "6bbe8f663acebecaa2a296297bdb854c3fc6e820",
           "git_mode": "100644",
-          "sha256": "787215054b8d497a4524ec3838b14ba9f3ce9fc492ecc646a88c5f6bbe8b8eed",
-          "units": [
-            "LibClone"
-          ]
+          "sha256": "787215054b8d497a4524ec3838b14ba9f3ce9fc492ecc646a88c5f6bbe8b8eed"
         }
       ]
     },
@@ -1073,13 +895,10 @@
       "commit": "7a0613faa362c4bd072779fe9725a7e4f8c45a83",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/ECDSA.sol/7a0613faa362c4bd072779fe9725a7e4f8c45a83/ECDSA.sol",
+          "path": "src/utils/ECDSA.sol",
           "git_object": "97bf4f423f229a6aff191609344e97c08d437247",
           "git_mode": "100644",
-          "sha256": "0a9a48dddf9bf5372f6cfe8c0d145e38847ca32120444bd439efa923865414a6",
-          "units": [
-            "ECDSA"
-          ]
+          "sha256": "0a9a48dddf9bf5372f6cfe8c0d145e38847ca32120444bd439efa923865414a6"
         }
       ]
     },
@@ -1091,13 +910,10 @@
       "commit": "7b5e4316240fdbe0c45df8e66a3c2f4639c22a8a",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC721.sol/7b5e4316240fdbe0c45df8e66a3c2f4639c22a8a/ERC721.sol",
+          "path": "src/tokens/ERC721.sol",
           "git_object": "3eaff93759e73281a3a18eb6bbd800bd2f93bb3e",
           "git_mode": "100644",
-          "sha256": "789bb98f6def288cd897e906442aa51ec2912e356f29ed52a7c9d4b8e73a63f0",
-          "units": [
-            "ERC721"
-          ]
+          "sha256": "789bb98f6def288cd897e906442aa51ec2912e356f29ed52a7c9d4b8e73a63f0"
         }
       ]
     },
@@ -1109,13 +925,10 @@
       "commit": "835b0a27bec99d889cee6dec97b395d3df0e1d11",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SignatureCheckerLib.sol/835b0a27bec99d889cee6dec97b395d3df0e1d11/SignatureCheckerLib.sol",
+          "path": "src/utils/SignatureCheckerLib.sol",
           "git_object": "9ae938d4cf76eb2929e98550180c902d15a6e34f",
           "git_mode": "100644",
-          "sha256": "08810e40511f9792597e5253a88389e89700789cd96957a8a2e1955334572dd0",
-          "units": [
-            "SignatureCheckerLib"
-          ]
+          "sha256": "08810e40511f9792597e5253a88389e89700789cd96957a8a2e1955334572dd0"
         }
       ]
     },
@@ -1127,13 +940,10 @@
       "commit": "83e4650283a477bb9b5fd04e982e7f9d1bf76fdc",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC20.sol/83e4650283a477bb9b5fd04e982e7f9d1bf76fdc/ERC20.sol",
+          "path": "src/tokens/ERC20.sol",
           "git_object": "82902d1969e06cdc60d89806d176eb91bb3a0bc8",
           "git_mode": "100644",
-          "sha256": "6f8edb57c200487e2d242697445d37c731754ef88beb3fde2826d7f3c60ab95a",
-          "units": [
-            "ERC20"
-          ]
+          "sha256": "6f8edb57c200487e2d242697445d37c731754ef88beb3fde2826d7f3c60ab95a"
         }
       ]
     },
@@ -1145,13 +955,10 @@
       "commit": "8451becd826a92a63cd702ea68d04b0ef19ea624",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/WebAuthn.sol/8451becd826a92a63cd702ea68d04b0ef19ea624/WebAuthn.sol",
+          "path": "src/utils/WebAuthn.sol",
           "git_object": "e2facb56da8c83317d91485c04585f16d8520d16",
           "git_mode": "100644",
-          "sha256": "e5f96aceb97e8543c17469242a8d4809e930eb190412f14ce02e25c13cceb154",
-          "units": [
-            "WebAuthn"
-          ]
+          "sha256": "e5f96aceb97e8543c17469242a8d4809e930eb190412f14ce02e25c13cceb154"
         }
       ]
     },
@@ -1163,13 +970,10 @@
       "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC1155.sol/89101d53b7c8784cca935c1f2f6403639cee48b2/ERC1155.sol",
+          "path": "src/tokens/ERC1155.sol",
           "git_object": "d46576a975427d1c55b638451a002c9f626d5836",
           "git_mode": "100644",
-          "sha256": "5df0c3305bb22762b9f73b5ded651d51f51f3407ad79a397cfaac7f6de26e113",
-          "units": [
-            "ERC1155"
-          ]
+          "sha256": "5df0c3305bb22762b9f73b5ded651d51f51f3407ad79a397cfaac7f6de26e113"
         }
       ]
     },
@@ -1181,13 +985,10 @@
       "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC20.sol/89101d53b7c8784cca935c1f2f6403639cee48b2/ERC20.sol",
+          "path": "src/tokens/ERC20.sol",
           "git_object": "9647b2193aa1c45e1a5c77baa886a2f59a99ab44",
           "git_mode": "100644",
-          "sha256": "dd39f57d259f32854531a561676ace44fd7b01b6c3b99bf1cbbd7a2589e805e6",
-          "units": [
-            "ERC20"
-          ]
+          "sha256": "dd39f57d259f32854531a561676ace44fd7b01b6c3b99bf1cbbd7a2589e805e6"
         }
       ]
     },
@@ -1199,13 +1000,10 @@
       "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC721.sol/89101d53b7c8784cca935c1f2f6403639cee48b2/ERC721.sol",
+          "path": "src/tokens/ERC721.sol",
           "git_object": "30013fc45563a3883510628692cf6d3b0c983226",
           "git_mode": "100644",
-          "sha256": "a1e7d23ebb1ac8df3791ca846137dc714a46e93ad1b3767e5f5b107d9d6dd700",
-          "units": [
-            "ERC721"
-          ]
+          "sha256": "a1e7d23ebb1ac8df3791ca846137dc714a46e93ad1b3767e5f5b107d9d6dd700"
         }
       ]
     },
@@ -1217,13 +1015,10 @@
       "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/ECDSA.sol/89101d53b7c8784cca935c1f2f6403639cee48b2/ECDSA.sol",
+          "path": "src/utils/ECDSA.sol",
           "git_object": "f65c8cbb6800351580c0f64dcca3b26be142aa0a",
           "git_mode": "100644",
-          "sha256": "888d6f4ee55fcf05f471bb4416da56e06aa23eb9cf356171a5feb4f931fb0af0",
-          "units": [
-            "ECDSA"
-          ]
+          "sha256": "888d6f4ee55fcf05f471bb4416da56e06aa23eb9cf356171a5feb4f931fb0af0"
         }
       ]
     },
@@ -1235,13 +1030,10 @@
       "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/ERC1967Factory.sol/89101d53b7c8784cca935c1f2f6403639cee48b2/ERC1967Factory.sol",
+          "path": "src/utils/ERC1967Factory.sol",
           "git_object": "bbe875411b319ad073dc5833f917b9ddb7f51417",
           "git_mode": "100644",
-          "sha256": "8ae1668b5bd0bbba620a2f35e73465ed1802103b93e574f129913d269368777f",
-          "units": [
-            "ERC1967Factory"
-          ]
+          "sha256": "8ae1668b5bd0bbba620a2f35e73465ed1802103b93e574f129913d269368777f"
         }
       ]
     },
@@ -1253,13 +1045,10 @@
       "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/LibClone.sol/89101d53b7c8784cca935c1f2f6403639cee48b2/LibClone.sol",
+          "path": "src/utils/LibClone.sol",
           "git_object": "68af2859212f754d2737e805ca4939d617f4ab1f",
           "git_mode": "100644",
-          "sha256": "519a3c53fa092eb83c1b2dc6b5d57f3b208e06bd389dde036f739fefa752cb26",
-          "units": [
-            "LibClone"
-          ]
+          "sha256": "519a3c53fa092eb83c1b2dc6b5d57f3b208e06bd389dde036f739fefa752cb26"
         }
       ]
     },
@@ -1271,13 +1060,10 @@
       "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/MerkleProofLib.sol/89101d53b7c8784cca935c1f2f6403639cee48b2/MerkleProofLib.sol",
+          "path": "src/utils/MerkleProofLib.sol",
           "git_object": "e37b1b6ea7b552b9937bfe1d67a2b36a1c26f20e",
           "git_mode": "100644",
-          "sha256": "04a10ab0d3d8c8875781d007963a6e798e58b1f5564e563195dedf96d102aabc",
-          "units": [
-            "MerkleProofLib"
-          ]
+          "sha256": "04a10ab0d3d8c8875781d007963a6e798e58b1f5564e563195dedf96d102aabc"
         }
       ]
     },
@@ -1289,13 +1075,10 @@
       "commit": "89101d53b7c8784cca935c1f2f6403639cee48b2",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SignatureCheckerLib.sol/89101d53b7c8784cca935c1f2f6403639cee48b2/SignatureCheckerLib.sol",
+          "path": "src/utils/SignatureCheckerLib.sol",
           "git_object": "fbcc655155d9d698901f0eb35c2e78656c9fba4c",
           "git_mode": "100644",
-          "sha256": "9e56217d5250514cb03c9c4fc577ff9f9736a939b39e4fb9e281529b7a0587e7",
-          "units": [
-            "SignatureCheckerLib"
-          ]
+          "sha256": "9e56217d5250514cb03c9c4fc577ff9f9736a939b39e4fb9e281529b7a0587e7"
         }
       ]
     },
@@ -1307,13 +1090,10 @@
       "commit": "8a08a70b2e116fae44e09e1d650b2f27b009cfd3",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/Initializable.sol/8a08a70b2e116fae44e09e1d650b2f27b009cfd3/Initializable.sol",
+          "path": "src/utils/Initializable.sol",
           "git_object": "597d3112742ab2fe2e22fd5ee2037bfaaa9a9f92",
           "git_mode": "100644",
-          "sha256": "7abbbdb629624569f86c039530237ffde79630716a5008f0a9b0b30e834ecc6e",
-          "units": [
-            "Initializable"
-          ]
+          "sha256": "7abbbdb629624569f86c039530237ffde79630716a5008f0a9b0b30e834ecc6e"
         }
       ]
     },
@@ -1325,13 +1105,10 @@
       "commit": "90bc5366025c12497dd02a02a067a2fdee515e20",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/ERC4337Factory.sol/90bc5366025c12497dd02a02a067a2fdee515e20/ERC4337Factory.sol",
+          "path": "src/accounts/ERC4337Factory.sol",
           "git_object": "ed8b1d561eee760b4c728a5dbe66e8da1d87813d",
           "git_mode": "100644",
-          "sha256": "4c02eca25a7db99b4da3ba89896ed7a6be6970988001906194b2c09b6d0f0e0f",
-          "units": [
-            "ERC4337Factory"
-          ]
+          "sha256": "4c02eca25a7db99b4da3ba89896ed7a6be6970988001906194b2c09b6d0f0e0f"
         }
       ]
     },
@@ -1343,13 +1120,10 @@
       "commit": "96a374d388ee17aa007867e196d547d19c2e8bb7",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/Timelock.sol/96a374d388ee17aa007867e196d547d19c2e8bb7/Timelock.sol",
+          "path": "src/accounts/Timelock.sol",
           "git_object": "4e3218d2526aa69126f9a4c8268a1c31860cb5a1",
           "git_mode": "100644",
-          "sha256": "6d322d164721d29d169052b67282ab4d250f073ea4f250f344e5a59b086f5ca5",
-          "units": [
-            "Timelock"
-          ]
+          "sha256": "6d322d164721d29d169052b67282ab4d250f073ea4f250f344e5a59b086f5ca5"
         }
       ]
     },
@@ -1361,13 +1135,10 @@
       "commit": "96af34cd3dca7ac3b9d337939dcfe61c88f7c24c",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/ECDSA.sol/96af34cd3dca7ac3b9d337939dcfe61c88f7c24c/ECDSA.sol",
+          "path": "src/utils/ECDSA.sol",
           "git_object": "d0d615b14cf0fea8e9a83297e20fc48378be8e32",
           "git_mode": "100644",
-          "sha256": "beeab5f1eeebc07ee422a71fd4cf9210f62577e638eda373d752945694d62dd4",
-          "units": [
-            "ECDSA"
-          ]
+          "sha256": "beeab5f1eeebc07ee422a71fd4cf9210f62577e638eda373d752945694d62dd4"
         }
       ]
     },
@@ -1379,13 +1150,10 @@
       "commit": "9ac02f7c4d39036419281b639154ee7908edf136",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC1155.sol/9ac02f7c4d39036419281b639154ee7908edf136/ERC1155.sol",
+          "path": "src/tokens/ERC1155.sol",
           "git_object": "213f32bf1d2abcb6b2bd516569da0706c12db4bd",
           "git_mode": "100644",
-          "sha256": "4ba88ca129257272fc7ff1dc02d3f02801f5ef0bfc857bd512d4e9d2437c35aa",
-          "units": [
-            "ERC1155"
-          ]
+          "sha256": "4ba88ca129257272fc7ff1dc02d3f02801f5ef0bfc857bd512d4e9d2437c35aa"
         }
       ]
     },
@@ -1397,13 +1165,10 @@
       "commit": "a00a06951f5f7c9765fb018663b3414c33909a25",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/Multicallable.sol/a00a06951f5f7c9765fb018663b3414c33909a25/Multicallable.sol",
+          "path": "src/utils/Multicallable.sol",
           "git_object": "06af3724a9ba4e5fd673309c88bc20cbb10aa9b5",
           "git_mode": "100644",
-          "sha256": "54906162f493add1983d4dde2764ac6006b642bb43c367a8bb0a5b30733d849c",
-          "units": [
-            "Multicallable"
-          ]
+          "sha256": "54906162f493add1983d4dde2764ac6006b642bb43c367a8bb0a5b30733d849c"
         }
       ]
     },
@@ -1415,13 +1180,10 @@
       "commit": "ae1332ebdec5870b25451c5ce91c05a35c58af4d",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/EnumerableSetLib.sol/ae1332ebdec5870b25451c5ce91c05a35c58af4d/EnumerableSetLib.sol",
+          "path": "src/utils/EnumerableSetLib.sol",
           "git_object": "219a27f5dd5a29aff9f422c6001b2b291b8b22b8",
           "git_mode": "100644",
-          "sha256": "18cd33737e93c1e7cf9675b8c95de701078aab685c6296a60c30e876ebc8d050",
-          "units": [
-            "EnumerableSetLib"
-          ]
+          "sha256": "18cd33737e93c1e7cf9675b8c95de701078aab685c6296a60c30e876ebc8d050"
         }
       ]
     },
@@ -1433,13 +1195,10 @@
       "commit": "b14e130bd5210a9273f7d49a872fe683c69d6a80",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/MinHeapLib.sol/b14e130bd5210a9273f7d49a872fe683c69d6a80/MinHeapLib.sol",
+          "path": "src/utils/MinHeapLib.sol",
           "git_object": "404156f18a214743d07924bd3361d5856dffc110",
           "git_mode": "100644",
-          "sha256": "69ad2fc4f4e2cc3aeaf3bf4430d7e1d9172f5702e322ff2e8509b88fb3519421",
-          "units": [
-            "MinHeapLib"
-          ]
+          "sha256": "69ad2fc4f4e2cc3aeaf3bf4430d7e1d9172f5702e322ff2e8509b88fb3519421"
         }
       ]
     },
@@ -1451,13 +1210,10 @@
       "commit": "b8380d6b1e3ba4af190f50545bdf7c0d14008188",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/ERC4337.sol/b8380d6b1e3ba4af190f50545bdf7c0d14008188/ERC4337.sol",
+          "path": "src/accounts/ERC4337.sol",
           "git_object": "05ac7d1cef5a287a709d7e13bcd2cbd4dac8ce66",
           "git_mode": "100644",
-          "sha256": "40fd45a2049f039f69ecca72e5dcf3608cc5c6b40eb9fb9b576884467a627ef8",
-          "units": [
-            "ERC4337"
-          ]
+          "sha256": "40fd45a2049f039f69ecca72e5dcf3608cc5c6b40eb9fb9b576884467a627ef8"
         }
       ]
     },
@@ -1469,13 +1225,10 @@
       "commit": "c1f772792fff569a0e69a6ceedfc48abf49b04ea",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC721.sol/c1f772792fff569a0e69a6ceedfc48abf49b04ea/ERC721.sol",
+          "path": "src/tokens/ERC721.sol",
           "git_object": "dbb5b7f15c766f115a0ffb90af1d1ae418f4ecc6",
           "git_mode": "100644",
-          "sha256": "4e9de11e482fb03a7b7b9b38e85a91129f99574dd3ae558a636e486ad609e6f6",
-          "units": [
-            "ERC721"
-          ]
+          "sha256": "4e9de11e482fb03a7b7b9b38e85a91129f99574dd3ae558a636e486ad609e6f6"
         }
       ]
     },
@@ -1487,13 +1240,10 @@
       "commit": "c48bd20f26e57efdbaf8925389d3e392555e2020",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SignatureCheckerLib.sol/c48bd20f26e57efdbaf8925389d3e392555e2020/SignatureCheckerLib.sol",
+          "path": "src/utils/SignatureCheckerLib.sol",
           "git_object": "899a2fcef5794d7ec0301618651952f14d096960",
           "git_mode": "100644",
-          "sha256": "1aea615ef98ccbf9d0bdeb7d141c3394e3a117bb34b2f5b896e1a2cd0d15140f",
-          "units": [
-            "SignatureCheckerLib"
-          ]
+          "sha256": "1aea615ef98ccbf9d0bdeb7d141c3394e3a117bb34b2f5b896e1a2cd0d15140f"
         }
       ]
     },
@@ -1505,13 +1255,10 @@
       "commit": "c77954196f602ebd68161e01b6ba376874b019c6",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SignatureCheckerLib.sol/c77954196f602ebd68161e01b6ba376874b019c6/SignatureCheckerLib.sol",
+          "path": "src/utils/SignatureCheckerLib.sol",
           "git_object": "c4f69f5530a53d68aa3385adfb8f9fb014ad4bff",
           "git_mode": "100644",
-          "sha256": "be8885847c476025fa04df19610e647b1e01256a51c2846abb511913d17f5cbd",
-          "units": [
-            "SignatureCheckerLib"
-          ]
+          "sha256": "be8885847c476025fa04df19610e647b1e01256a51c2846abb511913d17f5cbd"
         }
       ]
     },
@@ -1523,13 +1270,10 @@
       "commit": "c97ba5887c4eeab6c23db803a6f15a5125a27f2d",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/ERC1967Factory.sol/c97ba5887c4eeab6c23db803a6f15a5125a27f2d/ERC1967Factory.sol",
+          "path": "src/utils/ERC1967Factory.sol",
           "git_object": "5d131417ce43d854da65a9006272830864106666",
           "git_mode": "100644",
-          "sha256": "f56e90c539d64090d9dbb622b2d67c322cbe17f953345c58b84356f9dc47e900",
-          "units": [
-            "ERC1967Factory"
-          ]
+          "sha256": "f56e90c539d64090d9dbb622b2d67c322cbe17f953345c58b84356f9dc47e900"
         }
       ]
     },
@@ -1541,13 +1285,10 @@
       "commit": "cca555c569588b7244bfffcb99b3e4d093fd80aa",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SignatureCheckerLib.sol/cca555c569588b7244bfffcb99b3e4d093fd80aa/SignatureCheckerLib.sol",
+          "path": "src/utils/SignatureCheckerLib.sol",
           "git_object": "5999a20b54eead61a61e9d1ab40705a29b52638a",
           "git_mode": "100644",
-          "sha256": "b006ff8ddd57db037ee0e1c02a0a1601256bfdbfb251e52c12aa369bf8e25b6f",
-          "units": [
-            "SignatureCheckerLib"
-          ]
+          "sha256": "b006ff8ddd57db037ee0e1c02a0a1601256bfdbfb251e52c12aa369bf8e25b6f"
         }
       ]
     },
@@ -1559,13 +1300,10 @@
       "commit": "d323836cf9029659619122010c74f242ffca4b7b",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/LibTransient.sol/d323836cf9029659619122010c74f242ffca4b7b/LibTransient.sol",
+          "path": "src/utils/LibTransient.sol",
           "git_object": "f114c94046d422edee6a519092c8aa7b98113134",
           "git_mode": "100644",
-          "sha256": "ad34016a5ee818f1664f3bc7b78f4a1729dda779a6a06a1133d9ffcd0fe52f9b",
-          "units": [
-            "LibTransient"
-          ]
+          "sha256": "ad34016a5ee818f1664f3bc7b78f4a1729dda779a6a06a1133d9ffcd0fe52f9b"
         }
       ]
     },
@@ -1577,13 +1315,10 @@
       "commit": "d3488dcd0826479d7872b518286ae09bd8cefae6",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC20Votes.sol/d3488dcd0826479d7872b518286ae09bd8cefae6/ERC20Votes.sol",
+          "path": "src/tokens/ERC20Votes.sol",
           "git_object": "eb249ce2b449481e948f13d830ad4527ad218478",
           "git_mode": "100644",
-          "sha256": "2eef0fc6dcd3f1a1f17f255e1aaf1c1642115826dce8d66c7efea757ae936633",
-          "units": [
-            "ERC20Votes"
-          ]
+          "sha256": "2eef0fc6dcd3f1a1f17f255e1aaf1c1642115826dce8d66c7efea757ae936633"
         }
       ]
     },
@@ -1595,13 +1330,10 @@
       "commit": "d4f6dbcefe3ddce628c7404c2ac8145609071a75",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/LibClone.sol/d4f6dbcefe3ddce628c7404c2ac8145609071a75/LibClone.sol",
+          "path": "src/utils/LibClone.sol",
           "git_object": "a3d5fb94bd346cfcdeaa71968a3f7451c9ee699e",
           "git_mode": "100644",
-          "sha256": "f20081802353b0cdd01507b6251893c1eb75cb91ae4fd8705f643d5d5236295f",
-          "units": [
-            "LibClone"
-          ]
+          "sha256": "f20081802353b0cdd01507b6251893c1eb75cb91ae4fd8705f643d5d5236295f"
         }
       ]
     },
@@ -1613,13 +1345,10 @@
       "commit": "e11b6f31fe853dc56d43557fd167cfba5b51d3fb",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC1155.sol/e11b6f31fe853dc56d43557fd167cfba5b51d3fb/ERC1155.sol",
+          "path": "src/tokens/ERC1155.sol",
           "git_object": "5db6c6cddc990f6c4e6f98f957231fc15d0f79ea",
           "git_mode": "100644",
-          "sha256": "3a61da16ca8874838280b9a51e044fca86d540d844fd8cd55f0c2cfc8c8a60e5",
-          "units": [
-            "ERC1155"
-          ]
+          "sha256": "3a61da16ca8874838280b9a51e044fca86d540d844fd8cd55f0c2cfc8c8a60e5"
         }
       ]
     },
@@ -1631,13 +1360,10 @@
       "commit": "e11b6f31fe853dc56d43557fd167cfba5b51d3fb",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/LibTransient.sol/e11b6f31fe853dc56d43557fd167cfba5b51d3fb/LibTransient.sol",
+          "path": "src/utils/LibTransient.sol",
           "git_object": "181f3e20fd8ac6f0e5e926209efc3a848302dd25",
           "git_mode": "100644",
-          "sha256": "5d17d91d2c8537aa45f690b664de0b3a3e9d95348b9103f043f5f4b1b6e66ed5",
-          "units": [
-            "LibTransient"
-          ]
+          "sha256": "5d17d91d2c8537aa45f690b664de0b3a3e9d95348b9103f043f5f4b1b6e66ed5"
         }
       ]
     },
@@ -1649,13 +1375,10 @@
       "commit": "e11b6f31fe853dc56d43557fd167cfba5b51d3fb",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/Lifebuoy.sol/e11b6f31fe853dc56d43557fd167cfba5b51d3fb/Lifebuoy.sol",
+          "path": "src/utils/Lifebuoy.sol",
           "git_object": "f4831a87e1ee79bda2c9de974fb9ea1a10a0ca80",
           "git_mode": "100644",
-          "sha256": "9c942025dd2090d3ecfb08fdc79575d8b6c79bafad2af0eceb253a5c291351d3",
-          "units": [
-            "Lifebuoy"
-          ]
+          "sha256": "9c942025dd2090d3ecfb08fdc79575d8b6c79bafad2af0eceb253a5c291351d3"
         }
       ]
     },
@@ -1667,13 +1390,10 @@
       "commit": "e158762ba98db40a06411db7f80a54b93e951818",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC1155.sol/e158762ba98db40a06411db7f80a54b93e951818/ERC1155.sol",
+          "path": "src/tokens/ERC1155.sol",
           "git_object": "0ddd339c6b3e61a4253859c41e77e8a150bd9550",
           "git_mode": "100644",
-          "sha256": "18c8119107adad56cd66a31230204e1fe3236e3b669240e19d6fced81ca87b8e",
-          "units": [
-            "ERC1155"
-          ]
+          "sha256": "18c8119107adad56cd66a31230204e1fe3236e3b669240e19d6fced81ca87b8e"
         }
       ]
     },
@@ -1685,13 +1405,10 @@
       "commit": "e158762ba98db40a06411db7f80a54b93e951818",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC20.sol/e158762ba98db40a06411db7f80a54b93e951818/ERC20.sol",
+          "path": "src/tokens/ERC20.sol",
           "git_object": "17150e8f0e3699bceaf273d15b6865afe88942d0",
           "git_mode": "100644",
-          "sha256": "4b9311f0c4bdb3a00f989652243469966692e0f1df7b3f1e84b1254b43e01ee6",
-          "units": [
-            "ERC20"
-          ]
+          "sha256": "4b9311f0c4bdb3a00f989652243469966692e0f1df7b3f1e84b1254b43e01ee6"
         }
       ]
     },
@@ -1703,13 +1420,10 @@
       "commit": "e158762ba98db40a06411db7f80a54b93e951818",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC721.sol/e158762ba98db40a06411db7f80a54b93e951818/ERC721.sol",
+          "path": "src/tokens/ERC721.sol",
           "git_object": "938cba45f397e40511d5277631e94b035965661f",
           "git_mode": "100644",
-          "sha256": "00490825fc736ffa6137aa25df80be28a9cd944e0c7d98aa9b9829e4ca429cc3",
-          "units": [
-            "ERC721"
-          ]
+          "sha256": "00490825fc736ffa6137aa25df80be28a9cd944e0c7d98aa9b9829e4ca429cc3"
         }
       ]
     },
@@ -1721,13 +1435,10 @@
       "commit": "e158762ba98db40a06411db7f80a54b93e951818",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/EIP712.sol/e158762ba98db40a06411db7f80a54b93e951818/EIP712.sol",
+          "path": "src/utils/EIP712.sol",
           "git_object": "5d0d72fbd7232c8d24f2d888bf20b98f592e5043",
           "git_mode": "100644",
-          "sha256": "fd32a9b7522401a405be4bc30a9205441093188ae457596917b514c59bcfc3bd",
-          "units": [
-            "EIP712"
-          ]
+          "sha256": "fd32a9b7522401a405be4bc30a9205441093188ae457596917b514c59bcfc3bd"
         }
       ]
     },
@@ -1739,13 +1450,10 @@
       "commit": "e158762ba98db40a06411db7f80a54b93e951818",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/ERC1967Factory.sol/e158762ba98db40a06411db7f80a54b93e951818/ERC1967Factory.sol",
+          "path": "src/utils/ERC1967Factory.sol",
           "git_object": "bbe875411b319ad073dc5833f917b9ddb7f51417",
           "git_mode": "100644",
-          "sha256": "8ae1668b5bd0bbba620a2f35e73465ed1802103b93e574f129913d269368777f",
-          "units": [
-            "ERC1967Factory"
-          ]
+          "sha256": "8ae1668b5bd0bbba620a2f35e73465ed1802103b93e574f129913d269368777f"
         }
       ]
     },
@@ -1757,13 +1465,10 @@
       "commit": "e158762ba98db40a06411db7f80a54b93e951818",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/MerkleProofLib.sol/e158762ba98db40a06411db7f80a54b93e951818/MerkleProofLib.sol",
+          "path": "src/utils/MerkleProofLib.sol",
           "git_object": "13fe93a196b40e520c61ff6c8feb87663a9254de",
           "git_mode": "100644",
-          "sha256": "160adf7afcf5049c48f7890b2a3f61a275676217a866a9681e8009ee8d06daf2",
-          "units": [
-            "MerkleProofLib"
-          ]
+          "sha256": "160adf7afcf5049c48f7890b2a3f61a275676217a866a9681e8009ee8d06daf2"
         }
       ]
     },
@@ -1775,13 +1480,10 @@
       "commit": "e158762ba98db40a06411db7f80a54b93e951818",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SafeTransferLib.sol/e158762ba98db40a06411db7f80a54b93e951818/SafeTransferLib.sol",
+          "path": "src/utils/SafeTransferLib.sol",
           "git_object": "30feacba9542708cb4eeed38dd80d36d2324a2e1",
           "git_mode": "100644",
-          "sha256": "3a1e4c03d4af08bde7abc47dd2cece72c494e8be853b5f39a867d8e1c3266cc8",
-          "units": [
-            "SafeTransferLib"
-          ]
+          "sha256": "3a1e4c03d4af08bde7abc47dd2cece72c494e8be853b5f39a867d8e1c3266cc8"
         }
       ]
     },
@@ -1793,13 +1495,10 @@
       "commit": "e158762ba98db40a06411db7f80a54b93e951818",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SignatureCheckerLib.sol/e158762ba98db40a06411db7f80a54b93e951818/SignatureCheckerLib.sol",
+          "path": "src/utils/SignatureCheckerLib.sol",
           "git_object": "0eebae883462805db338bbfa42dcdd5377a8afb5",
           "git_mode": "100644",
-          "sha256": "32b6b007140fb4a5c122a5dd21621c08ed1e2a5b326a791c253bb2d4b57d74a2",
-          "units": [
-            "SignatureCheckerLib"
-          ]
+          "sha256": "32b6b007140fb4a5c122a5dd21621c08ed1e2a5b326a791c253bb2d4b57d74a2"
         }
       ]
     },
@@ -1811,13 +1510,10 @@
       "commit": "e3ebb452c4d5854c51bc0e44be416cba9ff6c6ed",
       "files": [
         {
-          "file": "Vectorized/solady/src/accounts/ERC7821.sol/e3ebb452c4d5854c51bc0e44be416cba9ff6c6ed/ERC7821.sol",
+          "path": "src/accounts/ERC7821.sol",
           "git_object": "cc5204b39abb8860669d369ca067a85cb67ff30e",
           "git_mode": "100644",
-          "sha256": "2cb9e3b53b11a6ffe9059e29c2398cb4c130ef6a2cd97ff7e1016ca767924dc0",
-          "units": [
-            "ERC7821"
-          ]
+          "sha256": "2cb9e3b53b11a6ffe9059e29c2398cb4c130ef6a2cd97ff7e1016ca767924dc0"
         }
       ]
     },
@@ -1829,13 +1525,10 @@
       "commit": "e4ba18e26bca7390a1bb709db15be4cee4143eaf",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/P256.sol/e4ba18e26bca7390a1bb709db15be4cee4143eaf/P256.sol",
+          "path": "src/utils/P256.sol",
           "git_object": "db17cb75e98f1f0766b91dd88f876dce4e1d98ab",
           "git_mode": "100644",
-          "sha256": "e28a43e0b8d8ddd8e48e1f6cf82fd49d6993cd3624157d147733645a7b220dc5",
-          "units": [
-            "P256"
-          ]
+          "sha256": "e28a43e0b8d8ddd8e48e1f6cf82fd49d6993cd3624157d147733645a7b220dc5"
         }
       ]
     },
@@ -1847,13 +1540,10 @@
       "commit": "e8d36d039bbf2c8742bc7d463131ed381c2e867b",
       "files": [
         {
-          "file": "Vectorized/solady/src/tokens/ERC721.sol/e8d36d039bbf2c8742bc7d463131ed381c2e867b/ERC721.sol",
+          "path": "src/tokens/ERC721.sol",
           "git_object": "3f1506181edd883232bef97cc724bbaff4f0e0a9",
           "git_mode": "100644",
-          "sha256": "b27a2ce7c7a7d6b1dedff243f7dcd5e5b61b9e1fab7219bbf23b92d1d98251cc",
-          "units": [
-            "ERC721"
-          ]
+          "sha256": "b27a2ce7c7a7d6b1dedff243f7dcd5e5b61b9e1fab7219bbf23b92d1d98251cc"
         }
       ]
     },
@@ -1865,13 +1555,10 @@
       "commit": "eb36cf4817e8dd81349895f1ed5c922299343ffc",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/EnumerableSetLib.sol/eb36cf4817e8dd81349895f1ed5c922299343ffc/EnumerableSetLib.sol",
+          "path": "src/utils/EnumerableSetLib.sol",
           "git_object": "9e9f2c4f0adbe2cdd87404e70aebddd749742148",
           "git_mode": "100644",
-          "sha256": "b1ef46e2ea79039ed133669a45818254ff81a0de45d67132bb026faea35869a3",
-          "units": [
-            "EnumerableSetLib"
-          ]
+          "sha256": "b1ef46e2ea79039ed133669a45818254ff81a0de45d67132bb026faea35869a3"
         }
       ]
     },
@@ -1883,13 +1570,10 @@
       "commit": "f9ae9781a6b19c918c1acb190b0516684af0d6c7",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SignatureCheckerLib.sol/f9ae9781a6b19c918c1acb190b0516684af0d6c7/SignatureCheckerLib.sol",
+          "path": "src/utils/SignatureCheckerLib.sol",
           "git_object": "41636bcf70421661c3253c97e983c756b3d7f52e",
           "git_mode": "100644",
-          "sha256": "65103195314269327a56128b6448437fdd41168e9613e9afd9c59221510fb601",
-          "units": [
-            "SignatureCheckerLib"
-          ]
+          "sha256": "65103195314269327a56128b6448437fdd41168e9613e9afd9c59221510fb601"
         }
       ]
     },
@@ -1901,13 +1585,10 @@
       "commit": "fb7ede6ab5667929e48d08ca20d4551cce49a556",
       "files": [
         {
-          "file": "Vectorized/solady/src/utils/SignatureCheckerLib.sol/fb7ede6ab5667929e48d08ca20d4551cce49a556/SignatureCheckerLib.sol",
+          "path": "src/utils/SignatureCheckerLib.sol",
           "git_object": "4de6af561b042d342bbc8a2fdccdafeb15b975e4",
           "git_mode": "100644",
-          "sha256": "ca83cbfebc5477c66d11233d94610cc924f2f8123602a6f74948c7acf5a0284e",
-          "units": [
-            "SignatureCheckerLib"
-          ]
+          "sha256": "ca83cbfebc5477c66d11233d94610cc924f2f8123602a6f74948c7acf5a0284e"
         }
       ]
     }

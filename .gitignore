@@ -1,14 +1,6 @@
-__pycache__
-.venv
+__pycache__/
+.venv/
 
-:memory:.ses
-
-# deployed sources do not belong to this repo
-deployed-contracts/
-deployed.json
-
-# projects that are still not reviewed
-
-# temporary files of export_audit_index.py
+# temporary files of the export
 .audit-index.json.tmp
 .audit-objects.json.zst.tmp

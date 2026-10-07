@@ -43,7 +43,7 @@ Commit dates use Git committer timestamps (UTC).
 
 ### Repository: <a href="https://github.com/katana-network/kat-vault-lz"><code>katana-network/kat-vault-lz</code></a>
 
-_Commit dates unavailable: 2 commit(s) have no timestamp._
+_Commit dates unavailable: 2 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |

@@ -1,0 +1,24 @@
+[
+  {
+    "type": "verifier",
+    "name": "SP1 Turbo Plonk v5.0.0",
+    "link": "https://github.com/succinctlabs/sp1/tree/v5.0.0/crates/prover",
+    "commit": "38f0f143dece864e8bffafad64196a924f190336",
+    "address": "eth:0x0459d576A6223fEeA177Fb3DF53C9c77BF84C459",
+    "path": "sp1-turbo-plonk-v5.0.0"
+  },
+  {
+    "type": "program",
+    "name": "Aggregation program of Ethscriptions ZK Fault Proofs",
+    "link": "https://github.com/0xFacet/ethscriptions-zk-fault-proofs/tree/251c5248cf92b544a3e6b1b4c0b98b0146dab1c6/programs/aggregation",
+    "commit": "251c5248cf92b544a3e6b1b4c0b98b0146dab1c6",
+    "path": "aggregation-program"
+  },
+  {
+    "type": "program",
+    "name": "Range program of Ethscriptions ZK Fault Proofs",
+    "link": "https://github.com/0xFacet/ethscriptions-zk-fault-proofs/tree/251c5248cf92b544a3e6b1b4c0b98b0146dab1c6/programs/range/ethereum",
+    "commit": "251c5248cf92b544a3e6b1b4c0b98b0146dab1c6",
+    "path": "range-program-ethereum"
+  }
+]

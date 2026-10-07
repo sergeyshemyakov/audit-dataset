@@ -12,8 +12,6 @@ Commit dates use Git committer timestamps (UTC).
 
 ### Repository: <a href="https://github.com/Railgun-Privacy/contract"><code>Railgun-Privacy/contract</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/Railgun-Privacy/contract/commit/6281cb0dac6a6e0da743e3ba56c437803657872d"><code>6281cb0dac6a6e0da743e3ba56c437803657872d</code></a> | May 26, 2021 | <code>contracts/logic/Commitments.sol</code><br><code>contracts/logic/Poseidon.sol</code> (explicitly not audited)<br><code>contracts/logic/RailgunLogic.sol</code><br><code>contracts/logic/Snark.sol</code><br><code>contracts/logic/TokenWhitelist.sol</code><br><code>contracts/logic/Types.sol</code><br><code>contracts/logic/Verifier.sol</code> |
@@ -21,7 +19,7 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/Railgun-Privacy/circuits"><code>Railgun-Privacy/circuits</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
+_Commit dates unavailable: 1 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -37,8 +35,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/Railgun-Privacy/contract"><code>Railgun-Privacy/contract</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/Railgun-Privacy/contract/commit/d2c63577ddd8310c87dced0d549cf9505b372111"><code>d2c63577ddd8310c87dced0d549cf9505b372111</code></a> | August 10, 2021 | <code>contracts/governance/Delegator.sol</code><br><code>contracts/governance/Deployer.sol</code><br><code>contracts/governance/Staking.sol</code><br><code>contracts/governance/Voting.sol</code><br><code>contracts/logic/Commitments.sol</code><br><code>contracts/logic/Globals.sol</code><br><code>contracts/logic/Poseidon.sol</code><br><code>contracts/logic/RailgunLogic.sol</code><br><code>contracts/logic/Snark.sol</code><br><code>contracts/logic/TokenWhitelist.sol</code><br><code>contracts/logic/Verifier.sol</code><br><code>contracts/proxy/Proxy.sol</code><br><code>contracts/proxy/ProxyAdmin.sol</code><br><code>contracts/teststubs/governance/Getter.sol</code><br><code>contracts/teststubs/governance/GovernanceTarget.sol</code><br><code>contracts/teststubs/governance/StakingStub.sol</code><br><code>contracts/teststubs/logic/CommitmentsStub.sol</code><br><code>contracts/teststubs/logic/TokenWhitelistStub.sol</code><br><code>contracts/teststubs/proxy/ProxyTarget.sol</code><br><code>contracts/teststubs/TokenStubs.sol</code><br><code>contracts/token/Distributor.sol</code><br><code>contracts/token/Multisend.sol</code><br><code>contracts/token/VestLock.sol</code><br><code>contracts/treasury/Treasury.sol</code> |
@@ -51,8 +47,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Zokyo audit of the RAILGUN V1 governance, logic, proxy, token and treasury contracts at a single commit, with additional test coverage written by the auditors. Only one low and three informational issues were found, all left unresolved because the contracts were already deployed.
 
 ### Repository: <a href="https://github.com/Railgun-Privacy/contract"><code>Railgun-Privacy/contract</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -67,8 +61,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/Railgun-Privacy/contract"><code>Railgun-Privacy/contract</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/Railgun-Privacy/contract/commit/0418a0f1bf0e58e5b3bab8870112b7648ff20aca"><code>0418a0f1bf0e58e5b3bab8870112b7648ff20aca</code></a> | October 10, 2021 | <code>contracts/logic/Commitments.sol</code><br><code>contracts/logic/Globals.sol</code><br><code>contracts/logic/RailgunLogic.sol</code> |
@@ -82,8 +74,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Zokyo review of the RAILGUN privacy pool logic contracts (Globals, Snark, Commitments, Verifier, Poseidon, TokenBlacklist, RailgunLogic) at a single commit. Only two informational findings were reported, both left unresolved.
 
 ### Repository: <a href="https://github.com/Railgun-Privacy/contract"><code>Railgun-Privacy/contract</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -117,8 +107,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/Railgun-Privacy/contract"><code>Railgun-Privacy/contract</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/Railgun-Privacy/contract/commit/b74eeb69ca2614212c8060a3460fd05c28bb17e3"><code>b74eeb69ca2614212c8060a3460fd05c28bb17e3</code></a> | August 22, 2022 | <code>contracts/governance/Voting.sol</code><br><code>contracts/treasury/GovernorRewards.sol</code> |
@@ -132,7 +120,7 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/Railgun-Privacy/contract"><code>Railgun-Privacy/contract</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
+_Commit dates unavailable: 1 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -147,8 +135,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/Railgun-Privacy/contract"><code>Railgun-Privacy/contract</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/Railgun-Privacy/contract/commit/4385ec73bf7d0da283123e8a3ac3900216cfc3f0"><code>4385ec73bf7d0da283123e8a3ac3900216cfc3f0</code></a> | November 12, 2022 | <code>contracts/logic/Commitments.sol</code><br><code>contracts/logic/RailgunLogic.sol</code><br><code>contracts/logic/RailgunSmartWallet.sol</code> |
@@ -161,8 +147,6 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 - Description: Zokyo review of the Sender (Ethereum) and Executor (Arbitrum) contracts that relay RAILGUN governance tasks from L1 to L2. Medium, low and informational findings were reported and mostly resolved.
 
 ### Repository: <a href="https://github.com/Railgun-Privacy/contract"><code>Railgun-Privacy/contract</code></a>
-
-_Commit dates unavailable: 1 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |

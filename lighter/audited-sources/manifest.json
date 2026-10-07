@@ -1,7 +1,6 @@
 {
-  "schema_version": "1.1.0",
-  "project": "lighter",
-  "audit_summary": "../audit-summary.json",
+  "schema_version": "2.0.0",
+  "collection": "lighter",
   "sources": [],
   "skipped": [
     {
@@ -654,13 +653,6 @@
       "repository": "elliottech/lighter-prover",
       "source_path": "circuit/src/recursion/wrapper_circuit.rs",
       "path_kind": "file",
-      "commit": "0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90",
-      "reason": "commit could not be fetched"
-    },
-    {
-      "repository": "elliottech/lighter-prover",
-      "source_path": "snark",
-      "path_kind": "directory_recursive",
       "commit": "0028b73b1e38de7e7c7e4ad33c7680a39e2c6c90",
       "reason": "commit could not be fetched"
     },

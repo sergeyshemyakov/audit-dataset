@@ -12,8 +12,6 @@ Commit dates use Git committer timestamps (UTC).
 
 ### Repository: <a href="https://github.com/starkware-libs/starkex-contracts"><code>starkware-libs/starkex-contracts</code></a>
 
-_Commit dates unavailable: 2 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/starkware-libs/starkex-contracts/commit/d6bde00ba6f5fa38c05e2e2222ddc6a2eaf2c562"><code>d6bde00ba6f5fa38c05e2e2222ddc6a2eaf2c562</code></a> | February 11, 2020 | <code>evm-verifier/solidity/contracts</code> (recursive directory)<br><code>scalable-dex/contracts/src</code> (recursive directory) |
@@ -33,7 +31,7 @@ _Commit dates unavailable: 2 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/starkware-libs/starkex-contracts"><code>starkware-libs/starkex-contracts</code></a>
 
-_Commit dates unavailable: 2 commit(s) have no timestamp._
+_Commit dates unavailable: 2 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -64,8 +62,6 @@ _Commit dates unavailable: 2 commit(s) have no timestamp._
 - Description: CryptoExperts cryptographic code review of the Solidity STARK verifier contracts (PRNG, verifier channel, Merkle and FRI verification, StarkVerifier) in starkex-contracts evm-verifier at the StarkEx v4.0 commit, checking spec compliance and soundness. The report was updated after StarkWare&#x27;s fixes; the highest-rated observation is Medium risk (PRNG seed refreshing).
 
 ### Repository: <a href="https://github.com/starkware-libs/starkex-contracts"><code>starkware-libs/starkex-contracts</code></a>
-
-_Commit dates unavailable: 2 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -110,8 +106,6 @@ _Commit dates unavailable: 2 commit(s) have no timestamp._
 - Description: CryptoExperts cryptographic code review of the Solidity Cairo verifier (cpu) and SHARP/GPS statement verifier (gps) in starkex-contracts evm-verifier at StarkEx v4.0 plus the Cairo simple and general bootloaders in cairo-lang (v0.8.0, v0.9.0). Fixes were counter-audited at SHARP EVM Verifier v3.0 (f81ba5f) and Cairo v0.10.3 (de741b9); the highest-rated observation is Low risk.
 
 ### Repository: <a href="https://github.com/starkware-libs/starkex-contracts"><code>starkware-libs/starkex-contracts</code></a>
-
-_Commit dates unavailable: 2 commit(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |

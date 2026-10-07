@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4.0",
+  "schema_version": "1.5.0",
   "project": "privacy-pools",
   "reports": [
     {
@@ -31,16 +31,12 @@
                     "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/contracts/PrivacyPool.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review (initial commit).",
-                  "major_findings": 4,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "C-03",
                     "C-04",
                     "C-10",
                     "M-02"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 },
                 {
                   "revision": {
@@ -50,16 +46,11 @@
                     "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/PrivacyPool.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "final commit / fix review",
-                  "coverage": "Final audited commit; C-03, C-10 and M-02 remain acknowledged and unfixed.",
-                  "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
-                  "major_findings": 3,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "C-03",
                     "C-10",
                     "M-02"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 }
               ]
             },
@@ -74,15 +65,11 @@
                     "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/contracts/ERC20PrivacyPool.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review (initial commit).",
-                  "major_findings": 3,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "C-10",
                     "M-03",
                     "M-04"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 },
                 {
                   "revision": {
@@ -92,16 +79,11 @@
                     "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/ERC20PrivacyPool.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "final commit / fix review",
-                  "coverage": "Final audited commit; C-10, M-03 and M-04 remain acknowledged and unfixed.",
-                  "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
-                  "major_findings": 3,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "C-10",
                     "M-03",
                     "M-04"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 }
               ]
             },
@@ -116,13 +98,9 @@
                     "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/contracts/ETHPrivacyPool.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review (initial commit).",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "C-10"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 },
                 {
                   "revision": {
@@ -132,14 +110,9 @@
                     "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/ETHPrivacyPool.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "final commit / fix review",
-                  "coverage": "Final audited commit; C-10 remains acknowledged (fix deferred to a new major version).",
-                  "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "C-10"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 }
               ]
             },
@@ -154,13 +127,9 @@
                     "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/contracts/MerkleTreeWithHistory.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review (initial commit).",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "C-03"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 },
                 {
                   "revision": {
@@ -170,14 +139,9 @@
                     "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/MerkleTreeWithHistory.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "final commit / fix review",
-                  "coverage": "Final audited commit; C-03 remains acknowledged and unfixed.",
-                  "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "C-03"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 }
               ]
             },
@@ -192,10 +156,7 @@
                     "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/membership-proof/circuits/proofOfInnocence.circom"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full circuit review (initial commit).",
-                  "major_findings": 9,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "C-01",
                     "C-02",
                     "C-04",
@@ -205,8 +166,7 @@
                     "C-08",
                     "C-09",
                     "M-01"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 },
                 {
                   "revision": {
@@ -216,14 +176,9 @@
                     "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/membership-proof/circuits/proofOfInnocence.circom"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "final commit / fix review",
-                  "coverage": "Final audited commit; C-01 and M-01 fixed, C-05 remains acknowledged, other criticals classified as no issue.",
-                  "follows": "e221f0b88e52fb5c214726e765997ef4067793a9",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "C-05"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 }
               ]
             }
@@ -259,11 +214,7 @@
                     "timestamp": "2025-01-20T20:18:23Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/56d5d48c21e9493954e2660d0cc252ce537edc25/packages/circuits/circuits/commitment.circom"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full circuit review (initial commit).",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Info"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -272,11 +223,7 @@
                     "timestamp": "2025-02-19T13:49:44Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb/packages/circuits/circuits/commitment.circom"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "final commit / fix review",
-                  "coverage": "Final audited commit with fixes verified.",
-                  "follows": "56d5d48c21e9493954e2660d0cc252ce537edc25",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -290,11 +237,7 @@
                     "timestamp": "2025-01-20T20:18:23Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/56d5d48c21e9493954e2660d0cc252ce537edc25/packages/circuits/circuits/merkleTree.circom"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full circuit review (initial commit).",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Warning"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -303,11 +246,7 @@
                     "timestamp": "2025-02-19T13:49:44Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb/packages/circuits/circuits/merkleTree.circom"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "final commit / fix review",
-                  "coverage": "Final audited commit with fixes verified.",
-                  "follows": "56d5d48c21e9493954e2660d0cc252ce537edc25",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -321,11 +260,7 @@
                     "timestamp": "2025-01-20T20:18:23Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/56d5d48c21e9493954e2660d0cc252ce537edc25/packages/circuits/circuits/withdraw.circom"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full circuit review (initial commit).",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Warning"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -334,11 +269,7 @@
                     "timestamp": "2025-02-19T13:49:44Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb/packages/circuits/circuits/withdraw.circom"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "final commit / fix review",
-                  "coverage": "Final audited commit with fixes verified.",
-                  "follows": "56d5d48c21e9493954e2660d0cc252ce537edc25",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -374,11 +305,7 @@
                     "timestamp": "2025-02-14T14:05:43Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/packages/contracts/src/contracts/Entrypoint.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at audit commit (report links the commit under the former defi-wonderland/privacy-pool-core repository, which now resolves only under 0xbow-io/privacy-pools-core).",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -387,11 +314,7 @@
                     "timestamp": "2025-03-05T12:27:17Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/6cdeeaf0e44b98d5563c9d2f340f5825bec117f2/packages/contracts/src/contracts/Entrypoint.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Mitigation of AW-L-03 (relayer fee bound) only.",
-                  "follows": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -400,11 +323,7 @@
                     "timestamp": "2025-03-10T12:22:01Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/ac36feba8ba26f3485acd0d87a9d5c373ab3967d/packages/contracts/src/contracts/Entrypoint.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Mitigations of AW-M-01 (forceApprove) and AW-L-02 (updateRoot index) only.",
-                  "follows": "6cdeeaf0e44b98d5563c9d2f340f5825bec117f2",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -418,11 +337,7 @@
                     "timestamp": "2025-02-14T14:05:43Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/packages/contracts/src/contracts/PrivacyPool.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at audit commit.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -436,11 +351,7 @@
                     "timestamp": "2025-02-14T14:05:43Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/packages/contracts/src/contracts/State.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at audit commit.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -449,11 +360,7 @@
                     "timestamp": "2025-03-10T12:22:01Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/ac36feba8ba26f3485acd0d87a9d5c373ab3967d/packages/contracts/src/contracts/State.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Partial mitigation of AW-M-02 (root history size) only.",
-                  "follows": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -467,10 +374,7 @@
                     "timestamp": "2025-02-14T14:05:43Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at audit commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -484,10 +388,7 @@
                     "timestamp": "2025-02-14T14:05:43Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at audit commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -501,10 +402,7 @@
                     "timestamp": "2025-02-14T14:05:43Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/packages/contracts/src/contracts/lib/Constants.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at audit commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -518,10 +416,7 @@
                     "timestamp": "2025-02-14T14:05:43Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/f0b8fe5e7b91b942523e8af671c59c3a4c75f612/packages/contracts/src/contracts/lib/ProofLib.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at audit commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -558,13 +453,9 @@
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2d4627ba55743d17ff62a2856d93ef7cc926fc64/packages/contracts/src/contracts/Entrypoint.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review (initial commit).",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "M-01"
-                  ],
-                  "highest_reported_finding_severity": "Major"
+                  ]
                 },
                 {
                   "revision": {
@@ -573,11 +464,7 @@
                     "timestamp": "2025-03-05T13:12:04Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/016a949f53f0493388a6877529f28774ef054a8e/packages/contracts/src/contracts/Entrypoint.sol"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fixes for M-01, W-02, W-11, I-02 and I-03 verified at this commit.",
-                  "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -586,11 +473,7 @@
                     "timestamp": "2025-03-14T12:57:01Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/532eaa8ed151f06697249d400926d17adf442d8e/packages/contracts/src/contracts/Entrypoint.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "final commit",
-                  "coverage": "Final audited commit.",
-                  "follows": "016a949f53f0493388a6877529f28774ef054a8e",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -605,13 +488,9 @@
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2d4627ba55743d17ff62a2856d93ef7cc926fc64/packages/contracts/src/contracts/PrivacyPool.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review (initial commit).",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "M-02"
-                  ],
-                  "highest_reported_finding_severity": "Major"
+                  ]
                 },
                 {
                   "revision": {
@@ -621,14 +500,9 @@
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/532eaa8ed151f06697249d400926d17adf442d8e/packages/contracts/src/contracts/PrivacyPool.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "final commit",
-                  "coverage": "Final audited commit; M-02 remains acknowledged.",
-                  "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "M-02"
-                  ],
-                  "highest_reported_finding_severity": "Major"
+                  ]
                 }
               ]
             },
@@ -642,10 +516,7 @@
                     "timestamp": "2025-02-24T14:38:49Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2d4627ba55743d17ff62a2856d93ef7cc926fc64/packages/contracts/src/contracts/State.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review (initial commit).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -654,11 +525,7 @@
                     "timestamp": "2025-03-14T12:57:01Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/532eaa8ed151f06697249d400926d17adf442d8e/packages/contracts/src/contracts/State.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "final commit",
-                  "coverage": "Final audited commit.",
-                  "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -672,10 +539,7 @@
                     "timestamp": "2025-02-24T14:38:49Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2d4627ba55743d17ff62a2856d93ef7cc926fc64/packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review (initial commit).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -684,11 +548,7 @@
                     "timestamp": "2025-03-14T12:57:01Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/532eaa8ed151f06697249d400926d17adf442d8e/packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "final commit",
-                  "coverage": "Final audited commit.",
-                  "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -702,10 +562,7 @@
                     "timestamp": "2025-02-24T14:38:49Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2d4627ba55743d17ff62a2856d93ef7cc926fc64/packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review (initial commit).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -714,11 +571,7 @@
                     "timestamp": "2025-03-14T12:57:01Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/532eaa8ed151f06697249d400926d17adf442d8e/packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "final commit",
-                  "coverage": "Final audited commit.",
-                  "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -732,10 +585,7 @@
                     "timestamp": "2025-02-24T14:38:49Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2d4627ba55743d17ff62a2856d93ef7cc926fc64/packages/contracts/src/contracts/lib/Constants.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review (initial commit).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -744,11 +594,7 @@
                     "timestamp": "2025-03-14T12:57:01Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/532eaa8ed151f06697249d400926d17adf442d8e/packages/contracts/src/contracts/lib/Constants.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "final commit",
-                  "coverage": "Final audited commit.",
-                  "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -762,10 +608,7 @@
                     "timestamp": "2025-02-24T14:38:49Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2d4627ba55743d17ff62a2856d93ef7cc926fc64/packages/contracts/src/contracts/lib/ProofLib.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review (initial commit).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -774,11 +617,7 @@
                     "timestamp": "2025-03-14T12:57:01Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/532eaa8ed151f06697249d400926d17adf442d8e/packages/contracts/src/contracts/lib/ProofLib.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "final commit",
-                  "coverage": "Final audited commit.",
-                  "follows": "2d4627ba55743d17ff62a2856d93ef7cc926fc64",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -814,11 +653,7 @@
                     "timestamp": "2025-05-19T17:53:50Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/238e3594053becde68aa40e1e4cef6c0c46e68da/packages/contracts/src/contracts/Entrypoint.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "upgrade audit",
-                  "coverage": "Review of the Entrypoint upgrade adding usedPrecommitments tracking; initial and final commit are identical.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Warning"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -832,10 +667,7 @@
                     "timestamp": "2025-05-19T17:53:50Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/238e3594053becde68aa40e1e4cef6c0c46e68da/packages/contracts/src/interfaces/IEntrypoint.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "upgrade audit",
-                  "coverage": "Full file review as part of the Entrypoint upgrade audit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -872,13 +704,9 @@
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2f6a650b4cbc7872e163a70c56cdc977fe7839b4/packages/contracts/src/contracts/BatchRelayer.sol"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at audit commit; AW-H-01 (High) reported as unmitigated.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "AW-H-01"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 }
               ]
             },
@@ -892,11 +720,7 @@
                     "timestamp": "2025-08-11T21:59:47Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2f6a650b4cbc7872e163a70c56cdc977fe7839b4/packages/contracts/src/interfaces/IBatchRelayer.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full file review at audit commit.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Low"
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -910,10 +734,7 @@
                     "timestamp": "2025-08-11T21:59:47Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2f6a650b4cbc7872e163a70c56cdc977fe7839b4/packages/contracts/script/BatchRelayer.s.sol"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Deployment script reviewed at audit commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }

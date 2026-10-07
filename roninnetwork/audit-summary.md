@@ -12,8 +12,6 @@ Commit dates use Git committer timestamps (UTC).
 
 ### Repository: <a href="https://github.com/axieinfinity/ronin-smart-contracts"><code>axieinfinity/ronin-smart-contracts</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
-
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/axieinfinity/ronin-smart-contracts/blob/bbfe4508d2b9c9ecd3de5f9b5690b7c5b82f53c8/contracts/v0.8/extensions/GatewayV2.sol"><code>bbfe4508d2b9c9ecd3de5f9b5690b7c5b82f53c8</code></a> | May 4, 2022 | <code>contracts/v0.8/extensions/GatewayV2.sol</code><br><code>contracts/v0.8/extensions/governance/Governance.sol</code><br><code>contracts/v0.8/extensions/governance/GatewayGovernance.sol</code><br><code>contracts/v0.8/extensions/governance/GlobalProposalGovernance.sol</code><br><code>contracts/v0.8/extensions/governance/ProposalGovernance.sol</code><br><code>contracts/v0.8/extensions/WithdrawalLimitation.sol</code><br><code>contracts/v0.8/extensions/HasProxyAdmin.sol</code><br><code>contracts/v0.8/extensions/MinimumWithdrawal.sol</code><br><code>contracts/v0.8/extensions/TransparentUpgradeableProxyV2.sol</code><br><code>contracts/v0.8/mocks/MockERC721.sol</code><br><code>contracts/v0.8/mocks/MockGatewayV2.sol</code><br><code>contracts/v0.8/interfaces/IERC721Mintable.sol</code><br><code>contracts/v0.8/interfaces/IWeightedValidator.sol</code><br><code>contracts/v0.8/interfaces/IERC20Mintable.sol</code><br><code>contracts/v0.8/interfaces/IWETH.sol</code><br><code>contracts/v0.8/interfaces/SignatureConsumer.sol</code><br><code>contracts/v0.8/interfaces/IQuorum.sol</code><br><code>contracts/v0.8/common/RoninValidator.sol</code><br><code>contracts/v0.8/common/GovernanceAdmin.sol</code><br><code>contracts/v0.8/mainchain/IMainchainGatewayV2.sol</code><br><code>contracts/v0.8/mainchain/MainchainGatewayV2.sol</code><br><code>contracts/v0.8/library/Proposal.sol</code><br><code>contracts/v0.8/library/Token.sol</code><br><code>contracts/v0.8/library/Transfer.sol</code><br><code>contracts/v0.8/library/BridgeProposal.sol</code><br><code>contracts/v0.8/library/Ballot.sol</code><br><code>contracts/v0.8/ronin/RoninGatewayV2.sol</code><br><code>contracts/v0.8/ronin/IRoninGatewayV2.sol</code><br><code>test/v0.8/common/RoninValidator.test.ts</code><br><code>test/v0.8/common/GovernanceAdmin.test.ts</code><br><code>test/v0.8/mainchain/MainchainGatewayV2.test.ts</code><br><code>test/v0.8/ronin/RoninGatewayV2.test.ts</code> |
@@ -30,7 +28,7 @@ _Commit dates unavailable: 1 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/axieinfinity/ronin-smart-contracts"><code>axieinfinity/ronin-smart-contracts</code></a>
 
-_Commit dates unavailable: 1 commit(s) have no timestamp._
+_Commit dates unavailable: 1 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |

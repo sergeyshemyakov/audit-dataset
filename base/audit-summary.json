@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4.0",
+  "schema_version": "1.5.0",
   "project": "base",
   "reports": [
     {
@@ -30,11 +30,7 @@
                     "timestamp": "2024-12-11T18:50:40Z",
                     "url": "https://github.com/base/nitro-validator/commit/7879d9b667e576e39edc9803e1660b4ddb89d934"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the ASN.1 DER decoding library at the audited commit; locates Medium 3.1.3, Low 3.2.1, Low 3.2.2 and Informational 3.4.2.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -43,11 +39,7 @@
                     "timestamp": "2025-01-11T01:09:20Z",
                     "url": "https://github.com/base/nitro-validator/commit/43a3c100cf6d42a4bcf23e1b39a7569dd5268b5b"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of the head commit of PR 7 (input validation in timestampFromDateTime), fixing Low 3.2.1.",
-                  "follows": "7879d9b667e576e39edc9803e1660b4ddb89d934",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -56,11 +48,7 @@
                     "timestamp": "2025-01-11T01:10:12Z",
                     "url": "https://github.com/base/nitro-validator/commit/b146321dc081e61198268902269ccdf73c7e2d16"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of the head commit of PR 6 (content validation of ASN.1 timestamps in timestampAt), fixing Medium 3.1.3.",
-                  "follows": "43a3c100cf6d42a4bcf23e1b39a7569dd5268b5b",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -69,11 +57,7 @@
                     "timestamp": "2025-01-11T01:42:46Z",
                     "url": "https://github.com/base/nitro-validator/commit/eb0702b22e44dd301e2437118fac45b987ccea3f"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of the head commit of PR 8 (documenting that multi-byte ASN.1 tags are unsupported), fixing Informational 3.4.2.",
-                  "follows": "b146321dc081e61198268902269ccdf73c7e2d16",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -82,11 +66,7 @@
                     "timestamp": "2025-01-11T01:56:37Z",
                     "url": "https://github.com/base/nitro-validator/commit/7ad540b7a2b89abf6f00534103e9334ffb79f640"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of the head commit of PR 9 (bounds check of ASN.1 node length in readNodeLength), fixing Low 3.2.2.",
-                  "follows": "eb0702b22e44dd301e2437118fac45b987ccea3f",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -100,11 +80,7 @@
                     "timestamp": "2024-12-11T18:50:40Z",
                     "url": "https://github.com/base/nitro-validator/commit/7879d9b667e576e39edc9803e1660b4ddb89d934"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the CBOR decoding library at the audited commit; locates Medium 3.1.2.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -113,11 +89,7 @@
                     "timestamp": "2025-01-10T23:47:27Z",
                     "url": "https://github.com/base/nitro-validator/commit/6516f1976bbde723f3783ec204d38c9b666d286e"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of the head commit of PR 5 (restrict CBOR element parsing to supported types), fixing Medium 3.1.2.",
-                  "follows": "7879d9b667e576e39edc9803e1660b4ddb89d934",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -131,11 +103,7 @@
                     "timestamp": "2024-12-11T18:50:40Z",
                     "url": "https://github.com/base/nitro-validator/commit/7879d9b667e576e39edc9803e1660b4ddb89d934"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the certificate manager contract at the audited commit; locates Informational 3.4.3 and 3.4.4.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -144,11 +112,7 @@
                     "timestamp": "2025-01-10T21:24:01Z",
                     "url": "https://github.com/base/nitro-validator/commit/c7ba4451cbf814c6fee3e9a05eb13b35499262ff"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of the head commit of PR 2 (hardcoded keccak constants for Gas Optimization 3.3.1), which also changes this file.",
-                  "follows": "7879d9b667e576e39edc9803e1660b4ddb89d934",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -157,11 +121,7 @@
                     "timestamp": "2025-01-11T02:03:19Z",
                     "url": "https://github.com/base/nitro-validator/commit/309bd7ce730c3377ad9cc2ff4f70a964c0c3bd55"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of the head commit of PR 11 (event emitted on certificate verification), fixing Informational 3.4.3; Informational 3.4.4 (no revocation support) acknowledged.",
-                  "follows": "c7ba4451cbf814c6fee3e9a05eb13b35499262ff",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -175,10 +135,7 @@
                     "timestamp": "2024-12-11T18:50:40Z",
                     "url": "https://github.com/base/nitro-validator/commit/7879d9b667e576e39edc9803e1660b4ddb89d934"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the P-384 curve parameters contract at the audited commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -192,11 +149,7 @@
                     "timestamp": "2024-12-11T18:50:40Z",
                     "url": "https://github.com/base/nitro-validator/commit/7879d9b667e576e39edc9803e1660b4ddb89d934"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the certificate manager interface at the audited commit; locates Informational 3.4.1 (unused imports).",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -205,11 +158,7 @@
                     "timestamp": "2025-01-10T21:26:17Z",
                     "url": "https://github.com/base/nitro-validator/commit/7dd8c275b743783546a003a36a452ab65495b1fd"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of the head commit of PR 3 (removal of unused imports), fixing Informational 3.4.1.",
-                  "follows": "7879d9b667e576e39edc9803e1660b4ddb89d934",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -223,11 +172,7 @@
                     "timestamp": "2024-12-11T18:50:40Z",
                     "url": "https://github.com/base/nitro-validator/commit/7879d9b667e576e39edc9803e1660b4ddb89d934"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the byte utilities library at the audited commit; locates Medium 3.1.4.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -236,11 +181,7 @@
                     "timestamp": "2025-01-11T01:56:00Z",
                     "url": "https://github.com/base/nitro-validator/commit/16f39f9c734cbc3fc38bf7a63b7b30883a251ede"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of the head commit of PR 10 (bounds check in keccak), fixing Medium 3.1.4.",
-                  "follows": "7879d9b667e576e39edc9803e1660b4ddb89d934",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -254,11 +195,7 @@
                     "timestamp": "2024-12-11T18:50:40Z",
                     "url": "https://github.com/base/nitro-validator/commit/7879d9b667e576e39edc9803e1660b4ddb89d934"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the Nitro attestation validator contract at the audited commit; locates Gas Optimization 3.3.1 and Informational 3.4.1.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Gas Optimization"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -267,11 +204,7 @@
                     "timestamp": "2025-01-10T21:24:01Z",
                     "url": "https://github.com/base/nitro-validator/commit/c7ba4451cbf814c6fee3e9a05eb13b35499262ff"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of the head commit of PR 2 (hardcoded keccak constants), fixing Gas Optimization 3.3.1.",
-                  "follows": "7879d9b667e576e39edc9803e1660b4ddb89d934",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -280,11 +213,7 @@
                     "timestamp": "2025-01-10T21:26:17Z",
                     "url": "https://github.com/base/nitro-validator/commit/7dd8c275b743783546a003a36a452ab65495b1fd"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of the head commit of PR 3 (removal of unused imports), fixing Informational 3.4.1.",
-                  "follows": "c7ba4451cbf814c6fee3e9a05eb13b35499262ff",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -298,11 +227,7 @@
                     "timestamp": "2024-12-11T18:50:40Z",
                     "url": "https://github.com/base/nitro-validator/commit/7879d9b667e576e39edc9803e1660b4ddb89d934"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the SHA-2 extension library at the audited commit; locates Low 3.2.3.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Low"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -311,11 +236,7 @@
                     "timestamp": "2025-01-11T03:11:59Z",
                     "url": "https://github.com/base/nitro-validator/commit/5a9d2b177fc825bd2d4e47b60aabf7ee136610f1"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of the head commit of PR 14 (bounds check in sha2/sha384 offset and length), fixing Low 3.2.3.",
-                  "follows": "7879d9b667e576e39edc9803e1660b4ddb89d934",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -351,11 +272,7 @@
                     "timestamp": "2024-12-20T18:31:06Z",
                     "url": "https://github.com/base/op-enclave/commit/98d346dd0e1cdbde75fba01efd36a07e7cf24391"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the onchain contracts (DeployChain, OutputOracle, Portal, ResolvingProxy, ResolvingProxyFactory, SystemConfig* and config contracts) at the audited commit; no High findings located here.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -364,11 +281,7 @@
                     "timestamp": "2025-01-01T22:37:42Z",
                     "url": "https://github.com/base/op-enclave/commit/4a7e36a0860ba408f2f5538ea7a9a117987d08d6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 42 (contracts/src/OutputOracle.sol: L2 block number included in the signed output; Informational 5.5.4, partially fixed).",
-                  "follows": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -377,11 +290,7 @@
                     "timestamp": "2025-01-03T00:12:15Z",
                     "url": "https://github.com/base/op-enclave/commit/156d495b8a2841a2990aa790dc97a934429bbc3f"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 44 (Portal/OutputOracle/SystemConfigOwnable own versioning; Informational 5.5.2).",
-                  "follows": "4a7e36a0860ba408f2f5538ea7a9a117987d08d6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -390,11 +299,7 @@
                     "timestamp": "2025-01-03T00:34:00Z",
                     "url": "https://github.com/base/op-enclave/commit/6e37ce2036c58f6d555001d5f02d81627f5a0428"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 45 (contracts/src/DeployChain.sol made Ownable, deployProxy internal; Medium 5.2.2).",
-                  "follows": "156d495b8a2841a2990aa790dc97a934429bbc3f",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -403,11 +308,7 @@
                     "timestamp": "2025-01-03T01:21:17Z",
                     "url": "https://github.com/base/op-enclave/commit/c6fe9fbd38074a6463eea57003f5f646e6e8f982"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 48 (contracts/src/Portal.sol duplicated proposal check removed; Gas 5.4.1).",
-                  "follows": "6e37ce2036c58f6d555001d5f02d81627f5a0428",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -416,11 +317,7 @@
                     "timestamp": "2025-01-03T21:38:36Z",
                     "url": "https://github.com/base/op-enclave/commit/69990879c401bf3d859e9665772c90f93517dbeb"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 49 (contracts/src/OutputOracle.sol getL2OutputIndexAfter binary search fix; Low 5.3.5).",
-                  "follows": "c6fe9fbd38074a6463eea57003f5f646e6e8f982",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -435,13 +332,9 @@
                     "url": "https://github.com/base/op-enclave/commit/98d346dd0e1cdbde75fba01efd36a07e7cf24391"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the enclave Go code (stateless block execution and output signing server) at the audited commit.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "5.1.1"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -451,11 +344,7 @@
                     "url": "https://github.com/base/op-enclave/commit/4a7e36a0860ba408f2f5538ea7a9a117987d08d6"
                   },
                   "status": "partially_audited_with_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 42 (op-enclave/enclave/server.go: enclave signs the L2 block number; Informational 5.5.4). High 5.1.1 remains open at this revision.",
-                  "follows": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "5.1.1"
                   ]
                 },
@@ -467,11 +356,7 @@
                     "url": "https://github.com/base/op-enclave/commit/de236915c001d6a1d05ae22b1e369564cad5e44a"
                   },
                   "status": "partially_audited_with_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 50 (op-enclave/enclave/server.go: RSA-4096 key; Informational 5.5.5). High 5.1.1 remains open at this revision.",
-                  "follows": "4a7e36a0860ba408f2f5538ea7a9a117987d08d6",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "5.1.1"
                   ]
                 },
@@ -482,11 +367,7 @@
                     "timestamp": "2025-01-09T22:51:31Z",
                     "url": "https://github.com/base/op-enclave/commit/628aa61032c428a3e8f28e3f2925a758a545fc54"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 57 (op-enclave/enclave/stateless.go, server.go, rpc.go, client.go: deposits rebuilt from L1 data, only sequenced txs passed; fixes High 5.1.1).",
-                  "follows": "de236915c001d6a1d05ae22b1e369564cad5e44a",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -500,11 +381,7 @@
                     "timestamp": "2024-12-20T18:31:06Z",
                     "url": "https://github.com/base/op-enclave/commit/98d346dd0e1cdbde75fba01efd36a07e7cf24391"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the op-enclave batcher modifications (withdrawal-triggered channel submission) at the audited commit.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -513,11 +390,7 @@
                     "timestamp": "2024-12-25T18:06:46Z",
                     "url": "https://github.com/base/op-enclave/commit/8f28fbb6a30f4bcae8057a61e72120423554baca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 41 (op-batcher/batcher/channel_out.go: force-submit only for fresh blocks; Medium 5.2.1).",
-                  "follows": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -531,11 +404,7 @@
                     "timestamp": "2024-12-20T18:31:06Z",
                     "url": "https://github.com/base/op-enclave/commit/98d346dd0e1cdbde75fba01efd36a07e7cf24391"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the op-enclave proposer (proof requests to the enclave and output proposals) at the audited commit.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -544,11 +413,7 @@
                     "timestamp": "2025-01-03T01:17:35Z",
                     "url": "https://github.com/base/op-enclave/commit/ab2d40808ad61afe26e423285e650c723e877570"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 47 (op-proposer/proposer/driver.go unused code removed; Informational 5.5.3).",
-                  "follows": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -562,11 +427,7 @@
                     "timestamp": "2024-12-20T18:31:06Z",
                     "url": "https://github.com/base/op-enclave/commit/98d346dd0e1cdbde75fba01efd36a07e7cf24391"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the op-withdrawer CLI (withdrawal proving/finalization and deposit hash tooling) at the audited commit.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -575,11 +436,7 @@
                     "timestamp": "2025-01-03T00:40:11Z",
                     "url": "https://github.com/base/op-enclave/commit/bfd6dbd91c5b06eb4c539e3c1bab25211d54137e"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 46 (op-withdrawer/main.go depositHash handles multiple deposits; Low 5.3.2).",
-                  "follows": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -588,11 +445,7 @@
                     "timestamp": "2025-01-09T22:10:30Z",
                     "url": "https://github.com/base/op-enclave/commit/e1f2146f8fe8fe9604fc51b938d24c7865cf7dc4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 56 (op-withdrawer multiple withdrawals per L3 tx; Medium 5.2.3, together with Optimism PR 13568).",
-                  "follows": "bfd6dbd91c5b06eb4c539e3c1bab25211d54137e",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -628,11 +481,7 @@
                     "timestamp": "2026-03-14T23:02:41Z",
                     "url": "https://github.com/base/contracts/commit/b6c4689b8f814bf23fb915ac1d68a537d707ae4e"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the file at the audited commit (March 17-23, 2026).",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -641,12 +490,7 @@
                     "timestamp": "2026-03-25T18:05:40Z",
                     "url": "https://github.com/base/contracts/commit/dd587c9adc84a768eb540a88ef479275c5db97e9"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Informational 3.1.1 (resolve proof threshold check and bond recipient reassignment moved into the valid-parent branch).",
-                  "follows": "b6c4689b8f814bf23fb915ac1d68a537d707ae4e",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -655,12 +499,7 @@
                     "timestamp": "2026-03-25T18:15:28Z",
                     "url": "https://github.com/base/contracts/commit/488feae7e25a6f869dff2e1174987a68f992f941"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Informational 3.1.3 (challenge NatSpec corrected; L2_CHAIN_ID intentionally kept).",
-                  "follows": "dd587c9adc84a768eb540a88ef479275c5db97e9",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -669,11 +508,7 @@
                     "timestamp": "2026-03-25T18:23:45Z",
                     "url": "https://github.com/base/contracts/commit/2007b3126c2e8b6bb8ff607ecfeac8b8f5a53129"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Informational 3.1.4 (shared helper for expected resolution delay).",
-                  "follows": "488feae7e25a6f869dff2e1174987a68f992f941",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -687,10 +522,7 @@
                     "timestamp": "2026-03-14T23:02:41Z",
                     "url": "https://github.com/base/contracts/commit/b6c4689b8f814bf23fb915ac1d68a537d707ae4e"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the file at the audited commit (March 17-23, 2026).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -704,11 +536,7 @@
                     "timestamp": "2026-03-14T23:02:41Z",
                     "url": "https://github.com/base/contracts/commit/b6c4689b8f814bf23fb915ac1d68a537d707ae4e"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the file at the audited commit (March 17-23, 2026).",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -717,12 +545,7 @@
                     "timestamp": "2026-03-25T15:55:29Z",
                     "url": "https://github.com/base/contracts/commit/e86119a9a748696564ff3f49b8425a7084d0a862"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of the unused NotImplemented error removal from Informational 3.1.2.",
-                  "follows": "b6c4689b8f814bf23fb915ac1d68a537d707ae4e",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -731,12 +554,7 @@
                     "timestamp": "2026-03-25T18:09:04Z",
                     "url": "https://github.com/base/contracts/commit/eb82db789553e32566b6653ece48508c3ef5a2ea"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of the event emission updates from Informational 3.1.2 (validated journal emitted, zkCoProcessor indexed).",
-                  "follows": "e86119a9a748696564ff3f49b8425a7084d0a862",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -750,10 +568,7 @@
                     "timestamp": "2026-03-14T23:02:41Z",
                     "url": "https://github.com/base/contracts/commit/b6c4689b8f814bf23fb915ac1d68a537d707ae4e"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the file at the audited commit (March 17-23, 2026).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -767,10 +582,7 @@
                     "timestamp": "2026-03-14T23:02:41Z",
                     "url": "https://github.com/base/contracts/commit/b6c4689b8f814bf23fb915ac1d68a537d707ae4e"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of the file at the audited commit (March 17-23, 2026).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -806,11 +618,7 @@
                     "timestamp": "2026-03-17T19:08:35Z",
                     "url": "https://github.com/base/contracts/commit/2421afdd332a98e9b45c6caf0a2e26b896b17e0d"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of NitroEnclaveVerifier.sol at the audited commit; only Informational findings (3.2.2, 3.2.3, 3.2.7, 3.2.8, 3.2.9, 3.2.10).",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -819,11 +627,7 @@
                     "timestamp": "2026-03-25T13:24:17Z",
                     "url": "https://github.com/base/contracts/commit/7ee57f61f2e4d7866a337e3e897d6eea1587a6d8"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Informational 3.2.2 (unused NotImplemented error removed).",
-                  "follows": "2421afdd332a98e9b45c6caf0a2e26b896b17e0d",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -832,11 +636,7 @@
                     "timestamp": "2026-03-25T15:49:42Z",
                     "url": "https://github.com/base/contracts/commit/567a3a06f3454b801d4e4ad5d47ce7bcff699429"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Informational 3.2.3 and 3.2.10 (EnumerableSet usage and redundant verifier/aggregator ID sets removed).",
-                  "follows": "7ee57f61f2e4d7866a337e3e897d6eea1587a6d8",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -845,11 +645,7 @@
                     "timestamp": "2026-03-25T16:23:34Z",
                     "url": "https://github.com/base/contracts/commit/4719a373330c45c5cc9ad458f876c11f963ddea9"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Informational 3.2.7 (addVerifyRoute rejects the FROZEN sentinel verifier).",
-                  "follows": "567a3a06f3454b801d4e4ad5d47ce7bcff699429",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -858,11 +654,7 @@
                     "timestamp": "2026-03-25T16:27:37Z",
                     "url": "https://github.com/base/contracts/commit/37edf9219d7c18dd1df9fa4a8c17dc6f08048636"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Informational 3.2.8 and 3.2.9 (attestation timestamp bound comparisons).",
-                  "follows": "4719a373330c45c5cc9ad458f876c11f963ddea9",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -871,11 +663,7 @@
                     "timestamp": "2026-03-26T19:56:54Z",
                     "url": "https://github.com/base/contracts/commit/365dc57bf2467fe13c939031f0a461c0f26c5348"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Informational 3.2.10 follow-up in PR 226 (verifier proof ID mapping simplified).",
-                  "follows": "37edf9219d7c18dd1df9fa4a8c17dc6f08048636",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -889,11 +677,7 @@
                     "timestamp": "2026-03-17T19:08:35Z",
                     "url": "https://github.com/base/contracts/commit/2421afdd332a98e9b45c6caf0a2e26b896b17e0d"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of TEEProverRegistry.sol at the audited commit; highest finding is Medium 3.1.1 (deregisterPCR0 does not invalidate signers), plus Informational 3.2.1, 3.2.3, 3.2.4, 3.2.5, 3.2.6, 3.2.9.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium Risk"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -902,11 +686,7 @@
                     "timestamp": "2026-03-25T02:37:30Z",
                     "url": "https://github.com/base/contracts/commit/a94f57ac648e546fc3ce03789f541975817066f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Medium 3.1.1 and Informational 3.2.1 (signer PCR0 cleared on deregistration, registerPCR0 removed).",
-                  "follows": "2421afdd332a98e9b45c6caf0a2e26b896b17e0d",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -915,11 +695,7 @@
                     "timestamp": "2026-03-25T16:14:14Z",
                     "url": "https://github.com/base/contracts/commit/f88f8d0e7aa7ddb8629464d19ed6d72ec8345d3e"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Informational 3.2.4 (hardcoded keccak256 length in registerSigner).",
-                  "follows": "a94f57ac648e546fc3ce03789f541975817066f4",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -928,11 +704,7 @@
                     "timestamp": "2026-03-25T16:18:00Z",
                     "url": "https://github.com/base/contracts/commit/7acbf62ec2c0c5c167e747e885c069cf2dbf049a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Informational 3.2.6 (certificate-expiry edge case documented).",
-                  "follows": "f88f8d0e7aa7ddb8629464d19ed6d72ec8345d3e",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -946,11 +718,7 @@
                     "timestamp": "2026-03-17T19:08:35Z",
                     "url": "https://github.com/base/contracts/commit/2421afdd332a98e9b45c6caf0a2e26b896b17e0d"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of TEEVerifier.sol at the audited commit; highest finding is Medium 3.1.1 (verify does not check that the signer's PCR0 is still valid).",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium Risk"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -959,11 +727,7 @@
                     "timestamp": "2026-03-25T02:37:30Z",
                     "url": "https://github.com/base/contracts/commit/a94f57ac648e546fc3ce03789f541975817066f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Medium 3.1.1 (image hash check added in verify).",
-                  "follows": "2421afdd332a98e9b45c6caf0a2e26b896b17e0d",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -999,11 +763,7 @@
                     "timestamp": "2026-04-09T17:11:42Z",
                     "url": "https://github.com/base/contracts/commit/ffe2af8cbffefa44bbb1a3917507f8bd8ebec7a2"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of AggregateVerifier.sol at the audited commit.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1012,11 +772,7 @@
                     "timestamp": "2026-04-14T20:05:29Z",
                     "url": "https://github.com/base/contracts/commit/8e1fa6c4cef744edb1025440f7020e27d25519ab"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Informational 3.1.1 only (CWIA data offset documentation added in PR 251).",
-                  "follows": "ffe2af8cbffefa44bbb1a3917507f8bd8ebec7a2",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -1052,11 +808,7 @@
                     "timestamp": "2026-04-09T17:11:42Z",
                     "url": "https://github.com/base/contracts/commit/ffe2af8cbffefa44bbb1a3917507f8bd8ebec7a2"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of NitroEnclaveVerifier.sol at the audited commit.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1065,11 +817,7 @@
                     "timestamp": "2026-04-13T18:42:40Z",
                     "url": "https://github.com/base/contracts/commit/34a0a33f7ea45b7a7629442acb9bb37e1e8ef5ff"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Informational 3.1.1 only (certificate expiry check for not-yet-trusted certificates, PR 251 commit).",
-                  "follows": "ffe2af8cbffefa44bbb1a3917507f8bd8ebec7a2",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1078,11 +826,7 @@
                     "timestamp": "2026-04-13T18:52:36Z",
                     "url": "https://github.com/base/contracts/commit/2726c7986dc610a310a389b26b81ed9134d5d524"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Informational 3.1.3 only (outdated comments removed, PR 251 commit).",
-                  "follows": "34a0a33f7ea45b7a7629442acb9bb37e1e8ef5ff",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1091,11 +835,7 @@
                     "timestamp": "2026-04-13T18:55:49Z",
                     "url": "https://github.com/base/contracts/commit/e0bc512193da3714f40611efb47e19ea4b38d43c"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Informational 3.1.5 only (documentation that revoked certificates can be trusted again, PR 251 commit).",
-                  "follows": "2726c7986dc610a310a389b26b81ed9134d5d524",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -1131,11 +871,7 @@
                     "timestamp": "2026-06-02T10:55:13Z",
                     "url": "https://github.com/base/contracts/commit/e225648a7ed538e7e28c041d44f3b7a606ba7743"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of NitroEnclaveVerifier.sol at the audited commit.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1144,11 +880,7 @@
                     "timestamp": "2026-06-08T12:57:58Z",
                     "url": "https://github.com/base/contracts/commit/18f8939e8915b924608267453d71e1dee38d0edc"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of Medium 3.1.1 only (revokeCert no longer requires the certificate to be trusted, PR 329).",
-                  "follows": "e225648a7ed538e7e28c041d44f3b7a606ba7743",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1162,10 +894,7 @@
                     "timestamp": "2026-06-02T10:55:13Z",
                     "url": "https://github.com/base/contracts/commit/e225648a7ed538e7e28c041d44f3b7a606ba7743"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of TEEProverRegistry.sol at the audited commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -1212,11 +941,7 @@
                     "timestamp": "2026-07-07T14:53:01Z",
                     "url": "https://github.com/base/nitro-validator/commit/05294ec098f7f38ef33b2d2470cfbbd08186b943"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "NitroValidator.sol in scope at commit 05294ec0; review focused only on the changes introduced by PRs 28 through 54.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1225,11 +950,7 @@
                     "timestamp": "2026-07-24T18:35:48Z",
                     "url": "https://github.com/base/nitro-validator/commit/4083124dc04c8020ea16876b750d6fcbc72330d4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 56 head for NitroValidator.sol: documents AWS debug-mode zero-PCR behavior (Low 3.2.1, acknowledged).",
-                  "follows": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1238,11 +959,7 @@
                     "timestamp": "2026-07-24T18:49:20Z",
                     "url": "https://github.com/base/nitro-validator/commit/02eaa7beca194fafcd0fe9394476fa7260266309"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 57 head for NitroValidator.sol: renames the verified leaf certificate variable (Informational 3.3.4).",
-                  "follows": "4083124dc04c8020ea16876b750d6fcbc72330d4",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1251,11 +968,7 @@
                     "timestamp": "2026-07-24T20:30:53Z",
                     "url": "https://github.com/base/nitro-validator/commit/f8120158957072a2a96f386d91aa34749a48037f"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 64 head for NitroValidator.sol: bounds leaf/client certificate length (Informational 3.3.1).",
-                  "follows": "02eaa7beca194fafcd0fe9394476fa7260266309",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1264,11 +977,7 @@
                     "timestamp": "2026-07-24T20:31:27Z",
                     "url": "https://github.com/base/nitro-validator/commit/988f5f56cb3a77d8e68477fb64143ea0ea372081"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 65 head for NitroValidator.sol: handles non-empty COSE unprotected header (Low 3.2.4).",
-                  "follows": "f8120158957072a2a96f386d91aa34749a48037f",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1277,11 +986,7 @@
                     "timestamp": "2026-07-24T20:31:55Z",
                     "url": "https://github.com/base/nitro-validator/commit/b893ee0d63375c486538faf58e0110f4d868dbf8"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 66 head for NitroValidator.sol: supports omitted optional public_key field (Low 3.2.5).",
-                  "follows": "988f5f56cb3a77d8e68477fb64143ea0ea372081",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1290,11 +995,7 @@
                     "timestamp": "2026-07-31T00:06:13Z",
                     "url": "https://github.com/base/nitro-validator/commit/a5468062012ec3a9409fb01a3caae16182ae6bec"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 63 head for NitroValidator.sol: bounds PCR keys by PCR bank size instead of entry count (Medium 3.1.1).",
-                  "follows": "b893ee0d63375c486538faf58e0110f4d868dbf8",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1303,11 +1004,7 @@
                     "timestamp": "2026-07-31T14:55:03Z",
                     "url": "https://github.com/base/nitro-validator/commit/d5443c18e67258e0108b5a1e34c5e5b054f33604"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 58 head for NitroValidator.sol: adds _ prefix to internal verifyCachedCertBundle (Informational 3.3.9).",
-                  "follows": "a5468062012ec3a9409fb01a3caae16182ae6bec",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1321,11 +1018,7 @@
                     "timestamp": "2026-07-07T14:53:01Z",
                     "url": "https://github.com/base/nitro-validator/commit/05294ec098f7f38ef33b2d2470cfbbd08186b943"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "CertManager.sol in scope at commit 05294ec0; review focused only on the changes introduced by PRs 28 through 54.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Low"
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1334,11 +1027,7 @@
                     "timestamp": "2026-07-24T20:28:59Z",
                     "url": "https://github.com/base/nitro-validator/commit/6f3ea135539b33eb19bd42b53432f190969e741c"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 62 head for CertManager.sol: initial owner/revoker no longer defaults to deployer (Informational 3.3.7).",
-                  "follows": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1347,11 +1036,7 @@
                     "timestamp": "2026-07-29T11:18:13Z",
                     "url": "https://github.com/base/nitro-validator/commit/f020b6308a741806e2a07b8bba50ad921ba61b8e"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 60 head for CertManager.sol: adds @param/@return NatSpec (Informational 3.3.8).",
-                  "follows": "6f3ea135539b33eb19bd42b53432f190969e741c",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1360,11 +1045,7 @@
                     "timestamp": "2026-07-30T15:53:00Z",
                     "url": "https://github.com/base/nitro-validator/commit/beea09924af75564c6e6dd91fc4b4cf9cf5ed203"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 61 head for CertManager.sol: avoids duplicate events on repeated certificate status calls (Informational 3.3.3).",
-                  "follows": "f020b6308a741806e2a07b8bba50ad921ba61b8e",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1373,11 +1054,7 @@
                     "timestamp": "2026-07-30T16:39:18Z",
                     "url": "https://github.com/base/nitro-validator/commit/c5c7298d04bf41ed4af1118d0b9bc628c2d5d8cd"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 69 head for CertManager.sol: checks expiry for every ancestor in the cached-chain walk (Low 3.2.8).",
-                  "follows": "beea09924af75564c6e6dd91fc4b4cf9cf5ed203",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1386,11 +1063,7 @@
                     "timestamp": "2026-07-30T17:24:50Z",
                     "url": "https://github.com/base/nitro-validator/commit/d7e7cd77a473dfbf03306ae9dd5558e1b6e16a78"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 70 head for CertManager.sol: checks TBSCertificate version [0] wrapper fully consumes its length (Low 3.2.9).",
-                  "follows": "c5c7298d04bf41ed4af1118d0b9bc628c2d5d8cd",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1399,11 +1072,7 @@
                     "timestamp": "2026-07-30T17:47:23Z",
                     "url": "https://github.com/base/nitro-validator/commit/889ef791c6cdbf5aa5353f73a8573d0522309cd0"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 77 head for CertManager.sol: bounds pathLenConstraint to uint64 range (Low 3.2.2).",
-                  "follows": "d7e7cd77a473dfbf03306ae9dd5558e1b6e16a78",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1412,11 +1081,7 @@
                     "timestamp": "2026-07-30T17:49:18Z",
                     "url": "https://github.com/base/nitro-validator/commit/7f3fcebfcff61a767d0fff34a009a0d738ea09b2"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 76 head for CertManager.sol: enforces canonical DER BOOLEAN for critical/cA (Low 3.2.7).",
-                  "follows": "889ef791c6cdbf5aa5353f73a8573d0522309cd0",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1425,11 +1090,7 @@
                     "timestamp": "2026-07-31T15:24:23Z",
                     "url": "https://github.com/base/nitro-validator/commit/926e574de773f88f0dab5f3890ef6e4e8dcdaadb"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 67 head for CertManager.sol: adds ASN.1 tag validation for affected fields (Low 3.2.3).",
-                  "follows": "7f3fcebfcff61a767d0fff34a009a0d738ea09b2",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1438,11 +1099,7 @@
                     "timestamp": "2026-07-31T15:39:41Z",
                     "url": "https://github.com/base/nitro-validator/commit/c17a2f192b5824eb4dd7aeea5da475d537527b4d"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 71 head for CertManager.sol: checks pubKeyAlgoPtr/subjectPublicKeyInfoPtr wrappers fully consume their lengths (Low 3.2.10).",
-                  "follows": "926e574de773f88f0dab5f3890ef6e4e8dcdaadb",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1456,10 +1113,7 @@
                     "timestamp": "2026-07-07T14:53:01Z",
                     "url": "https://github.com/base/nitro-validator/commit/05294ec098f7f38ef33b2d2470cfbbd08186b943"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "ICertManager.sol in scope at commit 05294ec0; review focused only on the changes introduced by PRs 28 through 54.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1468,11 +1122,7 @@
                     "timestamp": "2026-07-29T11:18:13Z",
                     "url": "https://github.com/base/nitro-validator/commit/f020b6308a741806e2a07b8bba50ad921ba61b8e"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 60 head for ICertManager.sol: adds @param/@return NatSpec (Informational 3.3.8).",
-                  "follows": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1486,11 +1136,7 @@
                     "timestamp": "2026-07-07T14:53:01Z",
                     "url": "https://github.com/base/nitro-validator/commit/05294ec098f7f38ef33b2d2470cfbbd08186b943"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Asn1Decode.sol in scope at commit 05294ec0; review focused only on the changes introduced by PRs 28 through 54.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Low"
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1499,11 +1145,7 @@
                     "timestamp": "2026-07-30T17:43:35Z",
                     "url": "https://github.com/base/nitro-validator/commit/4fb64d279abe3233d713683c091cfee0563a4939"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 72 head for Asn1Decode.sol: rejects zero-length BIT STRING in bitstring (Informational 3.3.6).",
-                  "follows": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1512,11 +1154,7 @@
                     "timestamp": "2026-07-30T17:45:31Z",
                     "url": "https://github.com/base/nitro-validator/commit/228f461a8d5c8e94e48c701f8a4ee7cce0f81b6a"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 68 head for Asn1Decode.sol: rejects invalid certificate dates instead of normalizing (Low 3.2.6).",
-                  "follows": "4fb64d279abe3233d713683c091cfee0563a4939",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1530,10 +1168,7 @@
                     "timestamp": "2026-07-07T14:53:01Z",
                     "url": "https://github.com/base/nitro-validator/commit/05294ec098f7f38ef33b2d2470cfbbd08186b943"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "CborDecode.sol in scope at commit 05294ec0; review focused only on the changes introduced by PRs 28 through 54.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1547,10 +1182,7 @@
                     "timestamp": "2026-07-07T14:53:01Z",
                     "url": "https://github.com/base/nitro-validator/commit/05294ec098f7f38ef33b2d2470cfbbd08186b943"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "ECDSA384Curve.sol in scope at commit 05294ec0; review focused only on the changes introduced by PRs 28 through 54.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1564,10 +1196,7 @@
                     "timestamp": "2026-07-07T14:53:01Z",
                     "url": "https://github.com/base/nitro-validator/commit/05294ec098f7f38ef33b2d2470cfbbd08186b943"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "IP384Verifier.sol in scope at commit 05294ec0; review focused only on the changes introduced by PRs 28 through 54.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1581,10 +1210,7 @@
                     "timestamp": "2026-07-07T14:53:01Z",
                     "url": "https://github.com/base/nitro-validator/commit/05294ec098f7f38ef33b2d2470cfbbd08186b943"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "P384Verifier.sol in scope at commit 05294ec0; review focused only on the changes introduced by PRs 28 through 54.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1598,11 +1224,7 @@
                     "timestamp": "2026-07-07T14:53:01Z",
                     "url": "https://github.com/base/nitro-validator/commit/05294ec098f7f38ef33b2d2470cfbbd08186b943"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "ECDSA384.sol in scope at commit 05294ec0; review focused only on the changes introduced by PRs 28 through 54.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1611,11 +1233,7 @@
                     "timestamp": "2026-07-24T18:51:12Z",
                     "url": "https://github.com/base/nitro-validator/commit/41884e693873d2af0eb676794b243861452d2185"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR 59 head for ECDSA384.sol: addresses undocumented verifyWithHintsConsumed dead code (Informational 3.3.5).",
-                  "follows": "05294ec098f7f38ef33b2d2470cfbbd08186b943",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1629,10 +1247,7 @@
                     "timestamp": "2026-07-07T14:53:01Z",
                     "url": "https://github.com/base/nitro-validator/commit/05294ec098f7f38ef33b2d2470cfbbd08186b943"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "MemoryUtils.sol in scope at commit 05294ec0; review focused only on the changes introduced by PRs 28 through 54.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -1668,10 +1283,7 @@
                     "timestamp": "2026-07-20T20:50:49Z",
                     "url": "https://github.com/base/contracts/commit/63547f76fbbc23ca81e8eef80ad6486d339c73f7"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Diff-scoped review of the changes in PR #378 (removal of ETHLockbox from ETH bridging), at the PR head commit; no issues raised.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1685,10 +1297,7 @@
                     "timestamp": "2026-07-20T20:50:49Z",
                     "url": "https://github.com/base/contracts/commit/63547f76fbbc23ca81e8eef80ad6486d339c73f7"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Diff-scoped review of the changes in PR #378 (removal of ETHLockbox from ETH bridging), at the PR head commit; no issues raised.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1702,10 +1311,7 @@
                     "timestamp": "2026-06-02T22:54:21Z",
                     "url": "https://github.com/base/contracts/commit/180fa2c099b096ecb93e433709653236ac7c17af"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Diff-scoped review of the changes in PR #250 (deploying dispute game proxies with CREATE2), at the PR head commit; no issues raised.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1719,10 +1325,7 @@
                     "timestamp": "2026-08-12T16:23:17Z",
                     "url": "https://github.com/base/contracts/commit/f9a515350c91e2915088b2fb5ef41ff2b32dad01"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Diff-scoped review of the changes in PR #399 (validating hinted AWS Nitro attestations via the onchain NitroValidator), at the PR head commit; no issues raised.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1731,11 +1334,7 @@
                     "timestamp": "2026-08-18T15:32:20Z",
                     "url": "https://github.com/base/contracts/commit/5b64d918a5943e670e406f64e500507066576313"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Diff-scoped review of the changes in PR #405 (Nitro validator address validation), at the PR head commit; no issues raised.",
-                  "follows": "f9a515350c91e2915088b2fb5ef41ff2b32dad01",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1749,10 +1348,7 @@
                     "timestamp": "2026-07-20T20:50:49Z",
                     "url": "https://github.com/base/contracts/commit/63547f76fbbc23ca81e8eef80ad6486d339c73f7"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Diff-scoped review of the changes in PR #378 (removal of ETHLockbox from ETH bridging), at the PR head commit; no issues raised.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -1788,11 +1384,7 @@
                     "timestamp": "2026-08-20T13:34:20Z",
                     "url": "https://github.com/base/contracts/commit/4f7acda51dba4165361b292ae08c119f5bfa1f0d"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of ProtocolVersions.sol at the audited commit; one Medium (3.1.1, acknowledged), five Low and one Informational finding located here.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Medium"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1801,11 +1393,7 @@
                     "timestamp": "2026-08-24T16:34:16Z",
                     "url": "https://github.com/base/contracts/commit/1ad3bf22a7c67df143b5b9697e9c5de8f7d705af"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR #415 addressing Low 3.2.1 (clearing an upgrade under a scheduled successor); only the PR diff is covered.",
-                  "follows": "4f7acda51dba4165361b292ae08c119f5bfa1f0d",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1814,11 +1402,7 @@
                     "timestamp": "2026-08-24T18:13:53Z",
                     "url": "https://github.com/base/contracts/commit/794d2198e2a9caac0592c0d67079676b73f321e6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR #416 addressing Informational 3.3.1 (NatSpec on proof journal binding); only the PR diff is covered.",
-                  "follows": "1ad3bf22a7c67df143b5b9697e9c5de8f7d705af",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1827,11 +1411,7 @@
                     "timestamp": "2026-08-24T19:59:32Z",
                     "url": "https://github.com/base/contracts/commit/c3f30fb234c82694ab524808a3da709be6cad3d7"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR #419 addressing Low 3.2.2 (equal timestamps for simultaneous upgrades); only the PR diff is covered.",
-                  "follows": "794d2198e2a9caac0592c0d67079676b73f321e6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1840,11 +1420,7 @@
                     "timestamp": "2026-08-25T17:36:54Z",
                     "url": "https://github.com/base/contracts/commit/620122010f3344cb61bfcb249cdeebb8138d29bf"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR #421 addressing Low 3.2.4 (MIN_NOTICE for future imported activations); only the PR diff is covered.",
-                  "follows": "c3f30fb234c82694ab524808a3da709be6cad3d7",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1853,11 +1429,7 @@
                     "timestamp": "2026-08-26T20:03:55Z",
                     "url": "https://github.com/base/contracts/commit/1237b5fdba49f16f6a40129c8b0713e85c943bf2"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR #420 addressing Low 3.2.3 (imported schedule minimum protocol version); only the PR diff is covered and the fix was found incomplete.",
-                  "follows": "620122010f3344cb61bfcb249cdeebb8138d29bf",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1866,11 +1438,7 @@
                     "timestamp": "2026-08-27T14:10:14Z",
                     "url": "https://github.com/base/contracts/commit/f7d447e2fe146a095677a123cbf8763c6e9c9546"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR #424 addressing Low 3.2.5 (freeze window extended to one hour); only the PR diff is covered.",
-                  "follows": "1237b5fdba49f16f6a40129c8b0713e85c943bf2",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1879,11 +1447,7 @@
                     "timestamp": "2026-09-11T14:25:25Z",
                     "url": "https://github.com/base/contracts/commit/6f078c3b6ce51773c8fe1584b22b7c295cbbbdb8"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR #435 completing the fix of Low 3.2.3 (minimum protocol version required to schedule an activation); only the PR diff is covered.",
-                  "follows": "f7d447e2fe146a095677a123cbf8763c6e9c9546",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1897,11 +1461,7 @@
                     "timestamp": "2026-08-20T13:34:20Z",
                     "url": "https://github.com/base/contracts/commit/4f7acda51dba4165361b292ae08c119f5bfa1f0d"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial_audit",
-                  "coverage": "Full review of AggregateVerifier.sol at the audited commit; only Informational findings (3.3.1-3.3.3) located here.",
-                  "major_findings": 0,
-                  "highest_reported_finding_severity": "Informational"
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1910,11 +1470,7 @@
                     "timestamp": "2026-08-24T19:13:11Z",
                     "url": "https://github.com/base/contracts/commit/bb0e64b8c194f71b711302433aad1c4a09e66b8d"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR #417 addressing Informational 3.3.2 (stale freeze semantics comment); only the PR diff is covered.",
-                  "follows": "4f7acda51dba4165361b292ae08c119f5bfa1f0d",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1923,11 +1479,7 @@
                     "timestamp": "2026-08-24T19:36:38Z",
                     "url": "https://github.com/base/contracts/commit/1901048ff08f344b8371cf7f20a43f28896b3c48"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix_review",
-                  "coverage": "Fix review of PR #418 addressing Informational 3.3.3 (documenting the initialization L1 origin split); only the PR diff is covered.",
-                  "follows": "bb0e64b8c194f71b711302433aad1c4a09e66b8d",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }

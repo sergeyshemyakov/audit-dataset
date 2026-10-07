@@ -1,0 +1,20 @@
+[project]
+name = "audit-dataset"
+version = "0.1.0"
+description = "Tools that maintain the L2BEAT audit dataset"
+requires-python = ">=3.14"
+dependencies = []
+
+[project.optional-dependencies]
+# Only `python3 -m audit_dataset pdf-to-md` needs this.
+pdf = ["pymupdf4llm==1.28.2"]
+
+[project.scripts]
+audit-dataset = "audit_dataset.cli:main"
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["audit_dataset"]

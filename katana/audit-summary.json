@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4.0",
+  "schema_version": "1.5.0",
   "project": "katana",
   "reports": [
     {
@@ -30,10 +30,7 @@
                     "timestamp": "2025-03-27T21:23:22Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/634716469cc2d84346683ab3c39d45834581fa69"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (Version 1)",
-                  "coverage": "Full review of the file in Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -42,11 +39,7 @@
                     "timestamp": "2025-04-28T10:32:55Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/c3b307ffd354002140f3db110ffebc0e6739bbf6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 2)",
-                  "coverage": "Review of the Version 2 fixes and changes to this file.",
-                  "follows": "634716469cc2d84346683ab3c39d45834581fa69",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -55,11 +48,7 @@
                     "timestamp": "2025-05-08T13:16:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/8751f1a592470e95c4a78aa1c1808ba048eef581"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 3)",
-                  "coverage": "Review of the Version 3 fixes and changes.",
-                  "follows": "c3b307ffd354002140f3db110ffebc0e6739bbf6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -73,10 +62,7 @@
                     "timestamp": "2025-03-27T21:23:22Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/634716469cc2d84346683ab3c39d45834581fa69"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (Version 1)",
-                  "coverage": "Full review of the file in Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -85,11 +71,7 @@
                     "timestamp": "2025-04-28T10:32:55Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/c3b307ffd354002140f3db110ffebc0e6739bbf6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 2)",
-                  "coverage": "Review of the Version 2 fixes and changes to this file.",
-                  "follows": "634716469cc2d84346683ab3c39d45834581fa69",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -98,11 +80,7 @@
                     "timestamp": "2025-05-08T13:16:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/8751f1a592470e95c4a78aa1c1808ba048eef581"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 3)",
-                  "coverage": "Review of the Version 3 fixes and changes.",
-                  "follows": "c3b307ffd354002140f3db110ffebc0e6739bbf6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -116,10 +94,7 @@
                     "timestamp": "2025-03-27T21:23:22Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/634716469cc2d84346683ab3c39d45834581fa69"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (Version 1)",
-                  "coverage": "Full review of the file in Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -134,13 +109,9 @@
                     "url": "https://github.com/agglayer/vault-bridge/commit/634716469cc2d84346683ab3c39d45834581fa69"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit (Version 1)",
-                  "coverage": "Full review of the file in Version 1.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "CS-POL-VBT-002"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -149,11 +120,7 @@
                     "timestamp": "2025-04-28T10:32:55Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/c3b307ffd354002140f3db110ffebc0e6739bbf6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 2)",
-                  "coverage": "Review of the Version 2 fixes and changes to this file.",
-                  "follows": "634716469cc2d84346683ab3c39d45834581fa69",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -162,11 +129,7 @@
                     "timestamp": "2025-05-08T13:16:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/8751f1a592470e95c4a78aa1c1808ba048eef581"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 3)",
-                  "coverage": "Review of the Version 3 fixes and changes.",
-                  "follows": "c3b307ffd354002140f3db110ffebc0e6739bbf6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -180,10 +143,7 @@
                     "timestamp": "2025-03-27T21:23:22Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/634716469cc2d84346683ab3c39d45834581fa69"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (Version 1)",
-                  "coverage": "Full review of the file in Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -192,11 +152,7 @@
                     "timestamp": "2025-04-28T10:32:55Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/c3b307ffd354002140f3db110ffebc0e6739bbf6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 2)",
-                  "coverage": "Review of the Version 2 fixes and changes to this file.",
-                  "follows": "634716469cc2d84346683ab3c39d45834581fa69",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -205,11 +161,7 @@
                     "timestamp": "2025-05-08T13:16:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/8751f1a592470e95c4a78aa1c1808ba048eef581"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 3)",
-                  "coverage": "Review of the Version 3 fixes and changes.",
-                  "follows": "c3b307ffd354002140f3db110ffebc0e6739bbf6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -223,10 +175,7 @@
                     "timestamp": "2025-03-27T21:23:22Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/634716469cc2d84346683ab3c39d45834581fa69"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (Version 1)",
-                  "coverage": "Full review of the file in Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -235,11 +184,7 @@
                     "timestamp": "2025-04-28T10:32:55Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/c3b307ffd354002140f3db110ffebc0e6739bbf6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 2)",
-                  "coverage": "Review of the Version 2 fixes and changes to this file.",
-                  "follows": "634716469cc2d84346683ab3c39d45834581fa69",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -248,11 +193,7 @@
                     "timestamp": "2025-05-08T13:16:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/8751f1a592470e95c4a78aa1c1808ba048eef581"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 3)",
-                  "coverage": "Review of the Version 3 fixes and changes.",
-                  "follows": "c3b307ffd354002140f3db110ffebc0e6739bbf6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -266,10 +207,7 @@
                     "timestamp": "2025-03-27T21:23:22Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/634716469cc2d84346683ab3c39d45834581fa69"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (Version 1)",
-                  "coverage": "Full review of the file in Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -278,11 +216,7 @@
                     "timestamp": "2025-04-28T10:32:55Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/c3b307ffd354002140f3db110ffebc0e6739bbf6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 2)",
-                  "coverage": "Review of the Version 2 fixes and changes to this file.",
-                  "follows": "634716469cc2d84346683ab3c39d45834581fa69",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -291,11 +225,7 @@
                     "timestamp": "2025-05-08T13:16:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/8751f1a592470e95c4a78aa1c1808ba048eef581"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 3)",
-                  "coverage": "Review of the Version 3 fixes and changes.",
-                  "follows": "c3b307ffd354002140f3db110ffebc0e6739bbf6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -310,13 +240,9 @@
                     "url": "https://github.com/agglayer/vault-bridge/commit/634716469cc2d84346683ab3c39d45834581fa69"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit (Version 1)",
-                  "coverage": "Full review of the file in Version 1.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "CS-POL-VBT-001"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -325,11 +251,7 @@
                     "timestamp": "2025-04-28T10:32:55Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/c3b307ffd354002140f3db110ffebc0e6739bbf6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 2)",
-                  "coverage": "Review of the Version 2 fixes and changes to this file.",
-                  "follows": "634716469cc2d84346683ab3c39d45834581fa69",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -338,11 +260,7 @@
                     "timestamp": "2025-05-08T13:16:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/8751f1a592470e95c4a78aa1c1808ba048eef581"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 3)",
-                  "coverage": "Review of the Version 3 fixes and changes.",
-                  "follows": "c3b307ffd354002140f3db110ffebc0e6739bbf6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -357,13 +275,9 @@
                     "url": "https://github.com/agglayer/vault-bridge/commit/634716469cc2d84346683ab3c39d45834581fa69"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit (Version 1)",
-                  "coverage": "Full review of the file in Version 1.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "CS-POL-VBT-001"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -372,11 +286,7 @@
                     "timestamp": "2025-04-28T10:32:55Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/c3b307ffd354002140f3db110ffebc0e6739bbf6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 2)",
-                  "coverage": "Review of the Version 2 fixes and changes to this file.",
-                  "follows": "634716469cc2d84346683ab3c39d45834581fa69",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -385,11 +295,7 @@
                     "timestamp": "2025-05-08T13:16:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/8751f1a592470e95c4a78aa1c1808ba048eef581"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 3)",
-                  "coverage": "Review of the Version 3 fixes and changes.",
-                  "follows": "c3b307ffd354002140f3db110ffebc0e6739bbf6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -403,10 +309,7 @@
                     "timestamp": "2025-03-27T21:23:22Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/634716469cc2d84346683ab3c39d45834581fa69"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (Version 1)",
-                  "coverage": "Full review of the file in Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -415,11 +318,7 @@
                     "timestamp": "2025-04-28T10:32:55Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/c3b307ffd354002140f3db110ffebc0e6739bbf6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 2)",
-                  "coverage": "Review of the Version 2 fixes and changes to this file.",
-                  "follows": "634716469cc2d84346683ab3c39d45834581fa69",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -428,11 +327,7 @@
                     "timestamp": "2025-05-08T13:16:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/8751f1a592470e95c4a78aa1c1808ba048eef581"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 3)",
-                  "coverage": "Review of the Version 3 fixes and changes.",
-                  "follows": "c3b307ffd354002140f3db110ffebc0e6739bbf6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -446,10 +341,7 @@
                     "timestamp": "2025-03-27T21:23:22Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/634716469cc2d84346683ab3c39d45834581fa69"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (Version 1)",
-                  "coverage": "Full review of the file in Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -463,10 +355,7 @@
                     "timestamp": "2025-03-27T21:23:22Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/634716469cc2d84346683ab3c39d45834581fa69"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (Version 1)",
-                  "coverage": "Full review of the file in Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -475,11 +364,7 @@
                     "timestamp": "2025-04-28T10:32:55Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/c3b307ffd354002140f3db110ffebc0e6739bbf6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 2)",
-                  "coverage": "Review of the Version 2 fixes and changes to this file.",
-                  "follows": "634716469cc2d84346683ab3c39d45834581fa69",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -488,11 +373,7 @@
                     "timestamp": "2025-05-08T13:16:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/8751f1a592470e95c4a78aa1c1808ba048eef581"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 3)",
-                  "coverage": "Review of the Version 3 fixes and changes.",
-                  "follows": "c3b307ffd354002140f3db110ffebc0e6739bbf6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -506,10 +387,7 @@
                     "timestamp": "2025-03-27T21:23:22Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/634716469cc2d84346683ab3c39d45834581fa69"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (Version 1)",
-                  "coverage": "Full review of the file in Version 1.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },
@@ -523,10 +401,7 @@
                     "timestamp": "2025-04-28T10:32:55Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/c3b307ffd354002140f3db110ffebc0e6739bbf6"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (Version 2)",
-                  "coverage": "Full review of the file added to the scope in Version 2.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -535,11 +410,7 @@
                     "timestamp": "2025-05-08T13:16:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/8751f1a592470e95c4a78aa1c1808ba048eef581"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 3)",
-                  "coverage": "Review of the Version 3 fixes and changes.",
-                  "follows": "c3b307ffd354002140f3db110ffebc0e6739bbf6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -553,10 +424,7 @@
                     "timestamp": "2025-04-28T10:32:55Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/c3b307ffd354002140f3db110ffebc0e6739bbf6"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (Version 2)",
-                  "coverage": "Full review of the file added to the scope in Version 2.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -565,11 +433,7 @@
                     "timestamp": "2025-05-08T13:16:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/8751f1a592470e95c4a78aa1c1808ba048eef581"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 3)",
-                  "coverage": "Review of the Version 3 fixes and changes.",
-                  "follows": "c3b307ffd354002140f3db110ffebc0e6739bbf6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -583,10 +447,7 @@
                     "timestamp": "2025-04-28T10:32:55Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/c3b307ffd354002140f3db110ffebc0e6739bbf6"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (Version 2)",
-                  "coverage": "Full review of the file added to the scope in Version 2.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -595,11 +456,7 @@
                     "timestamp": "2025-05-08T13:16:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/8751f1a592470e95c4a78aa1c1808ba048eef581"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 3)",
-                  "coverage": "Review of the Version 3 fixes and changes.",
-                  "follows": "c3b307ffd354002140f3db110ffebc0e6739bbf6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -613,10 +470,7 @@
                     "timestamp": "2025-04-28T10:32:55Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/c3b307ffd354002140f3db110ffebc0e6739bbf6"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit (Version 2)",
-                  "coverage": "Full review of the file added to the scope in Version 2.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -625,11 +479,7 @@
                     "timestamp": "2025-05-08T13:16:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/8751f1a592470e95c4a78aa1c1808ba048eef581"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review (Version 3)",
-                  "coverage": "Review of the Version 3 fixes and changes.",
-                  "follows": "c3b307ffd354002140f3db110ffebc0e6739bbf6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -666,13 +516,9 @@
                     "url": "https://github.com/aragon/katana-governance/commit/5048116bf754c5d2efa8b8dbcfe5666cdba3abbc"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the repository contracts at the audited commit.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "3.1.1"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -682,11 +528,7 @@
                     "url": "https://github.com/aragon/katana-governance/commit/3cd640002eafb9f01b45bdff69e7ffee2325f5bc"
                   },
                   "status": "partially_audited_with_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of pull request #20 (head), addressing the gas and informational findings; the High finding 3.1.1 is fixed in another pull request and remains open here.",
-                  "follows": "5048116bf754c5d2efa8b8dbcfe5666cdba3abbc",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "3.1.1"
                   ]
                 },
@@ -697,11 +539,7 @@
                     "timestamp": "2025-10-27T21:44:46Z",
                     "url": "https://github.com/aragon/katana-governance/commit/98f40015f8ab3647df18052a7d275d70986bd6fe"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of pull request #21 (head), which the report cites as fixing 3.1.1 and several informational findings.",
-                  "follows": "3cd640002eafb9f01b45bdff69e7ffee2325f5bc",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -710,11 +548,7 @@
                     "timestamp": "2025-10-28T10:46:45Z",
                     "url": "https://github.com/aragon/katana-governance/commit/64fd6bbe7b7801015cabc3c31282b219c7b35f98"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of pull request #25 (head), fixing 3.2.1; this head also contains the merged pull requests #20, #21 and #22.",
-                  "follows": "98f40015f8ab3647df18052a7d275d70986bd6fe",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -754,10 +588,7 @@
                     "timestamp": null,
                     "url": "https://github.com/katana-network/kat-vault-lz/commit/416a2993d9524406732fc29fb27442db4fcee28c"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full review of the repository at the audited commit (private repository; path inferred from the finding locations).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -766,11 +597,7 @@
                     "timestamp": null,
                     "url": "https://github.com/katana-network/kat-vault-lz/commit/5af6fff31bddc76e205f15227081a7ef45c06cce"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the fix commit.",
-                  "follows": "416a2993d9524406732fc29fb27442db4fcee28c",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -789,10 +616,7 @@
                     "timestamp": "2026-01-12T07:36:26Z",
                     "url": "https://github.com/katana-network/lz-kat-upgradeable/commit/e88b7151420bae54d7ea7074abd6064ddcadba48"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Full review of the repository contracts at the audited commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -801,11 +625,7 @@
                     "timestamp": "2026-02-02T10:04:32Z",
                     "url": "https://github.com/katana-network/lz-kat-upgradeable/commit/f1ea9138884e849d71ad9c1be9bdabd49da7bdfd"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the fix commit.",
-                  "follows": "e88b7151420bae54d7ea7074abd6064ddcadba48",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -841,10 +661,7 @@
                     "timestamp": "2025-03-11T08:25:02Z",
                     "url": "https://github.com/katana-network/kat-token/commit/21644ffdb2f00d3b8ba5f2fc84e9e3d0888faeed"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the contract at the audited commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -853,11 +670,7 @@
                     "timestamp": "2025-03-25T10:00:53Z",
                     "url": "https://github.com/katana-network/kat-token/commit/aa2932f57f4da85268aa2974d6f1cfb395624cd5"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the pull request #3 commits addressing the initial findings (latest cited fix commit).",
-                  "follows": "21644ffdb2f00d3b8ba5f2fc84e9e3d0888faeed",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -866,11 +679,7 @@
                     "timestamp": "2025-05-07T14:37:13Z",
                     "url": "https://github.com/katana-network/kat-token/commit/494205cc0e5d302b4c6d96c16e63fa99912631d6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "late-stage revision review",
-                  "coverage": "Mitigation review of pull request #5 (fixes plus reworked permissioned roles and token lock) and formal verification of the KatToken properties P-01 to P-03 at this commit.",
-                  "follows": "aa2932f57f4da85268aa2974d6f1cfb395624cd5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -879,11 +688,7 @@
                     "timestamp": "2025-05-14T15:59:05Z",
                     "url": "https://github.com/katana-network/kat-token/commit/eea36ab61f4ba1022dd2d3b53f5c43eb925b238e"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the late-stage findings; the report states all issues are resolved as of this commit.",
-                  "follows": "494205cc0e5d302b4c6d96c16e63fa99912631d6",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -897,10 +702,7 @@
                     "timestamp": "2025-03-11T08:25:02Z",
                     "url": "https://github.com/katana-network/kat-token/commit/21644ffdb2f00d3b8ba5f2fc84e9e3d0888faeed"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the contract at the audited commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -909,11 +711,7 @@
                     "timestamp": "2025-03-25T10:00:53Z",
                     "url": "https://github.com/katana-network/kat-token/commit/aa2932f57f4da85268aa2974d6f1cfb395624cd5"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the pull request #3 commits addressing the initial findings (latest cited fix commit). The contract was later removed in pull request #5.",
-                  "follows": "21644ffdb2f00d3b8ba5f2fc84e9e3d0888faeed",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -927,10 +725,7 @@
                     "timestamp": "2025-03-11T08:25:02Z",
                     "url": "https://github.com/katana-network/kat-token/commit/21644ffdb2f00d3b8ba5f2fc84e9e3d0888faeed"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the contract at the audited commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -967,14 +762,10 @@
                     "url": "https://github.com/agglayer/vault-bridge/commit/d282975946fe638e4b9b7d0e99e40413418c577d"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of all repository Solidity files at the audited commit (third-party libraries excluded).",
-                  "major_findings": 2,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "YE-01",
                     "YE-02"
-                  ],
-                  "highest_reported_finding_severity": "Critical"
+                  ]
                 },
                 {
                   "revision": {
@@ -983,11 +774,7 @@
                     "timestamp": "2025-03-17T17:28:26Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/cd60520534c85195704646d1949068fe4ef224a9"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review limited to the pull request #9 commits cited as resolutions (latest cited commit); other changes in the pull request were not reviewed.",
-                  "follows": "d282975946fe638e4b9b7d0e99e40413418c577d",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -1023,10 +810,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1035,11 +819,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1048,11 +828,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1066,10 +842,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1078,11 +851,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1096,10 +865,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1108,11 +874,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1121,11 +883,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1139,10 +897,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1151,11 +906,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1164,11 +915,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1183,13 +930,9 @@
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "H-01"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -1198,11 +941,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1211,11 +950,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1229,10 +964,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1241,11 +973,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1254,11 +982,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1272,10 +996,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1284,11 +1005,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1297,11 +1014,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1315,10 +1028,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1327,11 +1037,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1340,11 +1046,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1358,10 +1060,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1370,11 +1069,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1383,11 +1078,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1401,10 +1092,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1413,11 +1101,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1431,10 +1115,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1443,11 +1124,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1456,11 +1133,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1474,10 +1147,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1486,11 +1156,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1499,11 +1165,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1517,10 +1179,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1529,11 +1188,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1542,11 +1197,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1560,10 +1211,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1572,11 +1220,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1585,11 +1229,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1603,10 +1243,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1615,11 +1252,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1628,11 +1261,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1646,10 +1275,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1658,11 +1284,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1671,11 +1293,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1689,10 +1307,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1701,11 +1316,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1714,11 +1325,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1733,13 +1340,9 @@
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "H-01"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -1749,14 +1352,9 @@
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
                   "status": "partially_audited_with_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "H-02"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -1765,11 +1363,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1783,10 +1377,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1795,11 +1386,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1808,11 +1395,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1826,10 +1409,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review of the file, first present at the updated commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1838,11 +1418,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1856,10 +1432,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1868,11 +1441,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1881,11 +1450,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1899,10 +1464,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1911,11 +1473,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1924,11 +1482,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1942,10 +1496,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1954,11 +1505,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -1967,11 +1514,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -1985,10 +1528,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -1997,11 +1537,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2010,11 +1546,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2028,10 +1560,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2040,11 +1569,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2053,11 +1578,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2071,10 +1592,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2083,11 +1601,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2096,11 +1610,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2114,10 +1624,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2126,11 +1633,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2139,11 +1642,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2157,10 +1656,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2169,11 +1665,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2182,11 +1674,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2200,10 +1688,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2212,11 +1697,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2225,11 +1706,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2243,10 +1720,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2255,11 +1729,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2273,10 +1743,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2285,11 +1752,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2298,11 +1761,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2316,10 +1775,7 @@
                     "timestamp": "2025-04-30T15:18:29Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/76081f6fcb655c487a5c4d9173615208b2a19914"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the initial commit.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2328,11 +1784,7 @@
                     "timestamp": "2025-04-30T15:18:31Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/47f5a8cf28d0488cae3907dc089a9d77545aef17"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "audit (updated commit)",
-                  "coverage": "Manual review continued on the updated commit, covering the changes since the initial commit.",
-                  "follows": "76081f6fcb655c487a5c4d9173615208b2a19914",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2341,11 +1793,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes (last commit after audit fixes).",
-                  "follows": "47f5a8cf28d0488cae3907dc089a9d77545aef17",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2359,10 +1807,7 @@
                     "timestamp": "2025-05-14T15:46:45Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/a40ed0f1fb30ac0faec7a6777c3c3e1efce443f4"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the audit fixes; file renamed from vbUSDCNativeConverter.sol.generic in the fix commits.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -2398,10 +1843,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2415,10 +1857,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2432,10 +1871,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Formal verification of the GenericVaultBridgeToken properties P-01 to P-04 (solvency, valid states, method integrity, risk assessment) under mocked underlying token, bridge and yield vault.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2444,11 +1880,7 @@
                     "timestamp": "2025-07-04T09:17:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/e4243e06d63f71f4a42e2c5fc8d10c42e93a5e73"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review limited to the rounding fixes for I-01/I-02 (pull request #27 commit); other changes at this commit were not reviewed.",
-                  "follows": "3a7d02576d5ecd1c9f4d22143983839f69d5f135",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2462,10 +1894,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Formal verification of the GenericNativeConverter and MigrationManager risk assessment properties (P-05), with loops unrolled twice.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2479,10 +1908,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Formal verification of the GenericNativeConverter and MigrationManager risk assessment properties (P-05).",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
@@ -2491,11 +1917,7 @@
                     "timestamp": "2025-07-04T09:17:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/e4243e06d63f71f4a42e2c5fc8d10c42e93a5e73"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review limited to the rounding fixes for I-01/I-02 (pull request #27 commit); other changes at this commit were not reviewed.",
-                  "follows": "3a7d02576d5ecd1c9f4d22143983839f69d5f135",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2509,10 +1931,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2526,10 +1945,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Formal verification of the GenericNativeConverter and MigrationManager risk assessment properties (P-05).",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2543,10 +1959,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2560,10 +1973,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2577,10 +1987,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2594,10 +2001,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2611,10 +2015,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2628,10 +2029,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2645,10 +2043,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2662,10 +2057,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2679,10 +2071,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2696,10 +2085,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2713,10 +2099,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2730,10 +2113,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2747,10 +2127,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2764,10 +2141,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2781,10 +2155,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2798,10 +2169,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2815,10 +2183,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Formal verification of the GenericVaultBridgeToken properties P-01 to P-04 (solvency, valid states, method integrity, risk assessment) under mocked underlying token, bridge and yield vault.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2832,10 +2197,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2849,10 +2211,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2866,10 +2225,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2883,10 +2239,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2900,10 +2253,7 @@
                     "timestamp": "2025-06-02T14:15:24Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3a7d02576d5ecd1c9f4d22143983839f69d5f135"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "formal verification",
-                  "coverage": "Listed in the formal verification scope; no properties specific to this file are reported.",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -2939,10 +2289,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2951,11 +2298,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2969,10 +2312,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -2981,11 +2321,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2999,10 +2335,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3011,11 +2344,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3029,10 +2358,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3041,11 +2367,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3059,10 +2381,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3071,11 +2390,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3089,10 +2404,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3101,11 +2413,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3119,10 +2427,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3131,11 +2436,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3149,10 +2450,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3161,11 +2459,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3179,10 +2473,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3191,11 +2482,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3209,10 +2496,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3221,11 +2505,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3239,10 +2519,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3251,11 +2528,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3269,10 +2542,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3281,11 +2551,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3299,10 +2565,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3311,11 +2574,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3329,10 +2588,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3341,11 +2597,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3359,10 +2611,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3371,11 +2620,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3389,10 +2634,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3401,11 +2643,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3419,10 +2657,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3431,11 +2666,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3449,10 +2680,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3461,11 +2689,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3479,10 +2703,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3491,11 +2712,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3509,10 +2726,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3521,11 +2735,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3539,10 +2749,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3551,11 +2758,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3569,10 +2772,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3581,11 +2781,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3599,10 +2795,7 @@
                     "timestamp": "2025-09-19T21:23:32Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/3c9d819baf2f7071e196b15567562f8edb4d9922"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the file at the original commit (head of pull request #36, the main focus of the review).",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3611,11 +2804,7 @@
                     "timestamp": "2025-10-24T15:33:19Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/f98ff4c0a1ce3c5eb173db9ec20934002ea07be6"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "3c9d819baf2f7071e196b15567562f8edb4d9922",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -3651,10 +2840,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3663,11 +2849,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3681,10 +2863,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3693,11 +2872,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3711,10 +2886,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3723,11 +2895,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3741,10 +2909,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3753,11 +2918,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3771,10 +2932,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3783,11 +2941,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3801,10 +2955,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3813,11 +2964,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3831,10 +2978,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3843,11 +2987,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3861,10 +3001,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3873,11 +3010,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3891,10 +3024,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3903,11 +3033,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3921,10 +3047,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3933,11 +3056,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3951,10 +3070,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3963,11 +3079,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -3981,10 +3093,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -3993,11 +3102,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4011,10 +3116,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4023,11 +3125,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4041,10 +3139,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4053,11 +3148,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4071,10 +3162,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4083,11 +3171,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4101,10 +3185,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4113,11 +3194,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4131,10 +3208,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4143,11 +3217,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4161,10 +3231,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4173,11 +3240,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4191,10 +3254,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4203,11 +3263,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4221,10 +3277,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4233,11 +3286,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4251,10 +3300,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4263,11 +3309,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4281,10 +3323,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4293,11 +3332,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4311,10 +3346,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4323,11 +3355,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4341,10 +3369,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4353,11 +3378,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4371,10 +3392,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4383,11 +3401,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4401,10 +3415,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4413,11 +3424,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4431,10 +3438,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4443,11 +3447,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4461,10 +3461,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4473,11 +3470,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4491,10 +3484,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4503,11 +3493,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4521,10 +3507,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4533,11 +3516,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4551,10 +3530,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4563,11 +3539,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4581,10 +3553,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4593,11 +3562,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4611,10 +3576,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4623,11 +3585,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -4641,10 +3599,7 @@
                     "timestamp": "2025-10-31T15:59:13Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5"
                   },
-                  "status": "audited_with_no_major_findings",
-                  "review_phase": "re-audit",
-                  "coverage": "Manual re-audit of the file at the original commit, with a focus on the LayerZero integration.",
-                  "major_findings": 0
+                  "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
@@ -4653,11 +3608,7 @@
                     "timestamp": "2025-11-25T15:10:18Z",
                     "url": "https://github.com/agglayer/vault-bridge/commit/950e64d4ead51a8ef911829ab8775a18533a8cca"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review at the final commit.",
-                  "follows": "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -4694,13 +3645,9 @@
                     "url": "https://github.com/katana-network/sushi-v3-lp-staking-offchainAccounting/commit/1790d736438d773c4f6963ef6baf24040025fd08"
                   },
                   "status": "audited_with_major_findings",
-                  "review_phase": "initial audit",
-                  "coverage": "Manual review of the contract at the audited commit.",
-                  "major_findings": 1,
-                  "finding_ids": [
+                  "major_finding_ids": [
                     "Issue_02"
-                  ],
-                  "highest_reported_finding_severity": "High"
+                  ]
                 },
                 {
                   "revision": {
@@ -4709,11 +3656,7 @@
                     "timestamp": "2026-02-26T11:36:56Z",
                     "url": "https://github.com/katana-network/sushi-v3-lp-staking-offchainAccounting/commit/591e63878c626a20d2e97e3fd8947667f29431d2"
                   },
-                  "status": "partially_audited_without_major_findings",
-                  "review_phase": "fix review",
-                  "coverage": "Fix review of the resolution commit.",
-                  "follows": "1790d736438d773c4f6963ef6baf24040025fd08",
-                  "major_findings": 0
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }

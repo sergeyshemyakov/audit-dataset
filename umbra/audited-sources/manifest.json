@@ -1,7 +1,6 @@
 {
-  "schema_version": "1.1.0",
-  "project": "umbra",
-  "audit_summary": "../audit-summary.json",
+  "schema_version": "2.0.0",
+  "collection": "umbra",
   "sources": [
     {
       "repository": "ScopeLift/ens-resolvers",
@@ -11,13 +10,10 @@
       "commit": "2d7795082308d303eb23c66490579a5b21a1bac9",
       "files": [
         {
-          "file": "ScopeLift/ens-resolvers/contracts/profiles/StealthKeyResolver.sol/2d7795082308d303eb23c66490579a5b21a1bac9/StealthKeyResolver.sol",
+          "path": "contracts/profiles/StealthKeyResolver.sol",
           "git_object": "7d06e31eee500712ef238c130c417ae860a2275d",
           "git_mode": "100644",
-          "sha256": "48b43c308c4e04d7675b36734f23ea014bfdb56c553e3d81695ff3d7454440d3",
-          "units": [
-            "StealthKeyResolver"
-          ]
+          "sha256": "48b43c308c4e04d7675b36734f23ea014bfdb56c553e3d81695ff3d7454440d3"
         }
       ]
     },
@@ -29,13 +25,10 @@
       "commit": "7cfdc81be65bb81e14ad152a0b344d598a3dd512",
       "files": [
         {
-          "file": "ScopeLift/umbra-protocol/contracts/contracts/Umbra.sol/7cfdc81be65bb81e14ad152a0b344d598a3dd512/Umbra.sol",
+          "path": "contracts/contracts/Umbra.sol",
           "git_object": "8ee9f47e72eef4de07fd1076e28be73ff42a385c",
           "git_mode": "100644",
-          "sha256": "f937310258dae1c744f1e98ff109f4218371b6e752727ba3610ca512ccd3fc4d",
-          "units": [
-            "Umbra"
-          ]
+          "sha256": "f937310258dae1c744f1e98ff109f4218371b6e752727ba3610ca512ccd3fc4d"
         }
       ]
     },
@@ -47,13 +40,10 @@
       "commit": "d6e4235fc143c0ac53c054aec7de4c4cdc01846c",
       "files": [
         {
-          "file": "ScopeLift/umbra-protocol/contracts/contracts/Umbra.sol/d6e4235fc143c0ac53c054aec7de4c4cdc01846c/Umbra.sol",
+          "path": "contracts/contracts/Umbra.sol",
           "git_object": "5debfc51ff914305e20ec91433f35d597165f2f3",
           "git_mode": "100644",
-          "sha256": "86b5e730c79e01b8c7895cd6d65b59549f548ad569126df671430fe0eadeb485",
-          "units": [
-            "Umbra"
-          ]
+          "sha256": "86b5e730c79e01b8c7895cd6d65b59549f548ad569126df671430fe0eadeb485"
         }
       ]
     },
@@ -65,13 +55,10 @@
       "commit": "fa2e17367d66a85f20c77299ded5942d9ab64fe0",
       "files": [
         {
-          "file": "ScopeLift/umbra-protocol/contracts/contracts/IUmbraHookReceiver.sol/fa2e17367d66a85f20c77299ded5942d9ab64fe0/IUmbraHookReceiver.sol",
+          "path": "contracts/contracts/IUmbraHookReceiver.sol",
           "git_object": "883ac9419137f43f54befcdfa948e4af98524506",
           "git_mode": "100644",
-          "sha256": "22d7ceb4ae6307515f8e72622ebe8f40daa2faf8d8b28be93dc57a65e72fde6f",
-          "units": [
-            "IUmbraHookReceiver"
-          ]
+          "sha256": "22d7ceb4ae6307515f8e72622ebe8f40daa2faf8d8b28be93dc57a65e72fde6f"
         }
       ]
     },
@@ -83,13 +70,10 @@
       "commit": "fa2e17367d66a85f20c77299ded5942d9ab64fe0",
       "files": [
         {
-          "file": "ScopeLift/umbra-protocol/contracts/contracts/Umbra.sol/fa2e17367d66a85f20c77299ded5942d9ab64fe0/Umbra.sol",
+          "path": "contracts/contracts/Umbra.sol",
           "git_object": "d345bf83ee99dc94a6feef957eecad80ad76016c",
           "git_mode": "100644",
-          "sha256": "bb8ba72626bcef14c5bdb473cbb8da42c31fbaad11bc686aa9ffbf258dc4e2c6",
-          "units": [
-            "Umbra"
-          ]
+          "sha256": "bb8ba72626bcef14c5bdb473cbb8da42c31fbaad11bc686aa9ffbf258dc4e2c6"
         }
       ]
     }

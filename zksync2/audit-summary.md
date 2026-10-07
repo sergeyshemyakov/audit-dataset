@@ -199,7 +199,7 @@ Commit dates use Git committer timestamps (UTC).
 
 ### Repository: <a href="https://github.com/matter-labs/sync_vm"><code>matter-labs/sync_vm</code></a>
 
-_Commit dates unavailable: 4 commit(s) have no timestamp._
+_Commit dates unavailable: 4 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -310,7 +310,7 @@ _Commit dates unavailable: 4 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/matter-labs/system-contracts"><code>matter-labs/system-contracts</code></a>
 
-_Commit dates unavailable: 12 commit(s) have no timestamp._
+_Commit dates unavailable: 12 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -329,7 +329,7 @@ _Commit dates unavailable: 12 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/matter-labs/zksync-2-contracts"><code>matter-labs/zksync-2-contracts</code></a>
 
-_Commit dates unavailable: 4 commit(s) have no timestamp._
+_Commit dates unavailable: 4 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -799,7 +799,7 @@ _Commit dates unavailable: 4 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/matter-labs/fflonk-verifier"><code>matter-labs/fflonk-verifier</code></a>
 
-_Commit dates unavailable: 5 commit(s) have no timestamp._
+_Commit dates unavailable: 5 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |

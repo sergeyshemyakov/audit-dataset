@@ -12,7 +12,7 @@ Commit dates use Git committer timestamps (UTC).
 
 ### Repository: <a href="https://github.com/elliottech/lighter-prover"><code>elliottech/lighter-prover</code></a>
 
-_Commit dates unavailable: 9 commit(s) have no timestamp._
+_Commit dates unavailable: 1 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -27,7 +27,7 @@ _Commit dates unavailable: 9 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/elliottech/lighter-prover"><code>elliottech/lighter-prover</code></a>
 
-_Commit dates unavailable: 9 commit(s) have no timestamp._
+_Commit dates unavailable: 5 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -46,7 +46,7 @@ _Commit dates unavailable: 9 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/elliottech/lighter-prover"><code>elliottech/lighter-prover</code></a>
 
-_Commit dates unavailable: 9 commit(s) have no timestamp._
+_Commit dates unavailable: 1 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -61,7 +61,7 @@ _Commit dates unavailable: 9 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/elliottech/lighter-prover"><code>elliottech/lighter-prover</code></a>
 
-_Commit dates unavailable: 9 commit(s) have no timestamp._
+_Commit dates unavailable: 2 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -77,7 +77,7 @@ _Commit dates unavailable: 9 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/elliottech/lighter-prover"><code>elliottech/lighter-prover</code></a>
 
-_Commit dates unavailable: 9 commit(s) have no timestamp._
+_Commit dates unavailable: 3 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -94,7 +94,7 @@ _Commit dates unavailable: 9 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/elliottech/lighter-contracts"><code>elliottech/lighter-contracts</code></a>
 
-_Commit dates unavailable: 8 commit(s) have no timestamp._
+_Commit dates unavailable: 6 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -114,7 +114,7 @@ _Commit dates unavailable: 8 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/elliottech/lighter-contracts"><code>elliottech/lighter-contracts</code></a>
 
-_Commit dates unavailable: 8 commit(s) have no timestamp._
+_Commit dates unavailable: 1 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
@@ -129,7 +129,7 @@ _Commit dates unavailable: 8 commit(s) have no timestamp._
 
 ### Repository: <a href="https://github.com/elliottech/lighter-contracts-internal"><code>elliottech/lighter-contracts-internal</code></a>
 
-_Commit dates unavailable: 2 commit(s) have no timestamp._
+_Commit dates unavailable: 1 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |

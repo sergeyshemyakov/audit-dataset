@@ -1,0 +1,377 @@
+{
+  "project": "celo",
+  "discoveryTimestamp": 1784282840,
+  "contracts": [
+    {
+      "name": "LivenessModule",
+      "address": "0x0454092516c9A4d636d3CAfA1e82161376C8a748",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x0454092516c9A4d636d3CAfA1e82161376C8a748",
+      "sourceFiles": [
+        "deployed-contracts/LivenessModule.sol"
+      ],
+      "template": "gnosisSafeModules/LivenessModule"
+    },
+    {
+      "name": "Celo native asset Token",
+      "address": "0x057898f3C43F129a17517B9056D23851F124b19f",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x057898f3C43F129a17517B9056D23851F124b19f",
+      "sourceFiles": [
+        "deployed-contracts/Celo native asset Token/CeloTokenL1.sol",
+        "deployed-contracts/Celo native asset Token/Proxy.p.sol"
+      ],
+      "template": "tokens/CELO"
+    },
+    {
+      "name": "Optimism Guardian Multisig",
+      "address": "0x09f7150D8c019BeF34450d6920f6B3608ceFdAf2",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x09f7150D8c019BeF34450d6920f6B3608ceFdAf2",
+      "sourceFiles": [
+        "deployed-contracts/Optimism Guardian Multisig/GnosisSafe.sol",
+        "deployed-contracts/Optimism Guardian Multisig/GnosisSafeProxy.p.sol"
+      ],
+      "template": "GnosisSafe"
+    },
+    {
+      "name": "L1CrossDomainMessenger",
+      "address": "0x1AC1181fc4e4F877963680587AEAa2C90D7EbB95",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x1AC1181fc4e4F877963680587AEAa2C90D7EbB95",
+      "sourceFiles": [
+        "deployed-contracts/L1CrossDomainMessenger/L1CrossDomainMessenger.sol",
+        "deployed-contracts/L1CrossDomainMessenger/ResolvedDelegateProxy.p.sol"
+      ],
+      "template": "opstack/L1CrossDomainMessenger"
+    },
+    {
+      "name": "PreimageOracle",
+      "address": "0x1fb8cdFc6831fc866Ed9C51aF8817Da5c287aDD3",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x1fb8cdFc6831fc866Ed9C51aF8817Da5c287aDD3",
+      "sourceFiles": [
+        "deployed-contracts/PreimageOracle.sol"
+      ],
+      "template": "opstack/PreimageOracle"
+    },
+    {
+      "name": "LivenessGuard",
+      "address": "0x24424336F04440b1c28685a38303aC33C9D14a25",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x24424336F04440b1c28685a38303aC33C9D14a25",
+      "sourceFiles": [
+        "deployed-contracts/LivenessGuard.sol"
+      ],
+      "template": "gnosisSafeModules/LivenessGuard"
+    },
+    {
+      "name": "CeloSuperchainConfig",
+      "address": "0x25035d2233d099f0BA710ca1e5a3834842870C66",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x25035d2233d099f0BA710ca1e5a3834842870C66",
+      "sourceFiles": [
+        "deployed-contracts/CeloSuperchainConfig/CeloSuperchainConfig.sol",
+        "deployed-contracts/CeloSuperchainConfig/Proxy.p.sol"
+      ]
+    },
+    {
+      "name": "FaultDisputeGame",
+      "address": "0x25Bd434Aa96EE31D6661c89CF4290281f1ed856F",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x25Bd434Aa96EE31D6661c89CF4290281f1ed856F",
+      "sourceFiles": [
+        "deployed-contracts/FaultDisputeGame.sol"
+      ],
+      "template": "opstack/FaultDisputeGame"
+    },
+    {
+      "name": "L1ERC721Bridge",
+      "address": "0x3C519816C5BdC0a0199147594F83feD4F5847f13",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x3C519816C5BdC0a0199147594F83feD4F5847f13",
+      "sourceFiles": [
+        "deployed-contracts/L1ERC721Bridge/L1ERC721Bridge.sol",
+        "deployed-contracts/L1ERC721Bridge/Proxy.p.sol"
+      ],
+      "template": "opstack/L1ERC721Bridge"
+    },
+    {
+      "name": "CeloProxyAdminOwner",
+      "address": "0x4092A77bAF58fef0309452cEaCb09221e556E112",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x4092A77bAF58fef0309452cEaCb09221e556E112",
+      "sourceFiles": [
+        "deployed-contracts/CeloProxyAdminOwner/GnosisSafe.sol",
+        "deployed-contracts/CeloProxyAdminOwner/GnosisSafeProxy.p.sol"
+      ],
+      "template": "GnosisSafe"
+    },
+    {
+      "name": "SuperchainProxyAdmin",
+      "address": "0x543bA4AADBAb8f9025686Bd03993043599c6fB04",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x543bA4AADBAb8f9025686Bd03993043599c6fB04",
+      "sourceFiles": [
+        "deployed-contracts/SuperchainProxyAdmin.sol"
+      ],
+      "template": "global/ProxyAdmin"
+    },
+    {
+      "name": "AddressManager",
+      "address": "0x55093104b76FAA602F9d6c35A5FFF576bE78d753",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x55093104b76FAA602F9d6c35A5FFF576bE78d753",
+      "sourceFiles": [
+        "deployed-contracts/AddressManager-eth:0x55093104b76FAA602F9d6c35A5FFF576bE78d753.sol"
+      ],
+      "template": "opstack/AddressManager"
+    },
+    {
+      "name": "SuperchainProxyAdminOwner",
+      "address": "0x5a0Aae59D09fccBdDb6C6CcEB07B7279367C3d2A",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x5a0Aae59D09fccBdDb6C6CcEB07B7279367C3d2A",
+      "sourceFiles": [
+        "deployed-contracts/SuperchainProxyAdminOwner/GnosisSafe.sol",
+        "deployed-contracts/SuperchainProxyAdminOwner/GnosisSafeProxy.p.sol"
+      ],
+      "template": "GnosisSafe"
+    },
+    {
+      "name": "MIPS",
+      "address": "0x6463dEE3828677F6270d83d45408044fc5eDB908",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x6463dEE3828677F6270d83d45408044fc5eDB908",
+      "sourceFiles": [
+        "deployed-contracts/MIPS.sol"
+      ],
+      "template": "opstack/MIPS"
+    },
+    {
+      "name": "OptimismMintableERC20Factory",
+      "address": "0x6f0E4f1EB98A52EfaCF7BE11d48B9d9d6510A906",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x6f0E4f1EB98A52EfaCF7BE11d48B9d9d6510A906",
+      "sourceFiles": [
+        "deployed-contracts/OptimismMintableERC20Factory/OptimismMintableERC20Factory.sol",
+        "deployed-contracts/OptimismMintableERC20Factory/Proxy.p.sol"
+      ],
+      "template": "opstack/OptimismMintableERC20Factory"
+    },
+    {
+      "name": "DeputyPauseModule",
+      "address": "0x76fC2F971FB355D0453cF9F64d3F9E4f640E1754",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x76fC2F971FB355D0453cF9F64d3F9E4f640E1754",
+      "sourceFiles": [
+        "deployed-contracts/DeputyPauseModule.sol"
+      ],
+      "template": "opstack/DeputyPauseModule"
+    },
+    {
+      "name": "ProxyAdmin",
+      "address": "0x783A434532Ee94667979213af1711505E8bFE374",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x783A434532Ee94667979213af1711505E8bFE374",
+      "sourceFiles": [
+        "deployed-contracts/ProxyAdmin.sol"
+      ],
+      "template": "global/ProxyAdmin"
+    },
+    {
+      "name": "OpFoundationUpgradeSafe",
+      "address": "0x847B5c174615B1B7fDF770882256e2D3E95b9D92",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x847B5c174615B1B7fDF770882256e2D3E95b9D92",
+      "sourceFiles": [
+        "deployed-contracts/OpFoundationUpgradeSafe/GnosisSafeProxy.p.sol",
+        "deployed-contracts/OpFoundationUpgradeSafe/Safe.sol"
+      ],
+      "template": "GnosisSafe"
+    },
+    {
+      "name": "SystemConfig",
+      "address": "0x89E31965D844a309231B1f17759Ccaf1b7c09861",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x89E31965D844a309231B1f17759Ccaf1b7c09861",
+      "sourceFiles": [
+        "deployed-contracts/SystemConfig/Proxy.p.sol",
+        "deployed-contracts/SystemConfig/SystemConfig.sol"
+      ],
+      "template": "opstack/SystemConfig"
+    },
+    {
+      "name": "AnchorStateRegistry",
+      "address": "0x8fE58d2168b5412Cf1Bd212cE6137f8b7300222d",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x8fE58d2168b5412Cf1Bd212cE6137f8b7300222d",
+      "sourceFiles": [
+        "deployed-contracts/AnchorStateRegistry/AnchorStateRegistry.sol",
+        "deployed-contracts/AnchorStateRegistry/Proxy.p.sol"
+      ],
+      "template": "opstack/AnchorStateRegistry_post13_opsuccinct"
+    },
+    {
+      "name": "DelayedWETH",
+      "address": "0x91FA5B653aFe81A79890A93ad83768A04cc011b4",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x91FA5B653aFe81A79890A93ad83768A04cc011b4",
+      "sourceFiles": [
+        "deployed-contracts/DelayedWETH-eth:0x91FA5B653aFe81A79890A93ad83768A04cc011b4/DelayedWETH.sol",
+        "deployed-contracts/DelayedWETH-eth:0x91FA5B653aFe81A79890A93ad83768A04cc011b4/Proxy.p.sol"
+      ],
+      "template": "opstack/DelayedWETH"
+    },
+    {
+      "name": "SuperchainConfig",
+      "address": "0x95703e0982140D16f8ebA6d158FccEde42f04a4C",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x95703e0982140D16f8ebA6d158FccEde42f04a4C",
+      "sourceFiles": [
+        "deployed-contracts/SuperchainConfig/Proxy.p.sol",
+        "deployed-contracts/SuperchainConfig/SuperchainConfig.sol"
+      ],
+      "template": "opstack/SuperchainConfig_expiry"
+    },
+    {
+      "name": "L1StandardBridge",
+      "address": "0x9C4955b92F34148dbcfDCD82e9c9eCe5CF2badfe",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x9C4955b92F34148dbcfDCD82e9c9eCe5CF2badfe",
+      "sourceFiles": [
+        "deployed-contracts/L1StandardBridge/L1ChugSplashProxy.p.sol",
+        "deployed-contracts/L1StandardBridge/L1StandardBridge.sol"
+      ],
+      "template": "opstack/L1StandardBridge"
+    },
+    {
+      "name": "Celo cLabs Multisig",
+      "address": "0x9Eb44Da23433b5cAA1c87e35594D15FcEb08D34d",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0x9Eb44Da23433b5cAA1c87e35594D15FcEb08D34d",
+      "sourceFiles": [
+        "deployed-contracts/Celo cLabs Multisig/Safe.sol",
+        "deployed-contracts/Celo cLabs Multisig/SafeProxy.p.sol"
+      ],
+      "template": "GnosisSafe"
+    },
+    {
+      "name": "PermissionedDisputeGame",
+      "address": "0xa83a2E8595b602aD98C928E9cD123c0E05C84FD9",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xa83a2E8595b602aD98C928E9cD123c0E05C84FD9",
+      "sourceFiles": [
+        "deployed-contracts/PermissionedDisputeGame.sol"
+      ],
+      "template": "opstack/PermissionedDisputeGame"
+    },
+    {
+      "name": "SaferSafes",
+      "address": "0xA8447329e52F64AED2bFc9E7a2506F7D369f483a",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xA8447329e52F64AED2bFc9E7a2506F7D369f483a",
+      "sourceFiles": [
+        "deployed-contracts/SaferSafes.sol"
+      ],
+      "template": "gnosisSafeModules/SaferSafes"
+    },
+    {
+      "name": "Celo Security Council",
+      "address": "0xC03172263409584f7860C25B6eB4985f0f6F4636",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xC03172263409584f7860C25B6eB4985f0f6F4636",
+      "sourceFiles": [
+        "deployed-contracts/Celo Security Council/Safe.sol",
+        "deployed-contracts/Celo Security Council/SafeProxy.p.sol"
+      ],
+      "template": "GnosisSafe"
+    },
+    {
+      "name": "Optimism Security Council",
+      "address": "0xc2819DC788505Aac350142A7A707BF9D03E3Bd03",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xc2819DC788505Aac350142A7A707BF9D03E3Bd03",
+      "sourceFiles": [
+        "deployed-contracts/Optimism Security Council/GnosisSafe.sol",
+        "deployed-contracts/Optimism Security Council/GnosisSafeProxy.p.sol"
+      ],
+      "template": "GnosisSafe"
+    },
+    {
+      "name": "OptimismPortal2",
+      "address": "0xc5c5D157928BDBD2ACf6d0777626b6C75a9EAEDC",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xc5c5D157928BDBD2ACf6d0777626b6C75a9EAEDC",
+      "sourceFiles": [
+        "deployed-contracts/OptimismPortal2/OptimismPortal2.sol",
+        "deployed-contracts/OptimismPortal2/Proxy.p.sol"
+      ],
+      "template": "opstack/OptimismPortal2"
+    },
+    {
+      "name": "DelayedWETH",
+      "address": "0xC700d16428cF5Bfa71D91E66fA54Fc11A73f2552",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xC700d16428cF5Bfa71D91E66fA54Fc11A73f2552",
+      "sourceFiles": [
+        "deployed-contracts/DelayedWETH-eth:0xC700d16428cF5Bfa71D91E66fA54Fc11A73f2552/DelayedWETH.sol",
+        "deployed-contracts/DelayedWETH-eth:0xC700d16428cF5Bfa71D91E66fA54Fc11A73f2552/Proxy.p.sol"
+      ],
+      "template": "opstack/DelayedWETH"
+    },
+    {
+      "name": "Safe",
+      "address": "0xD1C635987B6Aa287361d08C6461491Fa9df087f2",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xD1C635987B6Aa287361d08C6461491Fa9df087f2",
+      "sourceFiles": [
+        "deployed-contracts/Safe/Safe.sol",
+        "deployed-contracts/Safe/SafeProxy.p.sol"
+      ],
+      "template": "GnosisSafe"
+    },
+    {
+      "name": "AddressManager",
+      "address": "0xdE1FCfB0851916CA5101820A69b13a4E276bd81F",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xdE1FCfB0851916CA5101820A69b13a4E276bd81F",
+      "sourceFiles": [
+        "deployed-contracts/AddressManager-eth:0xdE1FCfB0851916CA5101820A69b13a4E276bd81F.sol"
+      ],
+      "template": "opstack/AddressManager"
+    },
+    {
+      "name": "AccessManager",
+      "address": "0xF59a19c5578291cB7fd22618D16281aDf76f2816",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xF59a19c5578291cB7fd22618D16281aDf76f2816",
+      "sourceFiles": [
+        "deployed-contracts/AccessManager.sol"
+      ],
+      "template": "succinct/OPSuccinct/AccessManager"
+    },
+    {
+      "name": "DisputeGameFactory",
+      "address": "0xFbAC162162f4009Bb007C6DeBC36B1dAC10aF683",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xFbAC162162f4009Bb007C6DeBC36B1dAC10aF683",
+      "sourceFiles": [
+        "deployed-contracts/DisputeGameFactory/DisputeGameFactory.sol",
+        "deployed-contracts/DisputeGameFactory/Proxy.p.sol"
+      ],
+      "template": "opstack/DisputeGameFactory"
+    },
+    {
+      "name": "OPSuccinctFaultDisputeGame",
+      "address": "0xfF1caC738a5263736AF258e4b3D6a4970C6351FF",
+      "chain": "eth",
+      "chainSpecificAddress": "eth:0xfF1caC738a5263736AF258e4b3D6a4970C6351FF",
+      "sourceFiles": [
+        "deployed-contracts/OPSuccinctFaultDisputeGame.sol"
+      ],
+      "template": "succinct/OPSuccinct/OPSuccinctFaultDisputeGame"
+    }
+  ],
+  "programSources": []
+}
