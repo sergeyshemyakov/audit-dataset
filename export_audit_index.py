@@ -41,7 +41,7 @@ if sys.version_info < (3, 14):
 from compression import zstd
 
 from generate_audit_summary import SummaryError, read_summary
-from normalize import discover_collections
+from normalize import NormalizeError, canonical_repository_id, discover_collections
 
 SCHEMA_VERSION = "1.1.0"
 INDEX_NAME = "audit-index.json"
@@ -851,8 +851,9 @@ def validate_repository(
     algorithms: dict[str, set[str]],
 ) -> list[str]:
     problems: list[str] = []
-    if path_problem(repository) is not None or "/" not in repository:
-        problems.append(f"repository id {repository!r} is not a canonical id")
+    problem = repository_id_problem(repository)
+    if problem is not None:
+        problems.append(f"repository id {repository!r} is not a canonical id: {problem}")
     if not isinstance(commits, dict) or not commits:
         return problems + [f"{repository}: must map at least one commit to its snapshot"]
     if len({len(commit) for commit in commits}) != 1:
@@ -877,6 +878,31 @@ def validate_repository(
     if [commit for _, commit in sorted(order)] != [commit for _, commit in order]:
         problems.append(f"{repository}: commits are not ordered by timestamp, then commit id")
     return problems
+
+
+def repository_id_problem(repository: str) -> str | None:
+    """Consumers derive a repository's URL from its id, so the id must survive the round trip."""
+    problem = path_problem(repository)
+    if problem is not None:
+        return problem
+    url = repository_url(repository)
+    try:
+        canonical = canonical_repository_id(url)
+    except NormalizeError as error:
+        return str(error)
+    if canonical != repository:
+        return f"its URL {url} has the canonical id {canonical!r}"
+    return None
+
+
+def repository_url(repository: str) -> str:
+    """The URL a canonical id determines; GitHub owners never contain a dot, hosts always do."""
+    segments = repository.split("/")
+    if "." in segments[0]:
+        return f"https://{repository}"
+    if segments[0] == "gist" and len(segments) == 3:
+        return f"https://gist.github.com/{segments[1]}/{segments[2]}"
+    return f"https://github.com/{repository}"
 
 
 def validate_snapshot(

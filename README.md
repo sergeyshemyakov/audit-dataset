@@ -77,7 +77,7 @@ type Snapshot = {
 
 type CollectionId = string // collection directory: an L2BEAT project id such as "tornado-cash", or "_libs/<vendor>" such as "_libs/safe"
 type ReportId = string     // the summary's report id, unique across the dataset
-type RepositoryId = string // canonical id from normalize.py: "owner/repo", or "gist/owner/id"
+type RepositoryId = string // canonical id from normalize.py: "owner/repo", "gist/owner/id" or "<host>/<path>"; it determines the URL
 type Commit = string       // full lowercase hex commit id (40, or 64 for SHA-256 repositories)
 type ObjectId = string     // first 12 lowercase hex characters of the git blob id of the contents
 type Path = string         // POSIX, relative to the repository root, no leading or trailing "/"
@@ -94,6 +94,12 @@ A file is audited by a report when one of the report's scoped paths is the file 
 
 `audits[report][path]` is the summary version's `finding_ids`: the Major/Critical findings that report left open in that path at that commit, in report order, or `[]` when it has none. Identifiers are copied verbatim, without titles, severities or statuses.
 
+Repository URLs are not exported, because the canonical id determines them, for every entry of `repositories.json`:
+
+- an id whose first segment contains a dot is `<host>/<path>` on another host, at `https://<host>/<path>` (GitHub owners never contain a dot);
+- `gist/<owner>/<id>` is the gist at `https://gist.github.com/<owner>/<id>`;
+- every other id is `<owner>/<repo>`, at `https://github.com/<owner>/<repo>`.
+
 ### `audit-objects.json.zst`
 
 One zstd frame (level 19, `--long=27`: long-distance matching with a 128 MiB window, content checksum) holding a compact JSON object with sorted keys, from object id to the file's contents: `{"0acd2cf2ad54":"// SPDX-License-Identifier: ...","b8e8febf8534":"..."}`. Every file of every snapshot is stored once under its object id, however many repositories, commits or collections contain it.
@@ -104,7 +110,7 @@ One zstd frame (level 19, `--long=27`: long-distance matching with a 128 MiB win
 2. **Content addressed.** `sha1("blob " + byteLength + "\0" + bytes)` of the contents (sha256 for a SHA-256 repository) starts with the object id. Two different contents sharing an object id fail the export.
 3. **Solidity only.** Only files ending in `.sol`. A scoped path with no Solidity files is left out.
 4. **Only what was audited.** `reports` holds every relevant report and no irrelevant one, including the reports that audited no exported file (circuits, Cairo or Rust code, cryptographic reviews, scopes pinned only to branches). Snapshots hold only versions pinned to a full commit (branches, tags and pull requests without a resolved commit, and commit ranges, are left out); only files the manifest fetched (commits that could not be fetched and symlinks with missing targets are left out); no `not_audited` versions. Every file in a snapshot is covered by at least one of its audits, every audit covers at least one file and names a report in `reports`, and every object is used by at least one file. Two versions of one report scoping the same path at the same commit fail the export.
-5. **Ids and paths.** A report in several collections is exported once, with all of them in `collections` and the `document` of the first; one id naming two different report documents (original PDF/HTML bytes) or two different titles, auditors or dates fails the export. A `document` is under `<first collection>/reports/` and ends with `.pdf`, `.html`, `.csv`, `.js` or `.md`. Paths never end with `/`.
+5. **Ids and paths.** A report in several collections is exported once, with all of them in `collections` and the `document` of the first; one id naming two different report documents (original PDF/HTML bytes) or two different titles, auditors or dates fails the export. A `document` is under `<first collection>/reports/` and ends with `.pdf`, `.html`, `.csv`, `.js` or `.md`. Every repository id is canonical: `normalize.py` maps the URL the id determines back to the id. Paths never end with `/`.
 6. **Collections.** Every collection of the dataset is listed, including any no exported report belongs to, and every collection a report names is listed. `kind` is `library` exactly for the ids under `_libs/` (`_libs/<vendor>`) and `project` for every other id, a single directory name that is the L2BEAT project id. Names are unique, non-empty and without surrounding spaces. A `collections.json` that does not name exactly the dataset's collections fails the export.
 7. **Timestamps.** Every exported commit has a timestamp: the summary's ISO 8601 UTC committer date in unix seconds. A missing timestamp, one that is not a whole second, or two versions disagreeing on one commit's timestamp fail the export.
 8. **Deterministic.** Keys are sorted, except that the commits of a repository are ordered by timestamp, then commit id. The index is written with 2-space indentation and a trailing newline. The same dataset produces byte-identical files.
