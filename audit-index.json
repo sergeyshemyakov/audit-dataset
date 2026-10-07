@@ -1,5 +1,131 @@
 {
-  "schema_version": "1.0.0",
+  "schema_version": "1.1.0",
+  "collections": {
+    "_libs/eth-infinitism": {
+      "name": "eth-infinitism (ERC-4337)",
+      "kind": "library"
+    },
+    "_libs/openzeppelin": {
+      "name": "OpenZeppelin",
+      "kind": "library"
+    },
+    "_libs/safe": {
+      "name": "Safe",
+      "kind": "library"
+    },
+    "_libs/solady": {
+      "name": "Solady",
+      "kind": "library"
+    },
+    "_libs/solmate": {
+      "name": "Solmate",
+      "kind": "library"
+    },
+    "_libs/sp1": {
+      "name": "SP1",
+      "kind": "library"
+    },
+    "agglayer": {
+      "name": "Agglayer",
+      "kind": "project"
+    },
+    "arbitrum": {
+      "name": "Arbitrum One",
+      "kind": "project"
+    },
+    "aztecnetwork": {
+      "name": "Aztec Network",
+      "kind": "project"
+    },
+    "base": {
+      "name": "Base Chain",
+      "kind": "project"
+    },
+    "bob": {
+      "name": "BOB",
+      "kind": "project"
+    },
+    "celo": {
+      "name": "Celo",
+      "kind": "project"
+    },
+    "ethscriptions": {
+      "name": "Ethscriptions",
+      "kind": "project"
+    },
+    "facet": {
+      "name": "Facet",
+      "kind": "project"
+    },
+    "katana": {
+      "name": "Katana",
+      "kind": "project"
+    },
+    "lighter": {
+      "name": "Lighter",
+      "kind": "project"
+    },
+    "linea": {
+      "name": "Linea",
+      "kind": "project"
+    },
+    "mantle": {
+      "name": "Mantle",
+      "kind": "project"
+    },
+    "morph": {
+      "name": "Morph",
+      "kind": "project"
+    },
+    "optimism": {
+      "name": "OP Mainnet",
+      "kind": "project"
+    },
+    "privacy-pools": {
+      "name": "Privacy Pools",
+      "kind": "project"
+    },
+    "railgun": {
+      "name": "Railgun",
+      "kind": "project"
+    },
+    "roninnetwork": {
+      "name": "Ronin",
+      "kind": "project"
+    },
+    "scroll": {
+      "name": "Scroll",
+      "kind": "project"
+    },
+    "starknet": {
+      "name": "Starknet",
+      "kind": "project"
+    },
+    "taiko": {
+      "name": "Taiko Alethia",
+      "kind": "project"
+    },
+    "tornado-cash": {
+      "name": "Tornado Cash",
+      "kind": "project"
+    },
+    "umbra": {
+      "name": "Umbra Cash",
+      "kind": "project"
+    },
+    "unichain": {
+      "name": "Unichain",
+      "kind": "project"
+    },
+    "uniswapv3": {
+      "name": "Uniswap V3",
+      "kind": "project"
+    },
+    "zksync2": {
+      "name": "ZKsync Era",
+      "kind": "project"
+    }
+  },
   "reports": {
     "3docsecurity-cannon-fgetfd-2024-10": {
       "collections": [

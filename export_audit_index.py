@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Export ``audit-index.json`` and ``audit-objects.json.zst``: the public interface.
 
-The index says, for every repository commit pinned by an audit, which Solidity
-files were audited there, by which reports, and which major findings those
-reports left open in each scoped path. The bundle maps every file's object id
-(the first 12 hex characters of the git blob id of its contents) to the file as
-stored in ``audited-sources/``, i.e. formatted by format_sources.py.
-Consumers pin both files to a dataset commit; everything else in the dataset is
-internal. See the README section "Audit export" for the format and its rules.
+The index names every collection, with the display name the hand-maintained
+``collections.json`` gives it, and says, for every repository commit pinned by
+an audit, which Solidity files were audited there, by which reports, and which
+major findings those reports left open in each scoped path. The bundle maps
+every file's object id (the first 12 hex characters of the git blob id of its
+contents) to the file as stored in ``audited-sources/``, i.e. formatted by
+format_sources.py. Consumers pin both files to a dataset commit; everything
+else in the dataset is internal. See the README section "Audit export" for the
+format and its rules.
 
 ``--check`` rebuilds the export in memory and verifies that the committed files
 satisfy every rule and are byte-identical to it, without writing anything. It
@@ -39,9 +41,11 @@ from compression import zstd
 from generate_audit_summary import SummaryError, read_summary
 from normalize import discover_collections
 
-SCHEMA_VERSION = "1.0.0"
+SCHEMA_VERSION = "1.1.0"
 INDEX_NAME = "audit-index.json"
 OBJECTS_NAME = "audit-objects.json.zst"
+COLLECTIONS_NAME = "collections.json"
+LIBRARIES_DIRECTORY = "_libs"
 OBJECT_ID_LENGTH = 12
 ZSTD_LEVEL = 19
 # As `zstd --long=27`: long-distance matching over a 128 MiB window, the largest
@@ -145,6 +149,10 @@ def build_export(root: Path) -> Export:
     collections = discover_collections(root)
     if not collections:
         raise ExportError(f"no collections in {root}")
+    names = read_collection_names(
+        root / COLLECTIONS_NAME,
+        {collection_dir.relative_to(root).as_posix() for collection_dir in collections},
+    )
     reports: dict[str, ReportRecord] = {}
     timestamps: dict[tuple[str, str], int | None] = {}
     audits: dict[tuple[str, str, str, str], Audit] = {}
@@ -167,7 +175,25 @@ def build_export(root: Path) -> Export:
             collection, collection_dir, summary, fetched, unavailable, timestamps
         ):
             add_audit(audits, audit)
-    return assemble_export(reports, audits, manifest_paths)
+    return assemble_export(names, reports, audits, manifest_paths)
+
+
+def read_collection_names(path: Path, collections: set[str]) -> dict[str, str]:
+    """Display names from the hand-maintained registry, which names exactly the collections."""
+    try:
+        names = parse_json(path.read_bytes())
+    except (OSError, ExportError, ValueError) as error:
+        raise ExportError(f"cannot read {COLLECTIONS_NAME}: {error}") from error
+    if not isinstance(names, dict) or not all(isinstance(name, str) for name in names.values()):
+        raise ExportError(f"{COLLECTIONS_NAME} must map collection ids to display names")
+    if list(names) != sorted(names):
+        raise ExportError(f"{COLLECTIONS_NAME} must be sorted by collection id")
+    if names.keys() != collections:
+        raise ExportError(
+            f"{COLLECTIONS_NAME} must name exactly the collections: missing "
+            f"{sorted(collections - names.keys())}, unknown {sorted(names.keys() - collections)}"
+        )
+    return names
 
 
 def record_reports(
@@ -403,6 +429,7 @@ def blob_ids_by_path(audit: Audit) -> dict[str, str]:
 
 
 def assemble_export(
+    names: dict[str, str],
     reports: dict[str, ReportRecord],
     audits: dict[tuple[str, str, str, str], Audit],
     manifest_paths: set[str],
@@ -426,6 +453,10 @@ def assemble_export(
     used_reports = sorted({report_id for _, _, report_id, _ in audits})
     index = {
         "schema_version": SCHEMA_VERSION,
+        "collections": {
+            collection: {"name": names[collection], "kind": collection_kind(collection)}
+            for collection in sorted(names)
+        },
         "reports": {
             report_id: {
                 "collections": sorted(reports[report_id].collections),
@@ -441,6 +472,13 @@ def assemble_export(
         },
     }
     return Export(index=index, objects=objects, manifest_paths=manifest_paths)
+
+
+def collection_kind(collection: str) -> str:
+    """Collections under _libs/ hold code reused across projects; the others are projects."""
+    if collection.startswith(f"{LIBRARIES_DIRECTORY}/"):
+        return "library"
+    return "project"
 
 
 def ordered_snapshots(snapshots: dict[str, dict[str, Any]]) -> dict[str, Any]:
@@ -637,9 +675,12 @@ def parse_json(data: bytes) -> Any:
 
 
 def print_statistics(export: Export, index_text: bytes, objects_text: bytes) -> None:
+    collections = export.index["collections"].values()
     snapshots = [s for commits in export.index["repositories"].values() for s in commits.values()]
     audits = [paths for s in snapshots for paths in s["audits"].values()]
     print(
+        f"{len(collections)} collections "
+        f"({sum(1 for c in collections if c['kind'] == 'library')} libraries), "
         f"{len(export.index['reports'])} reports, {len(export.index['repositories'])} repositories, "
         f"{len(snapshots)} snapshots, {sum(len(s['files']) for s in snapshots)} files, "
         f"{sum(len(paths) for paths in audits)} audited paths in {len(audits)} report audits, "
@@ -663,7 +704,8 @@ def validate_export(index: Any, objects: Any, index_text: bytes, objects_text: b
         problems.append(f"{INDEX_NAME} is not sorted 2-space JSON with a trailing newline")
     if serialize_objects(objects) != objects_text:
         problems.append(f"{OBJECTS_NAME} does not hold compact JSON with sorted keys")
-    problems += validate_reports(index["reports"])
+    problems += validate_collections(index["collections"])
+    problems += validate_reports(index["reports"], index["collections"])
     algorithms: dict[str, set[str]] = defaultdict(set)
     used_reports: set[str] = set()
     for repository, commits in index["repositories"].items():
@@ -676,21 +718,53 @@ def validate_export(index: Any, objects: Any, index_text: bytes, objects_text: b
 
 
 def validate_top_level(index: dict[str, Any]) -> list[str]:
-    if list(index) != ["schema_version", "reports", "repositories"]:
-        return [f"index keys must be schema_version, reports, repositories; got {list(index)}"]
+    maps = ["collections", "reports", "repositories"]
+    if list(index) != ["schema_version", *maps]:
+        return [f"index keys must be schema_version, {', '.join(maps)}; got {list(index)}"]
     if index["schema_version"] != SCHEMA_VERSION:
         return [f"schema_version must be {SCHEMA_VERSION!r}"]
-    if not isinstance(index["reports"], dict) or not isinstance(index["repositories"], dict):
-        return ["reports and repositories must be objects"]
-    problems = []
-    if list(index["reports"]) != sorted(index["reports"]):
-        problems.append("reports are not sorted by id")
-    if list(index["repositories"]) != sorted(index["repositories"]):
-        problems.append("repositories are not sorted by id")
+    if not all(isinstance(index[key], dict) for key in maps):
+        return [f"{', '.join(maps)} must be objects"]
+    return [f"{key} are not sorted by id" for key in maps if list(index[key]) != sorted(index[key])]
+
+
+def validate_collections(collections: dict[str, Any]) -> list[str]:
+    problems: list[str] = []
+    collection_by_name: dict[str, str] = {}
+    for collection, entry in collections.items():
+        where = f"collection {collection!r}"
+        problem = collection_id_problem(collection)
+        if problem is not None:
+            problems.append(f"{where}: id {problem}")
+            continue
+        if not isinstance(entry, dict) or list(entry) != ["name", "kind"]:
+            problems.append(f"{where} keys must be name, kind")
+            continue
+        name = entry["name"]
+        if not isinstance(name, str) or not name or name != name.strip():
+            problems.append(f"{where}: name must be a non-empty string without surrounding spaces")
+        elif collection_by_name.setdefault(name, collection) != collection:
+            problems.append(f"{where}: name {name!r} is also the name of {collection_by_name[name]!r}")
+        if entry["kind"] != collection_kind(collection):
+            problems.append(f"{where}: kind must be {collection_kind(collection)!r}")
     return problems
 
 
-def validate_reports(reports: dict[str, Any]) -> list[str]:
+def collection_id_problem(collection: str) -> str | None:
+    """A collection id is its directory: ``<project>`` or ``_libs/<vendor>``."""
+    problem = path_problem(collection)
+    if problem is not None:
+        return problem
+    segments = collection.split("/")
+    if segments[0] == LIBRARIES_DIRECTORY:
+        if len(segments) != 2:
+            return f"must be {LIBRARIES_DIRECTORY}/<vendor>"
+    elif len(segments) != 1:
+        return f"must be a project directory or {LIBRARIES_DIRECTORY}/<vendor>"
+    return None
+
+
+def validate_reports(reports: dict[str, Any], collections: dict[str, Any]) -> list[str]:
     problems: list[str] = []
     for report_id, report in reports.items():
         where = f"report {report_id!r}"
@@ -700,14 +774,17 @@ def validate_reports(reports: dict[str, Any]) -> list[str]:
         if list(report) != ["collections", "title", "auditor", "date"]:
             problems.append(f"{where} keys must be collections, title, auditor, date")
             continue
-        collections = report["collections"]
+        report_collections = report["collections"]
         if (
-            not isinstance(collections, list)
-            or not collections
-            or not all(isinstance(name, str) and name for name in collections)
-            or collections != sorted(set(collections))
+            not isinstance(report_collections, list)
+            or not report_collections
+            or not all(isinstance(name, str) and name for name in report_collections)
+            or report_collections != sorted(set(report_collections))
         ):
             problems.append(f"{where}: collections must be a sorted, unique, non-empty list")
+        else:
+            problems += [f"{where}: collection {name!r} is not listed in collections"
+                         for name in report_collections if name not in collections]
         for key in ("title", "auditor"):
             if not isinstance(report[key], str) or not report[key].strip():
                 problems.append(f"{where}: {key} must be a non-empty string")
