@@ -2,7 +2,8 @@
 """Export ``audit-index.json`` and ``audit-objects.json.zst``: the public interface.
 
 The index names every collection, with the display name the hand-maintained
-``collections.json`` gives it, and says, for every repository commit pinned by
+``collections.json`` gives it, lists every relevant report with the dataset
+path of its original document, and says, for every repository commit pinned by
 an audit, which Solidity files were audited there, by which reports, and which
 major findings those reports left open in each scoped path. The bundle maps
 every file's object id (the first 12 hex characters of the git blob id of its
@@ -13,9 +14,10 @@ format and its rules.
 
 ``--check`` rebuilds the export in memory and verifies that the committed files
 satisfy every rule and are byte-identical to it, without writing anything. It
-also verifies, against the git index, that every file a manifest names is
-committed with exactly that letter case. A normal run performs the same
-validation before writing and refuses to write an invalid export.
+also verifies, against the git index, that every report document and every
+file a manifest names is committed with exactly that letter case. A normal run
+performs the same validation before writing and refuses to write an invalid
+export.
 """
 
 from __future__ import annotations
@@ -59,8 +61,10 @@ FULL_COMMIT_RE = re.compile(r"(?:[0-9a-fA-F]{40}|[0-9a-fA-F]{64})\Z")
 COMMIT_RE = re.compile(r"(?:[0-9a-f]{40}|[0-9a-f]{64})\Z")
 OBJECT_ID_RE = re.compile(r"[0-9a-f]{12}\Z")
 DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}\Z")
-# Report documents are compared by their originals; native Markdown reports have none.
+# What a report's Markdown was converted from, in the order its exported document
+# is chosen; a report published as Markdown has none and links the Markdown.
 ORIGINAL_SUFFIXES = (".pdf", ".html", ".csv", ".js")
+DOCUMENT_SUFFIXES = (*ORIGINAL_SUFFIXES, ".md")
 
 
 class ExportError(RuntimeError):
@@ -95,8 +99,8 @@ class ReportRecord:
     auditor: str
     date: str | None
     relevant: bool
-    document: tuple[tuple[str, str], ...]
-    collections: set[str]
+    fingerprint: tuple[tuple[str, str], ...]  # (suffix, sha256) of each of its documents
+    documents: dict[str, str]  # collection -> dataset path of the report's document there
 
 
 @dataclass
@@ -163,7 +167,7 @@ def build_export(root: Path) -> Export:
             summary = read_summary(collection_dir / "audit-summary.json")
         except SummaryError as error:
             raise ExportError(f"{collection}/audit-summary.json: {error}") from error
-        record_reports(reports, collection, collection_dir / "reports", summary)
+        record_reports(reports, root, collection, summary)
         record_timestamps(timestamps, summary)
         fetched, unavailable = read_manifest(collection_dir / "audited-sources" / "manifest.json")
         manifest_paths.update(
@@ -197,50 +201,58 @@ def read_collection_names(path: Path, collections: set[str]) -> dict[str, str]:
 
 
 def record_reports(
-    reports: dict[str, ReportRecord], collection: str, reports_dir: Path, summary: dict[str, Any]
+    reports: dict[str, ReportRecord], root: Path, collection: str, summary: dict[str, Any]
 ) -> None:
     """Merge one collection's report metadata, rejecting an id shared by two documents."""
     for report in summary["reports"]:
+        documents = report_documents(root, collection, report["report_file"])
         record = ReportRecord(
             title=report["title"],
             auditor=report["auditor"],
             date=report["report_date"],
             relevant=report["isRelevant"],
-            document=document_fingerprint(reports_dir, report["report_file"]),
-            collections={collection},
+            fingerprint=document_fingerprint(root, documents),
+            documents={collection: documents[0]},
         )
         previous = reports.setdefault(report["id"], record)
         if previous is record:
             continue
-        if previous.document != record.document:
+        assert collection not in previous.documents, (report["id"], collection)
+        if previous.fingerprint != record.fingerprint:
             raise ExportError(
                 f"report id {report['id']!r} names different documents in "
-                f"{sorted(previous.collections)} and {collection!r}"
+                f"{sorted(previous.documents)} and {collection!r}"
             )
         if (previous.title, previous.auditor, previous.date, previous.relevant) != (
             record.title, record.auditor, record.date, record.relevant
         ):
             raise ExportError(
                 f"report {report['id']!r} has different metadata in "
-                f"{sorted(previous.collections)} and {collection!r}"
+                f"{sorted(previous.documents)} and {collection!r}"
             )
-        previous.collections.add(collection)
+        previous.documents[collection] = documents[0]
 
 
-def document_fingerprint(reports_dir: Path, report_file: str) -> tuple[tuple[str, str], ...]:
-    """sha256 of the report's original files, or of its Markdown when it has none."""
-    markdown = reports_dir.joinpath(*PurePosixPath(report_file).parts)
+def report_documents(root: Path, collection: str, report_file: str) -> list[str]:
+    """Dataset paths of the report's originals in ORIGINAL_SUFFIXES order, else of its Markdown."""
+    markdown = PurePosixPath(collection, "reports", report_file)
     assert markdown.suffix == ".md", report_file
     originals = [
-        markdown.with_suffix(suffix)
+        markdown.with_suffix(suffix).as_posix()
         for suffix in ORIGINAL_SUFFIXES
-        if markdown.with_suffix(suffix).is_file()
+        if root.joinpath(*markdown.with_suffix(suffix).parts).is_file()
     ]
-    documents = originals or [markdown]
-    return tuple(
-        (document.suffix, hashlib.sha256(document.read_bytes()).hexdigest())
-        for document in documents
-    )
+    return originals or [markdown.as_posix()]
+
+
+def document_fingerprint(root: Path, documents: list[str]) -> tuple[tuple[str, str], ...]:
+    """sha256 of each document, which tells two reports sharing an id apart."""
+    fingerprint: list[tuple[str, str]] = []
+    for document in documents:
+        path = PurePosixPath(document)
+        data = root.joinpath(*path.parts).read_bytes()
+        fingerprint.append((path.suffix, hashlib.sha256(data).hexdigest()))
+    return tuple(fingerprint)
 
 
 def full_commit(revision: dict[str, Any]) -> str | None:
@@ -458,10 +470,11 @@ def assemble_export(
         },
         "reports": {
             report_id: {
-                "collections": sorted(record.collections),
+                "collections": sorted(record.documents),
                 "title": record.title,
                 "auditor": record.auditor,
                 "date": record.date,
+                "document": record.documents[min(record.documents)],
             }
             for report_id, record in sorted(reports.items())
             if record.relevant
@@ -580,7 +593,8 @@ def write_export(root: Path, index_text: bytes, objects_text: bytes) -> None:
 def check_committed(
     root: Path, export: Export, index_text: bytes, objects_text: bytes
 ) -> list[str]:
-    """The export on disk must be up to date, and every file a manifest names committed.
+    """The export on disk must be up to date, and every report document and file a
+    manifest names committed.
 
     Opening a path succeeds on a case-insensitive filesystem whatever its letter
     case, so paths are compared with the git index, which keeps their exact case.
@@ -590,7 +604,10 @@ def check_committed(
         committed = committed_paths(root)
     except ExportError as error:
         return problems + [str(error)]
-    return problems + uncommitted_problems(committed, export.manifest_paths, "named by its manifest")
+    documents = {report["document"] for report in export.index["reports"].values()}
+    problems += uncommitted_problems(committed, documents, "a report document")
+    problems += uncommitted_problems(committed, export.manifest_paths, "named by its manifest")
+    return problems
 
 
 def check_written(root: Path, index_text: bytes, objects_text: bytes) -> list[str]:
@@ -638,11 +655,9 @@ def uncommitted_problems(committed: set[str], paths: set[str], role: str) -> lis
     for path in missing:
         committed_as = committed_by_folded_case.get(path.casefold())
         if committed_as is None:
-            problems.append(f"{path} ({role}) is not committed; a fetched .gitignore "
-                            f"may hide it from git add without -f")
+            problems.append(f"{path} ({role}) is not committed")
         else:
-            problems.append(f"{path} ({role}) is committed as {committed_as}; "
-                            f"git mv -f it to this spelling")
+            problems.append(f"{path} ({role}) is committed in another letter case, as {committed_as}")
     return problems
 
 
@@ -771,8 +786,8 @@ def validate_reports(reports: dict[str, Any], collections: dict[str, Any]) -> li
         if not report_id or not isinstance(report, dict):
             problems.append(f"{where} must be a non-empty id with an object")
             continue
-        if list(report) != ["collections", "title", "auditor", "date"]:
-            problems.append(f"{where} keys must be collections, title, auditor, date")
+        if list(report) != ["collections", "title", "auditor", "date", "document"]:
+            problems.append(f"{where} keys must be collections, title, auditor, date, document")
             continue
         report_collections = report["collections"]
         if (
@@ -785,12 +800,27 @@ def validate_reports(reports: dict[str, Any], collections: dict[str, Any]) -> li
         else:
             problems += [f"{where}: collection {name!r} is not listed in collections"
                          for name in report_collections if name not in collections]
+            problem = document_problem(report["document"], report_collections[0])
+            if problem is not None:
+                problems.append(f"{where}: document {problem}")
         for key in ("title", "auditor"):
             if not isinstance(report[key], str) or not report[key].strip():
                 problems.append(f"{where}: {key} must be a non-empty string")
         if report["date"] is not None and not valid_date(report["date"]):
             problems.append(f"{where}: date must be null or YYYY-MM-DD, got {report['date']!r}")
     return problems
+
+
+def document_problem(document: Any, collection: str) -> str | None:
+    """A report links its document in the first of its collections."""
+    problem = path_problem(document)
+    if problem is not None:
+        return problem
+    if not document.startswith(f"{collection}/reports/"):
+        return f"must be under {collection}/reports/"
+    if PurePosixPath(document).suffix not in DOCUMENT_SUFFIXES:
+        return f"must end with one of {', '.join(DOCUMENT_SUFFIXES)}"
+    return None
 
 
 def valid_date(value: Any) -> bool:
