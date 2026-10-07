@@ -67,6 +67,16 @@ def github_url(repository_id: str) -> str:
     return f"https://github.com/{repository_id}"
 
 
+def repository_url(repository_id: str) -> str:
+    """The URL a canonical id determines; GitHub owners never contain a dot, hosts always do."""
+    segments = repository_id.split("/")
+    if "." in segments[0]:
+        return f"https://{repository_id}"
+    if segments[0] == "gist" and len(segments) == 3:
+        return f"https://gist.github.com/{segments[1]}/{segments[2]}"
+    return f"https://github.com/{repository_id}"
+
+
 # --- Registry -----------------------------------------------------------------
 
 

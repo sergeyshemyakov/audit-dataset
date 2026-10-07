@@ -152,4 +152,4 @@ Run `python3 -m audit_dataset pipeline <collection>`. It executes, in order:
 3. `format`: formats the fetched Solidity files with the shared forge fmt config.
 4. `index`: verifies the stored files against `manifest.json` and records their post-format hashes.
 5. `repositories`: refreshes the root `repositories.json` registry (requires the authenticated GitHub CLI; pass `--no-lookup` to skip the GitHub lineage lookups).
-6. `export`: regenerates `audit-index.json` and `audit-objects.json.zst` from every collection. It fails on any summary that breaks the rules above; fix the summary rather than the export. Commit both files together with the summary.
+6. `export`: regenerates `audit-index.json` and `audit-objects.json.zst` from every collection. It fails on any summary that breaks the rules above; fix the summary rather than the export. It also fails until the root `collections.json` gives a new project its display name: add `"<project>": "<the project's name on L2BEAT>"` in sorted order. Commit both files together with the summary.

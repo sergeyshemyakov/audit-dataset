@@ -1,17 +1,23 @@
 """Export ``audit-index.json`` and ``audit-objects.json.zst``: the public interface.
 
-The index says, for every repository commit pinned by an audit, which Solidity
-files were audited there, by which reports, and which major findings those
-reports left open in each scoped path. The bundle maps every file's object id
-(the first 12 hex characters of the git blob id of its contents) to the file as
-stored in ``audited-sources/``, i.e. formatted by ``format``. Consumers pin both
-files to a dataset commit; everything else in the dataset is internal. See the
-README section "Audit export" for the format and its rules.
+The index names every collection, with the display name the hand-maintained
+``collections.json`` gives it, lists every relevant report with the dataset
+path of its original document, and says, for every repository commit pinned by
+an audit, which Solidity files were audited there, by which reports, and which
+major findings those reports left open in each scoped path. The bundle maps
+every file's object id (the first 12 hex characters of the git blob id of its
+contents) to the file as stored in ``audited-sources/``, i.e. formatted by
+``format``. Consumers pin both files to a dataset commit; everything else in
+the dataset is internal. See the README section "Audit export" for the format
+and its rules.
 
-``check`` rebuilds the export in memory and verifies that the committed files
-satisfy every rule and are byte-identical to it, without writing anything. A
-normal run performs the same validation before writing and refuses to write an
-invalid export.
+``--check`` rebuilds the export in memory and verifies that the committed files
+satisfy every rule and are byte-identical to it, without writing anything. It
+also verifies, against the git index, that every report document and every
+file a manifest names is committed with exactly that letter case, and that
+every object is the committed blob of a stored file, which GitHub's blob API
+serves by the SHA-1 blob id of the object's contents. A normal run performs the
+same validation before writing and refuses to write an invalid export.
 """
 
 from __future__ import annotations
@@ -23,7 +29,6 @@ import re
 import sys
 from collections import defaultdict
 from dataclasses import dataclass
-from datetime import datetime
 from pathlib import Path, PurePosixPath
 from typing import Any
 
@@ -33,14 +38,16 @@ if sys.version_info < (3, 14):
 from compression import zstd
 
 from . import DatasetError
-from .collections import Collection, discover
-from .git import blob_id, full_commit, hash_algorithm
+from .collections import LIBRARIES_DIR, REPORTS_DIR, Collection, discover
+from .git import GitError, blob_id, full_commit, hash_algorithm, run
 from .manifest import read_manifest, sources_by_key, stored_path, unavailable_keys
-from .summary import commit_timestamps, path_problem, read_summary, relevant_versions
+from .repositories import canonical_repository_id, repository_url
+from .summary import commit_timestamps, path_problem, read_summary, relevant_versions, valid_date
 
-SCHEMA_VERSION = "1.0.0"
+SCHEMA_VERSION = "1.1.0"
 INDEX_NAME = "audit-index.json"
 OBJECTS_NAME = "audit-objects.json.zst"
+COLLECTIONS_NAME = "collections.json"
 OBJECT_ID_LENGTH = 12
 ZSTD_LEVEL = 19
 # As `zstd --long=27`: long-distance matching over a 128 MiB window, the largest
@@ -52,9 +59,10 @@ ZSTD_CHECKSUM_FLAG_BIT = 0b100
 
 COMMIT_RE = re.compile(r"(?:[0-9a-f]{40}|[0-9a-f]{64})\Z")
 OBJECT_ID_RE = re.compile(r"[0-9a-f]{12}\Z")
-DATE_RE = re.compile(r"\d{4}-\d{2}-\d{2}\Z")
-# Report documents are compared by their originals; native Markdown reports have none.
+# What a report's Markdown was converted from, in the order its exported document
+# is chosen; a report published as Markdown has none and links the Markdown.
 ORIGINAL_SUFFIXES = (".pdf", ".html", ".csv", ".js")
+DOCUMENT_SUFFIXES = (*ORIGINAL_SUFFIXES, ".md")
 
 
 class ExportError(DatasetError):
@@ -89,14 +97,15 @@ class ReportRecord:
     auditor: str
     date: str | None
     relevant: bool
-    document: tuple[tuple[str, str], ...]
-    collections: set[str]
+    fingerprint: tuple[tuple[str, str], ...]  # (suffix, sha256) of each of its documents
+    documents: dict[str, str]  # collection -> dataset path of the report's document there
 
 
 @dataclass
 class Export:
     index: dict[str, Any]
     objects: dict[str, str]
+    manifest_paths: set[str]  # dataset path of every file a manifest names, Solidity or not
 
 
 def export_dataset(root: Path, check: bool) -> int:
@@ -106,7 +115,7 @@ def export_dataset(root: Path, check: bool) -> int:
     objects_text = serialize_objects(export.objects)
     problems = validate_export(export.index, export.objects, index_text, objects_text)
     if not problems and check:
-        problems = check_committed(root, index_text, objects_text)
+        problems = check_committed(root, export, index_text, objects_text)
     if problems:
         shown = "\n  ".join(problems[:50])
         more = f"\n  ... and {len(problems) - 50} more problems" if len(problems) > 50 else ""
@@ -126,68 +135,114 @@ def build_export(root: Path) -> Export:
     collections = discover(root)
     if not collections:
         raise ExportError(f"no collections in {root}")
+    names = read_collection_names(root / COLLECTIONS_NAME, {collection.name for collection in collections})
     reports: dict[str, ReportRecord] = {}
     audits: dict[tuple[str, str, str, str], Audit] = {}
     timestamps: dict[tuple[str, str], int | None] = {}
+    manifest_paths: set[str] = set()
     for collection in collections:
         summary = read_summary(collection)
-        record_reports(reports, collection, summary)
+        record_reports(reports, root, collection, summary)
         for key, timestamp in commit_timestamps(summary).items():
             if timestamps.setdefault(key, timestamp) != timestamp:
                 raise ExportError(f"{collection.name}: conflicting timestamps for {key[0]}@{key[1]}")
-        for audit in collection_audits(collection, summary, timestamps):
+        manifest = read_manifest(collection)
+        manifest_paths.update(
+            stored_path(collection.sources_dir, source["repository"], source["commit"], record["path"])
+            .relative_to(root).as_posix()
+            for source in manifest["sources"]
+            for record in source["files"]
+        )
+        for audit in collection_audits(collection, summary, manifest, timestamps):
             add_audit(audits, audit)
-    return assemble_export(reports, audits)
+    return assemble_export(names, reports, audits, manifest_paths)
 
 
-def record_reports(reports: dict[str, ReportRecord], collection: Collection, summary: dict[str, Any]) -> None:
+def read_collection_names(path: Path, collections: set[str]) -> dict[str, str]:
+    """Display names from the hand-maintained registry, which names exactly the collections."""
+    try:
+        names = parse_json(path.read_bytes())
+    except (OSError, ExportError, ValueError) as error:
+        raise ExportError(f"cannot read {COLLECTIONS_NAME}: {error}") from error
+    if not isinstance(names, dict) or not all(isinstance(name, str) for name in names.values()):
+        raise ExportError(f"{COLLECTIONS_NAME} must map collection ids to display names")
+    if list(names) != sorted(names):
+        raise ExportError(f"{COLLECTIONS_NAME} must be sorted by collection id")
+    if names.keys() != collections:
+        raise ExportError(
+            f"{COLLECTIONS_NAME} must name exactly the collections: missing "
+            f"{sorted(collections - names.keys())}, unknown {sorted(names.keys() - collections)}"
+        )
+    return names
+
+
+def record_reports(
+    reports: dict[str, ReportRecord], root: Path, collection: Collection, summary: dict[str, Any]
+) -> None:
     """Merge one collection's report metadata, rejecting an id shared by two documents."""
     for report in summary["reports"]:
+        documents = report_documents(root, collection, report["report_file"])
         record = ReportRecord(
             title=report["title"],
             auditor=report["auditor"],
             date=report["report_date"],
             relevant=report["isRelevant"],
-            document=document_fingerprint(collection.reports_dir, report["report_file"]),
-            collections={collection.name},
+            fingerprint=document_fingerprint(root, documents),
+            documents={collection.name: documents[0]},
         )
         previous = reports.setdefault(report["id"], record)
         if previous is record:
             continue
-        if previous.document != record.document:
+        if collection.name in previous.documents:
+            raise ExportError(f"{collection.name}: report id {report['id']!r} is used twice")
+        if previous.fingerprint != record.fingerprint:
             raise ExportError(
                 f"report id {report['id']!r} names different documents in "
-                f"{sorted(previous.collections)} and {collection.name!r}"
+                f"{sorted(previous.documents)} and {collection.name!r}"
             )
         if (previous.title, previous.auditor, previous.date, previous.relevant) != (
             record.title, record.auditor, record.date, record.relevant
         ):
             raise ExportError(
                 f"report {report['id']!r} has different metadata in "
-                f"{sorted(previous.collections)} and {collection.name!r}"
+                f"{sorted(previous.documents)} and {collection.name!r}"
             )
-        previous.collections.add(collection.name)
+        previous.documents[collection.name] = documents[0]
 
 
-def document_fingerprint(reports_dir: Path, report_file: str) -> tuple[tuple[str, str], ...]:
-    """sha256 of the report's original files, or of its Markdown when it has none."""
-    markdown = reports_dir.joinpath(*PurePosixPath(report_file).parts)
+def report_documents(root: Path, collection: Collection, report_file: str) -> list[str]:
+    """Dataset paths of the report's originals in ORIGINAL_SUFFIXES order, else of its Markdown."""
+    markdown = PurePosixPath(collection.name, REPORTS_DIR, report_file)
+    if markdown.suffix != ".md":
+        raise ExportError(f"{collection.name}: report_file {report_file!r} is not Markdown")
     originals = [
-        markdown.with_suffix(suffix)
+        markdown.with_suffix(suffix).as_posix()
         for suffix in ORIGINAL_SUFFIXES
-        if markdown.with_suffix(suffix).is_file()
+        if root.joinpath(*markdown.with_suffix(suffix).parts).is_file()
     ]
-    return tuple(
-        (document.suffix, hashlib.sha256(document.read_bytes()).hexdigest())
-        for document in (originals or [markdown])
-    )
+    return originals or [markdown.as_posix()]
+
+
+def document_fingerprint(root: Path, documents: list[str]) -> tuple[tuple[str, str], ...]:
+    """sha256 of each document, which tells two reports sharing an id apart."""
+    fingerprint: list[tuple[str, str]] = []
+    for document in documents:
+        path = PurePosixPath(document)
+        try:
+            data = root.joinpath(*path.parts).read_bytes()
+        except OSError as error:
+            raise ExportError(f"cannot read report document {document}: {error}") from error
+        fingerprint.append((path.suffix, hashlib.sha256(data).hexdigest()))
+    return tuple(fingerprint)
 
 
 def collection_audits(
-    collection: Collection, summary: dict[str, Any], timestamps: dict[tuple[str, str], int | None]
+    collection: Collection,
+    summary: dict[str, Any],
+    manifest: dict[str, Any],
+    timestamps: dict[tuple[str, str], int | None],
 ) -> list[Audit]:
     """Audits of one collection: ``evm`` paths, fetched, full-commit, audited, with Solidity files."""
-    manifest = read_manifest(collection)
     fetched = sources_by_key(manifest)
     unavailable = unavailable_keys(manifest)
     if unavailable & fetched.keys():
@@ -285,7 +340,12 @@ def blob_ids_by_path(audit: Audit) -> dict[str, str]:
 # --- Assembling ---------------------------------------------------------------
 
 
-def assemble_export(reports: dict[str, ReportRecord], audits: dict[tuple[str, str, str, str], Audit]) -> Export:
+def assemble_export(
+    names: dict[str, str],
+    reports: dict[str, ReportRecord],
+    audits: dict[tuple[str, str, str, str], Audit],
+    manifest_paths: set[str],
+) -> Export:
     snapshots: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
     for (repository, commit, report_id, scoped_path), audit in sorted(audits.items()):
         if not reports[report_id].relevant:
@@ -306,24 +366,34 @@ def assemble_export(reports: dict[str, ReportRecord], audits: dict[tuple[str, st
         for snapshot in repository.values()
         for file in snapshot["files"].values()
     })
-    used_reports = sorted({report_id for _, _, report_id, _ in audits})
     index = {
         "schema_version": SCHEMA_VERSION,
+        "collections": {
+            collection: {"name": names[collection], "kind": collection_kind(collection)}
+            for collection in sorted(names)
+        },
         "reports": {
             report_id: {
-                "collections": sorted(reports[report_id].collections),
-                "title": reports[report_id].title,
-                "auditor": reports[report_id].auditor,
-                "date": reports[report_id].date,
+                "collections": sorted(record.documents),
+                "title": record.title,
+                "auditor": record.auditor,
+                "date": record.date,
+                "document": record.documents[min(record.documents)],
             }
-            for report_id in used_reports
+            for report_id, record in sorted(reports.items())
+            if record.relevant
         },
         "repositories": {
             repository: ordered_snapshots(snapshots[repository])
             for repository in sorted(snapshots)
         },
     }
-    return Export(index=index, objects=objects)
+    return Export(index=index, objects=objects, manifest_paths=manifest_paths)
+
+
+def collection_kind(collection: str) -> str:
+    """Collections under ``_libs/`` hold code reused across projects; the others are projects."""
+    return "library" if collection.startswith(f"{LIBRARIES_DIR}/") else "project"
 
 
 def ordered_snapshots(snapshots: dict[str, dict[str, Any]]) -> dict[str, Any]:
@@ -405,25 +475,99 @@ def write_export(root: Path, index_text: bytes, objects_text: bytes) -> None:
         temporary = root / f".{name}.tmp"
         temporary.write_bytes(data)
         os.replace(temporary, root / name)
-    problems = check_committed(root, index_text, objects_text)
+    problems = check_written(root, index_text, objects_text)
     if problems:
         raise ExportError("the written export does not verify: " + "; ".join(problems))
 
 
-def check_committed(root: Path, index_text: bytes, objects_text: bytes) -> list[str]:
+def check_committed(root: Path, export: Export, index_text: bytes, objects_text: bytes) -> list[str]:
+    """The export on disk must be up to date, every report document and file a manifest
+    names committed, and every object the committed blob of a stored file.
+
+    Opening a path succeeds on a case-insensitive filesystem whatever its letter
+    case, so paths are compared with the git index, which keeps their exact case.
+    """
+    problems = check_written(root, index_text, objects_text)
+    try:
+        committed = committed_blob_ids(root)
+    except ExportError as error:
+        return problems + [str(error)]
+    documents = {report["document"] for report in export.index["reports"].values()}
+    problems += uncommitted_problems(committed, documents, "a report document")
+    problems += uncommitted_problems(committed, export.manifest_paths, "named by its manifest")
+    problems += uncommitted_object_problems(committed, export)
+    return problems
+
+
+def check_written(root: Path, index_text: bytes, objects_text: bytes) -> list[str]:
     """The files on disk must be valid and byte-identical to the fresh export."""
     try:
-        committed_index = (root / INDEX_NAME).read_bytes()
-        committed_objects = decompress_frame((root / OBJECTS_NAME).read_bytes())
-        index = parse_json(committed_index)
-        objects = parse_json(committed_objects)
+        written_index = (root / INDEX_NAME).read_bytes()
+        written_objects = decompress_frame((root / OBJECTS_NAME).read_bytes())
+        index = parse_json(written_index)
+        objects = parse_json(written_objects)
     except (OSError, ExportError, ValueError) as error:
-        return [f"cannot read the committed export: {error}"]
-    problems = validate_export(index, objects, committed_index, committed_objects)
-    if committed_index != index_text:
+        return [f"cannot read the written export: {error}"]
+    problems = validate_export(index, objects, written_index, written_objects)
+    if written_index != index_text:
         problems.append(f"{INDEX_NAME} is out of date; run export")
-    if committed_objects != objects_text:
+    if written_objects != objects_text:
         problems.append(f"{OBJECTS_NAME} is out of date; run export")
+    return problems
+
+
+def committed_blob_ids(root: Path) -> dict[str, str]:
+    """The staged blob id of every file in the git index below the dataset root, by exact path."""
+    try:
+        listing = run(root, "ls-files", "--stage", "-z")
+    except GitError as error:
+        raise ExportError(f"cannot list the committed files: {error}") from error
+    try:
+        entries = listing.decode("utf-8", errors="strict").split("\0")
+    except UnicodeDecodeError as error:
+        raise ExportError(f"git ls-files listed a path that is not UTF-8: {error}") from error
+    blob_ids: dict[str, str] = {}
+    for entry in entries:
+        if not entry:
+            continue
+        info, path = entry.split("\t", 1)  # "<mode> <blob id> <stage>\t<path>"
+        _, staged_blob_id, stage = info.split(" ")
+        if stage != "0":
+            raise ExportError(f"{path} has an unresolved merge conflict")
+        blob_ids[path] = staged_blob_id
+    return blob_ids
+
+
+def uncommitted_object_problems(committed: dict[str, str], export: Export) -> list[str]:
+    """Every object must be the committed blob of a stored file, so that GitHub's blob API
+    serves it by the SHA-1 blob id of its contents.
+
+    A stored copy committed with converted line endings, or changed on disk
+    without being committed, is another blob; one matching copy is enough.
+    """
+    stored_blob_ids = {committed[path] for path in export.manifest_paths if path in committed}
+    problems: list[str] = []
+    for object_id, text in sorted(export.objects.items()):
+        full_id = blob_id(text.encode("utf-8"), 40)  # SHA-1, whatever the source repository
+        if full_id not in stored_blob_ids:
+            problems.append(f"object {object_id}: blob {full_id} is not the committed blob "
+                            f"of any stored file")
+    return problems
+
+
+def uncommitted_problems(committed: dict[str, str], paths: set[str], role: str) -> list[str]:
+    """Paths that are not committed with exactly their letter case."""
+    missing = sorted(paths - committed.keys())
+    if not missing:
+        return []
+    committed_by_folded_case = {path.casefold(): path for path in committed}
+    problems: list[str] = []
+    for path in missing:
+        committed_as = committed_by_folded_case.get(path.casefold())
+        if committed_as is None:
+            problems.append(f"{path} ({role}) is not committed")
+        else:
+            problems.append(f"{path} ({role}) is committed in another letter case, as {committed_as}")
     return problems
 
 
@@ -454,10 +598,17 @@ def parse_json(data: bytes) -> Any:
 
 
 def print_statistics(export: Export, index_text: bytes, objects_text: bytes) -> None:
+    collections = export.index["collections"].values()
+    reports = export.index["reports"]
     snapshots = [s for commits in export.index["repositories"].values() for s in commits.values()]
     audits = [paths for s in snapshots for paths in s["audits"].values()]
+    audited_reports = {report_id for s in snapshots for report_id in s["audits"]}
     print(
-        f"{len(export.index['reports'])} reports, {len(export.index['repositories'])} repositories, "
+        f"{len(collections)} collections "
+        f"({sum(1 for c in collections if c['kind'] == 'library')} libraries), "
+        f"{len(reports)} reports ({len(audited_reports)} with audits, "
+        f"{len(reports) - len(audited_reports)} without), "
+        f"{len(export.index['repositories'])} repositories, "
         f"{len(snapshots)} snapshots, {sum(len(s['files']) for s in snapshots)} files, "
         f"{sum(len(paths) for paths in audits)} audited paths in {len(audits)} report audits, "
         f"{sum(1 for paths in audits for ids in paths.values() if ids)} paths with open findings, "
@@ -480,50 +631,86 @@ def validate_export(index: Any, objects: Any, index_text: bytes, objects_text: b
         problems.append(f"{INDEX_NAME} is not sorted 2-space JSON with a trailing newline")
     if serialize_objects(objects) != objects_text:
         problems.append(f"{OBJECTS_NAME} does not hold compact JSON with sorted keys")
-    problems += validate_reports(index["reports"])
+    problems += validate_collections(index["collections"])
+    problems += validate_reports(index["reports"], index["collections"])
     algorithms: dict[str, set[str]] = defaultdict(set)
-    used_reports: set[str] = set()
     for repository, commits in index["repositories"].items():
-        problems += validate_repository(repository, commits, index["reports"], objects, algorithms, used_reports)
-    problems += [f"report {report_id!r} is used by no audit"
-                 for report_id in sorted(index["reports"].keys() - used_reports)]
+        problems += validate_repository(repository, commits, index["reports"], objects, algorithms)
     problems += validate_objects(objects, algorithms)
     return problems
 
 
 def validate_top_level(index: dict[str, Any]) -> list[str]:
-    if list(index) != ["schema_version", "reports", "repositories"]:
-        return [f"index keys must be schema_version, reports, repositories; got {list(index)}"]
+    maps = ["collections", "reports", "repositories"]
+    if list(index) != ["schema_version", *maps]:
+        return [f"index keys must be schema_version, {', '.join(maps)}; got {list(index)}"]
     if index["schema_version"] != SCHEMA_VERSION:
         return [f"schema_version must be {SCHEMA_VERSION!r}"]
-    if not isinstance(index["reports"], dict) or not isinstance(index["repositories"], dict):
-        return ["reports and repositories must be objects"]
-    problems = []
-    if list(index["reports"]) != sorted(index["reports"]):
-        problems.append("reports are not sorted by id")
-    if list(index["repositories"]) != sorted(index["repositories"]):
-        problems.append("repositories are not sorted by id")
+    if not all(isinstance(index[key], dict) for key in maps):
+        return [f"{', '.join(maps)} must be objects"]
+    return [f"{key} are not sorted by id" for key in maps if list(index[key]) != sorted(index[key])]
+
+
+def validate_collections(collections: dict[str, Any]) -> list[str]:
+    problems: list[str] = []
+    collection_by_name: dict[str, str] = {}
+    for collection, entry in collections.items():
+        where = f"collection {collection!r}"
+        problem = collection_id_problem(collection)
+        if problem is not None:
+            problems.append(f"{where}: id {problem}")
+            continue
+        if not isinstance(entry, dict) or list(entry) != ["name", "kind"]:
+            problems.append(f"{where} keys must be name, kind")
+            continue
+        name = entry["name"]
+        if not isinstance(name, str) or not name or name != name.strip():
+            problems.append(f"{where}: name must be a non-empty string without surrounding spaces")
+        elif collection_by_name.setdefault(name, collection) != collection:
+            problems.append(f"{where}: name {name!r} is also the name of {collection_by_name[name]!r}")
+        if entry["kind"] != collection_kind(collection):
+            problems.append(f"{where}: kind must be {collection_kind(collection)!r}")
     return problems
 
 
-def validate_reports(reports: dict[str, Any]) -> list[str]:
+def collection_id_problem(collection: str) -> str | None:
+    """A collection id is its directory: ``<project>`` or ``_libs/<vendor>``."""
+    problem = path_problem(collection)
+    if problem is not None:
+        return problem
+    segments = collection.split("/")
+    if segments[0] == LIBRARIES_DIR:
+        if len(segments) != 2:
+            return f"must be {LIBRARIES_DIR}/<vendor>"
+    elif len(segments) != 1:
+        return f"must be a project directory or {LIBRARIES_DIR}/<vendor>"
+    return None
+
+
+def validate_reports(reports: dict[str, Any], collections: dict[str, Any]) -> list[str]:
     problems: list[str] = []
     for report_id, report in reports.items():
         where = f"report {report_id!r}"
         if not report_id or not isinstance(report, dict):
             problems.append(f"{where} must be a non-empty id with an object")
             continue
-        if list(report) != ["collections", "title", "auditor", "date"]:
-            problems.append(f"{where} keys must be collections, title, auditor, date")
+        if list(report) != ["collections", "title", "auditor", "date", "document"]:
+            problems.append(f"{where} keys must be collections, title, auditor, date, document")
             continue
-        collections = report["collections"]
+        report_collections = report["collections"]
         if (
-            not isinstance(collections, list)
-            or not collections
-            or not all(isinstance(name, str) and name for name in collections)
-            or collections != sorted(set(collections))
+            not isinstance(report_collections, list)
+            or not report_collections
+            or not all(isinstance(name, str) and name for name in report_collections)
+            or report_collections != sorted(set(report_collections))
         ):
             problems.append(f"{where}: collections must be a sorted, unique, non-empty list")
+        else:
+            problems += [f"{where}: collection {name!r} is not listed in collections"
+                         for name in report_collections if name not in collections]
+            problem = document_problem(report["document"], report_collections[0])
+            if problem is not None:
+                problems.append(f"{where}: document {problem}")
         for key in ("title", "auditor"):
             if not isinstance(report[key], str) or not report[key].strip():
                 problems.append(f"{where}: {key} must be a non-empty string")
@@ -532,14 +719,16 @@ def validate_reports(reports: dict[str, Any]) -> list[str]:
     return problems
 
 
-def valid_date(value: Any) -> bool:
-    if not isinstance(value, str) or not DATE_RE.fullmatch(value):
-        return False
-    try:
-        datetime.strptime(value, "%Y-%m-%d")
-    except ValueError:
-        return False
-    return True
+def document_problem(document: Any, collection: str) -> str | None:
+    """A report links its document in the first of its collections."""
+    problem = path_problem(document)
+    if problem is not None:
+        return problem
+    if not document.startswith(f"{collection}/{REPORTS_DIR}/"):
+        return f"must be under {collection}/{REPORTS_DIR}/"
+    if PurePosixPath(document).suffix not in DOCUMENT_SUFFIXES:
+        return f"must end with one of {', '.join(DOCUMENT_SUFFIXES)}"
+    return None
 
 
 def validate_repository(
@@ -548,11 +737,11 @@ def validate_repository(
     reports: dict[str, Any],
     objects: dict[str, Any],
     algorithms: dict[str, set[str]],
-    used_reports: set[str],
 ) -> list[str]:
     problems: list[str] = []
-    if path_problem(repository) is not None or "/" not in repository:
-        problems.append(f"repository id {repository!r} is not a canonical id")
+    problem = repository_id_problem(repository)
+    if problem is not None:
+        problems.append(f"repository id {repository!r} is not a canonical id: {problem}")
     if not isinstance(commits, dict) or not commits:
         return problems + [f"{repository}: must map at least one commit to its snapshot"]
     if len({len(commit) for commit in commits}) != 1:
@@ -571,7 +760,7 @@ def validate_repository(
             problems.append(f"{where}: timestamp must be positive unix seconds")
             continue
         order.append((timestamp, commit))
-        problems += validate_snapshot(where, snapshot, reports, objects, used_reports)
+        problems += validate_snapshot(where, snapshot, reports, objects)
         for object_id in snapshot["files"].values():
             algorithms[object_id].add(hash_algorithm(len(commit)))
     if [commit for _, commit in sorted(order)] != [commit for _, commit in order]:
@@ -579,9 +768,23 @@ def validate_repository(
     return problems
 
 
+def repository_id_problem(repository: str) -> str | None:
+    """Consumers derive a repository's URL from its id, so the id must survive the round trip."""
+    problem = path_problem(repository)
+    if problem is not None:
+        return problem
+    url = repository_url(repository)
+    try:
+        canonical = canonical_repository_id(url)
+    except DatasetError as error:
+        return str(error)
+    if canonical != repository:
+        return f"its URL {url} has the canonical id {canonical!r}"
+    return None
+
+
 def validate_snapshot(
-    where: str, snapshot: dict[str, Any], reports: dict[str, Any], objects: dict[str, Any],
-    used_reports: set[str],
+    where: str, snapshot: dict[str, Any], reports: dict[str, Any], objects: dict[str, Any]
 ) -> list[str]:
     problems: list[str] = []
     files, audits = snapshot["files"], snapshot["audits"]
@@ -602,7 +805,6 @@ def validate_snapshot(
         covered_prefixes.update(path_and_ancestors(path))
     scoped_paths: set[str] = set()
     for report_id, paths in audits.items():
-        used_reports.add(report_id)
         if report_id not in reports:
             problems.append(f"{where}: audit by unknown report {report_id!r}")
         problems += validate_audit(f"{where} {report_id}", paths, covered_prefixes)
@@ -636,29 +838,26 @@ def validate_audit(where: str, paths: Any, covered_prefixes: set[str]) -> list[s
 
 
 def path_and_ancestors(path: str) -> list[str]:
+    """``a/b/c.sol`` -> ``a``, ``a/b``, ``a/b/c.sol``: the scoped paths covering it."""
     parts = path.split("/")
     return ["/".join(parts[:count]) for count in range(1, len(parts) + 1)]
 
 
 def validate_objects(objects: dict[str, Any], algorithms: dict[str, set[str]]) -> list[str]:
-    problems: list[str] = []
-    if list(objects) != sorted(objects):
-        problems.append("objects are not sorted by id")
-    for object_id, text in objects.items():
+    problems = [f"object {object_id} is used by no file"
+                for object_id in sorted(objects.keys() - algorithms.keys())]
+    for object_id in sorted(objects.keys() & algorithms.keys()):
+        text = objects[object_id]
         if not OBJECT_ID_RE.fullmatch(object_id) or not isinstance(text, str):
             problems.append(f"object {object_id!r} must map a 12-hex id to a string")
             continue
-        used = algorithms.get(object_id)
-        if not used:
-            problems.append(f"object {object_id} is used by no file")
+        try:
+            data = text.encode("utf-8", errors="strict")
+        except UnicodeEncodeError:
+            problems.append(f"object {object_id} is not valid UTF-8")
             continue
-        if len(used) != 1:
-            problems.append(f"object {object_id} is used by both SHA-1 and SHA-256 repositories")
-            continue
-        data = text.encode("utf-8")
-        algorithm = hashlib.new(next(iter(used)))
-        algorithm.update(b"blob %d\0" % len(data))
-        algorithm.update(data)
-        if not algorithm.hexdigest().startswith(object_id):
-            problems.append(f"object {object_id} does not hash to its id")
+        for algorithm in sorted(algorithms[object_id]):
+            length = 40 if algorithm == "sha1" else 64
+            if not blob_id(data, length).startswith(object_id):
+                problems.append(f"object {object_id} does not hash to its id ({algorithm})")
     return problems
