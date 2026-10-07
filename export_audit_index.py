@@ -10,9 +10,10 @@ Consumers pin both files to a dataset commit; everything else in the dataset is
 internal. See the README section "Audit export" for the format and its rules.
 
 ``--check`` rebuilds the export in memory and verifies that the committed files
-satisfy every rule and are byte-identical to it, without writing anything. A
-normal run performs the same validation before writing and refuses to write an
-invalid export.
+satisfy every rule and are byte-identical to it, without writing anything. It
+also verifies, against the git index, that every file a manifest names is
+committed with exactly that letter case. A normal run performs the same
+validation before writing and refuses to write an invalid export.
 """
 
 from __future__ import annotations
@@ -22,6 +23,7 @@ import hashlib
 import json
 import os
 import re
+import subprocess
 import sys
 from collections import defaultdict
 from dataclasses import dataclass
@@ -97,6 +99,7 @@ class ReportRecord:
 class Export:
     index: dict[str, Any]
     objects: dict[str, str]
+    manifest_paths: set[str]  # dataset path of every file a manifest names, Solidity or not
 
 
 def main() -> int:
@@ -111,7 +114,7 @@ def main() -> int:
     objects_text = serialize_objects(export.objects)
     problems = validate_export(export.index, export.objects, index_text, objects_text)
     if not problems and args.check:
-        problems = check_committed(root, index_text, objects_text)
+        problems = check_committed(root, export, index_text, objects_text)
     if problems:
         for problem in problems[:50]:
             print(f"error: {problem}", file=sys.stderr)
@@ -145,6 +148,7 @@ def build_export(root: Path) -> Export:
     reports: dict[str, ReportRecord] = {}
     timestamps: dict[tuple[str, str], int | None] = {}
     audits: dict[tuple[str, str, str, str], Audit] = {}
+    manifest_paths: set[str] = set()
     for collection_dir in collections:
         collection = collection_dir.relative_to(root).as_posix()
         try:
@@ -153,9 +157,17 @@ def build_export(root: Path) -> Export:
             raise ExportError(f"{collection}/audit-summary.json: {error}") from error
         record_reports(reports, collection, collection_dir / "reports", summary)
         record_timestamps(timestamps, summary)
-        for audit in collection_audits(collection, collection_dir, summary, timestamps):
+        fetched, unavailable = read_manifest(collection_dir / "audited-sources" / "manifest.json")
+        manifest_paths.update(
+            f"{collection}/audited-sources/{record['file']}"
+            for source in fetched.values()
+            for record in source["files"]
+        )
+        for audit in collection_audits(
+            collection, collection_dir, summary, fetched, unavailable, timestamps
+        ):
             add_audit(audits, audit)
-    return assemble_export(reports, audits)
+    return assemble_export(reports, audits, manifest_paths)
 
 
 def record_reports(
@@ -267,11 +279,12 @@ def collection_audits(
     collection: str,
     collection_dir: Path,
     summary: dict[str, Any],
+    fetched: dict[tuple[str, str, str], dict[str, Any]],
+    unavailable: set[tuple[str, str, str]],
     timestamps: dict[tuple[str, str], int | None],
 ) -> list[Audit]:
     """Audits of one collection: fetched, full-commit, audited, with Solidity files."""
     sources_dir = collection_dir / "audited-sources"
-    fetched, unavailable = read_manifest(sources_dir / "manifest.json")
     blob_ids: dict[Path, str] = {}
     audits: list[Audit] = []
     for report, repository, path, path_kind, version_index, version in relevant_versions(summary):
@@ -389,7 +402,11 @@ def blob_ids_by_path(audit: Audit) -> dict[str, str]:
 # --- Assembling ---------------------------------------------------------------
 
 
-def assemble_export(reports: dict[str, ReportRecord], audits: dict[tuple[str, str, str, str], Audit]) -> Export:
+def assemble_export(
+    reports: dict[str, ReportRecord],
+    audits: dict[tuple[str, str, str, str], Audit],
+    manifest_paths: set[str],
+) -> Export:
     snapshots: dict[str, dict[str, dict[str, Any]]] = defaultdict(dict)
     for (repository, commit, report_id, scoped_path), audit in sorted(audits.items()):
         assert reports[report_id].relevant, report_id
@@ -423,7 +440,7 @@ def assemble_export(reports: dict[str, ReportRecord], audits: dict[tuple[str, st
             for repository in sorted(snapshots)
         },
     }
-    return Export(index=index, objects=objects)
+    return Export(index=index, objects=objects, manifest_paths=manifest_paths)
 
 
 def ordered_snapshots(snapshots: dict[str, dict[str, Any]]) -> dict[str, Any]:
@@ -518,24 +535,76 @@ def write_export(root: Path, index_text: bytes, objects_text: bytes) -> None:
         temporary = root / f".{name}.tmp"
         temporary.write_bytes(data)
         os.replace(temporary, root / name)
-    problems = check_committed(root, index_text, objects_text)
+    problems = check_written(root, index_text, objects_text)
     assert not problems, problems
 
 
-def check_committed(root: Path, index_text: bytes, objects_text: bytes) -> list[str]:
+def check_committed(
+    root: Path, export: Export, index_text: bytes, objects_text: bytes
+) -> list[str]:
+    """The export on disk must be up to date, and every file a manifest names committed.
+
+    Opening a path succeeds on a case-insensitive filesystem whatever its letter
+    case, so paths are compared with the git index, which keeps their exact case.
+    """
+    problems = check_written(root, index_text, objects_text)
+    try:
+        committed = committed_paths(root)
+    except ExportError as error:
+        return problems + [str(error)]
+    return problems + uncommitted_problems(committed, export.manifest_paths, "named by its manifest")
+
+
+def check_written(root: Path, index_text: bytes, objects_text: bytes) -> list[str]:
     """The files on disk must be valid and byte-identical to the fresh export."""
     try:
-        committed_index = (root / INDEX_NAME).read_bytes()
-        committed_objects = decompress_frame((root / OBJECTS_NAME).read_bytes())
-        index = parse_json(committed_index)
-        objects = parse_json(committed_objects)
+        written_index = (root / INDEX_NAME).read_bytes()
+        written_objects = decompress_frame((root / OBJECTS_NAME).read_bytes())
+        index = parse_json(written_index)
+        objects = parse_json(written_objects)
     except (OSError, ExportError, ValueError) as error:
-        return [f"cannot read the committed export: {error}"]
-    problems = validate_export(index, objects, committed_index, committed_objects)
-    if committed_index != index_text:
+        return [f"cannot read the written export: {error}"]
+    problems = validate_export(index, objects, written_index, written_objects)
+    if written_index != index_text:
         problems.append(f"{INDEX_NAME} is out of date; run export_audit_index.py")
-    if committed_objects != objects_text:
+    if written_objects != objects_text:
         problems.append(f"{OBJECTS_NAME} is out of date; run export_audit_index.py")
+    return problems
+
+
+def committed_paths(root: Path) -> set[str]:
+    """Every file in the git index below the dataset root, by its exact path."""
+    try:
+        listing = subprocess.run(
+            ["git", "-C", str(root), "ls-files", "-z"], capture_output=True, check=False
+        )
+    except OSError as error:
+        raise ExportError(f"cannot run git to list the committed files: {error}") from error
+    if listing.returncode != 0:
+        stderr = listing.stderr.decode("utf-8", errors="replace").strip()
+        raise ExportError(f"git ls-files failed in {root}: {stderr}")
+    try:
+        paths = listing.stdout.decode("utf-8", errors="strict").split("\0")
+    except UnicodeDecodeError as error:
+        raise ExportError(f"git ls-files listed a path that is not UTF-8: {error}") from error
+    return {path for path in paths if path}
+
+
+def uncommitted_problems(committed: set[str], paths: set[str], role: str) -> list[str]:
+    """Paths that are not committed with exactly their letter case."""
+    missing = sorted(paths - committed)
+    if not missing:
+        return []
+    committed_by_folded_case = {path.casefold(): path for path in committed}
+    problems: list[str] = []
+    for path in missing:
+        committed_as = committed_by_folded_case.get(path.casefold())
+        if committed_as is None:
+            problems.append(f"{path} ({role}) is not committed; a fetched .gitignore "
+                            f"may hide it from git add without -f")
+        else:
+            problems.append(f"{path} ({role}) is committed as {committed_as}; "
+                            f"git mv -f it to this spelling")
     return problems
 
 
