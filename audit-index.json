@@ -151,6 +151,22 @@
       "auditor": "ABDK Consulting",
       "date": "2021-07-02"
     },
+    "abdk-starknet-os-cryptography-2024-11": {
+      "collections": [
+        "starknet"
+      ],
+      "title": "StarkWare Cryptography Audit OS",
+      "auditor": "ABDK Consulting",
+      "date": "2024-11-21"
+    },
+    "abdk-tornado-anonymity-mining-final-audit-2020-09-15": {
+      "collections": [
+        "tornado-cash"
+      ],
+      "title": "Tornado Farm Smart Contracts and Circuits. Final Audit",
+      "auditor": "ABDK Consulting",
+      "date": "2020-09-15"
+    },
     "abdk-tornado-anonymity-mining-first-audit-2020-09-01": {
       "collections": [
         "tornado-cash"
@@ -166,6 +182,22 @@
       "title": "Tornado Smart Contract Audit Conclusion",
       "auditor": "ABDK Consulting",
       "date": "2020-12-22"
+    },
+    "abdk-tornado-circuit-audit-2019-11-25": {
+      "collections": [
+        "tornado-cash"
+      ],
+      "title": "Tornado Circuit Audit. Final version",
+      "auditor": "ABDK Consulting",
+      "date": "2019-11-25"
+    },
+    "abdk-tornado-cryptographic-review-2019-11-29": {
+      "collections": [
+        "tornado-cash"
+      ],
+      "title": "Tornado Privacy Solution Cryptographic Review Version 1.1",
+      "auditor": "ABDK Consulting",
+      "date": "2019-11-29"
     },
     "abdk-tornado-smart-contract-audit-2019-11-19": {
       "collections": [
@@ -271,6 +303,14 @@
       "auditor": "Alexey Akhunov",
       "date": null
     },
+    "alephv-op-program-blob-handling-2025-04": {
+      "collections": [
+        "optimism"
+      ],
+      "title": "Optimism Blob Bug Fix Review (Aleph_v)",
+      "auditor": "Aleph_v",
+      "date": null
+    },
     "audittens-zksync-gateway-2024-12": {
       "collections": [
         "zksync2"
@@ -278,6 +318,30 @@
       "title": "Audittens ZKsync Gateway Audit",
       "auditor": "Audittens",
       "date": "2024-12-19"
+    },
+    "audittens-zksync-os-2025-11": {
+      "collections": [
+        "zksync2"
+      ],
+      "title": "Audittens ZKsync OS Security Review",
+      "auditor": "Audittens",
+      "date": "2025-11-04"
+    },
+    "audittens-zksync-os-v0.1.0-diff-2025-12": {
+      "collections": [
+        "zksync2"
+      ],
+      "title": "Audittens ZKsync OS Security Review (v0.0.26...v0.1.0)",
+      "auditor": "Audittens",
+      "date": "2025-12-01"
+    },
+    "audittens-zksync-os-v0.3.0-diff-2026-05": {
+      "collections": [
+        "zksync2"
+      ],
+      "title": "Audittens ZKsync OS Security Review (v0.1.0...v0.3.0)",
+      "auditor": "Audittens",
+      "date": "2026-05-06"
     },
     "audittens-zksync-usdc-bridge-2024-12": {
       "collections": [
@@ -351,6 +415,14 @@
       "auditor": "BlockSec",
       "date": "2025-12-23"
     },
+    "cairosecurityclan-starknet-utils-v1-2025-05": {
+      "collections": [
+        "starknet"
+      ],
+      "title": "Starkware Utils Security Review",
+      "auditor": "Cairo Security Clan",
+      "date": "2025-05-05"
+    },
     "cantina-aggregateverifier-2026-04": {
       "collections": [
         "base"
@@ -358,6 +430,30 @@
       "title": "Coinbase: AggregateVerifier Security Review",
       "auditor": "Cantina",
       "date": "2026-04-16"
+    },
+    "cantina-barretenberg-bigfield-2024-10-04": {
+      "collections": [
+        "aztecnetwork"
+      ],
+      "title": "Aztec Packages Security Review (Barretenberg bigfield)",
+      "auditor": "Cantina",
+      "date": "2024-10-04"
+    },
+    "cantina-barretenberg-bool-bytearray-2025-11-10": {
+      "collections": [
+        "aztecnetwork"
+      ],
+      "title": "Aztec Barretenberg Proof System Security Review",
+      "auditor": "Cantina",
+      "date": "2025-11-10"
+    },
+    "cantina-barretenberg-stdlib-field-2025-12-16": {
+      "collections": [
+        "aztecnetwork"
+      ],
+      "title": "Aztec stdlib field Security Review",
+      "auditor": "Cantina",
+      "date": "2025-12-16"
     },
     "cantina-cobalt-contracts-2026-09": {
       "collections": [
@@ -480,6 +576,14 @@
       "auditor": "Cantina",
       "date": "2025-11-04"
     },
+    "cantina-kona-2026-03": {
+      "collections": [
+        "optimism"
+      ],
+      "title": "Coinbase: Kona Security Review",
+      "auditor": "Cantina",
+      "date": "2026-03-28"
+    },
     "cantina-mcp-l1-2024-02": {
       "collections": [
         "optimism"
@@ -583,6 +687,14 @@
       "title": "Solady Security Review (Cantina Public Goods)",
       "auditor": "Cantina",
       "date": "2023-09-14"
+    },
+    "cantina-sp1-competition-2024": {
+      "collections": [
+        "_libs/sp1"
+      ],
+      "title": "Succinct sp1 Competition (Cantina)",
+      "auditor": "Cantina",
+      "date": "2024-07-19"
     },
     "cantina-spearbit-coinbase-solady-report": {
       "collections": [
@@ -776,6 +888,22 @@
       "auditor": "Certora",
       "date": null
     },
+    "chainlight-zksync-era-bug-fixes-2024-09": {
+      "collections": [
+        "zksync2"
+      ],
+      "title": "zkSync Era Security Audit: Bug Fixes Review",
+      "auditor": "ChainLight",
+      "date": "2024-09-24"
+    },
+    "chainlight-zksync-era-bug-fixes-part-2-2025-01": {
+      "collections": [
+        "zksync2"
+      ],
+      "title": "zkSync Era Security Audit: Bug Fixes Review Part 2",
+      "auditor": "ChainLight",
+      "date": "2025-01-24"
+    },
     "chainsecurity-fund-distribution-nova-fee-router-2024-03": {
       "collections": [
         "arbitrum"
@@ -799,6 +927,14 @@
       "title": "ChainSecurity Code Assessment of the Starknet Teleport Smart Contracts",
       "auditor": "ChainSecurity",
       "date": "2022-06-21"
+    },
+    "chainsecurity-strkbtc-bridge-2026-04": {
+      "collections": [
+        "starknet"
+      ],
+      "title": "Code Assessment of the strkBTC Bridge Smart Contracts",
+      "auditor": "ChainSecurity",
+      "date": "2026-04-29"
     },
     "chainsecurity-vault-bridge-token-2025-05": {
       "collections": [
@@ -839,6 +975,14 @@
       "title": "Arbitrum Security Council Election System (Code4rena, August 2023)",
       "auditor": "Code4rena",
       "date": "2023-09-20"
+    },
+    "code4rena-sp1-hypercube-2025": {
+      "collections": [
+        "_libs/sp1"
+      ],
+      "title": "Succinct - Smart Contract Security Assessment (Code4rena, SP1 Hypercube)",
+      "auditor": "Code4rena",
+      "date": null
     },
     "code4rena-superchain-2024-08": {
       "collections": [
@@ -888,6 +1032,14 @@
       "auditor": "Code4rena",
       "date": "2023-01-04"
     },
+    "codehawks-starknet-staking-part-2-2025-06": {
+      "collections": [
+        "starknet"
+      ],
+      "title": "Starknet Part 2 Audit Report",
+      "auditor": "CodeHawks",
+      "date": "2025-06-14"
+    },
     "codehawks-zksync-era-2024-10": {
       "collections": [
         "zksync2"
@@ -895,6 +1047,22 @@
       "title": "ZKsync Era CodeHawks Competitive Audit Report",
       "auditor": "CodeHawks",
       "date": "2024-12-02"
+    },
+    "coinbase-cannon-u16-2025-05": {
+      "collections": [
+        "optimism"
+      ],
+      "title": "Cannon U16 Security Review (Coinbase Protocol Security)",
+      "auditor": "Coinbase",
+      "date": "2025-05-30"
+    },
+    "come-du-crest-zodiac-signature-patch-2026-06": {
+      "collections": [
+        "_libs/safe"
+      ],
+      "title": "Zodiac Signature Patch Audit",
+      "auditor": "Côme du Crest",
+      "date": "2026-06-12"
     },
     "common-prefix-fusionlock-2024-03": {
       "collections": [
@@ -1160,6 +1328,14 @@
       "auditor": "CryptoExperts",
       "date": "2022-07-07"
     },
+    "cryptoexperts-stark-cairo-verifier-in-cairo-2022-11": {
+      "collections": [
+        "starknet"
+      ],
+      "title": "CryptoExperts Code Review of the Cairo Implementation of the STARK/Cairo Verifier",
+      "auditor": "CryptoExperts",
+      "date": "2022-11-19"
+    },
     "cure53-bob-usdc-bridge-library-2024-04": {
       "collections": [
         "bob"
@@ -1167,6 +1343,14 @@
       "title": "Review-Report BOB modified USDC bridge library 04.2024 (BOB-02-WP1)",
       "auditor": "Cure53",
       "date": "2024-04-30"
+    },
+    "cyfrin-barretenberg-logic-module-2026-04-06": {
+      "collections": [
+        "aztecnetwork"
+      ],
+      "title": "Aztec Logic Module Audit Report",
+      "auditor": "Cyfrin",
+      "date": "2026-04-06"
     },
     "cyfrin-linea-burn-mechanism-2025-11": {
       "collections": [
@@ -1232,6 +1416,14 @@
       "auditor": "dapp.org",
       "date": "2021-01-12"
     },
+    "etherauthority-mantle-token-2024-05": {
+      "collections": [
+        "mantle"
+      ],
+      "title": "Code Review and Security Analysis Report for Mantle (MNT) Token Smart Contract",
+      "auditor": "EtherAuthority",
+      "date": "2024-05-14"
+    },
     "formal-verification__fv__reports__2021-10": {
       "collections": [
         "_libs/openzeppelin"
@@ -1255,6 +1447,14 @@
       "title": "Formal Verification of OpenZeppelin (May - June 2022)",
       "auditor": "Certora",
       "date": null
+    },
+    "fti-consulting-staked-celo-phase-2": {
+      "collections": [
+        "celo"
+      ],
+      "title": "Smart Contract Assessment - Staked Celo - Phase 2",
+      "auditor": "FTI Consulting",
+      "date": "2022-05-04"
     },
     "g0-safe-1-1-0": {
       "collections": [
@@ -1464,6 +1664,46 @@
       "auditor": "Hexens",
       "date": "2023-02-27"
     },
+    "hexens-zksync-airbender-2025-10": {
+      "collections": [
+        "zksync2"
+      ],
+      "title": "Security Review Report for ZKsync",
+      "auditor": "Hexens",
+      "date": "2025-10-14"
+    },
+    "immunefi-base-azul-2026-07": {
+      "collections": [
+        "base"
+      ],
+      "title": "Base Azul Audit Competition",
+      "auditor": "Immunefi",
+      "date": null
+    },
+    "immunefi-celo-audit-competition-2024-11": {
+      "collections": [
+        "celo"
+      ],
+      "title": "Celo Audit Competition Summary Report",
+      "auditor": "Immunefi (audit competition)",
+      "date": "2024-12-06"
+    },
+    "kalos-rkm0959-core-vm-appendix-2024": {
+      "collections": [
+        "_libs/sp1"
+      ],
+      "title": "SP1 Audit Report: Appendix",
+      "auditor": "rkm0959 / KALOS",
+      "date": null
+    },
+    "kalos-rkm0959-recursion-vm-2024": {
+      "collections": [
+        "_libs/sp1"
+      ],
+      "title": "SP1 Audit Report - Recursion VM",
+      "auditor": "rkm0959 / KALOS",
+      "date": null
+    },
     "konnov-pani-governance-formal-verification-2025-09-15": {
       "collections": [
         "aztecnetwork"
@@ -1472,6 +1712,22 @@
       "auditor": "Igor Konnov, Thomas Pani (blltprf.xyz / konnov.phd)",
       "date": "2025-09-15"
     },
+    "least-authority-linea-limitless-prover-2025-08": {
+      "collections": [
+        "linea"
+      ],
+      "title": "Limitless Prover Security Audit Report - Linea zkEVM",
+      "auditor": "Least Authority",
+      "date": "2025-08-01"
+    },
+    "least-authority-linea-zkevm-crypto-beta-v1-2024-11": {
+      "collections": [
+        "linea"
+      ],
+      "title": "Linea zkEVM (crypto-beta-v1) Security Audit Report",
+      "auditor": "Least Authority",
+      "date": "2024-11-26"
+    },
     "milotruck-deputypausemodule-2025-01": {
       "collections": [
         "optimism"
@@ -1479,6 +1735,14 @@
       "title": "Optimism DeputyPauseModule (MiloTruck)",
       "auditor": "MiloTruck",
       "date": "2025-01-07"
+    },
+    "nethermind-nm-0560-lighter-core-2025-09": {
+      "collections": [
+        "lighter"
+      ],
+      "title": "NM-0560 Lighter Security Review",
+      "auditor": "Nethermind Security",
+      "date": "2025-09-21"
     },
     "nethermind-nm-0561-celo-custom-gas-token-2025-07-01": {
       "collections": [
@@ -1535,6 +1799,14 @@
       "title": "Safe Social Recovery Module Security Review",
       "auditor": "Nethermind Security",
       "date": "2026-08-17"
+    },
+    "nethermind-starknet-token-distributor-2024-02": {
+      "collections": [
+        "starknet"
+      ],
+      "title": "NM-0194 Starknet Token Distributor Security Review",
+      "auditor": "Nethermind",
+      "date": "2024-02-22"
     },
     "offbeat-governor-cancel-upgrade-2025-10": {
       "collections": [
@@ -1703,6 +1975,14 @@
       "title": "Linea Gas Optimizations Audit",
       "auditor": "OpenZeppelin",
       "date": "2024-05-17"
+    },
+    "openzeppelin-linea-plonk-prover-verifier-2024-06": {
+      "collections": [
+        "linea"
+      ],
+      "title": "Linea Plonk Prover (Backend) and Plonk Verifier Audit",
+      "auditor": "OpenZeppelin",
+      "date": "2024-06-14"
     },
     "openzeppelin-linea-rollup-tokenbridge-role-upgrade-2024-11": {
       "collections": [
@@ -1880,6 +2160,14 @@
       "auditor": "OpenZeppelin",
       "date": "2026-01-19"
     },
+    "openzeppelin-usdc-token-migration-2025-11": {
+      "collections": [
+        "starknet"
+      ],
+      "title": "USDC Token Migration Audit",
+      "auditor": "OpenZeppelin",
+      "date": "2025-11-28"
+    },
     "openzeppelin-zksync-bootloader-2022-12": {
       "collections": [
         "zksync2"
@@ -1895,6 +2183,14 @@
       "title": "zkSync Bridge and .transfer & .send Diff Audit",
       "auditor": "OpenZeppelin",
       "date": "2023-05-01"
+    },
+    "openzeppelin-zksync-crypto-precompile-2025-04": {
+      "collections": [
+        "zksync2"
+      ],
+      "title": "ZKsync Crypto Precompile Audit",
+      "auditor": "OpenZeppelin",
+      "date": "2025-04-03"
     },
     "openzeppelin-zksync-custom-asset-bridge-2024-08": {
       "collections": [
@@ -2048,6 +2344,14 @@
       "auditor": "OpenZeppelin",
       "date": "2023-12-05"
     },
+    "openzeppelin-zksync-os-2025-09": {
+      "collections": [
+        "zksync2"
+      ],
+      "title": "ZKsync OS Audit",
+      "auditor": "OpenZeppelin",
+      "date": "2025-09-02"
+    },
     "openzeppelin-zksync-paymaster-2024-04": {
       "collections": [
         "zksync2"
@@ -2063,6 +2367,14 @@
       "title": "Protocol Defense Audit",
       "auditor": "OpenZeppelin",
       "date": "2024-09-09"
+    },
+    "openzeppelin-zksync-protocol-precompiles-2025-04": {
+      "collections": [
+        "zksync2"
+      ],
+      "title": "ZKsync Protocol Precompiles Implementation Audit",
+      "auditor": "OpenZeppelin",
+      "date": "2025-04-10"
     },
     "openzeppelin-zksync-short-term-fee-model-2023-12": {
       "collections": [
@@ -2176,6 +2488,14 @@
       "auditor": "OtterSec",
       "date": "2024-03-30"
     },
+    "oxorio-privacy-pools-circuits-2025-02": {
+      "collections": [
+        "privacy-pools"
+      ],
+      "title": "Privacy Pools circuits audit report",
+      "auditor": "Oxorio",
+      "date": "2025-02-21"
+    },
     "oxorio-privacy-pools-core-contracts-2025-03": {
       "collections": [
         "privacy-pools"
@@ -2215,6 +2535,14 @@
       "title": "BOB USDC Bridge Security Review",
       "auditor": "Pashov Audit Group",
       "date": "2024-04-22"
+    },
+    "pashov-starknet-btc-staking-2025-08": {
+      "collections": [
+        "starknet"
+      ],
+      "title": "Starknet Security Review",
+      "auditor": "Pashov Audit Group",
+      "date": null
     },
     "peckshield-starkex-v1-0-2020-02": {
       "collections": [
@@ -2264,6 +2592,22 @@
       "auditor": "Radiant Labs",
       "date": "2024-12-28"
     },
+    "rkm0959-sp1-v3-2024": {
+      "collections": [
+        "_libs/sp1"
+      ],
+      "title": "SP1 V3 Audit Report",
+      "auditor": "rkm0959",
+      "date": null
+    },
+    "rkm0959-sp1-v4-2024": {
+      "collections": [
+        "_libs/sp1"
+      ],
+      "title": "SP1 V4 Audit Report",
+      "auditor": "rkm0959",
+      "date": null
+    },
     "runtime-verification-safe-1-0-0": {
       "collections": [
         "_libs/safe"
@@ -2271,6 +2615,30 @@
       "title": "Formal Verification Report: GnosisSafe Contract",
       "auditor": "Runtime Verification",
       "date": "2019-02-27"
+    },
+    "runtimeverification-deposittransaction-2022-12": {
+      "collections": [
+        "optimism"
+      ],
+      "title": "Formal Verification Report: OptimismPortal.depositTransaction",
+      "auditor": "Runtime Verification",
+      "date": "2022-12-23"
+    },
+    "scroll-internal-feynman-upgrade-audit": {
+      "collections": [
+        "scroll"
+      ],
+      "title": "Scroll-revm & zkVM Guest Program Changes — Security Assessment",
+      "auditor": "Scroll (internal)",
+      "date": "2025-07-21"
+    },
+    "scroll-internal-galileo-upgrade-audit": {
+      "collections": [
+        "scroll"
+      ],
+      "title": "Galileo — Scroll-revm & Stateless Block Verifier — Security Assessment",
+      "auditor": "Scroll (internal)",
+      "date": "2025-11-20"
     },
     "secure3-mantle-v1-contest-2023-07": {
       "collections": [
@@ -2303,6 +2671,22 @@
       "title": "Mantle V2 Competitive Security Assessment (Secure3, March 2024)",
       "auditor": "Secure3",
       "date": "2024-03-04"
+    },
+    "sentnl-barretenberg-fuzzing-2022-03-26": {
+      "collections": [
+        "aztecnetwork"
+      ],
+      "title": "Spilsbury Holdings Ltd Audit Results (AUD461) - Barretenberg",
+      "auditor": "Sentnl",
+      "date": "2022-03-26"
+    },
+    "sherlock-barretenberg-cycle-group-rom-ram-2026-01-28": {
+      "collections": [
+        "aztecnetwork"
+      ],
+      "title": "Security Review For Aztec Network (cycle_group and ROM/RAM memory modules)",
+      "auditor": "Sherlock",
+      "date": "2026-01-28"
     },
     "sherlock-bedrock-2023-03": {
       "collections": [
@@ -2357,6 +2741,22 @@
         "agglayer"
       ],
       "title": "Agglayer Contracts v0.3.5 Security Assessment Report (v2.0)",
+      "auditor": "Sigma Prime",
+      "date": null
+    },
+    "sigmaprime-agglayer-v030-offchain-part-1-2025-07": {
+      "collections": [
+        "agglayer"
+      ],
+      "title": "AggLayer v0.3.0 - Offchain Updates Security Assessment Report, Part 1 (v2.0)",
+      "auditor": "Sigma Prime",
+      "date": null
+    },
+    "sigmaprime-agglayer-v030-offchain-part-2-2025-07": {
+      "collections": [
+        "agglayer"
+      ],
+      "title": "AggLayer v0.3.0 - Offchain Updates Security Assessment Report, Part 2 (v2.0)",
       "auditor": "Sigma Prime",
       "date": null
     },
@@ -2656,6 +3056,38 @@
       "auditor": "Spearbit",
       "date": "2025-07-16"
     },
+    "spearbit-zksync-protocol-2025-04": {
+      "collections": [
+        "zksync2"
+      ],
+      "title": "ZKsync protocol Security Review",
+      "auditor": "Spearbit",
+      "date": "2025-04-12"
+    },
+    "spearbit-zksync-snark-wrapper-2023-11": {
+      "collections": [
+        "zksync2"
+      ],
+      "title": "ZkSync snark-wrapper Security Review",
+      "auditor": "Spearbit",
+      "date": "2023-11-28"
+    },
+    "taran-zksync-os-crypto-2025-12": {
+      "collections": [
+        "zksync2"
+      ],
+      "title": "Taran Space Security Audit of ZKsync OS - Crypto",
+      "auditor": "Taran Space",
+      "date": "2025-12-23"
+    },
+    "taran-zksync-os-stf-2025-10": {
+      "collections": [
+        "zksync2"
+      ],
+      "title": "ZKsync OS Security Audit",
+      "auditor": "Taran Space",
+      "date": "2025-10-15"
+    },
     "trail-of-bits-2024-02-equivalent-tokens-release-11": {
       "collections": [
         "celo"
@@ -2719,6 +3151,14 @@
       "title": "Offchain Labs ArbOS 31 Stylus and BoLD Pull Requests Review (Trail of Bits, June 2024)",
       "auditor": "Trail of Bits",
       "date": "2024-07-26"
+    },
+    "trailofbits-arbos-40-2025-05": {
+      "collections": [
+        "arbitrum"
+      ],
+      "title": "Offchain Labs ArbOS 40 Nitro Security Assessment Summary Report (Trail of Bits, May 2025)",
+      "auditor": "Trail of Bits",
+      "date": "2025-05-06"
     },
     "trailofbits-arbos-50-and-51-2025-12": {
       "collections": [
@@ -2805,6 +3245,14 @@
         "arbitrum"
       ],
       "title": "Offchain Labs Custom Fee Token Exchange Rate Summary Report (Trail of Bits, March 2025)",
+      "auditor": "Trail of Bits",
+      "date": "2025-03-12"
+    },
+    "trailofbits-geth-14-4-2025-03": {
+      "collections": [
+        "arbitrum"
+      ],
+      "title": "Offchain Labs Geth 14.4 Summary Report (Trail of Bits, March 2025)",
       "auditor": "Trail of Bits",
       "date": "2025-03-12"
     },
@@ -2904,6 +3352,14 @@
       "auditor": "Trail of Bits",
       "date": "2020-10-30"
     },
+    "trailofbits-polygon-pessimistic-proofs-2024-08": {
+      "collections": [
+        "agglayer"
+      ],
+      "title": "Polygon Pessimistic Proofs Security Assessment (Summary Report)",
+      "auditor": "Trail of Bits",
+      "date": "2024-08-26"
+    },
     "trailofbits-reward-distributor-fixes-2025-04": {
       "collections": [
         "arbitrum"
@@ -2943,6 +3399,46 @@
       "title": "Scroll Feynman Upgrade Smart Contract Changes Security Assessment (Summary Report)",
       "auditor": "Trail of Bits",
       "date": "2025-07-10"
+    },
+    "trailofbits-scroll-zkevm-circuits-wave1-2023-04": {
+      "collections": [
+        "scroll"
+      ],
+      "title": "Scroll zkEVM halo2 Circuits Security Assessment",
+      "auditor": "Trail of Bits",
+      "date": "2023-10-12"
+    },
+    "trailofbits-scroll-zkevm-circuits-wave2-2023-08": {
+      "collections": [
+        "scroll"
+      ],
+      "title": "Scroll zkEVM Circuits, Wave 2 Security Assessment",
+      "auditor": "Trail of Bits",
+      "date": "2023-09-08"
+    },
+    "trailofbits-scroll-zkevm-circuits-wave3-2023-09": {
+      "collections": [
+        "scroll"
+      ],
+      "title": "Scroll zkEVM Circuits, Wave 3 - Security Assessment",
+      "auditor": "Trail of Bits",
+      "date": "2023-10-06"
+    },
+    "trailofbits-scroll-zkevm-eip4844-blob-2024-04": {
+      "collections": [
+        "scroll"
+      ],
+      "title": "Scroll ZkEVM EIP-4844 Blob Support - Security Assessment",
+      "auditor": "Trail of Bits",
+      "date": "2024-04-29"
+    },
+    "trailofbits-scroll-zktrie-2023-07": {
+      "collections": [
+        "scroll"
+      ],
+      "title": "Scroll zkTrie Security Assessment",
+      "auditor": "Trail of Bits",
+      "date": "2023-09-08"
     },
     "trailofbits-security-council-elections-2023-08": {
       "collections": [
@@ -3088,6 +3584,14 @@
       "auditor": "Verichains Lab",
       "date": "2024-08-21"
     },
+    "veridise-barretenberg-bigfield-2025-09-18": {
+      "collections": [
+        "aztecnetwork"
+      ],
+      "title": "Veridise Auditing Report: Barretenberg Bigfield",
+      "auditor": "Veridise",
+      "date": "2025-09-18"
+    },
     "veridise-governance-2025-10-13": {
       "collections": [
         "aztecnetwork"
@@ -3112,6 +3616,22 @@
       "auditor": "Veridise",
       "date": "2025-05-22"
     },
+    "veridise-kailua-2025-06": {
+      "collections": [
+        "bob"
+      ],
+      "title": "Veridise Auditing Report for Kailua Protocol (June 2025)",
+      "auditor": "Veridise",
+      "date": "2025-06-16"
+    },
+    "veridise-kailua-2025-10": {
+      "collections": [
+        "bob"
+      ],
+      "title": "Veridise Auditing Report for Kailua (October 2025)",
+      "auditor": "Veridise",
+      "date": "2025-11-04"
+    },
     "veridise-kailua-2026-02": {
       "collections": [
         "bob"
@@ -3127,6 +3647,14 @@
       "title": "Veridise Auditing Report for SP1 (recursion circuits and sp1-contracts), V2",
       "auditor": "Veridise",
       "date": "2024-07-18"
+    },
+    "veridise-zksync-airbender-v2-2026-04": {
+      "collections": [
+        "zksync2"
+      ],
+      "title": "Tooling Engagement Report for ZKsync Airbender",
+      "auditor": "Veridise",
+      "date": "2026-04-22"
     },
     "verilog-celo-contracts-pr-9740": {
       "collections": [
@@ -3176,6 +3704,14 @@
       "auditor": "Zach Obront",
       "date": "2023-05-12"
     },
+    "zellic-barretenberg-bigfield-2024-07-25": {
+      "collections": [
+        "aztecnetwork"
+      ],
+      "title": "Barretenberg Bigfield Proof Circuit Security Assessment",
+      "auditor": "Zellic",
+      "date": "2024-07-25"
+    },
     "zellic-facet-bridge-2024-11-04": {
       "collections": [
         "ethscriptions",
@@ -3185,6 +3721,15 @@
       "auditor": "Zellic",
       "date": "2024-11-04"
     },
+    "zellic-facet-geth-2024-09-22": {
+      "collections": [
+        "ethscriptions",
+        "facet"
+      ],
+      "title": "Facet Geth Blockchain Security Assessment",
+      "auditor": "Zellic",
+      "date": "2024-09-22"
+    },
     "zellic-facet-node-2024-11-05": {
       "collections": [
         "ethscriptions",
@@ -3193,6 +3738,38 @@
       "title": "Facet Node Comprehensive Security Assessment",
       "auditor": "Zellic",
       "date": "2024-11-05"
+    },
+    "zellic-kalos-scroll-zkevm-circuits-part1": {
+      "collections": [
+        "scroll"
+      ],
+      "title": "Scroll zkEVM - ZK Circuit Security Assessment",
+      "auditor": "Zellic and KALOS",
+      "date": "2023-05-16"
+    },
+    "zellic-kalos-scroll-zkevm-circuits-part2": {
+      "collections": [
+        "scroll"
+      ],
+      "title": "Scroll zkEVM - Part 2 - ZK Circuit Security Assessment",
+      "auditor": "Zellic and KALOS",
+      "date": "2023-07-31"
+    },
+    "zellic-lighter-evm-migration-2026-06": {
+      "collections": [
+        "lighter"
+      ],
+      "title": "Lighter (EVM) Smart Contract Security Assessment (migration patch)",
+      "auditor": "Zellic",
+      "date": "2026-06-11"
+    },
+    "zellic-lighter-evm-spot-contracts-2026-01": {
+      "collections": [
+        "lighter"
+      ],
+      "title": "Lighter (EVM) Smart Contract Security Assessment (spot markets and multi-asset)",
+      "auditor": "Zellic",
+      "date": "2026-01-21"
     },
     "zellic-mantle-token-and-bridge-2023-07": {
       "collections": [
@@ -3234,6 +3811,30 @@
       "auditor": "Zellic",
       "date": "2026-03-18"
     },
+    "zellic-scroll-zkevm-proof-circuit-2024-06": {
+      "collections": [
+        "scroll"
+      ],
+      "title": "Scroll zkEVM Proof Circuit Security Assessment",
+      "auditor": "Zellic",
+      "date": "2024-06-05"
+    },
+    "zellic-sp1-design-review-2024": {
+      "collections": [
+        "_libs/sp1"
+      ],
+      "title": "SP1 Design Review",
+      "auditor": "Zellic",
+      "date": "2024-12-04"
+    },
+    "zellic-sp1-hypercube-2025": {
+      "collections": [
+        "_libs/sp1"
+      ],
+      "title": "Hypercube Protocol Cryptographic Security Assessment",
+      "auditor": "Zellic",
+      "date": "2025-12-23"
+    },
     "zellic-starknet-staking-v1-2024-11": {
       "collections": [
         "starknet"
@@ -3241,6 +3842,14 @@
       "title": "Starknet Staking Cairo Application Security Audit",
       "auditor": "Zellic",
       "date": "2024-11-22"
+    },
+    "zellic-starkware-erc20-2026-02": {
+      "collections": [
+        "starknet"
+      ],
+      "title": "Starkware (ERC20) Smart Contract Security Assessment",
+      "auditor": "Zellic",
+      "date": "2026-02-11"
     },
     "zenith-sp1-tee-contracts-2025": {
       "collections": [
@@ -3257,6 +3866,78 @@
       "title": "Tornado Cash Anonymity Mining Audit",
       "auditor": "Igor Gulamov (ZeroPool)",
       "date": "2020-10-15"
+    },
+    "zksecurity-barretenberg-bigfield-2024-07-01": {
+      "collections": [
+        "aztecnetwork"
+      ],
+      "title": "Audit of Aztec Foreign Field Arithmetic (Bigfield)",
+      "auditor": "zkSecurity",
+      "date": "2024-07-01"
+    },
+    "zksecurity-herodotus-integrity-2024-09": {
+      "collections": [
+        "starknet"
+      ],
+      "title": "Audit of Herodotus' Integrity - A Cairo Verifier compatible with Starknet written in Cairo 1",
+      "auditor": "zkSecurity",
+      "date": "2024-09-23"
+    },
+    "zksecurity-lighter-block-and-delta-2025-09": {
+      "collections": [
+        "lighter"
+      ],
+      "title": "Audit of Lighter's Block and Delta Layers",
+      "auditor": "zkSecurity",
+      "date": "2025-09-08"
+    },
+    "zksecurity-lighter-block-circuits-2025-08": {
+      "collections": [
+        "lighter"
+      ],
+      "title": "Audit of Lighter's Block Circuits",
+      "auditor": "zkSecurity",
+      "date": "2025-08-04"
+    },
+    "zksecurity-lighter-exit-hatch-2025-11": {
+      "collections": [
+        "lighter"
+      ],
+      "title": "Audit of Lighter's Exit Hatch",
+      "auditor": "zkSecurity",
+      "date": "2025-11-05"
+    },
+    "zksecurity-lighter-spot-market-circuits-2025-11": {
+      "collections": [
+        "lighter"
+      ],
+      "title": "Audit of Lighter's Spot Market Circuits and Multi-Asset Support",
+      "auditor": "zkSecurity",
+      "date": "2025-11-24"
+    },
+    "zksecurity-lighter-wrapper-circuits-2025-10": {
+      "collections": [
+        "lighter"
+      ],
+      "title": "Audit of Lighter's Wrapper Circuits",
+      "auditor": "zkSecurity",
+      "date": "2025-10-10"
+    },
+    "zksecurity-stwo-cairo-verifier-2025-08": {
+      "collections": [
+        "starknet"
+      ],
+      "title": "Audit of the Stwo-Cairo Verifier",
+      "auditor": "zkSecurity",
+      "date": "2025-08-06"
+    },
+    "zokyo-rail-token-2022-04": {
+      "collections": [
+        "railgun"
+      ],
+      "title": "RAIL Token Smart Contract Audit",
+      "auditor": "Zokyo",
+      "date": "2022-04-21"
     },
     "zokyo-railgun-arbitrum-governance-2023-02": {
       "collections": [
@@ -3297,6 +3978,14 @@
       "title": "Railgun Smart Contract Audit (RailgunSmartWallet)",
       "auditor": "Zokyo",
       "date": "2022-12-21"
+    },
+    "zokyo-railgun-voting-2022-09": {
+      "collections": [
+        "railgun"
+      ],
+      "title": "RAILGUN Smart Contract Audit (Voting)",
+      "auditor": "Zokyo",
+      "date": "2022-09-14"
     }
   },
   "repositories": {

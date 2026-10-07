@@ -450,7 +450,6 @@ def assemble_export(
         {file.blob_id: file.stored for repository in snapshots.values()
          for snapshot in repository.values() for file in snapshot["files"].values()}
     )
-    used_reports = sorted({report_id for _, _, report_id, _ in audits})
     index = {
         "schema_version": SCHEMA_VERSION,
         "collections": {
@@ -459,12 +458,13 @@ def assemble_export(
         },
         "reports": {
             report_id: {
-                "collections": sorted(reports[report_id].collections),
-                "title": reports[report_id].title,
-                "auditor": reports[report_id].auditor,
-                "date": reports[report_id].date,
+                "collections": sorted(record.collections),
+                "title": record.title,
+                "auditor": record.auditor,
+                "date": record.date,
             }
-            for report_id in used_reports
+            for report_id, record in sorted(reports.items())
+            if record.relevant
         },
         "repositories": {
             repository: ordered_snapshots(snapshots[repository])
@@ -676,12 +676,16 @@ def parse_json(data: bytes) -> Any:
 
 def print_statistics(export: Export, index_text: bytes, objects_text: bytes) -> None:
     collections = export.index["collections"].values()
+    reports = export.index["reports"]
     snapshots = [s for commits in export.index["repositories"].values() for s in commits.values()]
     audits = [paths for s in snapshots for paths in s["audits"].values()]
+    audited_reports = {report_id for s in snapshots for report_id in s["audits"]}
     print(
         f"{len(collections)} collections "
         f"({sum(1 for c in collections if c['kind'] == 'library')} libraries), "
-        f"{len(export.index['reports'])} reports, {len(export.index['repositories'])} repositories, "
+        f"{len(reports)} reports ({len(audited_reports)} with audits, "
+        f"{len(reports) - len(audited_reports)} without), "
+        f"{len(export.index['repositories'])} repositories, "
         f"{len(snapshots)} snapshots, {sum(len(s['files']) for s in snapshots)} files, "
         f"{sum(len(paths) for paths in audits)} audited paths in {len(audits)} report audits, "
         f"{sum(1 for paths in audits for ids in paths.values() if ids)} paths with open findings, "
@@ -707,12 +711,8 @@ def validate_export(index: Any, objects: Any, index_text: bytes, objects_text: b
     problems += validate_collections(index["collections"])
     problems += validate_reports(index["reports"], index["collections"])
     algorithms: dict[str, set[str]] = defaultdict(set)
-    used_reports: set[str] = set()
     for repository, commits in index["repositories"].items():
-        problems += validate_repository(repository, commits, index["reports"], objects,
-                                        algorithms, used_reports)
-    problems += [f"report {report_id!r} is used by no audit"
-                 for report_id in sorted(index["reports"].keys() - used_reports)]
+        problems += validate_repository(repository, commits, index["reports"], objects, algorithms)
     problems += validate_objects(objects, algorithms)
     return problems
 
@@ -819,7 +819,6 @@ def validate_repository(
     reports: dict[str, Any],
     objects: dict[str, Any],
     algorithms: dict[str, set[str]],
-    used_reports: set[str],
 ) -> list[str]:
     problems: list[str] = []
     if path_problem(repository) is not None or "/" not in repository:
@@ -842,7 +841,7 @@ def validate_repository(
             problems.append(f"{where}: timestamp must be positive unix seconds")
             continue
         order.append((timestamp, commit))
-        problems += validate_snapshot(where, snapshot, reports, objects, used_reports)
+        problems += validate_snapshot(where, snapshot, reports, objects)
         for object_id in snapshot["files"].values():
             algorithms[object_id].add(hash_algorithm(len(commit)))
     if [commit for _, commit in sorted(order)] != [commit for _, commit in order]:
@@ -851,8 +850,7 @@ def validate_repository(
 
 
 def validate_snapshot(
-    where: str, snapshot: dict[str, Any], reports: dict[str, Any], objects: dict[str, Any],
-    used_reports: set[str],
+    where: str, snapshot: dict[str, Any], reports: dict[str, Any], objects: dict[str, Any]
 ) -> list[str]:
     problems: list[str] = []
     files, audits = snapshot["files"], snapshot["audits"]
@@ -873,7 +871,6 @@ def validate_snapshot(
         covered_prefixes.update(path_and_ancestors(path))
     scoped_paths: set[str] = set()
     for report_id, paths in audits.items():
-        used_reports.add(report_id)
         if report_id not in reports:
             problems.append(f"{where}: audit by unknown report {report_id!r}")
         problems += validate_audit(f"{where} {report_id}", paths, covered_prefixes)
