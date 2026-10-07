@@ -15,9 +15,10 @@ format and its rules.
 ``--check`` rebuilds the export in memory and verifies that the committed files
 satisfy every rule and are byte-identical to it, without writing anything. It
 also verifies, against the git index, that every report document and every
-file a manifest names is committed with exactly that letter case. A normal run
-performs the same validation before writing and refuses to write an invalid
-export.
+file a manifest names is committed with exactly that letter case, and that
+every object is the committed blob of a stored file, which GitHub's blob API
+serves by the SHA-1 blob id of the object's contents. A normal run performs the
+same validation before writing and refuses to write an invalid export.
 """
 
 from __future__ import annotations
@@ -593,20 +594,21 @@ def write_export(root: Path, index_text: bytes, objects_text: bytes) -> None:
 def check_committed(
     root: Path, export: Export, index_text: bytes, objects_text: bytes
 ) -> list[str]:
-    """The export on disk must be up to date, and every report document and file a
-    manifest names committed.
+    """The export on disk must be up to date, every report document and file a manifest
+    names committed, and every object the committed blob of a stored file.
 
     Opening a path succeeds on a case-insensitive filesystem whatever its letter
     case, so paths are compared with the git index, which keeps their exact case.
     """
     problems = check_written(root, index_text, objects_text)
     try:
-        committed = committed_paths(root)
+        committed = committed_blob_ids(root)
     except ExportError as error:
         return problems + [str(error)]
     documents = {report["document"] for report in export.index["reports"].values()}
     problems += uncommitted_problems(committed, documents, "a report document")
     problems += uncommitted_problems(committed, export.manifest_paths, "named by its manifest")
+    problems += uncommitted_object_problems(committed, export)
     return problems
 
 
@@ -627,11 +629,11 @@ def check_written(root: Path, index_text: bytes, objects_text: bytes) -> list[st
     return problems
 
 
-def committed_paths(root: Path) -> set[str]:
-    """Every file in the git index below the dataset root, by its exact path."""
+def committed_blob_ids(root: Path) -> dict[str, str]:
+    """The staged blob id of every file in the git index below the dataset root, by exact path."""
     try:
         listing = subprocess.run(
-            ["git", "-C", str(root), "ls-files", "-z"], capture_output=True, check=False
+            ["git", "-C", str(root), "ls-files", "--stage", "-z"], capture_output=True, check=False
         )
     except OSError as error:
         raise ExportError(f"cannot run git to list the committed files: {error}") from error
@@ -639,15 +641,41 @@ def committed_paths(root: Path) -> set[str]:
         stderr = listing.stderr.decode("utf-8", errors="replace").strip()
         raise ExportError(f"git ls-files failed in {root}: {stderr}")
     try:
-        paths = listing.stdout.decode("utf-8", errors="strict").split("\0")
+        entries = listing.stdout.decode("utf-8", errors="strict").split("\0")
     except UnicodeDecodeError as error:
         raise ExportError(f"git ls-files listed a path that is not UTF-8: {error}") from error
-    return {path for path in paths if path}
+    blob_ids: dict[str, str] = {}
+    for entry in entries:
+        if not entry:
+            continue
+        info, path = entry.split("\t", 1)  # "<mode> <blob id> <stage>\t<path>"
+        _, blob_id, stage = info.split(" ")
+        if stage != "0":
+            raise ExportError(f"{path} has an unresolved merge conflict")
+        blob_ids[path] = blob_id
+    return blob_ids
 
 
-def uncommitted_problems(committed: set[str], paths: set[str], role: str) -> list[str]:
+def uncommitted_object_problems(committed: dict[str, str], export: Export) -> list[str]:
+    """Every object must be the committed blob of a stored file, so that GitHub's blob API
+    serves it by the SHA-1 blob id of its contents.
+
+    A stored copy committed with converted line endings, or changed on disk
+    without being committed, is another blob; one matching copy is enough.
+    """
+    stored_blob_ids = {committed[path] for path in export.manifest_paths if path in committed}
+    problems: list[str] = []
+    for object_id, text in sorted(export.objects.items()):
+        blob_id = git_blob_id(text.encode("utf-8"), 40)  # SHA-1, whatever the source repository
+        if blob_id not in stored_blob_ids:
+            problems.append(f"object {object_id}: blob {blob_id} is not the committed blob "
+                            f"of any stored file")
+    return problems
+
+
+def uncommitted_problems(committed: dict[str, str], paths: set[str], role: str) -> list[str]:
     """Paths that are not committed with exactly their letter case."""
-    missing = sorted(paths - committed)
+    missing = sorted(paths - committed.keys())
     if not missing:
         return []
     committed_by_folded_case = {path.casefold(): path for path in committed}

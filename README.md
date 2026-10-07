@@ -42,7 +42,14 @@ https://raw.githubusercontent.com/<owner>/audit-dataset/<commit>/audit-index.jso
 https://raw.githubusercontent.com/<owner>/audit-dataset/<commit>/audit-objects.json.zst
 ```
 
-and uses them to find, for every contract, library, interface and free function a project deployed, the closest audited code and the reports that audited it. The export only says where audited code lives, who audited it, which major findings were open there, and what the audited code was; L2BEAT parses and compares the Solidity itself, so formatting does not matter to it.
+and uses them to find, for every contract, library, interface and free function a project deployed, the closest audited code and the reports that audited it. It links a report's original document, and fetches a single object without the bundle, as:
+
+```
+https://github.com/<owner>/audit-dataset/blob/<commit>/<document>          see document
+https://api.github.com/repos/<owner>/audit-dataset/git/blobs/<blobId>      see audit-objects.json.zst
+```
+
+The export only says where audited code lives, who audited it, which major findings were open there, and what the audited code was; L2BEAT parses and compares the Solidity itself, so formatting does not matter to it.
 
 ### `audit-index.json`
 
@@ -104,6 +111,8 @@ Repository URLs are not exported, because the canonical id determines them, for 
 
 One zstd frame (level 19, `--long=27`: long-distance matching with a 128 MiB window, content checksum) holding a compact JSON object with sorted keys, from object id to the file's contents: `{"0acd2cf2ad54":"// SPDX-License-Identifier: ...","b8e8febf8534":"..."}`. Every file of every snapshot is stored once under its object id, however many repositories, commits or collections contain it.
 
+An object's full id is the SHA-1 git blob id of its UTF-8 contents, `sha1("blob " + byteLength + "\0" + bytes)`, which consumers compute from the bundle: it starts with the object id for objects from SHA-1 repositories, but not for those from SHA-256 ones (rule 2). Every object is a blob of this repository (rule 9), so `GET https://api.github.com/repos/<owner>/audit-dataset/git/blobs/<blobId>` returns it alone: as base64 in JSON by default, or as the raw bytes with `Accept: application/vnd.github.raw+json`. A blob id names its bytes, so the request needs no commit.
+
 ### Rules
 
 1. **Stored bytes.** Contents are the file as stored in `audited-sources/`: the git blob at the audited commit, formatted by `format_sources.py` with the config in `foundry.toml`, decoded as UTF-8. Object ids are therefore not upstream blob ids for files `forge fmt` changed (`git_object` in the manifest keeps the upstream provenance), and files that differ upstream only in style share one object. A symlink is stored as its resolved target. A file that does not match its manifest `sha256` or is not valid UTF-8 fails the export.
@@ -114,9 +123,10 @@ One zstd frame (level 19, `--long=27`: long-distance matching with a 128 MiB win
 6. **Collections.** Every collection of the dataset is listed, including any no exported report belongs to, and every collection a report names is listed. `kind` is `library` exactly for the ids under `_libs/` (`_libs/<vendor>`) and `project` for every other id, a single directory name that is the L2BEAT project id. Names are unique, non-empty and without surrounding spaces. A `collections.json` that does not name exactly the dataset's collections fails the export.
 7. **Timestamps.** Every exported commit has a timestamp: the summary's ISO 8601 UTC committer date in unix seconds. A missing timestamp, one that is not a whole second, or two versions disagreeing on one commit's timestamp fail the export.
 8. **Deterministic.** Keys are sorted, except that the commits of a repository are ordered by timestamp, then commit id. The index is written with 2-space indentation and a trailing newline. The same dataset produces byte-identical files.
+9. **Committed blobs.** Every object is committed in this repository as a blob with exactly its bytes: the SHA-1 git blob id of its contents is the committed blob of at least one stored copy under `audited-sources/`, so GitHub's blob API returns exactly the object. An object whose stored copies were committed with converted line endings, or changed without being committed, fails `--check`.
 
 ### Regenerating and checking
 
 `python3 export_audit_index.py` (Python 3.14, standard library only) reads every collection with an `audit-summary.json`, validates each summary with the same checks as `generate_audit_summary.py`, verifies every stored source against its manifest `sha256`, builds the export in memory, checks it against every rule above and only then writes both files. `pipeline.py` runs it as its last step, so the export is regenerated whenever a collection changes; commit both files together with that change.
 
-`python3 export_audit_index.py --check` writes nothing. It rebuilds the export, checks the committed files against every rule (including the zstd frame having exactly one frame and a content checksum), and fails if they differ from the rebuilt export by a single byte. It also requires every report's `document` and every file a `manifest.json` names to be in the git index (`git ls-files`) under exactly that path, letter case included: opening a file succeeds on a case-insensitive filesystem (the macOS default) whatever its case, but not on a case-sensitive one such as Linux CI, and GitHub links are case-sensitive too. A document in another case means the summary's `report_file` disagrees with the committed report. On a case-insensitive filesystem, scoped paths that differ only in case (`src/Safe/` and `src/safe/`) share one directory and `git add` reuses the case git already knows, so record such files with `git mv -f <committed path> <manifest path>`; files hidden by an upstream `.gitignore` fetched into `audited-sources/` need `git add -f`.
+`python3 export_audit_index.py --check` writes nothing. It rebuilds the export, checks the committed files against every rule (including the zstd frame having exactly one frame and a content checksum), and fails if they differ from the rebuilt export by a single byte. It then reads the git index (`git ls-files --stage`), so run it on a clean checkout or after `git add`. Every object's full id must be the staged blob id of a file a `manifest.json` names (rule 9). Every report's `document` and every file a `manifest.json` names must be in the index under exactly that path, letter case included: opening a file succeeds on a case-insensitive filesystem (the macOS default) whatever its case, but not on a case-sensitive one such as Linux CI, and GitHub links are case-sensitive too. A document in another case means the summary's `report_file` disagrees with the committed report. On a case-insensitive filesystem, scoped paths that differ only in case (`src/Safe/` and `src/safe/`) share one directory and `git add` reuses the case git already knows, so record such files with `git mv -f <committed path> <manifest path>`; files hidden by an upstream `.gitignore` fetched into `audited-sources/` need `git add -f`.
