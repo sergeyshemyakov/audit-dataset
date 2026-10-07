@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "arbitrum",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "packages/arb-bridge-eth/contracts/bridge/Bridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -36,6 +37,7 @@
             },
             "packages/arb-bridge-eth/contracts/bridge/BridgeUtils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -50,6 +52,7 @@
             },
             "packages/arb-bridge-eth/contracts/bridge/Inbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -64,6 +67,7 @@
             },
             "packages/arb-bridge-eth/contracts/bridge/interfaces/IBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -78,6 +82,7 @@
             },
             "packages/arb-bridge-eth/contracts/bridge/interfaces/IInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -92,6 +97,7 @@
             },
             "packages/arb-bridge-eth/contracts/bridge/interfaces/IMessageProvider.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -106,6 +112,7 @@
             },
             "packages/arb-bridge-eth/contracts/bridge/interfaces/IOutbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -120,6 +127,7 @@
             },
             "packages/arb-bridge-eth/contracts/bridge/interfaces/ISequencerInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -134,6 +142,7 @@
             },
             "packages/arb-bridge-eth/contracts/bridge/Messages.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -148,6 +157,7 @@
             },
             "packages/arb-bridge-eth/contracts/bridge/Old_Outbox/OldOutbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -162,6 +172,7 @@
             },
             "packages/arb-bridge-eth/contracts/bridge/Old_Outbox/OutboxEntry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -176,6 +187,7 @@
             },
             "packages/arb-bridge-eth/contracts/bridge/Outbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -190,6 +202,7 @@
             },
             "packages/arb-bridge-eth/contracts/bridge/SequencerInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -204,6 +217,7 @@
             },
             "packages/arb-bridge-eth/contracts/challenge/Challenge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -221,6 +235,7 @@
             },
             "packages/arb-bridge-eth/contracts/challenge/ChallengeFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -235,6 +250,7 @@
             },
             "packages/arb-bridge-eth/contracts/challenge/ChallengeLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -249,6 +265,7 @@
             },
             "packages/arb-bridge-eth/contracts/challenge/IChallenge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -263,6 +280,7 @@
             },
             "packages/arb-bridge-eth/contracts/challenge/IChallengeFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -277,6 +295,7 @@
             },
             "packages/arb-bridge-eth/contracts/interfaces/IERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -291,6 +310,7 @@
             },
             "packages/arb-bridge-eth/contracts/interfaces/IERC721.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -305,6 +325,7 @@
             },
             "packages/arb-bridge-eth/contracts/libraries/AddressAliasHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -319,6 +340,7 @@
             },
             "packages/arb-bridge-eth/contracts/libraries/BytesLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -333,6 +355,7 @@
             },
             "packages/arb-bridge-eth/contracts/libraries/Cloneable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -347,6 +370,7 @@
             },
             "packages/arb-bridge-eth/contracts/libraries/DebugPrint.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -361,6 +385,7 @@
             },
             "packages/arb-bridge-eth/contracts/libraries/ICloneable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -375,6 +400,7 @@
             },
             "packages/arb-bridge-eth/contracts/libraries/MerkleLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -389,6 +415,7 @@
             },
             "packages/arb-bridge-eth/contracts/libraries/Precompiles.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -403,6 +430,7 @@
             },
             "packages/arb-bridge-eth/contracts/libraries/ProxyUtil.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -417,6 +445,7 @@
             },
             "packages/arb-bridge-eth/contracts/libraries/Whitelist.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -431,6 +460,7 @@
             },
             "packages/arb-bridge-eth/contracts/rollup/BridgeCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -445,6 +475,7 @@
             },
             "packages/arb-bridge-eth/contracts/rollup/facets/IRollupFacets.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -459,6 +490,7 @@
             },
             "packages/arb-bridge-eth/contracts/rollup/facets/RollupAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -477,6 +509,7 @@
             },
             "packages/arb-bridge-eth/contracts/rollup/facets/RollupUser.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -494,6 +527,7 @@
             },
             "packages/arb-bridge-eth/contracts/rollup/INode.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -508,6 +542,7 @@
             },
             "packages/arb-bridge-eth/contracts/rollup/INodeFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -522,6 +557,7 @@
             },
             "packages/arb-bridge-eth/contracts/rollup/IRollupCore.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -536,6 +572,7 @@
             },
             "packages/arb-bridge-eth/contracts/rollup/Node.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -550,6 +587,7 @@
             },
             "packages/arb-bridge-eth/contracts/rollup/NodeFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -564,6 +602,7 @@
             },
             "packages/arb-bridge-eth/contracts/rollup/Rollup.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -581,6 +620,7 @@
             },
             "packages/arb-bridge-eth/contracts/rollup/RollupCore.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -595,6 +635,7 @@
             },
             "packages/arb-bridge-eth/contracts/rollup/RollupCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -609,6 +650,7 @@
             },
             "packages/arb-bridge-eth/contracts/rollup/RollupEventBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -623,6 +665,7 @@
             },
             "packages/arb-bridge-eth/contracts/rollup/RollupLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -637,6 +680,7 @@
             },
             "packages/arb-bridge-eth/contracts/validator/GasRefunder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -651,6 +695,7 @@
             },
             "packages/arb-bridge-eth/contracts/validator/IGasRefunder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -665,6 +710,7 @@
             },
             "packages/arb-bridge-eth/contracts/validator/Validator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -679,6 +725,7 @@
             },
             "packages/arb-bridge-eth/contracts/validator/ValidatorUtils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -693,6 +740,7 @@
             },
             "packages/arb-bridge-eth/contracts/validator/ValidatorWalletCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -707,6 +755,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/rpc-utils/NodeInterface.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -721,6 +770,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/rpc-utils/RetryableTicketCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -735,6 +785,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/arbitrum/gateway/L2ArbitrumGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -749,6 +800,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/arbitrum/gateway/L2CustomGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -766,6 +818,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/arbitrum/gateway/L2ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -780,6 +833,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/arbitrum/gateway/L2GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -794,6 +848,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/arbitrum/gateway/L2WethGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -808,6 +863,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/arbitrum/IArbToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -822,6 +878,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/arbitrum/L2ArbitrumMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -836,6 +893,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/arbitrum/StandardArbERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -853,6 +911,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/ethereum/gateway/L1ArbitrumExtendedGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -867,6 +926,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/ethereum/gateway/L1ArbitrumGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -884,6 +944,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/ethereum/gateway/L1CustomGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -898,6 +959,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/ethereum/gateway/L1ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -915,6 +977,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/ethereum/gateway/L1GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -929,6 +992,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/ethereum/gateway/L1WethGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -943,6 +1007,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/ethereum/ICustomToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -957,6 +1022,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/ethereum/L1ArbitrumMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -971,6 +1037,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/libraries/aeERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -985,6 +1052,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/libraries/aeWETH.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -999,6 +1067,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/libraries/BytesParser.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1013,6 +1082,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/libraries/ClonableBeaconProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1027,6 +1097,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/libraries/gateway/GatewayMessageHandler.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1041,6 +1112,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/libraries/gateway/GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1055,6 +1127,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/libraries/gateway/ICustomGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1069,6 +1142,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/libraries/gateway/ITokenGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1083,6 +1157,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/libraries/gateway/TokenGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1097,6 +1172,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/libraries/ITransferAndCall.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1111,6 +1187,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/libraries/IWETH9.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1125,6 +1202,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/libraries/L2GatewayToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1139,6 +1217,7 @@
             },
             "packages/arb-bridge-peripherals/contracts/tokenbridge/libraries/TransferAndCallToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1153,6 +1232,7 @@
             },
             "packages/arb-bridge-eth/contracts/arch": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1189,6 +1269,7 @@
           "paths": {
             "arbitrator": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1210,6 +1291,7 @@
             },
             "arbos": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1241,6 +1323,7 @@
             },
             "solgen": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1266,6 +1349,7 @@
             },
             "arbnode": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1280,6 +1364,7 @@
             },
             "arbstate": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1294,6 +1379,7 @@
             },
             "blsSignatures": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1308,6 +1394,7 @@
             },
             "broadcastclient": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1322,6 +1409,7 @@
             },
             "cmd": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1336,6 +1424,7 @@
             },
             "reproducible-wasm": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1350,6 +1439,7 @@
             },
             "statetransfer": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1364,6 +1454,7 @@
             },
             "system_tests": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1378,6 +1469,7 @@
             },
             "util": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1392,6 +1484,7 @@
             },
             "validator": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1406,6 +1499,7 @@
             },
             "wavmio": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1420,6 +1514,7 @@
             },
             "wsbroadcastserver": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1456,6 +1551,7 @@
           "paths": {
             "contracts/src/bridge": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1473,6 +1569,7 @@
             },
             "contracts/src/rollup": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1490,6 +1587,7 @@
             },
             "contracts/src/challenge": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1504,6 +1602,7 @@
             },
             "contracts/src/osp": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1518,6 +1617,7 @@
             },
             "contracts/src/state": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1532,6 +1632,7 @@
             },
             "contracts/src/libraries": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1555,6 +1656,7 @@
             },
             "contracts/src/mocks": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1569,6 +1671,7 @@
             },
             "contracts/src/test-helpers": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1583,6 +1686,7 @@
             },
             "contracts/src/node-interface": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1597,6 +1701,7 @@
             },
             "contracts/src/precompiles": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1637,6 +1742,7 @@
           "paths": {
             "arbos": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1655,6 +1761,7 @@
             },
             "arbstate/inbox.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1672,6 +1779,7 @@
             },
             "contracts/src/bridge": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1686,6 +1794,7 @@
             },
             "contracts/src/osp/HashProofHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1700,6 +1809,7 @@
             },
             "validator": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1714,6 +1824,7 @@
             },
             "arbitrator/.gitignore": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1728,6 +1839,7 @@
             },
             "arbitrator/Cargo.lock": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1742,6 +1854,7 @@
             },
             "arbitrator/Cargo.toml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1756,6 +1869,7 @@
             },
             "arbitrator/cbindgen.toml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1770,6 +1884,7 @@
             },
             "arbitrator/prover": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1784,6 +1899,7 @@
             },
             "arbitrator/wasm-libraries/Cargo.lock": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1798,6 +1914,7 @@
             },
             "arbitrator/wasm-libraries/Cargo.toml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1812,6 +1929,7 @@
             },
             "arbitrator/wasm-libraries/brotli": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1826,6 +1944,7 @@
             },
             "arbitrator/wasm-libraries/go-abi": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1840,6 +1959,7 @@
             },
             "arbitrator/wasm-libraries/go-stub": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1854,6 +1974,7 @@
             },
             "arbitrator/wasm-libraries/host-io": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1868,6 +1989,7 @@
             },
             "arbitrator/wasm-libraries/soft-float/bindings32.c": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1882,6 +2004,7 @@
             },
             "arbitrator/wasm-libraries/soft-float/bindings64.c": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1896,6 +2019,7 @@
             },
             "arbitrator/wasm-libraries/wasi-stub": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1910,6 +2034,7 @@
             },
             "arbitrator/wasm-testsuite/.gitignore": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1924,6 +2049,7 @@
             },
             "arbitrator/wasm-testsuite/Cargo.lock": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1938,6 +2064,7 @@
             },
             "arbitrator/wasm-testsuite/Cargo.toml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1952,6 +2079,7 @@
             },
             "arbitrator/wasm-testsuite/check.sh": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1966,6 +2094,7 @@
             },
             "arbitrator/wasm-testsuite/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1985,6 +2114,7 @@
           "paths": {
             "packages/arb-bridge-eth/contracts/bridge/NitroMigrator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2025,6 +2155,7 @@
           "paths": {
             "src": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2062,6 +2193,7 @@
           "paths": {
             "contracts/tokenbridge/arbitrum": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2079,6 +2211,7 @@
             },
             "contracts/tokenbridge/ethereum": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2093,6 +2226,7 @@
             },
             "contracts/tokenbridge/libraries": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2129,6 +2263,7 @@
           "paths": {
             "src/ArbitrumFoundationVestingWallet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2152,6 +2287,7 @@
             },
             "src/gov-action-contracts/address-registries/L2AddressRegistry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2166,6 +2302,7 @@
             },
             "src/gov-action-contracts/AIPs/AIP1Point2Action.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2202,6 +2339,7 @@
           "paths": {
             "contracts/src/challengeV2": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2218,6 +2356,7 @@
             },
             "contracts/src/rollup": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2274,6 +2413,7 @@
           "paths": {
             "src/security-council-mgmt": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2332,6 +2472,7 @@
           "paths": {
             "src/gov-action-contracts/AIPs/MiscAIP": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2346,6 +2487,7 @@
             },
             "src/L1ArbitrumTimelock.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2360,6 +2502,7 @@
             },
             "src/security-council-mgmt": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2374,6 +2517,7 @@
             },
             "src/gov-action-contracts/AIPs/SecurityCouncilMgmt": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2388,6 +2532,7 @@
             },
             "src/gov-action-contracts/AIPs/UpgradeArbOS": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2407,6 +2552,7 @@
           "paths": {
             "src": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2443,6 +2589,7 @@
           "paths": {
             "src/security-council-mgmt/SecurityCouncilManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2457,6 +2604,7 @@
             },
             "src/security-council-mgmt/governors/SecurityCouncilNomineeElectionGovernor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2483,6 +2631,7 @@
             },
             "src/security-council-mgmt/governors/modules/SecurityCouncilNomineeElectionGovernorCountingUpgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2497,6 +2646,7 @@
             },
             "src/security-council-mgmt/governors/modules/SecurityCouncilNomineeElectionGovernorTiming.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2511,6 +2661,7 @@
             },
             "src/security-council-mgmt/governors/SecurityCouncilMemberElectionGovernor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2537,6 +2688,7 @@
             },
             "src/security-council-mgmt/governors/modules/SecurityCouncilMemberElectionGovernorCountingUpgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2551,6 +2703,7 @@
             },
             "src/security-council-mgmt/governors/SecurityCouncilMemberRemovalGovernor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2565,6 +2718,7 @@
             },
             "src/security-council-mgmt/governors/modules/ArbitrumGovernorVotesQuorumFractionUpgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2579,6 +2733,7 @@
             },
             "src/security-council-mgmt/governors/modules/ElectionGovernor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2602,6 +2757,7 @@
             },
             "src/UpgradeExecRouteBuilder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2616,6 +2772,7 @@
             },
             "src/security-council-mgmt/SecurityCouncilMemberSyncAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2630,6 +2787,7 @@
             },
             "src/security-council-mgmt/SecurityCouncilMgmtUtils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2644,6 +2802,7 @@
             },
             "src/security-council-mgmt/Common.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2658,6 +2817,7 @@
             },
             "src/security-council-mgmt/factories/L2SecurityCouncilMgmtFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2672,6 +2832,7 @@
             },
             "src/gov-action-contracts/AIPs/SecurityCouncilMgmt/GovernanceChainSCMgmtActivationAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2686,6 +2847,7 @@
             },
             "src/gov-action-contracts/AIPs/SecurityCouncilMgmt/L1SCMgmtActivationAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2700,6 +2862,7 @@
             },
             "src/gov-action-contracts/AIPs/SecurityCouncilMgmt/NonGovernanceChainSCMgmtActivationAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2714,6 +2877,7 @@
             },
             "src/gov-action-contracts/AIPs/SecurityCouncilMgmt/SecurityCouncilMgmtUpgradeLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2728,6 +2892,7 @@
             },
             "src/gov-action-contracts/execution-record/KeyValueStore.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2742,6 +2907,7 @@
             },
             "src/gov-action-contracts/execution-record/ActionExecutionRecord.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2778,6 +2944,7 @@
           "paths": {
             "src/gov-action-contracts/AIPs/NomineeGovernorV2UpgradeAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2792,6 +2959,7 @@
             },
             "src/security-council-mgmt/governors/SecurityCouncilNomineeElectionGovernor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2806,6 +2974,7 @@
             },
             "src/gov-action-contracts/AIPs/SetSeqMaxTimeVariation/AIPSetSequencerInboxMaxTimeVariationArbOneAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2820,6 +2989,7 @@
             },
             "src/gov-action-contracts/AIPs/SetSeqMaxTimeVariation/AIPSetSequencerInboxMaxTimeVariationNovaAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2834,6 +3004,7 @@
             },
             "src/gov-action-contracts/sequencer/SetSequencerInboxMaxTimeVariationAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2878,6 +3049,7 @@
           "paths": {
             "precompiles": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2904,6 +3076,7 @@
             },
             "arbos": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2927,6 +3100,7 @@
             },
             "arbstate": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2950,6 +3124,7 @@
             },
             "arbitrator/prover": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2978,6 +3153,7 @@
           "paths": {
             "src/bridge/IBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2992,6 +3168,7 @@
             },
             "src/bridge/ISequencerInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3006,6 +3183,7 @@
             },
             "src/bridge/SequencerInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3020,6 +3198,7 @@
             },
             "src/challenge/ChallengeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3034,6 +3213,7 @@
             },
             "src/libraries/Error.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3048,6 +3228,7 @@
             },
             "src/libraries/GasRefundEnabled.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3062,6 +3243,7 @@
             },
             "src/libraries/IGasRefunder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3076,6 +3258,7 @@
             },
             "src/libraries/IReader4844.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3090,6 +3273,7 @@
             },
             "src/osp/OneStepProverHostIo.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3104,6 +3288,7 @@
             },
             "src/rollup/BridgeCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3118,6 +3303,7 @@
             },
             "src/rollup/RollupCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3132,6 +3318,7 @@
             },
             "src/rollup/ValidatorWallet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3146,6 +3333,7 @@
             },
             "yul/Reader4844.yul": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3165,6 +3353,7 @@
           "paths": {
             "src/gov-action-contracts/AIPs/AIP4844/AIP4844Action.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3179,6 +3368,7 @@
             },
             "src/gov-action-contracts/AIPs/AIP4844/SetArbOS20VersionAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3193,6 +3383,7 @@
             },
             "src/gov-action-contracts/AIPs/AIP4844/SetBatchPosterManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3229,6 +3420,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3281,6 +3473,7 @@
           "paths": {
             "src/FeeRouter/ChildToParentRewardRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3304,6 +3497,7 @@
             },
             "src/FeeRouter/DistributionInterval.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3327,6 +3521,7 @@
             },
             "src/FeeRouter/ParentToChildRewardRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3376,6 +3571,7 @@
           "paths": {
             "contracts/src/challengeV2": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3390,6 +3586,7 @@
             },
             "contracts/src/rollup": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3404,6 +3601,7 @@
             },
             "contracts/src/assertionStakingPool": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3423,6 +3621,7 @@
           "paths": {
             "src/bridge/AbsInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3437,6 +3636,7 @@
             },
             "src/bridge/DelayBuffer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3451,6 +3651,7 @@
             },
             "src/bridge/DelayBufferTypes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3465,6 +3666,7 @@
             },
             "src/bridge/IInboxBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3479,6 +3681,7 @@
             },
             "src/bridge/ISequencerInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3493,6 +3696,7 @@
             },
             "src/bridge/Messages.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3507,6 +3711,7 @@
             },
             "src/bridge/SequencerInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3521,6 +3726,7 @@
             },
             "src/libraries/Error.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3535,6 +3741,7 @@
             },
             "src/rollup/BridgeCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3549,6 +3756,7 @@
             },
             "src/rollup/Config.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3563,6 +3771,7 @@
             },
             "src/rollup/RollupCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3611,6 +3820,7 @@
           "paths": {
             "arbos/programs": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3630,6 +3840,7 @@
             },
             "precompiles": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3646,6 +3857,7 @@
             },
             "arbitrator/.gitignore": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3662,6 +3874,7 @@
             },
             "arbitrator/Cargo.lock": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3678,6 +3891,7 @@
             },
             "arbitrator/Cargo.toml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3694,6 +3908,7 @@
             },
             "arbitrator/arbutil": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3713,6 +3928,7 @@
             },
             "arbitrator/caller-env": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3727,6 +3943,7 @@
             },
             "arbitrator/jit": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3743,6 +3960,7 @@
             },
             "arbitrator/prover": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3759,6 +3977,7 @@
             },
             "arbitrator/stylus": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3778,6 +3997,7 @@
             },
             "arbitrator/tools/module_roots": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3794,6 +4014,7 @@
             },
             "arbitrator/wasm-libraries/Cargo.lock": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3810,6 +4031,7 @@
             },
             "arbitrator/wasm-libraries/Cargo.toml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3826,6 +4048,7 @@
             },
             "arbitrator/wasm-libraries/brotli": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3842,6 +4065,7 @@
             },
             "arbitrator/wasm-libraries/forward": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3856,6 +4080,7 @@
             },
             "arbitrator/wasm-libraries/host-io": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3872,6 +4097,7 @@
             },
             "arbitrator/wasm-libraries/program-exec": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3886,6 +4112,7 @@
             },
             "arbitrator/wasm-libraries/soft-float/bindings32.c": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3902,6 +4129,7 @@
             },
             "arbitrator/wasm-libraries/soft-float/bindings64.c": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3918,6 +4146,7 @@
             },
             "arbitrator/wasm-libraries/user-host": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3934,6 +4163,7 @@
             },
             "arbitrator/wasm-libraries/user-host-trait": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3948,6 +4178,7 @@
             },
             "arbitrator/wasm-libraries/user-test": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3964,6 +4195,7 @@
             },
             "arbitrator/wasm-libraries/wasi-stub": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3980,6 +4212,7 @@
             },
             "arbitrator/wasm-testsuite/.gitignore": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3996,6 +4229,7 @@
             },
             "arbitrator/wasm-testsuite/Cargo.lock": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4012,6 +4246,7 @@
             },
             "arbitrator/wasm-testsuite/Cargo.toml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4028,6 +4263,7 @@
             },
             "arbitrator/wasm-testsuite/check.sh": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4044,6 +4280,7 @@
             },
             "arbitrator/wasm-testsuite/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4065,6 +4302,7 @@
           "paths": {
             "src/osp": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4079,6 +4317,7 @@
             },
             "src/state": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4098,6 +4337,7 @@
           "paths": {
             "lib/vm": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4112,6 +4352,7 @@
             },
             "lib/types": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4131,6 +4372,7 @@
           "paths": {
             "core/vm": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4173,6 +4415,7 @@
           "paths": {
             "src/libraries/Error.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4187,6 +4430,7 @@
             },
             "src/challengeV2/IAssertionChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4201,6 +4445,7 @@
             },
             "src/challengeV2/EdgeChallengeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4215,6 +4460,7 @@
             },
             "src/bridge/SequencerInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4229,6 +4475,7 @@
             },
             "src/bridge/ISequencerInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4243,6 +4490,7 @@
             },
             "src/bridge/DelayBufferTypes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4257,6 +4505,7 @@
             },
             "src/bridge/DelayBuffer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4271,6 +4520,7 @@
             },
             "src/assertionStakingPool/StakingPoolCreatorUtils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4285,6 +4535,7 @@
             },
             "src/assertionStakingPool/EdgeStakingPoolCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4299,6 +4550,7 @@
             },
             "src/assertionStakingPool/EdgeStakingPool.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4313,6 +4565,7 @@
             },
             "src/assertionStakingPool/AssertionStakingPoolCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4327,6 +4580,7 @@
             },
             "src/assertionStakingPool/AssertionStakingPool.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4341,6 +4595,7 @@
             },
             "src/assertionStakingPool/AbsBoldStakingPool.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4355,6 +4610,7 @@
             },
             "src/rollup/RollupUserLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4372,6 +4628,7 @@
             },
             "src/rollup/RollupProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4386,6 +4643,7 @@
             },
             "src/rollup/RollupLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4400,6 +4658,7 @@
             },
             "src/rollup/RollupCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4414,6 +4673,7 @@
             },
             "src/rollup/RollupCore.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4431,6 +4691,7 @@
             },
             "src/rollup/RollupAdminLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4445,6 +4706,7 @@
             },
             "src/rollup/IRollupLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4459,6 +4721,7 @@
             },
             "src/rollup/IRollupCore.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4473,6 +4736,7 @@
             },
             "src/rollup/IRollupAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4487,6 +4751,7 @@
             },
             "src/rollup/Config.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4501,6 +4766,7 @@
             },
             "src/rollup/BridgeCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4515,6 +4781,7 @@
             },
             "src/rollup/BOLDUpgradeAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4529,6 +4796,7 @@
             },
             "src/rollup/AssertionState.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4543,6 +4811,7 @@
             },
             "src/rollup/Assertion.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4557,6 +4826,7 @@
             },
             "src/challengeV2/libraries/UintUtilsLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4571,6 +4841,7 @@
             },
             "src/challengeV2/libraries/MerkleTreeLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4585,6 +4856,7 @@
             },
             "src/challengeV2/libraries/Enums.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4599,6 +4871,7 @@
             },
             "src/challengeV2/libraries/EdgeChallengeManagerLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4616,6 +4889,7 @@
             },
             "src/challengeV2/libraries/ChallengeErrors.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4630,6 +4904,7 @@
             },
             "src/challengeV2/libraries/ChallengeEdgeLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4644,6 +4919,7 @@
             },
             "src/challengeV2/libraries/ArrayUtilsLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4658,6 +4934,7 @@
             },
             "src/assertionStakingPool/interfaces/IEdgeStakingPoolCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4672,6 +4949,7 @@
             },
             "src/assertionStakingPool/interfaces/IEdgeStakingPool.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4686,6 +4964,7 @@
             },
             "src/assertionStakingPool/interfaces/IAssertionStakingPoolCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4700,6 +4979,7 @@
             },
             "src/assertionStakingPool/interfaces/IAssertionStakingPool.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4714,6 +4994,7 @@
             },
             "src/assertionStakingPool/interfaces/IAbsBoldStakingPool.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4733,6 +5014,7 @@
           "paths": {
             "contracts/src/rollup/RollupAdminLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4747,6 +5029,7 @@
             },
             "contracts/src/challengeV2/libraries/EdgeChallengeManagerLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4795,6 +5078,7 @@
           "paths": {
             "arbos/arbosState/arbosstate.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4811,6 +5095,7 @@
             },
             "arbos/arbosState/initialize.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4827,6 +5112,7 @@
             },
             "arbos/block_processor.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4843,6 +5129,7 @@
             },
             "arbos/l1pricing/l1PricingOldVersions.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4859,6 +5146,7 @@
             },
             "arbos/l1pricing/l1pricing.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4875,6 +5163,7 @@
             },
             "arbos/retryables/retryable.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4891,6 +5180,7 @@
             },
             "arbos/tx_processor.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4907,6 +5197,7 @@
             },
             "arbos/util/tracing.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4923,6 +5214,7 @@
             },
             "arbos/util/transfer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4939,6 +5231,7 @@
             },
             "arbstate/das_reader.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4955,6 +5248,7 @@
             },
             "arbstate/inbox.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4971,6 +5265,7 @@
             },
             "arbutil/wait_for_l1.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4987,6 +5282,7 @@
             },
             "cmd/replay/main.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5003,6 +5299,7 @@
             },
             "gethhook/geth-hook.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5019,6 +5316,7 @@
             },
             "precompiles/ArbGasInfo.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5035,6 +5333,7 @@
             },
             "precompiles/ArbInfo.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5051,6 +5350,7 @@
             },
             "precompiles/ArbOwner.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5067,6 +5367,7 @@
             },
             "precompiles/precompile.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5083,6 +5384,7 @@
             },
             "util/arbmath/bips.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5099,6 +5401,7 @@
             },
             "util/blobs/blobs.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5120,6 +5423,7 @@
           "paths": {
             "accounts/abi/abi.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5136,6 +5440,7 @@
             },
             "accounts/abi/argument.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5152,6 +5457,7 @@
             },
             "accounts/abi/bind/auth.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5168,6 +5474,7 @@
             },
             "accounts/abi/bind/backend.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5184,6 +5491,7 @@
             },
             "accounts/abi/bind/base.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5200,6 +5508,7 @@
             },
             "accounts/abi/bind/bind.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5216,6 +5525,7 @@
             },
             "accounts/abi/error.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5232,6 +5542,7 @@
             },
             "accounts/abi/method.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5248,6 +5559,7 @@
             },
             "accounts/abi/pack.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5264,6 +5576,7 @@
             },
             "accounts/abi/reflect.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5280,6 +5593,7 @@
             },
             "accounts/abi/topics.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5296,6 +5610,7 @@
             },
             "accounts/keystore/passphrase.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5312,6 +5627,7 @@
             },
             "accounts/keystore/watch.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5328,6 +5644,7 @@
             },
             "accounts/manager.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5344,6 +5661,7 @@
             },
             "common/big.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5360,6 +5678,7 @@
             },
             "common/hexutil/json.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5376,6 +5695,7 @@
             },
             "common/types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5392,6 +5712,7 @@
             },
             "consensus/misc/dao.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5408,6 +5729,7 @@
             },
             "core/arbitrum_hooks.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5424,6 +5746,7 @@
             },
             "core/blockchain.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5440,6 +5763,7 @@
             },
             "core/blockchain_arbitrum.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5456,6 +5780,7 @@
             },
             "core/blockchain_reader.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5472,6 +5797,7 @@
             },
             "core/chain_makers.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5488,6 +5814,7 @@
             },
             "core/error.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5504,6 +5831,7 @@
             },
             "core/evm.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5520,6 +5848,7 @@
             },
             "core/genesis.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5536,6 +5865,7 @@
             },
             "core/rawdb/accessors_chain.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5552,6 +5882,7 @@
             },
             "core/rawdb/accessors_trie.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5568,6 +5899,7 @@
             },
             "core/rawdb/ancient_scheme.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5584,6 +5916,7 @@
             },
             "core/rawdb/ancient_utils.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5600,6 +5933,7 @@
             },
             "core/rawdb/chain_freezer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5616,6 +5950,7 @@
             },
             "core/rawdb/chain_iterator.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5632,6 +5967,7 @@
             },
             "core/rawdb/database.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5648,6 +5984,7 @@
             },
             "core/rawdb/databases_64bit.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5662,6 +5999,7 @@
             },
             "core/rawdb/freezer_batch.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5678,6 +6016,7 @@
             },
             "core/rawdb/freezer_resettable.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5694,6 +6033,7 @@
             },
             "core/rawdb/freezer_table.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5710,6 +6050,7 @@
             },
             "core/rawdb/freezer_utils.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5726,6 +6067,7 @@
             },
             "core/rawdb/schema.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5742,6 +6084,7 @@
             },
             "core/state/database.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5758,6 +6101,7 @@
             },
             "core/state/dump.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5774,6 +6118,7 @@
             },
             "core/state/iterator.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5790,6 +6135,7 @@
             },
             "core/state/journal.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5806,6 +6152,7 @@
             },
             "core/state/snapshot/conversion.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5822,6 +6169,7 @@
             },
             "core/state/snapshot/difflayer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5838,6 +6186,7 @@
             },
             "core/state/snapshot/disklayer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5854,6 +6203,7 @@
             },
             "core/state/snapshot/generate.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5870,6 +6220,7 @@
             },
             "core/state/snapshot/snapshot.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5886,6 +6237,7 @@
             },
             "core/state/state_object.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5902,6 +6254,7 @@
             },
             "core/state/statedb.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5918,6 +6271,7 @@
             },
             "core/state/statedb_arbitrum.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5934,6 +6288,7 @@
             },
             "core/state/trie_prefetcher.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5950,6 +6305,7 @@
             },
             "core/state_processor.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5966,6 +6322,7 @@
             },
             "core/state_transition.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5982,6 +6339,7 @@
             },
             "core/txindexer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5996,6 +6354,7 @@
             },
             "core/types/arbitrum_legacy_tx.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6012,6 +6371,7 @@
             },
             "core/types/gen_account_rlp.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6028,6 +6388,7 @@
             },
             "core/types/hashes.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6044,6 +6405,7 @@
             },
             "core/types/state_account.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6060,6 +6422,7 @@
             },
             "core/types/transaction.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6076,6 +6439,7 @@
             },
             "core/types/transaction_marshalling.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6092,6 +6456,7 @@
             },
             "core/types/tx_blob.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6108,6 +6473,7 @@
             },
             "core/vm/contract.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6124,6 +6490,7 @@
             },
             "core/vm/contracts.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6140,6 +6507,7 @@
             },
             "core/vm/contracts_arbitrum.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6156,6 +6524,7 @@
             },
             "core/vm/eips.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6172,6 +6541,7 @@
             },
             "core/vm/evm.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6188,6 +6558,7 @@
             },
             "core/vm/instructions.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6204,6 +6575,7 @@
             },
             "core/vm/interface.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6220,6 +6592,7 @@
             },
             "core/vm/jump_table.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6236,6 +6609,7 @@
             },
             "core/vm/opcodes.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6252,6 +6626,7 @@
             },
             "core/vm/operations_acl.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6268,6 +6643,7 @@
             },
             "crypto/blake2b/blake2b_f_fuzz.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6282,6 +6658,7 @@
             },
             "crypto/kzg4844/kzg4844.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6298,6 +6675,7 @@
             },
             "crypto/secp256r1/pubkey.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6312,6 +6690,7 @@
             },
             "crypto/secp256r1/verifier.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6326,6 +6705,7 @@
             },
             "ethdb/memorydb/memorydb.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6342,6 +6722,7 @@
             },
             "ethdb/pebble/pebble.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6358,6 +6739,7 @@
             },
             "ethdb/pebble/pebble_non64bit.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6372,6 +6754,7 @@
             },
             "event/subscription.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6388,6 +6771,7 @@
             },
             "log/doc.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6402,6 +6786,7 @@
             },
             "log/format.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6418,6 +6803,7 @@
             },
             "log/handler.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6434,6 +6820,7 @@
             },
             "log/handler_glog.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6450,6 +6837,7 @@
             },
             "log/logger.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6466,6 +6854,7 @@
             },
             "log/root.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6482,6 +6871,7 @@
             },
             "log/syslog.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6496,6 +6886,7 @@
             },
             "metrics/disk_nop.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6512,6 +6903,7 @@
             },
             "metrics/timer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6528,6 +6920,7 @@
             },
             "params/bootnodes.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6544,6 +6937,7 @@
             },
             "params/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6560,6 +6954,7 @@
             },
             "params/forks/forks.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6574,6 +6969,7 @@
             },
             "params/protocol_params.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6590,6 +6986,7 @@
             },
             "params/version.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6606,6 +7003,7 @@
             },
             "rpc/json.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6622,6 +7020,7 @@
             },
             "rpc/metrics.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6638,6 +7037,7 @@
             },
             "rpc/service.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6654,6 +7054,7 @@
             },
             "rpc/subscription.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6670,6 +7071,7 @@
             },
             "rpc/types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6686,6 +7088,7 @@
             },
             "signer/core/apitypes/types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6702,6 +7105,7 @@
             },
             "trie/database.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6718,6 +7122,7 @@
             },
             "trie/hasher.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6734,6 +7139,7 @@
             },
             "trie/iterator.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6750,6 +7156,7 @@
             },
             "trie/proof.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6766,6 +7173,7 @@
             },
             "trie/stacktrie.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6782,6 +7190,7 @@
             },
             "trie/sync.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6798,6 +7207,7 @@
             },
             "trie/triedb/hashdb/database.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6814,6 +7224,7 @@
             },
             "trie/triedb/pathdb/database.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6830,6 +7241,7 @@
             },
             "trie/triedb/pathdb/disklayer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6846,6 +7258,7 @@
             },
             "trie/triedb/pathdb/history.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6862,6 +7275,7 @@
             },
             "trie/trienode/node.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6878,6 +7292,7 @@
             },
             "trie/utils/verkle.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6892,6 +7307,7 @@
             },
             "trie/verkle.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6911,6 +7327,7 @@
           "paths": {
             "src/gov-action-contracts/AIPs/AIPArbOS30/ArbOneAIPArbOS30AddWasmCacheManagerAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6925,6 +7342,7 @@
             },
             "src/gov-action-contracts/AIPs/AIPArbOS30/ArbOneAIPArbOS30UpgradeChallengeManagerAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6939,6 +7357,7 @@
             },
             "src/gov-action-contracts/AIPs/AIPArbOS30/NovaAIPArbOS30AddWasmCacheManagerAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6953,6 +7372,7 @@
             },
             "src/gov-action-contracts/AIPs/AIPArbOS30/NovaAIPArbOS30UpgradeChallengeManagerAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6967,6 +7387,7 @@
             },
             "src/gov-action-contracts/AIPs/AIPArbOS30/SetArbOS30VersionAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6981,6 +7402,7 @@
             },
             "src/gov-action-contracts/AIPs/AIPArbOS30/parent_contracts/AIPArbOS30AddWasmCacheManagerAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6995,6 +7417,7 @@
             },
             "src/gov-action-contracts/AIPs/AIPArbOS30/parent_contracts/AIPArbOS30UpgradeChallengeManagerAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7009,6 +7432,7 @@
             },
             "src/gov-action-contracts/arbos-upgrade/UpgradeArbOSVersionAtTimestampAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7023,6 +7447,7 @@
             },
             "src/gov-action-contracts/AIPs/AIPNovaFeeRoutingAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7060,6 +7485,7 @@
           "paths": {
             "src/challenge/ChallengeLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7074,6 +7500,7 @@
             },
             "src/challenge/ChallengeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7097,6 +7524,7 @@
             },
             "src/osp/IOneStepProofEntry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7111,6 +7539,7 @@
             },
             "src/osp/OneStepProofEntry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7125,6 +7554,7 @@
             },
             "src/challenge/IChallengeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7139,6 +7569,7 @@
             },
             "src/rollup/AbsRollupEventInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7153,6 +7584,7 @@
             },
             "src/rollup/ERC20RollupEventInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7167,6 +7599,7 @@
             },
             "src/rollup/RollupEventInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7207,6 +7640,7 @@
           "paths": {
             "arbitrator/prover/src/binary.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7221,6 +7655,7 @@
             },
             "arbitrator/prover/src/programs/config.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7235,6 +7670,7 @@
             },
             "arbos/arbosState/arbosstate.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7249,6 +7685,7 @@
             },
             "arbos/programs/params.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7263,6 +7700,7 @@
             },
             "arbos/programs/programs.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7277,6 +7715,7 @@
             },
             "arbos/tx_processor.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7291,6 +7730,7 @@
             },
             "precompiles/ArbWasmCache.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7305,6 +7745,7 @@
             },
             "precompiles/precompile.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7324,6 +7765,7 @@
           "paths": {
             "src/chain/CacheManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7338,6 +7780,7 @@
             },
             "src/precompiles/ArbWasmCache.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7352,6 +7795,7 @@
             },
             "src/rollup/IRollupLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7375,6 +7819,7 @@
             },
             "src/rollup/RollupAdminLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7389,6 +7834,7 @@
             },
             "src/rollup/RollupCore.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7403,6 +7849,7 @@
             },
             "src/rollup/RollupUserLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7452,6 +7899,7 @@
           "paths": {
             "src/bridge/AbsInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7466,6 +7914,7 @@
             },
             "src/bridge/AbsOutbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7480,6 +7929,7 @@
             },
             "src/bridge/ERC20Bridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7494,6 +7944,7 @@
             },
             "src/bridge/ERC20Inbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7508,6 +7959,7 @@
             },
             "src/bridge/ERC20Outbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7522,6 +7974,7 @@
             },
             "src/bridge/IERC20Bridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7536,6 +7989,7 @@
             },
             "src/bridge/IERC20Inbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7550,6 +8004,7 @@
             },
             "src/bridge/IInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7564,6 +8019,7 @@
             },
             "src/bridge/Inbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7578,6 +8034,7 @@
             },
             "src/bridge/Outbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7592,6 +8049,7 @@
             },
             "src/libraries/Constants.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7606,6 +8064,7 @@
             },
             "src/libraries/DecimalsConverterHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7620,6 +8079,7 @@
             },
             "src/libraries/Error.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7634,6 +8094,7 @@
             },
             "src/rollup/DeployHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7648,6 +8109,7 @@
             },
             "src/rollup/RollupCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7688,6 +8150,7 @@
           "paths": {
             "src/bridge/AbsBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7702,6 +8165,7 @@
             },
             "src/bridge/AbsInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7716,6 +8180,7 @@
             },
             "src/bridge/AbsOutbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7730,6 +8195,7 @@
             },
             "src/bridge/Bridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7744,6 +8210,7 @@
             },
             "src/bridge/ERC20Bridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7761,6 +8228,7 @@
             },
             "src/bridge/ERC20Inbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7775,6 +8243,7 @@
             },
             "src/bridge/ERC20Outbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7789,6 +8258,7 @@
             },
             "src/bridge/IBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7803,6 +8273,7 @@
             },
             "src/bridge/IERC20Bridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7817,6 +8288,7 @@
             },
             "src/bridge/IERC20Inbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7831,6 +8303,7 @@
             },
             "src/bridge/IEthBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7845,6 +8318,7 @@
             },
             "src/bridge/IInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7859,6 +8333,7 @@
             },
             "src/bridge/IInboxBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7873,6 +8348,7 @@
             },
             "src/bridge/IOutbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7887,6 +8363,7 @@
             },
             "src/bridge/Inbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7901,6 +8378,7 @@
             },
             "src/bridge/Outbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7915,6 +8393,7 @@
             },
             "src/bridge/SequencerInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7929,6 +8408,7 @@
             },
             "src/libraries/Error.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7943,6 +8423,7 @@
             },
             "src/rollup/AbsRollupEventInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7957,6 +8438,7 @@
             },
             "src/rollup/BridgeCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7971,6 +8453,7 @@
             },
             "src/rollup/Config.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7985,6 +8468,7 @@
             },
             "src/rollup/DeployHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7999,6 +8483,7 @@
             },
             "src/rollup/ERC20RollupEventInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8013,6 +8498,7 @@
             },
             "src/rollup/IRollupCore.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8027,6 +8513,7 @@
             },
             "src/rollup/RollupAdminLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8041,6 +8528,7 @@
             },
             "src/rollup/RollupCore.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8055,6 +8543,7 @@
             },
             "src/rollup/RollupCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8069,6 +8558,7 @@
             },
             "src/rollup/RollupEventInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8083,6 +8573,7 @@
             },
             "src/rollup/RollupLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8102,6 +8593,7 @@
           "paths": {
             "contracts/rpc-utils/NodeInterface.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8116,6 +8608,7 @@
             },
             "contracts/rpc-utils/RetryableTicketCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8130,6 +8623,7 @@
             },
             "contracts/tokenbridge/arbitrum/L2ArbitrumMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8144,6 +8638,7 @@
             },
             "contracts/tokenbridge/arbitrum/L2AtomicTokenBridgeFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8158,6 +8653,7 @@
             },
             "contracts/tokenbridge/arbitrum/StandardArbERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8172,6 +8668,7 @@
             },
             "contracts/tokenbridge/arbitrum/gateway/L2ArbitrumGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8186,6 +8683,7 @@
             },
             "contracts/tokenbridge/arbitrum/gateway/L2CustomGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8200,6 +8698,7 @@
             },
             "contracts/tokenbridge/arbitrum/gateway/L2ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8214,6 +8713,7 @@
             },
             "contracts/tokenbridge/arbitrum/gateway/L2GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8228,6 +8728,7 @@
             },
             "contracts/tokenbridge/arbitrum/gateway/L2ReverseCustomGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8242,6 +8743,7 @@
             },
             "contracts/tokenbridge/arbitrum/gateway/L2WethGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8256,6 +8758,7 @@
             },
             "contracts/tokenbridge/ethereum/ICustomToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8270,6 +8773,7 @@
             },
             "contracts/tokenbridge/ethereum/L1ArbitrumMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8293,6 +8797,7 @@
             },
             "contracts/tokenbridge/ethereum/L1AtomicTokenBridgeCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8307,6 +8812,7 @@
             },
             "contracts/tokenbridge/ethereum/L1TokenBridgeRetryableSender.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8321,6 +8827,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1ArbitrumExtendedGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8335,6 +8842,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1ArbitrumGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8358,6 +8866,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1CustomGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8381,6 +8890,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8404,6 +8914,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1ForceOnlyReverseCustomGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8418,6 +8929,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8441,6 +8953,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1OrbitCustomGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8455,6 +8968,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1OrbitERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8472,6 +8986,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1OrbitGatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8486,6 +9001,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1OrbitReverseCustomGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8500,6 +9016,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1ReverseCustomGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8514,6 +9031,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1WethGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8537,6 +9055,7 @@
             },
             "contracts/tokenbridge/libraries/AddressAliasHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8551,6 +9070,7 @@
             },
             "contracts/tokenbridge/libraries/BytesLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8565,6 +9085,7 @@
             },
             "contracts/tokenbridge/libraries/BytesParser.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8579,6 +9100,7 @@
             },
             "contracts/tokenbridge/libraries/ClonableBeaconProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8593,6 +9115,7 @@
             },
             "contracts/tokenbridge/libraries/Cloneable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8607,6 +9130,7 @@
             },
             "contracts/tokenbridge/libraries/ERC165.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8621,6 +9145,7 @@
             },
             "contracts/tokenbridge/libraries/ERC20Upgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8644,6 +9169,7 @@
             },
             "contracts/tokenbridge/libraries/IERC20Bridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8658,6 +9184,7 @@
             },
             "contracts/tokenbridge/libraries/ITransferAndCall.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8672,6 +9199,7 @@
             },
             "contracts/tokenbridge/libraries/L2CustomGatewayToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8686,6 +9214,7 @@
             },
             "contracts/tokenbridge/libraries/L2GatewayToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8700,6 +9229,7 @@
             },
             "contracts/tokenbridge/libraries/ProxyUtil.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8714,6 +9244,7 @@
             },
             "contracts/tokenbridge/libraries/TransferAndCallToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8728,6 +9259,7 @@
             },
             "contracts/tokenbridge/libraries/Whitelist.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8742,6 +9274,7 @@
             },
             "contracts/tokenbridge/libraries/aeERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8756,6 +9289,7 @@
             },
             "contracts/tokenbridge/libraries/aeWETH.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8770,6 +9304,7 @@
             },
             "contracts/tokenbridge/libraries/draft-ERC20PermitUpgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8784,6 +9319,7 @@
             },
             "contracts/tokenbridge/libraries/gateway/GatewayMessageHandler.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8798,6 +9334,7 @@
             },
             "contracts/tokenbridge/libraries/gateway/GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8812,6 +9349,7 @@
             },
             "contracts/tokenbridge/libraries/gateway/IGatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8826,6 +9364,7 @@
             },
             "contracts/tokenbridge/libraries/gateway/TokenGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8866,6 +9405,7 @@
           "paths": {
             "contracts/src/challengeV2": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8880,6 +9420,7 @@
             },
             "contracts/src/rollup": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8894,6 +9435,7 @@
             },
             "contracts/src/assertionStakingPool": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8908,6 +9450,7 @@
             },
             "contracts/src/bridge": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8927,6 +9470,7 @@
           "paths": {
             "src/FeeRouter": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8967,6 +9511,7 @@
           "paths": {
             "contracts/tokenbridge/ethereum/gateway/L1USDCGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8981,6 +9526,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1OrbitUSDCGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8995,6 +9541,7 @@
             },
             "contracts/tokenbridge/arbitrum/gateway/L2USDCGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9009,6 +9556,7 @@
             },
             "contracts/tokenbridge/libraries/IFiatToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9023,6 +9571,7 @@
             },
             "contracts/tokenbridge/arbitrum/gateway/L2ArbitrumGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9042,6 +9591,7 @@
           "paths": {
             "src/gov-action-contracts/arbos-upgrade/UpgradeArbOSVersionAtTimestampAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9122,6 +9672,7 @@
           "paths": {
             "src/express-lane-auction": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9235,6 +9786,7 @@
           "paths": {
             "src": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9287,6 +9839,7 @@
           "paths": {
             "src/assertionStakingPool/EdgeStakingPool.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9301,6 +9854,7 @@
             },
             "src/assertionStakingPool/interfaces/IEdgeStakingPool.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9315,6 +9869,7 @@
             },
             "src/challengeV2/EdgeChallengeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9329,6 +9884,7 @@
             },
             "src/challengeV2/IAssertionChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9343,6 +9899,7 @@
             },
             "src/challengeV2/IEdgeChallengeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9357,6 +9914,7 @@
             },
             "src/challengeV2/libraries/ChallengeEdgeLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9371,6 +9929,7 @@
             },
             "src/challengeV2/libraries/EdgeChallengeManagerLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9385,6 +9944,7 @@
             },
             "src/challengeV2/libraries/Structs.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9399,6 +9959,7 @@
             },
             "src/rollup/Config.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9422,6 +9983,7 @@
             },
             "src/rollup/IRollupCore.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9436,6 +9998,7 @@
             },
             "src/rollup/RollupCore.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9450,6 +10013,7 @@
             },
             "src/rollup/RollupLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9464,6 +10028,7 @@
             },
             "src/rollup/RollupUserLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9478,6 +10043,7 @@
             },
             "src/rollup/BOLDUpgradeAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9501,6 +10067,7 @@
             },
             "src/express-lane-auction/Balance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9515,6 +10082,7 @@
             },
             "src/express-lane-auction/Burner.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9529,6 +10097,7 @@
             },
             "src/express-lane-auction/ELCRound.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9543,6 +10112,7 @@
             },
             "src/express-lane-auction/Errors.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9557,6 +10127,7 @@
             },
             "src/express-lane-auction/ExpressLaneAuction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9571,6 +10142,7 @@
             },
             "src/express-lane-auction/IExpressLaneAuction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9585,6 +10157,7 @@
             },
             "src/express-lane-auction/RoundTimingInfo.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9599,6 +10172,7 @@
             },
             "src/bridge/ERC20Bridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9613,6 +10187,7 @@
             },
             "src/bridge/AbsBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9627,6 +10202,7 @@
             },
             "src/rollup/RollupAdminLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9641,6 +10217,7 @@
             },
             "src/rollup/BridgeCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9655,6 +10232,7 @@
             },
             "src/bridge/SequencerInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9692,6 +10270,7 @@
           "paths": {
             "src/bridge/ISequencerInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9706,6 +10285,7 @@
             },
             "src/bridge/SequencerInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9720,6 +10300,7 @@
             },
             "src/libraries/Error.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9734,6 +10315,7 @@
             },
             "src/rollup/BridgeCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9748,6 +10330,7 @@
             },
             "src/rollup/ERC20RollupEventInbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9762,6 +10345,7 @@
             },
             "src/rollup/RollupAdminLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9776,6 +10360,7 @@
             },
             "src/rollup/RollupCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9790,6 +10375,7 @@
             },
             "src/stylus/StylusDeployer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9826,6 +10412,7 @@
           "paths": {
             "src/security-council-mgmt/SecurityCouncilManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9840,6 +10427,7 @@
             },
             "src/security-council-mgmt/governors/modules/SecurityCouncilNomineeElectionGovernorCountingUpgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9854,6 +10442,7 @@
             },
             "src/security-council-mgmt/interfaces/ISecurityCouncilManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9868,6 +10457,7 @@
             },
             "src/security-council-mgmt/interfaces/ISecurityCouncilNomineeElectionGovernor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9944,6 +10534,7 @@
           "paths": {
             "src/bridge/ERC20Bridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9958,6 +10549,7 @@
             },
             "src": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9977,6 +10569,7 @@
           "paths": {
             "contracts/parent-chain/contract-upgrades/NitroContracts2Point1Point2UpgradeAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9991,6 +10584,7 @@
             },
             "contracts/parent-chain/contract-upgrades/NitroContracts2Point1Point3UpgradeAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10043,6 +10637,7 @@
           "paths": {
             "src/RewardDistributor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10087,6 +10682,7 @@
           "paths": {
             "arbos": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10110,6 +10706,7 @@
             },
             "precompiles": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10138,6 +10735,7 @@
           "paths": {
             "core": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10189,6 +10787,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10242,6 +10841,7 @@
           "paths": {
             "arbos/arbosState/arbosstate.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10265,6 +10865,7 @@
             },
             "arbos/arbosState/initialize.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10279,6 +10880,7 @@
             },
             "precompiles/ArbNativeTokenManager.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10302,6 +10904,7 @@
             },
             "precompiles/ArbOwner.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10325,6 +10928,7 @@
             },
             "precompiles/precompile.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10357,6 +10961,7 @@
             },
             "precompiles/ArbSys.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10371,6 +10976,7 @@
             },
             "precompiles/ArbOwnerPublic.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10390,6 +10996,7 @@
           "paths": {
             "src/precompiles/ArbNativeTokenManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10404,6 +11011,7 @@
             },
             "src/precompiles/ArbOwner.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10418,6 +11026,7 @@
             },
             "src/bridge/extra/ERC20MigrationOutbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10432,6 +11041,7 @@
             },
             "src/bridge/extra/IERC20MigrationOutbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10451,6 +11061,7 @@
           "paths": {
             "core/genesis.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10465,6 +11076,7 @@
             },
             "core/state/statedb.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10479,6 +11091,7 @@
             },
             "core/state/statedb_hooked.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10493,6 +11106,7 @@
             },
             "core/tracing/gen_balance_change_reason_stringer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10507,6 +11121,7 @@
             },
             "core/tracing/hooks.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10521,6 +11136,7 @@
             },
             "core/types/arbitrum_signer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10535,6 +11151,7 @@
             },
             "core/vm/interface.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10549,6 +11166,7 @@
             },
             "params/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10563,6 +11181,7 @@
             },
             "params/config_arbitrum.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10631,6 +11250,7 @@
           "paths": {
             "src/UpgradeExecutor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10683,6 +11303,7 @@
           "paths": {
             "src/security-council-mgmt": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10728,6 +11349,7 @@
           "paths": {
             "src/L2ArbitrumGovernorV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10742,6 +11364,7 @@
             },
             "src/gov-action-contracts/gov-upgrade-contracts/upgrade-proxy/MultiProxyUpgradeAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10756,6 +11379,7 @@
             },
             "scripts/forge-scripts/DeployConstants.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10770,6 +11394,7 @@
             },
             "scripts/forge-scripts/DeployImplementation.s.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10784,6 +11409,7 @@
             },
             "scripts/forge-scripts/DeployMultiProxyUpgradeAction.s.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10798,6 +11424,7 @@
             },
             "scripts/forge-scripts/SubmitUpgradeProposalScript.s.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10812,6 +11439,7 @@
             },
             "scripts/forge-scripts/utils/EncodeL2ArbSysProposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10860,6 +11488,7 @@
           "paths": {
             "arbos": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10901,6 +11530,7 @@
             },
             "precompiles": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10947,6 +11577,7 @@
           "paths": {
             "core": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10988,6 +11619,7 @@
             },
             "params": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11034,6 +11666,7 @@
           "paths": {
             "src/chain/ResourceConstraintManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -11053,6 +11686,7 @@
           "paths": {
             "src/gov-action-contracts/AIPs/ArbOS50/ArbOS50SettingsAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -11150,6 +11784,7 @@
           "paths": {
             "arbitrator/prover": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11164,6 +11799,7 @@
             },
             "crates/prover/src/machine.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11178,6 +11814,7 @@
             },
             "arbstate": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11210,6 +11847,7 @@
             },
             "daprovider": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11247,6 +11885,7 @@
           "paths": {
             "src/osp": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -11292,6 +11931,7 @@
           "paths": {
             "src/L2ArbitrumGovernor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -11333,6 +11973,7 @@
             },
             "src/L2ArbitrumToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -11374,6 +12015,7 @@
             },
             "src/gov-action-contracts/AIPs/ActivateDvpQuorumAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -11445,6 +12087,7 @@
           "paths": {
             "src/stylus/StylusDeployer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -11459,6 +12102,7 @@
             },
             "src/chain/CacheManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -11499,6 +12143,7 @@
           "paths": {
             "src/RewardDistributor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -11547,6 +12192,7 @@
           "paths": {
             "arbos": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11636,6 +12282,7 @@
             },
             "precompiles": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11730,6 +12377,7 @@
           "paths": {
             "core": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11771,6 +12419,7 @@
             },
             "params": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11817,6 +12466,7 @@
           "paths": {
             "src/chain/ResourceConstraintManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -11867,6 +12517,7 @@
             },
             "src/chain/BaseFeeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -11886,6 +12537,7 @@
           "paths": {
             "src/gov-action-contracts/AIPs/ArbOS61/ArbOS61SettingsAction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -11922,6 +12574,7 @@
           "paths": {
             "src": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -11974,6 +12627,7 @@
           "paths": {
             "contracts/tokenbridge/ethereum/gateway/AbsYbbERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -11997,6 +12651,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/AbsYbbGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12020,6 +12675,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/IYbbGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12043,6 +12699,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1OrbitYbbCustomGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12066,6 +12723,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1OrbitYbbERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12089,6 +12747,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1YbbCustomGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12112,6 +12771,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1YbbERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12135,6 +12795,7 @@
             },
             "contracts/tokenbridge/libraries/vault/IMasterVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12158,6 +12819,7 @@
             },
             "contracts/tokenbridge/libraries/vault/IMasterVaultFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12181,6 +12843,7 @@
             },
             "contracts/tokenbridge/libraries/vault/MasterVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12204,6 +12867,7 @@
             },
             "contracts/tokenbridge/libraries/vault/MasterVaultFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12227,6 +12891,7 @@
             },
             "contracts/tokenbridge/libraries/vault/MasterVaultRoles.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12250,6 +12915,7 @@
             },
             "test-foundry/L1OrbitYbbCustomGateway.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12273,6 +12939,7 @@
             },
             "test-foundry/L1OrbitYbbERC20Gateway.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12296,6 +12963,7 @@
             },
             "test-foundry/L1YbbERC20Gateway.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12319,6 +12987,7 @@
             },
             "test-foundry/YbbDoubleInit.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12342,6 +13011,7 @@
             },
             "test-foundry/libraries/vault/MasterVaultAttack.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12365,6 +13035,7 @@
             },
             "test-foundry/libraries/vault/MasterVaultCore.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12388,6 +13059,7 @@
             },
             "test-foundry/libraries/vault/MasterVaultDepositRedeem.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12411,6 +13083,7 @@
             },
             "test-foundry/libraries/vault/MasterVaultFactory.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12434,6 +13107,7 @@
             },
             "test-foundry/libraries/vault/MasterVaultFirstDeposit.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12457,6 +13131,7 @@
             },
             "test-foundry/libraries/vault/invariant/MasterVaultHandler.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12480,6 +13155,7 @@
             },
             "test-foundry/libraries/vault/invariant/MasterVaultInvariant.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12503,6 +13179,7 @@
             },
             "test-foundry/libraries/vault/mutation/MasterVaultAccessControl.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12526,6 +13203,7 @@
             },
             "test-foundry/libraries/vault/mutation/MasterVaultDefaultSubVault.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12549,6 +13227,7 @@
             },
             "test-foundry/libraries/vault/mutation/MasterVaultFees.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12572,6 +13251,7 @@
             },
             "test-foundry/libraries/vault/mutation/MasterVaultInit.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12595,6 +13275,7 @@
             },
             "test-foundry/libraries/vault/mutation/MasterVaultPause.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12618,6 +13299,7 @@
             },
             "test-foundry/libraries/vault/mutation/MasterVaultRebalance.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12641,6 +13323,7 @@
             },
             "test-foundry/libraries/vault/mutation/MasterVaultRebalanceCooldown.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12664,6 +13347,7 @@
             },
             "test-foundry/libraries/vault/mutation/MasterVaultRedeem.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12687,6 +13371,7 @@
             },
             "test-foundry/libraries/vault/mutation/MasterVaultRoles.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12710,6 +13395,7 @@
             },
             "test-foundry/libraries/vault/mutation/MasterVaultSetSubVault.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12733,6 +13419,7 @@
             },
             "test-foundry/libraries/vault/mutation/MasterVaultSetters.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12756,6 +13443,7 @@
             },
             "test-foundry/libraries/vault/scenarios/MasterVaultScenario01.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12779,6 +13467,7 @@
             },
             "test-foundry/libraries/vault/scenarios/MasterVaultScenario02.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12802,6 +13491,7 @@
             },
             "test-foundry/libraries/vault/scenarios/MasterVaultScenario03.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12825,6 +13515,7 @@
             },
             "test-foundry/libraries/vault/scenarios/MasterVaultScenario04.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12848,6 +13539,7 @@
             },
             "test-foundry/libraries/vault/scenarios/MasterVaultScenario05.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12871,6 +13563,7 @@
             },
             "test-foundry/libraries/vault/scenarios/MasterVaultScenario06.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12894,6 +13587,7 @@
             },
             "test-foundry/libraries/vault/scenarios/MasterVaultScenario07.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12917,6 +13611,7 @@
             },
             "test-foundry/libraries/vault/scenarios/MasterVaultScenario08.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12940,6 +13635,7 @@
             },
             "test-foundry/libraries/vault/scenarios/MasterVaultScenario09.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12963,6 +13659,7 @@
             },
             "test-foundry/libraries/vault/scenarios/MasterVaultScenario10.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -12986,6 +13683,7 @@
             },
             "test-foundry/libraries/vault/scenarios/MasterVaultScenario11.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -13009,6 +13707,7 @@
             },
             "test-foundry/libraries/vault/scenarios/MasterVaultScenarioCore.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -13032,6 +13731,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1ArbitrumGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -13055,6 +13755,7 @@
             },
             "contracts/tokenbridge/ethereum/gateway/L1OrbitERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -13103,6 +13804,7 @@
           "paths": {
             "src/chain/TipCollectionToggler.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {

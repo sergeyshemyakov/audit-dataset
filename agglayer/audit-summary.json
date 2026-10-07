@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "agglayer",
   "reports": [
     {
@@ -34,6 +34,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -53,6 +54,7 @@
           "paths": {
             "pil": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -72,6 +74,7 @@
           "paths": {
             "main": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -91,6 +94,7 @@
           "paths": {
             "zkasm": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -127,6 +131,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -235,6 +240,7 @@
           "paths": {
             "src/BridgeExtension.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -261,6 +267,7 @@
             },
             "src/BridgeExtensionProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -284,6 +291,7 @@
             },
             "src/IBridgeAndCall.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -307,6 +315,7 @@
             },
             "src/JumpPoint.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -355,6 +364,7 @@
           "paths": {
             "crates/pessimistic-proof": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -407,6 +417,7 @@
           "paths": {
             "crates/agglayer-aggregator-notifier": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -431,6 +442,7 @@
             },
             "crates/agglayer-certificate-orchestrator": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -482,6 +494,7 @@
             },
             "crates/agglayer-clock": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -497,6 +510,7 @@
             },
             "crates/agglayer-config": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -512,6 +526,7 @@
             },
             "crates/agglayer-contracts": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -536,6 +551,7 @@
             },
             "crates/agglayer-gcp-kms": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -551,6 +567,7 @@
             },
             "crates/agglayer-grpc-api": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -566,6 +583,7 @@
             },
             "crates/agglayer-grpc-client": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -581,6 +599,7 @@
             },
             "crates/agglayer-grpc-server": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -596,6 +615,7 @@
             },
             "crates/agglayer-grpc-types": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -611,6 +631,7 @@
             },
             "crates/agglayer-jsonrpc-api": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -644,6 +665,7 @@
             },
             "crates/agglayer-node": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -659,6 +681,7 @@
             },
             "crates/agglayer-rate-limiting": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -674,6 +697,7 @@
             },
             "crates/agglayer-rpc": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -725,6 +749,7 @@
             },
             "crates/agglayer-signer": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -740,6 +765,7 @@
             },
             "crates/agglayer-storage": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -794,6 +820,7 @@
             },
             "crates/agglayer-telemetry": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -809,6 +836,7 @@
             },
             "crates/agglayer-types": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -880,6 +908,7 @@
             },
             "crates/agglayer-utils": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -895,6 +924,7 @@
             },
             "crates/agglayer": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -910,6 +940,7 @@
             },
             "crates/pessimistic-proof-core": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -943,6 +974,7 @@
             },
             "crates/pessimistic-proof-program": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -976,6 +1008,7 @@
             },
             "crates/pessimistic-proof": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1005,6 +1038,7 @@
           "paths": {
             "crates/aggchain-proof-builder": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1020,6 +1054,7 @@
             },
             "crates/aggchain-proof-contracts": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1035,6 +1070,7 @@
             },
             "crates/aggchain-proof-core": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1050,6 +1086,7 @@
             },
             "crates/aggchain-proof-program": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1065,6 +1102,7 @@
             },
             "crates/aggchain-proof-service": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1080,6 +1118,7 @@
             },
             "crates/aggchain-proof-types": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1095,6 +1134,7 @@
             },
             "crates/aggkit-prover-config": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1110,6 +1150,7 @@
             },
             "crates/aggkit-prover-types": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1125,6 +1166,7 @@
             },
             "crates/aggkit-prover": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1140,6 +1182,7 @@
             },
             "crates/agglayer-prover-config": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1155,6 +1198,7 @@
             },
             "crates/agglayer-prover-types": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1170,6 +1214,7 @@
             },
             "crates/agglayer-prover": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1185,6 +1230,7 @@
             },
             "crates/proposer-client": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1200,6 +1246,7 @@
             },
             "crates/proposer-elfs": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1215,6 +1262,7 @@
             },
             "crates/proposer-service": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1230,6 +1278,7 @@
             },
             "crates/prover-alloy": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1245,6 +1294,7 @@
             },
             "crates/prover-config": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1260,6 +1310,7 @@
             },
             "crates/prover-dummy-program": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1275,6 +1326,7 @@
             },
             "crates/prover-elf-utils": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1290,6 +1342,7 @@
             },
             "crates/prover-engine": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1305,6 +1358,7 @@
             },
             "crates/prover-executor": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1320,6 +1374,7 @@
             },
             "crates/prover-logger": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1335,6 +1390,7 @@
             },
             "crates/prover-utils": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1355,6 +1411,7 @@
           "paths": {
             "agglayer": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1399,6 +1456,7 @@
             },
             "aggoracle": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1441,6 +1499,7 @@
             },
             "aggsender": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1555,6 +1614,7 @@
             },
             "bridgesync": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1643,6 +1703,7 @@
             },
             "claimsponsor": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1658,6 +1719,7 @@
             },
             "cmd": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1700,6 +1762,7 @@
             },
             "common": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1733,6 +1796,7 @@
             },
             "config": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1775,6 +1839,7 @@
             },
             "db": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1799,6 +1864,7 @@
             },
             "etherman": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1823,6 +1889,7 @@
             },
             "healthcheck": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1838,6 +1905,7 @@
             },
             "hex": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1853,6 +1921,7 @@
             },
             "l1infotree": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1868,6 +1937,7 @@
             },
             "l1infotreesync": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1910,6 +1980,7 @@
             },
             "lastgersync": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1952,6 +2023,7 @@
             },
             "log": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1967,6 +2039,7 @@
             },
             "merkletree": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1982,6 +2055,7 @@
             },
             "opnode": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1997,6 +2071,7 @@
             },
             "pprof": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2012,6 +2087,7 @@
             },
             "prometheus": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2027,6 +2103,7 @@
             },
             "reorgdetector": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2060,6 +2137,7 @@
             },
             "rpc": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2075,6 +2153,7 @@
             },
             "state": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2090,6 +2169,7 @@
             },
             "sync": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2132,6 +2212,7 @@
             },
             "tools": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2147,6 +2228,7 @@
             },
             "translator": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2162,6 +2244,7 @@
             },
             "tree": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2177,6 +2260,7 @@
             },
             "version.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2197,6 +2281,7 @@
           "paths": {
             "contracts/PolygonZkEVM.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2212,6 +2297,7 @@
             },
             "contracts/PolygonZkEVMBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2227,6 +2313,7 @@
             },
             "contracts/PolygonZkEVMGlobalExitRoot.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2242,6 +2329,7 @@
             },
             "contracts/PolygonZkEVMGlobalExitRootL2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2257,6 +2345,7 @@
             },
             "contracts/PolygonZkEVMTimelock.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2272,6 +2361,7 @@
             },
             "contracts/deployment/PolygonZkEVMDeployer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2287,6 +2377,7 @@
             },
             "contracts/interfaces/IBasePolygonZkEVMGlobalExitRoot.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2302,6 +2393,7 @@
             },
             "contracts/interfaces/IBridgeMessageReceiver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2317,6 +2409,7 @@
             },
             "contracts/interfaces/IPolygonZkEVMBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2332,6 +2425,7 @@
             },
             "contracts/interfaces/IPolygonZkEVMErrors.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2347,6 +2441,7 @@
             },
             "contracts/interfaces/IPolygonZkEVMGlobalExitRoot.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2362,6 +2457,7 @@
             },
             "contracts/interfaces/IVerifierRollup.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2377,6 +2473,7 @@
             },
             "contracts/lib/DepositContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2392,6 +2489,7 @@
             },
             "contracts/lib/EmergencyManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2407,6 +2505,7 @@
             },
             "contracts/lib/GlobalExitRootLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2422,6 +2521,7 @@
             },
             "contracts/lib/TokenWrapped.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2437,6 +2537,7 @@
             },
             "contracts/mainnetUpgraded/PolygonZkEVMUpgraded.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2452,6 +2553,7 @@
             },
             "contracts/testnet/PolygonZkEVMTestnetClearStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2467,6 +2569,7 @@
             },
             "contracts/testnet/PolygonZkEVMTestnetV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2482,6 +2585,7 @@
             },
             "contracts/token-wrapped-bridge-compiled/TokenWrappedBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2497,6 +2601,7 @@
             },
             "contracts/v2/AggLayerGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2512,6 +2617,7 @@
             },
             "contracts/v2/PolygonRollupManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2527,6 +2633,7 @@
             },
             "contracts/v2/PolygonZkEVMBridgeV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2565,6 +2672,7 @@
             },
             "contracts/v2/PolygonZkEVMGlobalExitRootV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2580,6 +2688,7 @@
             },
             "contracts/v2/aggchains/AggchainECDSA.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2604,6 +2713,7 @@
             },
             "contracts/v2/aggchains/AggchainFEP.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2619,6 +2729,7 @@
             },
             "contracts/v2/consensus/pessimistic/PolygonPessimisticConsensus.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2634,6 +2745,7 @@
             },
             "contracts/v2/consensus/validium/PolygonDataCommittee.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2649,6 +2761,7 @@
             },
             "contracts/v2/consensus/validium/PolygonValidiumEtrog.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2664,6 +2777,7 @@
             },
             "contracts/v2/consensus/zkEVM/PolygonZkEVMEtrog.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2679,6 +2793,7 @@
             },
             "contracts/v2/consensus/zkEVM/PolygonZkEVMExistentEtrog.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2694,6 +2809,7 @@
             },
             "contracts/v2/interfaces/IAggLayerGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2709,6 +2825,7 @@
             },
             "contracts/v2/interfaces/IAggchainBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2724,6 +2841,7 @@
             },
             "contracts/v2/interfaces/IBridgeL2SovereignChains.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2739,6 +2857,7 @@
             },
             "contracts/v2/interfaces/IBytecodeStorer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2754,6 +2873,7 @@
             },
             "contracts/v2/interfaces/IDataAvailabilityProtocol.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2769,6 +2889,7 @@
             },
             "contracts/v2/interfaces/IGlobalExitRootManagerL2SovereignChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2784,6 +2905,7 @@
             },
             "contracts/v2/interfaces/IPolygonConsensusBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2799,6 +2921,7 @@
             },
             "contracts/v2/interfaces/IPolygonDataCommitteeErrors.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2814,6 +2937,7 @@
             },
             "contracts/v2/interfaces/IPolygonPessimisticConsensus.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2829,6 +2953,7 @@
             },
             "contracts/v2/interfaces/IPolygonRollupBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2844,6 +2969,7 @@
             },
             "contracts/v2/interfaces/IPolygonRollupManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2859,6 +2985,7 @@
             },
             "contracts/v2/interfaces/IPolygonValidium.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2874,6 +3001,7 @@
             },
             "contracts/v2/interfaces/IPolygonZkEVMBridgeV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2898,6 +3026,7 @@
             },
             "contracts/v2/interfaces/IPolygonZkEVMEtrogErrors.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2913,6 +3042,7 @@
             },
             "contracts/v2/interfaces/IPolygonZkEVMGlobalExitRootV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2928,6 +3058,7 @@
             },
             "contracts/v2/interfaces/ISP1Verifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2943,6 +3074,7 @@
             },
             "contracts/v2/interfaces/ITokenWrappedBridgeUpgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2958,6 +3090,7 @@
             },
             "contracts/v2/lib/AggchainBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2973,6 +3106,7 @@
             },
             "contracts/v2/lib/BytecodeStorer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2988,6 +3122,7 @@
             },
             "contracts/v2/lib/DepositContractBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3003,6 +3138,7 @@
             },
             "contracts/v2/lib/DepositContractV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3018,6 +3154,7 @@
             },
             "contracts/v2/lib/Hashes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3033,6 +3170,7 @@
             },
             "contracts/v2/lib/LegacyZKEVMStateVariables.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3048,6 +3186,7 @@
             },
             "contracts/v2/lib/PolygonAccessControlUpgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3063,6 +3202,7 @@
             },
             "contracts/v2/lib/PolygonConsensusBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3078,6 +3218,7 @@
             },
             "contracts/v2/lib/PolygonConstantsBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3093,6 +3234,7 @@
             },
             "contracts/v2/lib/PolygonRollupBaseEtrog.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3108,6 +3250,7 @@
             },
             "contracts/v2/lib/PolygonTransparentProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3123,6 +3266,7 @@
             },
             "contracts/v2/lib/PolygonZkEVMGlobalExitRootBaseStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3138,6 +3282,7 @@
             },
             "contracts/v2/lib/TokenWrappedBridgeUpgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3153,6 +3298,7 @@
             },
             "contracts/v2/lib/TokenWrappedTransparentProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3168,6 +3314,7 @@
             },
             "contracts/v2/newDeployments/PolygonRollupManagerNotUpgraded.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3183,6 +3330,7 @@
             },
             "contracts/v2/periphery/BatchL2DataCreatedRollup.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3198,6 +3346,7 @@
             },
             "contracts/v2/periphery/ClaimCompressor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3213,6 +3362,7 @@
             },
             "contracts/v2/previousVersions/IPolygonRollupBasePrevious.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3228,6 +3378,7 @@
             },
             "contracts/v2/previousVersions/IPolygonRollupManagerPrevious.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3243,6 +3394,7 @@
             },
             "contracts/v2/previousVersions/PolygonRollupBaseEtrogPrevious.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3258,6 +3410,7 @@
             },
             "contracts/v2/previousVersions/PolygonRollupManagerPrevious.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3273,6 +3426,7 @@
             },
             "contracts/v2/previousVersions/PolygonRollupManagerPreviousV1toV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3288,6 +3442,7 @@
             },
             "contracts/v2/previousVersions/PolygonValidiumEtrogPrevious.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3303,6 +3458,7 @@
             },
             "contracts/v2/previousVersions/PolygonZkEVMEtrogPrevious.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3318,6 +3474,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/BridgeL2SovereignChainPessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3333,6 +3490,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/DepositContractBasePessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3348,6 +3506,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/GlobalExitRootLibPessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3363,6 +3522,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/GlobalExitRootManagerL2SovereignChainPessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3378,6 +3538,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/IBasePolygonZkEVMGlobalExitRootPessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3393,6 +3554,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/IBridgeL2SovereignChainsPessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3408,6 +3570,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/IPolygonRollupManagerPessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3423,6 +3586,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/IPolygonZkEVMBridgeV2Pessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3438,6 +3602,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/PolygonConsensusBasePessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3453,6 +3618,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/PolygonRollupBaseEtrogPessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3468,6 +3634,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/PolygonRollupManagerPessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3483,6 +3650,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/PolygonZkEVMBridgeV2Pessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3498,6 +3666,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/PolygonZkEVMExistentEtrogPessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3513,6 +3682,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/PolygonZkEVMGlobalExitRootL2Pessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3528,6 +3698,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/PolygonZkEVMGlobalExitRootV2Pessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3543,6 +3714,7 @@
             },
             "contracts/v2/sovereignChains/BridgeL2SovereignChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3571,6 +3743,7 @@
             },
             "contracts/v2/sovereignChains/GlobalExitRootManagerL2SovereignChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3586,6 +3759,7 @@
             },
             "contracts/verifiers/FflonkVerifier_10.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3601,6 +3775,7 @@
             },
             "contracts/verifiers/FflonkVerifier_11.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3616,6 +3791,7 @@
             },
             "contracts/verifiers/FflonkVerifier_12.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3631,6 +3807,7 @@
             },
             "contracts/verifiers/FflonkVerifier_13.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3646,6 +3823,7 @@
             },
             "contracts/verifiers/previousVerifiers/FflonkVerifierEtrog.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3661,6 +3839,7 @@
             },
             "contracts/verifiers/previousVerifiers/FflonkVerifierIncaberry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3676,6 +3855,7 @@
             },
             "contracts/verifiers/v4.0.0-rc.3/PlonkVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3691,6 +3871,7 @@
             },
             "contracts/verifiers/v4.0.0-rc.3/SP1VerifierPlonk.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3711,6 +3892,7 @@
           "paths": {
             "crates/agglayer-tries": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3725,6 +3907,7 @@
             },
             "crates/unified-bridge": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3761,6 +3944,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3815,6 +3999,7 @@
           "paths": {
             "contracts/v2/PolygonRollupManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3853,6 +4038,7 @@
             },
             "contracts/v2/PolygonZkEVMGlobalExitRootV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3876,6 +4062,7 @@
             },
             "contracts/v2/consensus/validium/PolygonValidiumEtrog.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3899,6 +4086,7 @@
             },
             "contracts/v2/lib/PolygonRollupBaseEtrog.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3931,6 +4119,7 @@
             },
             "contracts/v2/interfaces/IPolygonRollupBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3963,6 +4152,7 @@
             },
             "contracts/v2/interfaces/IPolygonRollupManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3986,6 +4176,7 @@
             },
             "contracts/v2/interfaces/IPolygonZkEVMGlobalExitRootV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4009,6 +4200,7 @@
             },
             "contracts/v2/interfaces/IPolygonZkEVMVEtrogErrors.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4058,6 +4250,7 @@
           "paths": {
             "crates/agglayer": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4072,6 +4265,7 @@
             },
             "crates/agglayer-aggregator-notifier": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4098,6 +4292,7 @@
             },
             "crates/agglayer-certificate-orchestrator": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4136,6 +4331,7 @@
             },
             "crates/agglayer-clock": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4159,6 +4355,7 @@
             },
             "crates/agglayer-config": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4173,6 +4370,7 @@
             },
             "crates/agglayer-gcp-kms": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4187,6 +4385,7 @@
             },
             "crates/agglayer-node": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4210,6 +4409,7 @@
             },
             "crates/agglayer-signer": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4224,6 +4424,7 @@
             },
             "crates/agglayer-telemetry": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4238,6 +4439,7 @@
             },
             "crates/pessimistic-proof": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4282,6 +4484,7 @@
             },
             "crates/pessimistic-proof-program": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4296,6 +4499,7 @@
             },
             "crates/pessimistic-proof-test-suite": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4315,6 +4519,7 @@
           "paths": {
             "contracts/v2/PolygonRollupManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4349,6 +4554,7 @@
             },
             "contracts/v2/PolygonZkEVMGlobalExitRootV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4374,6 +4580,7 @@
             },
             "contracts/v2/consensus/pessimistic/PolygonPessimisticConsensus.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4390,6 +4597,7 @@
             },
             "contracts/v2/lib/PolygonConsensusBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4406,6 +4614,7 @@
             },
             "contracts/v2/lib/PolygonRollupBaseEtrog.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4444,6 +4653,7 @@
           "paths": {
             "contracts/v2/sovereignChains/BridgeL2SovereignChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4485,6 +4695,7 @@
             },
             "contracts/v2/sovereignChains/GlobalExitRootManagerL2SovereignChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4517,6 +4728,7 @@
             },
             "contracts/v2/interfaces/IBridgeL2SovereignChains.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4549,6 +4761,7 @@
             },
             "contracts/v2/PolygonZkEVMBridgeV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4581,6 +4794,7 @@
             },
             "contracts/v2/PolygonZkEVMGlobalExitRootV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4613,6 +4827,7 @@
             },
             "contracts/PolygonZkEVMGlobalExitRootL2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4636,6 +4851,7 @@
             },
             "contracts/interfaces/IBasePolygonZkEVMGlobalExitRoot.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4668,6 +4884,7 @@
             },
             "deployment/v2/utils/updateVanillaGenesis.ts": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4708,6 +4925,7 @@
           "paths": {
             "contracts/v2/aggchains/AggchainECDSA.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4741,6 +4959,7 @@
             },
             "contracts/v2/aggchains/AggchainFEP.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4801,6 +5020,7 @@
             },
             "contracts/v2/AggLayerGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4843,6 +5063,7 @@
             },
             "contracts/v2/PolygonRollupManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4904,6 +5125,7 @@
             },
             "contracts/v2/sovereignChains/BridgeL2SovereignChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4965,6 +5187,7 @@
             },
             "contracts/v2/sovereignChains/GlobalExitRootManagerL2SovereignChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5008,6 +5231,7 @@
             },
             "contracts/v2/lib/AggchainBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5058,6 +5282,7 @@
             },
             "contracts/v2/PolygonZkEVMBridgeV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5099,6 +5324,7 @@
             },
             "contracts/v2/PolygonZkEVMGlobalExitRootV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5113,6 +5339,7 @@
             },
             "contracts/v2/lib/TokenWrappedBridgeInitCode.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5127,6 +5354,7 @@
             },
             "contracts/v2/newDeployments/PolygonRollupManagerNotUpgraded.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5141,6 +5369,7 @@
             },
             "deployment/v2/utils/updateVanillaGenesis.ts": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5178,6 +5407,7 @@
           "paths": {
             "contracts/v2/aggchains/AggchainECDSA.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5210,6 +5440,7 @@
             },
             "contracts/v2/aggchains/AggchainFEP.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5251,6 +5482,7 @@
             },
             "contracts/v2/AggLayerGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5274,6 +5506,7 @@
             },
             "contracts/v2/PolygonRollupManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5324,6 +5557,7 @@
             },
             "contracts/v2/sovereignChains/BridgeL2SovereignChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5374,6 +5608,7 @@
             },
             "contracts/v2/sovereignChains/GlobalExitRootManagerL2SovereignChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5406,6 +5641,7 @@
             },
             "contracts/v2/lib/AggchainBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5420,6 +5656,7 @@
             },
             "contracts/v2/PolygonZkEVMBridgeV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5465,6 +5702,7 @@
           "paths": {
             "contracts/PolygonZkEVM.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5481,6 +5719,7 @@
             },
             "contracts/PolygonZkEVMBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5497,6 +5736,7 @@
             },
             "contracts/PolygonZkEVMGlobalExitRootL2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5513,6 +5753,7 @@
             },
             "contracts/PolygonZkEVMTimelock.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5529,6 +5770,7 @@
             },
             "contracts/deployment/PolygonZkEVMDeployer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5545,6 +5787,7 @@
             },
             "contracts/lib/DepositContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5561,6 +5804,7 @@
             },
             "contracts/lib/EmergencyManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5577,6 +5821,7 @@
             },
             "contracts/lib/TokenWrapped.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5593,6 +5838,7 @@
             },
             "contracts/lib/TokenWrappedBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5609,6 +5855,7 @@
             },
             "contracts/v2/AggLayerGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5625,6 +5872,7 @@
             },
             "contracts/v2/PolygonRollupManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5641,6 +5889,7 @@
             },
             "contracts/v2/PolygonZkEVMBridgeV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5667,6 +5916,7 @@
             },
             "contracts/v2/PolygonZkEVMGlobalExitRootV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5683,6 +5933,7 @@
             },
             "contracts/v2/aggchains/AggchainECDSA.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5699,6 +5950,7 @@
             },
             "contracts/v2/aggchains/AggchainFEP.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5715,6 +5967,7 @@
             },
             "contracts/v2/consensus/validium/PolygonDataCommittee.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5731,6 +5984,7 @@
             },
             "contracts/v2/interfaces/IAggchainBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5747,6 +6001,7 @@
             },
             "contracts/v2/interfaces/IBridgeL2SovereignChains.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5763,6 +6018,7 @@
             },
             "contracts/v2/interfaces/IBytecodeStorer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5779,6 +6035,7 @@
             },
             "contracts/v2/interfaces/IPolygonZkEVMBridgeV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5795,6 +6052,7 @@
             },
             "contracts/v2/interfaces/ITokenWrappedBridgeUpgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5810,6 +6068,7 @@
             },
             "contracts/v2/lib/AggchainBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5826,6 +6085,7 @@
             },
             "contracts/v2/lib/BytecodeStorer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5851,6 +6111,7 @@
             },
             "contracts/v2/lib/DepositContractBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5867,6 +6128,7 @@
             },
             "contracts/v2/lib/DepositContractV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5883,6 +6145,7 @@
             },
             "contracts/v2/lib/PolygonAccessControlUpgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5899,6 +6162,7 @@
             },
             "contracts/v2/lib/PolygonConsensusBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5915,6 +6179,7 @@
             },
             "contracts/v2/lib/PolygonRollupBaseEtrog.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5931,6 +6196,7 @@
             },
             "contracts/v2/lib/TokenWrappedBridgeUpgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5946,6 +6212,7 @@
             },
             "contracts/v2/lib/TokenWrappedTransparentProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5961,6 +6228,7 @@
             },
             "contracts/v2/previousVersions/PolygonRollupBaseEtrogPrevious.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5977,6 +6245,7 @@
             },
             "contracts/v2/previousVersions/PolygonRollupManagerPrevious.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5993,6 +6262,7 @@
             },
             "contracts/v2/previousVersions/PolygonRollupManagerPreviousV1toV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6009,6 +6279,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/BridgeL2SovereignChainPessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6025,6 +6296,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/DepositContractBasePessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6041,6 +6313,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/GlobalExitRootManagerL2SovereignChainPessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6057,6 +6330,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/IBridgeL2SovereignChainsPessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6073,6 +6347,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/IPolygonZkEVMBridgeV2Pessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6088,6 +6363,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/PolygonConsensusBasePessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6104,6 +6380,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/PolygonRollupBaseEtrogPessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6120,6 +6397,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/PolygonRollupManagerPessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6136,6 +6414,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/PolygonZkEVMBridgeV2Pessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6152,6 +6431,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/PolygonZkEVMGlobalExitRootL2Pessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6168,6 +6448,7 @@
             },
             "contracts/v2/previousVersions/pessimistic/PolygonZkEVMGlobalExitRootV2Pessimistic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6184,6 +6465,7 @@
             },
             "contracts/v2/sovereignChains/BridgeL2SovereignChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6210,6 +6492,7 @@
             },
             "contracts/v2/sovereignChains/GlobalExitRootManagerL2SovereignChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6226,6 +6509,7 @@
             },
             "deployment/v2/utils/updateVanillaGenesis.ts": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6282,6 +6566,7 @@
           "paths": {
             "crates/pessimistic-proof-program": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6306,6 +6591,7 @@
             },
             "crates/pessimistic-proof-core": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6330,6 +6616,7 @@
             },
             "crates/pessimistic-proof": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6345,6 +6632,7 @@
             },
             "crates/agglayer-certificate-orchestrator": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6360,6 +6648,7 @@
             },
             "crates/agglayer-storage": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6375,6 +6664,7 @@
             },
             "crates/agglayer-grpc-api": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6390,6 +6680,7 @@
             },
             "crates/agglayer-node": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6410,6 +6701,7 @@
           "paths": {
             "crates/aggchain-proof-program": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6434,6 +6726,7 @@
             },
             "crates/prover-engine": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6449,6 +6742,7 @@
             },
             "crates/prover-executor": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6469,6 +6763,7 @@
           "paths": {
             "crates/unified-bridge": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6518,6 +6813,7 @@
           "paths": {
             "crates/agglayer-certificate-orchestrator": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6551,6 +6847,7 @@
             },
             "crates/agglayer-storage": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6566,6 +6863,7 @@
             },
             "crates/agglayer-grpc-api": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6581,6 +6879,7 @@
             },
             "crates/agglayer-node": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6601,6 +6900,7 @@
           "paths": {
             "crates/aggchain-proof-program": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6616,6 +6916,7 @@
             },
             "crates/prover-engine": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6668,6 +6969,7 @@
             },
             "crates/prover-executor": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6723,6 +7025,7 @@
           "paths": {
             "contracts/v2/PolygonRollupManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6748,6 +7051,7 @@
             },
             "contracts/v2/PolygonZkEVMBridgeV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6763,6 +7067,7 @@
             },
             "contracts/v2/aggchains/AggchainFEP.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6778,6 +7083,7 @@
             },
             "contracts/v2/consensus/pessimistic/PolygonPessimisticConsensus.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6793,6 +7099,7 @@
             },
             "contracts/v2/interfaces/IPolygonRollupManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6808,6 +7115,7 @@
             },
             "contracts/v2/newDeployments/PolygonRollupManagerNotUpgraded.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6845,6 +7153,7 @@
           "paths": {
             "contracts/v2/sovereignChains/AggOracleCommittee.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6859,6 +7168,7 @@
             },
             "deployment/v2/utils/updateVanillaGenesis.ts": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6873,6 +7183,7 @@
             },
             "tools/createSovereignGenesis/create-sovereign-genesis.ts": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6887,6 +7198,7 @@
             },
             "tools/deployAggOracleCommittee/deployAggOracleCommittee.ts": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6923,6 +7235,7 @@
           "paths": {
             "contracts/v2/AggLayerGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6939,6 +7252,7 @@
             },
             "contracts/v2/PolygonRollupManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6955,6 +7269,7 @@
             },
             "contracts/v2/PolygonZkEVMBridgeV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6971,6 +7286,7 @@
             },
             "contracts/v2/PolygonZkEVMGlobalExitRootV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6987,6 +7303,7 @@
             },
             "contracts/v2/aggchains/AggchainECDSAMultisig.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7002,6 +7319,7 @@
             },
             "contracts/v2/aggchains/AggchainFEP.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7018,6 +7336,7 @@
             },
             "contracts/v2/interfaces/IAggLayerGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7034,6 +7353,7 @@
             },
             "contracts/v2/interfaces/IAggOracleCommittee.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7049,6 +7369,7 @@
             },
             "contracts/v2/interfaces/IAggchainBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7065,6 +7386,7 @@
             },
             "contracts/v2/interfaces/IAggchainSigners.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7080,6 +7402,7 @@
             },
             "contracts/v2/interfaces/IBridgeL2SovereignChains.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7096,6 +7419,7 @@
             },
             "contracts/v2/interfaces/IGlobalExitRootManagerL2SovereignChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7112,6 +7436,7 @@
             },
             "contracts/v2/interfaces/IPolygonConsensusBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7128,6 +7453,7 @@
             },
             "contracts/v2/interfaces/IPolygonRollupManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7144,6 +7470,7 @@
             },
             "contracts/v2/interfaces/IPolygonZkEVMBridgeV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7160,6 +7487,7 @@
             },
             "contracts/v2/interfaces/IVersion.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7175,6 +7503,7 @@
             },
             "contracts/v2/lib/AggchainBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7191,6 +7520,7 @@
             },
             "contracts/v2/lib/BridgeLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7206,6 +7536,7 @@
             },
             "contracts/v2/lib/DepositContractBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7222,6 +7553,7 @@
             },
             "contracts/v2/lib/PolygonConsensusBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7238,6 +7570,7 @@
             },
             "contracts/v2/previousVersions/10.1.0/BridgeL2SovereignChainV1010.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7254,6 +7587,7 @@
             },
             "contracts/v2/previousVersions/10.1.0/IBridgeL2SovereignChainsV1010.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7269,6 +7603,7 @@
             },
             "contracts/v2/previousVersions/10.1.0/IPolygonZkEVMBridgeV2V1010.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7284,6 +7619,7 @@
             },
             "contracts/v2/previousVersions/10.1.0/PolygonZkEVMBridgeV2V1010.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7299,6 +7635,7 @@
             },
             "contracts/v2/previousVersions/aggchain/AggchainBasePrevious.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7314,6 +7651,7 @@
             },
             "contracts/v2/previousVersions/aggchain/AggchainFEPPrevious.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7329,6 +7667,7 @@
             },
             "contracts/v2/previousVersions/aggchain/AgglayerGatewayPrevious.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7344,6 +7683,7 @@
             },
             "contracts/v2/previousVersions/aggchain/IAggLayerGatewayPrevious.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7359,6 +7699,7 @@
             },
             "contracts/v2/previousVersions/aggchain/IAggchainBasePrevious.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7374,6 +7715,7 @@
             },
             "contracts/v2/sovereignChains/AggOracleCommittee.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7389,6 +7731,7 @@
             },
             "contracts/v2/sovereignChains/BridgeL2SovereignChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7405,6 +7748,7 @@
             },
             "contracts/v2/sovereignChains/GlobalExitRootManagerL2SovereignChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7421,6 +7765,7 @@
             },
             "tools/deployOutpostChain/deployOutpostChain.ts": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7446,6 +7791,7 @@
             },
             "contracts/AgglayerBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7461,6 +7807,7 @@
             },
             "contracts/AgglayerGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7476,6 +7823,7 @@
             },
             "contracts/lib/BridgeLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {

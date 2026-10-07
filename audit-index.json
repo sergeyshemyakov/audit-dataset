@@ -20918,6 +20918,19 @@
           }
         }
       },
+      "2ec3e9bff1b5dbd4eb0729455bac7d800b251a3b": {
+        "timestamp": 1581113910,
+        "files": {
+          "packages/protocol/contracts/governance/Governance.sol": "1bcc37cdcc06"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/Governance.sol": [
+              "H01"
+            ]
+          }
+        }
+      },
       "9fa596458bae1a5783a33df8888c6fe07e7ae529": {
         "timestamp": 1582054992,
         "files": {
@@ -20926,6 +20939,39 @@
         "audits": {
           "oz-celo-contracts-mainnet-releases-1-3": {
             "packages/protocol/contracts/common/MultiSig.sol": []
+          }
+        }
+      },
+      "adabd0e3c0ae785d68daf554cacaf8100ec1d991": {
+        "timestamp": 1582129815,
+        "files": {
+          "packages/protocol/contracts/baklava/Freezable.sol": "39b31eeee4ae",
+          "packages/protocol/contracts/common/FixidityLib.sol": "807018dc7e91",
+          "packages/protocol/contracts/common/FractionUtil.sol": "2d0d6194d988",
+          "packages/protocol/contracts/common/Initializable.sol": "9b7e40844807",
+          "packages/protocol/contracts/common/UsingPrecompiles.sol": "6de47390fc5e"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/baklava/Freezable.sol": [],
+            "packages/protocol/contracts/common/FixidityLib.sol": [],
+            "packages/protocol/contracts/common/FractionUtil.sol": [],
+            "packages/protocol/contracts/common/Initializable.sol": [],
+            "packages/protocol/contracts/common/UsingPrecompiles.sol": []
+          }
+        }
+      },
+      "4d68a7b9263873f0778657ab66f4f8deb52f2e8f": {
+        "timestamp": 1582134798,
+        "files": {
+          "packages/protocol/contracts/governance/Validators.sol": "852722c052a9"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/Validators.sol": [
+              "H02",
+              "H03"
+            ]
           }
         }
       },
@@ -20940,6 +20986,411 @@
           }
         }
       },
+      "a10c297ca65b02e13a35be183dda65daa14ad1b3": {
+        "timestamp": 1582150738,
+        "files": {
+          "packages/protocol/contracts/identity/Random.sol": "e0f4fb7c0b18"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/identity/Random.sol": []
+          }
+        }
+      },
+      "83839689fb8fabc069aea6d9153d69f561655912": {
+        "timestamp": 1582153288,
+        "files": {
+          "packages/protocol/contracts/identity/Random.sol": "267b26bcb195"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/identity/Random.sol": []
+          }
+        }
+      },
+      "19f5f6990266e8df0a18b0f2110e873d956be097": {
+        "timestamp": 1582190270,
+        "files": {
+          "packages/protocol/contracts/common/Accounts.sol": "a01f04166e5b",
+          "packages/protocol/contracts/common/Proxy.sol": "8a6e45769d57",
+          "packages/protocol/contracts/governance/Governance.sol": "28344f055632",
+          "packages/protocol/contracts/stability/StableToken.sol": "392a9f959e00"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/Accounts.sol": [],
+            "packages/protocol/contracts/common/Proxy.sol": [],
+            "packages/protocol/contracts/governance/Governance.sol": [
+              "H01"
+            ],
+            "packages/protocol/contracts/stability/StableToken.sol": []
+          }
+        }
+      },
+      "3a5821bd38d6c49fe4d433ac60ff9d6b281afe80": {
+        "timestamp": 1582275110,
+        "files": {
+          "packages/protocol/contracts/governance/DoubleSigningSlasher.sol": "7a9614494a60",
+          "packages/protocol/contracts/governance/Governance.sol": "2e7aaf331376"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/DoubleSigningSlasher.sol": [],
+            "packages/protocol/contracts/governance/Governance.sol": [
+              "H01"
+            ]
+          }
+        }
+      },
+      "0fb563821829f0624ef3443f54fda86a024efab7": {
+        "timestamp": 1582436464,
+        "files": {
+          "packages/protocol/contracts/stability/StableToken.sol": "4593fa245fb6"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/stability/StableToken.sol": []
+          }
+        }
+      },
+      "e29f11a3ba3b1f961cb8982b4b85abcd6a0269fe": {
+        "timestamp": 1582438803,
+        "files": {
+          "packages/protocol/contracts/common/FixidityLib.sol": "d9547fe7065b",
+          "packages/protocol/contracts/common/Signatures.sol": "a3adc31b5616",
+          "packages/protocol/contracts/governance/Governance.sol": "0a4a1110c0c6"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/FixidityLib.sol": [],
+            "packages/protocol/contracts/common/Signatures.sol": [],
+            "packages/protocol/contracts/governance/Governance.sol": [
+              "H01"
+            ]
+          }
+        }
+      },
+      "f7859ce5dcf55552251a72e4d2613954f12d887a": {
+        "timestamp": 1582441012,
+        "files": {
+          "packages/protocol/contracts/common/MultiSig.sol": "2eff11ce8f5c"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/MultiSig.sol": []
+          }
+        }
+      },
+      "1e6177142a6c6841ded11003d44ce5941a1a8db7": {
+        "timestamp": 1582445490,
+        "files": {
+          "packages/protocol/contracts/common/FixidityLib.sol": "4e4a1d2d586b"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/FixidityLib.sol": []
+          }
+        }
+      },
+      "40e4ef581b465c173164225de719be7ed1fc89da": {
+        "timestamp": 1582487548,
+        "files": {
+          "packages/protocol/contracts/common/Accounts.sol": "cfa38cf28455"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/Accounts.sol": []
+          }
+        }
+      },
+      "8213dbdfeebd5bd3c5f28904313f4c453a06e902": {
+        "timestamp": 1582502076,
+        "files": {
+          "packages/protocol/contracts/stability/SortedOracles.sol": "0fac4f7a5641"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/stability/SortedOracles.sol": []
+          }
+        }
+      },
+      "97c8050725cf16ac5964315066e22db1126273fc": {
+        "timestamp": 1582529068,
+        "files": {
+          "packages/protocol/contracts/common/Proxy.sol": "873fc9d8246e"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/Proxy.sol": []
+          }
+        }
+      },
+      "ea23766d92925bff6c957611a8587498acc19125": {
+        "timestamp": 1582531577,
+        "files": {
+          "packages/protocol/contracts/stability/Reserve.sol": "22aea2de3bc7",
+          "packages/protocol/contracts/stability/SortedOracles.sol": "10c5e300cd58"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/stability/Reserve.sol": [],
+            "packages/protocol/contracts/stability/SortedOracles.sol": []
+          }
+        }
+      },
+      "8473f413bf98c2981b2790ee00de47bfa022dc81": {
+        "timestamp": 1582533998,
+        "files": {
+          "packages/protocol/contracts/governance/SlasherUtil.sol": "60095b0e4f22"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/SlasherUtil.sol": []
+          }
+        }
+      },
+      "9ddfc737f2e55cbb2a5de525725e4671f945c2e0": {
+        "timestamp": 1582559776,
+        "files": {
+          "packages/protocol/contracts/common/Signatures.sol": "2ff270191f11"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/Signatures.sol": []
+          }
+        }
+      },
+      "adcd37773bb770855ab7081c87ba482ec457bf8c": {
+        "timestamp": 1582559788,
+        "files": {
+          "packages/protocol/contracts/common/MultiSig.sol": "ef9ff1aef762"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/MultiSig.sol": []
+          }
+        }
+      },
+      "c88a69faabcac749a85a9279770f4f8c12d90f7c": {
+        "timestamp": 1582571448,
+        "files": {
+          "packages/protocol/contracts/common/MultiSig.sol": "6f8521e7d482",
+          "packages/protocol/contracts/common/linkedlists/AddressLinkedList.sol": "187358c07676",
+          "packages/protocol/contracts/common/linkedlists/AddressSortedLinkedList.sol": "853612dc7d44",
+          "packages/protocol/contracts/common/linkedlists/AddressSortedLinkedListWithMedian.sol": "7e84f324e41b",
+          "packages/protocol/contracts/common/linkedlists/IntegerSortedLinkedList.sol": "d7739efe3fb0",
+          "packages/protocol/contracts/common/linkedlists/LinkedList.sol": "00ac8c38666b",
+          "packages/protocol/contracts/common/linkedlists/SortedLinkedList.sol": "66e16110f25a",
+          "packages/protocol/contracts/common/linkedlists/SortedLinkedListWithMedian.sol": "bbf507e8bb93",
+          "packages/protocol/contracts/governance/DoubleSigningSlasher.sol": "a86294bfe156",
+          "packages/protocol/contracts/governance/DowntimeSlasher.sol": "4acff317f80e",
+          "packages/protocol/contracts/governance/Election.sol": "e4dbf04a5cc4",
+          "packages/protocol/contracts/governance/Governance.sol": "66410514cba5",
+          "packages/protocol/contracts/governance/LockedGold.sol": "b6fe433b7420",
+          "packages/protocol/contracts/identity/Attestations.sol": "14f8a733a3c8",
+          "packages/protocol/contracts/identity/Random.sol": "dd6f9f06898a",
+          "packages/protocol/contracts/stability/Exchange.sol": "792e11624b16",
+          "packages/protocol/contracts/stability/Reserve.sol": "f8078c207efe",
+          "packages/protocol/contracts/stability/SortedOracles.sol": "5d09cab4b34b"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/MultiSig.sol": [],
+            "packages/protocol/contracts/common/linkedlists/AddressLinkedList.sol": [],
+            "packages/protocol/contracts/common/linkedlists/AddressSortedLinkedList.sol": [],
+            "packages/protocol/contracts/common/linkedlists/AddressSortedLinkedListWithMedian.sol": [],
+            "packages/protocol/contracts/common/linkedlists/IntegerSortedLinkedList.sol": [],
+            "packages/protocol/contracts/common/linkedlists/LinkedList.sol": [],
+            "packages/protocol/contracts/common/linkedlists/SortedLinkedList.sol": [],
+            "packages/protocol/contracts/common/linkedlists/SortedLinkedListWithMedian.sol": [],
+            "packages/protocol/contracts/governance/DoubleSigningSlasher.sol": [],
+            "packages/protocol/contracts/governance/DowntimeSlasher.sol": [],
+            "packages/protocol/contracts/governance/Election.sol": [],
+            "packages/protocol/contracts/governance/Governance.sol": [
+              "H01"
+            ],
+            "packages/protocol/contracts/governance/LockedGold.sol": [
+              "H01"
+            ],
+            "packages/protocol/contracts/identity/Attestations.sol": [],
+            "packages/protocol/contracts/identity/Random.sol": [],
+            "packages/protocol/contracts/stability/Exchange.sol": [],
+            "packages/protocol/contracts/stability/Reserve.sol": [],
+            "packages/protocol/contracts/stability/SortedOracles.sol": []
+          }
+        }
+      },
+      "66ce29ca5030d9062b17b916f4732ef26b142e0f": {
+        "timestamp": 1582574026,
+        "files": {
+          "packages/protocol/contracts/common/GoldToken.sol": "e64b4e1f38de"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/GoldToken.sol": []
+          }
+        }
+      },
+      "d41881598c8ce34ad3f279ec1ee8088a5193cb76": {
+        "timestamp": 1582578985,
+        "files": {
+          "packages/protocol/contracts/governance/Governance.sol": "b4ccc684a2c6",
+          "packages/protocol/contracts/stability/StableToken.sol": "a5e7f5679e09"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/Governance.sol": [
+              "H01"
+            ],
+            "packages/protocol/contracts/stability/StableToken.sol": []
+          }
+        }
+      },
+      "9587d252037d0afc431ada1d5e116a818161ce36": {
+        "timestamp": 1582583463,
+        "files": {
+          "packages/protocol/contracts/common/Accounts.sol": "b8482811e91c",
+          "packages/protocol/contracts/common/linkedlists/AddressLinkedList.sol": "346ec2cf2814",
+          "packages/protocol/contracts/common/linkedlists/AddressSortedLinkedList.sol": "fb60637b6631",
+          "packages/protocol/contracts/common/linkedlists/AddressSortedLinkedListWithMedian.sol": "322f902c528f",
+          "packages/protocol/contracts/common/linkedlists/IntegerSortedLinkedList.sol": "e329cb3652ad",
+          "packages/protocol/contracts/common/linkedlists/LinkedList.sol": "5e9be22e8629",
+          "packages/protocol/contracts/common/linkedlists/SortedLinkedList.sol": "a7c759435725",
+          "packages/protocol/contracts/common/linkedlists/SortedLinkedListWithMedian.sol": "ed7dff62d229",
+          "packages/protocol/contracts/identity/Attestations.sol": "39e950f0c641",
+          "packages/protocol/contracts/identity/Escrow.sol": "d33e523b362a",
+          "packages/protocol/contracts/stability/Reserve.sol": "606e952e594a",
+          "packages/protocol/contracts/stability/SortedOracles.sol": "091134577c4f"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/Accounts.sol": [],
+            "packages/protocol/contracts/common/linkedlists/AddressLinkedList.sol": [],
+            "packages/protocol/contracts/common/linkedlists/AddressSortedLinkedList.sol": [],
+            "packages/protocol/contracts/common/linkedlists/AddressSortedLinkedListWithMedian.sol": [],
+            "packages/protocol/contracts/common/linkedlists/IntegerSortedLinkedList.sol": [],
+            "packages/protocol/contracts/common/linkedlists/LinkedList.sol": [],
+            "packages/protocol/contracts/common/linkedlists/SortedLinkedList.sol": [],
+            "packages/protocol/contracts/common/linkedlists/SortedLinkedListWithMedian.sol": [],
+            "packages/protocol/contracts/identity/Attestations.sol": [],
+            "packages/protocol/contracts/identity/Escrow.sol": [],
+            "packages/protocol/contracts/stability/Reserve.sol": [],
+            "packages/protocol/contracts/stability/SortedOracles.sol": []
+          }
+        }
+      },
+      "4e65a137bc5f177cce0f99f7f3837354bf4001f5": {
+        "timestamp": 1582591307,
+        "files": {
+          "packages/protocol/contracts/governance/Election.sol": "8c11a8fbe392",
+          "packages/protocol/contracts/governance/EpochRewards.sol": "cf34ac7e7886",
+          "packages/protocol/contracts/governance/Validators.sol": "3ede524efc2f",
+          "packages/protocol/contracts/identity/Random.sol": "7a7a7aedab63"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/Election.sol": [
+              "H03"
+            ],
+            "packages/protocol/contracts/governance/EpochRewards.sol": [],
+            "packages/protocol/contracts/governance/Validators.sol": [
+              "H02",
+              "H03"
+            ],
+            "packages/protocol/contracts/identity/Random.sol": []
+          }
+        }
+      },
+      "14cf4bc52fa4c538dcca46f2412208e10d58305a": {
+        "timestamp": 1582592580,
+        "files": {
+          "packages/protocol/contracts/common/Accounts.sol": "aa894f5a0c42",
+          "packages/protocol/contracts/common/UsingPrecompiles.sol": "af9dccad6f6f",
+          "packages/protocol/contracts/common/linkedlists/SortedLinkedList.sol": "32313288490d",
+          "packages/protocol/contracts/governance/Election.sol": "88aedd5434d8",
+          "packages/protocol/contracts/governance/Validators.sol": "74b6d5d104ed",
+          "packages/protocol/contracts/stability/SortedOracles.sol": "f61ea1387d12"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/Accounts.sol": [],
+            "packages/protocol/contracts/common/UsingPrecompiles.sol": [],
+            "packages/protocol/contracts/common/linkedlists/SortedLinkedList.sol": [],
+            "packages/protocol/contracts/governance/Election.sol": [
+              "H03"
+            ],
+            "packages/protocol/contracts/governance/Validators.sol": [
+              "H02",
+              "H03"
+            ],
+            "packages/protocol/contracts/stability/SortedOracles.sol": []
+          }
+        }
+      },
+      "2017226b533716ad84bd1c3fcf0c6f7aa56bcf6d": {
+        "timestamp": 1582596824,
+        "files": {
+          "packages/protocol/contracts/common/FixidityLib.sol": "3c3a444ab3d7",
+          "packages/protocol/contracts/stability/Reserve.sol": "7e37a3124e45"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/FixidityLib.sol": [],
+            "packages/protocol/contracts/stability/Reserve.sol": []
+          }
+        }
+      },
+      "834b19922dbb3c9c399eae5ada818ccc774e5d10": {
+        "timestamp": 1582602263,
+        "files": {
+          "packages/protocol/contracts/stability/Exchange.sol": "f90b2f4db313"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/stability/Exchange.sol": []
+          }
+        }
+      },
+      "5fd04c2036a49b3bda6af0c989106786e01185ed": {
+        "timestamp": 1582615202,
+        "files": {
+          "packages/protocol/contracts/common/Proxy.sol": "19696eb3c65e"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/Proxy.sol": []
+          }
+        }
+      },
+      "60a6dd8e6e26e038bc3c29d8668285d88f07d563": {
+        "timestamp": 1582624746,
+        "files": {
+          "packages/protocol/contracts/governance/Validators.sol": "a8e63b2a3e07"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/Validators.sol": [
+              "H02",
+              "H03"
+            ]
+          }
+        }
+      },
+      "be0016d905b75beaa16be8565c4932f1d564a81a": {
+        "timestamp": 1582665464,
+        "files": {
+          "packages/protocol/contracts/common/GoldToken.sol": "00c20b6b07a5",
+          "packages/protocol/contracts/common/Signatures.sol": "360737b80c47",
+          "packages/protocol/contracts/stability/StableToken.sol": "89553c29f92d"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/GoldToken.sol": [],
+            "packages/protocol/contracts/common/Signatures.sol": [],
+            "packages/protocol/contracts/stability/StableToken.sol": []
+          }
+        }
+      },
       "2f3bffeb8d2823cb26dca2b3fc5dd55459b3dd3d": {
         "timestamp": 1582678157,
         "files": {
@@ -20950,6 +21401,30 @@
             "packages/protocol/contracts/governance/Validators.sol": [
               "H03"
             ]
+          }
+        }
+      },
+      "b5ce257883f5bf7db602dc28fec104322d411fe1": {
+        "timestamp": 1582709188,
+        "files": {
+          "packages/protocol/contracts/identity/Attestations.sol": "4f730a0c5a57",
+          "packages/protocol/contracts/identity/Escrow.sol": "923599ddb38b"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/identity/Attestations.sol": [],
+            "packages/protocol/contracts/identity/Escrow.sol": []
+          }
+        }
+      },
+      "e8bd0b62b6e9022b39e6bb5be7af76bc38b48f6a": {
+        "timestamp": 1582724359,
+        "files": {
+          "packages/protocol/contracts/stability/StableToken.sol": "6cc61efa442a"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/stability/StableToken.sol": []
           }
         }
       },
@@ -21093,6 +21568,30 @@
           }
         }
       },
+      "b79c4e63ccb9051c27a91068a5c0b32d2e03c537": {
+        "timestamp": 1584656268,
+        "files": {
+          "packages/protocol/contracts/common/FixidityLib.sol": "979ab3852d57"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/FixidityLib.sol": []
+          }
+        }
+      },
+      "37a3de2809c029a4a9c3ac7648317ce517c9e613": {
+        "timestamp": 1584694885,
+        "files": {
+          "packages/protocol/contracts/identity/Attestations.sol": "d40580a414c4",
+          "packages/protocol/contracts/stability/Reserve.sol": "064223bf04d2"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/identity/Attestations.sol": [],
+            "packages/protocol/contracts/stability/Reserve.sol": []
+          }
+        }
+      },
       "14be5fff8ccc16086203048277527f11de4b0c01": {
         "timestamp": 1584700437,
         "files": {
@@ -21101,6 +21600,203 @@
         "audits": {
           "oz-celo-contracts-mainnet-releases-1-3": {
             "packages/protocol/contracts/governance/LockedGold.sol": []
+          }
+        }
+      },
+      "b0d3dad67dc2d33ce87241983f0f82866a1d2fee": {
+        "timestamp": 1584704772,
+        "files": {
+          "packages/protocol/contracts/governance/Election.sol": "528cefe15868"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/Election.sol": [
+              "H03"
+            ]
+          }
+        }
+      },
+      "f8b5805f263374cf7776c7eb69487d57da7bce4e": {
+        "timestamp": 1584707910,
+        "files": {
+          "packages/protocol/contracts/common/Accounts.sol": "edad0adb26d8"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/Accounts.sol": []
+          }
+        }
+      },
+      "bc6569b201343856461aa99606eafdb49d2b4ab6": {
+        "timestamp": 1584711257,
+        "files": {
+          "packages/protocol/contracts/common/TransferWhitelist.sol": "d0f5164e62f8"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/TransferWhitelist.sol": []
+          }
+        }
+      },
+      "8606923b3d8737bf06ce0e71e00525dbe26f705c": {
+        "timestamp": 1584714288,
+        "files": {
+          "packages/protocol/contracts/common/libraries/Heap.sol": "e6ab785758f0"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/libraries/Heap.sol": []
+          }
+        }
+      },
+      "e72b38b98085209726230548c05ad3cba1f4dd8b": {
+        "timestamp": 1584718766,
+        "files": {
+          "packages/protocol/contracts/stability/interfaces/IExchange.sol": "bca2060de902"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/stability/interfaces/IExchange.sol": []
+          }
+        }
+      },
+      "2097598331155da1656b2dfe096bd124a0099c6a": {
+        "timestamp": 1584727822,
+        "files": {
+          "packages/protocol/contracts/common/GoldToken.sol": "9d66329da140"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/GoldToken.sol": []
+          }
+        }
+      },
+      "19a24c0c162b3bcc7ccfbefc6edf0229f3b0a776": {
+        "timestamp": 1584731059,
+        "files": {
+          "packages/protocol/contracts/common/TransferWhitelist.sol": "bd9d729c73a1"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/TransferWhitelist.sol": []
+          }
+        }
+      },
+      "ad63c8000992a54985af67d5bdc0bb615fdc5657": {
+        "timestamp": 1584733924,
+        "files": {
+          "packages/protocol/contracts/governance/Election.sol": "87da3701db6b",
+          "packages/protocol/contracts/stability/SortedOracles.sol": "afb31e6388cc"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/Election.sol": [
+              "H03"
+            ],
+            "packages/protocol/contracts/stability/SortedOracles.sol": []
+          }
+        }
+      },
+      "05755e1c19856b6357b2e986636bf9933d9d6783": {
+        "timestamp": 1585137093,
+        "files": {
+          "packages/protocol/contracts/stability/Reserve.sol": "fbf3c2090bec"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/stability/Reserve.sol": []
+          }
+        }
+      },
+      "58fbf4dc733921ee3949f2b85ad2783a41cb03f8": {
+        "timestamp": 1585215795,
+        "files": {
+          "packages/protocol/contracts/common/TransferWhitelist.sol": "9a1862bd6c6f"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/TransferWhitelist.sol": []
+          }
+        }
+      },
+      "c1ae0c8cc402e07ae17a91ab13fc990d49336b8b": {
+        "timestamp": 1585820275,
+        "files": {
+          "packages/protocol/contracts/common/FixidityLib.sol": "619c48558b59"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/FixidityLib.sol": []
+          }
+        }
+      },
+      "6491c49f8a05931f1257ab0d2857852a7f8f8477": {
+        "timestamp": 1585821695,
+        "files": {
+          "packages/protocol/contracts/stability/Exchange.sol": "0e143ea8ffe6"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/stability/Exchange.sol": []
+          }
+        }
+      },
+      "76c425606a4732f04fb91650015d15a9d3397193": {
+        "timestamp": 1585822043,
+        "files": {
+          "packages/protocol/contracts/governance/ReleaseGold.sol": "8ea105362e3c"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/ReleaseGold.sol": []
+          }
+        }
+      },
+      "5f0f91d706d1567b92ac1192499793fd603e3e95": {
+        "timestamp": 1585822365,
+        "files": {
+          "packages/protocol/contracts/governance/ReleaseGold.sol": "438453bc2195"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/ReleaseGold.sol": []
+          }
+        }
+      },
+      "1026b859c3df1bb41ddfd5024d3ce767c2ebd5c9": {
+        "timestamp": 1585822611,
+        "files": {
+          "packages/protocol/contracts/common/libraries/ReentrancyGuard.sol": "3f1dbd11d9e8"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/libraries/ReentrancyGuard.sol": []
+          }
+        }
+      },
+      "10408f2e6e69f7dc880d9a3e8c6a677f4f91a081": {
+        "timestamp": 1585831951,
+        "files": {
+          "packages/protocol/contracts/governance/Validators.sol": "a592dce6fbfd"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/Validators.sol": [
+              "H03"
+            ]
+          }
+        }
+      },
+      "8dfc64dda56bc846e65927631ba25675ab8701e9": {
+        "timestamp": 1585919141,
+        "files": {
+          "packages/protocol/contracts/governance/Validators.sol": "7cddb43f4e44"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/Validators.sol": [
+              "H03"
+            ]
           }
         }
       },
@@ -21225,6 +21921,226 @@
             "packages/protocol/contracts/stability/StableToken.sol": [],
             "packages/protocol/contracts/stability/interfaces/IExchange.sol": [],
             "packages/protocol/contracts/stability/interfaces/IReserve.sol": []
+          }
+        }
+      },
+      "af67bc0f067e5da29ea18d12a4dbf8a6d1ca181e": {
+        "timestamp": 1598647719,
+        "files": {
+          "packages/protocol/contracts/identity/Attestations.sol": "e4dd50f89395"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/identity/Attestations.sol": []
+          }
+        }
+      },
+      "d99e3a749e2c34bc98e125c39270243d673e6967": {
+        "timestamp": 1598991766,
+        "files": {
+          "packages/protocol/contracts/governance/EpochRewards.sol": "5a633080cd53",
+          "packages/protocol/contracts/identity/Attestations.sol": "c7c74c4490f7"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/EpochRewards.sol": [],
+            "packages/protocol/contracts/identity/Attestations.sol": []
+          }
+        }
+      },
+      "f5937bfe19184486315414c4d1ac7ab299bac6e3": {
+        "timestamp": 1599243616,
+        "files": {
+          "packages/protocol/contracts/governance/LockedGold.sol": "83e0c3f1a42a",
+          "packages/protocol/contracts/governance/ReleaseGold.sol": "aac1437d0842",
+          "packages/protocol/contracts/stability/Reserve.sol": "c1b058df2396"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/LockedGold.sol": [],
+            "packages/protocol/contracts/governance/ReleaseGold.sol": [],
+            "packages/protocol/contracts/stability/Reserve.sol": []
+          }
+        }
+      },
+      "fef10d9f7fd1770db684e81642da9abcac6e8c22": {
+        "timestamp": 1599687489,
+        "files": {
+          "packages/protocol/contracts/identity/Attestations.sol": "49180984c2f5",
+          "packages/protocol/contracts/stability/SortedOracles.sol": "39f6765b76ae"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/identity/Attestations.sol": [],
+            "packages/protocol/contracts/stability/SortedOracles.sol": []
+          }
+        }
+      },
+      "f25f23c0e69a6ee588c932da9b5e886c0c64a4d2": {
+        "timestamp": 1599688083,
+        "files": {
+          "packages/protocol/contracts/common/interfaces/IMetaTransactionWallet.sol": "20be5426e6b7",
+          "packages/protocol/contracts/governance/interfaces/IElection.sol": "d3af718d9561",
+          "packages/protocol/contracts/governance/interfaces/IReleaseGold.sol": "82b4763ec513",
+          "packages/protocol/contracts/governance/interfaces/IValidators.sol": "da5326974390",
+          "packages/protocol/contracts/identity/interfaces/IAttestations.sol": "0c9e3bd00a0f"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/interfaces/IMetaTransactionWallet.sol": [],
+            "packages/protocol/contracts/governance/interfaces/IElection.sol": [],
+            "packages/protocol/contracts/governance/interfaces/IReleaseGold.sol": [],
+            "packages/protocol/contracts/governance/interfaces/IValidators.sol": [],
+            "packages/protocol/contracts/identity/interfaces/IAttestations.sol": []
+          }
+        }
+      },
+      "69afcba5e70a8fc3f7eb84b29eea80d1dba14a43": {
+        "timestamp": 1599776468,
+        "files": {
+          "packages/protocol/contracts/governance/Election.sol": "3fa2745fa6b8"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/Election.sol": []
+          }
+        }
+      },
+      "9b22e590ec55685d061585b6f0197c3397fdc791": {
+        "timestamp": 1599776632,
+        "files": {
+          "packages/protocol/contracts/governance/Validators.sol": "cb13cd44d057"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/Validators.sol": []
+          }
+        }
+      },
+      "e30d5e61351b4c4fce45cb29f4eaac2c7051092a": {
+        "timestamp": 1599777659,
+        "files": {
+          "packages/protocol/contracts/governance/ReleaseGold.sol": "c6587538c0e9",
+          "packages/protocol/contracts/identity/Attestations.sol": "6130e42f8ed2",
+          "packages/protocol/contracts/stability/SortedOracles.sol": "b3b750b8b4e1"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/ReleaseGold.sol": [],
+            "packages/protocol/contracts/identity/Attestations.sol": [],
+            "packages/protocol/contracts/stability/SortedOracles.sol": []
+          }
+        }
+      },
+      "9270c70b7c3802db3103cabf7e6b663d0c60a309": {
+        "timestamp": 1599855526,
+        "files": {
+          "packages/protocol/contracts/governance/Election.sol": "e9d2c8fd00bf",
+          "packages/protocol/contracts/governance/Proposals.sol": "14258225ae02",
+          "packages/protocol/contracts/identity/Attestations.sol": "5ad20b1c34d7"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/Election.sol": [],
+            "packages/protocol/contracts/governance/Proposals.sol": [],
+            "packages/protocol/contracts/identity/Attestations.sol": []
+          }
+        }
+      },
+      "9f58e046eedb593e45807637cd2573c4493f1218": {
+        "timestamp": 1599856316,
+        "files": {
+          "packages/protocol/contracts/governance/DowntimeSlasher.sol": "c6f840eb7aef"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/DowntimeSlasher.sol": []
+          }
+        }
+      },
+      "d613f6b3ac9a94afbde170965dbd43fc040ba7c8": {
+        "timestamp": 1600103251,
+        "files": {
+          "packages/protocol/contracts/common/TransferWhitelist.sol": "7428bc446af2",
+          "packages/protocol/contracts/common/interfaces/IMetaTransactionWallet.sol": "ab178983f3e0",
+          "packages/protocol/contracts/identity/Attestations.sol": "b44a91628b03"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/TransferWhitelist.sol": [],
+            "packages/protocol/contracts/common/interfaces/IMetaTransactionWallet.sol": [],
+            "packages/protocol/contracts/identity/Attestations.sol": []
+          }
+        }
+      },
+      "0ccb483e34a61fa59a8a2f063fa5924fe68c35fb": {
+        "timestamp": 1600104232,
+        "files": {
+          "packages/protocol/contracts/common/TransferWhitelist.sol": "bcd165219dae",
+          "packages/protocol/contracts/governance/Validators.sol": "fb21f570c8e8",
+          "packages/protocol/contracts/identity/Attestations.sol": "3e7805430d9d"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/TransferWhitelist.sol": [],
+            "packages/protocol/contracts/governance/Validators.sol": [],
+            "packages/protocol/contracts/identity/Attestations.sol": []
+          }
+        }
+      },
+      "da2aa16a5b28c10b5b249fba1a9f88b84dc76bdc": {
+        "timestamp": 1600122898,
+        "files": {
+          "packages/protocol/contracts/common/GoldToken.sol": "54982eb474e7",
+          "packages/protocol/contracts/common/MetaTransactionWallet.sol": "7c42f59481c5",
+          "packages/protocol/contracts/governance/EpochRewards.sol": "5f76304b7cee",
+          "packages/protocol/contracts/governance/LockedGold.sol": "e6010e7d29ea"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/GoldToken.sol": [],
+            "packages/protocol/contracts/common/MetaTransactionWallet.sol": [],
+            "packages/protocol/contracts/governance/EpochRewards.sol": [],
+            "packages/protocol/contracts/governance/LockedGold.sol": []
+          }
+        }
+      },
+      "48fb9f1fdb758c4621a05ea954f32dbcccef0c11": {
+        "timestamp": 1600123223,
+        "files": {
+          "packages/protocol/contracts/common/MetaTransactionWallet.sol": "fe08c55c6a6c",
+          "packages/protocol/contracts/identity/Attestations.sol": "270dee619003"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/MetaTransactionWallet.sol": [],
+            "packages/protocol/contracts/identity/Attestations.sol": []
+          }
+        }
+      },
+      "28004274b5fb68894fb93a645c9c2c6de8a76e81": {
+        "timestamp": 1600204147,
+        "files": {
+          "packages/protocol/contracts/governance/LockedGold.sol": "88e395541f59",
+          "packages/protocol/contracts/identity/Attestations.sol": "c3116f4f946a",
+          "packages/protocol/contracts/stability/StableToken.sol": "7d6875854ad4"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/LockedGold.sol": [],
+            "packages/protocol/contracts/identity/Attestations.sol": [],
+            "packages/protocol/contracts/stability/StableToken.sol": []
+          }
+        }
+      },
+      "28544e2208994126f54f2d867b35535f75bd6072": {
+        "timestamp": 1600721306,
+        "files": {
+          "packages/protocol/contracts/common/MetaTransactionWallet.sol": "69b73b9861a9"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/MetaTransactionWallet.sol": []
           }
         }
       },
@@ -21439,6 +22355,52 @@
           }
         }
       },
+      "b796f961f0e927cd3cd14ed4e1fb53c43efc9bb9": {
+        "timestamp": 1604826626,
+        "files": {
+          "packages/protocol/contracts/common/MetaTransactionWalletDeployer.sol": "f4beec03f7d5",
+          "packages/protocol/contracts/common/interfaces/IMetaTransactionWalletDeployer.sol": "5124c868dc1b"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/MetaTransactionWalletDeployer.sol": [],
+            "packages/protocol/contracts/common/interfaces/IMetaTransactionWalletDeployer.sol": []
+          }
+        }
+      },
+      "566b56143673af9b60273cec7fb4e11069ad2581": {
+        "timestamp": 1606239814,
+        "files": {
+          "packages/protocol/contracts/common/MetaTransactionWallet.sol": "2525c4623e42"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/MetaTransactionWallet.sol": []
+          }
+        }
+      },
+      "d13165bacb569ee4c8964ebee58f115b8dfd8d0e": {
+        "timestamp": 1606495528,
+        "files": {
+          "packages/protocol/contracts/common/MetaTransactionWalletDeployer.sol": "d63b661e4b2f"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/MetaTransactionWalletDeployer.sol": []
+          }
+        }
+      },
+      "7c70febfcf51af92b760cba92319ceb1875b24c2": {
+        "timestamp": 1606758483,
+        "files": {
+          "packages/protocol/contracts/common/MetaTransactionWallet.sol": "557d2e5ce450"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/common/MetaTransactionWallet.sol": []
+          }
+        }
+      },
       "0e876e5cad0e93f5dd1fff853f4be3c9a0e5c2a7": {
         "timestamp": 1607716535,
         "files": {
@@ -21521,6 +22483,61 @@
             "packages/protocol/contracts/stability/interfaces/IReserve.sol": [],
             "packages/protocol/contracts/stability/proxies/ExchangeEURProxy.sol": [],
             "packages/protocol/contracts/stability/proxies/StableTokenEURProxy.sol": []
+          }
+        }
+      },
+      "c9f9caa2d5626c018e0facfdd482372a63ef0827": {
+        "timestamp": 1613394368,
+        "files": {
+          "packages/protocol/contracts/stability/Reserve.sol": "787e39f372b7"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/stability/Reserve.sol": []
+          }
+        }
+      },
+      "8523ad6cbd31294419459ef2df713121e1a636ed": {
+        "timestamp": 1613479296,
+        "files": {
+          "packages/protocol/contracts/stability/Reserve.sol": "0e08ef8bd899"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/stability/Reserve.sol": []
+          }
+        }
+      },
+      "807928ed0cd311a92fa01f7b496a9f501b69cf0d": {
+        "timestamp": 1613485311,
+        "files": {
+          "packages/protocol/contracts/stability/Reserve.sol": "65795c60dd9a"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/stability/Reserve.sol": []
+          }
+        }
+      },
+      "3f2620389660f01460637181eaaa2075484d7636": {
+        "timestamp": 1613487134,
+        "files": {
+          "packages/protocol/contracts/stability/Reserve.sol": "04e02be07347"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/stability/Reserve.sol": []
+          }
+        }
+      },
+      "585ee978b0730e800d765004d7e7d6220c8a82bf": {
+        "timestamp": 1613490665,
+        "files": {
+          "packages/protocol/contracts/governance/Validators.sol": "1fa56ba984c7"
+        },
+        "audits": {
+          "oz-celo-contracts-mainnet-releases-1-3": {
+            "packages/protocol/contracts/governance/Validators.sol": []
           }
         }
       },
@@ -21615,6 +22632,39 @@
           }
         }
       },
+      "234c647332baf6344a738f01027145f1bb115c39": {
+        "timestamp": 1622592600,
+        "files": {
+          "packages/protocol/contracts/common/Accounts.sol": "bfccd9974188"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-4": {
+            "packages/protocol/contracts/common/Accounts.sol": []
+          }
+        }
+      },
+      "20490824f00f53facff171703dd7263fada6cad4": {
+        "timestamp": 1622653758,
+        "files": {
+          "packages/protocol/contracts/common/Accounts.sol": "83cff105ee54"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-4": {
+            "packages/protocol/contracts/common/Accounts.sol": []
+          }
+        }
+      },
+      "3b27e3a2c1faa10e8b0cc3e47535a96d7e2a187a": {
+        "timestamp": 1622669985,
+        "files": {
+          "packages/protocol/contracts/common/Accounts.sol": "85c3ac1fe23c"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-4": {
+            "packages/protocol/contracts/common/Accounts.sol": []
+          }
+        }
+      },
       "a10bdf3e42ecb0667cbe98d287bac02c1da85e93": {
         "timestamp": 1622835371,
         "files": {
@@ -21623,6 +22673,89 @@
         "audits": {
           "openzeppelin-celo-contracts-release-4": {
             "packages/protocol/contracts/governance/Governance.sol": []
+          }
+        }
+      },
+      "3f405e0235795bfdd8f9f5aeed522e5d195e71e5": {
+        "timestamp": 1622836002,
+        "files": {
+          "packages/protocol/contracts/identity/IdentityProxyHub.sol": "220a44fa93ea"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-4": {
+            "packages/protocol/contracts/identity/IdentityProxyHub.sol": []
+          }
+        }
+      },
+      "222644b692f54632a52e6850c8cf1911dbb4238e": {
+        "timestamp": 1622836476,
+        "files": {
+          "packages/protocol/contracts/common/ProxyCloneFactory.sol": "9def29d13358"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-4": {
+            "packages/protocol/contracts/common/ProxyCloneFactory.sol": []
+          }
+        }
+      },
+      "8317448c6c17a713e321ddcd5c06bf6a42ad5362": {
+        "timestamp": 1623083357,
+        "files": {
+          "packages/protocol/contracts/common/Accounts.sol": "8e0e4ba870f0"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-4": {
+            "packages/protocol/contracts/common/Accounts.sol": []
+          }
+        }
+      },
+      "056a5b43cb6e77a577589049c36006db4a492249": {
+        "timestamp": 1623194316,
+        "files": {
+          "packages/protocol/contracts/governance/Governance.sol": "ced2024f3c55"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-4": {
+            "packages/protocol/contracts/governance/Governance.sol": []
+          }
+        }
+      },
+      "414cfed45b1b21bb5d6bf5d3f022ce10935b2037": {
+        "timestamp": 1623194327,
+        "files": {
+          "packages/protocol/contracts/common/Accounts.sol": "6cc9985e92ae",
+          "packages/protocol/contracts/common/ProxyCloneFactory.sol": "e8b37d80bbe6",
+          "packages/protocol/contracts/governance/Governance.sol": "5fe7194b3d2e",
+          "packages/protocol/contracts/identity/IdentityProxy.sol": "2d753a0ad995"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-4": {
+            "packages/protocol/contracts/common/Accounts.sol": [],
+            "packages/protocol/contracts/common/ProxyCloneFactory.sol": [],
+            "packages/protocol/contracts/governance/Governance.sol": [],
+            "packages/protocol/contracts/identity/IdentityProxy.sol": []
+          }
+        }
+      },
+      "d4173450bec550eec92c07a1e0dd0acb0720b32e": {
+        "timestamp": 1623194336,
+        "files": {
+          "packages/protocol/contracts/identity/IdentityProxy.sol": "3376c4cc423b"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-4": {
+            "packages/protocol/contracts/identity/IdentityProxy.sol": []
+          }
+        }
+      },
+      "8b502387f00e062a29e775192b760d52c2c74ac3": {
+        "timestamp": 1623194359,
+        "files": {
+          "packages/protocol/contracts/common/GoldToken.sol": "924826bd1cba"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-4": {
+            "packages/protocol/contracts/common/GoldToken.sol": []
           }
         }
       },
@@ -21645,6 +22778,17 @@
         "audits": {
           "openzeppelin-celo-contracts-release-4": {
             "packages/protocol/contracts/governance/Governance.sol": []
+          }
+        }
+      },
+      "cba251cccd8495bbe6fb3a551714b2d895db6641": {
+        "timestamp": 1623890398,
+        "files": {
+          "packages/protocol/contracts/identity/IdentityProxyHub.sol": "27b3a98eaf97"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-4": {
+            "packages/protocol/contracts/identity/IdentityProxyHub.sol": []
           }
         }
       },
@@ -21869,6 +23013,17 @@
           }
         }
       },
+      "6af9bf0371550f723731080929f9d8946d78d524": {
+        "timestamp": 1638308560,
+        "files": {
+          "packages/protocol/contracts/common/Accounts.sol": "5a12913beb5d"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-6": {
+            "packages/protocol/contracts/common/Accounts.sol": []
+          }
+        }
+      },
       "e763f08f100524f905b1389f0288894fef69737c": {
         "timestamp": 1638527824,
         "files": {
@@ -21927,6 +23082,19 @@
           }
         }
       },
+      "92ce034b674f2eff1aab94d5830293071e717ba5": {
+        "timestamp": 1643730301,
+        "files": {
+          "packages/protocol/contracts/common/Accounts.sol": "912b827406ed",
+          "packages/protocol/contracts/stability/Exchange.sol": "1a9796997ed2"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-7-part-i": {
+            "packages/protocol/contracts/common/Accounts.sol": [],
+            "packages/protocol/contracts/stability/Exchange.sol": []
+          }
+        }
+      },
       "2d73adcc2cb28cb22c2beb0bd1dec1dfebb42cfb": {
         "timestamp": 1646395701,
         "files": {
@@ -21935,6 +23103,19 @@
         "audits": {
           "openzeppelin-celo-contracts-release-7-part-ii": {
             "packages/protocol/contracts/governance/LockedGold.sol": []
+          }
+        }
+      },
+      "190b78ea5bc30fa930bf9b22a6df38d905816eb7": {
+        "timestamp": 1646727342,
+        "files": {
+          "packages/protocol/contracts/stability/ExchangeBRL.sol": "fa86595efe85",
+          "packages/protocol/contracts/stability/StableTokenBRL.sol": "a975f2d29707"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-7-part-i": {
+            "packages/protocol/contracts/stability/ExchangeBRL.sol": [],
+            "packages/protocol/contracts/stability/StableTokenBRL.sol": []
           }
         }
       },
@@ -21961,6 +23142,17 @@
             "packages/protocol/contracts/common/Accounts.sol": [],
             "packages/protocol/contracts/governance/Validators.sol": [],
             "packages/protocol/contracts/stability/ExchangeBRL.sol": []
+          }
+        }
+      },
+      "da1b28e2bc93bbe57af7cd30e5c45eaa69576291": {
+        "timestamp": 1646934420,
+        "files": {
+          "packages/protocol/contracts/common/Accounts.sol": "6850692ddf0f"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-7-part-i": {
+            "packages/protocol/contracts/common/Accounts.sol": []
           }
         }
       },
@@ -22393,6 +23585,19 @@
           }
         }
       },
+      "61b2798459e33b67b1f5b000c81e694b0b40cb68": {
+        "timestamp": 1684509822,
+        "files": {
+          "packages/protocol/contracts/common/Accounts.sol": "992d964d0842",
+          "packages/protocol/contracts/governance/LockedGold.sol": "63e1690c5165"
+        },
+        "audits": {
+          "hexens-clabs-core-contracts-2023-07-14": {
+            "packages/protocol/contracts/common/Accounts.sol": [],
+            "packages/protocol/contracts/governance/LockedGold.sol": []
+          }
+        }
+      },
       "3fcb1658be86afcb342b2c9e2c0413218ea45527": {
         "timestamp": 1684755316,
         "files": {
@@ -22406,12 +23611,90 @@
           }
         }
       },
+      "0201eb90f7b4cc331200f281c49e9d7f2ff8e94f": {
+        "timestamp": 1685534277,
+        "files": {
+          "packages/protocol/contracts/governance/Governance.sol": "5e62fd0b0dfc",
+          "packages/protocol/contracts/governance/Proposals.sol": "b0ac7b9365b3"
+        },
+        "audits": {
+          "hexens-clabs-core-contracts-2023-07-14": {
+            "packages/protocol/contracts/governance/Governance.sol": [
+              "CLAB-30"
+            ],
+            "packages/protocol/contracts/governance/Proposals.sol": []
+          }
+        }
+      },
+      "5151c69036828e4472587d3bd6440199fd60d510": {
+        "timestamp": 1685714273,
+        "files": {
+          "packages/protocol/contracts/identity/IdentityProxyHub.sol": "ccd26962812d",
+          "packages/protocol/contracts/stability/SortedOracles.sol": "0786bf9cf219"
+        },
+        "audits": {
+          "hexens-clabs-core-contracts-2023-07-14": {
+            "packages/protocol/contracts/identity/IdentityProxyHub.sol": [],
+            "packages/protocol/contracts/stability/SortedOracles.sol": []
+          }
+        }
+      },
+      "06a7a23748a0e32df59245a2fa53e051429bc9c2": {
+        "timestamp": 1686308049,
+        "files": {
+          "packages/protocol/contracts/common/libraries/B12.sol": "a97bf1013a97",
+          "packages/protocol/contracts/common/libraries/CIP20Lib.sol": "dd237121b3f9"
+        },
+        "audits": {
+          "hexens-clabs-core-contracts-2023-07-14": {
+            "packages/protocol/contracts/common/libraries/B12.sol": [],
+            "packages/protocol/contracts/common/libraries/CIP20Lib.sol": []
+          }
+        }
+      },
+      "485d21adc567d37af2adb084bc38d3fb51d7a108": {
+        "timestamp": 1686740585,
+        "files": {
+          "packages/protocol/contracts/common/interfaces/IAccounts.sol": "77a0aed1f023",
+          "packages/protocol/contracts/common/interfaces/ICeloToken.sol": "74161ee2f3a3",
+          "packages/protocol/contracts/common/interfaces/ICeloVersionedContract.sol": "2e79fb2275ce",
+          "packages/protocol/contracts/common/interfaces/IFeeCurrencyWhitelist.sol": "8723f08a1613",
+          "packages/protocol/contracts/common/interfaces/IFreezer.sol": "d80d14274435",
+          "packages/protocol/contracts/common/interfaces/IMetaTransactionWallet.sol": "4a535ddc5604",
+          "packages/protocol/contracts/common/interfaces/IMetaTransactionWalletDeployer.sol": "09a54e88cac7",
+          "packages/protocol/contracts/common/interfaces/IRegistry.sol": "9caa185f0f62",
+          "packages/protocol/contracts/governance/LockedGold.sol": "bd3962472c53",
+          "packages/protocol/contracts/governance/interfaces/IElection.sol": "9cd2ea6f159f",
+          "packages/protocol/contracts/governance/interfaces/IGovernance.sol": "b9bde0886104",
+          "packages/protocol/contracts/governance/interfaces/ILockedGold.sol": "a12714c4dcf9",
+          "packages/protocol/contracts/governance/interfaces/IReleaseGold.sol": "a9024f985c49",
+          "packages/protocol/contracts/governance/interfaces/IValidators.sol": "1e6050cc3142"
+        },
+        "audits": {
+          "hexens-clabs-core-contracts-2023-07-14": {
+            "packages/protocol/contracts/common/interfaces/IAccounts.sol": [],
+            "packages/protocol/contracts/common/interfaces/ICeloToken.sol": [],
+            "packages/protocol/contracts/common/interfaces/ICeloVersionedContract.sol": [],
+            "packages/protocol/contracts/common/interfaces/IFeeCurrencyWhitelist.sol": [],
+            "packages/protocol/contracts/common/interfaces/IFreezer.sol": [],
+            "packages/protocol/contracts/common/interfaces/IMetaTransactionWallet.sol": [],
+            "packages/protocol/contracts/common/interfaces/IMetaTransactionWalletDeployer.sol": [],
+            "packages/protocol/contracts/common/interfaces/IRegistry.sol": [],
+            "packages/protocol/contracts/governance/LockedGold.sol": [],
+            "packages/protocol/contracts/governance/interfaces/IElection.sol": [],
+            "packages/protocol/contracts/governance/interfaces/IGovernance.sol": [],
+            "packages/protocol/contracts/governance/interfaces/ILockedGold.sol": [],
+            "packages/protocol/contracts/governance/interfaces/IReleaseGold.sol": [],
+            "packages/protocol/contracts/governance/interfaces/IValidators.sol": []
+          }
+        }
+      },
       "bc1a1d18b601d60ffd28d7db951c489481cdbbc1": {
         "timestamp": 1687965492,
         "files": {
           "packages/protocol/contracts/common/FeeCurrencyWhitelist.sol": "85f226c57ff6",
           "packages/protocol/contracts/common/FeeHandler.sol": "55af8e53a3ca",
-          "packages/protocol/contracts/common/FeeHandlerSeller.sol": "163143682c1a",
+          "packages/protocol/contracts/common/FeeHandlerSeller.sol": "90add18a5e00",
           "packages/protocol/contracts/common/MentoFeeHandlerSeller.sol": "09c485d6e572",
           "packages/protocol/contracts/common/UniswapFeeHandlerSeller.sol": "d5e29b09fa00",
           "packages/protocol/contracts/common/interfaces/IFeeHandler.sol": "34876de41b19",
@@ -22487,7 +23770,9 @@
         },
         "audits": {
           "hexens-clabs-core-contracts-2023-07-14": {
-            "packages/protocol/contracts/common/FeeHandler.sol": [],
+            "packages/protocol/contracts/common/FeeHandler.sol": [
+              "CLAB-25"
+            ],
             "packages/protocol/contracts/common/MentoFeeHandlerSeller.sol": [],
             "packages/protocol/contracts/common/UniswapFeeHandlerSeller.sol": [],
             "packages/protocol/contracts/common/interfaces/IFeeHandlerSeller.sol": []
@@ -22724,7 +24009,7 @@
           "packages/protocol/contracts/common/ExtractFunctionSignature.sol": "b775ea0f7ad9",
           "packages/protocol/contracts/common/FeeCurrencyWhitelist.sol": "c513910d033e",
           "packages/protocol/contracts/common/FeeHandler.sol": "6811dcc6be52",
-          "packages/protocol/contracts/common/FeeHandlerSeller.sol": "8dead25482dc",
+          "packages/protocol/contracts/common/FeeHandlerSeller.sol": "30dbee09b632",
           "packages/protocol/contracts/common/FixidityLib.sol": "aa24f30d330a",
           "packages/protocol/contracts/common/Freezable.sol": "e38698ca3519",
           "packages/protocol/contracts/common/Freezer.sol": "1865ca406817",
@@ -28649,6 +29934,30 @@
         "audits": {
           "bailsec-sushistaker-2026-02": {
             "src/SushiStaker.sol": []
+          }
+        }
+      }
+    },
+    "luisgj/celo-monorepo": {
+      "0afc15a6dac109ada329e12c0d40fec7dcb9f40c": {
+        "timestamp": 1637614408,
+        "files": {
+          "packages/protocol/contracts/common/UsingRegistryV2.sol": "e3756bae4cc5"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-6": {
+            "packages/protocol/contracts/common/UsingRegistryV2.sol": []
+          }
+        }
+      },
+      "8e0caecc0554d5a3f6fb25b6d024f29ff7562029": {
+        "timestamp": 1637614543,
+        "files": {
+          "packages/protocol/contracts/stability/ExchangeBRL.sol": "fa86595efe85"
+        },
+        "audits": {
+          "openzeppelin-celo-contracts-release-6": {
+            "packages/protocol/contracts/stability/ExchangeBRL.sol": []
           }
         }
       }

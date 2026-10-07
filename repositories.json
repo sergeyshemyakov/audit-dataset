@@ -480,6 +480,10 @@
       "url": "https://github.com/lidofinance/governance-crosschain-bridges",
       "fork_of": "aave/governance-crosschain-bridges"
     },
+    "luisgj/celo-monorepo": {
+      "url": "https://github.com/luisgj/celo-monorepo",
+      "fork_of": "celo-org/celo-monorepo"
+    },
     "mantle-xyz/hydro": {
       "url": "https://github.com/mantle-xyz/hydro"
     },

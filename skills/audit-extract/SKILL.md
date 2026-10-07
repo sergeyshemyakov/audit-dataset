@@ -54,8 +54,11 @@ type Version = {
   major_finding_ids?: string[]; // required iff status is *_with_major_findings, see "Major finding identifiers"
 };
 
+type Kind = "evm" | "zk" | "cairo" | "other"; // what the path holds, see "Path kinds"
+
 type PathEntry = {
   path_kind: "file" | "directory_recursive";
+  kind: Kind;
   versions: Version[]; // earlier to later
 };
 
@@ -75,7 +78,7 @@ type Report = {
 };
 
 type AuditSummary = {
-  schema_version: "1.5.0";
+  schema_version: "1.6.0";
   project: string;
   reports: Report[];
 };
@@ -86,6 +89,17 @@ Repository ids are canonical and derived from the repository URL: GitHub reposit
 For a project that forks another codebase (for example an OP stack fork), scope only what the report scopes. Never expand a fork's audit to upstream files: the consumer resolves upstream coverage through the repository registry.
 
 Every report must have `description` and `isRelevant`. An irrelevant report must have `scopes: []`; do not extract its repository paths, revisions, or findings. `repositories` may contain repositories that are directly identified while classifying the report, including an inaccessible private repository, but do not investigate the report further merely to populate that array.
+
+## Path kinds
+
+Every scoped path carries `kind`, which decides how the pipeline treats it. Only `evm` paths are fetched and exported today; the others are recorded so that their sources can be fetched later without re-reading the reports.
+
+- `evm`: contracts for the EVM: Solidity, Yul, Vyper. A directory whose code is Solidity is `evm` even when it also holds JSON artifacts, tests or scripts.
+- `zk`: code whose execution is proven or that verifies proofs: circuits, provers, zkVM guest programs, verifier key generation, proof-system and hashing libraries written for proving. A Solidity verifier contract is `evm`, not `zk`.
+- `cairo`: Starknet contracts and Cairo programs.
+- `other`: everything else: node and client software, sequencers, bridges' offchain services, SDKs, deployment scripts, specifications.
+
+Decide from the report's description of the scope and from the path. When a report scopes a directory that mixes kinds, split it only if the report itself scopes the parts separately; otherwise give the directory the kind of its primary content.
 
 ## Major finding identifiers
 
@@ -127,7 +141,7 @@ Derive status mechanically: full coverage of the file or directory gives `audite
 - Files merely referenced as dependencies, examples, or context unless the report explicitly audits them.
 - Deployment addresses, production bytecode, or guesses about which audited version is deployed.
 
-`python3 -m audit_dataset render <collection>` validates the summary and fails on: unknown keys, non-canonical repository ids, scopes naming unknown repositories, malformed paths, unknown statuses or path kinds, `major_finding_ids` missing for a `*_with_major_findings` status or present for any other, missing or malformed `description`, `isRelevant`, `report_date` or `report_file`, non-empty scopes on an irrelevant report, timestamps that are not ISO 8601 UTC whole seconds, and two versions disagreeing on one commit's timestamp. Confirm before running it: full-length commit hashes where known, timestamps that are `null` only when the commit is `null` or unavailable on GitHub, and chronological version order.
+`python3 -m audit_dataset render <collection>` validates the summary and fails on: unknown keys, non-canonical repository ids, scopes naming unknown repositories, malformed paths, unknown statuses, path kinds or kinds, `major_finding_ids` missing for a `*_with_major_findings` status or present for any other, missing or malformed `description`, `isRelevant`, `report_date` or `report_file`, non-empty scopes on an irrelevant report, timestamps that are not ISO 8601 UTC whole seconds, and two versions disagreeing on one commit's timestamp. Confirm before running it: full-length commit hashes where known, timestamps that are `null` only when the commit is `null` or unavailable on GitHub, and chronological version order.
 
 # After writing the final audit-summary.json
 

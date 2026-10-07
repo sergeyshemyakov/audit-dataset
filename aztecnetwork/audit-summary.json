@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "aztecnetwork",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "packages/protocol/contracts/ZkAsset/ZkAsset.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -36,6 +37,7 @@
             },
             "packages/protocol/contracts/ZkAsset/ZkAssetBurnable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -50,6 +52,7 @@
             },
             "packages/protocol/contracts/ZkAsset/ZkAssetDetailed.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -64,6 +67,7 @@
             },
             "packages/protocol/contracts/ZkAsset/ZkAssetMintable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -81,6 +85,7 @@
             },
             "packages/protocol/contracts/ZkAsset/ZkAssetOwnable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -95,6 +100,7 @@
             },
             "packages/protocol/contracts/ZkAsset/ZkAssetOwnableTest.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -109,6 +115,7 @@
             },
             "packages/protocol/contracts/ACE/validators/joinSplit/JoinSplit.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -123,6 +130,7 @@
             },
             "packages/protocol/contracts/ACE/NoteRegistry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -137,6 +145,7 @@
             },
             "packages/protocol/contracts/ACE/ACE.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -154,6 +163,7 @@
             },
             "packages/protocol/contracts/ERC20/ERC20Mintable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -168,6 +178,7 @@
             },
             "packages/protocol/contracts/libs/LibEIP712.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -182,6 +193,7 @@
             },
             "packages/protocol/contracts/ERC1724/base/ZkAssetMintableBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -198,6 +210,7 @@
             },
             "packages/protocol/contracts/ERC1724/base/ZkAssetOwnableBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -240,6 +253,7 @@
           "paths": {
             "barretenberg/src/aztec": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -276,6 +290,7 @@
           "paths": {
             "src/bridges/lido/LidoBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -293,6 +308,7 @@
             },
             "src/test/lido/Lido.t.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -329,6 +345,7 @@
           "paths": {
             "src/bridges/element/ElementBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -352,6 +369,7 @@
             },
             "src/bridges/element/MinHeap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -366,6 +384,7 @@
             },
             "src/bridges/element/interfaces": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -402,6 +421,7 @@
           "paths": {
             "src/bridges/set/IssuanceBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -416,6 +436,7 @@
             },
             "src/bridges/set/interfaces": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -452,6 +473,7 @@
           "paths": {
             "src/bridges/aave/AccountingToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -466,6 +488,7 @@
             },
             "src/bridges/aave/imports": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -480,6 +503,7 @@
             },
             "src/bridges/aave/interfaces": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -494,6 +518,7 @@
             },
             "src/bridges/aave/lending": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -530,6 +555,7 @@
           "paths": {
             "src/bridges/liquity/interfaces": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -544,6 +570,7 @@
             },
             "src/bridges/liquity/StakingBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -558,6 +585,7 @@
             },
             "src/bridges/liquity/TroveBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -577,6 +605,7 @@
             },
             "src/bridges/liquity/StabilityPoolBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -613,6 +642,7 @@
           "paths": {
             "src/bridges/compound/CompoundBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -627,6 +657,7 @@
             },
             "src/bridges/compound/interfaces": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -663,6 +694,7 @@
           "paths": {
             "src/bridges/curve/CurveStEthBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -699,6 +731,7 @@
           "paths": {
             "src/aztec/Subsidy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -735,6 +768,7 @@
           "paths": {
             "src/bridges/dca/BiDCABridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -758,6 +792,7 @@
             },
             "src/bridges/dca/SafeCastLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -772,6 +807,7 @@
             },
             "src/bridges/dca/UniswapDCABridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -826,6 +862,7 @@
           "paths": {
             "src/bridges/liquity/TroveBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -874,6 +911,7 @@
           "paths": {
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -893,6 +931,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/field": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -907,6 +946,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -946,6 +986,7 @@
           "paths": {
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -965,6 +1006,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -983,6 +1025,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/constants.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -997,6 +1040,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1015,6 +1059,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1051,6 +1096,7 @@
           "paths": {
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1070,6 +1116,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1106,6 +1153,7 @@
           "paths": {
             "l1-contracts/src/governance/CoinIssuer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1122,6 +1170,7 @@
             },
             "l1-contracts/src/governance/GSE.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1138,6 +1187,7 @@
             },
             "l1-contracts/src/governance/Registry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1154,6 +1204,7 @@
             },
             "l1-contracts/src/governance/Governance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1188,6 +1239,7 @@
             },
             "l1-contracts/src/governance/GSEPayload.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1204,6 +1256,7 @@
             },
             "l1-contracts/src/governance/RewardDistributor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1220,6 +1273,7 @@
             },
             "l1-contracts/src/governance/proposer/EmpireBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1245,6 +1299,7 @@
             },
             "l1-contracts/src/governance/proposer/GovernanceProposer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1261,6 +1316,7 @@
             },
             "l1-contracts/src/governance/interfaces/ICoinIssuer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1277,6 +1333,7 @@
             },
             "l1-contracts/src/governance/interfaces/IGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1293,6 +1350,7 @@
             },
             "l1-contracts/src/governance/interfaces/IPayload.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1309,6 +1367,7 @@
             },
             "l1-contracts/src/governance/interfaces/IRegistry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1325,6 +1384,7 @@
             },
             "l1-contracts/src/governance/interfaces/IEmpire.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1341,6 +1401,7 @@
             },
             "l1-contracts/src/governance/interfaces/IGovernanceProposer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1357,6 +1418,7 @@
             },
             "l1-contracts/src/governance/interfaces/IProposerPayload.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1373,6 +1435,7 @@
             },
             "l1-contracts/src/governance/interfaces/IRewardDistributor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1389,6 +1452,7 @@
             },
             "l1-contracts/src/governance/libraries/AddressSnapshotLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1405,6 +1469,7 @@
             },
             "l1-contracts/src/governance/libraries/ConfigurationLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1421,6 +1486,7 @@
             },
             "l1-contracts/src/governance/libraries/Errors.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1437,6 +1503,7 @@
             },
             "l1-contracts/src/governance/libraries/CheckpointedUintLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1453,6 +1520,7 @@
             },
             "l1-contracts/src/governance/libraries/DepositDelegationLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1469,6 +1537,7 @@
             },
             "l1-contracts/src/governance/libraries/ProposalLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1485,6 +1554,7 @@
             },
             "l1-contracts/src/core/slashing/Slasher.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1501,6 +1571,7 @@
             },
             "l1-contracts/src/core/slashing/SlashingProposer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1517,6 +1588,7 @@
             },
             "l1-contracts/src/shared/interfaces/IMintableERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1533,6 +1605,7 @@
             },
             "l1-contracts/src/shared/libraries/BN254Lib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1549,6 +1622,7 @@
             },
             "l1-contracts/src/shared/libraries/CompressedTimeMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1565,6 +1639,7 @@
             },
             "l1-contracts/src/shared/libraries/SignatureLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1581,6 +1656,7 @@
             },
             "l1-contracts/src/shared/libraries/TimeMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1619,6 +1695,7 @@
           "paths": {
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield_impl.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1705,6 +1782,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1773,6 +1851,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/bigfield.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1796,6 +1875,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield/README.md": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1850,6 +1930,7 @@
           "paths": {
             "l1-contracts/src/governance/CoinIssuer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1864,6 +1945,7 @@
             },
             "l1-contracts/src/governance/Governance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1896,6 +1978,7 @@
             },
             "l1-contracts/src/governance/GSEPayload.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1910,6 +1993,7 @@
             },
             "l1-contracts/src/governance/GSE.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1960,6 +2044,7 @@
             },
             "l1-contracts/src/governance/interfaces/ICoinIssuer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1974,6 +2059,7 @@
             },
             "l1-contracts/src/governance/interfaces/IEmpire.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1988,6 +2074,7 @@
             },
             "l1-contracts/src/governance/interfaces/IGovernanceProposer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2002,6 +2089,7 @@
             },
             "l1-contracts/src/governance/interfaces/IGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2025,6 +2113,7 @@
             },
             "l1-contracts/src/governance/interfaces/IPayload.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2039,6 +2128,7 @@
             },
             "l1-contracts/src/governance/interfaces/IProposerPayload.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2053,6 +2143,7 @@
             },
             "l1-contracts/src/governance/interfaces/IRegistry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2067,6 +2158,7 @@
             },
             "l1-contracts/src/governance/interfaces/IRewardDistributor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2081,6 +2173,7 @@
             },
             "l1-contracts/src/governance/libraries/AddressSnapshotLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2104,6 +2197,7 @@
             },
             "l1-contracts/src/governance/libraries/CheckpointedUintLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2118,6 +2212,7 @@
             },
             "l1-contracts/src/governance/libraries/ConfigurationLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2141,6 +2236,7 @@
             },
             "l1-contracts/src/governance/libraries/DepositDelegationLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2155,6 +2251,7 @@
             },
             "l1-contracts/src/governance/libraries/Errors.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2178,6 +2275,7 @@
             },
             "l1-contracts/src/governance/libraries/ProposalLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2201,6 +2299,7 @@
             },
             "l1-contracts/src/governance/proposer/EmpireBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2215,6 +2314,7 @@
             },
             "l1-contracts/src/governance/proposer/GovernanceProposer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2229,6 +2329,7 @@
             },
             "l1-contracts/src/governance/Registry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2243,6 +2344,7 @@
             },
             "l1-contracts/src/governance/RewardDistributor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2257,6 +2359,7 @@
             },
             "l1-contracts/src/shared/interfaces/IMintableERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2271,6 +2374,7 @@
             },
             "l1-contracts/src/shared/libraries/BN254Lib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2312,6 +2416,7 @@
             },
             "l1-contracts/src/shared/libraries/CompressedTimeMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2326,6 +2431,7 @@
             },
             "l1-contracts/src/shared/libraries/SignatureLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2340,6 +2446,7 @@
             },
             "l1-contracts/src/shared/libraries/TimeMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2376,6 +2483,7 @@
           "paths": {
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2399,6 +2507,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2413,6 +2522,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/bool/bool.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2427,6 +2537,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2454,6 +2565,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2477,6 +2589,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/byte_array/byte_array.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2522,6 +2635,7 @@
           "paths": {
             "l1-contracts/src/governance/CoinIssuer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2567,6 +2681,7 @@
           "paths": {
             "l1-contracts/src/governance/proposer/EmpireBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2590,6 +2705,7 @@
             },
             "l1-contracts/src/governance/GSEPayload.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2622,6 +2738,7 @@
             },
             "l1-contracts/src/governance/proposer/GovernanceProposer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2654,6 +2771,7 @@
             },
             "l1-contracts/src/governance/RewardDistributor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2677,6 +2795,7 @@
             },
             "l1-contracts/src/governance/interfaces/IRewardDistributor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2700,6 +2819,7 @@
             },
             "l1-contracts/src/shared/libraries/SignatureLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2714,6 +2834,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/AttestationLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2746,6 +2867,7 @@
             },
             "l1-contracts/src/governance/libraries/AddressSnapshotLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2778,6 +2900,7 @@
             },
             "l1-contracts/src/governance/GSE.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2819,6 +2942,7 @@
             },
             "l1-contracts/src/governance/Governance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2860,6 +2984,7 @@
             },
             "l1-contracts/src/governance/libraries/ProposalLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2883,6 +3008,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/StakingLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2906,6 +3032,7 @@
             },
             "l1-contracts/src/governance/CoinIssuer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2920,6 +3047,7 @@
             },
             "l1-contracts/src/governance/Registry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2956,6 +3084,7 @@
           "paths": {
             "l1-contracts/src/core/messagebridge/Outbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2991,6 +3120,7 @@
             },
             "l1-contracts/src/core/libraries/crypto/MerkleLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3023,6 +3153,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/StakingLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3049,6 +3180,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/ProposeLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3075,6 +3207,7 @@
             },
             "l1-contracts/src/core/messagebridge/Inbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3098,6 +3231,7 @@
             },
             "l1-contracts/src/core/RollupCore.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3112,6 +3246,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3135,6 +3270,7 @@
             },
             "l1-contracts/src/core/messagebridge/FeeJuicePortal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3149,6 +3285,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/STFLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3172,6 +3309,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/RewardLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3204,6 +3342,7 @@
             },
             "l1-contracts/src/core/libraries/crypto/SampleLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3227,6 +3366,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/BlobLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3250,6 +3390,7 @@
             },
             "l1-contracts/src/core/libraries/compressed-data/Tips.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3273,6 +3414,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/InvalidateLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3296,6 +3438,7 @@
             },
             "l1-contracts/src/core/libraries/StakingQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3319,6 +3462,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/EpochProofLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3342,6 +3486,7 @@
             },
             "l1-contracts/src/core/libraries/compressed-data/fees/FeeStructs.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3365,6 +3510,7 @@
             },
             "l1-contracts/src/core/libraries/compressed-data/fees/FeeConfig.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3388,6 +3534,7 @@
             },
             "l1-contracts/src/core/slashing/EmpireSlashingProposer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3424,6 +3571,7 @@
           "paths": {
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3447,6 +3595,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3470,6 +3619,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/field/field.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3519,6 +3669,7 @@
           "paths": {
             "barretenberg/cpp/src/barretenberg/circuit_checker/ultra_circuit_builder_elliptic.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3542,6 +3693,7 @@
             },
             "barretenberg/cpp/src/barretenberg/circuit_checker/ultra_circuit_builder_memory.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3565,6 +3717,7 @@
             },
             "barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3588,6 +3741,7 @@
             },
             "barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3611,6 +3765,7 @@
             },
             "barretenberg/cpp/src/barretenberg/dsl/acir_format/block_constraint.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3634,6 +3789,7 @@
             },
             "barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3657,6 +3813,7 @@
             },
             "barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3680,6 +3837,7 @@
             },
             "barretenberg/cpp/src/barretenberg/dsl/acir_format/ec_operations.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3703,6 +3861,7 @@
             },
             "barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3726,6 +3885,7 @@
             },
             "barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3749,6 +3909,7 @@
             },
             "barretenberg/cpp/src/barretenberg/dsl/acir_format/multi_scalar_mul.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3772,6 +3933,7 @@
             },
             "barretenberg/cpp/src/barretenberg/relations/elliptic_relation.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3795,6 +3957,7 @@
             },
             "barretenberg/cpp/src/barretenberg/relations/memory_relation.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3818,6 +3981,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3841,6 +4005,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3864,6 +4029,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base_params.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3887,6 +4053,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/fixed_base/fixed_base.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3910,6 +4077,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/rom_ram_logic.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3933,6 +4101,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/rom_ram_logic.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3956,6 +4125,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3979,6 +4149,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4002,6 +4173,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4028,6 +4200,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4051,6 +4224,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_group.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4074,6 +4248,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4097,6 +4272,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4120,6 +4296,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/cycle_scalar.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4143,6 +4320,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4166,6 +4344,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4189,6 +4368,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_lookup_table.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4212,6 +4392,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4235,6 +4416,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4258,6 +4440,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/straus_scalar_slice.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4281,6 +4464,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/group/test_utils.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4304,6 +4488,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4327,6 +4512,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4350,6 +4536,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/ram_table.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4373,6 +4560,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4396,6 +4584,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4419,6 +4608,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/rom_table.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4442,6 +4632,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4465,6 +4656,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4488,6 +4680,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/memory/twin_rom_table.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4511,6 +4704,7 @@
             },
             "barretenberg/cpp/src/barretenberg/ultra_honk/rom_ram.test.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4556,6 +4750,7 @@
           "paths": {
             "l1-contracts/src/core/EscapeHatch.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4597,6 +4792,7 @@
             },
             "l1-contracts/src/core/Rollup.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4611,6 +4807,7 @@
             },
             "l1-contracts/src/core/RollupCore.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4625,6 +4822,7 @@
             },
             "l1-contracts/src/core/interfaces/IEscapeHatch.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4639,6 +4837,7 @@
             },
             "l1-contracts/src/core/interfaces/IRollup.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4653,6 +4852,7 @@
             },
             "l1-contracts/src/core/interfaces/IValidatorSelection.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4667,6 +4867,7 @@
             },
             "l1-contracts/src/core/libraries/Errors.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4681,6 +4882,7 @@
             },
             "l1-contracts/src/core/libraries/HatchMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4695,6 +4897,7 @@
             },
             "l1-contracts/src/core/libraries/compressed-data/fees/FeeConfig.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4718,6 +4921,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/EpochProofLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4744,6 +4948,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/FeeLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4776,6 +4981,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/InvalidateLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4790,6 +4996,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/ProposedHeaderLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4804,6 +5011,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/ProposeLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4818,6 +5026,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/RewardLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4832,6 +5041,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/ValidatorOperationsExtLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4846,6 +5056,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4869,6 +5080,7 @@
             },
             "l1-contracts/src/core/messagebridge/Inbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4883,6 +5095,7 @@
             },
             "l1-contracts/src/core/slashing/TallySlashingProposer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4942,6 +5155,7 @@
             },
             "l1-contracts/src/core/messagebridge/Outbox.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4956,6 +5170,7 @@
             },
             "l1-contracts/src/core/libraries/rollup/STFLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4992,6 +5207,7 @@
           "paths": {
             "l1-contracts/script/deploy/DeployAlpha.s.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5015,6 +5231,7 @@
             },
             "l1-contracts/scripts/run_alpha_upgrade.sh": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5029,6 +5246,7 @@
             },
             "l1-contracts/src/alpha/AlphaPayload.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5043,6 +5261,7 @@
             },
             "l1-contracts/src/alpha/AlphaVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5057,6 +5276,7 @@
             },
             "yarn-project/aztec/src/mainnet_compatibility.test.ts": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5071,6 +5291,7 @@
             },
             "yarn-project/aztec/src/testnet_compatibility.test.ts": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5085,6 +5306,7 @@
             },
             "l1-contracts/src/core/slashing/TallySlashingProposer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5145,6 +5367,7 @@
           "paths": {
             "barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/plookup_tables/uint.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5159,6 +5382,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/logic/logic.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5191,6 +5415,7 @@
             },
             "barretenberg/cpp/src/barretenberg/dsl/acir_format/logic_constraint.cpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5214,6 +5439,7 @@
             },
             "barretenberg/cpp/src/barretenberg/stdlib/primitives/logic/logic.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5228,6 +5454,7 @@
             },
             "barretenberg/cpp/src/barretenberg/dsl/acir_format/logic_constraint.hpp": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {

@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "mantle",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "contracts/L1/L1MantleToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -45,6 +46,7 @@
             },
             "contracts/Migration/MantleTokenMigrator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -142,6 +144,7 @@
           "paths": {
             "contracts/L1/L1MantleToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -192,6 +195,7 @@
             },
             "contracts/Migration/MantleTokenMigrator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -265,6 +269,7 @@
           "paths": {
             "packages/contracts/contracts/L1/messaging/L1StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -315,6 +320,7 @@
             },
             "packages/contracts/contracts/L2/messaging/L2StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -355,6 +361,7 @@
           "paths": {
             "packages/contracts/contracts/L1/messaging/L1StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -381,6 +388,7 @@
             },
             "packages/contracts/contracts/L2/messaging/L2StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -400,6 +408,7 @@
           "paths": {
             "contracts/L1/L1MantleToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -414,6 +423,7 @@
             },
             "contracts/Migration/MantleTokenMigrator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -450,6 +460,7 @@
           "paths": {
             "packages/contracts/contracts/L1/messaging/L1StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -479,6 +490,7 @@
             },
             "packages/contracts/contracts/L2/messaging/L2StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -530,6 +542,7 @@
           "paths": {
             "batch-submitter": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -559,6 +572,7 @@
             },
             "bss-core": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -582,6 +596,7 @@
             },
             "gas-oracle": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -605,6 +620,7 @@
             },
             "l2geth": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -634,6 +650,7 @@
             },
             "mt-batcher": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -665,6 +682,7 @@
             },
             "mt-challenger": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -688,6 +706,7 @@
             },
             "packages": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -725,6 +744,7 @@
             },
             "tss": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -758,6 +778,7 @@
             },
             "mt-batcher/mt_batcher.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -787,6 +808,7 @@
             },
             "mt-batcher/services/common/crypto.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -816,6 +838,7 @@
             },
             "tss/node/tsslib/conversion/conversion.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -845,6 +868,7 @@
             },
             "packages/contracts/contracts/L2/messaging/L2StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -874,6 +898,7 @@
             },
             "packages/contracts/contracts/L1/messaging/L1StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -903,6 +928,7 @@
             },
             "tss/node/store/slash.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -932,6 +958,7 @@
             },
             "packages/contracts/contracts/L1/rollup/StateCommitmentChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -961,6 +988,7 @@
             },
             "packages/contracts/contracts/L2/predeploys/TssRewardContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -988,6 +1016,7 @@
             },
             "tss/node/server/http.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1026,6 +1055,7 @@
             },
             "packages/contracts/contracts/L1/fraud-proof/Rollup.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1068,6 +1098,7 @@
             },
             "batch-submitter/drivers/sequencer/encoding.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1097,6 +1128,7 @@
             },
             "packages/contracts/contracts/libraries/eigenda/lib/contracts/governance/Governor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1114,6 +1146,7 @@
             },
             "l2geth/core/vm/runtime/env.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1143,6 +1176,7 @@
             },
             "l2geth/core/vm/runtime/runtime.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1198,6 +1232,7 @@
           "paths": {
             "packages/contracts-bedrock/contracts/L1": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1341,6 +1376,7 @@
             },
             "packages/contracts-bedrock/contracts/L2": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1412,6 +1448,7 @@
             },
             "packages/contracts-bedrock/contracts/universal/CrossDomainMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1467,6 +1504,7 @@
             },
             "packages/contracts-bedrock/contracts/universal/FeeVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1490,6 +1528,7 @@
             },
             "packages/contracts-bedrock/contracts/universal/StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1513,6 +1552,7 @@
             },
             "packages/contracts-bedrock/contracts/libraries/Burn.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1536,6 +1576,7 @@
             },
             "packages/contracts-bedrock/contracts/libraries/Encoding.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1559,6 +1600,7 @@
             },
             "packages/contracts-bedrock/contracts/libraries/Hashing.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1582,6 +1624,7 @@
             },
             "packages/contracts-bedrock/contracts/libraries/Predeploys.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1605,6 +1648,7 @@
             },
             "packages/contracts-bedrock/contracts/libraries/Types.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1628,6 +1672,7 @@
             },
             "packages/contracts-bedrock/contracts/legacy/LegacyERC20MNT.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1651,6 +1696,7 @@
             },
             "packages/contracts-bedrock/contracts/deployment/PortalSender.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1674,6 +1720,7 @@
             },
             "packages/contracts-bedrock/contracts/deployment/SystemDictator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1697,6 +1744,7 @@
             },
             "bss-core": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1720,6 +1768,7 @@
             },
             "gas-oracle": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1752,6 +1801,7 @@
             },
             "op-batcher": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1775,6 +1825,7 @@
             },
             "op-bindings": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1834,6 +1885,7 @@
             },
             "op-chain-ops": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1866,6 +1918,7 @@
             },
             "op-node": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1889,6 +1942,7 @@
             },
             "op-program": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1912,6 +1966,7 @@
             },
             "op-service": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1935,6 +1990,7 @@
             },
             "packages/sdk": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1963,6 +2019,7 @@
           "paths": {
             "accounts/abi/bind/backends/simulated.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1986,6 +2043,7 @@
             },
             "beacon/engine/gen_blockparams.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2009,6 +2067,7 @@
             },
             "beacon/engine/types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2032,6 +2091,7 @@
             },
             "cmd/utils/flags.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2055,6 +2115,7 @@
             },
             "consensus/misc/eip1559.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2078,6 +2139,7 @@
             },
             "core/blockchain.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2101,6 +2163,7 @@
             },
             "core/genesis.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2133,6 +2196,7 @@
             },
             "core/mantle_upgrade.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2165,6 +2229,7 @@
             },
             "core/rawdb/accessors_chain.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2188,6 +2253,7 @@
             },
             "core/state_processor.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2211,6 +2277,7 @@
             },
             "core/state_transition.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2258,6 +2325,7 @@
             },
             "core/txpool/txpool.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2299,6 +2367,7 @@
             },
             "core/types/deposit_tx.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2331,6 +2400,7 @@
             },
             "core/types/gen_receipt_json.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2354,6 +2424,7 @@
             },
             "core/types/meta_transaction.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2386,6 +2457,7 @@
             },
             "core/types/receipt.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2409,6 +2481,7 @@
             },
             "core/types/rollup_l1_cost.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2432,6 +2505,7 @@
             },
             "core/types/transaction.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2464,6 +2538,7 @@
             },
             "core/types/transaction_marshalling.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2496,6 +2571,7 @@
             },
             "core/vm/interpreter.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2519,6 +2595,7 @@
             },
             "core/vm/jump_table.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2542,6 +2619,7 @@
             },
             "core/vm/runtime/runtime.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2565,6 +2643,7 @@
             },
             "eth/api_backend.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2588,6 +2667,7 @@
             },
             "eth/backend.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2611,6 +2691,7 @@
             },
             "eth/catalyst/api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2634,6 +2715,7 @@
             },
             "eth/ethconfig/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2657,6 +2739,7 @@
             },
             "eth/tracers/api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2680,6 +2763,7 @@
             },
             "graphql/graphql.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2703,6 +2787,7 @@
             },
             "internal/ethapi/api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2744,6 +2829,7 @@
             },
             "internal/ethapi/transaction_args.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2767,6 +2853,7 @@
             },
             "light/txpool.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2790,6 +2877,7 @@
             },
             "miner/miner.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2813,6 +2901,7 @@
             },
             "miner/payload_building.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2836,6 +2925,7 @@
             },
             "miner/worker.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2859,6 +2949,7 @@
             },
             "params/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2891,6 +2982,7 @@
             },
             "rpc/http.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2968,6 +3060,7 @@
           "paths": {
             "packages/contracts-bedrock/contracts/L1/L1CrossDomainMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3006,6 +3099,7 @@
             },
             "packages/contracts-bedrock/contracts/L1/L1ERC721Bridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3020,6 +3114,7 @@
             },
             "packages/contracts-bedrock/contracts/L1/L1StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3052,6 +3147,7 @@
             },
             "packages/contracts-bedrock/contracts/L1/L2OutputOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3075,6 +3171,7 @@
             },
             "packages/contracts-bedrock/contracts/L1/OptimismPortal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3116,6 +3213,7 @@
             },
             "packages/contracts-bedrock/contracts/L1/ResourceMetering.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3130,6 +3228,7 @@
             },
             "packages/contracts-bedrock/contracts/L1/SystemConfig.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3144,6 +3243,7 @@
             },
             "packages/contracts-bedrock/contracts/L2/BaseFeeVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3158,6 +3258,7 @@
             },
             "packages/contracts-bedrock/contracts/L2/BVM_ETH.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3172,6 +3273,7 @@
             },
             "packages/contracts-bedrock/contracts/L2/CrossDomainOwnable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3186,6 +3288,7 @@
             },
             "packages/contracts-bedrock/contracts/L2/CrossDomainOwnable2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3200,6 +3303,7 @@
             },
             "packages/contracts-bedrock/contracts/L2/CrossDomainOwnable3.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3214,6 +3318,7 @@
             },
             "packages/contracts-bedrock/contracts/L2/GasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3246,6 +3351,7 @@
             },
             "packages/contracts-bedrock/contracts/L2/L1Block.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3260,6 +3366,7 @@
             },
             "packages/contracts-bedrock/contracts/L2/L1FeeVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3274,6 +3381,7 @@
             },
             "packages/contracts-bedrock/contracts/L2/L2CrossDomainMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3312,6 +3420,7 @@
             },
             "packages/contracts-bedrock/contracts/L2/L2ERC721Bridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3326,6 +3435,7 @@
             },
             "packages/contracts-bedrock/contracts/L2/L2StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3340,6 +3450,7 @@
             },
             "packages/contracts-bedrock/contracts/L2/L2ToL1MessagePasser.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3354,6 +3465,7 @@
             },
             "packages/contracts-bedrock/contracts/L2/SequencerFeeVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3368,6 +3480,7 @@
             },
             "packages/contracts-bedrock/contracts/universal/ERC721Bridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3382,6 +3495,7 @@
             },
             "packages/contracts-bedrock/contracts/universal/StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3396,6 +3510,7 @@
             },
             "packages/contracts-bedrock/contracts/universal/CrossDomainMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3428,6 +3543,7 @@
             },
             "packages/contracts-bedrock/contracts/universal/OptimismMintableERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3442,6 +3558,7 @@
             },
             "packages/contracts-bedrock/contracts/universal/Semver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3456,6 +3573,7 @@
             },
             "packages/contracts-bedrock/contracts/universal/FeeVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3470,6 +3588,7 @@
             },
             "packages/contracts-bedrock/contracts/deployment/PortalSender.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3495,6 +3614,7 @@
             },
             "packages/contracts-bedrock/contracts/deployment/SystemDictator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3520,6 +3640,7 @@
             },
             "packages/contracts-bedrock/contracts/legacy/LegacyERC20MNT.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3554,6 +3675,7 @@
             },
             "packages/contracts-bedrock/contracts/libraries/Burn.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3579,6 +3701,7 @@
             },
             "packages/contracts-bedrock/contracts/libraries/Encoding.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3595,6 +3718,7 @@
             },
             "packages/contracts-bedrock/contracts/libraries/Hashing.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3611,6 +3735,7 @@
             },
             "packages/contracts-bedrock/contracts/libraries/Predeploys.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3627,6 +3752,7 @@
             },
             "packages/contracts-bedrock/contracts/libraries/Types.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3678,6 +3804,7 @@
           "paths": {
             "packages/contracts-bedrock/contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3768,6 +3895,7 @@
           "paths": {
             "core/state_transition.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3797,6 +3925,7 @@
             },
             "core/vm/evm.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3852,6 +3981,7 @@
           "paths": {
             "packages/contracts-bedrock/contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3911,6 +4041,7 @@
             },
             "packages/contracts/contracts/L1/messaging/L1CrossDomainMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3940,6 +4071,7 @@
             },
             "op-chain-ops/genesis/db_migration.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -3969,6 +4101,7 @@
             },
             "packages/contracts-periphery/contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3988,6 +4121,7 @@
           "paths": {
             "core/state_transition.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4116,6 +4250,7 @@
           "paths": {
             "op-node/rollup/derive/arsia_upgrade_transactions.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4139,6 +4274,7 @@
             },
             "op-node/rollup/derive/attributes.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4153,6 +4289,7 @@
             },
             "op-node/rollup/derive/deposit_log.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4167,6 +4304,7 @@
             },
             "op-service/eth/types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4181,6 +4319,7 @@
             },
             "op-batcher/batcher/driver.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4204,6 +4343,7 @@
             },
             "op-batcher/batcher/service.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4227,6 +4367,7 @@
             },
             "op-batcher/batcher/tx_data.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4241,6 +4382,7 @@
             },
             "op-chain-ops/genesis/mantle_config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4264,6 +4406,7 @@
             },
             "op-chain-ops/genesis/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4287,6 +4430,7 @@
             },
             "op-node/cmd/genesis/cmd.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4310,6 +4454,7 @@
             },
             "op-node/config/backup_sync_rpc.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4324,6 +4469,7 @@
             },
             "op-node/flags/flags.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4347,6 +4493,7 @@
             },
             "op-node/node/node.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4370,6 +4517,7 @@
             },
             "op-node/rollup/derive/data_source.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4396,6 +4544,7 @@
             },
             "op-node/rollup/derive/mantle_blob_source.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4410,6 +4559,7 @@
             },
             "op-node/rollup/mantle_types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4424,6 +4574,7 @@
             },
             "op-service/crypto/signature.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4447,6 +4598,7 @@
             },
             "op-service/hsm/hsm_signer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4479,6 +4631,7 @@
             },
             "op-service/sources/backup_sync_client.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4511,6 +4664,7 @@
             },
             "packages/contracts-bedrock/src/L1/SystemConfig.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4534,6 +4688,7 @@
             },
             "packages/contracts-bedrock/src/L2/GasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4566,6 +4721,7 @@
             },
             "packages/contracts-bedrock/src/L2/L1Block.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4589,6 +4745,7 @@
             },
             "packages/contracts-bedrock/src/L2/OperatorFeeVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4612,6 +4769,7 @@
             },
             "op-chain-ops/addresses/contracts.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4626,6 +4784,7 @@
             },
             "op-chain-ops/addresses/mantle_contracts.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4640,6 +4799,7 @@
             },
             "op-core/forks/mantle_forks.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4654,6 +4814,7 @@
             },
             "op-node/cmd/main.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4668,6 +4829,7 @@
             },
             "op-node/config/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4682,6 +4844,7 @@
             },
             "op-node/node/backup_sync.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4696,6 +4859,7 @@
             },
             "op-node/p2p/gossip.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4710,6 +4874,7 @@
             },
             "op-node/p2p/sync.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4724,6 +4889,7 @@
             },
             "op-node/rollup/derive/batches.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4738,6 +4904,7 @@
             },
             "op-node/rollup/derive/l1_block_info.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4752,6 +4919,7 @@
             },
             "op-node/rollup/derive/mantle_system_config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4766,6 +4934,7 @@
             },
             "op-node/rollup/derive/skadi_upgrade_transactions.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4780,6 +4949,7 @@
             },
             "op-node/rollup/derive/system_config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4794,6 +4964,7 @@
             },
             "op-node/rollup/attributes/engine_consolidate.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4808,6 +4979,7 @@
             },
             "op-node/rollup/types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4822,6 +4994,7 @@
             },
             "op-node/mantle_service.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4836,6 +5009,7 @@
             },
             "op-node/service.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4850,6 +5024,7 @@
             },
             "op-program/client/l2/engineapi/block_processor.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4864,6 +5039,7 @@
             },
             "op-program/client/mpt/db.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4878,6 +5054,7 @@
             },
             "op-service/flags/mantle_flags.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4892,6 +5069,7 @@
             },
             "op-service/flags/flags.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4906,6 +5084,7 @@
             },
             "op-service/txmgr/cli.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4943,6 +5122,7 @@
           "paths": {
             "crates/op-revm/src/handler.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4975,6 +5155,7 @@
             },
             "crates/op-revm/src/transaction/bvm_eth.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4989,6 +5170,7 @@
             },
             "crates/handler/src/validation.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5003,6 +5185,7 @@
             },
             "crates/op-revm/src/constants.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5026,6 +5209,7 @@
             },
             "crates/op-revm/src/l1block.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5040,6 +5224,7 @@
             },
             "crates/op-revm/src/precompiles.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5054,6 +5239,7 @@
             },
             "crates/op-revm/src/spec.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5068,6 +5254,7 @@
             },
             "crates/op-revm/src/transaction/abstraction.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5087,6 +5274,7 @@
           "paths": {
             "crates/protocol/protocol/src/deposits.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5101,6 +5289,7 @@
             },
             "crates/protocol/derive/src/attributes/stateful.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5115,6 +5304,7 @@
             },
             "crates/proof/executor/src/builder/assemble.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5129,6 +5319,7 @@
             },
             "crates/protocol/genesis/src/rollup.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5152,6 +5343,7 @@
             },
             "crates/protocol/protocol/src/batch/single.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5166,6 +5358,7 @@
             },
             "crates/protocol/derive/src/sources/mantle_blob.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5189,6 +5382,7 @@
             },
             "crates/protocol/derive/src/sources/mantle_ethereum.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5212,6 +5406,7 @@
             },
             "bin/client/src/fpvm_evm/precompiles/provider.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5226,6 +5421,7 @@
             },
             "bin/host/src/backend/online.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5249,6 +5445,7 @@
             },
             "crates/proof/executor/src/builder/core.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5263,6 +5460,7 @@
             },
             "crates/proof/executor/src/builder/env.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5286,6 +5484,7 @@
             },
             "crates/proof/proof-interop/src/consolidation.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5300,6 +5499,7 @@
             },
             "crates/protocol/genesis/src/chain/config.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5314,6 +5514,7 @@
             },
             "crates/protocol/genesis/src/chain/mantle_hardfork.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5328,6 +5529,7 @@
             },
             "crates/protocol/genesis/src/chain/mod.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5342,6 +5544,7 @@
             },
             "crates/protocol/genesis/src/lib.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5356,6 +5559,7 @@
             },
             "crates/protocol/genesis/src/params.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5370,6 +5574,7 @@
             },
             "crates/protocol/genesis/src/genesis.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5384,6 +5589,7 @@
             },
             "crates/protocol/genesis/src/system/config.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5398,6 +5604,7 @@
             },
             "crates/protocol/genesis/src/system/errors.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5412,6 +5619,7 @@
             },
             "crates/protocol/genesis/src/system/kind.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5426,6 +5634,7 @@
             },
             "crates/protocol/genesis/src/system/log.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5440,6 +5649,7 @@
             },
             "crates/protocol/genesis/src/system/mod.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5454,6 +5664,7 @@
             },
             "crates/protocol/genesis/src/system/update.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5468,6 +5679,7 @@
             },
             "crates/protocol/genesis/src/updates/base_fee.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5482,6 +5694,7 @@
             },
             "crates/protocol/genesis/src/updates/mod.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5496,6 +5709,7 @@
             },
             "crates/protocol/hardforks/src/arsia.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5510,6 +5724,7 @@
             },
             "crates/protocol/hardforks/src/ecotone.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5524,6 +5739,7 @@
             },
             "crates/protocol/hardforks/src/fjord.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5538,6 +5754,7 @@
             },
             "crates/protocol/hardforks/src/interop.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5552,6 +5769,7 @@
             },
             "crates/protocol/hardforks/src/isthmus.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5566,6 +5784,7 @@
             },
             "crates/protocol/hardforks/src/jovian.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5580,6 +5799,7 @@
             },
             "crates/protocol/hardforks/src/lib.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5594,6 +5814,7 @@
             },
             "crates/protocol/hardforks/src/mantle_forks.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5608,6 +5829,7 @@
             },
             "crates/protocol/protocol/src/info/jovian.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5622,6 +5844,7 @@
             },
             "crates/protocol/protocol/src/info/variant.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5636,6 +5859,7 @@
             },
             "crates/protocol/derive/src/sources/mod.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5650,6 +5874,7 @@
             },
             "crates/protocol/derive/src/stages/batch/batch_queue.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5664,6 +5889,7 @@
             },
             "crates/protocol/derive/src/lib.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5683,6 +5909,7 @@
           "paths": {
             "core/state_processor.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5715,6 +5942,7 @@
             },
             "core/state_transition.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5729,6 +5957,7 @@
             },
             "core/txpool/validation.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5743,6 +5972,7 @@
             },
             "core/types/rollup_cost.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5775,6 +6005,7 @@
             },
             "consensus/misc/eip1559/eip1559.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5789,6 +6020,7 @@
             },
             "eth/catalyst/api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5812,6 +6044,7 @@
             },
             "internal/ethapi/api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5835,6 +6068,7 @@
             },
             "miner/preconf_checker.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5858,6 +6092,7 @@
             },
             "miner/worker.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5890,6 +6125,7 @@
             },
             "core/block_validator.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5904,6 +6140,7 @@
             },
             "core/blockchain.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5918,6 +6155,7 @@
             },
             "core/evm.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5932,6 +6170,7 @@
             },
             "core/genesis.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5946,6 +6185,7 @@
             },
             "core/rawdb/freezer_memory.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5960,6 +6200,7 @@
             },
             "core/rawdb/accessors_history.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5974,6 +6215,7 @@
             },
             "core/rawdb/ancient_scheme.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5988,6 +6230,7 @@
             },
             "core/rawdb/freezer_table.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6002,6 +6245,7 @@
             },
             "core/rawdb/schema.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6016,6 +6260,7 @@
             },
             "core/txpool/legacypool/legacypool.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6030,6 +6275,7 @@
             },
             "core/txpool/legacypool/queue.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6044,6 +6290,7 @@
             },
             "core/txpool/rollup.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6058,6 +6305,7 @@
             },
             "core/types/hashing.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6072,6 +6320,7 @@
             },
             "core/types/receipt.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6086,6 +6335,7 @@
             },
             "core/types/receipt_opstack.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6100,6 +6350,7 @@
             },
             "core/vm/evm.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6114,6 +6365,7 @@
             },
             "consensus/misc/eip1559/eip1559_optimism.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6128,6 +6380,7 @@
             },
             "eth/catalyst/api_optimism.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6142,6 +6395,7 @@
             },
             "eth/filters/filter.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6156,6 +6410,7 @@
             },
             "eth/filters/filter_system.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6170,6 +6425,7 @@
             },
             "eth/protocols/eth/handlers.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6184,6 +6440,7 @@
             },
             "eth/tracers/native/keccak256_preimage.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6198,6 +6455,7 @@
             },
             "internal/ethapi/simulate.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6212,6 +6470,7 @@
             },
             "miner/payload_building.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6226,6 +6485,7 @@
             },
             "p2p/discover/lookup.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6240,6 +6500,7 @@
             },
             "superchain/chain.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6254,6 +6515,7 @@
             },
             "superchain/superchain.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6268,6 +6530,7 @@
             },
             "superchain/types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6282,6 +6545,7 @@
             },
             "trie/bytepool.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6296,6 +6560,7 @@
             },
             "trie/list_hasher.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6310,6 +6575,7 @@
             },
             "trie/stacktrie.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6324,6 +6590,7 @@
             },
             "triedb/pathdb/history.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6338,6 +6605,7 @@
             },
             "triedb/pathdb/history_indexer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6352,6 +6620,7 @@
             },
             "triedb/pathdb/history_trienode.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6392,6 +6661,7 @@
           "paths": {
             "packages/contracts/contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6411,6 +6681,7 @@
             },
             "tss": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6429,6 +6700,7 @@
             },
             "l2geth": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6446,6 +6718,7 @@
             },
             "mt-batcher": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6460,6 +6733,7 @@
             },
             "mt-challenger": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6474,6 +6748,7 @@
             },
             "fraud-proof": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6488,6 +6763,7 @@
             },
             "batch-submitter": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6502,6 +6778,7 @@
             },
             "proxyd": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6516,6 +6793,7 @@
             },
             "subsidy": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6530,6 +6808,7 @@
             },
             "packages/contracts/contracts/L1/tss/TssGroupManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6556,6 +6835,7 @@
             },
             "packages/contracts/contracts/L1/tss/TssStakingSlashing.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6582,6 +6862,7 @@
             },
             "packages/contracts/contracts/L2/predeploys/TssRewardContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6605,6 +6886,7 @@
             },
             "packages/contracts/contracts/da/BVM_EigenDataLayrChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6646,6 +6928,7 @@
             },
             "packages/contracts/contracts/L1/messaging/L1StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6669,6 +6952,7 @@
             },
             "l2geth/contracts/tssreward/contract/tssreward.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6686,6 +6970,7 @@
             },
             "l2geth/contracts/checkpointoracle/contract/oracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6709,6 +6994,7 @@
             },
             "tss/common/merkle_tree.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6735,6 +7021,7 @@
             },
             "tss/manager/agreement.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6752,6 +7039,7 @@
             },
             "tss/ws/server/handler.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6775,6 +7063,7 @@
             },
             "tss/manager/sign.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6798,6 +7087,7 @@
             },
             "tss/node/tsslib/keysign/tss_keysign.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6821,6 +7111,7 @@
             },
             "tss/node/tsslib/keysign.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6844,6 +7135,7 @@
             },
             "tss/node/tsslib/storage/shamir_mgr.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6867,6 +7159,7 @@
             },
             "tss/ws/client/tm/client.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6890,6 +7183,7 @@
             },
             "tss/node/tsslib/p2p/communication.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6913,6 +7207,7 @@
             },
             "batch-submitter/drivers/sequencer/encoding.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6936,6 +7231,7 @@
             },
             "fraud-proof/rollup/types/tx_batch.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6959,6 +7255,7 @@
             },
             "mt-challenger/challenger/challenger.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6982,6 +7279,7 @@
             },
             "fraud-proof/proof/state/stack.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7005,6 +7303,7 @@
             },
             "proxyd/cache.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7028,6 +7327,7 @@
             },
             "mt-batcher/services/common/crypto.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7051,6 +7351,7 @@
             },
             "mt-batcher/services/client/client.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7074,6 +7375,7 @@
             },
             "mt-batcher/services/restorer/handle.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7106,6 +7408,7 @@
             },
             "mt-batcher/services/restorer/service.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7129,6 +7432,7 @@
             },
             "mt-batcher/services/sequencer/driver.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7166,6 +7470,7 @@
           "paths": {
             "common": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7180,6 +7485,7 @@
             },
             "dl-disperser": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7194,6 +7500,7 @@
             },
             "dl-node": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7208,6 +7515,7 @@
             },
             "lib": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7248,6 +7556,7 @@
           "paths": {
             "packages/contracts-bedrock/contracts/L1": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7275,6 +7584,7 @@
             },
             "packages/contracts-bedrock/contracts/L2": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7298,6 +7608,7 @@
             },
             "packages/contracts-bedrock/contracts/libraries/Encoding.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7312,6 +7623,7 @@
             },
             "packages/contracts-bedrock/contracts/libraries/Types.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7326,6 +7638,7 @@
             },
             "op-chain-ops/genesis/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7340,6 +7653,7 @@
             },
             "op-chain-ops/immutables/immutables.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7354,6 +7668,7 @@
             },
             "op-node": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7397,6 +7712,7 @@
             },
             "op-batcher": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7427,6 +7743,7 @@
             },
             "op-proposer": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7453,6 +7770,7 @@
             },
             "go.mod": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7501,6 +7819,7 @@
           "paths": {
             "Dockerfile": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7527,6 +7846,7 @@
             },
             "accounts/abi/bind/backends/simulated.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7541,6 +7861,7 @@
             },
             "beacon/engine/gen_blockparams.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7555,6 +7876,7 @@
             },
             "beacon/engine/types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7569,6 +7891,7 @@
             },
             "cmd/utils/flags.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7583,6 +7906,7 @@
             },
             "consensus/misc/eip1559.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7597,6 +7921,7 @@
             },
             "core/blockchain.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7611,6 +7936,7 @@
             },
             "core/genesis.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7634,6 +7960,7 @@
             },
             "core/mantle_upgrade.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7657,6 +7984,7 @@
             },
             "core/rawdb/accessors_chain.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7671,6 +7999,7 @@
             },
             "core/state_processor.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7694,6 +8023,7 @@
             },
             "core/state_transition.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7729,6 +8059,7 @@
             },
             "core/txpool/txpool.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7752,6 +8083,7 @@
             },
             "core/types/deposit_tx.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7775,6 +8107,7 @@
             },
             "core/types/gen_receipt_json.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7798,6 +8131,7 @@
             },
             "core/types/meta_transaction.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7821,6 +8155,7 @@
             },
             "core/types/receipt.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7835,6 +8170,7 @@
             },
             "core/types/rollup_l1_cost.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7849,6 +8185,7 @@
             },
             "core/types/transaction.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7872,6 +8209,7 @@
             },
             "core/types/transaction_marshalling.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7895,6 +8233,7 @@
             },
             "core/vm/interpreter.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7909,6 +8248,7 @@
             },
             "core/vm/jump_table.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7923,6 +8263,7 @@
             },
             "core/vm/runtime/runtime.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7937,6 +8278,7 @@
             },
             "entrypoint.sh": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7951,6 +8293,7 @@
             },
             "eth/api_backend.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7965,6 +8308,7 @@
             },
             "eth/backend.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7979,6 +8323,7 @@
             },
             "eth/catalyst/api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7993,6 +8338,7 @@
             },
             "eth/ethconfig/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8007,6 +8353,7 @@
             },
             "eth/tracers/api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8030,6 +8377,7 @@
             },
             "graphql/graphql.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8044,6 +8392,7 @@
             },
             "internal/ethapi/api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8067,6 +8416,7 @@
             },
             "internal/ethapi/transaction_args.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8081,6 +8431,7 @@
             },
             "light/txpool.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8104,6 +8455,7 @@
             },
             "miner/miner.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8118,6 +8470,7 @@
             },
             "miner/payload_building.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8132,6 +8485,7 @@
             },
             "miner/worker.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8146,6 +8500,7 @@
             },
             "params/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8169,6 +8524,7 @@
             },
             "rpc/http.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8183,6 +8539,7 @@
             },
             "cmd/evm/internal/t8ntool/execution.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8197,6 +8554,7 @@
             },
             "core/state_prefetcher.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8211,6 +8569,7 @@
             },
             "eth/state_accessor.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8225,6 +8584,7 @@
             },
             "les/state_accessor.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8239,6 +8599,7 @@
             },
             "go.mod": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8265,6 +8626,7 @@
             },
             "p2p/peer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8344,6 +8706,7 @@
           "paths": {
             "gas-oracle/flags/flags.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8367,6 +8730,7 @@
             },
             "gas-oracle/main.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8390,6 +8754,7 @@
             },
             "gas-oracle/metrics/handler.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8413,6 +8778,7 @@
             },
             "gas-oracle/metrics/metrics.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8436,6 +8802,7 @@
             },
             "gas-oracle/oracle/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8459,6 +8826,7 @@
             },
             "gas-oracle/oracle/token_ratio.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8482,6 +8850,7 @@
             },
             "op-batcher/batcher/batch_submitter.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8505,6 +8874,7 @@
             },
             "op-batcher/batcher/channel_manager.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8534,6 +8904,7 @@
             },
             "op-batcher/batcher/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8557,6 +8928,7 @@
             },
             "op-batcher/batcher/driver_da.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8599,6 +8971,7 @@
             },
             "op-batcher/batcher/driver.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8622,6 +8995,7 @@
             },
             "op-batcher/cmd/main.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8645,6 +9019,7 @@
             },
             "op-batcher/compressor/cli.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8668,6 +9043,7 @@
             },
             "op-batcher/flags/flags.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8691,6 +9067,7 @@
             },
             "op-batcher/metrics/metrics.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8714,6 +9091,7 @@
             },
             "op-batcher/metrics/noop.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8737,6 +9115,7 @@
             },
             "op-batcher/rpc/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8760,6 +9139,7 @@
             },
             "op-chain-ops/deployer/deployer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8783,6 +9163,7 @@
             },
             "op-chain-ops/genesis/genesis.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8806,6 +9187,7 @@
             },
             "op-chain-ops/genesis/helpers.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8829,6 +9211,7 @@
             },
             "op-chain-ops/genesis/layer_one.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8852,6 +9235,7 @@
             },
             "op-chain-ops/genesis/layer_two.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8875,6 +9259,7 @@
             },
             "op-chain-ops/state/memory_db.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8898,6 +9283,7 @@
             },
             "op-heartbeat/Dockerfile": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8921,6 +9307,7 @@
             },
             "op-heartbeat/.gitignore": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8944,6 +9331,7 @@
             },
             "op-heartbeat/Makefile": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8967,6 +9355,7 @@
             },
             "op-node/chaincfg/chains.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8990,6 +9379,7 @@
             },
             "op-node/cmd/batch_decoder/main.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9013,6 +9403,7 @@
             },
             "op-node/cmd/batch_decoder/reassemble/reassemble.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9036,6 +9427,7 @@
             },
             "op-node/cmd/genesis/cmd.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9059,6 +9451,7 @@
             },
             "op-node/cmd/main.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9082,6 +9475,7 @@
             },
             "op-node/cmd/p2p/cmd.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9105,6 +9499,7 @@
             },
             "op-node/cmd/stateviz/main.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9128,6 +9523,7 @@
             },
             "op-node/flags/flags.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9151,6 +9547,7 @@
             },
             "op-node/flags/p2p_flags.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9174,6 +9571,7 @@
             },
             "op-node/metrics/metrics.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9197,6 +9595,7 @@
             },
             "op-node/node/api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9220,6 +9619,7 @@
             },
             "op-node/node/comms.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9243,6 +9643,7 @@
             },
             "op-node/node/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9266,6 +9667,7 @@
             },
             "op-node/node/node.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9289,6 +9691,7 @@
             },
             "op-node/node/runtime_config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9312,6 +9715,7 @@
             },
             "op-node/node/safedb/disabled.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9335,6 +9739,7 @@
             },
             "op-node/node/safedb/safedb.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9358,6 +9763,7 @@
             },
             "op-node/node/server.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9381,6 +9787,7 @@
             },
             "op-node/p2p/cli/load_config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9404,6 +9811,7 @@
             },
             "op-node/p2p/cli/load_signer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9427,6 +9835,7 @@
             },
             "op-node/p2p/gossip.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9450,6 +9859,7 @@
             },
             "op-node/p2p/host.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9473,6 +9883,7 @@
             },
             "op-node/p2p/node.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9496,6 +9907,7 @@
             },
             "op-node/p2p/rpc_api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9519,6 +9931,7 @@
             },
             "op-node/p2p/rpc_server.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9542,6 +9955,7 @@
             },
             "op-node/p2p/sync.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9565,6 +9979,7 @@
             },
             "op-node/rollup/da/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9588,6 +10003,7 @@
             },
             "op-node/rollup/da/datastore.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9611,6 +10027,7 @@
             },
             "op-node/rollup/derive/attributes.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9634,6 +10051,7 @@
             },
             "op-node/rollup/derive/attributes_queue.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9657,6 +10075,7 @@
             },
             "op-node/rollup/derive/batches.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9680,6 +10099,7 @@
             },
             "op-node/rollup/derive/batch.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9703,6 +10123,7 @@
             },
             "op-node/rollup/derive/batch_queue.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9726,6 +10147,7 @@
             },
             "op-node/rollup/derive/calldata_source.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9749,6 +10171,7 @@
             },
             "op-node/rollup/derive/channel_bank.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9772,6 +10195,7 @@
             },
             "op-node/rollup/derive/channel.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9795,6 +10219,7 @@
             },
             "op-node/rollup/derive/channel_in_reader.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9818,6 +10243,7 @@
             },
             "op-node/rollup/derive/deposit_source.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9841,6 +10267,7 @@
             },
             "op-node/rollup/derive/engine_consolidate.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9864,6 +10291,7 @@
             },
             "op-node/rollup/derive/engine_queue.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9887,6 +10315,7 @@
             },
             "op-node/rollup/derive/engine_update.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9910,6 +10339,7 @@
             },
             "op-node/rollup/derive/frame_queue.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9933,6 +10363,7 @@
             },
             "op-node/rollup/derive/l1_block_info.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9956,6 +10387,7 @@
             },
             "op-node/rollup/derive/l1_retrieval.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9979,6 +10411,7 @@
             },
             "op-node/rollup/derive/l1_traversal.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10002,6 +10435,7 @@
             },
             "op-node/rollup/derive/l2block_util.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10025,6 +10459,7 @@
             },
             "op-node/rollup/derive/payloads_queue.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10048,6 +10483,7 @@
             },
             "op-node/rollup/derive/payload_util.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10071,6 +10507,7 @@
             },
             "op-node/rollup/derive/pipeline.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10094,6 +10531,7 @@
             },
             "op-node/rollup/derive/skadi_upgrade_transactions.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10117,6 +10555,7 @@
             },
             "op-node/rollup/derive/system_config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10140,6 +10579,7 @@
             },
             "op-node/rollup/derive/test/random.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10163,6 +10603,7 @@
             },
             "op-node/rollup/driver/conf_depth.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10186,6 +10627,7 @@
             },
             "op-node/rollup/driver/driver.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10209,6 +10651,7 @@
             },
             "op-node/rollup/driver/l1_state.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10232,6 +10675,7 @@
             },
             "op-node/rollup/driver/metered_engine.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10255,6 +10699,7 @@
             },
             "op-node/rollup/driver/metered_l1fetcher.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10278,6 +10723,7 @@
             },
             "op-node/rollup/driver/origin_selector.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10301,6 +10747,7 @@
             },
             "op-node/rollup/driver/sequencer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10324,6 +10771,7 @@
             },
             "op-node/rollup/driver/state.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10347,6 +10795,7 @@
             },
             "op-node/rollup/iface.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10370,6 +10819,7 @@
             },
             "op-node/rollup/output_root.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10393,6 +10843,7 @@
             },
             "op-node/rollup/sync/start.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10416,6 +10867,7 @@
             },
             "op-node/rollup/types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10439,6 +10891,7 @@
             },
             "op-node/service.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10462,6 +10915,7 @@
             },
             "op-node/service_mantle.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10485,6 +10939,7 @@
             },
             "op-node/sources/caching/cache.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10508,6 +10963,7 @@
             },
             "op-node/sources/engine_client.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10531,6 +10987,7 @@
             },
             "op-node/sources/eth_client.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10554,6 +11011,7 @@
             },
             "op-node/sources/l1_client.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10577,6 +11035,7 @@
             },
             "op-node/sources/l2_client.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10600,6 +11059,7 @@
             },
             "op-node/sources/receipts.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10623,6 +11083,7 @@
             },
             "op-node/sources/rollupclient.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10646,6 +11107,7 @@
             },
             "op-node/sources/sync_client.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10669,6 +11131,7 @@
             },
             "op-node/sources/types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10692,6 +11155,7 @@
             },
             "op-node/version/version.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10715,6 +11179,7 @@
             },
             "op-proposer/cmd/main.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10738,6 +11203,7 @@
             },
             "op-proposer/flags/flags.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10761,6 +11227,7 @@
             },
             "op-proposer/metrics/metrics.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10784,6 +11251,7 @@
             },
             "op-proposer/metrics/noop.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10807,6 +11275,7 @@
             },
             "op-proposer/proposer/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10830,6 +11299,7 @@
             },
             "op-proposer/proposer/l2_output_submitter.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10853,6 +11323,7 @@
             },
             "op-service/backends/simulated.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10876,6 +11347,7 @@
             },
             "op-service/cliapp/flag.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10899,6 +11371,7 @@
             },
             "op-service/cliapp/lifecycle.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10922,6 +11395,7 @@
             },
             "op-service/crypto/signature.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10945,6 +11419,7 @@
             },
             "op-service/ctxinterrupt/context.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10968,6 +11443,7 @@
             },
             "op-service/ctxinterrupt/doc.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -10991,6 +11467,7 @@
             },
             "op-service/ctxinterrupt/funcs.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11014,6 +11491,7 @@
             },
             "op-service/ctxinterrupt/signal-waiter.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11037,6 +11515,7 @@
             },
             "op-service/ctxinterrupt/waiter.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11060,6 +11539,7 @@
             },
             "op-service/eigenda/cli.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11083,6 +11563,7 @@
             },
             "op-service/eigenda/da_proxy.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11109,6 +11590,7 @@
             },
             "op-service/eth/account_proof.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11132,6 +11614,7 @@
             },
             "op-service/eth/blob.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11155,6 +11638,7 @@
             },
             "op-service/eth/blobs_api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11178,6 +11662,7 @@
             },
             "op-service/eth/block_info.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11201,6 +11686,7 @@
             },
             "op-service/eth/heads.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11224,6 +11710,7 @@
             },
             "op-service/eth/label.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11247,6 +11734,7 @@
             },
             "op-service/eth/output.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11270,6 +11758,7 @@
             },
             "op-service/eth/receipts.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11293,6 +11782,7 @@
             },
             "op-service/eth/ssz.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11316,6 +11806,7 @@
             },
             "op-service/eth/status.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11339,6 +11830,7 @@
             },
             "op-service/eth/sync_status.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11362,6 +11854,7 @@
             },
             "op-service/eth/transactions.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11385,6 +11878,7 @@
             },
             "op-service/eth/types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11408,6 +11902,7 @@
             },
             "op-service/hsm/hsm_signer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11431,6 +11926,7 @@
             },
             "op-service/httputil/wrapped_response_writer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11454,6 +11950,7 @@
             },
             "op-service/log/cli.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11477,6 +11974,7 @@
             },
             "op-service/log/defaults.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11500,6 +11998,7 @@
             },
             "op-service/log/dynamic.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11523,6 +12022,7 @@
             },
             "op-service/log/http.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11546,6 +12046,7 @@
             },
             "op-service/log/writer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11569,6 +12070,7 @@
             },
             "op-service/metrics/cli.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11592,6 +12094,7 @@
             },
             "op-service/metrics/doc/cmd.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11615,6 +12118,7 @@
             },
             "op-service/metrics/ref_metrics.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11638,6 +12142,7 @@
             },
             "op-service/pprof/cli.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11661,6 +12166,7 @@
             },
             "op-service/predeploys/eip2935.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11684,6 +12190,7 @@
             },
             "op-service/predeploys/eip4788.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11707,6 +12214,7 @@
             },
             "op-service/rpc/cli.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11730,6 +12238,7 @@
             },
             "op-service/solabi/util.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11753,6 +12262,7 @@
             },
             "op-service/testlog/capturing.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11776,6 +12286,7 @@
             },
             "op-service/tls/cli.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11799,6 +12310,7 @@
             },
             "op-service/txmgr/cli.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11822,6 +12334,7 @@
             },
             "op-service/txmgr/txmgr.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11845,6 +12358,7 @@
             },
             "op-service/util.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11868,6 +12382,7 @@
             },
             "op-service/version.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11891,6 +12406,7 @@
             },
             "op-signer/client/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11919,6 +12435,7 @@
           "paths": {
             "accounts/abi/bind/backends/simulated.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11942,6 +12459,7 @@
             },
             "beacon/engine/gen_blockparams.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11965,6 +12483,7 @@
             },
             "beacon/engine/gen_ed.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -11988,6 +12507,7 @@
             },
             "beacon/engine/gen_epe.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12011,6 +12531,7 @@
             },
             "beacon/engine/types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12034,6 +12555,7 @@
             },
             ".circleci/check-releases.sh": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12057,6 +12579,7 @@
             },
             ".circleci/ci-docker-tag-op-geth-release.sh": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12080,6 +12603,7 @@
             },
             ".circleci/config.yml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12103,6 +12627,7 @@
             },
             "cmd/era/main.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12126,6 +12651,7 @@
             },
             "cmd/evm/internal/t8ntool/execution.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12149,6 +12675,7 @@
             },
             "cmd/geth/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12172,6 +12699,7 @@
             },
             "cmd/geth/main.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12195,6 +12723,7 @@
             },
             "cmd/geth/misccmd.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12218,6 +12747,7 @@
             },
             "cmd/utils/flags.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12241,6 +12771,7 @@
             },
             "cmd/utils/flags_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12264,6 +12795,7 @@
             },
             "common/types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12287,6 +12819,7 @@
             },
             "consensus/beacon/consensus.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12310,6 +12843,7 @@
             },
             "consensus/beacon/oplegacy.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12333,6 +12867,7 @@
             },
             "consensus/clique/clique.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12356,6 +12891,7 @@
             },
             "consensus/ethash/consensus.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12379,6 +12915,7 @@
             },
             "consensus/misc/eip1559/eip1559.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12402,6 +12939,7 @@
             },
             "consensus/misc/eip4844/eip4844.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12425,6 +12963,7 @@
             },
             "core/blockchain.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12448,6 +12987,7 @@
             },
             "core/block_validator.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12471,6 +13011,7 @@
             },
             "core/chain_makers.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12494,6 +13035,7 @@
             },
             "core/error.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12517,6 +13059,7 @@
             },
             "core/events.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12540,6 +13083,7 @@
             },
             "core/evm.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12563,6 +13107,7 @@
             },
             "core/genesis.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12586,6 +13131,7 @@
             },
             "core/genesis_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12609,6 +13155,7 @@
             },
             "core/rawdb/accessors_chain.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12632,6 +13179,7 @@
             },
             "core/rawdb/accessors_chain_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12655,6 +13203,7 @@
             },
             "core/rawdb/accessors_indexes_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12678,6 +13227,7 @@
             },
             "core/rawdb/accessors_metadata.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12701,6 +13251,7 @@
             },
             "core/rawdb/chain_iterator_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12724,6 +13275,7 @@
             },
             "core/rlp_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12747,6 +13299,7 @@
             },
             "core/state_prefetcher.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12770,6 +13323,7 @@
             },
             "core/state_processor.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12793,6 +13347,7 @@
             },
             "core/state_processor_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12816,6 +13371,7 @@
             },
             "core/state/statedb.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12839,6 +13395,7 @@
             },
             "core/state_transition.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12862,6 +13419,7 @@
             },
             "core/state_transition_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12885,6 +13443,7 @@
             },
             "core/tracing/gen_balance_change_reason_stringer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12908,6 +13467,7 @@
             },
             "core/tracing/hooks.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12931,6 +13491,7 @@
             },
             "core/txpool/blobpool/blobpool.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12954,6 +13515,7 @@
             },
             "core/txpool/blobpool/blobpool_preconf.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -12977,6 +13539,7 @@
             },
             "core/txpool/errors.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13000,6 +13563,7 @@
             },
             "core/txpool/legacypool/legacypool.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13023,6 +13587,7 @@
             },
             "core/txpool/legacypool/legacypool_preconf.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13046,6 +13611,7 @@
             },
             "core/txpool/legacypool/legacypool_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13069,6 +13635,7 @@
             },
             "core/txpool/legacypool/list.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13092,6 +13659,7 @@
             },
             "core/txpool/locals/journal.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13115,6 +13683,7 @@
             },
             "core/txpool/locals/pool_journaler.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13138,6 +13707,7 @@
             },
             "core/txpool/locals/preconf_tx_tracker.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13161,6 +13731,7 @@
             },
             "core/txpool/subpool.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13184,6 +13755,7 @@
             },
             "core/txpool/txpool.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13207,6 +13779,7 @@
             },
             "core/txpool/txpool_preconf.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13230,6 +13803,7 @@
             },
             "core/txpool/validation.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13253,6 +13827,7 @@
             },
             "core/types/block_config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13276,6 +13851,7 @@
             },
             "core/types/block.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13299,6 +13875,7 @@
             },
             "core/types/block_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13322,6 +13899,7 @@
             },
             "core/types/deposit_tx.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13345,6 +13923,7 @@
             },
             "core/types/gen_receipt_json.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13368,6 +13947,7 @@
             },
             "core/types/meta_transaction.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13391,6 +13971,7 @@
             },
             "core/types/meta_transaction_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13414,6 +13995,7 @@
             },
             "core/types/receipt.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13437,6 +14019,7 @@
             },
             "core/types/receipt_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13460,6 +14043,7 @@
             },
             "core/types/rollup_cost.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13483,6 +14067,7 @@
             },
             "core/types/rollup_cost_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13506,6 +14091,7 @@
             },
             "core/types/transaction.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13529,6 +14115,7 @@
             },
             "core/types/transaction_marshalling.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13552,6 +14139,7 @@
             },
             "core/types/transaction_marshalling_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13575,6 +14163,7 @@
             },
             "core/types/transaction_signing.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13598,6 +14187,7 @@
             },
             "core/types/tx_access_list.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13621,6 +14211,7 @@
             },
             "core/types/tx_blob.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13644,6 +14235,7 @@
             },
             "core/types/tx_dynamic_fee.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13667,6 +14259,7 @@
             },
             "core/types/tx_legacy.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13690,6 +14283,7 @@
             },
             "core/types/tx_setcode.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13713,6 +14307,7 @@
             },
             "core/verkle_witness_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13736,6 +14331,7 @@
             },
             "core/vm/contracts.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13759,6 +14355,7 @@
             },
             "core/vm/contracts_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13782,6 +14379,7 @@
             },
             "core/vm/evm.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13805,6 +14403,7 @@
             },
             "core/vm/interpreter.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13828,6 +14427,7 @@
             },
             "core/vm/jump_table.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13851,6 +14451,7 @@
             },
             "core/vm/runtime/runtime.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13874,6 +14475,7 @@
             },
             "core/vm/testdata/precompiles/p256Verify.json": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13897,6 +14499,7 @@
             },
             "crypto/secp256r1/publickey.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13920,6 +14523,7 @@
             },
             "crypto/secp256r1/verifier.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13943,6 +14547,7 @@
             },
             "crypto/secp256r1/verifier_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13966,6 +14571,7 @@
             },
             "Dockerfile": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -13989,6 +14595,7 @@
             },
             "entrypoint.sh": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14012,6 +14619,7 @@
             },
             "eth/api_backend.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14035,6 +14643,7 @@
             },
             "eth/api_debug.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14058,6 +14667,7 @@
             },
             "eth/backend.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14081,6 +14691,7 @@
             },
             "eth/catalyst/api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14104,6 +14715,7 @@
             },
             "eth/catalyst/api_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14127,6 +14739,7 @@
             },
             "ethclient/ethclient.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14150,6 +14763,7 @@
             },
             "ethclient/ethclient_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14173,6 +14787,7 @@
             },
             "ethclient/example_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14196,6 +14811,7 @@
             },
             "ethclient/simulated/backend.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14219,6 +14835,7 @@
             },
             "eth/downloader/downloader.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14242,6 +14859,7 @@
             },
             "eth/downloader/queue.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14265,6 +14883,7 @@
             },
             "eth/ethconfig/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14288,6 +14907,7 @@
             },
             "eth/ethconfig/gen_config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14311,6 +14931,7 @@
             },
             "eth/filters/api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14334,6 +14955,7 @@
             },
             "eth/filters/filter_system.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14357,6 +14979,7 @@
             },
             "eth/filters/filter_system_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14380,6 +15003,7 @@
             },
             "eth/gasestimator/gasestimator.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14403,6 +15027,7 @@
             },
             "eth/gasprice/gasprice.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14426,6 +15051,7 @@
             },
             "eth/gasprice/optimism_gasprice.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14449,6 +15075,7 @@
             },
             "eth/gasprice/optimism_gasprice_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14472,6 +15099,7 @@
             },
             "eth/handler_eth.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14495,6 +15123,7 @@
             },
             "eth/handler.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14518,6 +15147,7 @@
             },
             "eth/state_accessor.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14541,6 +15171,7 @@
             },
             "eth/tracers/api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14564,6 +15195,7 @@
             },
             "eth/tracers/api_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14587,6 +15219,7 @@
             },
             "eth/tracers/internal/tracetest/calltrace_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14610,6 +15243,7 @@
             },
             "eth/tracers/internal/tracetest/flat_calltrace_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14633,6 +15267,7 @@
             },
             "eth/tracers/internal/tracetest/prestate_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14656,6 +15291,7 @@
             },
             "eth/tracers/tracers_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14679,6 +15315,7 @@
             },
             "fork.yaml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14702,6 +15339,7 @@
             },
             ".github/workflows/check-docker-build.yml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14725,6 +15363,7 @@
             },
             ".github/workflows/check-make-build.yml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14748,6 +15387,7 @@
             },
             ".github/workflows/pages.yaml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14771,6 +15411,7 @@
             },
             ".gitignore": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14794,6 +15435,7 @@
             },
             "go.mod": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14817,6 +15459,7 @@
             },
             "go.sum": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14840,6 +15483,7 @@
             },
             "graphql/graphql.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14863,6 +15507,7 @@
             },
             "internal/ethapi/api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14886,6 +15531,7 @@
             },
             "internal/ethapi/api_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14909,6 +15555,7 @@
             },
             "internal/ethapi/backend.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14932,6 +15579,7 @@
             },
             "internal/ethapi/simulate.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14955,6 +15603,7 @@
             },
             "internal/ethapi/transaction_args.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -14978,6 +15627,7 @@
             },
             "internal/ethapi/transaction_args_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15001,6 +15651,7 @@
             },
             "internal/flags/categories.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15024,6 +15675,7 @@
             },
             "internal/version/version.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15047,6 +15699,7 @@
             },
             "miner/miner.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15070,6 +15723,7 @@
             },
             "miner/miner_preconf.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15093,6 +15747,7 @@
             },
             "miner/miner_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15116,6 +15771,7 @@
             },
             "miner/payload_building.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15139,6 +15795,7 @@
             },
             "miner/payload_building_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15162,6 +15819,7 @@
             },
             "miner/preconf_checker.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15185,6 +15843,7 @@
             },
             "miner/preconf_checker_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15208,6 +15867,7 @@
             },
             "miner/worker.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15231,6 +15891,7 @@
             },
             "miner/worker_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15254,6 +15915,7 @@
             },
             "params/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15277,6 +15939,7 @@
             },
             "params/config_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15300,6 +15963,7 @@
             },
             "params/mantle.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15323,6 +15987,7 @@
             },
             "params/mantle_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15346,6 +16011,7 @@
             },
             "params/protocol_params.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15369,6 +16035,7 @@
             },
             "preconf/deposit_log.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15392,6 +16059,7 @@
             },
             "preconf/deposit_source.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15415,6 +16083,7 @@
             },
             "preconf/fifo_tx_set.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15438,6 +16107,7 @@
             },
             "preconf/fifo_tx_set_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15461,6 +16131,7 @@
             },
             "preconf/id.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15484,6 +16155,7 @@
             },
             "preconf/metrics.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15507,6 +16179,7 @@
             },
             "preconf/miner_config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15530,6 +16203,7 @@
             },
             "preconf/miner_config_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15553,6 +16227,7 @@
             },
             "preconf/sync_status.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15576,6 +16251,7 @@
             },
             "preconf/tx_pool_config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15599,6 +16275,7 @@
             },
             "preconf/tx_pool_config_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15622,6 +16299,7 @@
             },
             "rpc/errors.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15645,6 +16323,7 @@
             },
             "tests/preconf/config/config.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15668,6 +16347,7 @@
             },
             "tests/preconf/contracts/TestERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -15691,6 +16371,7 @@
             },
             "tests/preconf/contracts/TestPay.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -15714,6 +16395,7 @@
             },
             "tests/preconf/front_running/erc20.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15737,6 +16419,7 @@
             },
             "tests/preconf/front_running/transfer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15760,6 +16443,7 @@
             },
             "tests/preconf/main.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15783,6 +16467,7 @@
             },
             "tests/preconf/reorg/detect.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15806,6 +16491,7 @@
             },
             "tests/preconf/sort/sort.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15829,6 +16515,7 @@
             },
             "tests/preconf/stress/stress.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15852,6 +16539,7 @@
             },
             "tests/state_test.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15875,6 +16563,7 @@
             },
             "tests/state_test_util.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15903,6 +16592,7 @@
           "paths": {
             "bin/client/src/fpvm_evm/factory.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -15928,6 +16618,7 @@
             },
             "bin/client/src/fpvm_evm/precompiles/provider.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -15953,6 +16644,7 @@
             },
             "bin/node/src/commands/info.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -15978,6 +16670,7 @@
             },
             "crates/node/engine/src/attributes.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16003,6 +16696,7 @@
             },
             "crates/node/engine/src/client.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16028,6 +16722,7 @@
             },
             "crates/node/engine/src/state/builder.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16053,6 +16748,7 @@
             },
             "crates/node/engine/src/state/core.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16078,6 +16774,7 @@
             },
             "crates/node/rpc/src/rollup.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16103,6 +16800,7 @@
             },
             "crates/node/service/src/service/core.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16128,6 +16826,7 @@
             },
             "crates/node/sources/src/runtime/loader.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16153,6 +16852,7 @@
             },
             "crates/proof/executor/src/builder/assemble.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -16178,6 +16878,7 @@
             },
             "crates/proof/executor/src/builder/core.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -16203,6 +16904,7 @@
             },
             "crates/proof/executor/src/builder/env.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -16228,6 +16930,7 @@
             },
             "crates/proof/executor/src/test_utils.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -16253,6 +16956,7 @@
             },
             "crates/proof/executor/src/util.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -16278,6 +16982,7 @@
             },
             "crates/proof/proof-interop/src/consolidation.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -16303,6 +17008,7 @@
             },
             "crates/proof/proof/src/boot.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -16328,6 +17034,7 @@
             },
             "crates/protocol/derive/src/attributes/stateful.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16353,6 +17060,7 @@
             },
             "crates/protocol/derive/src/sources/ethereum.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16378,6 +17086,7 @@
             },
             "crates/protocol/derive/src/stages/batch/batch_provider.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16403,6 +17112,7 @@
             },
             "crates/protocol/derive/src/stages/batch/batch_queue.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16428,6 +17138,7 @@
             },
             "crates/protocol/derive/src/stages/channel/channel_assembler.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16453,6 +17164,7 @@
             },
             "crates/protocol/derive/src/stages/channel/channel_provider.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16478,6 +17190,7 @@
             },
             "crates/protocol/derive/src/stages/channel/channel_reader.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16503,6 +17216,7 @@
             },
             "crates/protocol/derive/src/stages/frame_queue.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16528,6 +17242,7 @@
             },
             "crates/protocol/derive/src/stages/l1_traversal.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16553,6 +17268,7 @@
             },
             "crates/protocol/genesis/src/chain/config.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16578,6 +17294,7 @@
             },
             "crates/protocol/genesis/src/genesis.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16603,6 +17320,7 @@
             },
             "crates/protocol/genesis/src/lib.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16628,6 +17346,7 @@
             },
             "crates/protocol/genesis/src/rollup.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16653,6 +17372,7 @@
             },
             "crates/protocol/genesis/src/system/config.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16678,6 +17398,7 @@
             },
             "crates/protocol/hardforks/src/ecotone.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16703,6 +17424,7 @@
             },
             "crates/protocol/hardforks/src/fjord.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16728,6 +17450,7 @@
             },
             "crates/protocol/hardforks/src/interop.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16753,6 +17476,7 @@
             },
             "crates/protocol/hardforks/src/isthmus.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16778,6 +17502,7 @@
             },
             "crates/protocol/hardforks/src/test_utils.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16803,6 +17528,7 @@
             },
             "crates/protocol/interop/src/graph.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16828,6 +17554,7 @@
             },
             "crates/protocol/protocol/src/batch/core.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16853,6 +17580,7 @@
             },
             "crates/protocol/protocol/src/batch/reader.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16878,6 +17606,7 @@
             },
             "crates/protocol/protocol/src/batch/single.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16903,6 +17632,7 @@
             },
             "crates/protocol/protocol/src/deposits.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16928,6 +17658,7 @@
             },
             "crates/protocol/protocol/src/info/variant.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16953,6 +17684,7 @@
             },
             "crates/protocol/protocol/src/sync.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -16978,6 +17710,7 @@
             },
             "crates/protocol/protocol/src/utils.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17003,6 +17736,7 @@
             },
             "crates/protocol/registry/src/superchain.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17028,6 +17762,7 @@
             },
             "examples/execution-fixture/src/main.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17058,6 +17793,7 @@
           "paths": {
             "bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17081,6 +17817,7 @@
             },
             "crates": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17122,6 +17859,7 @@
             },
             "Cargo.toml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17141,6 +17879,7 @@
           "paths": {
             "programs/range/celestia/src/main.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -17157,6 +17896,7 @@
             },
             "programs/range/eigenda/src/main.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -17182,6 +17922,7 @@
             },
             "scripts/utils/bin/fetch_and_save_proof.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17207,6 +17948,7 @@
             },
             "utils/build/src/lib.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17232,6 +17974,7 @@
             },
             "utils/celestia/client/src/executor.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -17248,6 +17991,7 @@
             },
             "utils/celestia/client/src/lib.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -17264,6 +18008,7 @@
             },
             "utils/celestia/host/src/blobstream_utils.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17280,6 +18025,7 @@
             },
             "utils/celestia/host/src/host.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17296,6 +18042,7 @@
             },
             "utils/celestia/host/src/lib.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17312,6 +18059,7 @@
             },
             "utils/celestia/host/src/witness_generator.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -17328,6 +18076,7 @@
             },
             "utils/client/src/client.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -17353,6 +18102,7 @@
             },
             "utils/client/src/precompiles/factory.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -17378,6 +18128,7 @@
             },
             "utils/client/src/precompiles/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -17403,6 +18154,7 @@
             },
             "utils/eigenda/client/src/executor.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -17428,6 +18180,7 @@
             },
             "utils/eigenda/client/src/lib.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -17453,6 +18206,7 @@
             },
             "utils/eigenda/host/src/host.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17478,6 +18232,7 @@
             },
             "utils/eigenda/host/src/lib.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17503,6 +18258,7 @@
             },
             "utils/eigenda/host/src/witness_generator.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -17528,6 +18284,7 @@
             },
             "utils/elfs/src/lib.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17553,6 +18310,7 @@
             },
             "utils/host/src/fetcher.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17578,6 +18336,7 @@
             },
             "utils/host/src/host.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17603,6 +18362,7 @@
             },
             "utils/host/src/lib.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17628,6 +18388,7 @@
             },
             "utils/host/src/rollup_config.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17653,6 +18414,7 @@
             },
             "utils/proof/src/lib.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17678,6 +18440,7 @@
             },
             "validity/src/proof_requester.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17703,6 +18466,7 @@
             },
             "validity/src/proposer.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17733,6 +18497,7 @@
           "paths": {
             "crates/handler/src/handler.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17756,6 +18521,7 @@
             },
             "crates/interpreter/src/gas.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17779,6 +18545,7 @@
             },
             "crates/op-revm/src/constants.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17802,6 +18569,7 @@
             },
             "crates/op-revm/src/evm.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17825,6 +18593,7 @@
             },
             "crates/op-revm/src/handler.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17855,6 +18624,7 @@
             },
             "crates/op-revm/src/l1block.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17878,6 +18648,7 @@
             },
             "crates/op-revm/src/lib.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17901,6 +18672,7 @@
             },
             "crates/op-revm/src/transaction.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17924,6 +18696,7 @@
             },
             "crates/op-revm/src/transaction/abstraction.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17947,6 +18720,7 @@
             },
             "crates/op-revm/src/transaction/bvm_eth.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17973,6 +18747,7 @@
             },
             "crates/op-revm/src/transaction/deposit.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -17996,6 +18771,7 @@
             },
             "crates/op-revm/src/transaction/error.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -18019,6 +18795,7 @@
             },
             "examples/block_traces/src/main.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {

@@ -1,7 +1,7 @@
 # Audit source summary: privacy-pools
 
 Generated from [audit-summary.json](audit-summary.json). Do not edit manually.
-Commit dates use Git committer timestamps (UTC).
+Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless marked zk, cairo or other.
 
 ## Privacy Pools Smart Contracts Security Audit Report (Privacy Pools v1)
 
@@ -14,8 +14,8 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/contracts/PrivacyPool.sol"><code>e221f0b88e52fb5c214726e765997ef4067793a9</code></a> | February 5, 2024 | <code>contracts/PrivacyPool.sol</code><br><code>contracts/ERC20PrivacyPool.sol</code><br><code>contracts/ETHPrivacyPool.sol</code><br><code>contracts/MerkleTreeWithHistory.sol</code><br><code>membership-proof/circuits/proofOfInnocence.circom</code> |
-| <a href="https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/PrivacyPool.sol"><code>8ab7132877325e27b22053e974b3310d70b860b5</code></a> | April 13, 2024 | <code>contracts/PrivacyPool.sol</code><br><code>contracts/ERC20PrivacyPool.sol</code><br><code>contracts/ETHPrivacyPool.sol</code><br><code>contracts/MerkleTreeWithHistory.sol</code><br><code>membership-proof/circuits/proofOfInnocence.circom</code> |
+| <a href="https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/contracts/PrivacyPool.sol"><code>e221f0b88e52fb5c214726e765997ef4067793a9</code></a> | February 5, 2024 | <code>contracts/PrivacyPool.sol</code><br><code>contracts/ERC20PrivacyPool.sol</code><br><code>contracts/ETHPrivacyPool.sol</code><br><code>contracts/MerkleTreeWithHistory.sol</code><br><code>membership-proof/circuits/proofOfInnocence.circom</code> (zk) |
+| <a href="https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/PrivacyPool.sol"><code>8ab7132877325e27b22053e974b3310d70b860b5</code></a> | April 13, 2024 | <code>contracts/PrivacyPool.sol</code><br><code>contracts/ERC20PrivacyPool.sol</code><br><code>contracts/ETHPrivacyPool.sol</code><br><code>contracts/MerkleTreeWithHistory.sol</code><br><code>membership-proof/circuits/proofOfInnocence.circom</code> (zk) |
 
 ## Privacy Pools circuits audit report
 
@@ -28,8 +28,8 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/0xbow-io/privacy-pools-core/blob/56d5d48c21e9493954e2660d0cc252ce537edc25/packages/circuits/circuits/commitment.circom"><code>56d5d48c21e9493954e2660d0cc252ce537edc25</code></a> | January 20, 2025 | <code>packages/circuits/circuits/commitment.circom</code><br><code>packages/circuits/circuits/merkleTree.circom</code><br><code>packages/circuits/circuits/withdraw.circom</code> |
-| <a href="https://github.com/0xbow-io/privacy-pools-core/blob/8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb/packages/circuits/circuits/commitment.circom"><code>8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb</code></a> | February 19, 2025 | <code>packages/circuits/circuits/commitment.circom</code><br><code>packages/circuits/circuits/merkleTree.circom</code><br><code>packages/circuits/circuits/withdraw.circom</code> |
+| <a href="https://github.com/0xbow-io/privacy-pools-core/blob/56d5d48c21e9493954e2660d0cc252ce537edc25/packages/circuits/circuits/commitment.circom"><code>56d5d48c21e9493954e2660d0cc252ce537edc25</code></a> | January 20, 2025 | <code>packages/circuits/circuits/commitment.circom</code> (zk)<br><code>packages/circuits/circuits/merkleTree.circom</code> (zk)<br><code>packages/circuits/circuits/withdraw.circom</code> (zk) |
+| <a href="https://github.com/0xbow-io/privacy-pools-core/blob/8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb/packages/circuits/circuits/commitment.circom"><code>8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb</code></a> | February 19, 2025 | <code>packages/circuits/circuits/commitment.circom</code> (zk)<br><code>packages/circuits/circuits/merkleTree.circom</code> (zk)<br><code>packages/circuits/circuits/withdraw.circom</code> (zk) |
 
 ## Privacy Pools Core Audit Report
 

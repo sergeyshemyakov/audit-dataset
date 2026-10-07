@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "eth-infinitism",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "contracts/BasePaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -45,6 +46,7 @@
             },
             "contracts/EntryPoint.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -72,6 +74,7 @@
             },
             "contracts/IPaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -95,6 +98,7 @@
             },
             "contracts/IWallet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -118,6 +122,7 @@
             },
             "contracts/StakeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -144,6 +149,7 @@
             },
             "contracts/UserOperation.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -171,6 +177,7 @@
             },
             "contracts/samples/DepositPaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -197,6 +204,7 @@
             },
             "contracts/samples/ECDSA.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -211,6 +219,7 @@
             },
             "contracts/samples/IOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -234,6 +243,7 @@
             },
             "contracts/samples/SimpleWallet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -257,6 +267,7 @@
             },
             "contracts/samples/TokenPaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -280,6 +291,7 @@
             },
             "contracts/samples/VerifyingPaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -303,6 +315,7 @@
             },
             "contracts/BaseWallet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -317,6 +330,7 @@
             },
             "contracts/samples/SimpleWalletForTokens.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -331,6 +345,7 @@
             },
             "contracts/test": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -367,6 +382,7 @@
           "paths": {
             "contracts/bls/BLSAccount.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -381,6 +397,7 @@
             },
             "contracts/samples/bls/BLSAccount.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -395,6 +412,7 @@
             },
             "contracts/bls/BLSAccountFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -409,6 +427,7 @@
             },
             "contracts/samples/bls/BLSAccountFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -423,6 +442,7 @@
             },
             "contracts/bls/BLSSignatureAggregator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -449,6 +469,7 @@
             },
             "contracts/samples/bls/BLSSignatureAggregator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -472,6 +493,7 @@
             },
             "contracts/bls/IBLSAccount.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -486,6 +508,7 @@
             },
             "contracts/samples/bls/IBLSAccount.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -500,6 +523,7 @@
             },
             "contracts/core/BaseAccount.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -523,6 +547,7 @@
             },
             "contracts/core/BasePaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -546,6 +571,7 @@
             },
             "contracts/core/EntryPoint.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -569,6 +595,7 @@
             },
             "contracts/core/SenderCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -592,6 +619,7 @@
             },
             "contracts/core/StakeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -615,6 +643,7 @@
             },
             "contracts/gnosis/EIP4337Fallback.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -629,6 +658,7 @@
             },
             "contracts/samples/gnosis/EIP4337Fallback.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -643,6 +673,7 @@
             },
             "contracts/gnosis/EIP4337Manager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -657,6 +688,7 @@
             },
             "contracts/samples/gnosis/EIP4337Manager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -671,6 +703,7 @@
             },
             "contracts/gnosis/GnosisAccountFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -685,6 +718,7 @@
             },
             "contracts/samples/gnosis/GnosisAccountFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -699,6 +733,7 @@
             },
             "contracts/interfaces/IAccount.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -722,6 +757,7 @@
             },
             "contracts/interfaces/IAggregatedAccount.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -736,6 +772,7 @@
             },
             "contracts/interfaces/IAggregator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -759,6 +796,7 @@
             },
             "contracts/interfaces/ICreate2Deployer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -773,6 +811,7 @@
             },
             "contracts/interfaces/IEntryPoint.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -796,6 +835,7 @@
             },
             "contracts/interfaces/IPaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -819,6 +859,7 @@
             },
             "contracts/interfaces/IStakeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -842,6 +883,7 @@
             },
             "contracts/interfaces/UserOperation.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -865,6 +907,7 @@
             },
             "contracts/samples/DepositPaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -888,6 +931,7 @@
             },
             "contracts/samples/IOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -911,6 +955,7 @@
             },
             "contracts/samples/SimpleAccount.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -934,6 +979,7 @@
             },
             "contracts/samples/SimpleAccountFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -957,6 +1003,7 @@
             },
             "contracts/samples/TestAggregatedAccount.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -971,6 +1018,7 @@
             },
             "contracts/test/TestAggregatedAccount.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -985,6 +1033,7 @@
             },
             "contracts/samples/TestAggregatedAccountFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -999,6 +1048,7 @@
             },
             "contracts/test/TestAggregatedAccountFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1013,6 +1063,7 @@
             },
             "contracts/samples/TestSignatureAggregator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1027,6 +1078,7 @@
             },
             "contracts/test/TestSignatureAggregator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1041,6 +1093,7 @@
             },
             "contracts/samples/TokenPaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1064,6 +1117,7 @@
             },
             "contracts/samples/VerifyingPaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1087,6 +1141,7 @@
             },
             "contracts/utils/Exec.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1110,6 +1165,7 @@
             },
             "contracts/bls/BLSHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1146,6 +1202,7 @@
           "paths": {
             "contracts/core/BaseAccount.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1169,6 +1226,7 @@
             },
             "contracts/core/BasePaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1192,6 +1250,7 @@
             },
             "contracts/core/EntryPoint.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1233,6 +1292,7 @@
             },
             "contracts/core/EntryPointSimulations.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1265,6 +1325,7 @@
             },
             "contracts/core/Helpers.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1297,6 +1358,7 @@
             },
             "contracts/core/NonceManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1320,6 +1382,7 @@
             },
             "contracts/core/SenderCreator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1352,6 +1415,7 @@
             },
             "contracts/core/StakeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1375,6 +1439,7 @@
             },
             "contracts/core/UserOperationLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1398,6 +1463,7 @@
             },
             "contracts/interfaces/IAccount.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1421,6 +1487,7 @@
             },
             "contracts/interfaces/IAccountExecute.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1444,6 +1511,7 @@
             },
             "contracts/interfaces/IAggregator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1467,6 +1535,7 @@
             },
             "contracts/interfaces/IEntryPoint.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1490,6 +1559,7 @@
             },
             "contracts/interfaces/IEntryPointSimulations.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1513,6 +1583,7 @@
             },
             "contracts/interfaces/INonceManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1536,6 +1607,7 @@
             },
             "contracts/interfaces/IPaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1559,6 +1631,7 @@
             },
             "contracts/interfaces/IStakeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1582,6 +1655,7 @@
             },
             "contracts/interfaces/PackedUserOperation.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1605,6 +1679,7 @@
             },
             "contracts/samples/SimpleAccount.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1628,6 +1703,7 @@
             },
             "contracts/samples/TokenPaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1651,6 +1727,7 @@
             },
             "contracts/samples/VerifyingPaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1674,6 +1751,7 @@
             },
             "contracts/samples/bls/BLSAccount.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1697,6 +1775,7 @@
             },
             "contracts/samples/bls/BLSSignatureAggregator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1720,6 +1799,7 @@
             },
             "contracts/samples/callback/TokenCallbackHandler.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1743,6 +1823,7 @@
             },
             "contracts/samples/utils/IOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1766,6 +1847,7 @@
             },
             "contracts/samples/utils/OracleHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1789,6 +1871,7 @@
             },
             "contracts/samples/utils/UniswapHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1812,6 +1895,7 @@
             },
             "contracts/utils/Exec.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1826,6 +1910,7 @@
             },
             "contracts/samples/LegacyTokenPaymaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1840,6 +1925,7 @@
             },
             "erc/ERCS": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1889,6 +1975,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1917,6 +2004,7 @@
           "paths": {
             "ERCS/erc-4337.md": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1940,6 +2028,7 @@
             },
             "ERCS/erc-7562.md": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1985,6 +2074,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {

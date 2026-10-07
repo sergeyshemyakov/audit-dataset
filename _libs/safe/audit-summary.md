@@ -1,7 +1,7 @@
 # Audit source summary: Safe
 
 Generated from [audit-summary.json](audit-summary.json). Do not edit manually.
-Commit dates use Git committer timestamps (UTC).
+Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless marked zk, cairo or other.
 
 ## Gnosis Safe Audit Report
 
@@ -363,7 +363,7 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/hats-finance/Safe-0x2909fdefd24a1ced675cb1444918fa766d76bdac/commit/2c03e35cd1f93de704136ab6e54ae42971a69465"><code>2c03e35cd1f93de704136ab6e54ae42971a69465</code></a> | June 19, 2024 | <code>modules/passkey/contracts/SafeWebAuthnSignerFactory.sol</code><br><code>modules/passkey/contracts/SafeWebAuthnSignerProxy.sol</code><br><code>modules/passkey/contracts/SafeWebAuthnSignerSingleton.sol</code><br><code>modules/passkey/contracts/base/SignatureValidator.sol</code><br><code>modules/passkey/contracts/interfaces/IP256Verifier.sol</code><br><code>modules/passkey/contracts/interfaces/ISafe.sol</code><br><code>modules/passkey/contracts/interfaces/ISafeSignerFactory.sol</code><br><code>modules/passkey/contracts/libraries/ERC1271.sol</code><br><code>modules/passkey/contracts/libraries/P256.sol</code><br><code>modules/passkey/contracts/libraries/WebAuthn.sol</code><br><code>modules/passkey/contracts/4337/README.md</code><br><code>modules/passkey/contracts/4337/SafeWebAuthnSharedSigner.sol</code><br><code>modules/passkey/contracts/verifiers/FCLP256Verifier.sol</code> |
+| <a href="https://github.com/hats-finance/Safe-0x2909fdefd24a1ced675cb1444918fa766d76bdac/commit/2c03e35cd1f93de704136ab6e54ae42971a69465"><code>2c03e35cd1f93de704136ab6e54ae42971a69465</code></a> | June 19, 2024 | <code>modules/passkey/contracts/SafeWebAuthnSignerFactory.sol</code><br><code>modules/passkey/contracts/SafeWebAuthnSignerProxy.sol</code><br><code>modules/passkey/contracts/SafeWebAuthnSignerSingleton.sol</code><br><code>modules/passkey/contracts/base/SignatureValidator.sol</code><br><code>modules/passkey/contracts/interfaces/IP256Verifier.sol</code><br><code>modules/passkey/contracts/interfaces/ISafe.sol</code><br><code>modules/passkey/contracts/interfaces/ISafeSignerFactory.sol</code><br><code>modules/passkey/contracts/libraries/ERC1271.sol</code><br><code>modules/passkey/contracts/libraries/P256.sol</code><br><code>modules/passkey/contracts/libraries/WebAuthn.sol</code><br><code>modules/passkey/contracts/4337/README.md</code> (other)<br><code>modules/passkey/contracts/4337/SafeWebAuthnSharedSigner.sol</code><br><code>modules/passkey/contracts/verifiers/FCLP256Verifier.sol</code> |
 
 ## Safe Passkey Module Second Formal Verification and Audit
 

@@ -55,12 +55,6 @@
       "commit": "57f9a8d7b352d9e18d217513ad4592d36ee9ce11",
       "files": [
         {
-          "path": "contracts/.npmignore",
-          "git_object": "b6abf238d94f66c1ffbe3f9c64d9dbcbe00f4a89",
-          "git_mode": "100644",
-          "sha256": "a1cbe9a9abc96f44a0354568172d8da5b1499d10e87cf8317af10cf5104dfc9a"
-        },
-        {
           "path": "contracts/accounts/Simple7702Account.sol",
           "git_object": "def1495910bba36e1d7e2984c3f214a822ed3b5a",
           "git_mode": "100644",
@@ -245,12 +239,6 @@
           "git_object": "1479bcc57f4ef470a059806fee14f7011bfb1f78",
           "git_mode": "100644",
           "sha256": "fbf0288edc6c410d9010bb8c0aadab31b2ed59398f337664d082e17cecfc5d1a"
-        },
-        {
-          "path": "contracts/package.json",
-          "git_object": "7e38063e631372d1076b4c6218d25fc38d117e61",
-          "git_mode": "100644",
-          "sha256": "d9cf398961d1d199af67485a9fc6f4632bedfb731226d4b8930b3d6728a2abd2"
         },
         {
           "path": "contracts/test/GasCalcPaymasterWithPostOp.sol",
@@ -1244,37 +1232,10 @@
     {
       "repository": "eth-infinitism/account-abstraction",
       "repository_url": "https://github.com/eth-infinitism/account-abstraction",
-      "source_path": "erc/ERCS",
-      "path_kind": "directory_recursive",
-      "commit": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
-      "files": [
-        {
-          "path": "erc/ERCS/erc-4337.md",
-          "git_object": "ef3f571ec398dd590d2191ab9642dd2fb03e95ae",
-          "git_mode": "100644",
-          "sha256": "9be8f87ec8c945a5b79b48e6db89d13de37fb78c353fe545b361275e1970be78"
-        },
-        {
-          "path": "erc/ERCS/erc-7562.md",
-          "git_object": "f87c38d61dd3b63945bbe2aa4b0ad24aa4822246",
-          "git_mode": "100644",
-          "sha256": "c78904f2c1b4a660c2f727e0b8c49bfbaafb5117703c950406ae881abb51adc7"
-        }
-      ]
-    },
-    {
-      "repository": "eth-infinitism/account-abstraction",
-      "repository_url": "https://github.com/eth-infinitism/account-abstraction",
       "source_path": "contracts",
       "path_kind": "directory_recursive",
       "commit": "86fcd84cf7263fe384d61d078ee747b16e69a496",
       "files": [
-        {
-          "path": "contracts/.npmignore",
-          "git_object": "b6abf238d94f66c1ffbe3f9c64d9dbcbe00f4a89",
-          "git_mode": "100644",
-          "sha256": "a1cbe9a9abc96f44a0354568172d8da5b1499d10e87cf8317af10cf5104dfc9a"
-        },
         {
           "path": "contracts/accounts/Simple7702Account.sol",
           "git_object": "b3fc0eb1aa5ed14f824f6cbb7bbf09738927e8ee",
@@ -1466,12 +1427,6 @@
           "git_object": "9277fdd989a4f15ef232122eeda78214dd5f2fda",
           "git_mode": "100644",
           "sha256": "fb0f3b6506ab54dbf4dbde17383ca9c409343529e7d6c323ffff27c2f686db10"
-        },
-        {
-          "path": "contracts/package.json",
-          "git_object": "9e275a0baa2d3057b487d47222c6caee2248565a",
-          "git_mode": "100644",
-          "sha256": "a11d85cb9c5d3e503cde482b68a1014e8b4c8923f3586456092b077d82f2423e"
         },
         {
           "path": "contracts/test/GasCalcPaymasterWithPostOp.sol",
@@ -2213,27 +2168,6 @@
     {
       "repository": "eth-infinitism/account-abstraction",
       "repository_url": "https://github.com/eth-infinitism/account-abstraction",
-      "source_path": "erc/ERCS",
-      "path_kind": "directory_recursive",
-      "commit": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
-      "files": [
-        {
-          "path": "erc/ERCS/erc-4337.md",
-          "git_object": "0f3079bcafdfb087a95bf517e7e97ede91892364",
-          "git_mode": "100644",
-          "sha256": "844f5e86f5a2b8d384b03a6c2f0183dad938e58d0ebfdbcf4e0fe0d04b89b1b9"
-        },
-        {
-          "path": "erc/ERCS/erc-7562.md",
-          "git_object": "be798ce94686d77a1066863ce39a92743d7f7d6c",
-          "git_mode": "100644",
-          "sha256": "01205010f9ef7a5a00a7462b8845c5b66a6d5519c4ae04eedfd68f40b8a1bc68"
-        }
-      ]
-    },
-    {
-      "repository": "eth-infinitism/account-abstraction",
-      "repository_url": "https://github.com/eth-infinitism/account-abstraction",
       "source_path": "contracts/BasePaymaster.sol",
       "path_kind": "file",
       "commit": "a2f4b7be4d9996095e08d7102bacc9f13ea99ff6",
@@ -2494,12 +2428,6 @@
       "commit": "ed8a5c79b50361b2f1742ee9efecd45f494df597",
       "files": [
         {
-          "path": "contracts/.npmignore",
-          "git_object": "b6abf238d94f66c1ffbe3f9c64d9dbcbe00f4a89",
-          "git_mode": "100644",
-          "sha256": "a1cbe9a9abc96f44a0354568172d8da5b1499d10e87cf8317af10cf5104dfc9a"
-        },
-        {
           "path": "contracts/accounts/Simple7702Account.sol",
           "git_object": "be79d61ba991d950f0aeeebc62e8246a86f98a3b",
           "git_mode": "100644",
@@ -2684,12 +2612,6 @@
           "git_object": "1479bcc57f4ef470a059806fee14f7011bfb1f78",
           "git_mode": "100644",
           "sha256": "fbf0288edc6c410d9010bb8c0aadab31b2ed59398f337664d082e17cecfc5d1a"
-        },
-        {
-          "path": "contracts/package.json",
-          "git_object": "6420f51e5a3c7f7976172fe2bb3bd5dd8b756a55",
-          "git_mode": "100644",
-          "sha256": "edcf42e6de5bd0f0a0920143b0321b2a2b57690ab62a691325ce01f4b13bf3c9"
         },
         {
           "path": "contracts/test/GasCalcPaymasterWithPostOp.sol",
@@ -3253,12 +3175,6 @@
       "commit": "f54584edd4c627e084d04c315dcabda48a6b9ea9",
       "files": [
         {
-          "path": "contracts/.npmignore",
-          "git_object": "b6abf238d94f66c1ffbe3f9c64d9dbcbe00f4a89",
-          "git_mode": "100644",
-          "sha256": "a1cbe9a9abc96f44a0354568172d8da5b1499d10e87cf8317af10cf5104dfc9a"
-        },
-        {
           "path": "contracts/accounts/Simple7702Account.sol",
           "git_object": "74d9608620e580b342d47fa42b564c3c6b4aa4b7",
           "git_mode": "100644",
@@ -3451,12 +3367,6 @@
           "sha256": "fb0f3b6506ab54dbf4dbde17383ca9c409343529e7d6c323ffff27c2f686db10"
         },
         {
-          "path": "contracts/package.json",
-          "git_object": "9e275a0baa2d3057b487d47222c6caee2248565a",
-          "git_mode": "100644",
-          "sha256": "a11d85cb9c5d3e503cde482b68a1014e8b4c8923f3586456092b077d82f2423e"
-        },
-        {
           "path": "contracts/test/GasCalcPaymasterWithPostOp.sol",
           "git_object": "02a5c13799cca28fd59cba6fce19744b2520f851",
           "git_mode": "100644",
@@ -3607,68 +3517,51 @@
           "sha256": "82b144fbe4b92ca17348763db0e7351a57de26c95bd3f787146466a1df1d6f14"
         }
       ]
-    },
-    {
-      "repository": "ethereum/ERCs",
-      "repository_url": "https://github.com/ethereum/ERCs",
-      "source_path": "ERCS/erc-4337.md",
-      "path_kind": "file",
-      "commit": "0b01810450dbc171c909e74a0fa5fc2bc60a1a8a",
-      "files": [
-        {
-          "path": "ERCS/erc-4337.md",
-          "git_object": "0a052bb42866eada95e8ffdd08c3485e26f803d5",
-          "git_mode": "100644",
-          "sha256": "fb230e63107a917fe7777b026894d63c1ca5e2d710c081e7fc3a7d148f96161f"
-        }
-      ]
-    },
-    {
-      "repository": "ethereum/ERCs",
-      "repository_url": "https://github.com/ethereum/ERCs",
-      "source_path": "ERCS/erc-4337.md",
-      "path_kind": "file",
-      "commit": "25f2b66769fe17cf002da2c0413144acf03c2308",
-      "files": [
-        {
-          "path": "ERCS/erc-4337.md",
-          "git_object": "2659ff193d0eadd79c5973d9b542ac33455a97b1",
-          "git_mode": "100644",
-          "sha256": "491eb10c79ada4a3e2dfda65026779e4a8ff32a2f63965a2f7a7a7ac02c96dd7"
-        }
-      ]
-    },
-    {
-      "repository": "ethereum/ERCs",
-      "repository_url": "https://github.com/ethereum/ERCs",
-      "source_path": "ERCS/erc-7562.md",
-      "path_kind": "file",
-      "commit": "609c02dc1d8cfb22ff4b4ab5fe731b620d64055c",
-      "files": [
-        {
-          "path": "ERCS/erc-7562.md",
-          "git_object": "5b2e15d0b9e7bc49a49b721e5ed38796d14bcda4",
-          "git_mode": "100644",
-          "sha256": "448376c76dc3f322ba1910026345088ce7e386625acc837deaf4858012d380e0"
-        }
-      ]
-    },
-    {
-      "repository": "ethereum/ERCs",
-      "repository_url": "https://github.com/ethereum/ERCs",
-      "source_path": "ERCS/erc-7562.md",
-      "path_kind": "file",
-      "commit": "62a7f8b36843c803d935fc04f0c74f61dcbbbd71",
-      "files": [
-        {
-          "path": "ERCS/erc-7562.md",
-          "git_object": "f7eece5bc02cb3c51e2ca85a4ab6a8828d14f00c",
-          "git_mode": "100644",
-          "sha256": "145726df76f994471a8a6dceb75729941b8286699e8723e6ee18b30e98b80bb2"
-        }
-      ]
     }
   ],
-  "skipped": [],
+  "skipped": [
+    {
+      "repository": "eth-infinitism/account-abstraction",
+      "source_path": "erc/ERCS",
+      "revision_kind": "commit",
+      "revision": "8086e7ba0d80e6f7e5d36306b73793cbcaa4ced6",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "eth-infinitism/account-abstraction",
+      "source_path": "erc/ERCS",
+      "revision_kind": "commit",
+      "revision": "9879c931ce92f0bee1bca1d1b1352eeb98b9a120",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "ethereum/ERCs",
+      "source_path": "ERCS/erc-4337.md",
+      "revision_kind": "commit",
+      "revision": "0b01810450dbc171c909e74a0fa5fc2bc60a1a8a",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "ethereum/ERCs",
+      "source_path": "ERCS/erc-4337.md",
+      "revision_kind": "commit",
+      "revision": "25f2b66769fe17cf002da2c0413144acf03c2308",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "ethereum/ERCs",
+      "source_path": "ERCS/erc-7562.md",
+      "revision_kind": "commit",
+      "revision": "609c02dc1d8cfb22ff4b4ab5fe731b620d64055c",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "ethereum/ERCs",
+      "source_path": "ERCS/erc-7562.md",
+      "revision_kind": "commit",
+      "revision": "62a7f8b36843c803d935fc04f0c74f61dcbbbd71",
+      "reason": "path kind other is not fetched"
+    }
+  ],
   "unavailable": []
 }

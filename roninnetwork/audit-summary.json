@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "roninnetwork",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "contracts/v0.8/extensions/GatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -36,6 +37,7 @@
             },
             "contracts/v0.8/extensions/governance/Governance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -69,6 +71,7 @@
             },
             "contracts/v0.8/extensions/governance/GatewayGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -83,6 +86,7 @@
             },
             "contracts/v0.8/extensions/governance/GlobalProposalGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -97,6 +101,7 @@
             },
             "contracts/v0.8/extensions/governance/ProposalGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -111,6 +116,7 @@
             },
             "contracts/v0.8/extensions/WithdrawalLimitation.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -154,6 +160,7 @@
             },
             "contracts/v0.8/extensions/HasProxyAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -168,6 +175,7 @@
             },
             "contracts/v0.8/extensions/MinimumWithdrawal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -182,6 +190,7 @@
             },
             "contracts/v0.8/extensions/TransparentUpgradeableProxyV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -196,6 +205,7 @@
             },
             "contracts/v0.8/mocks/MockERC721.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -210,6 +220,7 @@
             },
             "contracts/v0.8/mocks/MockGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -224,6 +235,7 @@
             },
             "contracts/v0.8/interfaces/IERC721Mintable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -238,6 +250,7 @@
             },
             "contracts/v0.8/interfaces/IWeightedValidator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -252,6 +265,7 @@
             },
             "contracts/v0.8/interfaces/IERC20Mintable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -266,6 +280,7 @@
             },
             "contracts/v0.8/interfaces/IWETH.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -280,6 +295,7 @@
             },
             "contracts/v0.8/interfaces/SignatureConsumer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -294,6 +310,7 @@
             },
             "contracts/v0.8/interfaces/IQuorum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -308,6 +325,7 @@
             },
             "contracts/v0.8/common/RoninValidator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -341,6 +359,7 @@
             },
             "contracts/v0.8/common/GovernanceAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -355,6 +374,7 @@
             },
             "contracts/v0.8/mainchain/IMainchainGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -369,6 +389,7 @@
             },
             "contracts/v0.8/mainchain/MainchainGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -402,6 +423,7 @@
             },
             "contracts/v0.8/library/Proposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -416,6 +438,7 @@
             },
             "contracts/v0.8/library/Token.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -449,6 +472,7 @@
             },
             "contracts/v0.8/library/Transfer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -463,6 +487,7 @@
             },
             "contracts/v0.8/library/BridgeProposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -477,6 +502,7 @@
             },
             "contracts/v0.8/library/Ballot.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -491,6 +517,7 @@
             },
             "contracts/v0.8/ronin/RoninGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -524,6 +551,7 @@
             },
             "contracts/v0.8/ronin/IRoninGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -538,6 +566,7 @@
             },
             "test/v0.8/common/RoninValidator.test.ts": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -552,6 +581,7 @@
             },
             "test/v0.8/common/GovernanceAdmin.test.ts": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -566,6 +596,7 @@
             },
             "test/v0.8/mainchain/MainchainGatewayV2.test.ts": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -609,6 +640,7 @@
             },
             "test/v0.8/ronin/RoninGatewayV2.test.ts": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -645,6 +677,7 @@
           "paths": {
             "contracts/v0.8/extensions/TransparentUpgradeableProxyV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -674,6 +707,7 @@
             },
             "contracts/v0.8/extensions/WithdrawalLimitation.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -715,6 +749,7 @@
             },
             "contracts/v0.8/library/Token.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -748,6 +783,7 @@
             },
             "contracts/v0.8/mainchain/MainchainGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -777,6 +813,7 @@
             },
             "contracts/v0.8/ronin/RoninGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -806,6 +843,7 @@
             },
             "contracts/v0.8/common/RoninValidator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -835,6 +873,7 @@
             },
             "contracts/v0.8/extensions/GatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -876,6 +915,7 @@
             },
             "contracts/v0.8/common/GovernanceAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -921,6 +961,7 @@
             },
             "contracts/v0.8/extensions/governance/Governance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -944,6 +985,7 @@
             },
             "contracts/v0.8/migration/BridgeMigration.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -985,6 +1027,7 @@
             },
             "contracts/v0.8/extensions/governance/GatewayGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1008,6 +1051,7 @@
             },
             "contracts/v0.8/extensions/governance/GlobalProposalGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1031,6 +1075,7 @@
             },
             "contracts/v0.8/extensions/governance/ProposalGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1054,6 +1099,7 @@
             },
             "contracts/v0.8/extensions/HasProxyAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1077,6 +1123,7 @@
             },
             "contracts/v0.8/extensions/MinimumWithdrawal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1118,6 +1165,7 @@
             },
             "contracts/v0.8/interfaces/IERC20Mintable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1141,6 +1189,7 @@
             },
             "contracts/v0.8/interfaces/IERC721Mintable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1164,6 +1213,7 @@
             },
             "contracts/v0.8/interfaces/IQuorum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1187,6 +1237,7 @@
             },
             "contracts/v0.8/interfaces/IWETH.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1210,6 +1261,7 @@
             },
             "contracts/v0.8/interfaces/IWeightedValidator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1233,6 +1285,7 @@
             },
             "contracts/v0.8/interfaces/MappedTokenConsumer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1256,6 +1309,7 @@
             },
             "contracts/v0.8/interfaces/SignatureConsumer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1279,6 +1333,7 @@
             },
             "contracts/v0.8/library/Ballot.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1302,6 +1357,7 @@
             },
             "contracts/v0.8/library/GlobalProposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1325,6 +1381,7 @@
             },
             "contracts/v0.8/library/Proposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1348,6 +1405,7 @@
             },
             "contracts/v0.8/library/Transfer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1371,6 +1429,7 @@
             },
             "contracts/v0.8/mainchain/IMainchainGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1394,6 +1453,7 @@
             },
             "contracts/v0.8/mocks/MockERC721.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1417,6 +1477,7 @@
             },
             "contracts/v0.8/mocks/MockGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1440,6 +1501,7 @@
             },
             "contracts/v0.8/ronin/IRoninGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1489,6 +1551,7 @@
           "paths": {
             "consensus/consortium/v2/consortium.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1521,6 +1584,7 @@
             },
             "core/vm/consortium_precompiled_contracts.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1553,6 +1617,7 @@
             },
             "miner/worker.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1585,6 +1650,7 @@
             },
             "core/block_validator.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1613,6 +1679,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1639,6 +1706,7 @@
             },
             "contracts/ronin/validator/CoinbaseExecution.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1692,6 +1760,7 @@
             },
             "contracts/extensions/sequential-governance/CoreGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1724,6 +1793,7 @@
             },
             "contracts/ronin/slash-indicator/SlashBridgeVoting.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1756,6 +1826,7 @@
             },
             "contracts/ronin/slash-indicator/SlashDoubleSign.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1788,6 +1859,7 @@
             },
             "contracts/ronin/BridgeTracking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1820,6 +1892,7 @@
             },
             "contracts/multi-chains/RoninTrustedOrganization.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1874,6 +1947,7 @@
           "paths": {
             "contracts/mainchain/MainchainGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1906,6 +1980,7 @@
             },
             "contracts/ronin/staking/CandidateStaking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1938,6 +2013,7 @@
             },
             "contracts/ronin/RoninGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1979,6 +2055,7 @@
             },
             "contracts/extensions/isolated-governance/bridge-operator-governance/BOsGovernanceProposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2020,6 +2097,7 @@
             },
             "contracts/extensions/sequential-governance/CoreGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2061,6 +2139,7 @@
             },
             "contracts/multi-chains/RoninTrustedOrganization.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2102,6 +2181,7 @@
             },
             "contracts/ronin/slash-indicator/CreditScore.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2134,6 +2214,7 @@
             },
             "contracts/ronin/slash-indicator/SlashDoubleSign.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2166,6 +2247,7 @@
             },
             "contracts/ronin/slash-indicator/SlashUnavailability.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2198,6 +2280,7 @@
             },
             "contracts/ronin/staking/DelegatorStaking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2239,6 +2322,7 @@
             },
             "contracts/ronin/validator/CoinbaseExecution.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2292,6 +2376,7 @@
             },
             "contracts/ronin/RoninGovernanceAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2324,6 +2409,7 @@
             },
             "contracts/extensions/collections/HasBridgeContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2356,6 +2442,7 @@
             },
             "contracts/extensions/collections/HasBridgeTrackingContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2388,6 +2475,7 @@
             },
             "contracts/extensions/collections/HasMaintenanceContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2420,6 +2508,7 @@
             },
             "contracts/extensions/collections/HasProxyAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2452,6 +2541,7 @@
             },
             "contracts/extensions/collections/HasRoninGovernanceAdminContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2484,6 +2574,7 @@
             },
             "contracts/extensions/collections/HasRoninTrustedOrganizationContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2516,6 +2607,7 @@
             },
             "contracts/extensions/collections/HasSlashIndicatorContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2548,6 +2640,7 @@
             },
             "contracts/extensions/collections/HasStakingContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2580,6 +2673,7 @@
             },
             "contracts/extensions/collections/HasStakingVestingContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2612,6 +2706,7 @@
             },
             "contracts/extensions/collections/HasValidatorContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2644,6 +2739,7 @@
             },
             "contracts/extensions/consumers/PercentageConsumer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2676,6 +2772,7 @@
             },
             "contracts/extensions/forwarder/Forwarder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2708,6 +2805,7 @@
             },
             "contracts/extensions/isolated-governance/bridge-operator-governance/BOsGovernanceRelay.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2740,6 +2838,7 @@
             },
             "contracts/extensions/isolated-governance/IsolatedGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2772,6 +2871,7 @@
             },
             "contracts/extensions/sequential-governance/GovernanceProposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2804,6 +2904,7 @@
             },
             "contracts/extensions/sequential-governance/GovernanceRelay.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2836,6 +2937,7 @@
             },
             "contracts/extensions/GatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2868,6 +2970,7 @@
             },
             "contracts/extensions/GovernanceAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2900,6 +3003,7 @@
             },
             "contracts/extensions/MinimumWithdrawal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2932,6 +3036,7 @@
             },
             "contracts/extensions/RONTransferHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2964,6 +3069,7 @@
             },
             "contracts/extensions/TransparentUpgradeableProxyV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2996,6 +3102,7 @@
             },
             "contracts/extensions/WithdrawalLimitation.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3028,6 +3135,7 @@
             },
             "contracts/interfaces/collections/IHasBridgeContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3060,6 +3168,7 @@
             },
             "contracts/interfaces/collections/IHasBridgeTrackingContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3092,6 +3201,7 @@
             },
             "contracts/interfaces/collections/IHasContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3124,6 +3234,7 @@
             },
             "contracts/interfaces/collections/IHasMaintenanceContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3156,6 +3267,7 @@
             },
             "contracts/interfaces/collections/IHasRoninGovernanceAdminContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3188,6 +3300,7 @@
             },
             "contracts/interfaces/collections/IHasRoninTrustedOrganizationContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3220,6 +3333,7 @@
             },
             "contracts/interfaces/collections/IHasSlashIndicatorContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3252,6 +3366,7 @@
             },
             "contracts/interfaces/collections/IHasStakingContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3284,6 +3399,7 @@
             },
             "contracts/interfaces/collections/IHasStakingVestingContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3316,6 +3432,7 @@
             },
             "contracts/interfaces/collections/IHasValidatorContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3348,6 +3465,7 @@
             },
             "contracts/interfaces/consumers/ChainTypeConsumer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3380,6 +3498,7 @@
             },
             "contracts/interfaces/consumers/MappedTokenConsumer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3412,6 +3531,7 @@
             },
             "contracts/interfaces/consumers/PeriodWrapperConsumer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3444,6 +3564,7 @@
             },
             "contracts/interfaces/consumers/SignatureConsumer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3476,6 +3597,7 @@
             },
             "contracts/interfaces/consumers/VoteStatusConsumer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3508,6 +3630,7 @@
             },
             "contracts/interfaces/consumers/WeightedAddressConsumer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3540,6 +3663,7 @@
             },
             "contracts/interfaces/slash-indicator/IBaseSlash.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3572,6 +3696,7 @@
             },
             "contracts/interfaces/slash-indicator/ICreditScore.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3604,6 +3729,7 @@
             },
             "contracts/interfaces/slash-indicator/ISlashBridgeOperator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3636,6 +3762,7 @@
             },
             "contracts/interfaces/slash-indicator/ISlashBridgeVoting.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3668,6 +3795,7 @@
             },
             "contracts/interfaces/slash-indicator/ISlashDoubleSign.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3700,6 +3828,7 @@
             },
             "contracts/interfaces/slash-indicator/ISlashIndicator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3732,6 +3861,7 @@
             },
             "contracts/interfaces/slash-indicator/ISlashUnavailability.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3764,6 +3894,7 @@
             },
             "contracts/interfaces/staking/IBaseStaking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3796,6 +3927,7 @@
             },
             "contracts/interfaces/staking/ICandidateStaking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3828,6 +3960,7 @@
             },
             "contracts/interfaces/staking/IDelegatorStaking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3860,6 +3993,7 @@
             },
             "contracts/interfaces/staking/IRewardPool.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3892,6 +4026,7 @@
             },
             "contracts/interfaces/staking/IStaking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3924,6 +4059,7 @@
             },
             "contracts/interfaces/validator/info-fragments/ICommonInfo.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3956,6 +4092,7 @@
             },
             "contracts/interfaces/validator/info-fragments/IJailingInfo.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3988,6 +4125,7 @@
             },
             "contracts/interfaces/validator/info-fragments/ITimingInfo.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4020,6 +4158,7 @@
             },
             "contracts/interfaces/validator/info-fragments/IValidatorInfo.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4052,6 +4191,7 @@
             },
             "contracts/interfaces/validator/ICandidateManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4084,6 +4224,7 @@
             },
             "contracts/interfaces/validator/ICoinbaseExecution.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4116,6 +4257,7 @@
             },
             "contracts/interfaces/validator/IEmergencyExit.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4148,6 +4290,7 @@
             },
             "contracts/interfaces/validator/IRoninValidatorSet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4180,6 +4323,7 @@
             },
             "contracts/interfaces/validator/ISlashingExecution.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4212,6 +4356,7 @@
             },
             "contracts/interfaces/IBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4244,6 +4389,7 @@
             },
             "contracts/interfaces/IBridgeTracking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4276,6 +4422,7 @@
             },
             "contracts/interfaces/IERC20Mintable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4308,6 +4455,7 @@
             },
             "contracts/interfaces/IERC721Mintable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4340,6 +4488,7 @@
             },
             "contracts/interfaces/IMainchainGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4372,6 +4521,7 @@
             },
             "contracts/interfaces/IMaintenance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4404,6 +4554,7 @@
             },
             "contracts/interfaces/IQuorum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4436,6 +4587,7 @@
             },
             "contracts/interfaces/IRoninGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4468,6 +4620,7 @@
             },
             "contracts/interfaces/IRoninGovernanceAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4500,6 +4653,7 @@
             },
             "contracts/interfaces/IRoninTrustedOrganization.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4532,6 +4686,7 @@
             },
             "contracts/interfaces/IStakingVesting.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4564,6 +4719,7 @@
             },
             "contracts/interfaces/IWETH.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4596,6 +4752,7 @@
             },
             "contracts/libraries/AddressArrayUtils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4628,6 +4785,7 @@
             },
             "contracts/libraries/Ballot.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4660,6 +4818,7 @@
             },
             "contracts/libraries/BridgeOperatorsBallot.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4692,6 +4851,7 @@
             },
             "contracts/libraries/EmergencyExitBallot.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4724,6 +4884,7 @@
             },
             "contracts/libraries/EnumFlags.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4756,6 +4917,7 @@
             },
             "contracts/libraries/GlobalProposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4788,6 +4950,7 @@
             },
             "contracts/libraries/Math.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4820,6 +4983,7 @@
             },
             "contracts/libraries/Proposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4852,6 +5016,7 @@
             },
             "contracts/libraries/Token.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4884,6 +5049,7 @@
             },
             "contracts/libraries/Transfer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4916,6 +5082,7 @@
             },
             "contracts/mainchain/MainchainGovernanceAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4948,6 +5115,7 @@
             },
             "contracts/precompile-usages/PCUPickValidatorSet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4980,6 +5148,7 @@
             },
             "contracts/precompile-usages/PCUSortValidators.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5012,6 +5181,7 @@
             },
             "contracts/precompile-usages/PCUValidateDoubleSign.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5044,6 +5214,7 @@
             },
             "contracts/precompile-usages/PrecompiledUsage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5076,6 +5247,7 @@
             },
             "contracts/ronin/slash-indicator/SlashBridgeOperator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5108,6 +5280,7 @@
             },
             "contracts/ronin/slash-indicator/SlashBridgeVoting.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5140,6 +5313,7 @@
             },
             "contracts/ronin/slash-indicator/SlashIndicator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5172,6 +5346,7 @@
             },
             "contracts/ronin/staking/BaseStaking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5204,6 +5379,7 @@
             },
             "contracts/ronin/staking/RewardCalculation.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5236,6 +5412,7 @@
             },
             "contracts/ronin/staking/Staking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5268,6 +5445,7 @@
             },
             "contracts/ronin/validator/storage-fragments/CommonStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5300,6 +5478,7 @@
             },
             "contracts/ronin/validator/storage-fragments/JailingStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5332,6 +5511,7 @@
             },
             "contracts/ronin/validator/storage-fragments/TimingStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5364,6 +5544,7 @@
             },
             "contracts/ronin/validator/storage-fragments/ValidatorInfoStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5396,6 +5577,7 @@
             },
             "contracts/ronin/validator/CandidateManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5428,6 +5610,7 @@
             },
             "contracts/ronin/validator/EmergencyExit.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5460,6 +5643,7 @@
             },
             "contracts/ronin/validator/RoninValidatorSet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5492,6 +5676,7 @@
             },
             "contracts/ronin/validator/SlashingExecution.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5524,6 +5709,7 @@
             },
             "contracts/ronin/BridgeTracking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5556,6 +5742,7 @@
             },
             "contracts/ronin/Maintenance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5588,6 +5775,7 @@
             },
             "contracts/ronin/StakingVesting.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5620,6 +5808,7 @@
             },
             "contracts/ronin/VaultForwarder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5674,6 +5863,7 @@
           "paths": {
             "contracts/mainchain/MainchainBridgeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5689,6 +5879,7 @@
             },
             "contracts/mainchain/MainchainGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5704,6 +5895,7 @@
             },
             "contracts/ronin/gateway/RoninBridgeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5719,6 +5911,7 @@
             },
             "contracts/ronin/gateway/BridgeReward.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5734,6 +5927,7 @@
             },
             "contracts/ronin/gateway/BridgeSlash.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5749,6 +5943,7 @@
             },
             "contracts/ronin/gateway/BridgeTracking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5764,6 +5959,7 @@
             },
             "contracts/ronin/gateway/PauseEnforcer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5779,6 +5975,7 @@
             },
             "contracts/ronin/gateway/RoninGatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5794,6 +5991,7 @@
             },
             "contracts/extensions/GatewayV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5809,6 +6007,7 @@
             },
             "contracts/extensions/bridge-operator-governance/BridgeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5833,6 +6032,7 @@
             },
             "contracts/extensions/bridge-operator-governance/BridgeManagerCallbackRegister.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5848,6 +6048,7 @@
             },
             "contracts/extensions/bridge-operator-governance/BridgeTrackingHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5863,6 +6064,7 @@
             },
             "contracts/extensions/sequential-governance/CoreGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5878,6 +6080,7 @@
             },
             "contracts/extensions/sequential-governance/GlobalCoreGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5893,6 +6096,7 @@
             },
             "contracts/ronin/validator/CoinbaseExecution.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5908,6 +6112,7 @@
             },
             "contracts/extensions/sequential-governance/governance-proposal/CommonGovernanceProposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5923,6 +6128,7 @@
             },
             "contracts/extensions/sequential-governance/governance-proposal/GlobalGovernanceProposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5938,6 +6144,7 @@
             },
             "contracts/extensions/sequential-governance/governance-proposal/GovernanceProposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5953,6 +6160,7 @@
             },
             "contracts/extensions/sequential-governance/governance-relay/CommonGovernanceRelay.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5968,6 +6176,7 @@
             },
             "contracts/extensions/sequential-governance/governance-relay/GlobalGovernanceRelay.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5983,6 +6192,7 @@
             },
             "contracts/extensions/sequential-governance/governance-relay/GovernanceRelay.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5998,6 +6208,7 @@
             },
             "contracts/extensions/MinimumWithdrawal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6013,6 +6224,7 @@
             },
             "contracts/extensions/RONTransferHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6028,6 +6240,7 @@
             },
             "contracts/extensions/WithdrawalLimitation.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6043,6 +6256,7 @@
             },
             "contracts/extensions/collections/HasContracts.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6058,6 +6272,7 @@
             },
             "contracts/extensions/collections/HasProxyAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6073,6 +6288,7 @@
             },
             "contracts/utils/IdentityGuard.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6088,6 +6304,7 @@
             },
             "contracts/libraries/AddressArrayUtils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6103,6 +6320,7 @@
             },
             "contracts/libraries/Ballot.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6118,6 +6336,7 @@
             },
             "contracts/libraries/EmergencyExitBallot.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6133,6 +6352,7 @@
             },
             "contracts/libraries/EnumFlags.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6148,6 +6368,7 @@
             },
             "contracts/libraries/ErrorHandler.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6163,6 +6384,7 @@
             },
             "contracts/libraries/GlobalProposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6178,6 +6400,7 @@
             },
             "contracts/libraries/IsolatedGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6193,6 +6416,7 @@
             },
             "contracts/libraries/Math.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6208,6 +6432,7 @@
             },
             "contracts/libraries/Proposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6223,6 +6448,7 @@
             },
             "contracts/libraries/Token.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6238,6 +6464,7 @@
             },
             "contracts/libraries/Transfer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6275,6 +6502,7 @@
           "paths": {
             "src/mainchain": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6292,6 +6520,7 @@
             },
             "src/ronin/gateway": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6306,6 +6535,7 @@
             },
             "src/mainchain/MainchainGatewayV3.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6335,6 +6565,7 @@
             },
             "src/extensions/GatewayV3.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6349,6 +6580,7 @@
             },
             "src/extensions/WithdrawalLimitation.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6363,6 +6595,7 @@
             },
             "src/interfaces/IMainchainGatewayV3.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6377,6 +6610,7 @@
             },
             "script/20240807-ir-recover/20240807-ir-recover.s.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6391,6 +6625,7 @@
             },
             "script/post-check/bridge-manager/proposal/PostCheck_BridgeManager_Proposal.s.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6405,6 +6640,7 @@
             },
             "script/post-check/gateway/deposit-withdraw/PostCheck_Gateway_DepositAndWithdraw.s.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6419,6 +6655,7 @@
             },
             "script/shared/libraries/LibProposal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6433,6 +6670,7 @@
             },
             "script/shared/libraries/LibStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6469,6 +6707,7 @@
           "paths": {
             "src/ronin/gateway/RoninBridgeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6483,6 +6722,7 @@
             },
             "src/ronin/gateway/RoninGatewayV3.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6497,6 +6737,7 @@
             },
             "src/mainchain/MainchainBridgeManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6511,6 +6752,7 @@
             },
             "src/mainchain/MainchainGatewayV3.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6525,6 +6767,7 @@
             },
             "script/20240716-upgrade-v3.2.0-mainnet": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6539,6 +6782,7 @@
             },
             "script/20240807-ir-recover": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6579,6 +6823,7 @@
           "paths": {
             "src/core/KatanaV3Pool.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6593,6 +6838,7 @@
             },
             "src/periphery/NonfungiblePositionManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6607,6 +6853,7 @@
             },
             "src/periphery/lens/MixedRouteQuoterV1.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6621,6 +6868,7 @@
             },
             "src/periphery/NonfungibleTokenPositionDescriptor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6635,6 +6883,7 @@
             },
             "src/periphery/V3Migrator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6649,6 +6898,7 @@
             },
             "src/core/KatanaV3Factory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6663,6 +6913,7 @@
             },
             "src/periphery/libraries/KatanaV2Library.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6677,6 +6928,7 @@
             },
             "src/periphery/libraries/KatanaV2LibraryTestnet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6691,6 +6943,7 @@
             },
             "src/core/interfaces/pool/IKatanaV3PoolEvents.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6705,6 +6958,7 @@
             },
             "src/core/interfaces/pool/IKatanaV3PoolState.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6719,6 +6973,7 @@
             },
             "src/periphery/interfaces/IKatanaV2Pair.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6733,6 +6988,7 @@
             },
             "src/external/interfaces/IKatanaGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6747,6 +7003,7 @@
             },
             "src/periphery/interfaces/IMixedRouteQuoterV1.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6761,6 +7018,7 @@
             },
             "src/periphery/base/PoolInitializer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6775,6 +7033,7 @@
             },
             "src/periphery/libraries/PoolAddress.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6789,6 +7048,7 @@
             },
             "src/core/KatanaV3PoolDeployer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6803,6 +7063,7 @@
             },
             "src/core/interfaces/IKatanaV3Factory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6817,6 +7078,7 @@
             },
             "src/core/KatanaV3PoolProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6831,6 +7093,7 @@
             },
             "src/core/interfaces/IKatanaV3Pool.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6845,6 +7108,7 @@
             },
             "src/core/interfaces/pool/IKatanaV3PoolImmutables.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6859,6 +7123,7 @@
             },
             "src/periphery/base/PeripheryImmutableState.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6873,6 +7138,7 @@
             },
             "src/external/libraries/AuthorizationLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6887,6 +7153,7 @@
             },
             "src/core/KatanaV3PoolBeacon.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6901,6 +7168,7 @@
             },
             "src/core/interfaces/IKatanaV3PoolDeployer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6915,6 +7183,7 @@
             },
             "src/periphery/interfaces/IPeripheryImmutableState.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6929,6 +7198,7 @@
             },
             "src/core/interfaces/IKatanaV3PoolBeaconImmutables.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6943,6 +7213,7 @@
             },
             "src/periphery/SwapRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6957,6 +7228,7 @@
             },
             "src/periphery/examples/PairFlash.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6971,6 +7243,7 @@
             },
             "src/periphery/lens/MixedRouteQuoterV1Testnet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6990,6 +7263,7 @@
           "paths": {
             "src/governance/KatanaGovernance.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7004,6 +7278,7 @@
             },
             "src/aggregate-router/base/Dispatcher.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7018,6 +7293,7 @@
             },
             "src/aggregate-router/modules/katana/v3/V3SwapRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7041,6 +7317,7 @@
             },
             "src/aggregate-router/modules/Payments.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7055,6 +7332,7 @@
             },
             "src/aggregate-router/modules/katana/v2/V2SwapRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7069,6 +7347,7 @@
             },
             "src/aggregate-router/AggregateRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7083,6 +7362,7 @@
             },
             "src/aggregate-router/modules/katana/KatanaImmutables.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7097,6 +7377,7 @@
             },
             "src/aggregate-router/libraries/Commands.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7111,6 +7392,7 @@
             },
             "src/governance/interfaces/IKatanaV2Factory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7125,6 +7407,7 @@
             },
             "src/aggregate-router/modules/PaymentsImmutables.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7139,6 +7422,7 @@
             },
             "src/aggregate-router/base/RouterImmutables.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {

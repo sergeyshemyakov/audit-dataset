@@ -1,7 +1,7 @@
 # Audit source summary: ethscriptions
 
 Generated from [audit-summary.json](audit-summary.json). Do not edit manually.
-Commit dates use Git committer timestamps (UTC).
+Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless marked zk, cairo or other.
 
 ## Facet ZK Fault Proof Rollup Security Review
 
@@ -31,9 +31,9 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/0xFacet/facet-optimism/blob/331bb685d91447e76b79aee34fea5d668a77e925/op-node/rollup/driver/state.go"><code>331bb685d91447e76b79aee34fea5d668a77e925</code></a> | October 2, 2024 | <code>op-node/rollup/driver/state.go</code><br><code>op-node/rollup/engine/events.go</code><br><code>op-node/rollup/status/status.go</code><br><code>op-node/rollup/sync/start.go</code><br><code>op-node/service.go</code><br><code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/src/L2/L2StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol</code><br><code>packages/contracts-bedrock/src/libraries/Constants.sol</code><br><code>packages/contracts-bedrock/src/libraries/GasPayingToken.sol</code><br><code>packages/contracts-bedrock/src/libraries/LibFacet.sol</code><br><code>packages/contracts-bedrock/src/universal/StandardBridge.sol</code><br><code>packages/contracts-bedrock/scripts/getting-started/config.sh</code> |
+| <a href="https://github.com/0xFacet/facet-optimism/blob/331bb685d91447e76b79aee34fea5d668a77e925/op-node/rollup/driver/state.go"><code>331bb685d91447e76b79aee34fea5d668a77e925</code></a> | October 2, 2024 | <code>op-node/rollup/driver/state.go</code> (other)<br><code>op-node/rollup/engine/events.go</code> (other)<br><code>op-node/rollup/status/status.go</code> (other)<br><code>op-node/rollup/sync/start.go</code> (other)<br><code>op-node/service.go</code> (other)<br><code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/src/L2/L2StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol</code><br><code>packages/contracts-bedrock/src/libraries/Constants.sol</code><br><code>packages/contracts-bedrock/src/libraries/GasPayingToken.sol</code><br><code>packages/contracts-bedrock/src/libraries/LibFacet.sol</code><br><code>packages/contracts-bedrock/src/universal/StandardBridge.sol</code><br><code>packages/contracts-bedrock/scripts/getting-started/config.sh</code> (other) |
 | <a href="https://github.com/0xFacet/facet-optimism/blob/10d1a7971af7c066969038d20661a10474c05d72/packages/contracts-bedrock/src/L1/L1StandardBridge.sol"><code>10d1a7971af7c066969038d20661a10474c05d72</code></a> | October 17, 2024 | <code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/universal/StandardBridge.sol</code> |
-| <a href="https://github.com/0xFacet/facet-optimism/blob/89ebb6e63fbf246ea2ff967edb4e3970810de74a/packages/contracts-bedrock/scripts/getting-started/config.sh"><code>89ebb6e63fbf246ea2ff967edb4e3970810de74a</code></a> | November 7, 2024 | <code>packages/contracts-bedrock/scripts/getting-started/config.sh</code> |
+| <a href="https://github.com/0xFacet/facet-optimism/blob/89ebb6e63fbf246ea2ff967edb4e3970810de74a/packages/contracts-bedrock/scripts/getting-started/config.sh"><code>89ebb6e63fbf246ea2ff967edb4e3970810de74a</code></a> | November 7, 2024 | <code>packages/contracts-bedrock/scripts/getting-started/config.sh</code> (other) |
 
 ### Repository: <a href="https://github.com/0xFacet/facet-node"><code>0xFacet/facet-node</code></a>
 
@@ -52,9 +52,9 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/0xFacet/facet-geth/blob/06b5f6e039ccd79c34c3fb01333d3ccbc8b952db/core/vm/contracts.go"><code>06b5f6e039ccd79c34c3fb01333d3ccbc8b952db</code></a> | August 27, 2024 | <code>core/vm/contracts.go</code> |
-| <a href="https://github.com/0xFacet/facet-geth/blob/bf0753a1f66c7c32f8a819e2e7e27187a3db28b1/core/vm/contracts.go"><code>bf0753a1f66c7c32f8a819e2e7e27187a3db28b1</code></a> | September 9, 2024 | <code>core/vm/contracts.go</code> |
-| <a href="https://github.com/0xFacet/facet-geth/blob/c82cc6e60833cf1ba2040d0bd6145e6586f3e08e/core/vm/contracts.go"><code>c82cc6e60833cf1ba2040d0bd6145e6586f3e08e</code></a> | October 15, 2024 | <code>core/vm/contracts.go</code> |
+| <a href="https://github.com/0xFacet/facet-geth/blob/06b5f6e039ccd79c34c3fb01333d3ccbc8b952db/core/vm/contracts.go"><code>06b5f6e039ccd79c34c3fb01333d3ccbc8b952db</code></a> | August 27, 2024 | <code>core/vm/contracts.go</code> (other) |
+| <a href="https://github.com/0xFacet/facet-geth/blob/bf0753a1f66c7c32f8a819e2e7e27187a3db28b1/core/vm/contracts.go"><code>bf0753a1f66c7c32f8a819e2e7e27187a3db28b1</code></a> | September 9, 2024 | <code>core/vm/contracts.go</code> (other) |
+| <a href="https://github.com/0xFacet/facet-geth/blob/c82cc6e60833cf1ba2040d0bd6145e6586f3e08e/core/vm/contracts.go"><code>c82cc6e60833cf1ba2040d0bd6145e6586f3e08e</code></a> | October 15, 2024 | <code>core/vm/contracts.go</code> (other) |
 
 ## Facet Node Comprehensive Security Assessment
 
@@ -67,26 +67,26 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/0xFacet/facet-node/blob/75877a548c3b515cb8d08e8920016dcfa2523bee/app/models/eth_block.rb"><code>75877a548c3b515cb8d08e8920016dcfa2523bee</code></a> | October 1, 2024 | <code>app/models/eth_block.rb</code><br><code>app/models/eth_call_struct.rb</code><br><code>app/models/eth_transaction.rb</code><br><code>app/models/facet_block.rb</code><br><code>app/models/facet_transaction.rb</code><br><code>app/models/predeploy_manager.rb</code><br><code>lib/eth_block_importer.rb</code><br><code>lib/geth_client.rb</code><br><code>lib/geth_driver.rb</code><br><code>lib/l1_attributes_tx_calldata.rb</code><br><code>lib/transaction_helper.rb</code><br><code>lib/sys_config.rb</code><br><code>lib/chain_id_manager.rb</code><br><code>lib/address_alias_helper.rb</code><br><code>lib/fct_mint_calculator.rb</code> |
-| <a href="https://github.com/0xFacet/facet-node/blob/65287c618ca2896019350a239d0ad3c2e79199d0/app/models/facet_transaction.rb"><code>65287c618ca2896019350a239d0ad3c2e79199d0</code></a> | October 15, 2024 | <code>app/models/facet_transaction.rb</code> |
-| <a href="https://github.com/0xFacet/facet-node/blob/e7f7fe8682396e695a55c3ce02cd4201d71ab27b/app/models/facet_transaction.rb"><code>e7f7fe8682396e695a55c3ce02cd4201d71ab27b</code></a> | October 21, 2024 | <code>app/models/facet_transaction.rb</code> |
-| <a href="https://github.com/0xFacet/facet-node/blob/a18f6f78e981732d24a6a0b1881646bde6cd964f/lib/l1_attributes_tx_calldata.rb"><code>a18f6f78e981732d24a6a0b1881646bde6cd964f</code></a> | October 24, 2024 | <code>lib/l1_attributes_tx_calldata.rb</code><br><code>lib/fct_mint_calculator.rb</code> |
-| <a href="https://github.com/0xFacet/facet-node/blob/bbe541291f20f2605c777040e09a4cea0bfe68f5/lib/l1_attributes_tx_calldata.rb"><code>bbe541291f20f2605c777040e09a4cea0bfe68f5</code></a> | October 28, 2024 | <code>lib/l1_attributes_tx_calldata.rb</code><br><code>lib/fct_mint_calculator.rb</code> |
-| <a href="https://github.com/0xFacet/facet-node/blob/fa791b625c33fbf38331fe7b660cbcb75e40269b/lib/fct_mint_calculator.rb"><code>fa791b625c33fbf38331fe7b660cbcb75e40269b</code></a> | November 4, 2024 | <code>lib/fct_mint_calculator.rb</code> |
-| <a href="https://github.com/0xFacet/facet-node/blob/64bc9f90d75da180bb32f7cf71881e1da917fcb6/lib/l1_attributes_tx_calldata.rb"><code>64bc9f90d75da180bb32f7cf71881e1da917fcb6</code></a> | November 6, 2024 | <code>lib/l1_attributes_tx_calldata.rb</code><br><code>lib/fct_mint_calculator.rb</code> |
+| <a href="https://github.com/0xFacet/facet-node/blob/75877a548c3b515cb8d08e8920016dcfa2523bee/app/models/eth_block.rb"><code>75877a548c3b515cb8d08e8920016dcfa2523bee</code></a> | October 1, 2024 | <code>app/models/eth_block.rb</code> (other)<br><code>app/models/eth_call_struct.rb</code> (other)<br><code>app/models/eth_transaction.rb</code> (other)<br><code>app/models/facet_block.rb</code> (other)<br><code>app/models/facet_transaction.rb</code> (other)<br><code>app/models/predeploy_manager.rb</code> (other)<br><code>lib/eth_block_importer.rb</code> (other)<br><code>lib/geth_client.rb</code> (other)<br><code>lib/geth_driver.rb</code> (other)<br><code>lib/l1_attributes_tx_calldata.rb</code> (other)<br><code>lib/transaction_helper.rb</code> (other)<br><code>lib/sys_config.rb</code> (other)<br><code>lib/chain_id_manager.rb</code> (other)<br><code>lib/address_alias_helper.rb</code> (other)<br><code>lib/fct_mint_calculator.rb</code> (other) |
+| <a href="https://github.com/0xFacet/facet-node/blob/65287c618ca2896019350a239d0ad3c2e79199d0/app/models/facet_transaction.rb"><code>65287c618ca2896019350a239d0ad3c2e79199d0</code></a> | October 15, 2024 | <code>app/models/facet_transaction.rb</code> (other) |
+| <a href="https://github.com/0xFacet/facet-node/blob/e7f7fe8682396e695a55c3ce02cd4201d71ab27b/app/models/facet_transaction.rb"><code>e7f7fe8682396e695a55c3ce02cd4201d71ab27b</code></a> | October 21, 2024 | <code>app/models/facet_transaction.rb</code> (other) |
+| <a href="https://github.com/0xFacet/facet-node/blob/a18f6f78e981732d24a6a0b1881646bde6cd964f/lib/l1_attributes_tx_calldata.rb"><code>a18f6f78e981732d24a6a0b1881646bde6cd964f</code></a> | October 24, 2024 | <code>lib/l1_attributes_tx_calldata.rb</code> (other)<br><code>lib/fct_mint_calculator.rb</code> (other) |
+| <a href="https://github.com/0xFacet/facet-node/blob/bbe541291f20f2605c777040e09a4cea0bfe68f5/lib/l1_attributes_tx_calldata.rb"><code>bbe541291f20f2605c777040e09a4cea0bfe68f5</code></a> | October 28, 2024 | <code>lib/l1_attributes_tx_calldata.rb</code> (other)<br><code>lib/fct_mint_calculator.rb</code> (other) |
+| <a href="https://github.com/0xFacet/facet-node/blob/fa791b625c33fbf38331fe7b660cbcb75e40269b/lib/fct_mint_calculator.rb"><code>fa791b625c33fbf38331fe7b660cbcb75e40269b</code></a> | November 4, 2024 | <code>lib/fct_mint_calculator.rb</code> (other) |
+| <a href="https://github.com/0xFacet/facet-node/blob/64bc9f90d75da180bb32f7cf71881e1da917fcb6/lib/l1_attributes_tx_calldata.rb"><code>64bc9f90d75da180bb32f7cf71881e1da917fcb6</code></a> | November 6, 2024 | <code>lib/l1_attributes_tx_calldata.rb</code> (other)<br><code>lib/fct_mint_calculator.rb</code> (other) |
 
 ### Repository: <a href="https://github.com/0xFacet/facet-geth"><code>0xFacet/facet-geth</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/0xFacet/facet-geth/blob/ca19563e0560a68b5c2a9e9de56cc22e8dee14d8/core/types/rollup_cost.go"><code>ca19563e0560a68b5c2a9e9de56cc22e8dee14d8</code></a> | October 28, 2024 | <code>core/types/rollup_cost.go</code> |
+| <a href="https://github.com/0xFacet/facet-geth/blob/ca19563e0560a68b5c2a9e9de56cc22e8dee14d8/core/types/rollup_cost.go"><code>ca19563e0560a68b5c2a9e9de56cc22e8dee14d8</code></a> | October 28, 2024 | <code>core/types/rollup_cost.go</code> (other) |
 
 ### Repository: <a href="https://github.com/0xFacet/facet-optimism"><code>0xFacet/facet-optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/0xFacet/facet-optimism/blob/3bb8307d68ae130c21a2274f8178b5f502b307d2/packages/contracts-bedrock/src/L2/L1Block.sol"><code>3bb8307d68ae130c21a2274f8178b5f502b307d2</code></a> | October 28, 2024 | <code>packages/contracts-bedrock/src/L2/L1Block.sol</code> |
-| <a href="https://github.com/0xFacet/facet-optimism/blob/7bd9331b24e23879ebe5f6ebcb85447aaea7baac/packages/contracts-bedrock/src/L2/L1Block.sol"><code>7bd9331b24e23879ebe5f6ebcb85447aaea7baac</code></a> | October 30, 2024 | <code>packages/contracts-bedrock/src/L2/L1Block.sol</code><br><code>op-node/rollup/derive/l1_block_info.go</code> |
+| <a href="https://github.com/0xFacet/facet-optimism/blob/7bd9331b24e23879ebe5f6ebcb85447aaea7baac/packages/contracts-bedrock/src/L2/L1Block.sol"><code>7bd9331b24e23879ebe5f6ebcb85447aaea7baac</code></a> | October 30, 2024 | <code>packages/contracts-bedrock/src/L2/L1Block.sol</code><br><code>op-node/rollup/derive/l1_block_info.go</code> (other) |
 
 ## Irrelevant reports
 

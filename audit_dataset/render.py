@@ -40,7 +40,7 @@ def render(summary: dict[str, Any]) -> str:
         f"# Audit source summary: {html.escape(summary['project'])}",
         "",
         "Generated from [audit-summary.json](audit-summary.json). Do not edit manually.",
-        "Commit dates use Git committer timestamps (UTC).",
+        "Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless marked zk, cairo or other.",
         "",
     ]
     for report in relevant:
@@ -92,6 +92,8 @@ def render_repository(
             item = code(path)
             if path_data["path_kind"] == "directory_recursive":
                 item += " (recursive directory)"
+            if path_data["kind"] != "evm":
+                item += f" ({path_data['kind']})"
             if version["status"] == "not_audited":
                 item += " (explicitly not audited)"
             if item not in sources[key]:

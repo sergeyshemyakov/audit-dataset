@@ -20,36 +20,6 @@
     {
       "repository": "peppersec/tornado-mixer",
       "repository_url": "https://github.com/peppersec/tornado-mixer",
-      "source_path": "circuits/merkleTree.circom",
-      "path_kind": "file",
-      "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
-      "files": [
-        {
-          "path": "circuits/merkleTree.circom",
-          "git_object": "f7ffbb6758e3f607f7f580a1c7033c7dc2b7be7a",
-          "git_mode": "100644",
-          "sha256": "8b1222c24aa6bf8b0f59e9e1de38775b3b4d4afbccfcc3c3d073a898719da739"
-        }
-      ]
-    },
-    {
-      "repository": "peppersec/tornado-mixer",
-      "repository_url": "https://github.com/peppersec/tornado-mixer",
-      "source_path": "circuits/withdraw.circom",
-      "path_kind": "file",
-      "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
-      "files": [
-        {
-          "path": "circuits/withdraw.circom",
-          "git_object": "cc1448de8493ef111a6d81842fde79e67641d27a",
-          "git_mode": "100644",
-          "sha256": "23af8497024f168941bc5d7a076d2bfbc7d5f2d4959e906f41dc01e07c8ef283"
-        }
-      ]
-    },
-    {
-      "repository": "peppersec/tornado-mixer",
-      "repository_url": "https://github.com/peppersec/tornado-mixer",
       "source_path": "contracts/ERC20Mixer.sol",
       "path_kind": "file",
       "commit": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
@@ -110,51 +80,6 @@
     {
       "repository": "peppersec/tornado-mixer",
       "repository_url": "https://github.com/peppersec/tornado-mixer",
-      "source_path": "circuits/merkleTree.circom",
-      "path_kind": "file",
-      "commit": "07168f9816a6a78767f53aab25624bd1d739a66d",
-      "files": [
-        {
-          "path": "circuits/merkleTree.circom",
-          "git_object": "a8b232832f638564caf310491131046b3d757405",
-          "git_mode": "100644",
-          "sha256": "ee7d927bc391e108dd2fbb035d485408670f3d929d1feddbd04771b3eae66111"
-        }
-      ]
-    },
-    {
-      "repository": "peppersec/tornado-mixer",
-      "repository_url": "https://github.com/peppersec/tornado-mixer",
-      "source_path": "circuits/merkleTree.circom",
-      "path_kind": "file",
-      "commit": "7193655e4940476269426b80da40bc9a099598e4",
-      "files": [
-        {
-          "path": "circuits/merkleTree.circom",
-          "git_object": "0d8560583040f2d3fd960cd820b88fc4693146f5",
-          "git_mode": "100644",
-          "sha256": "f446e879242f399dc1c4c124f79926a07a7fc76d81e56d1209040f7103951179"
-        }
-      ]
-    },
-    {
-      "repository": "peppersec/tornado-mixer",
-      "repository_url": "https://github.com/peppersec/tornado-mixer",
-      "source_path": "circuits/withdraw.circom",
-      "path_kind": "file",
-      "commit": "7193655e4940476269426b80da40bc9a099598e4",
-      "files": [
-        {
-          "path": "circuits/withdraw.circom",
-          "git_object": "e060f4f250e11c75bde14bea888ea9631bf865ea",
-          "git_mode": "100644",
-          "sha256": "8613960c963a65f624474c3715608558c6b82381df2b12594159d97349650de9"
-        }
-      ]
-    },
-    {
-      "repository": "peppersec/tornado-mixer",
-      "repository_url": "https://github.com/peppersec/tornado-mixer",
       "source_path": "contracts/ERC20Mixer.sol",
       "path_kind": "file",
       "commit": "83c9ba72969ff3dfd6b66acec5134666f8fdf283",
@@ -164,21 +89,6 @@
           "git_object": "3dd1cd5672df66681c8f0c16c9f4141a3b37cb8b",
           "git_mode": "100644",
           "sha256": "4c973ea5b91163bc869de9115b4939c1cd7c5e6a2dd93b838308064b7bcddd62"
-        }
-      ]
-    },
-    {
-      "repository": "peppersec/tornado-mixer",
-      "repository_url": "https://github.com/peppersec/tornado-mixer",
-      "source_path": "circuits/withdraw.circom",
-      "path_kind": "file",
-      "commit": "9efab84e65d923410ce4418794a5ca2ddcd74f37",
-      "files": [
-        {
-          "path": "circuits/withdraw.circom",
-          "git_object": "36a467418a3ad744b76803034b7365e3d1eaccd5",
-          "git_mode": "100644",
-          "sha256": "65174751f3f397a5adc16e34f5f72c3911909046e94741ab4f1e7c7922e48672"
         }
       ]
     },
@@ -258,51 +168,6 @@
       ]
     },
     {
-      "repository": "peppersec/tornado-mixer",
-      "repository_url": "https://github.com/peppersec/tornado-mixer",
-      "source_path": "circuits/merkleTree.circom",
-      "path_kind": "file",
-      "commit": "f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371",
-      "files": [
-        {
-          "path": "circuits/merkleTree.circom",
-          "git_object": "bfd6016e36a4c4394e0898c023aae6cd8667598d",
-          "git_mode": "100644",
-          "sha256": "53d6eeefe414d11f7322f5345b6e36e700d6e588124f200760df253bd6b8011e"
-        }
-      ]
-    },
-    {
-      "repository": "peppersec/tornado-mixer",
-      "repository_url": "https://github.com/peppersec/tornado-mixer",
-      "source_path": "circuits/withdraw.circom",
-      "path_kind": "file",
-      "commit": "f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371",
-      "files": [
-        {
-          "path": "circuits/withdraw.circom",
-          "git_object": "a4c4848df7fc525f61fe294c8fb78e53f81f13dc",
-          "git_mode": "100644",
-          "sha256": "9bb04a018bc2ee96580b15a6e7ff3da40f46884de8b1b2b41e2ee38bb33c2047"
-        }
-      ]
-    },
-    {
-      "repository": "tornadocash/tornado-anonymity-mining",
-      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
-      "source_path": "circuits/Withdraw.circom",
-      "path_kind": "file",
-      "commit": "459fa79321b1b48eefc3cb85f82733528d5e56d3",
-      "files": [
-        {
-          "path": "circuits/Withdraw.circom",
-          "git_object": "a55b7bb40f931ff4712e55957c43adbfad18640d",
-          "git_mode": "100644",
-          "sha256": "7033760c705db07a1a57fa2f22613cad39bf0200ebb32e01c1a77be5aeb745bb"
-        }
-      ]
-    },
-    {
       "repository": "tornadocash/tornado-anonymity-mining",
       "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
       "source_path": "contracts/Miner.sol",
@@ -314,96 +179,6 @@
           "git_object": "6acd0d47221d0dc1d107950bd45aeef138bf16a2",
           "git_mode": "100644",
           "sha256": "2736e795ba0643d8da9a55f569fb3d0ae1a212e39d53f4a3cd20c1cb5a263f25"
-        }
-      ]
-    },
-    {
-      "repository": "tornadocash/tornado-anonymity-mining",
-      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
-      "source_path": "circuits/MerkleTreeUpdater.circom",
-      "path_kind": "file",
-      "commit": "7487ac8b09dcfc78ecc166cff5208435010cec8e",
-      "files": [
-        {
-          "path": "circuits/MerkleTreeUpdater.circom",
-          "git_object": "89415b19d154b876db054322d6784877c5736d5b",
-          "git_mode": "100644",
-          "sha256": "83bc15cd6d1e307f1ea7d4a04d24f077c74fa79f143e546c9441fa96f766d55e"
-        }
-      ]
-    },
-    {
-      "repository": "tornadocash/tornado-anonymity-mining",
-      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
-      "source_path": "circuits",
-      "path_kind": "directory_recursive",
-      "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
-      "files": [
-        {
-          "path": "circuits/MerkleTree.circom",
-          "git_object": "45c48c8f55ec193f8d7944ea9da0d9df332b3702",
-          "git_mode": "100644",
-          "sha256": "049751414daa72a30fe787af4c7ac32dbb116aa2fea7512f388398c665a60b87"
-        },
-        {
-          "path": "circuits/MerkleTreeUpdater.circom",
-          "git_object": "8c05a5a2951a8c0bf9791b2a382c3b69955b5de7",
-          "git_mode": "100644",
-          "sha256": "a36b1e8001c7dcf49efd11c711a2018966e3e32d288d7265b0b4fd7e184c681b"
-        },
-        {
-          "path": "circuits/Reward.circom",
-          "git_object": "6c6329747c7c582bd417a253aad79bf4269f6074",
-          "git_mode": "100644",
-          "sha256": "8fc8473abca7956dd083631962c3eb6a424adb0e5cdd7fb954d5431412e7addb"
-        },
-        {
-          "path": "circuits/TreeUpdate.circom",
-          "git_object": "40fdecf698c1a4c18f5dcddd81ba760940cac016",
-          "git_mode": "100644",
-          "sha256": "693a81dbfad2f6268498b7e6622c73fc7b42c271530903fabe58b459debd5e5e"
-        },
-        {
-          "path": "circuits/Utils.circom",
-          "git_object": "1ceb5b0e8d1baa5aa2d6bc9cd43a57373d8377e9",
-          "git_mode": "100644",
-          "sha256": "11d3215c2288b01f5808cc7545031ba59b23393acb7818c565966abf44263cc3"
-        },
-        {
-          "path": "circuits/Withdraw.circom",
-          "git_object": "229b96984849b3309ddbfa25a11531b00706704e",
-          "git_mode": "100644",
-          "sha256": "e81bb920a25eeaa4384e32bd070472ff3724607ea785001f9284bf4a6acbd2ce"
-        }
-      ]
-    },
-    {
-      "repository": "tornadocash/tornado-anonymity-mining",
-      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
-      "source_path": "circuits/MerkleTreeUpdater.circom",
-      "path_kind": "file",
-      "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
-      "files": [
-        {
-          "path": "circuits/MerkleTreeUpdater.circom",
-          "git_object": "8c05a5a2951a8c0bf9791b2a382c3b69955b5de7",
-          "git_mode": "100644",
-          "sha256": "a36b1e8001c7dcf49efd11c711a2018966e3e32d288d7265b0b4fd7e184c681b"
-        }
-      ]
-    },
-    {
-      "repository": "tornadocash/tornado-anonymity-mining",
-      "repository_url": "https://github.com/tornadocash/tornado-anonymity-mining",
-      "source_path": "circuits/Withdraw.circom",
-      "path_kind": "file",
-      "commit": "820bd83254f3264cebaf255869641ebc33288dc3",
-      "files": [
-        {
-          "path": "circuits/Withdraw.circom",
-          "git_object": "229b96984849b3309ddbfa25a11531b00706704e",
-          "git_mode": "100644",
-          "sha256": "e81bb920a25eeaa4384e32bd070472ff3724607ea785001f9284bf4a6acbd2ce"
         }
       ]
     },
@@ -724,6 +499,62 @@
     },
     {
       "repository": "peppersec/tornado-mixer",
+      "source_path": "circuits/merkleTree.circom",
+      "revision_kind": "commit",
+      "revision": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "source_path": "circuits/merkleTree.circom",
+      "revision_kind": "commit",
+      "revision": "07168f9816a6a78767f53aab25624bd1d739a66d",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "source_path": "circuits/merkleTree.circom",
+      "revision_kind": "commit",
+      "revision": "7193655e4940476269426b80da40bc9a099598e4",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "source_path": "circuits/merkleTree.circom",
+      "revision_kind": "commit",
+      "revision": "f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "source_path": "circuits/withdraw.circom",
+      "revision_kind": "commit",
+      "revision": "0484408e82e8f1eebd081186cb11189aa0e9b57f",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "source_path": "circuits/withdraw.circom",
+      "revision_kind": "commit",
+      "revision": "7193655e4940476269426b80da40bc9a099598e4",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "source_path": "circuits/withdraw.circom",
+      "revision_kind": "commit",
+      "revision": "9efab84e65d923410ce4418794a5ca2ddcd74f37",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
+      "source_path": "circuits/withdraw.circom",
+      "revision_kind": "commit",
+      "revision": "f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "peppersec/tornado-mixer",
       "source_path": "cli.js",
       "revision_kind": "branch",
       "revision": "master",
@@ -738,6 +569,27 @@
     },
     {
       "repository": "tornadocash/tornado-anonymity-mining",
+      "source_path": "circuits",
+      "revision_kind": "commit",
+      "revision": "820bd83254f3264cebaf255869641ebc33288dc3",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "source_path": "circuits/MerkleTreeUpdater.circom",
+      "revision_kind": "commit",
+      "revision": "7487ac8b09dcfc78ecc166cff5208435010cec8e",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "source_path": "circuits/MerkleTreeUpdater.circom",
+      "revision_kind": "commit",
+      "revision": "820bd83254f3264cebaf255869641ebc33288dc3",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
       "source_path": "circuits/Reward.circom",
       "revision_kind": "branch",
       "revision": "audit-fixed",
@@ -749,6 +601,20 @@
       "revision_kind": "tag",
       "revision": "audit",
       "reason": "revision is not a commit"
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "source_path": "circuits/Withdraw.circom",
+      "revision_kind": "commit",
+      "revision": "459fa79321b1b48eefc3cb85f82733528d5e56d3",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "tornadocash/tornado-anonymity-mining",
+      "source_path": "circuits/Withdraw.circom",
+      "revision_kind": "commit",
+      "revision": "820bd83254f3264cebaf255869641ebc33288dc3",
+      "reason": "path kind zk is not fetched"
     },
     {
       "repository": "tornadocash/tornado-anonymity-mining",

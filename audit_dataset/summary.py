@@ -19,7 +19,10 @@ from .collections import Collection
 from .git import FULL_COMMIT_RE, full_commit
 from .repositories import canonical_repository_id
 
-SCHEMA_VERSION = "1.5.0"
+SCHEMA_VERSION = "1.6.0"
+
+# What kind of code a scoped path holds. Only `evm` is fetched and exported today.
+KINDS = frozenset({"evm", "zk", "cairo", "other"})
 
 STATUSES_WITH_MAJOR_FINDINGS = frozenset({
     "audited_with_major_findings",
@@ -76,15 +79,18 @@ def write_summary(path: Path, summary: dict[str, Any]) -> None:
     path.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
-def relevant_versions(summary: dict[str, Any]) -> Iterator[tuple[dict[str, Any], str, str, str, int, dict[str, Any]]]:
-    """``(report, repository, path, path_kind, version index, version)`` of relevant reports."""
+def relevant_versions(summary: dict[str, Any]) -> Iterator[tuple[dict[str, Any], str, str, dict[str, Any], int, dict[str, Any]]]:
+    """``(report, repository, path, path entry, version index, version)`` of relevant reports.
+
+    The path entry carries ``path_kind`` and ``kind``.
+    """
     for report in summary["reports"]:
         if not report["isRelevant"]:
             continue
         for scope in report["scopes"]:
             for path, path_data in scope["paths"].items():
                 for index, version in enumerate(path_data["versions"]):
-                    yield report, scope["repository"], path, path_data["path_kind"], index, version
+                    yield report, scope["repository"], path, path_data, index, version
 
 
 def revision_timestamps(revision: dict[str, Any]) -> list[tuple[str, Any]]:
@@ -271,11 +277,13 @@ def repository_problems(repository: Any, known: set[str]) -> list[str]:
 def path_entry_problems(
     path_data: Any, repository: str, timestamps: dict[tuple[str, str], Any]
 ) -> list[str]:
-    if not isinstance(path_data, dict) or set(path_data) != {"path_kind", "versions"}:
-        return ["path entry must be an object with path_kind and versions"]
+    if not isinstance(path_data, dict) or set(path_data) != {"path_kind", "kind", "versions"}:
+        return ["path entry must be an object with path_kind, kind and versions"]
     problems: list[str] = []
     if path_data["path_kind"] not in PATH_KINDS:
         problems.append(f"path_kind must be one of {sorted(PATH_KINDS)}")
+    if path_data["kind"] not in KINDS:
+        problems.append(f"kind must be one of {sorted(KINDS)}, got {path_data['kind']!r}")
     versions = path_data["versions"]
     if not isinstance(versions, list) or not versions:
         return problems + ["versions must be a non-empty array"]

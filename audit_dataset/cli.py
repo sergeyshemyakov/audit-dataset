@@ -48,6 +48,8 @@ def build_parser() -> argparse.ArgumentParser:
 
     sub = commands.add_parser("fetch", help="fetch the audited sources pinned by audit-summary.json")
     collections_argument(sub)
+    sub.add_argument("--kinds", default="evm",
+                     help="comma-separated path kinds to fetch (default: evm; e.g. evm,zk)")
     sub.set_defaults(handler=command_fetch)
 
     sub = commands.add_parser("format", help="format audited Solidity with the shared forge fmt config")
@@ -104,9 +106,13 @@ def command_render(root: Path, args: argparse.Namespace) -> int:
 
 def command_fetch(root: Path, args: argparse.Namespace) -> int:
     from .fetch import fetch_collection
+    from .summary import KINDS
 
+    kinds = frozenset(kind.strip() for kind in args.kinds.split(",") if kind.strip())
+    if not kinds or not kinds <= KINDS:
+        raise DatasetError(f"--kinds must name kinds among {sorted(KINDS)}, got {args.kinds!r}")
     for collection in select(root, args.collections, args.all):
-        result = fetch_collection(collection)
+        result = fetch_collection(collection, kinds)
         for warning in result.warnings:
             print(f"warning: {warning}", file=sys.stderr)
         print(

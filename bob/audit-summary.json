@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "bob",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "packages/contracts-bedrock/src/L1/L1UsdcBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -48,6 +49,7 @@
             },
             "packages/contracts-bedrock/src/L2/L2UsdcBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -74,6 +76,7 @@
             },
             "packages/contracts-bedrock/src/universal/UsdcBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -100,6 +103,7 @@
             },
             "packages/contracts-bedrock/src/L2/UsdcManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -123,6 +127,7 @@
             },
             "packages/contracts-bedrock/src/L1/IPartialUsdc.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -137,6 +142,7 @@
             },
             "packages/contracts-bedrock/src/libraries/Pausable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -173,6 +179,7 @@
           "paths": {
             "packages/contracts-bedrock/src/L1/L1UsdcBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -196,6 +203,7 @@
             },
             "packages/contracts-bedrock/src/L2/L2UsdcBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -210,6 +218,7 @@
             },
             "packages/contracts-bedrock/src/universal/UsdcBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -224,6 +233,7 @@
             },
             "packages/contracts-bedrock/src/L2/UsdcManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -238,6 +248,7 @@
             },
             "packages/contracts-bedrock/src/L1/IPartialUsdc.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -252,6 +263,7 @@
             },
             "packages/contracts-bedrock/src/libraries/Pausable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -288,6 +300,7 @@
           "paths": {
             "src/FusionLock.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -387,6 +400,7 @@
           "paths": {
             "src/FusionLock.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -441,6 +455,7 @@
           "paths": {
             "src/FusionLock.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -477,6 +492,7 @@
           "paths": {
             "crates/contracts/foundry/src": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -517,6 +533,7 @@
             },
             "crates/contracts/foundry/src/vendor": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -531,6 +548,7 @@
             },
             "crates/common/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -585,6 +603,7 @@
             },
             "bin/cli": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -633,6 +652,7 @@
             },
             "bin/cli/src/bench.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -647,6 +667,7 @@
             },
             "bin/cli/src/fast_track.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -661,6 +682,7 @@
             },
             "bin/cli/src/fault.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -675,6 +697,7 @@
             },
             "bin/cli/src/providers": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -689,6 +712,7 @@
             },
             "bin/client": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -721,6 +745,7 @@
             },
             "bin/host": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -744,6 +769,7 @@
             },
             "build/risczero/fpvm/src/main.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -776,6 +802,7 @@
             },
             "build/risczero/src/lib.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -812,6 +839,7 @@
           "paths": {
             "crates/contracts/foundry/src/KailuaTournament.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -853,6 +881,7 @@
             },
             "crates/contracts/foundry/src/KailuaLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -876,6 +905,7 @@
             },
             "crates/contracts/foundry/src/KailuaTreasury.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -908,6 +938,7 @@
             },
             "crates/contracts/foundry/src/KailuaGame.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -922,6 +953,7 @@
             },
             "crates/contracts/foundry/src/vendor": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -958,6 +990,7 @@
           "paths": {
             "build/risczero/build.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -972,6 +1005,7 @@
             },
             "build/risczero/fpvm/src/main.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -986,6 +1020,7 @@
             },
             "crates/common/src/lib.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1000,6 +1035,7 @@
             },
             "crates/common/src/blobs.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1032,6 +1068,7 @@
             },
             "crates/common/src/config.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1046,6 +1083,7 @@
             },
             "crates/common/src/executor.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1069,6 +1107,7 @@
             },
             "crates/common/src/journal.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1092,6 +1131,7 @@
             },
             "crates/common/src/kona.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1106,6 +1146,7 @@
             },
             "crates/common/src/precondition.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1129,6 +1170,7 @@
             },
             "crates/common/src/client/core.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1152,6 +1194,7 @@
             },
             "crates/common/src/client/stateless.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1166,6 +1209,7 @@
             },
             "crates/common/src/client/stitching.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1211,6 +1255,7 @@
           "paths": {
             "build/risczero/kona/src/main.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1225,6 +1270,7 @@
             },
             "crates/kona/src/blobs.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1239,6 +1285,7 @@
             },
             "crates/kona/src/config.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1271,6 +1318,7 @@
             },
             "crates/kona/src/executor.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1285,6 +1333,7 @@
             },
             "crates/kona/src/journal.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1308,6 +1357,7 @@
             },
             "crates/kona/src/lib.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1322,6 +1372,7 @@
             },
             "crates/kona/src/witness.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1336,6 +1387,7 @@
             },
             "crates/kona/src/client/core.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1359,6 +1411,7 @@
             },
             "crates/kona/src/client/stateless.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1373,6 +1426,7 @@
             },
             "crates/kona/src/client/stitching.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1405,6 +1459,7 @@
             },
             "crates/kona/src/oracle/local.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1419,6 +1474,7 @@
             },
             "crates/kona/src/oracle/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1433,6 +1489,7 @@
             },
             "crates/kona/src/precondition/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1469,6 +1526,7 @@
           "paths": {
             "crates/contracts/foundry/src/KailuaVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1492,6 +1550,7 @@
             },
             "crates/contracts/foundry/src/KailuaGame.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1515,6 +1574,7 @@
             },
             "crates/contracts/foundry/src/KailuaLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1538,6 +1598,7 @@
             },
             "crates/contracts/foundry/src/KailuaTournament.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1552,6 +1613,7 @@
             },
             "crates/contracts/foundry/src/KailuaTreasury.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {

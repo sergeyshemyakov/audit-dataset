@@ -1921,12 +1921,6 @@
           "sha256": "4fc2dece907779d45c220382864d28ccd24197b3d0378764315b9a5e9d466bd0"
         },
         {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "a34940f3f3a9353cd2b961dd752ce15ebfa28604",
-          "git_mode": "100644",
-          "sha256": "7793628497a2c2a7fbf6aa2902ffa23c8678c5e30d5af8e641ab961f6d6427e9"
-        },
-        {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",
           "git_object": "a289cfd76f12ed0db493a67620a6114400d730f6",
           "git_mode": "100644",
@@ -2290,12 +2284,6 @@
           "sha256": "4fc2dece907779d45c220382864d28ccd24197b3d0378764315b9a5e9d466bd0"
         },
         {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "a34940f3f3a9353cd2b961dd752ce15ebfa28604",
-          "git_mode": "100644",
-          "sha256": "7793628497a2c2a7fbf6aa2902ffa23c8678c5e30d5af8e641ab961f6d6427e9"
-        },
-        {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",
           "git_object": "a289cfd76f12ed0db493a67620a6114400d730f6",
           "git_mode": "100644",
@@ -2322,12 +2310,6 @@
       "path_kind": "directory_recursive",
       "commit": "1eaa963b81b40543d6735a3c552f60a65adc3616",
       "files": [
-        {
-          "path": "packages/protocol/contracts/4844/BlobHashReader.yulp",
-          "git_object": "7490d5c1c8fe22afbd7f409c4fc3b94b33219ad3",
-          "git_mode": "100644",
-          "sha256": "8b8be35950efea3c1cbcf039d40b0e82d97d3bb38493eccda5ab16aa371f0a4b"
-        },
         {
           "path": "packages/protocol/contracts/4844/IBlobHashReader.sol",
           "git_object": "eb88b6e19350c36ef6d9928c7bacb9289b09d082",
@@ -2470,12 +2452,6 @@
           "sha256": "4b073b2ac166975e709765c0352f17f9a7751f16073b9c2982a8b372cb9e49a1"
         },
         {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "570e425c7dcfcbfee38e8a49ed3ac63c9e3989cf",
-          "git_mode": "100644",
-          "sha256": "f7c1de2a6d52fb8825de56100060e6bcea418bd92370d2d194ab31c9a8395356"
-        },
-        {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",
           "git_object": "1cd78bfcde3c5dbde74601b4bc60fff294d87bc3",
           "git_mode": "100644",
@@ -2525,12 +2501,6 @@
           "git_object": "29b449a3a50bd7e0c7d480bbc60b1978bf9ac4e0",
           "git_mode": "100644",
           "sha256": "571d8e8ead71bfd8fcc58d3203705004e33b40ba4b9e9309384c00536db17f15"
-        },
-        {
-          "path": "packages/protocol/contracts/L2/eip1559_util.py",
-          "git_object": "0e633df8c839c249828f63cb248278ab0ef3590d",
-          "git_mode": "100644",
-          "sha256": "15394989ce129cd549ccf1a2ab033fdae515bf481c599d36d8c198dcfc4e9fcf"
         }
       ]
     },
@@ -2552,12 +2522,6 @@
           "git_object": "3c96a0635a46e3dba776290b6dc57c3588556cc5",
           "git_mode": "100644",
           "sha256": "91b0e6715cb3b302ac4c642946ce18873533d37115963b7ff32ddd795b98f896"
-        },
-        {
-          "path": "packages/protocol/contracts/bridge/README.md",
-          "git_object": "803d93d49495e3791f038c5a386f731caa6b76d0",
-          "git_mode": "100644",
-          "sha256": "04f998f1fa6801ef27ea579a13d3815b5eca78d3596ab13b0cdc7c2651a0d660"
         }
       ]
     },
@@ -3406,12 +3370,6 @@
           "sha256": "61ccd5db472e8ffbae7aedc4f82b7b46f4f9ce60450704dd620beb035e0de1a6"
         },
         {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "a34940f3f3a9353cd2b961dd752ce15ebfa28604",
-          "git_mode": "100644",
-          "sha256": "7793628497a2c2a7fbf6aa2902ffa23c8678c5e30d5af8e641ab961f6d6427e9"
-        },
-        {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",
           "git_object": "6d821055084f6b4839aad1911a120a7fe9928248",
           "git_mode": "100644",
@@ -3856,12 +3814,6 @@
           "sha256": "61ccd5db472e8ffbae7aedc4f82b7b46f4f9ce60450704dd620beb035e0de1a6"
         },
         {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "53e1fe5f934791c2deb5d7dbca013178665bb27d",
-          "git_mode": "100644",
-          "sha256": "32f4c31dd49e50c4ddce895b64b188162454012cbf616e7186e82371e875638b"
-        },
-        {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",
           "git_object": "a3fe4c32cb3d31e637098433b994ebc1f15a5c88",
           "git_mode": "100644",
@@ -4013,12 +3965,6 @@
           "git_object": "409f55914b19383712ee76a47fa191d5f688d3e6",
           "git_mode": "100644",
           "sha256": "4fc2dece907779d45c220382864d28ccd24197b3d0378764315b9a5e9d466bd0"
-        },
-        {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "a34940f3f3a9353cd2b961dd752ce15ebfa28604",
-          "git_mode": "100644",
-          "sha256": "7793628497a2c2a7fbf6aa2902ffa23c8678c5e30d5af8e641ab961f6d6427e9"
         },
         {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",
@@ -4748,12 +4694,6 @@
           "git_object": "91a721a26d7efd13531c9e3c2d3ca68c3024ad8e",
           "git_mode": "100644",
           "sha256": "dfffb195c6ddda18ef2328b427556220de1e251f30f19b0c2fbe572e5fc59d31"
-        },
-        {
-          "path": "packages/protocol/contracts/bridge/README.md",
-          "git_object": "803d93d49495e3791f038c5a386f731caa6b76d0",
-          "git_mode": "100644",
-          "sha256": "04f998f1fa6801ef27ea579a13d3815b5eca78d3596ab13b0cdc7c2651a0d660"
         }
       ]
     },
@@ -4895,12 +4835,6 @@
           "git_object": "409f55914b19383712ee76a47fa191d5f688d3e6",
           "git_mode": "100644",
           "sha256": "4fc2dece907779d45c220382864d28ccd24197b3d0378764315b9a5e9d466bd0"
-        },
-        {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "a34940f3f3a9353cd2b961dd752ce15ebfa28604",
-          "git_mode": "100644",
-          "sha256": "7793628497a2c2a7fbf6aa2902ffa23c8678c5e30d5af8e641ab961f6d6427e9"
         },
         {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",
@@ -5117,12 +5051,6 @@
           "git_object": "0a4a6c5e3a033e783ee7c0c01e2cad61a1739c2a",
           "git_mode": "100644",
           "sha256": "e7b6e498e4402cc09829fb7d2e3fb17311b065f8de4a5ebad6765da789944e5b"
-        },
-        {
-          "path": "packages/protocol/contracts/bridge/README.md",
-          "git_object": "803d93d49495e3791f038c5a386f731caa6b76d0",
-          "git_mode": "100644",
-          "sha256": "04f998f1fa6801ef27ea579a13d3815b5eca78d3596ab13b0cdc7c2651a0d660"
         }
       ]
     },
@@ -5231,12 +5159,6 @@
           "git_object": "13e0e2b0af3f7d9bc16a0892d49fb55a263d27e8",
           "git_mode": "100644",
           "sha256": "d94353ab4eae168046c3d22a2e145e95c7f99c682cdbe08b53d1d151df81a212"
-        },
-        {
-          "path": "packages/protocol/contracts/thirdparty/README.md",
-          "git_object": "d9882d04b2e83b0f373f7c08a3604ee8783d69d7",
-          "git_mode": "100644",
-          "sha256": "61c7b1e0add603ddb7b27f8f596446e5f0732e22fd5cdb5985dfdd1f7e98d936"
         },
         {
           "path": "packages/protocol/contracts/thirdparty/optimism/Bytes.sol",
@@ -5363,12 +5285,6 @@
           "git_object": "cf9165945c0222ba8a86fb319718f34fc6e62453",
           "git_mode": "100644",
           "sha256": "1eb79d3053402d0a6d8f3202bbd56a91875b3daee5d18e8312e4b1ef991fcb28"
-        },
-        {
-          "path": "packages/protocol/contracts/verifiers/PlonkVerifier.yulp",
-          "git_object": "53e1fe5f934791c2deb5d7dbca013178665bb27d",
-          "git_mode": "100644",
-          "sha256": "32f4c31dd49e50c4ddce895b64b188162454012cbf616e7186e82371e875638b"
         },
         {
           "path": "packages/protocol/contracts/verifiers/PseZkVerifier.sol",
@@ -5806,12 +5722,6 @@
           "sha256": "4fc2dece907779d45c220382864d28ccd24197b3d0378764315b9a5e9d466bd0"
         },
         {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "a34940f3f3a9353cd2b961dd752ce15ebfa28604",
-          "git_mode": "100644",
-          "sha256": "7793628497a2c2a7fbf6aa2902ffa23c8678c5e30d5af8e641ab961f6d6427e9"
-        },
-        {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",
           "git_object": "a289cfd76f12ed0db493a67620a6114400d730f6",
           "git_mode": "100644",
@@ -6122,12 +6032,6 @@
           "git_object": "409f55914b19383712ee76a47fa191d5f688d3e6",
           "git_mode": "100644",
           "sha256": "4fc2dece907779d45c220382864d28ccd24197b3d0378764315b9a5e9d466bd0"
-        },
-        {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "a34940f3f3a9353cd2b961dd752ce15ebfa28604",
-          "git_mode": "100644",
-          "sha256": "7793628497a2c2a7fbf6aa2902ffa23c8678c5e30d5af8e641ab961f6d6427e9"
         },
         {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",
@@ -6529,12 +6433,6 @@
           "sha256": "4fc2dece907779d45c220382864d28ccd24197b3d0378764315b9a5e9d466bd0"
         },
         {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "a34940f3f3a9353cd2b961dd752ce15ebfa28604",
-          "git_mode": "100644",
-          "sha256": "7793628497a2c2a7fbf6aa2902ffa23c8678c5e30d5af8e641ab961f6d6427e9"
-        },
-        {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",
           "git_object": "a289cfd76f12ed0db493a67620a6114400d730f6",
           "git_mode": "100644",
@@ -6746,12 +6644,6 @@
           "git_object": "409f55914b19383712ee76a47fa191d5f688d3e6",
           "git_mode": "100644",
           "sha256": "4fc2dece907779d45c220382864d28ccd24197b3d0378764315b9a5e9d466bd0"
-        },
-        {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "a34940f3f3a9353cd2b961dd752ce15ebfa28604",
-          "git_mode": "100644",
-          "sha256": "7793628497a2c2a7fbf6aa2902ffa23c8678c5e30d5af8e641ab961f6d6427e9"
         },
         {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",
@@ -7976,12 +7868,6 @@
           "git_object": "91a721a26d7efd13531c9e3c2d3ca68c3024ad8e",
           "git_mode": "100644",
           "sha256": "dfffb195c6ddda18ef2328b427556220de1e251f30f19b0c2fbe572e5fc59d31"
-        },
-        {
-          "path": "packages/protocol/contracts/bridge/README.md",
-          "git_object": "803d93d49495e3791f038c5a386f731caa6b76d0",
-          "git_mode": "100644",
-          "sha256": "04f998f1fa6801ef27ea579a13d3815b5eca78d3596ab13b0cdc7c2651a0d660"
         }
       ]
     },
@@ -8644,12 +8530,6 @@
           "sha256": "61ccd5db472e8ffbae7aedc4f82b7b46f4f9ce60450704dd620beb035e0de1a6"
         },
         {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "a34940f3f3a9353cd2b961dd752ce15ebfa28604",
-          "git_mode": "100644",
-          "sha256": "7793628497a2c2a7fbf6aa2902ffa23c8678c5e30d5af8e641ab961f6d6427e9"
-        },
-        {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",
           "git_object": "de23171bc557cfb0510d5de2380f6fb68cd9e603",
           "git_mode": "100644",
@@ -8720,12 +8600,6 @@
           "git_object": "0a4a6c5e3a033e783ee7c0c01e2cad61a1739c2a",
           "git_mode": "100644",
           "sha256": "e7b6e498e4402cc09829fb7d2e3fb17311b065f8de4a5ebad6765da789944e5b"
-        },
-        {
-          "path": "packages/protocol/contracts/bridge/README.md",
-          "git_object": "803d93d49495e3791f038c5a386f731caa6b76d0",
-          "git_mode": "100644",
-          "sha256": "04f998f1fa6801ef27ea579a13d3815b5eca78d3596ab13b0cdc7c2651a0d660"
         }
       ]
     },
@@ -8998,12 +8872,6 @@
           "sha256": "4fc2dece907779d45c220382864d28ccd24197b3d0378764315b9a5e9d466bd0"
         },
         {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "a34940f3f3a9353cd2b961dd752ce15ebfa28604",
-          "git_mode": "100644",
-          "sha256": "7793628497a2c2a7fbf6aa2902ffa23c8678c5e30d5af8e641ab961f6d6427e9"
-        },
-        {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",
           "git_object": "a289cfd76f12ed0db493a67620a6114400d730f6",
           "git_mode": "100644",
@@ -9223,12 +9091,6 @@
           "sha256": "4fc2dece907779d45c220382864d28ccd24197b3d0378764315b9a5e9d466bd0"
         },
         {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "a34940f3f3a9353cd2b961dd752ce15ebfa28604",
-          "git_mode": "100644",
-          "sha256": "7793628497a2c2a7fbf6aa2902ffa23c8678c5e30d5af8e641ab961f6d6427e9"
-        },
-        {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",
           "git_object": "a289cfd76f12ed0db493a67620a6114400d730f6",
           "git_mode": "100644",
@@ -9386,12 +9248,6 @@
           "git_object": "409f55914b19383712ee76a47fa191d5f688d3e6",
           "git_mode": "100644",
           "sha256": "4fc2dece907779d45c220382864d28ccd24197b3d0378764315b9a5e9d466bd0"
-        },
-        {
-          "path": "packages/protocol/contracts/L1/verifiers/PlonkVerifier.yulp",
-          "git_object": "a34940f3f3a9353cd2b961dd752ce15ebfa28604",
-          "git_mode": "100644",
-          "sha256": "7793628497a2c2a7fbf6aa2902ffa23c8678c5e30d5af8e641ab961f6d6427e9"
         },
         {
           "path": "packages/protocol/contracts/L1/verifiers/PseZkVerifier.sol",

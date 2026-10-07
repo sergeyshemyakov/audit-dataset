@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "unichain",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "src": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -97,6 +98,7 @@
           "paths": {
             "src": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -151,6 +153,7 @@
           "paths": {
             "src/BlockBuilderPolicy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -273,6 +276,7 @@
             },
             "src/FlashtestationRegistry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -431,6 +435,7 @@
             },
             "src/utils/QuoteParser.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -463,6 +468,7 @@
             },
             "src/interfaces/IAttestation.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -504,6 +510,7 @@
             },
             "src/interfaces/IFlashtestationRegistry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -581,6 +588,7 @@
             },
             "script/BlockBuilderPolicy.s.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -604,6 +612,7 @@
             },
             "script/FlashtestationRegistry.s.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -627,6 +636,7 @@
             },
             "script/Interactions.s.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {

@@ -34,7 +34,7 @@ from compression import zstd
 
 from . import DatasetError
 from .collections import Collection, discover
-from .git import blob_id, hash_algorithm
+from .git import blob_id, full_commit, hash_algorithm
 from .manifest import read_manifest, sources_by_key, stored_path, unavailable_keys
 from .summary import commit_timestamps, path_problem, read_summary, relevant_versions
 
@@ -186,7 +186,7 @@ def document_fingerprint(reports_dir: Path, report_file: str) -> tuple[tuple[str
 def collection_audits(
     collection: Collection, summary: dict[str, Any], timestamps: dict[tuple[str, str], int | None]
 ) -> list[Audit]:
-    """Audits of one collection: fetched, full-commit, audited, with Solidity files."""
+    """Audits of one collection: ``evm`` paths, fetched, full-commit, audited, with Solidity files."""
     manifest = read_manifest(collection)
     fetched = sources_by_key(manifest)
     unavailable = unavailable_keys(manifest)
@@ -194,12 +194,11 @@ def collection_audits(
         raise ExportError(f"{collection.name}: manifest lists a source as both fetched and unavailable")
     blob_ids: dict[Path, str] = {}
     audits: list[Audit] = []
-    for report, repository, path, path_kind, version_index, version in relevant_versions(summary):
-        from .git import full_commit
-
+    for report, repository, path, path_data, version_index, version in relevant_versions(summary):
         commit = full_commit(version["revision"])
-        if commit is None or version["status"] == "not_audited":
+        if commit is None or version["status"] == "not_audited" or path_data["kind"] != "evm":
             continue
+        path_kind = path_data["path_kind"]
         key = (repository, path, commit)
         if key in unavailable:
             continue

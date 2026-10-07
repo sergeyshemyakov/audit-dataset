@@ -3,93 +3,6 @@
   "collection": "railgun",
   "sources": [
     {
-      "repository": "Railgun-Privacy/circuits-v2",
-      "repository_url": "https://github.com/Railgun-Privacy/circuits-v2",
-      "source_path": "src",
-      "path_kind": "directory_recursive",
-      "commit": "67cd4ce7f49afd1dfae67c8e2d59ddf87ec3de43",
-      "files": [
-        {
-          "path": "src/joinsplit_1x2.circom",
-          "git_object": "a6aa93a0321e7bf6911e939579e3f01d2202e1b6",
-          "git_mode": "100644",
-          "sha256": "ac2c2db087e47c86ed8ed4e06dff1f8ad9651768002e0dbe254c5f567f635118"
-        },
-        {
-          "path": "src/joinsplit_1x3.circom",
-          "git_object": "cd3092b6fadc5502d403ba64878a56d71194c256",
-          "git_mode": "100644",
-          "sha256": "8c55f2abc7fbf6e75d71c49fce6e0c4d346993ffabe8b35daec19f224b5ebf3f"
-        },
-        {
-          "path": "src/joinsplit_2x2.circom",
-          "git_object": "e18cdfa7799384d19180e9ddb6319b7981c765c8",
-          "git_mode": "100644",
-          "sha256": "e2b6a2b440987ba92fe144a1a717740bd7c00e59fb2746c874bf973f0c5d7c69"
-        },
-        {
-          "path": "src/joinsplit_2x3.circom",
-          "git_object": "a39cfc843baba5c6564ea9faeadda3096cee02a2",
-          "git_mode": "100644",
-          "sha256": "400e8d13f2db71bad95556e93a0f01b91fcd7ed7ad1e8c2b73e2498b7c215ad7"
-        },
-        {
-          "path": "src/joinsplit_8x2.circom",
-          "git_object": "445934aedd958c5375acf6c3ade2d6cffcd201a7",
-          "git_mode": "100644",
-          "sha256": "117e166f8321e75b5f3a893a61d44c8c39d28bc4d88a54dc482a417c02385c41"
-        },
-        {
-          "path": "src/library/extractor.circom",
-          "git_object": "21d6bf5bf816a06fdb365f461b22aaca36a9818a",
-          "git_mode": "100644",
-          "sha256": "25fd23d085ca9836f1ac7a30f7378cabe73a6013280b9780103c1f82f31000a4"
-        },
-        {
-          "path": "src/library/joinsplit.circom",
-          "git_object": "a3b93ac3e2e907c196f85e387770f72265a242bb",
-          "git_mode": "100644",
-          "sha256": "62b4d87ba80f8c2f601bf897528b076e2a091794f10457406194dfb234bc8782"
-        },
-        {
-          "path": "src/library/merkle-proof-verifier.circom",
-          "git_object": "f2b81ab87b1c2b87605f352cd2b2aed66d7e3290",
-          "git_mode": "100644",
-          "sha256": "d0494d6255f0e12c369dc9cdfea979b8cf37134869331c8260ba1bf7f0f09c2a"
-        },
-        {
-          "path": "src/library/note-hash.circom",
-          "git_object": "f137526a3e3f70cda4b8787d3c5997a40a00ddfb",
-          "git_mode": "100644",
-          "sha256": "7140ad633d6e1184fb28ee00697c28d755ad8f15753f2d981a26b8979e32cd59"
-        },
-        {
-          "path": "src/library/nullifiers-check.circom",
-          "git_object": "a3d081109bd31ebaf4af8bfc4a60c656b4122d48",
-          "git_mode": "100644",
-          "sha256": "5124b97353f7a7cfbd6b43095b788170f55a250750c551aa383565da446a56fd"
-        },
-        {
-          "path": "src/library/public-input-hash.circom",
-          "git_object": "6c0716cee4ad7cf3b7f0468ddcc39ae29c5ed9a9",
-          "git_mode": "100644",
-          "sha256": "785dadee390bd66007bc944600a8e922efe50ed33362e73a3eef7a6c0a68b98e"
-        },
-        {
-          "path": "src/library/range-check.circom",
-          "git_object": "25203ac99584359b0b746b395b0119af79915c17",
-          "git_mode": "100644",
-          "sha256": "21582997cc4ff1942f3ac2a1ad7bbe61eeecc3067467e70ab6eadb4f3a06717a"
-        },
-        {
-          "path": "src/library/utils.circom",
-          "git_object": "d61d48d2c62c4aeeb6add98d5ccbff2168537381",
-          "git_mode": "100644",
-          "sha256": "29759dda6d200bf340a28bded20960f2a51d1dfb51383dd056414f59b58cf90d"
-        }
-      ]
-    },
-    {
       "repository": "Railgun-Privacy/contract",
       "repository_url": "https://github.com/Railgun-Privacy/contract",
       "source_path": "contracts/logic/Commitments.sol",
@@ -844,9 +757,23 @@
     {
       "repository": "Railgun-Privacy/circuits",
       "source_path": "circuits/JoinSplit.circom",
+      "revision_kind": "commit",
+      "revision": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "Railgun-Privacy/circuits",
+      "source_path": "circuits/JoinSplit.circom",
       "revision_kind": "tag",
       "revision": "v0.0.1",
       "reason": "revision is not a commit"
+    },
+    {
+      "repository": "Railgun-Privacy/circuits",
+      "source_path": "circuits/Large.circom",
+      "revision_kind": "commit",
+      "revision": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+      "reason": "path kind zk is not fetched"
     },
     {
       "repository": "Railgun-Privacy/circuits",
@@ -858,9 +785,23 @@
     {
       "repository": "Railgun-Privacy/circuits",
       "source_path": "circuits/Small.circom",
+      "revision_kind": "commit",
+      "revision": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "Railgun-Privacy/circuits",
+      "source_path": "circuits/Small.circom",
       "revision_kind": "tag",
       "revision": "v0.0.1",
       "reason": "revision is not a commit"
+    },
+    {
+      "repository": "Railgun-Privacy/circuits",
+      "source_path": "circuits/base/HashInputs.circom",
+      "revision_kind": "commit",
+      "revision": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+      "reason": "path kind zk is not fetched"
     },
     {
       "repository": "Railgun-Privacy/circuits",
@@ -872,9 +813,23 @@
     {
       "repository": "Railgun-Privacy/circuits",
       "source_path": "circuits/base/MerkleTree.circom",
+      "revision_kind": "commit",
+      "revision": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "Railgun-Privacy/circuits",
+      "source_path": "circuits/base/MerkleTree.circom",
       "revision_kind": "tag",
       "revision": "v0.0.1",
       "reason": "revision is not a commit"
+    },
+    {
+      "repository": "Railgun-Privacy/circuits-v2",
+      "source_path": "src",
+      "revision_kind": "commit",
+      "revision": "67cd4ce7f49afd1dfae67c8e2d59ddf87ec3de43",
+      "reason": "path kind zk is not fetched"
     },
     {
       "repository": "Railgun-Privacy/contract",
@@ -913,41 +868,6 @@
     }
   ],
   "unavailable": [
-    {
-      "repository": "Railgun-Privacy/circuits",
-      "source_path": "circuits/JoinSplit.circom",
-      "path_kind": "file",
-      "commit": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "Railgun-Privacy/circuits",
-      "source_path": "circuits/Large.circom",
-      "path_kind": "file",
-      "commit": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "Railgun-Privacy/circuits",
-      "source_path": "circuits/Small.circom",
-      "path_kind": "file",
-      "commit": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "Railgun-Privacy/circuits",
-      "source_path": "circuits/base/HashInputs.circom",
-      "path_kind": "file",
-      "commit": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
-      "reason": "repository is not reachable"
-    },
-    {
-      "repository": "Railgun-Privacy/circuits",
-      "source_path": "circuits/base/MerkleTree.circom",
-      "path_kind": "file",
-      "commit": "2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68",
-      "reason": "repository is not reachable"
-    },
     {
       "repository": "Railgun-Privacy/contract",
       "source_path": "contracts/governance/Voting.sol",

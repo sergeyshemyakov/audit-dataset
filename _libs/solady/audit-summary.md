@@ -1,7 +1,7 @@
 # Audit source summary: Solady
 
 Generated from [audit-summary.json](audit-summary.json). Do not edit manually.
-Commit dates use Git committer timestamps (UTC).
+Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless marked zk, cairo or other.
 
 ## Solady: Tokens &amp; Utils Selection
 

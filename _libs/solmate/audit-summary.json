@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "Solmate",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "src/auth": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -36,6 +37,7 @@
             },
             "src/tokens": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -50,6 +52,7 @@
             },
             "src/utils": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -64,6 +67,7 @@
             },
             "src/utils/SSTORE2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -105,6 +109,7 @@
             },
             "src/utils/SafeTransferLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -119,6 +124,7 @@
             },
             "src/utils/FixedPointMathLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -133,6 +139,7 @@
             },
             "src/utils/CREATE3.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -147,6 +154,7 @@
             },
             "src/tokens/ERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -161,6 +169,7 @@
             },
             "src/auth/authorities/RolesAuthority.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -184,6 +193,7 @@
             },
             "src/tokens/ERC721.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -207,6 +217,7 @@
             },
             "src/auth/authorities/MultiRolesAuthority.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -221,6 +232,7 @@
             },
             "src/tokens/ERC1155.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {

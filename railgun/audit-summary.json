@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "railgun",
   "reports": [
     {
@@ -26,6 +26,7 @@
           "paths": {
             "contracts/logic/Commitments.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -56,6 +57,7 @@
             },
             "contracts/logic/Poseidon.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -70,6 +72,7 @@
             },
             "contracts/logic/RailgunLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -97,6 +100,7 @@
             },
             "contracts/logic/Snark.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -125,6 +129,7 @@
             },
             "contracts/logic/TokenWhitelist.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -149,6 +154,7 @@
             },
             "contracts/logic/Types.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -163,6 +169,7 @@
             },
             "contracts/logic/Verifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -196,6 +203,7 @@
           "paths": {
             "circuits/base/HashInputs.circom": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -220,6 +228,7 @@
             },
             "circuits/base/MerkleTree.circom": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -244,6 +253,7 @@
             },
             "circuits/JoinSplit.circom": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -268,6 +278,7 @@
             },
             "circuits/Large.circom": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -292,6 +303,7 @@
             },
             "circuits/Small.circom": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -338,6 +350,7 @@
           "paths": {
             "contracts/governance/Delegator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -352,6 +365,7 @@
             },
             "contracts/governance/Deployer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -366,6 +380,7 @@
             },
             "contracts/governance/Staking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -380,6 +395,7 @@
             },
             "contracts/governance/Voting.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -394,6 +410,7 @@
             },
             "contracts/logic/Commitments.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -408,6 +425,7 @@
             },
             "contracts/logic/Globals.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -422,6 +440,7 @@
             },
             "contracts/logic/Poseidon.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -436,6 +455,7 @@
             },
             "contracts/logic/RailgunLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -450,6 +470,7 @@
             },
             "contracts/logic/Snark.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -464,6 +485,7 @@
             },
             "contracts/logic/TokenWhitelist.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -478,6 +500,7 @@
             },
             "contracts/logic/Verifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -492,6 +515,7 @@
             },
             "contracts/proxy/Proxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -506,6 +530,7 @@
             },
             "contracts/proxy/ProxyAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -520,6 +545,7 @@
             },
             "contracts/teststubs/governance/Getter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -534,6 +560,7 @@
             },
             "contracts/teststubs/governance/GovernanceTarget.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -548,6 +575,7 @@
             },
             "contracts/teststubs/governance/StakingStub.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -562,6 +590,7 @@
             },
             "contracts/teststubs/logic/CommitmentsStub.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -576,6 +605,7 @@
             },
             "contracts/teststubs/logic/TokenWhitelistStub.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -590,6 +620,7 @@
             },
             "contracts/teststubs/proxy/ProxyTarget.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -604,6 +635,7 @@
             },
             "contracts/teststubs/TokenStubs.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -618,6 +650,7 @@
             },
             "contracts/token/Distributor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -632,6 +665,7 @@
             },
             "contracts/token/Multisend.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -646,6 +680,7 @@
             },
             "contracts/token/VestLock.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -660,6 +695,7 @@
             },
             "contracts/treasury/Treasury.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -696,6 +732,7 @@
           "paths": {
             "contracts/governance/Delegator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -710,6 +747,7 @@
             },
             "contracts/governance/Deployer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -724,6 +762,7 @@
             },
             "contracts/governance/Staking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -738,6 +777,7 @@
             },
             "contracts/governance/Voting.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -752,6 +792,7 @@
             },
             "contracts/logic/Commitments.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -766,6 +807,7 @@
             },
             "contracts/logic/Globals.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -780,6 +822,7 @@
             },
             "contracts/logic/Poseidon.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -794,6 +837,7 @@
             },
             "contracts/logic/RailgunLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -808,6 +852,7 @@
             },
             "contracts/logic/Snark.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -822,6 +867,7 @@
             },
             "contracts/logic/TokenWhitelist.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -836,6 +882,7 @@
             },
             "contracts/logic/Verifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -850,6 +897,7 @@
             },
             "contracts/proxy/Proxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -864,6 +912,7 @@
             },
             "contracts/proxy/ProxyAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -878,6 +927,7 @@
             },
             "contracts/token/Distributor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -892,6 +942,7 @@
             },
             "contracts/token/Multisend.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -906,6 +957,7 @@
             },
             "contracts/token/VestLock.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -920,6 +972,7 @@
             },
             "contracts/treasury/Treasury.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -956,6 +1009,7 @@
           "paths": {
             "contracts/logic/Commitments.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -979,6 +1033,7 @@
             },
             "contracts/logic/Globals.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1002,6 +1057,7 @@
             },
             "contracts/logic/RailgunLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1047,6 +1103,7 @@
           "paths": {
             "contracts/logic/Globals.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1061,6 +1118,7 @@
             },
             "contracts/logic/Snark.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1075,6 +1133,7 @@
             },
             "contracts/logic/Commitments.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1089,6 +1148,7 @@
             },
             "contracts/logic/Verifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1103,6 +1163,7 @@
             },
             "contracts/logic/Poseidon.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1117,6 +1178,7 @@
             },
             "contracts/logic/TokenBlacklist.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1131,6 +1193,7 @@
             },
             "contracts/logic/RailgunLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1187,6 +1250,7 @@
           "paths": {
             "src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1206,6 +1270,7 @@
           "paths": {
             "contracts/governance/Voting.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1225,6 +1290,7 @@
             },
             "contracts/treasury/GovernorRewards.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1261,6 +1327,7 @@
           "paths": {
             "contracts/governance/Voting.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1297,6 +1364,7 @@
           "paths": {
             "contracts/logic/Commitments.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1311,6 +1379,7 @@
             },
             "contracts/logic/RailgunLogic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1325,6 +1394,7 @@
             },
             "contracts/logic/RailgunSmartWallet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1361,6 +1431,7 @@
           "paths": {
             "contracts/governance/arbitrum/Sender.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1375,6 +1446,7 @@
             },
             "contracts/governance/arbitrum/Executor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {

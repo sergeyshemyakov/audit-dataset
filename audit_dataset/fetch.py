@@ -1,8 +1,11 @@
 """Fetch the audited sources of a collection into ``audited-sources/``.
 
-Only versions of relevant reports that pin a full commit and are not
-``not_audited`` are fetched; every other version is recorded in the manifest
-as skipped. Files are read straight from a bare clone's objects, never from a
+Only versions of relevant reports that pin a full commit, are not
+``not_audited`` and belong to a path of a fetched kind (``evm`` unless
+``--kinds`` says otherwise) are fetched; every other version is recorded in
+the manifest as skipped, with the reason. A directory scope stores only the
+source files of its kind (``.sol``, ``.yul`` and ``.vy`` for ``evm``); a file
+scope stores its file whatever the extension. Files are read straight from a bare clone's objects, never from a
 checkout, and stored at ``<repository>/<commit>/<path>`` (see ``manifest``).
 """
 
@@ -23,6 +26,14 @@ from .collections import Collection
 from .manifest import GIT_METADATA_FILES, SCHEMA_VERSION, stored_path, write_manifest
 from .summary import path_problem, read_summary, relevant_versions
 
+# Path kinds whose sources are fetched by default; see summary.KINDS for all of them.
+FETCHED_KINDS = frozenset({"evm"})
+# Files stored from a directory scope of each kind; a file scope stores its file whatever
+# the extension. Other files (build artifacts, fixtures, bindings, docs) are not audit
+# evidence of that kind and are left out without a manifest record.
+SOURCE_EXTENSIONS: dict[str, frozenset[str]] = {
+    "evm": frozenset({".sol", ".yul", ".vy"}),
+}
 BLOB_MODES = frozenset({"100644", "100755"})
 SYMLINK_MODE = "120000"
 SUBMODULE_MODE = "160000"
@@ -42,6 +53,14 @@ class Source:
     path: str
     path_kind: str
     commit: str
+    kind: str
+
+    def stores(self, path: str) -> bool:
+        """Whether a file under this source is stored."""
+        if self.path_kind == "file":
+            return True
+        extensions = SOURCE_EXTENSIONS.get(self.kind)
+        return extensions is None or PurePosixPath(path).suffix.lower() in extensions
 
 
 @dataclass(frozen=True, order=True)
@@ -101,11 +120,19 @@ def revision_label(revision: dict[str, Any]) -> str:
     return ""
 
 
-def collect_sources(summary: dict[str, Any]) -> tuple[list[Source], list[SkippedSource]]:
+def collect_sources(
+    summary: dict[str, Any], kinds: frozenset[str] = FETCHED_KINDS
+) -> tuple[list[Source], list[SkippedSource]]:
+    """What to fetch and what to record as skipped.
+
+    A version is skipped when its revision pins no full commit, or when its
+    path's kind is not fetched (only ``evm`` by default). ``not_audited``
+    versions are neither fetched nor recorded.
+    """
     sources: set[Source] = set()
     skipped: set[SkippedSource] = set()
     path_kinds: dict[tuple[str, str, str], str] = {}
-    for _, repository, path, path_kind, _, version in relevant_versions(summary):
+    for _, repository, path, path_data, _, version in relevant_versions(summary):
         revision = version["revision"]
         commit = git.full_commit(revision)
         if commit is None:
@@ -117,10 +144,16 @@ def collect_sources(summary: dict[str, Any]) -> tuple[list[Source], list[Skipped
             continue
         if version["status"] == "not_audited":
             continue
+        if path_data["kind"] not in kinds:
+            skipped.add(SkippedSource(
+                repository, path, revision["kind"], commit, f"path kind {path_data['kind']} is not fetched"
+            ))
+            continue
         key = (repository, path, commit)
+        path_kind = path_data["path_kind"]
         if path_kinds.setdefault(key, path_kind) != path_kind:
             raise FetchError(f"conflicting path kinds for {repository}:{path}@{commit}")
-        sources.add(Source(repository, path, path_kind, commit))
+        sources.add(Source(repository, path, path_kind, commit, path_data["kind"]))
     return sorted(sources), sorted(skipped)
 
 
@@ -324,6 +357,8 @@ def export_source(repository: Path, source: Source, store: Store) -> tuple[list[
     files: list[dict[str, Any]] = []
     omitted: list[dict[str, str]] = []
     for mode, object_type, object_id, path in tree_entries(repository, source):
+        if not source.stores(path):
+            continue
         if object_type == "commit" or mode == SUBMODULE_MODE:
             omitted.append(omitted_record(path, object_id, mode, "submodule"))
             continue
@@ -343,10 +378,10 @@ def export_source(repository: Path, source: Source, store: Store) -> tuple[list[
 # --- Driver -------------------------------------------------------------------
 
 
-def fetch_collection(collection: Collection) -> FetchResult:
+def fetch_collection(collection: Collection, kinds: frozenset[str] = FETCHED_KINDS) -> FetchResult:
     summary = read_summary(collection)
     urls = repository_urls(summary)
-    sources, skipped = collect_sources(summary)
+    sources, skipped = collect_sources(summary, kinds)
     for source in sources:
         if source.repository not in urls:
             raise FetchError(f"scope references repository {source.repository!r} without a URL")

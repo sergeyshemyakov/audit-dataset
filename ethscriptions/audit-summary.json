@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "ethscriptions",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "contracts/src/Rollup.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -72,6 +73,7 @@
             },
             "contracts/src/L1Bridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -112,6 +114,7 @@
           "paths": {
             "op-node/rollup/driver/state.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -126,6 +129,7 @@
             },
             "op-node/rollup/engine/events.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -140,6 +144,7 @@
             },
             "op-node/rollup/status/status.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -154,6 +159,7 @@
             },
             "op-node/rollup/sync/start.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -168,6 +174,7 @@
             },
             "op-node/service.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -182,6 +189,7 @@
             },
             "packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -196,6 +204,7 @@
             },
             "packages/contracts-bedrock/src/L1/L1StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -219,6 +228,7 @@
             },
             "packages/contracts-bedrock/src/L1/OptimismPortal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -233,6 +243,7 @@
             },
             "packages/contracts-bedrock/src/L2/L2StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -247,6 +258,7 @@
             },
             "packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -261,6 +273,7 @@
             },
             "packages/contracts-bedrock/src/libraries/Constants.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -275,6 +288,7 @@
             },
             "packages/contracts-bedrock/src/libraries/GasPayingToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -289,6 +303,7 @@
             },
             "packages/contracts-bedrock/src/libraries/LibFacet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -303,6 +318,7 @@
             },
             "packages/contracts-bedrock/src/universal/StandardBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -326,6 +342,7 @@
             },
             "packages/contracts-bedrock/scripts/getting-started/config.sh": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -354,6 +371,7 @@
           "paths": {
             "contracts/src/libraries/FacetERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -390,6 +408,7 @@
           "paths": {
             "core/vm/contracts.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -471,6 +490,7 @@
           "paths": {
             "app/models/eth_block.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -485,6 +505,7 @@
             },
             "app/models/eth_call_struct.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -499,6 +520,7 @@
             },
             "app/models/eth_transaction.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -513,6 +535,7 @@
             },
             "app/models/facet_block.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -527,6 +550,7 @@
             },
             "app/models/facet_transaction.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -559,6 +583,7 @@
             },
             "app/models/predeploy_manager.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -573,6 +598,7 @@
             },
             "lib/eth_block_importer.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -587,6 +613,7 @@
             },
             "lib/geth_client.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -601,6 +628,7 @@
             },
             "lib/geth_driver.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -615,6 +643,7 @@
             },
             "lib/l1_attributes_tx_calldata.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -656,6 +685,7 @@
             },
             "lib/transaction_helper.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -670,6 +700,7 @@
             },
             "lib/sys_config.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -684,6 +715,7 @@
             },
             "lib/chain_id_manager.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -698,6 +730,7 @@
             },
             "lib/address_alias_helper.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -712,6 +745,7 @@
             },
             "lib/fct_mint_calculator.rb": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -767,6 +801,7 @@
           "paths": {
             "core/types/rollup_cost.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -786,6 +821,7 @@
           "paths": {
             "packages/contracts-bedrock/src/L2/L1Block.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -809,6 +845,7 @@
             },
             "op-node/rollup/derive/l1_block_info.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {

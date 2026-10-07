@@ -1,1 +1,0 @@
-# @mantleio/hardhat-deploy-config

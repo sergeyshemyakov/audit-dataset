@@ -305,51 +305,6 @@
     {
       "repository": "0xbow-io/privacy-pools-core",
       "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
-      "source_path": "packages/circuits/circuits/commitment.circom",
-      "path_kind": "file",
-      "commit": "56d5d48c21e9493954e2660d0cc252ce537edc25",
-      "files": [
-        {
-          "path": "packages/circuits/circuits/commitment.circom",
-          "git_object": "164c7b1cdce663ee54749e2e53422d6b8abc86eb",
-          "git_mode": "100644",
-          "sha256": "595f69f90dc1dccb016fdac2d6d93c11057cba071463e80a6cb394b6196d6a19"
-        }
-      ]
-    },
-    {
-      "repository": "0xbow-io/privacy-pools-core",
-      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
-      "source_path": "packages/circuits/circuits/merkleTree.circom",
-      "path_kind": "file",
-      "commit": "56d5d48c21e9493954e2660d0cc252ce537edc25",
-      "files": [
-        {
-          "path": "packages/circuits/circuits/merkleTree.circom",
-          "git_object": "d911cfec4da6d6b30f10c8b5b203e2ba8c952181",
-          "git_mode": "100644",
-          "sha256": "622e8bd6c94a60b6f6c9f4555a1ed11ab33e8f8b679c7140f4a800596b74fcb6"
-        }
-      ]
-    },
-    {
-      "repository": "0xbow-io/privacy-pools-core",
-      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
-      "source_path": "packages/circuits/circuits/withdraw.circom",
-      "path_kind": "file",
-      "commit": "56d5d48c21e9493954e2660d0cc252ce537edc25",
-      "files": [
-        {
-          "path": "packages/circuits/circuits/withdraw.circom",
-          "git_object": "62eb2759b051ac5826a4e6f6dc872580c894fa91",
-          "git_mode": "100644",
-          "sha256": "edd704f2e349823dd5b049e00835e1ba045fbcb36f3cf5715c98b43b7c273695"
-        }
-      ]
-    },
-    {
-      "repository": "0xbow-io/privacy-pools-core",
-      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
       "source_path": "packages/contracts/src/contracts/Entrypoint.sol",
       "path_kind": "file",
       "commit": "6cdeeaf0e44b98d5563c9d2f340f5825bec117f2",
@@ -359,51 +314,6 @@
           "git_object": "a1eeba110698c7537ceabe9e845d6b5295d802e0",
           "git_mode": "100644",
           "sha256": "deef104706c9316636fa9ce17b1d2945e0c7b31095194dd2f60917bcea5dd457"
-        }
-      ]
-    },
-    {
-      "repository": "0xbow-io/privacy-pools-core",
-      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
-      "source_path": "packages/circuits/circuits/commitment.circom",
-      "path_kind": "file",
-      "commit": "8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb",
-      "files": [
-        {
-          "path": "packages/circuits/circuits/commitment.circom",
-          "git_object": "4ce578154298633e112248a0193a417b0a505788",
-          "git_mode": "100644",
-          "sha256": "9c5ccc11cd162a9e584e882e62c852da60fa2ef90e52476d9ac0d4a7cdff1eb8"
-        }
-      ]
-    },
-    {
-      "repository": "0xbow-io/privacy-pools-core",
-      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
-      "source_path": "packages/circuits/circuits/merkleTree.circom",
-      "path_kind": "file",
-      "commit": "8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb",
-      "files": [
-        {
-          "path": "packages/circuits/circuits/merkleTree.circom",
-          "git_object": "f1bf4c341a85d3e6d1082cd9b6c9e050b95ec7a2",
-          "git_mode": "100644",
-          "sha256": "5754b7b09afa124e4821dff70a7caf533635366d9dcbb56d04128603494d0882"
-        }
-      ]
-    },
-    {
-      "repository": "0xbow-io/privacy-pools-core",
-      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
-      "source_path": "packages/circuits/circuits/withdraw.circom",
-      "path_kind": "file",
-      "commit": "8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb",
-      "files": [
-        {
-          "path": "packages/circuits/circuits/withdraw.circom",
-          "git_object": "5b596cb85c08dc9b7f04a7d43dc4abe611236f16",
-          "git_mode": "100644",
-          "sha256": "03e00168149bd00cd71d43d86f475e4ff919fef524dca0dd5689d7bc99dc4731"
         }
       ]
     },
@@ -605,21 +515,6 @@
     {
       "repository": "ProofOfInnocence/privacy-pools-v1",
       "repository_url": "https://github.com/ProofOfInnocence/privacy-pools-v1",
-      "source_path": "membership-proof/circuits/proofOfInnocence.circom",
-      "path_kind": "file",
-      "commit": "8ab7132877325e27b22053e974b3310d70b860b5",
-      "files": [
-        {
-          "path": "membership-proof/circuits/proofOfInnocence.circom",
-          "git_object": "b5c677500a3f8835b6a06ef4b968784363484440",
-          "git_mode": "100644",
-          "sha256": "63bf1673fb688425fcd0ca55424dbc5f143e910864e1f89d7b2a1942f065bf7b"
-        }
-      ]
-    },
-    {
-      "repository": "ProofOfInnocence/privacy-pools-v1",
-      "repository_url": "https://github.com/ProofOfInnocence/privacy-pools-v1",
       "source_path": "contracts/ERC20PrivacyPool.sol",
       "path_kind": "file",
       "commit": "e221f0b88e52fb5c214726e765997ef4067793a9",
@@ -676,23 +571,65 @@
           "sha256": "4082a6ec733bd609d4cdcae001d1644120a04738f1c95091102a3ad3b8299b6c"
         }
       ]
+    }
+  ],
+  "skipped": [
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "source_path": "packages/circuits/circuits/commitment.circom",
+      "revision_kind": "commit",
+      "revision": "56d5d48c21e9493954e2660d0cc252ce537edc25",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "source_path": "packages/circuits/circuits/commitment.circom",
+      "revision_kind": "commit",
+      "revision": "8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "source_path": "packages/circuits/circuits/merkleTree.circom",
+      "revision_kind": "commit",
+      "revision": "56d5d48c21e9493954e2660d0cc252ce537edc25",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "source_path": "packages/circuits/circuits/merkleTree.circom",
+      "revision_kind": "commit",
+      "revision": "8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "source_path": "packages/circuits/circuits/withdraw.circom",
+      "revision_kind": "commit",
+      "revision": "56d5d48c21e9493954e2660d0cc252ce537edc25",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "source_path": "packages/circuits/circuits/withdraw.circom",
+      "revision_kind": "commit",
+      "revision": "8da36d5e2150ab3c567d85ca8a6b2eb6b51740cb",
+      "reason": "path kind zk is not fetched"
     },
     {
       "repository": "ProofOfInnocence/privacy-pools-v1",
-      "repository_url": "https://github.com/ProofOfInnocence/privacy-pools-v1",
       "source_path": "membership-proof/circuits/proofOfInnocence.circom",
-      "path_kind": "file",
-      "commit": "e221f0b88e52fb5c214726e765997ef4067793a9",
-      "files": [
-        {
-          "path": "membership-proof/circuits/proofOfInnocence.circom",
-          "git_object": "1360c52c167fc64c9ace22409d13d91e1aca1258",
-          "git_mode": "100644",
-          "sha256": "16b82c06c936a73bfc9840569cf1c5d9a6f5f331e82c2d8dad20a4ec748b3124"
-        }
-      ]
+      "revision_kind": "commit",
+      "revision": "8ab7132877325e27b22053e974b3310d70b860b5",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "ProofOfInnocence/privacy-pools-v1",
+      "source_path": "membership-proof/circuits/proofOfInnocence.circom",
+      "revision_kind": "commit",
+      "revision": "e221f0b88e52fb5c214726e765997ef4067793a9",
+      "reason": "path kind zk is not fetched"
     }
   ],
-  "skipped": [],
   "unavailable": []
 }

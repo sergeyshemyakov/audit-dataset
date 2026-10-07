@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "tornado-cash",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "circuits/merkleTree.circom": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -63,6 +64,7 @@
             },
             "circuits/withdraw.circom": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -126,6 +128,7 @@
           "paths": {
             "contracts/ERC20Mixer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -167,6 +170,7 @@
             },
             "contracts/ETHMixer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -190,6 +194,7 @@
             },
             "contracts/Mixer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -216,6 +221,7 @@
             },
             "contracts/MerkleTreeWithHistory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -265,6 +271,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -281,6 +288,7 @@
             },
             "cli.js": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -302,6 +310,7 @@
           "paths": {
             "circuits": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -318,6 +327,7 @@
             },
             "src/mimcsponge_gencontract.js": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -360,6 +370,7 @@
           "paths": {
             "Farm.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -379,6 +390,7 @@
           "paths": {
             "circuits/Reward.circom": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -419,6 +431,7 @@
           "paths": {
             "contracts/Farm.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -445,6 +458,7 @@
             },
             "circuits/Reward.circom": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -496,6 +510,7 @@
           "paths": {
             "circuits": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -510,6 +525,7 @@
             },
             "circuits/MerkleTree.circom": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -524,6 +540,7 @@
             },
             "circuits/MerkleTreeUpdater.circom": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -547,6 +564,7 @@
             },
             "circuits/Withdraw.circom": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -570,6 +588,7 @@
             },
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -588,6 +607,7 @@
             },
             "contracts/IVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -602,6 +622,7 @@
             },
             "contracts/RewardVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -616,6 +637,7 @@
             },
             "contracts/TreeUpdateVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -630,6 +652,7 @@
             },
             "contracts/WithdrawVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -644,6 +667,7 @@
             },
             "contracts/Miner.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -691,6 +715,7 @@
             },
             "contracts/RewardSwap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -730,6 +755,7 @@
           "paths": {
             "contracts/interfaces/IHasher.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -747,6 +773,7 @@
             },
             "contracts/interfaces/IRewardSwap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -761,6 +788,7 @@
             },
             "contracts/interfaces/IVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -775,6 +803,7 @@
             },
             "contracts/interfaces/ITornado.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -789,6 +818,7 @@
             },
             "contracts/Miner.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -803,6 +833,7 @@
             },
             "contracts/TornadoTrees.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -821,6 +852,7 @@
             },
             "contracts/utils/MerkleTreeWithHistory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -835,6 +867,7 @@
             },
             "contracts/TornadoProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -849,6 +882,7 @@
             },
             "contracts/RewardSwap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -863,6 +897,7 @@
             },
             "contracts/utils/OwnableMerkleTree.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {

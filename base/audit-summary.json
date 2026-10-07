@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "base",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "src/Asn1Decode.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -72,6 +73,7 @@
             },
             "src/CborDecode.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -95,6 +97,7 @@
             },
             "src/CertManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -127,6 +130,7 @@
             },
             "src/ECDSA384Curve.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -141,6 +145,7 @@
             },
             "src/ICertManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -164,6 +169,7 @@
             },
             "src/LibBytes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -187,6 +193,7 @@
             },
             "src/NitroValidator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -219,6 +226,7 @@
             },
             "src/Sha2Ext.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -264,6 +272,7 @@
           "paths": {
             "contracts/src": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -323,6 +332,7 @@
             },
             "op-enclave": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -373,6 +383,7 @@
             },
             "op-batcher": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -396,6 +407,7 @@
             },
             "op-proposer": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -419,6 +431,7 @@
             },
             "op-withdrawer": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -473,6 +486,7 @@
           "paths": {
             "src/multiproof/AggregateVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -514,6 +528,7 @@
             },
             "src/multiproof/Verifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -528,6 +543,7 @@
             },
             "src/multiproof/tee/NitroEnclaveVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -560,6 +576,7 @@
             },
             "src/multiproof/tee/TEEProverRegistry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -574,6 +591,7 @@
             },
             "src/multiproof/tee/TEEVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -610,6 +628,7 @@
           "paths": {
             "src/multiproof/tee/NitroEnclaveVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -669,6 +688,7 @@
             },
             "src/multiproof/tee/TEEProverRegistry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -710,6 +730,7 @@
             },
             "src/multiproof/tee/TEEVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -755,6 +776,7 @@
           "paths": {
             "src/multiproof/AggregateVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -800,6 +822,7 @@
           "paths": {
             "src/multiproof/tee/NitroEnclaveVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -863,6 +886,7 @@
           "paths": {
             "src/L1/proofs/tee/NitroEnclaveVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -886,6 +910,7 @@
             },
             "src/L1/proofs/tee/TEEProverRegistry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -933,6 +958,7 @@
           "paths": {
             "src/NitroValidator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1010,6 +1036,7 @@
             },
             "src/CertManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1105,6 +1132,7 @@
             },
             "src/ICertManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1128,6 +1156,7 @@
             },
             "src/Asn1Decode.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1160,6 +1189,7 @@
             },
             "src/CborDecode.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1174,6 +1204,7 @@
             },
             "src/ECDSA384Curve.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1188,6 +1219,7 @@
             },
             "src/IP384Verifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1202,6 +1234,7 @@
             },
             "src/P384Verifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1216,6 +1249,7 @@
             },
             "src/vendor/ECDSA384.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1239,6 +1273,7 @@
             },
             "src/vendor/MemoryUtils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1275,6 +1310,7 @@
           "paths": {
             "src/L1/OptimismPortal2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1289,6 +1325,7 @@
             },
             "src/L1/SystemConfig.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1303,6 +1340,7 @@
             },
             "src/L1/proofs/DisputeGameFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1317,6 +1355,7 @@
             },
             "src/L1/proofs/tee/TEEProverRegistry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1340,6 +1379,7 @@
             },
             "src/libraries/Features.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1376,6 +1416,7 @@
           "paths": {
             "src/L1/ProtocolVersions.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1453,6 +1494,7 @@
             },
             "src/L1/proofs/AggregateVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {

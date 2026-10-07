@@ -3838,18 +3838,6 @@
           "sha256": "d173add4234b3ec963f34c6e0bc0b971987052f9a2d46845a849954002d5ffeb"
         },
         {
-          "path": "src/custom-tokens/DAI/DAI.sol.generic",
-          "git_object": "1ee491408445f2f47b005f9f9999cc9bea9ebce3",
-          "git_mode": "100644",
-          "sha256": "f3e4baab34604d3dae980310cbeb14efad0fd98baaa184a19bff69f5dd8d13d8"
-        },
-        {
-          "path": "src/custom-tokens/DAI/DAINativeConverter.sol.generic",
-          "git_object": "be38f9df2286e51c411d55cb43e0c1aa22b12a2b",
-          "git_mode": "100644",
-          "sha256": "b55643ceccb66c999150f5e8897d565e0c1a79a66ece131a5251c4a98bf05d38"
-        },
-        {
           "path": "src/custom-tokens/GenericCustomToken.sol",
           "git_object": "353727786e2b417112755ef2735f45466563ab94",
           "git_mode": "100644",
@@ -3860,48 +3848,6 @@
           "git_object": "c897079dcd06b4722a3adc96670b21f32d440ab3",
           "git_mode": "100644",
           "sha256": "c99aa4187239d2322f07aef4ee5c8432394bef8d41e8dac296b1bc5ce298cdff"
-        },
-        {
-          "path": "src/custom-tokens/README.md",
-          "git_object": "5ef77aedd9b6eb3173c6ec188d28ee19021c6aff",
-          "git_mode": "100644",
-          "sha256": "99302010dcf49e3b4f304819f48939946ea0e76c973ce2ba675e29fb0d30fb99"
-        },
-        {
-          "path": "src/custom-tokens/USDC/USDC.sol.generic",
-          "git_object": "a00133470b3483dfb3f6efaaac165cc4627bd25d",
-          "git_mode": "100644",
-          "sha256": "bb9ec7668d4e5a6cab25954034e0a15efe113864287fefcbfbaaca45074f97b3"
-        },
-        {
-          "path": "src/custom-tokens/USDC/USDCNativeConverter.sol.generic",
-          "git_object": "49ee354a54ac2ddac9098770469a0c3ff3c1d00c",
-          "git_mode": "100644",
-          "sha256": "414bc899e1852caa4ff1309cf79896c6fe7e48c36bafb7b9ddb8ac99e84acd9d"
-        },
-        {
-          "path": "src/custom-tokens/USDT/USDT.sol.generic",
-          "git_object": "44d8f990553bd6a0bc212cf167752e6fe5389ffb",
-          "git_mode": "100644",
-          "sha256": "0d2879e944c19462d82fa3e1d2d9c45f6a3cf20b27cc2330b85c6b1d40b9d191"
-        },
-        {
-          "path": "src/custom-tokens/USDT/USDTNativeConverter.sol.generic",
-          "git_object": "27c0c724bb95650213b9ec39517fd86605f10e70",
-          "git_mode": "100644",
-          "sha256": "2d3fbd89013695f37001a6d13f5ee91e32c05ebc7424e23083f43fe99bcb38a7"
-        },
-        {
-          "path": "src/custom-tokens/WBTC/WBTC.sol.generic",
-          "git_object": "06924f57d4f81294c8d1621d8eb551ac8c727acd",
-          "git_mode": "100644",
-          "sha256": "7f92becf68ea66135a4b0c9600a02d8d4224b5d36adbccdded563b12ef98290c"
-        },
-        {
-          "path": "src/custom-tokens/WBTC/WBTCNativeConverter.sol.generic",
-          "git_object": "98e677893d43ec2b5aa7b13be57c2a7a3116da06",
-          "git_mode": "100644",
-          "sha256": "e4ac76286f7a276008725b838771ac7b9f34660401ca72fabf2466deb06071c0"
         },
         {
           "path": "src/custom-tokens/WETH/WETH.sol",
@@ -3952,34 +3898,10 @@
           "sha256": "d6321ffe4b4f85ceb3028ce6235e4a8129dbd0e5436530bb83286af76ae3ad5f"
         },
         {
-          "path": "src/yield-exposed-tokens/README.md",
-          "git_object": "14dabb36508e3bda50d514670178c657da4914ad",
-          "git_mode": "100644",
-          "sha256": "21cb520c2891c4b80800a3603e3990325321270c24dea17bdee673822eb239b9"
-        },
-        {
-          "path": "src/yield-exposed-tokens/yeBTC/YeBTC.sol.generic",
-          "git_object": "808086e6c18e9f29ff10f85fb4cc15cb5856af37",
-          "git_mode": "100644",
-          "sha256": "8796be9780d97c0e8fac6a5209745d2300cbf26e9a82048c4329031dd983aa00"
-        },
-        {
-          "path": "src/yield-exposed-tokens/yeDAI/YeDAI.sol.generic",
-          "git_object": "86a78cbf46d7c686589994010c98e0641c961dfd",
-          "git_mode": "100644",
-          "sha256": "8f01bf400f5ba188a68ec95d80a5f639f7a3f6661063be6488b10ccdfeb3e4ad"
-        },
-        {
           "path": "src/yield-exposed-tokens/yeETH/YeETH.sol",
           "git_object": "9a1519fc940e17ea91f094357125dfcb2989e531",
           "git_mode": "100644",
           "sha256": "6532518cd969289564693d7f11e30bc2c804d848a05dfa51b129676b7cd3379b"
-        },
-        {
-          "path": "src/yield-exposed-tokens/yeUSDC/YeUSDC.sol.generic",
-          "git_object": "d18d6340ac286bb1070e666c4cf9b6dd5d264fe2",
-          "git_mode": "100644",
-          "sha256": "34aa4d1870402d760744e46a33254e43fb56b558f7a9c20fe4757b1da16a99fa"
         },
         {
           "path": "src/yield-exposed-tokens/yeUSDT/YeUSDT.sol",
@@ -4015,18 +3937,6 @@
           "sha256": "b1cd4c8f7f4bf2fd3af71d3c57deda057483e64707cb5f33a80668b4c6b642df"
         },
         {
-          "path": "src/custom-tokens/DAI/DAI.sol.generic",
-          "git_object": "1ee491408445f2f47b005f9f9999cc9bea9ebce3",
-          "git_mode": "100644",
-          "sha256": "f3e4baab34604d3dae980310cbeb14efad0fd98baaa184a19bff69f5dd8d13d8"
-        },
-        {
-          "path": "src/custom-tokens/DAI/DAINativeConverter.sol.generic",
-          "git_object": "be38f9df2286e51c411d55cb43e0c1aa22b12a2b",
-          "git_mode": "100644",
-          "sha256": "b55643ceccb66c999150f5e8897d565e0c1a79a66ece131a5251c4a98bf05d38"
-        },
-        {
           "path": "src/custom-tokens/GenericCustomToken.sol",
           "git_object": "02d089913a0943604b46c93e7b21d5def46fec1a",
           "git_mode": "100644",
@@ -4037,48 +3947,6 @@
           "git_object": "959c033025ffa1ad20259d3470f8037178ef186e",
           "git_mode": "100644",
           "sha256": "dcaba7ed8007391470e1c47dcce29e3fa6ea3c59f9977a40ead93d6ac37cc107"
-        },
-        {
-          "path": "src/custom-tokens/README.md",
-          "git_object": "5ef77aedd9b6eb3173c6ec188d28ee19021c6aff",
-          "git_mode": "100644",
-          "sha256": "99302010dcf49e3b4f304819f48939946ea0e76c973ce2ba675e29fb0d30fb99"
-        },
-        {
-          "path": "src/custom-tokens/USDC/USDC.sol.generic",
-          "git_object": "a00133470b3483dfb3f6efaaac165cc4627bd25d",
-          "git_mode": "100644",
-          "sha256": "bb9ec7668d4e5a6cab25954034e0a15efe113864287fefcbfbaaca45074f97b3"
-        },
-        {
-          "path": "src/custom-tokens/USDC/USDCNativeConverter.sol.generic",
-          "git_object": "49ee354a54ac2ddac9098770469a0c3ff3c1d00c",
-          "git_mode": "100644",
-          "sha256": "414bc899e1852caa4ff1309cf79896c6fe7e48c36bafb7b9ddb8ac99e84acd9d"
-        },
-        {
-          "path": "src/custom-tokens/USDT/USDT.sol.generic",
-          "git_object": "44d8f990553bd6a0bc212cf167752e6fe5389ffb",
-          "git_mode": "100644",
-          "sha256": "0d2879e944c19462d82fa3e1d2d9c45f6a3cf20b27cc2330b85c6b1d40b9d191"
-        },
-        {
-          "path": "src/custom-tokens/USDT/USDTNativeConverter.sol.generic",
-          "git_object": "27c0c724bb95650213b9ec39517fd86605f10e70",
-          "git_mode": "100644",
-          "sha256": "2d3fbd89013695f37001a6d13f5ee91e32c05ebc7424e23083f43fe99bcb38a7"
-        },
-        {
-          "path": "src/custom-tokens/WBTC/WBTC.sol.generic",
-          "git_object": "06924f57d4f81294c8d1621d8eb551ac8c727acd",
-          "git_mode": "100644",
-          "sha256": "7f92becf68ea66135a4b0c9600a02d8d4224b5d36adbccdded563b12ef98290c"
-        },
-        {
-          "path": "src/custom-tokens/WBTC/WBTCNativeConverter.sol.generic",
-          "git_object": "98e677893d43ec2b5aa7b13be57c2a7a3116da06",
-          "git_mode": "100644",
-          "sha256": "e4ac76286f7a276008725b838771ac7b9f34660401ca72fabf2466deb06071c0"
         },
         {
           "path": "src/custom-tokens/WETH/WETHNativeConverter.sol",
@@ -4129,34 +3997,10 @@
           "sha256": "61233d74e7ed49d02f6f513916e370506c4433dc8ffa6660ba5e8d4990c2d371"
         },
         {
-          "path": "src/yield-exposed-tokens/README.md",
-          "git_object": "14dabb36508e3bda50d514670178c657da4914ad",
-          "git_mode": "100644",
-          "sha256": "21cb520c2891c4b80800a3603e3990325321270c24dea17bdee673822eb239b9"
-        },
-        {
-          "path": "src/yield-exposed-tokens/yeBTC/YeBTC.sol.generic",
-          "git_object": "808086e6c18e9f29ff10f85fb4cc15cb5856af37",
-          "git_mode": "100644",
-          "sha256": "8796be9780d97c0e8fac6a5209745d2300cbf26e9a82048c4329031dd983aa00"
-        },
-        {
-          "path": "src/yield-exposed-tokens/yeDAI/YeDAI.sol.generic",
-          "git_object": "86a78cbf46d7c686589994010c98e0641c961dfd",
-          "git_mode": "100644",
-          "sha256": "8f01bf400f5ba188a68ec95d80a5f639f7a3f6661063be6488b10ccdfeb3e4ad"
-        },
-        {
           "path": "src/yield-exposed-tokens/yeETH/YeETH.sol",
           "git_object": "e997b9a8a3120dbd113456ad3940096b530c94e2",
           "git_mode": "100644",
           "sha256": "c9318b6e2b1ca89e4e548e8f8329f142248a06c79150ba1642c2c66bfd53a028"
-        },
-        {
-          "path": "src/yield-exposed-tokens/yeUSDC/YeUSDC.sol.generic",
-          "git_object": "d18d6340ac286bb1070e666c4cf9b6dd5d264fe2",
-          "git_mode": "100644",
-          "sha256": "34aa4d1870402d760744e46a33254e43fb56b558f7a9c20fe4757b1da16a99fa"
         },
         {
           "path": "src/yield-exposed-tokens/yeUSDT/YeUSDT.sol",

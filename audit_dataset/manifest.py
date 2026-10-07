@@ -33,11 +33,14 @@ Manifest schema::
         "omitted_files": [{"path", "git_object", "git_mode", "reason"}]  // when any
       }],
       "skipped": [{"repository", "source_path", "revision_kind", "revision", "reason"}],
+          // versions not fetched: unpinned revisions, and paths whose kind is not fetched (zk, cairo, other)
       "unavailable": [{"repository", "source_path", "path_kind", "commit", "reason"}]
     }
 
 ``git_object`` is the upstream blob; Solidity is reformatted after fetching, so
-``sha256`` is the only hash of the stored bytes.
+``sha256`` is the only hash of the stored bytes. A directory scope lists only
+the source files of its kind (see ``fetch.SOURCE_EXTENSIONS``); other files
+under it are neither stored nor listed.
 """
 
 from __future__ import annotations

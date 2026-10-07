@@ -80,21 +80,6 @@
     {
       "repository": "hats-finance/Safe-0x2909fdefd24a1ced675cb1444918fa766d76bdac",
       "repository_url": "https://github.com/hats-finance/Safe-0x2909fdefd24a1ced675cb1444918fa766d76bdac",
-      "source_path": "modules/passkey/contracts/4337/README.md",
-      "path_kind": "file",
-      "commit": "2c03e35cd1f93de704136ab6e54ae42971a69465",
-      "files": [
-        {
-          "path": "modules/passkey/contracts/4337/README.md",
-          "git_object": "c4245a63ac8276511fca241f18c2a5c0dbda91e1",
-          "git_mode": "100644",
-          "sha256": "2e6ea2ac7ec6ea5b65bcac1a56258a729b84fe11f825f1984d556a4f2ff438e0"
-        }
-      ]
-    },
-    {
-      "repository": "hats-finance/Safe-0x2909fdefd24a1ced675cb1444918fa766d76bdac",
-      "repository_url": "https://github.com/hats-finance/Safe-0x2909fdefd24a1ced675cb1444918fa766d76bdac",
       "source_path": "modules/passkey/contracts/4337/SafeWebAuthnSharedSigner.sol",
       "path_kind": "file",
       "commit": "2c03e35cd1f93de704136ab6e54ae42971a69465",
@@ -3467,12 +3452,6 @@
           "git_object": "58187613147869af977503c35f9e2e7caa7b2ff2",
           "git_mode": "100644",
           "sha256": "ce0f9251d8f3829438cad8df98e0bf5979ab3a97b54bf06a5fd2ed6d8c221655"
-        },
-        {
-          "path": "contracts/examples/README.md",
-          "git_object": "a76efc7de031da3e45cd90ea0d54963caba86d9c",
-          "git_mode": "100644",
-          "sha256": "2238af8ef0a33ff4efd27210141e631189894d3433ee43ad6fd22565b5a10e37"
         },
         {
           "path": "contracts/examples/guards/BaseGuard.sol",
@@ -8268,6 +8247,14 @@
       ]
     }
   ],
-  "skipped": [],
+  "skipped": [
+    {
+      "repository": "hats-finance/Safe-0x2909fdefd24a1ced675cb1444918fa766d76bdac",
+      "source_path": "modules/passkey/contracts/4337/README.md",
+      "revision_kind": "commit",
+      "revision": "2c03e35cd1f93de704136ab6e54ae42971a69465",
+      "reason": "path kind other is not fetched"
+    }
+  ],
   "unavailable": []
 }

@@ -1,7 +1,7 @@
 # Audit source summary: base
 
 Generated from [audit-summary.json](audit-summary.json). Do not edit manually.
-Commit dates use Git committer timestamps (UTC).
+Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless marked zk, cairo or other.
 
 ## Nitro Validator Security Review
 
@@ -37,18 +37,18 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/base/op-enclave/commit/98d346dd0e1cdbde75fba01efd36a07e7cf24391"><code>98d346dd0e1cdbde75fba01efd36a07e7cf24391</code></a> | December 20, 2024 | <code>contracts/src</code> (recursive directory)<br><code>op-enclave</code> (recursive directory)<br><code>op-batcher</code> (recursive directory)<br><code>op-proposer</code> (recursive directory)<br><code>op-withdrawer</code> (recursive directory) |
-| <a href="https://github.com/base/op-enclave/commit/8f28fbb6a30f4bcae8057a61e72120423554baca"><code>8f28fbb6a30f4bcae8057a61e72120423554baca</code></a> | December 25, 2024 | <code>op-batcher</code> (recursive directory) |
-| <a href="https://github.com/base/op-enclave/commit/4a7e36a0860ba408f2f5538ea7a9a117987d08d6"><code>4a7e36a0860ba408f2f5538ea7a9a117987d08d6</code></a> | January 1, 2025 | <code>contracts/src</code> (recursive directory)<br><code>op-enclave</code> (recursive directory) |
+| <a href="https://github.com/base/op-enclave/commit/98d346dd0e1cdbde75fba01efd36a07e7cf24391"><code>98d346dd0e1cdbde75fba01efd36a07e7cf24391</code></a> | December 20, 2024 | <code>contracts/src</code> (recursive directory)<br><code>op-enclave</code> (recursive directory) (other)<br><code>op-batcher</code> (recursive directory) (other)<br><code>op-proposer</code> (recursive directory) (other)<br><code>op-withdrawer</code> (recursive directory) (other) |
+| <a href="https://github.com/base/op-enclave/commit/8f28fbb6a30f4bcae8057a61e72120423554baca"><code>8f28fbb6a30f4bcae8057a61e72120423554baca</code></a> | December 25, 2024 | <code>op-batcher</code> (recursive directory) (other) |
+| <a href="https://github.com/base/op-enclave/commit/4a7e36a0860ba408f2f5538ea7a9a117987d08d6"><code>4a7e36a0860ba408f2f5538ea7a9a117987d08d6</code></a> | January 1, 2025 | <code>contracts/src</code> (recursive directory)<br><code>op-enclave</code> (recursive directory) (other) |
 | <a href="https://github.com/base/op-enclave/commit/156d495b8a2841a2990aa790dc97a934429bbc3f"><code>156d495b8a2841a2990aa790dc97a934429bbc3f</code></a> | January 3, 2025 | <code>contracts/src</code> (recursive directory) |
 | <a href="https://github.com/base/op-enclave/commit/6e37ce2036c58f6d555001d5f02d81627f5a0428"><code>6e37ce2036c58f6d555001d5f02d81627f5a0428</code></a> | January 3, 2025 | <code>contracts/src</code> (recursive directory) |
 | <a href="https://github.com/base/op-enclave/commit/c6fe9fbd38074a6463eea57003f5f646e6e8f982"><code>c6fe9fbd38074a6463eea57003f5f646e6e8f982</code></a> | January 3, 2025 | <code>contracts/src</code> (recursive directory) |
 | <a href="https://github.com/base/op-enclave/commit/69990879c401bf3d859e9665772c90f93517dbeb"><code>69990879c401bf3d859e9665772c90f93517dbeb</code></a> | January 3, 2025 | <code>contracts/src</code> (recursive directory) |
-| <a href="https://github.com/base/op-enclave/commit/de236915c001d6a1d05ae22b1e369564cad5e44a"><code>de236915c001d6a1d05ae22b1e369564cad5e44a</code></a> | January 3, 2025 | <code>op-enclave</code> (recursive directory) |
-| <a href="https://github.com/base/op-enclave/commit/ab2d40808ad61afe26e423285e650c723e877570"><code>ab2d40808ad61afe26e423285e650c723e877570</code></a> | January 3, 2025 | <code>op-proposer</code> (recursive directory) |
-| <a href="https://github.com/base/op-enclave/commit/bfd6dbd91c5b06eb4c539e3c1bab25211d54137e"><code>bfd6dbd91c5b06eb4c539e3c1bab25211d54137e</code></a> | January 3, 2025 | <code>op-withdrawer</code> (recursive directory) |
-| <a href="https://github.com/base/op-enclave/commit/628aa61032c428a3e8f28e3f2925a758a545fc54"><code>628aa61032c428a3e8f28e3f2925a758a545fc54</code></a> | January 9, 2025 | <code>op-enclave</code> (recursive directory) |
-| <a href="https://github.com/base/op-enclave/commit/e1f2146f8fe8fe9604fc51b938d24c7865cf7dc4"><code>e1f2146f8fe8fe9604fc51b938d24c7865cf7dc4</code></a> | January 9, 2025 | <code>op-withdrawer</code> (recursive directory) |
+| <a href="https://github.com/base/op-enclave/commit/de236915c001d6a1d05ae22b1e369564cad5e44a"><code>de236915c001d6a1d05ae22b1e369564cad5e44a</code></a> | January 3, 2025 | <code>op-enclave</code> (recursive directory) (other) |
+| <a href="https://github.com/base/op-enclave/commit/ab2d40808ad61afe26e423285e650c723e877570"><code>ab2d40808ad61afe26e423285e650c723e877570</code></a> | January 3, 2025 | <code>op-proposer</code> (recursive directory) (other) |
+| <a href="https://github.com/base/op-enclave/commit/bfd6dbd91c5b06eb4c539e3c1bab25211d54137e"><code>bfd6dbd91c5b06eb4c539e3c1bab25211d54137e</code></a> | January 3, 2025 | <code>op-withdrawer</code> (recursive directory) (other) |
+| <a href="https://github.com/base/op-enclave/commit/628aa61032c428a3e8f28e3f2925a758a545fc54"><code>628aa61032c428a3e8f28e3f2925a758a545fc54</code></a> | January 9, 2025 | <code>op-enclave</code> (recursive directory) (other) |
+| <a href="https://github.com/base/op-enclave/commit/e1f2146f8fe8fe9604fc51b938d24c7865cf7dc4"><code>e1f2146f8fe8fe9604fc51b938d24c7865cf7dc4</code></a> | January 9, 2025 | <code>op-withdrawer</code> (recursive directory) (other) |
 
 ## Coinbase Multiproof Security Review (March 2026)
 

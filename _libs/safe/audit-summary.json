@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "Safe",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -45,6 +46,7 @@
             },
             "contracts/libraries/MultiSendStruct.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -81,6 +83,7 @@
           "paths": {
             "contracts/base/Executor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -104,6 +107,7 @@
             },
             "contracts/base/FallbackManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -127,6 +131,7 @@
             },
             "contracts/base/Module.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -150,6 +155,7 @@
             },
             "contracts/base/ModuleManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -173,6 +179,7 @@
             },
             "contracts/base/OwnerManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -196,6 +203,7 @@
             },
             "contracts/common/Enum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -219,6 +227,7 @@
             },
             "contracts/common/EtherPaymentFallback.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -242,6 +251,7 @@
             },
             "contracts/common/MasterCopy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -265,6 +275,7 @@
             },
             "contracts/common/SecuredTokenTransfer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -288,6 +299,7 @@
             },
             "contracts/common/SelfAuthorized.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -311,6 +323,7 @@
             },
             "contracts/common/SignatureDecoder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -334,6 +347,7 @@
             },
             "contracts/handler/DefaultCallbackHandler.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -357,6 +371,7 @@
             },
             "contracts/interfaces/ERC1155TokenReceiver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -380,6 +395,7 @@
             },
             "contracts/interfaces/ERC721TokenReceiver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -403,6 +419,7 @@
             },
             "contracts/interfaces/ERC777TokensRecipient.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -426,6 +443,7 @@
             },
             "contracts/interfaces/ISignatureValidator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -449,6 +467,7 @@
             },
             "contracts/libraries/CreateAndAddModules.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -472,6 +491,7 @@
             },
             "contracts/libraries/CreateCall.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -495,6 +515,7 @@
             },
             "contracts/libraries/MultiSend.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -518,6 +539,7 @@
             },
             "contracts/modules/DailyLimitModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -541,6 +563,7 @@
             },
             "contracts/modules/SocialRecoveryModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -564,6 +587,7 @@
             },
             "contracts/modules/StateChannelModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -587,6 +611,7 @@
             },
             "contracts/modules/WhitelistModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -610,6 +635,7 @@
             },
             "contracts/proxies/DelegateConstructorProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -633,6 +659,7 @@
             },
             "contracts/proxies/PayingProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -656,6 +683,7 @@
             },
             "contracts/proxies/Proxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -679,6 +707,7 @@
             },
             "contracts/proxies/ProxyFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -702,6 +731,7 @@
             },
             "contracts/GnosisSafe.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -747,6 +777,7 @@
           "paths": {
             "contracts/base/Executor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -779,6 +810,7 @@
             },
             "contracts/base/FallbackManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -811,6 +843,7 @@
             },
             "contracts/base/Module.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -843,6 +876,7 @@
             },
             "contracts/base/ModuleManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -875,6 +909,7 @@
             },
             "contracts/base/OwnerManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -907,6 +942,7 @@
             },
             "contracts/common/Enum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -939,6 +975,7 @@
             },
             "contracts/common/EtherPaymentFallback.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -971,6 +1008,7 @@
             },
             "contracts/common/MasterCopy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1003,6 +1041,7 @@
             },
             "contracts/common/SecuredTokenTransfer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1035,6 +1074,7 @@
             },
             "contracts/common/SelfAuthorized.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1067,6 +1107,7 @@
             },
             "contracts/common/SignatureDecoder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1099,6 +1140,7 @@
             },
             "contracts/handler/DefaultCallbackHandler.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1131,6 +1173,7 @@
             },
             "contracts/interfaces/ERC1155TokenReceiver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1163,6 +1206,7 @@
             },
             "contracts/interfaces/ERC721TokenReceiver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1195,6 +1239,7 @@
             },
             "contracts/interfaces/ERC777TokensRecipient.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1227,6 +1272,7 @@
             },
             "contracts/interfaces/ISignatureValidator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1259,6 +1305,7 @@
             },
             "contracts/libraries/CreateAndAddModules.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1291,6 +1338,7 @@
             },
             "contracts/libraries/CreateCall.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1323,6 +1371,7 @@
             },
             "contracts/libraries/MultiSend.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1355,6 +1404,7 @@
             },
             "contracts/modules/DailyLimitModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1387,6 +1437,7 @@
             },
             "contracts/modules/SocialRecoveryModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1419,6 +1470,7 @@
             },
             "contracts/modules/StateChannelModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1451,6 +1503,7 @@
             },
             "contracts/modules/WhitelistModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1483,6 +1536,7 @@
             },
             "contracts/proxies/DelegateConstructorProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1515,6 +1569,7 @@
             },
             "contracts/proxies/PayingProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1547,6 +1602,7 @@
             },
             "contracts/proxies/Proxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1579,6 +1635,7 @@
             },
             "contracts/proxies/ProxyFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1611,6 +1668,7 @@
             },
             "contracts/GnosisSafe.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1665,6 +1723,7 @@
           "paths": {
             "contracts/GnosisSafe.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1688,6 +1747,7 @@
             },
             "contracts/base/ModuleManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1733,6 +1793,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1778,6 +1839,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1814,6 +1876,7 @@
           "paths": {
             "contracts/GnosisSafe.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1828,6 +1891,7 @@
             },
             "contracts/GnosisSafeL2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1842,6 +1906,7 @@
             },
             "contracts/accessors/SimulateTxAccessor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1856,6 +1921,7 @@
             },
             "contracts/base/Executor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1870,6 +1936,7 @@
             },
             "contracts/base/FallbackManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1884,6 +1951,7 @@
             },
             "contracts/base/GuardManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1898,6 +1966,7 @@
             },
             "contracts/base/ModuleManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1912,6 +1981,7 @@
             },
             "contracts/base/OwnerManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1926,6 +1996,7 @@
             },
             "contracts/common/Enum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1940,6 +2011,7 @@
             },
             "contracts/common/EtherPaymentFallback.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1954,6 +2026,7 @@
             },
             "contracts/common/SecuredTokenTransfer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1968,6 +2041,7 @@
             },
             "contracts/common/SelfAuthorized.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1982,6 +2056,7 @@
             },
             "contracts/common/SignatureDecoder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1996,6 +2071,7 @@
             },
             "contracts/common/Singleton.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2010,6 +2086,7 @@
             },
             "contracts/common/StorageAccessible.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2024,6 +2101,7 @@
             },
             "contracts/external/GnosisSafeMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2038,6 +2116,7 @@
             },
             "contracts/handler/CompatibilityFallbackHandler.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2052,6 +2131,7 @@
             },
             "contracts/handler/DefaultCallbackHandler.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2066,6 +2146,7 @@
             },
             "contracts/handler/HandlerContext.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2080,6 +2161,7 @@
             },
             "contracts/interfaces/ERC1155TokenReceiver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2094,6 +2176,7 @@
             },
             "contracts/interfaces/ERC721TokenReceiver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2108,6 +2191,7 @@
             },
             "contracts/interfaces/ERC777TokensRecipient.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2122,6 +2206,7 @@
             },
             "contracts/interfaces/IERC165.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2136,6 +2221,7 @@
             },
             "contracts/interfaces/ISignatureValidator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2150,6 +2236,7 @@
             },
             "contracts/interfaces/ViewStorageAccessible.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2164,6 +2251,7 @@
             },
             "contracts/libraries/CreateCall.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2178,6 +2266,7 @@
             },
             "contracts/libraries/GnosisSafeStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2192,6 +2281,7 @@
             },
             "contracts/libraries/MultiSend.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2206,6 +2296,7 @@
             },
             "contracts/libraries/MultiSendCallOnly.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2220,6 +2311,7 @@
             },
             "contracts/libraries/SignMessageLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2234,6 +2326,7 @@
             },
             "contracts/proxies/GnosisSafeProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2248,6 +2341,7 @@
             },
             "contracts/proxies/GnosisSafeProxyFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2262,6 +2356,7 @@
             },
             "contracts/proxies/IProxyCreationCallback.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2276,6 +2371,7 @@
             },
             "contracts/Safe.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2312,6 +2408,7 @@
           "paths": {
             "contracts/GnosisSafe.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2326,6 +2423,7 @@
             },
             "contracts/GnosisSafeL2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2340,6 +2438,7 @@
             },
             "contracts/accessors/SimulateTxAccessor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2354,6 +2453,7 @@
             },
             "contracts/base/Executor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2368,6 +2468,7 @@
             },
             "contracts/base/FallbackManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2382,6 +2483,7 @@
             },
             "contracts/base/GuardManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2396,6 +2498,7 @@
             },
             "contracts/base/ModuleManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2420,6 +2523,7 @@
             },
             "contracts/base/OwnerManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2434,6 +2538,7 @@
             },
             "contracts/common/Enum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2448,6 +2553,7 @@
             },
             "contracts/common/EtherPaymentFallback.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2462,6 +2568,7 @@
             },
             "contracts/common/SecuredTokenTransfer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2476,6 +2583,7 @@
             },
             "contracts/common/SelfAuthorized.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2490,6 +2598,7 @@
             },
             "contracts/common/SignatureDecoder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2504,6 +2613,7 @@
             },
             "contracts/common/Singleton.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2518,6 +2628,7 @@
             },
             "contracts/common/StorageAccessible.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2532,6 +2643,7 @@
             },
             "contracts/external/GnosisSafeMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2546,6 +2658,7 @@
             },
             "contracts/handler/CompatibilityFallbackHandler.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2560,6 +2673,7 @@
             },
             "contracts/handler/DefaultCallbackHandler.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2574,6 +2688,7 @@
             },
             "contracts/handler/HandlerContext.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2588,6 +2703,7 @@
             },
             "contracts/libraries/CreateCall.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2602,6 +2718,7 @@
             },
             "contracts/libraries/GnosisSafeStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2616,6 +2733,7 @@
             },
             "contracts/libraries/MultiSend.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2630,6 +2748,7 @@
             },
             "contracts/libraries/MultiSendCallOnly.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2644,6 +2763,7 @@
             },
             "contracts/libraries/SignMessageLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2658,6 +2778,7 @@
             },
             "contracts/proxies/GnosisSafeProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2672,6 +2793,7 @@
             },
             "contracts/proxies/GnosisSafeProxyFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2686,6 +2808,7 @@
             },
             "contracts/proxies/IProxyCreationCallback.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2700,6 +2823,7 @@
             },
             "contracts/Safe.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2737,6 +2861,7 @@
           "paths": {
             "contracts/SafeL2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2760,6 +2885,7 @@
             },
             "contracts/proxies/SafeProxyFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2783,6 +2909,7 @@
             },
             "contracts/handler/CompatibilityFallbackHandler.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2806,6 +2933,7 @@
             },
             "contracts/libraries/MultiSendCallOnly.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2829,6 +2957,7 @@
             },
             "contracts/libraries/SignMessageLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2874,6 +3003,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2897,6 +3027,7 @@
             },
             "contracts/examples": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2911,6 +3042,7 @@
             },
             "contracts/test": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2947,6 +3079,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2961,6 +3094,7 @@
             },
             "contracts/SecuredTokenTransfer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2997,6 +3131,7 @@
           "paths": {
             "contracts/GnosisSafe.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3019,6 +3154,7 @@
             },
             "contracts/base/OwnerManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3037,6 +3173,7 @@
             },
             "contracts/base/ModuleManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3051,6 +3188,7 @@
             },
             "contracts/common/MasterCopy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3068,6 +3206,7 @@
             },
             "contracts/common/SignatureDecoder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3107,6 +3246,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3152,6 +3292,7 @@
           "paths": {
             "contracts/libraries/SafeMigration.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3175,6 +3316,7 @@
             },
             "contracts/libraries/SafeToL2Setup.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3198,6 +3340,7 @@
             },
             "contracts/libraries/SafeToL2Migration.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3243,6 +3386,7 @@
           "paths": {
             "4337/contracts/EIP4337Module.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3257,6 +3401,7 @@
             },
             "4337/contracts/AddModulesLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3280,6 +3425,7 @@
             },
             "4337/contracts/Safe4337Module.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3316,6 +3462,7 @@
           "paths": {
             "4337/contracts/EIP4337Module.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3330,6 +3477,7 @@
             },
             "4337/contracts/AddModulesLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3380,6 +3528,7 @@
             },
             "4337/contracts/Safe4337Module.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3443,6 +3592,7 @@
           "paths": {
             "modules/4337/contracts/AddModulesLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3457,6 +3607,7 @@
             },
             "modules/4337/contracts/Safe4337Module.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3493,6 +3644,7 @@
           "paths": {
             "4337/contracts/EIP4337Module.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3507,6 +3659,7 @@
             },
             "4337/contracts/AddModulesLib.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3557,6 +3710,7 @@
             },
             "4337/contracts/Safe4337Module.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3598,6 +3752,7 @@
             },
             "modules/4337/contracts/Safe4337Module.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3634,6 +3789,7 @@
           "paths": {
             "modules/4337/contracts/Safe4337Module.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3657,6 +3813,7 @@
             },
             "modules/4337/contracts/SafeModuleSetup.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3702,6 +3859,7 @@
           "paths": {
             "modules/4337/contracts/Safe4337Module.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3716,6 +3874,7 @@
             },
             "modules/4337/contracts/SafeModuleSetup.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3752,6 +3911,7 @@
           "paths": {
             "allowances/contracts/AlowanceModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3775,6 +3935,7 @@
             },
             "allowances/contracts/Enum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3798,6 +3959,7 @@
             },
             "allowances/contracts/Migrations.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3821,6 +3983,7 @@
             },
             "allowances/contracts/SignatureDecoder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3844,6 +4007,7 @@
             },
             "allowances/contracts/test/TestToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3867,6 +4031,7 @@
             },
             "dutchx_seller/contracts/DutchXBaseModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3890,6 +4055,7 @@
             },
             "dutchx_seller/contracts/DutchXCompleteModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3913,6 +4079,7 @@
             },
             "dutchx_seller/contracts/DutchXInterface.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3936,6 +4103,7 @@
             },
             "dutchx_seller/contracts/DutchXSellerModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3959,6 +4127,7 @@
             },
             "dutchx_seller/contracts/DutchXTokenInterface.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3982,6 +4151,7 @@
             },
             "dutchx_seller/contracts/Imports.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4005,6 +4175,7 @@
             },
             "dutchx_seller/contracts/Migrations.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4028,6 +4199,7 @@
             },
             "recurring_transfers/contracts/Imports.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4051,6 +4223,7 @@
             },
             "recurring_transfers/contracts/Migrations.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4074,6 +4247,7 @@
             },
             "recurring_transfers/contracts/RecurringTransfersModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4097,6 +4271,7 @@
             },
             "recurring_transfers/contracts/TokenPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4120,6 +4295,7 @@
             },
             "recurring_transfers/contracts/external/DateTime.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4143,6 +4319,7 @@
             },
             "recurring_transfers/contracts/external/DutchExchangeInterface.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4166,6 +4343,7 @@
             },
             "recurring_transfers/contracts/external/SafeMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4189,6 +4367,7 @@
             },
             "recurring_transfers/contracts/test/ExposedRecurringTransfersModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4234,6 +4413,7 @@
           "paths": {
             "modules/allowances/contracts/AllowanceModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4279,6 +4459,7 @@
           "paths": {
             "modules/allowances/contracts/AllowanceModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4302,6 +4483,7 @@
             },
             "modules/allowances/contracts/SignatureDecoder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4325,6 +4507,7 @@
             },
             "modules/allowances/contracts/Enum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4370,6 +4553,7 @@
           "paths": {
             "modules/allowances/contracts/AllowanceModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4384,6 +4568,7 @@
             },
             "modules/allowances/contracts/SignatureDecoder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4398,6 +4583,7 @@
             },
             "modules/allowances/contracts/Enum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4434,6 +4620,7 @@
           "paths": {
             "modules/passkey/contracts/SafeWebAuthnSignerFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4448,6 +4635,7 @@
             },
             "modules/passkey/contracts/SafeWebAuthnSignerProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4462,6 +4650,7 @@
             },
             "modules/passkey/contracts/SafeWebAuthnSignerSingleton.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4476,6 +4665,7 @@
             },
             "modules/passkey/contracts/base/SignatureValidator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4490,6 +4680,7 @@
             },
             "modules/passkey/contracts/interfaces/IP256Verifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4504,6 +4695,7 @@
             },
             "modules/passkey/contracts/interfaces/ISafe.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4518,6 +4710,7 @@
             },
             "modules/passkey/contracts/interfaces/ISafeSignerFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4532,6 +4725,7 @@
             },
             "modules/passkey/contracts/libraries/ERC1271.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4546,6 +4740,7 @@
             },
             "modules/passkey/contracts/libraries/P256.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4560,6 +4755,7 @@
             },
             "modules/passkey/contracts/libraries/WebAuthn.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4596,6 +4792,7 @@
           "paths": {
             "modules/passkey/contracts/SafeWebAuthnSignerFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4610,6 +4807,7 @@
             },
             "modules/passkey/contracts/SafeWebAuthnSignerProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4624,6 +4822,7 @@
             },
             "modules/passkey/contracts/SafeWebAuthnSignerSingleton.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4638,6 +4837,7 @@
             },
             "modules/passkey/contracts/base/SignatureValidator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4652,6 +4852,7 @@
             },
             "modules/passkey/contracts/interfaces/IP256Verifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4666,6 +4867,7 @@
             },
             "modules/passkey/contracts/interfaces/ISafe.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4680,6 +4882,7 @@
             },
             "modules/passkey/contracts/interfaces/ISafeSignerFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4694,6 +4897,7 @@
             },
             "modules/passkey/contracts/libraries/ERC1271.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4708,6 +4912,7 @@
             },
             "modules/passkey/contracts/libraries/P256.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4722,6 +4927,7 @@
             },
             "modules/passkey/contracts/libraries/WebAuthn.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4736,6 +4942,7 @@
             },
             "modules/passkey/contracts/4337/README.md": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -4750,6 +4957,7 @@
             },
             "modules/passkey/contracts/4337/SafeWebAuthnSharedSigner.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4764,6 +4972,7 @@
             },
             "modules/passkey/contracts/verifiers/FCLP256Verifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4800,6 +5009,7 @@
           "paths": {
             "modules/passkey/contracts/SafeWebAuthnSignerFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4823,6 +5033,7 @@
             },
             "modules/passkey/contracts/SafeWebAuthnSignerProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4846,6 +5057,7 @@
             },
             "modules/passkey/contracts/SafeWebAuthnSignerSingleton.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4869,6 +5081,7 @@
             },
             "modules/passkey/contracts/base/SignatureValidator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4892,6 +5105,7 @@
             },
             "modules/passkey/contracts/interfaces/IP256Verifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4915,6 +5129,7 @@
             },
             "modules/passkey/contracts/interfaces/ISafe.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4938,6 +5153,7 @@
             },
             "modules/passkey/contracts/interfaces/ISafeSignerFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4961,6 +5177,7 @@
             },
             "modules/passkey/contracts/libraries/ERC1271.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4984,6 +5201,7 @@
             },
             "modules/passkey/contracts/libraries/P256.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5007,6 +5225,7 @@
             },
             "modules/passkey/contracts/libraries/WebAuthn.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5030,6 +5249,7 @@
             },
             "modules/passkey/contracts/4337/SafeWebAuthnSharedSigner.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5066,6 +5286,7 @@
           "paths": {
             "modules/passkey/contracts/SafeWebAuthnSignerFactory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5080,6 +5301,7 @@
             },
             "modules/passkey/contracts/SafeWebAuthnSignerProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5094,6 +5316,7 @@
             },
             "modules/passkey/contracts/SafeWebAuthnSignerSingleton.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5108,6 +5331,7 @@
             },
             "modules/passkey/contracts/base/SignatureValidator.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5122,6 +5346,7 @@
             },
             "modules/passkey/contracts/libraries/ERC1271.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5136,6 +5361,7 @@
             },
             "modules/passkey/contracts/libraries/P256.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5150,6 +5376,7 @@
             },
             "modules/passkey/contracts/libraries/WebAuthn.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5164,6 +5391,7 @@
             },
             "modules/passkey/contracts/4337/SafeWebAuthnSharedSigner.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5178,6 +5406,7 @@
             },
             "modules/passkey/contracts/verifiers/FCLP256Verifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5214,6 +5443,7 @@
           "paths": {
             "contracts/modules/social_recovery/SocialRecoveryModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5237,6 +5467,7 @@
             },
             "contracts/modules/social_recovery/storage/GuardianStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5286,6 +5517,7 @@
           "paths": {
             "modules/recovery/contracts/SocialRecoveryModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5305,6 +5537,7 @@
           "paths": {
             "contracts/modules/social_recovery/SocialRecoveryModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5319,6 +5552,7 @@
             },
             "contracts/modules/social_recovery/storage/GuardianStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5355,6 +5589,7 @@
           "paths": {
             "contracts/modules/social_recovery/SocialRecoveryModule.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5369,6 +5604,7 @@
             },
             "contracts/modules/social_recovery/storage/GuardianStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5383,6 +5619,7 @@
             },
             "contracts/modules/social_recovery/storage/IGuardianStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5419,6 +5656,7 @@
           "paths": {
             "contracts/Delay.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5469,6 +5707,7 @@
           "paths": {
             "packages/evm/contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5514,6 +5753,7 @@
           "paths": {
             "packages/evm/contracts/packers/BufferPacker.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5537,6 +5777,7 @@
             },
             "packages/evm/contracts/Core.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5560,6 +5801,7 @@
             },
             "packages/evm/contracts/Consumptions.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5583,6 +5825,7 @@
             },
             "packages/evm/contracts/Decoder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5606,6 +5849,7 @@
             },
             "packages/evm/contracts/Integrity.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5629,6 +5873,7 @@
             },
             "packages/evm/contracts/adapters/MultiSendUnwrapper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5652,6 +5897,7 @@
             },
             "packages/evm/contracts/packers/Packer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5675,6 +5921,7 @@
             },
             "packages/evm/contracts/Periphery.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5698,6 +5945,7 @@
             },
             "packages/evm/contracts/PermissionLoader.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5721,6 +5969,7 @@
             },
             "packages/evm/contracts/PermissionBuilder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5744,6 +5993,7 @@
             },
             "packages/evm/contracts/PermissionChecker.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5767,6 +6017,7 @@
             },
             "packages/evm/contracts/PermissionTracker.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5781,6 +6032,7 @@
             },
             "packages/evm/contracts/Roles.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5804,6 +6056,7 @@
             },
             "packages/evm/contracts/adapters/Types.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5827,6 +6080,7 @@
             },
             "packages/evm/contracts/Types.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5850,6 +6104,7 @@
             },
             "packages/evm/contracts/Topology.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5873,6 +6128,7 @@
             },
             "packages/evm/contracts/WriteOnce.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5918,6 +6174,7 @@
           "paths": {
             "packages/evm/contracts/adapters/AvatarIsOwnerOfERC721.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5950,6 +6207,7 @@
             },
             "packages/evm/contracts/Decoder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5982,6 +6240,7 @@
             },
             "packages/evm/contracts/Integrity.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6014,6 +6273,7 @@
             },
             "packages/evm/contracts/packers/Packer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6046,6 +6306,7 @@
             },
             "packages/evm/contracts/PermissionBuilder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6078,6 +6339,7 @@
             },
             "packages/evm/contracts/PermissionChecker.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6110,6 +6372,7 @@
             },
             "packages/evm/contracts/adapters/Types.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6142,6 +6405,7 @@
             },
             "packages/evm/contracts/Types.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6174,6 +6438,7 @@
             },
             "packages/evm/contracts/Topology.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6228,6 +6493,7 @@
           "paths": {
             "packages/evm/contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6273,6 +6539,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6329,6 +6596,7 @@
           "paths": {
             "contracts/core/Modifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {

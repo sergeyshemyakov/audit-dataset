@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "SP1",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "prover/src/verify.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -58,6 +59,7 @@
           "paths": {
             "recursion/core/src/cpu": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -94,6 +96,7 @@
             },
             "recursion/core/src/memory": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -117,6 +120,7 @@
             },
             "recursion/core/src/program": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -131,6 +135,7 @@
             },
             "recursion/core/src/poseidon2": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -181,6 +186,7 @@
             },
             "recursion/core/src/poseidon2_wide": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -195,6 +201,7 @@
             },
             "recursion/core/src/fri_fold": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -218,6 +225,7 @@
             },
             "recursion/core/src/multi": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -241,6 +249,7 @@
             },
             "recursion/core/src/range_check": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -255,6 +264,7 @@
             },
             "recursion/core/src/air": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -290,6 +300,7 @@
             },
             "recursion/core/src/stark": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -330,6 +341,7 @@
           "paths": {
             "recursion/compiler": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -353,6 +365,7 @@
             },
             "recursion/program": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -417,6 +430,7 @@
             },
             "recursion/circuit": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -440,6 +454,7 @@
             },
             "recursion/gnark-ffi/go/sp1": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -454,6 +469,7 @@
             },
             "recursion/gnark-ffi/go/sp1/build.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -476,6 +492,7 @@
           "paths": {
             "contracts/src": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -512,6 +529,7 @@
           "paths": {
             "core/src/memory/global.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -526,6 +544,7 @@
             },
             "core/src/memory/program.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -540,6 +559,7 @@
             },
             "core/src/air/builder.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -554,6 +574,7 @@
             },
             "core/src/air/extension.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -568,6 +589,7 @@
             },
             "core/src/air/polynomial.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -582,6 +604,7 @@
             },
             "core/src/air/public_values.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -596,6 +619,7 @@
             },
             "core/src/air/sub_builder.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -610,6 +634,7 @@
             },
             "core/src/air/word.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -624,6 +649,7 @@
             },
             "core/src/alu/add_sub/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -638,6 +664,7 @@
             },
             "core/src/alu/bitwise/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -652,6 +679,7 @@
             },
             "core/src/alu/divrem/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -666,6 +694,7 @@
             },
             "core/src/alu/divrem/utils.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -680,6 +709,7 @@
             },
             "core/src/alu/lt/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -694,6 +724,7 @@
             },
             "core/src/alu/mul/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -708,6 +739,7 @@
             },
             "core/src/alu/sll/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -722,6 +754,7 @@
             },
             "core/src/alu/sr/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -736,6 +769,7 @@
             },
             "core/src/bytes/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -750,6 +784,7 @@
             },
             "core/src/cpu/air/branch.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -764,6 +799,7 @@
             },
             "core/src/cpu/air/ecall.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -778,6 +814,7 @@
             },
             "core/src/cpu/air/memory.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -792,6 +829,7 @@
             },
             "core/src/cpu/air/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -806,6 +844,7 @@
             },
             "core/src/cpu/air/register.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -820,6 +859,7 @@
             },
             "core/src/lookup/builder.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -834,6 +874,7 @@
             },
             "core/src/operations/add.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -848,6 +889,7 @@
             },
             "core/src/operations/add4.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -862,6 +904,7 @@
             },
             "core/src/operations/add5.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -876,6 +919,7 @@
             },
             "core/src/operations/and.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -890,6 +934,7 @@
             },
             "core/src/operations/field/field_den.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -904,6 +949,7 @@
             },
             "core/src/operations/field/field_inner_product.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -918,6 +964,7 @@
             },
             "core/src/operations/field/field_op.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -932,6 +979,7 @@
             },
             "core/src/operations/field/field_sqrt.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -946,6 +994,7 @@
             },
             "core/src/operations/field/range.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -960,6 +1009,7 @@
             },
             "core/src/operations/field/util_air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -974,6 +1024,7 @@
             },
             "core/src/operations/fixed_rotate_right.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -988,6 +1039,7 @@
             },
             "core/src/operations/fixed_shift_right.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1002,6 +1054,7 @@
             },
             "core/src/operations/is_equal_word.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1016,6 +1069,7 @@
             },
             "core/src/operations/is_zero.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1030,6 +1084,7 @@
             },
             "core/src/operations/is_zero_word.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1044,6 +1099,7 @@
             },
             "core/src/operations/not.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1058,6 +1114,7 @@
             },
             "core/src/operations/or.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1072,6 +1129,7 @@
             },
             "core/src/operations/xor.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1086,6 +1144,7 @@
             },
             "core/src/program/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1100,6 +1159,7 @@
             },
             "core/src/stark/folder.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1114,6 +1174,7 @@
             },
             "core/src/stark/machine.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1128,6 +1189,7 @@
             },
             "core/src/stark/verifier.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1142,6 +1204,7 @@
             },
             "core/src/syscall/precompiles/edwards/ed_add.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1156,6 +1219,7 @@
             },
             "core/src/syscall/precompiles/edwards/ed_decompress.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1170,6 +1234,7 @@
             },
             "core/src/syscall/precompiles/keccak256/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1184,6 +1249,7 @@
             },
             "core/src/syscall/precompiles/sha256/compress/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1198,6 +1264,7 @@
             },
             "core/src/syscall/precompiles/sha256/extend/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1212,6 +1279,7 @@
             },
             "core/src/syscall/precompiles/uint256/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1226,6 +1294,7 @@
             },
             "core/src/syscall/precompiles/weierstrass/weierstrass_add.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1240,6 +1309,7 @@
             },
             "core/src/syscall/precompiles/weierstrass/weierstrass_decompress.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1254,6 +1324,7 @@
             },
             "core/src/syscall/precompiles/weierstrass/weierstrass_double.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1268,6 +1339,7 @@
             },
             "prover/src/verify.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1304,6 +1376,7 @@
           "paths": {
             "crates/recursion/circuit-v2/src/stark.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1327,6 +1400,7 @@
             },
             "crates/recursion/circuit-v2/src/challenger.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1350,6 +1424,7 @@
             },
             "crates/recursion/circuit-v2/src/machine/core.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1382,6 +1457,7 @@
             },
             "crates/recursion/circuit-v2/src/machine/compress.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1405,6 +1481,7 @@
             },
             "crates/recursion/circuit-v2/src/utils.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1419,6 +1496,7 @@
             },
             "crates/recursion/core/src/stark/config.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1433,6 +1511,7 @@
             },
             "crates/recursion/compiler/src/circuit/builder.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1447,6 +1526,7 @@
             },
             "crates/recursion/compiler/src/ir/bits.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1461,6 +1541,7 @@
             },
             "crates/recursion/core-v2/src/chips/exp_reverse_bits.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1475,6 +1556,7 @@
             },
             "crates/stark/src/verifier.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1507,6 +1589,7 @@
             },
             "crates/stark/src/prover.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1521,6 +1604,7 @@
             },
             "crates/stark/src/machine.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1535,6 +1619,7 @@
             },
             "crates/stark/src/types.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1549,6 +1634,7 @@
             },
             "crates/recursion/circuit/src/stark.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1563,6 +1649,7 @@
             },
             "crates/core/machine/src/syscall/chip.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1577,6 +1664,7 @@
             },
             "crates/core/machine/src/riscv/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1591,6 +1679,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/edwards/ed_add.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1605,6 +1694,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/edwards/ed_decompress.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1619,6 +1709,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/fptower/fp.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1633,6 +1724,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/fptower/fp2_addsub.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1647,6 +1739,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/fptower/fp2_mul.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1661,6 +1754,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/keccak256/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1675,6 +1769,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/sha256/compress/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1689,6 +1784,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/sha256/extend/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1703,6 +1799,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/uint256/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1717,6 +1814,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/weierstrass/weierstrass_add.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1731,6 +1829,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/weierstrass/weierstrass_decompress.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1745,6 +1844,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/weierstrass/weierstrass_double.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1781,6 +1881,7 @@
           "paths": {
             "crates/core/executor": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1795,6 +1896,7 @@
             },
             "crates/prover": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1852,6 +1954,7 @@
           "paths": {
             "contracts/src/SP1TeeVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1893,6 +1996,7 @@
             },
             "contracts/src/SignersMap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1916,6 +2020,7 @@
             },
             "contracts/src/SimpleOwnable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1965,6 +2070,7 @@
           "paths": {
             "crates/core/executor/src/record.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1979,6 +2085,7 @@
             },
             "crates/core/machine/src/adapter/bump.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -1993,6 +2100,7 @@
             },
             "crates/core/machine/src/adapter/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2007,6 +2115,7 @@
             },
             "crates/core/machine/src/adapter/register/alu_type.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2021,6 +2130,7 @@
             },
             "crates/core/machine/src/adapter/register/i_type.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2035,6 +2145,7 @@
             },
             "crates/core/machine/src/adapter/register/j_type.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2049,6 +2160,7 @@
             },
             "crates/core/machine/src/adapter/register/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2063,6 +2175,7 @@
             },
             "crates/core/machine/src/adapter/register/r_type.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2077,6 +2190,7 @@
             },
             "crates/core/machine/src/adapter/state.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2091,6 +2205,7 @@
             },
             "crates/core/machine/src/air/memory.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2105,6 +2220,7 @@
             },
             "crates/core/machine/src/air/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2119,6 +2235,7 @@
             },
             "crates/core/machine/src/air/operation.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2133,6 +2250,7 @@
             },
             "crates/core/machine/src/air/program.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2147,6 +2265,7 @@
             },
             "crates/core/machine/src/air/word.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2161,6 +2280,7 @@
             },
             "crates/core/machine/src/alu/add_sub/add.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2175,6 +2295,7 @@
             },
             "crates/core/machine/src/alu/add_sub/addi.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2189,6 +2310,7 @@
             },
             "crates/core/machine/src/alu/add_sub/addw.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2203,6 +2325,7 @@
             },
             "crates/core/machine/src/alu/add_sub/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2217,6 +2340,7 @@
             },
             "crates/core/machine/src/alu/add_sub/sub.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2231,6 +2355,7 @@
             },
             "crates/core/machine/src/alu/add_sub/subw.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2245,6 +2370,7 @@
             },
             "crates/core/machine/src/alu/bitwise/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2259,6 +2385,7 @@
             },
             "crates/core/machine/src/alu/divrem/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2273,6 +2400,7 @@
             },
             "crates/core/machine/src/alu/lt/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2287,6 +2415,7 @@
             },
             "crates/core/machine/src/alu/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2301,6 +2430,7 @@
             },
             "crates/core/machine/src/alu/mul/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2315,6 +2445,7 @@
             },
             "crates/core/machine/src/alu/sll/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2329,6 +2460,7 @@
             },
             "crates/core/machine/src/alu/sr/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2343,6 +2475,7 @@
             },
             "crates/core/machine/src/bytes/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2357,6 +2490,7 @@
             },
             "crates/core/machine/src/bytes/columns.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2371,6 +2505,7 @@
             },
             "crates/core/machine/src/bytes/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2385,6 +2520,7 @@
             },
             "crates/core/machine/src/bytes/trace.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2399,6 +2535,7 @@
             },
             "crates/core/machine/src/control_flow/branch/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2413,6 +2550,7 @@
             },
             "crates/core/machine/src/control_flow/branch/columns.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2427,6 +2565,7 @@
             },
             "crates/core/machine/src/control_flow/branch/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2441,6 +2580,7 @@
             },
             "crates/core/machine/src/control_flow/branch/trace.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2455,6 +2595,7 @@
             },
             "crates/core/machine/src/control_flow/jal/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2469,6 +2610,7 @@
             },
             "crates/core/machine/src/control_flow/jal/columns.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2483,6 +2625,7 @@
             },
             "crates/core/machine/src/control_flow/jal/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2497,6 +2640,7 @@
             },
             "crates/core/machine/src/control_flow/jal/trace.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2511,6 +2655,7 @@
             },
             "crates/core/machine/src/control_flow/jalr/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2525,6 +2670,7 @@
             },
             "crates/core/machine/src/control_flow/jalr/columns.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2539,6 +2685,7 @@
             },
             "crates/core/machine/src/control_flow/jalr/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2553,6 +2700,7 @@
             },
             "crates/core/machine/src/control_flow/jalr/trace.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2567,6 +2715,7 @@
             },
             "crates/core/machine/src/control_flow/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2581,6 +2730,7 @@
             },
             "crates/core/machine/src/executor.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2595,6 +2745,7 @@
             },
             "crates/core/machine/src/global/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2609,6 +2760,7 @@
             },
             "crates/core/machine/src/io.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2623,6 +2775,7 @@
             },
             "crates/core/machine/src/lib.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2637,6 +2790,7 @@
             },
             "crates/core/machine/src/memory/bump.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2651,6 +2805,7 @@
             },
             "crates/core/machine/src/memory/consistency/columns.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2665,6 +2820,7 @@
             },
             "crates/core/machine/src/memory/consistency/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2679,6 +2835,7 @@
             },
             "crates/core/machine/src/memory/consistency/trace.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2693,6 +2850,7 @@
             },
             "crates/core/machine/src/memory/global.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2707,6 +2865,7 @@
             },
             "crates/core/machine/src/memory/instructions/load/load_byte.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2721,6 +2880,7 @@
             },
             "crates/core/machine/src/memory/instructions/load/load_double.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2735,6 +2895,7 @@
             },
             "crates/core/machine/src/memory/instructions/load/load_half.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2749,6 +2910,7 @@
             },
             "crates/core/machine/src/memory/instructions/load/load_word.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2763,6 +2925,7 @@
             },
             "crates/core/machine/src/memory/instructions/load/load_x0.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2777,6 +2940,7 @@
             },
             "crates/core/machine/src/memory/instructions/load/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2791,6 +2955,7 @@
             },
             "crates/core/machine/src/memory/instructions/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2805,6 +2970,7 @@
             },
             "crates/core/machine/src/memory/instructions/store/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2819,6 +2985,7 @@
             },
             "crates/core/machine/src/memory/instructions/store/store_byte.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2833,6 +3000,7 @@
             },
             "crates/core/machine/src/memory/instructions/store/store_double.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2847,6 +3015,7 @@
             },
             "crates/core/machine/src/memory/instructions/store/store_half.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2861,6 +3030,7 @@
             },
             "crates/core/machine/src/memory/instructions/store/store_word.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2875,6 +3045,7 @@
             },
             "crates/core/machine/src/memory/local.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2889,6 +3060,7 @@
             },
             "crates/core/machine/src/memory/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2903,6 +3075,7 @@
             },
             "crates/core/machine/src/memory/page_prot.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2917,6 +3090,7 @@
             },
             "crates/core/machine/src/memory/page_prot_global.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2931,6 +3105,7 @@
             },
             "crates/core/machine/src/memory/page_prot_local.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2945,6 +3120,7 @@
             },
             "crates/core/machine/src/operations/add.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2959,6 +3135,7 @@
             },
             "crates/core/machine/src/operations/add4.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2973,6 +3150,7 @@
             },
             "crates/core/machine/src/operations/add5.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2987,6 +3165,7 @@
             },
             "crates/core/machine/src/operations/add_u32.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3001,6 +3180,7 @@
             },
             "crates/core/machine/src/operations/address.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3015,6 +3195,7 @@
             },
             "crates/core/machine/src/operations/addrs_add.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3029,6 +3210,7 @@
             },
             "crates/core/machine/src/operations/addw.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3043,6 +3225,7 @@
             },
             "crates/core/machine/src/operations/and_u32.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3057,6 +3240,7 @@
             },
             "crates/core/machine/src/operations/bitwise.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3071,6 +3255,7 @@
             },
             "crates/core/machine/src/operations/bitwise_u16.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3085,6 +3270,7 @@
             },
             "crates/core/machine/src/operations/clk.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3099,6 +3285,7 @@
             },
             "crates/core/machine/src/operations/field/field_den.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3113,6 +3300,7 @@
             },
             "crates/core/machine/src/operations/field/field_inner_product.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3127,6 +3315,7 @@
             },
             "crates/core/machine/src/operations/field/field_op.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3141,6 +3330,7 @@
             },
             "crates/core/machine/src/operations/field/field_sqrt.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3155,6 +3345,7 @@
             },
             "crates/core/machine/src/operations/field/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3169,6 +3360,7 @@
             },
             "crates/core/machine/src/operations/field/range.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3183,6 +3375,7 @@
             },
             "crates/core/machine/src/operations/field/util_air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3197,6 +3390,7 @@
             },
             "crates/core/machine/src/operations/fixed_rotate_right.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3211,6 +3405,7 @@
             },
             "crates/core/machine/src/operations/fixed_shift_right.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3225,6 +3420,7 @@
             },
             "crates/core/machine/src/operations/global_accumulation.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3239,6 +3435,7 @@
             },
             "crates/core/machine/src/operations/global_interaction.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3253,6 +3450,7 @@
             },
             "crates/core/machine/src/operations/is_equal_word.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3267,6 +3465,7 @@
             },
             "crates/core/machine/src/operations/is_zero.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3281,6 +3480,7 @@
             },
             "crates/core/machine/src/operations/is_zero_word.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3295,6 +3495,7 @@
             },
             "crates/core/machine/src/operations/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3309,6 +3510,7 @@
             },
             "crates/core/machine/src/operations/msb.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3323,6 +3525,7 @@
             },
             "crates/core/machine/src/operations/mul.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3337,6 +3540,7 @@
             },
             "crates/core/machine/src/operations/not_u32.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3351,6 +3555,7 @@
             },
             "crates/core/machine/src/operations/page.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3365,6 +3570,7 @@
             },
             "crates/core/machine/src/operations/poseidon2/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3379,6 +3585,7 @@
             },
             "crates/core/machine/src/operations/poseidon2/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3393,6 +3600,7 @@
             },
             "crates/core/machine/src/operations/poseidon2/permutation.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3407,6 +3615,7 @@
             },
             "crates/core/machine/src/operations/poseidon2/trace.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3421,6 +3630,7 @@
             },
             "crates/core/machine/src/operations/slt.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3435,6 +3645,7 @@
             },
             "crates/core/machine/src/operations/sp1_field_word.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3449,6 +3660,7 @@
             },
             "crates/core/machine/src/operations/sub.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3463,6 +3675,7 @@
             },
             "crates/core/machine/src/operations/subw.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3477,6 +3690,7 @@
             },
             "crates/core/machine/src/operations/syscall_addr.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3491,6 +3705,7 @@
             },
             "crates/core/machine/src/operations/u16_compare.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3505,6 +3720,7 @@
             },
             "crates/core/machine/src/operations/u16_operation.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3519,6 +3735,7 @@
             },
             "crates/core/machine/src/operations/u32_operation.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3533,6 +3750,7 @@
             },
             "crates/core/machine/src/operations/xor_u32.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3547,6 +3765,7 @@
             },
             "crates/core/machine/src/program/instruction.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3561,6 +3780,7 @@
             },
             "crates/core/machine/src/program/instruction_decode.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3575,6 +3795,7 @@
             },
             "crates/core/machine/src/program/instruction_fetch.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3589,6 +3810,7 @@
             },
             "crates/core/machine/src/program/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3603,6 +3825,7 @@
             },
             "crates/core/machine/src/program/trusted.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3617,6 +3840,7 @@
             },
             "crates/core/machine/src/range/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3631,6 +3855,7 @@
             },
             "crates/core/machine/src/range/columns.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3645,6 +3870,7 @@
             },
             "crates/core/machine/src/range/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3659,6 +3885,7 @@
             },
             "crates/core/machine/src/range/trace.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3673,6 +3900,7 @@
             },
             "crates/core/machine/src/riscv/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3687,6 +3915,7 @@
             },
             "crates/core/machine/src/syscall/chip.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3701,6 +3930,7 @@
             },
             "crates/core/machine/src/syscall/instructions/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3715,6 +3945,7 @@
             },
             "crates/core/machine/src/syscall/instructions/columns.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3729,6 +3960,7 @@
             },
             "crates/core/machine/src/syscall/instructions/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3743,6 +3975,7 @@
             },
             "crates/core/machine/src/syscall/instructions/trace.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3757,6 +3990,7 @@
             },
             "crates/core/machine/src/syscall/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3771,6 +4005,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/edwards/ed_add.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3785,6 +4020,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/edwards/ed_decompress.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3799,6 +4035,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/edwards/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3813,6 +4050,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/fptower/fp.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3827,6 +4065,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/fptower/fp2_addsub.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3841,6 +4080,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/fptower/fp2_mul.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3855,6 +4095,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/fptower/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3869,6 +4110,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/keccak256/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3883,6 +4125,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/keccak256/columns.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3897,6 +4140,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/keccak256/constants.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3911,6 +4155,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/keccak256/controller.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3925,6 +4170,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/keccak256/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3939,6 +4185,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/keccak256/trace.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3953,6 +4200,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3967,6 +4215,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/mprotect/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3981,6 +4230,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/mprotect/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -3995,6 +4245,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/poseidon2/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4009,6 +4260,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/poseidon2/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4023,6 +4275,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/sha256/compress/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4037,6 +4290,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/sha256/compress/columns.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4051,6 +4305,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/sha256/compress/controller.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4065,6 +4320,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/sha256/compress/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4079,6 +4335,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/sha256/compress/trace.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4093,6 +4350,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/sha256/extend/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4107,6 +4365,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/sha256/extend/columns.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4121,6 +4380,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/sha256/extend/controller.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4135,6 +4395,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/sha256/extend/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4149,6 +4410,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/sha256/extend/trace.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4163,6 +4425,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/sha256/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4177,6 +4440,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/u256x2048_mul/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4191,6 +4455,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/u256x2048_mul/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4205,6 +4470,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/uint256/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4219,6 +4485,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/uint256/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4233,6 +4500,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/uint256_ops/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4247,6 +4515,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/uint256_ops/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4261,6 +4530,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/weierstrass/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4275,6 +4545,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/weierstrass/weierstrass_add.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4289,6 +4560,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/weierstrass/weierstrass_decompress.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4303,6 +4575,7 @@
             },
             "crates/core/machine/src/syscall/precompiles/weierstrass/weierstrass_double.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4317,6 +4590,7 @@
             },
             "crates/core/machine/src/utils/concurrency.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4331,6 +4605,7 @@
             },
             "crates/core/machine/src/utils/logger.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4345,6 +4620,7 @@
             },
             "crates/core/machine/src/utils/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4359,6 +4635,7 @@
             },
             "crates/core/machine/src/utils/span.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4373,6 +4650,7 @@
             },
             "crates/core/machine/src/utype/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4387,6 +4665,7 @@
             },
             "crates/prover/src/verify.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4401,6 +4680,7 @@
             },
             "crates/recursion/circuit/src/basefold/merkle_tree.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4415,6 +4695,7 @@
             },
             "crates/recursion/circuit/src/basefold/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4429,6 +4710,7 @@
             },
             "crates/recursion/circuit/src/basefold/stacked.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4443,6 +4725,7 @@
             },
             "crates/recursion/circuit/src/basefold/tcs.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4457,6 +4740,7 @@
             },
             "crates/recursion/circuit/src/basefold/whir.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4471,6 +4755,7 @@
             },
             "crates/recursion/circuit/src/basefold/witness.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4485,6 +4770,7 @@
             },
             "crates/recursion/circuit/src/challenger.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4499,6 +4785,7 @@
             },
             "crates/recursion/circuit/src/dummy/jagged.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4513,6 +4800,7 @@
             },
             "crates/recursion/circuit/src/dummy/logup_gkr.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4527,6 +4815,7 @@
             },
             "crates/recursion/circuit/src/dummy/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4541,6 +4830,7 @@
             },
             "crates/recursion/circuit/src/dummy/shard_proof.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4555,6 +4845,7 @@
             },
             "crates/recursion/circuit/src/dummy/sumcheck.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4569,6 +4860,7 @@
             },
             "crates/recursion/circuit/src/hash.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4583,6 +4875,7 @@
             },
             "crates/recursion/circuit/src/jagged/jagged_eval.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4597,6 +4890,7 @@
             },
             "crates/recursion/circuit/src/jagged/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4611,6 +4905,7 @@
             },
             "crates/recursion/circuit/src/jagged/verifier.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4625,6 +4920,7 @@
             },
             "crates/recursion/circuit/src/jagged/witness.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4639,6 +4935,7 @@
             },
             "crates/recursion/circuit/src/lib.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4653,6 +4950,7 @@
             },
             "crates/recursion/circuit/src/logup_gkr.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4667,6 +4965,7 @@
             },
             "crates/recursion/circuit/src/machine/complete.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4681,6 +4980,7 @@
             },
             "crates/recursion/circuit/src/machine/compress.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4695,6 +4995,7 @@
             },
             "crates/recursion/circuit/src/machine/core.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4709,6 +5010,7 @@
             },
             "crates/recursion/circuit/src/machine/deferred.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4723,6 +5025,7 @@
             },
             "crates/recursion/circuit/src/machine/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4737,6 +5040,7 @@
             },
             "crates/recursion/circuit/src/machine/public_values.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4751,6 +5055,7 @@
             },
             "crates/recursion/circuit/src/machine/root.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4765,6 +5070,7 @@
             },
             "crates/recursion/circuit/src/machine/vkey_proof.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4779,6 +5085,7 @@
             },
             "crates/recursion/circuit/src/machine/witness.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4793,6 +5100,7 @@
             },
             "crates/recursion/circuit/src/machine/wrap.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4807,6 +5115,7 @@
             },
             "crates/recursion/circuit/src/shard.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4821,6 +5130,7 @@
             },
             "crates/recursion/circuit/src/sumcheck/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4835,6 +5145,7 @@
             },
             "crates/recursion/circuit/src/sumcheck/witness.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4849,6 +5160,7 @@
             },
             "crates/recursion/circuit/src/symbolic.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4863,6 +5175,7 @@
             },
             "crates/recursion/circuit/src/utils.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4877,6 +5190,7 @@
             },
             "crates/recursion/circuit/src/witness.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4891,6 +5205,7 @@
             },
             "crates/recursion/circuit/src/zerocheck.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4905,6 +5220,7 @@
             },
             "crates/recursion/gnark-ffi/go/main.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4919,6 +5235,7 @@
             },
             "crates/recursion/gnark-ffi/go/sp1/build.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4933,6 +5250,7 @@
             },
             "crates/recursion/gnark-ffi/go/sp1/koalabear/koalabear.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4950,6 +5268,7 @@
             },
             "crates/recursion/gnark-ffi/go/sp1/poseidon2/constants.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4964,6 +5283,7 @@
             },
             "crates/recursion/gnark-ffi/go/sp1/poseidon2/poseidon2.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4978,6 +5298,7 @@
             },
             "crates/recursion/gnark-ffi/go/sp1/poseidon2/poseidon2_koalabear.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4992,6 +5313,7 @@
             },
             "crates/recursion/gnark-ffi/go/sp1/poseidon2/utils.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5006,6 +5328,7 @@
             },
             "crates/recursion/gnark-ffi/go/sp1/prove.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5020,6 +5343,7 @@
             },
             "crates/recursion/gnark-ffi/go/sp1/sp1.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5034,6 +5358,7 @@
             },
             "crates/recursion/gnark-ffi/go/sp1/utils.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5048,6 +5373,7 @@
             },
             "crates/recursion/gnark-ffi/go/sp1/verify.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5062,6 +5388,7 @@
             },
             "crates/recursion/machine/src/builder.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5076,6 +5403,7 @@
             },
             "crates/recursion/machine/src/chips/alu_base.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5090,6 +5418,7 @@
             },
             "crates/recursion/machine/src/chips/alu_ext.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5104,6 +5433,7 @@
             },
             "crates/recursion/machine/src/chips/mem/constant.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5118,6 +5448,7 @@
             },
             "crates/recursion/machine/src/chips/mem/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5132,6 +5463,7 @@
             },
             "crates/recursion/machine/src/chips/mem/variable.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5146,6 +5478,7 @@
             },
             "crates/recursion/machine/src/chips/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5160,6 +5493,7 @@
             },
             "crates/recursion/machine/src/chips/poseidon2_helper/convert.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5174,6 +5508,7 @@
             },
             "crates/recursion/machine/src/chips/poseidon2_helper/linear.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5188,6 +5523,7 @@
             },
             "crates/recursion/machine/src/chips/poseidon2_helper/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5202,6 +5538,7 @@
             },
             "crates/recursion/machine/src/chips/poseidon2_helper/sbox.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5216,6 +5553,7 @@
             },
             "crates/recursion/machine/src/chips/poseidon2_wide/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5230,6 +5568,7 @@
             },
             "crates/recursion/machine/src/chips/poseidon2_wide/columns/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5244,6 +5583,7 @@
             },
             "crates/recursion/machine/src/chips/poseidon2_wide/columns/preprocessed.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5258,6 +5598,7 @@
             },
             "crates/recursion/machine/src/chips/poseidon2_wide/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5272,6 +5613,7 @@
             },
             "crates/recursion/machine/src/chips/poseidon2_wide/trace.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5286,6 +5628,7 @@
             },
             "crates/recursion/machine/src/chips/prefix_sum_checks.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5300,6 +5643,7 @@
             },
             "crates/recursion/machine/src/chips/public_values.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5314,6 +5658,7 @@
             },
             "crates/recursion/machine/src/chips/select.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5328,6 +5673,7 @@
             },
             "crates/recursion/machine/src/lib.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5342,6 +5688,7 @@
             },
             "crates/recursion/machine/src/machine.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5356,6 +5703,7 @@
             },
             "crates/build/src/command": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5370,6 +5718,7 @@
             },
             "crates/cli/src/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5384,6 +5733,7 @@
             },
             "crates/core/compiler/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5398,6 +5748,7 @@
             },
             "crates/core/executor/src/disassembler": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5412,6 +5763,7 @@
             },
             "crates/core/executor/src/events": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5426,6 +5778,7 @@
             },
             "crates/core/executor/src/syscalls": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5440,6 +5793,7 @@
             },
             "crates/curves/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5454,6 +5808,7 @@
             },
             "crates/derive/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5468,6 +5823,7 @@
             },
             "crates/eval/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5482,6 +5838,7 @@
             },
             "crates/helper/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5496,6 +5853,7 @@
             },
             "crates/hypercube/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5510,6 +5868,7 @@
             },
             "crates/perf/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5524,6 +5883,7 @@
             },
             "crates/primitives/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5538,6 +5898,7 @@
             },
             "crates/prover/scripts": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5552,6 +5913,7 @@
             },
             "crates/prover/src/gas": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5566,6 +5928,7 @@
             },
             "crates/prover/src/recursion": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5580,6 +5943,7 @@
             },
             "crates/recursion/compiler/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5594,6 +5958,7 @@
             },
             "crates/recursion/derive/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5608,6 +5973,7 @@
             },
             "crates/recursion/executor/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5622,6 +5988,7 @@
             },
             "crates/recursion/gnark-cli/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5636,6 +6003,7 @@
             },
             "crates/recursion/gnark-ffi/go/sp1/trusted_setup": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5650,6 +6018,7 @@
             },
             "crates/recursion/gnark-ffi/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5664,6 +6033,7 @@
             },
             "crates/sdk/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5678,6 +6048,7 @@
             },
             "crates/test-artifacts/programs/bls12381-add/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5692,6 +6063,7 @@
             },
             "crates/test-artifacts/programs/bls12381-decompress/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5706,6 +6078,7 @@
             },
             "crates/test-artifacts/programs/bls12381-double/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5720,6 +6093,7 @@
             },
             "crates/test-artifacts/programs/bls12381-fp/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5734,6 +6108,7 @@
             },
             "crates/test-artifacts/programs/bls12381-fp2-addsub/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5748,6 +6123,7 @@
             },
             "crates/test-artifacts/programs/bls12381-fp2-mul/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5762,6 +6138,7 @@
             },
             "crates/test-artifacts/programs/bls12381-mul/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5776,6 +6153,7 @@
             },
             "crates/test-artifacts/programs/bn254-add/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5790,6 +6168,7 @@
             },
             "crates/test-artifacts/programs/bn254-double/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5804,6 +6183,7 @@
             },
             "crates/test-artifacts/programs/bn254-fp/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5818,6 +6198,7 @@
             },
             "crates/test-artifacts/programs/bn254-fp2-addsub/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5832,6 +6213,7 @@
             },
             "crates/test-artifacts/programs/bn254-fp2-mul/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5846,6 +6228,7 @@
             },
             "crates/test-artifacts/programs/bn254-mul/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5860,6 +6243,7 @@
             },
             "crates/test-artifacts/programs/common/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5874,6 +6258,7 @@
             },
             "crates/test-artifacts/programs/cycle-tracker/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5888,6 +6273,7 @@
             },
             "crates/test-artifacts/programs/ed-add/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5902,6 +6288,7 @@
             },
             "crates/test-artifacts/programs/ed-decompress/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5916,6 +6303,7 @@
             },
             "crates/test-artifacts/programs/ed25519/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5930,6 +6318,7 @@
             },
             "crates/test-artifacts/programs/fibonacci-blake3/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5944,6 +6333,7 @@
             },
             "crates/test-artifacts/programs/fibonacci/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5958,6 +6348,7 @@
             },
             "crates/test-artifacts/programs/hello-world/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5972,6 +6363,7 @@
             },
             "crates/test-artifacts/programs/hint-io/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5986,6 +6378,7 @@
             },
             "crates/test-artifacts/programs/keccak-permute/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6000,6 +6393,7 @@
             },
             "crates/test-artifacts/programs/keccak256/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6014,6 +6408,7 @@
             },
             "crates/test-artifacts/programs/panic/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6028,6 +6423,7 @@
             },
             "crates/test-artifacts/programs/rand/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6042,6 +6438,7 @@
             },
             "crates/test-artifacts/programs/secp256k1-add/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6056,6 +6453,7 @@
             },
             "crates/test-artifacts/programs/secp256k1-decompress/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6070,6 +6468,7 @@
             },
             "crates/test-artifacts/programs/secp256k1-double/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6084,6 +6483,7 @@
             },
             "crates/test-artifacts/programs/secp256k1-mul/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6098,6 +6498,7 @@
             },
             "crates/test-artifacts/programs/secp256r1-add/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6112,6 +6513,7 @@
             },
             "crates/test-artifacts/programs/secp256r1-decompress/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6126,6 +6528,7 @@
             },
             "crates/test-artifacts/programs/secp256r1-double/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6140,6 +6543,7 @@
             },
             "crates/test-artifacts/programs/sha-compress/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6154,6 +6558,7 @@
             },
             "crates/test-artifacts/programs/sha-extend/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6168,6 +6573,7 @@
             },
             "crates/test-artifacts/programs/sha2/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6182,6 +6588,7 @@
             },
             "crates/test-artifacts/programs/ssz-withdrawals/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6196,6 +6603,7 @@
             },
             "crates/test-artifacts/programs/u256x2048-mul/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6210,6 +6618,7 @@
             },
             "crates/test-artifacts/programs/uint256-arith/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6224,6 +6633,7 @@
             },
             "crates/test-artifacts/programs/uint256-mul/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6238,6 +6648,7 @@
             },
             "crates/test-artifacts/programs/verify-proof/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6252,6 +6663,7 @@
             },
             "crates/test-artifacts/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6266,6 +6678,7 @@
             },
             "crates/verifier/guest-verify-programs/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6280,6 +6693,7 @@
             },
             "crates/verifier/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6294,6 +6708,7 @@
             },
             "crates/zkvm/entrypoint/src/allocators": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6308,6 +6723,7 @@
             },
             "crates/zkvm/entrypoint/src/syscalls": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6322,6 +6738,7 @@
             },
             "crates/zkvm/lib/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6336,6 +6753,7 @@
             },
             "examples/aggregation/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6350,6 +6768,7 @@
             },
             "examples/aggregation/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6364,6 +6783,7 @@
             },
             "examples/bls12381/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6378,6 +6798,7 @@
             },
             "examples/bls12381/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6392,6 +6813,7 @@
             },
             "examples/bn254/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6406,6 +6828,7 @@
             },
             "examples/bn254/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6420,6 +6843,7 @@
             },
             "examples/chess/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6434,6 +6858,7 @@
             },
             "examples/chess/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6448,6 +6873,7 @@
             },
             "examples/cycle-tracking/program/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6462,6 +6888,7 @@
             },
             "examples/cycle-tracking/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6476,6 +6903,7 @@
             },
             "examples/ed-add/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6490,6 +6918,7 @@
             },
             "examples/ed-add/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6504,6 +6933,7 @@
             },
             "examples/fibonacci-cuda/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6518,6 +6948,7 @@
             },
             "examples/fibonacci-cuda/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6532,6 +6963,7 @@
             },
             "examples/fibonacci/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6546,6 +6978,7 @@
             },
             "examples/fibonacci/script/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6560,6 +6993,7 @@
             },
             "examples/fibonacci/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6574,6 +7008,7 @@
             },
             "examples/fp2/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6588,6 +7023,7 @@
             },
             "examples/fp2/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6602,6 +7038,7 @@
             },
             "examples/fptower/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6616,6 +7053,7 @@
             },
             "examples/fptower/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6630,6 +7068,7 @@
             },
             "examples/groth16/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6644,6 +7083,7 @@
             },
             "examples/groth16/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6658,6 +7098,7 @@
             },
             "examples/io/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6672,6 +7113,7 @@
             },
             "examples/io/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6686,6 +7128,7 @@
             },
             "examples/is-prime/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6700,6 +7143,7 @@
             },
             "examples/is-prime/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6714,6 +7158,7 @@
             },
             "examples/json/lib/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6728,6 +7173,7 @@
             },
             "examples/json/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6742,6 +7188,7 @@
             },
             "examples/json/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6756,6 +7203,7 @@
             },
             "examples/keccak/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6770,6 +7218,7 @@
             },
             "examples/keccak/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6784,6 +7233,7 @@
             },
             "examples/mprotect/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6798,6 +7248,7 @@
             },
             "examples/mprotect/script/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6812,6 +7263,7 @@
             },
             "examples/mprotect/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6826,6 +7278,7 @@
             },
             "examples/poseidon2/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6840,6 +7293,7 @@
             },
             "examples/poseidon2/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6854,6 +7308,7 @@
             },
             "examples/regex/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6868,6 +7323,7 @@
             },
             "examples/regex/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6882,6 +7338,7 @@
             },
             "examples/rsa/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6896,6 +7353,7 @@
             },
             "examples/rsp/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6910,6 +7368,7 @@
             },
             "examples/rsp/script/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6924,6 +7383,7 @@
             },
             "examples/rsp/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6938,6 +7398,7 @@
             },
             "examples/secp256k1/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6952,6 +7413,7 @@
             },
             "examples/secp256k1/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6966,6 +7428,7 @@
             },
             "examples/sha/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6980,6 +7443,7 @@
             },
             "examples/sha/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -6994,6 +7458,7 @@
             },
             "examples/ssz-withdrawals/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7008,6 +7473,7 @@
             },
             "examples/ssz-withdrawals/script/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7022,6 +7488,7 @@
             },
             "examples/ssz-withdrawals/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7036,6 +7503,7 @@
             },
             "examples/tendermint/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7050,6 +7518,7 @@
             },
             "examples/tendermint/script/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7064,6 +7533,7 @@
             },
             "examples/tendermint/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7078,6 +7548,7 @@
             },
             "examples/u256x2048-mul/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7092,6 +7563,7 @@
             },
             "examples/u256x2048-mul/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7106,6 +7578,7 @@
             },
             "examples/uint256/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7120,6 +7593,7 @@
             },
             "examples/uint256/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7134,6 +7608,7 @@
             },
             "examples/untrusted_program/jit-program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7148,6 +7623,7 @@
             },
             "examples/untrusted_program/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7162,6 +7638,7 @@
             },
             "examples/untrusted_program/script/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7176,6 +7653,7 @@
             },
             "patch-testing/RustCrypto-rsa/program/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7190,6 +7668,7 @@
             },
             "patch-testing/RustCrypto-rsa/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7204,6 +7683,7 @@
             },
             "patch-testing/bls12-381/program/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7218,6 +7698,7 @@
             },
             "patch-testing/bls12-381/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7232,6 +7713,7 @@
             },
             "patch-testing/bn/program/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7246,6 +7728,7 @@
             },
             "patch-testing/bn/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7260,6 +7743,7 @@
             },
             "patch-testing/build-host/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7274,6 +7758,7 @@
             },
             "patch-testing/curve25519-dalek-ng/program/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7288,6 +7773,7 @@
             },
             "patch-testing/curve25519-dalek-ng/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7302,6 +7788,7 @@
             },
             "patch-testing/curve25519-dalek/program/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7316,6 +7803,7 @@
             },
             "patch-testing/curve25519-dalek/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7330,6 +7818,7 @@
             },
             "patch-testing/k256/program/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7344,6 +7833,7 @@
             },
             "patch-testing/k256/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7358,6 +7848,7 @@
             },
             "patch-testing/keccak/program/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7372,6 +7863,7 @@
             },
             "patch-testing/keccak/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7386,6 +7878,7 @@
             },
             "patch-testing/p256/program/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7400,6 +7893,7 @@
             },
             "patch-testing/p256/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7414,6 +7908,7 @@
             },
             "patch-testing/rustcrypto-bigint/program/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7428,6 +7923,7 @@
             },
             "patch-testing/rustcrypto-bigint/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7442,6 +7938,7 @@
             },
             "patch-testing/secp256k1/program-v0.29.1/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7456,6 +7953,7 @@
             },
             "patch-testing/secp256k1/program-v0.30.0/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7470,6 +7968,7 @@
             },
             "patch-testing/secp256k1/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7484,6 +7983,7 @@
             },
             "patch-testing/sha/program/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7498,6 +7998,7 @@
             },
             "patch-testing/sha/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7512,6 +8013,7 @@
             },
             "patch-testing/sp1-test-macro/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7526,6 +8028,7 @@
             },
             "patch-testing/sp1-test/bin": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7540,6 +8043,7 @@
             },
             "patch-testing/sp1-test/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7554,6 +8058,7 @@
             },
             "slop/crates/adapter-prover/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7568,6 +8073,7 @@
             },
             "slop/crates/air/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7582,6 +8088,7 @@
             },
             "slop/crates/algebra/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7596,6 +8103,7 @@
             },
             "slop/crates/alloc/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7610,6 +8118,7 @@
             },
             "slop/crates/baby-bear/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7624,6 +8133,7 @@
             },
             "slop/crates/basefold-prover/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7638,6 +8148,7 @@
             },
             "slop/crates/basefold/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7652,6 +8163,7 @@
             },
             "slop/crates/bn254/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7666,6 +8178,7 @@
             },
             "slop/crates/challenger/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7680,6 +8193,7 @@
             },
             "slop/crates/commit/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7694,6 +8208,7 @@
             },
             "slop/crates/dft/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7708,6 +8223,7 @@
             },
             "slop/crates/fri/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7722,6 +8238,7 @@
             },
             "slop/crates/futures/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7736,6 +8253,7 @@
             },
             "slop/crates/jagged/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7750,6 +8268,7 @@
             },
             "slop/crates/keccak-air/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7764,6 +8283,7 @@
             },
             "slop/crates/koala-bear/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7778,6 +8298,7 @@
             },
             "slop/crates/matrix/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7792,6 +8313,7 @@
             },
             "slop/crates/maybe-rayon/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7806,6 +8328,7 @@
             },
             "slop/crates/merkle-tree/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7820,6 +8343,7 @@
             },
             "slop/crates/multilinear/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7834,6 +8358,7 @@
             },
             "slop/crates/multivariate-adapter/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7848,6 +8373,7 @@
             },
             "slop/crates/pcs-bench/src": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -7862,6 +8388,7 @@
             },
             "slop/crates/pgspcs/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7876,6 +8403,7 @@
             },
             "slop/crates/poseidon2/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7890,6 +8418,7 @@
             },
             "slop/crates/slop/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7904,6 +8433,7 @@
             },
             "slop/crates/spartan/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7918,6 +8448,7 @@
             },
             "slop/crates/stacked/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7932,6 +8463,7 @@
             },
             "slop/crates/sumcheck/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7946,6 +8478,7 @@
             },
             "slop/crates/symmetric/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7960,6 +8493,7 @@
             },
             "slop/crates/tensor/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7974,6 +8508,7 @@
             },
             "slop/crates/uni-stark/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7988,6 +8523,7 @@
             },
             "slop/crates/utils/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8002,6 +8538,7 @@
             },
             "slop/crates/whir/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8016,6 +8553,7 @@
             },
             "crates/build/src/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8030,6 +8568,7 @@
             },
             "crates/build/src/lib.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8044,6 +8583,7 @@
             },
             "crates/build/src/utils.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8058,6 +8598,7 @@
             },
             "crates/cli/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8072,6 +8613,7 @@
             },
             "crates/cli/src/commands/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8086,6 +8628,7 @@
             },
             "crates/cli/src/commands/install_toolchain.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8100,6 +8643,7 @@
             },
             "crates/cli/src/commands/mod.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8114,6 +8658,7 @@
             },
             "crates/cli/src/commands/new.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8128,6 +8673,7 @@
             },
             "crates/cli/src/commands/vkey.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8142,6 +8688,7 @@
             },
             "crates/cli/src/lib.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8156,6 +8703,7 @@
             },
             "crates/core/executor/src/air.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8170,6 +8718,7 @@
             },
             "crates/core/executor/src/context.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8184,6 +8733,7 @@
             },
             "crates/core/executor/src/cost.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8198,6 +8748,7 @@
             },
             "crates/core/executor/src/estimator.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8212,6 +8763,7 @@
             },
             "crates/core/executor/src/executor.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8226,6 +8778,7 @@
             },
             "crates/core/executor/src/hook.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8240,6 +8793,7 @@
             },
             "crates/core/executor/src/instruction.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8254,6 +8808,7 @@
             },
             "crates/core/executor/src/io.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8268,6 +8823,7 @@
             },
             "crates/core/executor/src/lib.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8282,6 +8838,7 @@
             },
             "crates/core/executor/src/memory.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8296,6 +8853,7 @@
             },
             "crates/core/executor/src/opcode.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8310,6 +8868,7 @@
             },
             "crates/core/executor/src/opts.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8324,6 +8883,7 @@
             },
             "crates/core/executor/src/profiler.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8338,6 +8898,7 @@
             },
             "crates/core/executor/src/program.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8352,6 +8913,7 @@
             },
             "crates/core/executor/src/recursion.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8366,6 +8928,7 @@
             },
             "crates/core/executor/src/register.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8380,6 +8943,7 @@
             },
             "crates/core/executor/src/report.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8394,6 +8958,7 @@
             },
             "crates/core/executor/src/retain.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8408,6 +8973,7 @@
             },
             "crates/core/executor/src/state.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8422,6 +8988,7 @@
             },
             "crates/core/executor/src/subproof.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8436,6 +9003,7 @@
             },
             "crates/core/executor/src/utils.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8450,6 +9018,7 @@
             },
             "crates/core/machine/src/utils/prove.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8464,6 +9033,7 @@
             },
             "crates/core/machine/src/utils/test.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8478,6 +9048,7 @@
             },
             "crates/core/machine/src/utils/zerocheck_unit_test.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8492,6 +9063,7 @@
             },
             "crates/cuda/src/api.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8506,6 +9078,7 @@
             },
             "crates/cuda/src/client.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8520,6 +9093,7 @@
             },
             "crates/cuda/src/error.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8534,6 +9108,7 @@
             },
             "crates/cuda/src/lib.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8548,6 +9123,7 @@
             },
             "crates/cuda/src/pk.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8562,6 +9138,7 @@
             },
             "crates/cuda/src/server.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8576,6 +9153,7 @@
             },
             "crates/prover/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8590,6 +9168,7 @@
             },
             "crates/prover/src/build.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8604,6 +9183,7 @@
             },
             "crates/prover/src/components.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8618,6 +9198,7 @@
             },
             "crates/prover/src/core.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8632,6 +9213,7 @@
             },
             "crates/prover/src/error.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8646,6 +9228,7 @@
             },
             "crates/prover/src/lib.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8660,6 +9243,7 @@
             },
             "crates/prover/src/local.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8674,6 +9258,7 @@
             },
             "crates/prover/src/recursion.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8688,6 +9273,7 @@
             },
             "crates/prover/src/shapes.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8702,6 +9288,7 @@
             },
             "crates/prover/src/types.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8716,6 +9303,7 @@
             },
             "crates/prover/src/utils.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8730,6 +9318,7 @@
             },
             "crates/recursion/gnark-ffi/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8744,6 +9333,7 @@
             },
             "crates/recursion/gnark-ffi/go/main_test.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8758,6 +9348,7 @@
             },
             "crates/recursion/gnark-ffi/go/sp1/poseidon2/poseidon2_test.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8772,6 +9363,7 @@
             },
             "crates/recursion/gnark-ffi/go/sp1/test.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8786,6 +9378,7 @@
             },
             "crates/recursion/machine/src/chips/test_fixtures.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8800,6 +9393,7 @@
             },
             "crates/recursion/machine/src/test.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8814,6 +9408,7 @@
             },
             "crates/test-artifacts/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8828,6 +9423,7 @@
             },
             "crates/test-artifacts/programs/tendermint-benchmark/src/main.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8842,6 +9438,7 @@
             },
             "crates/zkvm/entrypoint/src/lib.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8856,6 +9453,7 @@
             },
             "crates/zkvm/entrypoint/src/libm.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8870,6 +9468,7 @@
             },
             "examples/aggregation/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8884,6 +9483,7 @@
             },
             "examples/bls12381/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8898,6 +9498,7 @@
             },
             "examples/bn254/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8912,6 +9513,7 @@
             },
             "examples/chess/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8926,6 +9528,7 @@
             },
             "examples/cycle-tracking/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8940,6 +9543,7 @@
             },
             "examples/ed-add/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8954,6 +9558,7 @@
             },
             "examples/fibonacci-cuda/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8968,6 +9573,7 @@
             },
             "examples/fibonacci/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8982,6 +9588,7 @@
             },
             "examples/fp2/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8996,6 +9603,7 @@
             },
             "examples/fptower/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9010,6 +9618,7 @@
             },
             "examples/groth16/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9024,6 +9633,7 @@
             },
             "examples/io/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9038,6 +9648,7 @@
             },
             "examples/is-prime/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9052,6 +9663,7 @@
             },
             "examples/json/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9066,6 +9678,7 @@
             },
             "examples/keccak/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9080,6 +9693,7 @@
             },
             "examples/mprotect/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9094,6 +9708,7 @@
             },
             "examples/poseidon2/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9108,6 +9723,7 @@
             },
             "examples/regex/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9122,6 +9738,7 @@
             },
             "examples/rsa/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9136,6 +9753,7 @@
             },
             "examples/rsa/script/src/main.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9150,6 +9768,7 @@
             },
             "examples/rsp/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9164,6 +9783,7 @@
             },
             "examples/secp256k1/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9178,6 +9798,7 @@
             },
             "examples/sha/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9192,6 +9813,7 @@
             },
             "examples/ssz-withdrawals/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9206,6 +9828,7 @@
             },
             "examples/tendermint/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9220,6 +9843,7 @@
             },
             "examples/u256x2048-mul/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9234,6 +9858,7 @@
             },
             "examples/uint256/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9248,6 +9873,7 @@
             },
             "examples/untrusted_program/script/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9262,6 +9888,7 @@
             },
             "patch-testing/RustCrypto-rsa/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9276,6 +9903,7 @@
             },
             "patch-testing/bls12-381/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9290,6 +9918,7 @@
             },
             "patch-testing/bn/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9304,6 +9933,7 @@
             },
             "patch-testing/curve25519-dalek-ng/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9318,6 +9948,7 @@
             },
             "patch-testing/curve25519-dalek/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9332,6 +9963,7 @@
             },
             "patch-testing/k256/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9346,6 +9978,7 @@
             },
             "patch-testing/keccak/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9360,6 +9993,7 @@
             },
             "patch-testing/p256/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9374,6 +10008,7 @@
             },
             "patch-testing/rustcrypto-bigint/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9388,6 +10023,7 @@
             },
             "patch-testing/secp256k1/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9402,6 +10038,7 @@
             },
             "patch-testing/sha/build.rs": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -9438,6 +10075,7 @@
           "paths": {
             "crates/hypercube/src/verifier/shard.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9538,6 +10176,7 @@
             },
             "crates/hypercube/src/logup_gkr/verifier.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9561,6 +10200,7 @@
             },
             "crates/hypercube/src/folder.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9584,6 +10224,7 @@
             },
             "crates/prover": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9607,6 +10248,7 @@
             },
             "slop/crates/multilinear/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9675,6 +10317,7 @@
             },
             "slop/crates/sumcheck/src/verifier.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9689,6 +10332,7 @@
             },
             "slop/crates/sumcheck/src/proof.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9703,6 +10347,7 @@
             },
             "slop/crates/algebra/src/univariate.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9726,6 +10371,7 @@
             },
             "slop/crates/merkle-tree/src/tcs.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9758,6 +10404,7 @@
             },
             "slop/crates/basefold/src/config.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9772,6 +10419,7 @@
             },
             "slop/crates/basefold/src/verifier.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9798,6 +10446,7 @@
             },
             "slop/crates/basefold/src/code.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9812,6 +10461,7 @@
             },
             "slop/crates/stacked/src/verifier.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9826,6 +10476,7 @@
             },
             "slop/crates/jagged/src/verifier.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9966,6 +10617,7 @@
             },
             "slop/crates/jagged/src/poly.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -10007,6 +10659,7 @@
             },
             "slop/crates/jagged/src/jagged_eval/sumcheck_eval.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -10066,6 +10719,7 @@
             },
             "crates/multilinear/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -10125,6 +10779,7 @@
             },
             "crates/sumcheck/src/verifier.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -10151,6 +10806,7 @@
             },
             "crates/sumcheck/src/proof.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -10165,6 +10821,7 @@
             },
             "crates/algebra/src/univariate.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -10179,6 +10836,7 @@
             },
             "crates/merkle-tree/src/tcs.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -10202,6 +10860,7 @@
             },
             "crates/basefold/src/config.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -10216,6 +10875,7 @@
             },
             "crates/basefold/src/verifier.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -10230,6 +10890,7 @@
             },
             "crates/basefold/src/code.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -10244,6 +10905,7 @@
             },
             "crates/stacked/src/verifier.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -10258,6 +10920,7 @@
             },
             "crates/jagged/src/verifier.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -10287,6 +10950,7 @@
             },
             "crates/jagged/src/poly.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -10301,6 +10965,7 @@
             },
             "crates/jagged/src/jagged_eval/sumcheck_eval.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -10315,6 +10980,7 @@
             },
             "crates/alloc/src/buffer.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {

@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "openzeppelin",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -62,6 +63,7 @@
           "paths": {
             "contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -116,6 +118,7 @@
           "paths": {
             "contracts/governance/Governor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -133,6 +136,7 @@
             },
             "contracts/governance/extensions/GovernorCountingSimple.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -147,6 +151,7 @@
             },
             "contracts/governance/extensions/GovernorProposalThreshold.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -161,6 +166,7 @@
             },
             "contracts/governance/extensions/GovernorTimelockControl.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -179,6 +185,7 @@
             },
             "contracts/governance/extensions/GovernorVotes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -193,6 +200,7 @@
             },
             "contracts/governance/extensions/GovernorVotesQuorumFraction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -229,6 +237,7 @@
           "paths": {
             "contracts/token/ERC20/extensions/ERC20FlashMint.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -243,6 +252,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Wrapper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -257,6 +267,7 @@
             },
             "contracts/governance/TimelockController.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -271,6 +282,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Votes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -285,6 +297,7 @@
             },
             "contracts/access/AccessControl.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -299,6 +312,7 @@
             },
             "contracts/token/ERC1155/ERC1155.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -339,6 +353,7 @@
           "paths": {
             "contracts/proxy/utils/Initializable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -353,6 +368,7 @@
             },
             "contracts/governance/extensions/GovernorPreventLateQuorum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -367,6 +383,7 @@
             },
             "contracts/governance/extensions/GovernorVotesQuorumFraction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -384,6 +401,7 @@
             },
             "contracts/token/ERC1155/ERC1155.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -398,6 +416,7 @@
             },
             "contracts/token/ERC1155/extensions/ERC1155Burnable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -412,6 +431,7 @@
             },
             "contracts/token/ERC1155/extensions/ERC1155Pausable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -426,6 +446,7 @@
             },
             "contracts/token/ERC1155/extensions/ERC1155Supply.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -440,6 +461,7 @@
             },
             "contracts/token/ERC1155/utils/ERC1155Holder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -454,6 +476,7 @@
             },
             "contracts/token/ERC1155/utils/ERC1155Receiver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -490,6 +513,7 @@
           "paths": {
             "contracts/utils/Checkpoints.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -531,6 +555,7 @@
             },
             "contracts/utils/math/Math.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -545,6 +570,7 @@
             },
             "contracts/utils/math/SafeCast.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -581,6 +607,7 @@
           "paths": {
             "contracts/token/ERC20/extensions/ERC4626.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -634,6 +661,7 @@
             },
             "contracts/utils/math/Math.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -679,6 +707,7 @@
           "paths": {
             "contracts/access/AccessControlDefaultAdminRules.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -711,6 +740,7 @@
             },
             "contracts/access/IAccessControlDefaultAdminRules.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -734,6 +764,7 @@
             },
             "contracts/access/manager/AccessManaged.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -757,6 +788,7 @@
             },
             "contracts/access/manager/AccessManagerAdapter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -771,6 +803,7 @@
             },
             "contracts/access/manager/AccessManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -794,6 +827,7 @@
             },
             "contracts/access/manager/IAuthority.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -808,6 +842,7 @@
             },
             "contracts/utils/StorageSlot.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -822,6 +857,7 @@
             },
             "contracts/governance/compatibility/GovernorCompatibilityBravo.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -854,6 +890,7 @@
             },
             "contracts/governance/compatibility/IGovernorCompatibilityBravo.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -877,6 +914,7 @@
             },
             "contracts/governance/extensions/GovernorPreventLateQuorum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -900,6 +938,7 @@
             },
             "contracts/governance/extensions/GovernorTimelockCompound.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -923,6 +962,7 @@
             },
             "contracts/governance/extensions/GovernorVotesComp.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -937,6 +977,7 @@
             },
             "contracts/governance/extensions/GovernorVotesQuorumFraction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -960,6 +1001,7 @@
             },
             "contracts/governance/extensions/GovernorVotes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -974,6 +1016,7 @@
             },
             "contracts/governance/Governor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -997,6 +1040,7 @@
             },
             "contracts/governance/IGovernor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1020,6 +1064,7 @@
             },
             "contracts/governance/TimelockController.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1043,6 +1088,7 @@
             },
             "contracts/governance/utils/IVotes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1066,6 +1112,7 @@
             },
             "contracts/governance/utils/Votes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1089,6 +1136,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Votes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1121,6 +1169,7 @@
             },
             "contracts/token/ERC20/extensions/ERC4626.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1135,6 +1184,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Votes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1158,6 +1208,7 @@
             },
             "contracts/proxy/transparent/TransparentUpgradeableProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1181,6 +1232,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Wrapper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1195,6 +1247,7 @@
             },
             "contracts/utils/ShortStrings.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1218,6 +1271,7 @@
             },
             "contracts/utils/Strings.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1232,6 +1286,7 @@
             },
             "contracts/utils/cryptography/EIP712.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1246,6 +1301,7 @@
             },
             "contracts/token/ERC20/utils/SafeERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1260,6 +1316,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721URIStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1274,6 +1331,7 @@
             },
             "contracts/utils/Checkpoints.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1306,6 +1364,7 @@
             },
             "contracts/utils/cryptography/ECDSA.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1320,6 +1379,7 @@
             },
             "contracts/utils/cryptography/SignatureChecker.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1356,6 +1416,7 @@
           "paths": {
             "contracts/token/ERC20/ERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1388,6 +1449,7 @@
             },
             "contracts/token/ERC20/IERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1402,6 +1464,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Burnable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1416,6 +1479,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Capped.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1439,6 +1503,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20FlashMint.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1462,6 +1527,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Pausable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1476,6 +1542,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Permit.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1490,6 +1557,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Votes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1507,6 +1575,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Wrapper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1530,6 +1599,7 @@
             },
             "contracts/token/ERC20/extensions/ERC4626.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1544,6 +1614,7 @@
             },
             "contracts/token/ERC20/extensions/IERC20Metadata.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1558,6 +1629,7 @@
             },
             "contracts/token/ERC20/extensions/IERC20Permit.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1572,6 +1644,7 @@
             },
             "contracts/token/ERC20/utils/SafeERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1586,6 +1659,7 @@
             },
             "contracts/token/ERC1155/ERC1155.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1627,6 +1701,7 @@
             },
             "contracts/token/ERC1155/IERC1155.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1650,6 +1725,7 @@
             },
             "contracts/token/ERC1155/IERC1155Receiver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1664,6 +1740,7 @@
             },
             "contracts/token/ERC1155/extensions/ERC1155Burnable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1678,6 +1755,7 @@
             },
             "contracts/token/ERC1155/extensions/ERC1155Pausable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1701,6 +1779,7 @@
             },
             "contracts/token/ERC1155/extensions/ERC1155Supply.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1724,6 +1803,7 @@
             },
             "contracts/token/ERC1155/extensions/ERC1155URIStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1738,6 +1818,7 @@
             },
             "contracts/token/ERC1155/extensions/IERC1155MetadataURI.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1752,6 +1833,7 @@
             },
             "contracts/token/ERC1155/utils/ERC1155Holder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1775,6 +1857,7 @@
             },
             "contracts/token/ERC1155/utils/ERC1155Receiver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1789,6 +1872,7 @@
             },
             "contracts/utils/StorageSlot.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1803,6 +1887,7 @@
             },
             "contracts/utils/structs/Checkpoints.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1826,6 +1911,7 @@
             },
             "contracts/utils/math/SafeCast.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1840,6 +1926,7 @@
             },
             "contracts/utils/math/Math.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1854,6 +1941,7 @@
             },
             "contracts/interfaces/draft-IERC1822.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1868,6 +1956,7 @@
             },
             "contracts/interfaces/IERC1967.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1882,6 +1971,7 @@
             },
             "contracts/proxy/beacon/BeaconProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1896,6 +1986,7 @@
             },
             "contracts/proxy/beacon/IBeacon.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1919,6 +2010,7 @@
             },
             "contracts/proxy/beacon/UpgradeableBeacon.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1942,6 +2034,7 @@
             },
             "contracts/proxy/ERC1967/ERC1967Proxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1974,6 +2067,7 @@
             },
             "contracts/proxy/ERC1967/ERC1967Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2006,6 +2100,7 @@
             },
             "contracts/proxy/Proxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2029,6 +2124,7 @@
             },
             "contracts/proxy/transparent/ProxyAdmin.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2061,6 +2157,7 @@
             },
             "contracts/proxy/transparent/TransparentUpgradeableProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2093,6 +2190,7 @@
             },
             "contracts/proxy/utils/UUPSUpgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2125,6 +2223,7 @@
             },
             "contracts/metatx/ERC2771Context.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2169,6 +2268,7 @@
             },
             "contracts/metatx/ERC2771Forwarder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2201,6 +2301,7 @@
             },
             "contracts/finance/VestingWallet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2233,6 +2334,7 @@
             },
             "contracts/utils/Address.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2256,6 +2358,7 @@
             },
             "contracts/utils/Context.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2270,6 +2373,7 @@
             },
             "contracts/utils/cryptography/EIP712.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2284,6 +2388,7 @@
             },
             "contracts/utils/Strings.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2307,6 +2412,7 @@
             },
             "contracts/access/AccessControl.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2321,6 +2427,7 @@
             },
             "contracts/access/extensions/AccessControlDefaultAdminRules.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2335,6 +2442,7 @@
             },
             "contracts/access/extensions/AccessControlEnumerable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2349,6 +2457,7 @@
             },
             "contracts/access/Ownable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2372,6 +2481,7 @@
             },
             "contracts/access/Ownable2Step.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2386,6 +2496,7 @@
             },
             "contracts/proxy/Clones.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2400,6 +2511,7 @@
             },
             "contracts/security/Pausable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2414,6 +2526,7 @@
             },
             "contracts/token/common/ERC2981.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2428,6 +2541,7 @@
             },
             "contracts/token/ERC721/ERC721.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2460,6 +2574,7 @@
             },
             "contracts/token/ERC721/IERC721.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2474,6 +2589,7 @@
             },
             "contracts/token/ERC721/IERC721Receiver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2488,6 +2604,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Burnable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2502,6 +2619,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Consecutive.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2525,6 +2643,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Enumerable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2539,6 +2658,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Pausable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2553,6 +2673,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Royalty.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2576,6 +2697,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721URIStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2617,6 +2739,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Votes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2631,6 +2754,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Wrapper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2645,6 +2769,7 @@
             },
             "contracts/token/ERC721/extensions/IERC721Enumerable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2659,6 +2784,7 @@
             },
             "contracts/token/ERC721/extensions/IERC721Metadata.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2673,6 +2799,7 @@
             },
             "contracts/token/ERC721/utils/ERC721Holder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2687,6 +2814,7 @@
             },
             "contracts/utils/cryptography/MessageHashUtils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2719,6 +2847,7 @@
             },
             "contracts/utils/Arrays.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2733,6 +2862,7 @@
             },
             "contracts/utils/Base64.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2747,6 +2877,7 @@
             },
             "contracts/utils/Create2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2761,6 +2892,7 @@
             },
             "contracts/utils/cryptography/ECDSA.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2784,6 +2916,7 @@
             },
             "contracts/utils/introspection/ERC165.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2798,6 +2931,7 @@
             },
             "contracts/utils/introspection/ERC165Checker.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2812,6 +2946,7 @@
             },
             "contracts/utils/introspection/IERC165.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2826,6 +2961,7 @@
             },
             "contracts/utils/structs/BitMaps.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2840,6 +2976,7 @@
             },
             "contracts/access/manager/AccessManaged.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2863,6 +3000,7 @@
             },
             "contracts/access/manager/AccessManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2985,6 +3123,7 @@
             },
             "contracts/access/manager/IAccessManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3008,6 +3147,7 @@
             },
             "contracts/access/manager/IAccessManaged.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3022,6 +3162,7 @@
             },
             "contracts/access/manager/IAuthority.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3036,6 +3177,7 @@
             },
             "contracts/utils/types/Time.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3077,6 +3219,7 @@
             },
             "contracts/utils/math/SignedMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3091,6 +3234,7 @@
             },
             "contracts/utils/structs/EnumerableMap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3114,6 +3258,7 @@
             },
             "contracts/utils/structs/EnumerableSet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3137,6 +3282,7 @@
             },
             "contracts/utils/Multicall.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3151,6 +3297,7 @@
             },
             "contracts/proxy/utils/Initializable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3201,6 +3348,7 @@
             },
             "contracts/security/ReentrancyGuard.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3215,6 +3363,7 @@
             },
             "contracts/governance/extensions/GovernorCountingSimple.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3229,6 +3378,7 @@
             },
             "contracts/governance/extensions/GovernorSettings.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3252,6 +3402,7 @@
             },
             "contracts/governance/extensions/GovernorStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3284,6 +3435,7 @@
             },
             "contracts/governance/extensions/GovernorTimelockAccess.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3325,6 +3477,7 @@
             },
             "contracts/governance/extensions/GovernorTimelockControl.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3357,6 +3510,7 @@
             },
             "contracts/governance/Governor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3407,6 +3561,7 @@
             },
             "contracts/governance/TimelockController.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3439,6 +3594,7 @@
             },
             "contracts/governance/utils/Votes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3453,6 +3609,7 @@
             },
             "contracts/utils/cryptography/MerkleProof.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3494,6 +3651,7 @@
             },
             "contracts/utils/structs/DoubleEndedQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3517,6 +3675,7 @@
             },
             "contracts/governance/extensions/GovernorVotes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3531,6 +3690,7 @@
             },
             "contracts/governance/extensions/GovernorVotesQuorumFraction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3554,6 +3714,7 @@
             },
             "contracts/governance/extensions/GovernorPreventLateQuorum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3568,6 +3729,7 @@
             },
             "contracts/governance/extensions/GovernorTimelockCompound.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3613,6 +3775,7 @@
           "paths": {
             "contracts/access/extensions/AccessControlEnumerable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3627,6 +3790,7 @@
             },
             "contracts/access/manager/AccessManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3659,6 +3823,7 @@
             },
             "contracts/governance/Governor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3682,6 +3847,7 @@
             },
             "contracts/governance/extensions/GovernorCountingSimple.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3696,6 +3862,7 @@
             },
             "contracts/governance/utils/Votes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3719,6 +3886,7 @@
             },
             "contracts/metatx/ERC2771Forwarder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3751,6 +3919,7 @@
             },
             "contracts/proxy/Clones.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3774,6 +3943,7 @@
             },
             "contracts/proxy/ERC1967/ERC1967Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3797,6 +3967,7 @@
             },
             "contracts/proxy/transparent/TransparentUpgradeableProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3820,6 +3991,7 @@
             },
             "contracts/token/ERC1155/ERC1155.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3843,6 +4015,7 @@
             },
             "contracts/token/ERC1155/extensions/ERC1155Supply.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3857,6 +4030,7 @@
             },
             "contracts/token/ERC20/utils/SafeERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3871,6 +4045,7 @@
             },
             "contracts/token/ERC721/ERC721.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3885,6 +4060,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Enumerable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3899,6 +4075,7 @@
             },
             "contracts/token/common/ERC2981.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3922,6 +4099,7 @@
             },
             "contracts/utils/Address.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3945,6 +4123,7 @@
             },
             "contracts/utils/Arrays.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3977,6 +4156,7 @@
             },
             "contracts/utils/Base64.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4018,6 +4198,7 @@
             },
             "contracts/utils/Create2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4041,6 +4222,7 @@
             },
             "contracts/utils/StorageSlot.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4073,6 +4255,7 @@
             },
             "contracts/utils/Strings.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4096,6 +4279,7 @@
             },
             "contracts/utils/cryptography/MerkleProof.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4155,6 +4339,7 @@
             },
             "contracts/utils/cryptography/SignatureChecker.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4169,6 +4354,7 @@
             },
             "contracts/utils/math/Math.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4201,6 +4387,7 @@
             },
             "contracts/utils/math/SafeCast.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4224,6 +4411,7 @@
             },
             "contracts/utils/math/SignedMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4247,6 +4435,7 @@
             },
             "contracts/utils/structs/Checkpoints.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4279,6 +4468,7 @@
             },
             "contracts/utils/structs/DoubleEndedQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4293,6 +4483,7 @@
             },
             "contracts/utils/structs/EnumerableMap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4325,6 +4516,7 @@
             },
             "contracts/finance/VestingWalletCliff.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4348,6 +4540,7 @@
             },
             "contracts/governance/extensions/GovernorCountingFractional.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4380,6 +4573,7 @@
             },
             "contracts/token/ERC20/extensions/draft-ERC20TemporaryApproval.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4394,6 +4588,7 @@
             },
             "contracts/token/ERC20/extensions/ERC1363.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4408,6 +4603,7 @@
             },
             "contracts/token/ERC721/utils/ERC721Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4431,6 +4627,7 @@
             },
             "contracts/token/ERC1155/utils/ERC1155Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4463,6 +4660,7 @@
             },
             "contracts/utils/Errors.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4477,6 +4675,7 @@
             },
             "contracts/utils/Packing.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4491,6 +4690,7 @@
             },
             "contracts/utils/Panic.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4514,6 +4714,7 @@
             },
             "contracts/utils/ReentrancyGuardTransient.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4528,6 +4729,7 @@
             },
             "contracts/utils/SlotDerivation.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4560,6 +4762,7 @@
             },
             "contracts/utils/cryptography/Hashes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4592,6 +4795,7 @@
             },
             "contracts/utils/cryptography/P256.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4660,6 +4864,7 @@
             },
             "contracts/utils/cryptography/RSA.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4728,6 +4933,7 @@
             },
             "contracts/utils/structs/CircularBuffer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4769,6 +4975,7 @@
             },
             "contracts/utils/structs/Heap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4819,6 +5026,7 @@
             },
             "contracts/utils/structs/MerkleTree.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4882,6 +5090,7 @@
           "paths": {
             "contracts/account/utils/draft-ERC4337Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4950,6 +5159,7 @@
             },
             "contracts/account/utils/draft-ERC7579Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4973,6 +5183,7 @@
             },
             "contracts/governance/Governor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4987,6 +5198,7 @@
             },
             "contracts/governance/extensions/GovernorCountingOverridable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5037,6 +5249,7 @@
             },
             "contracts/governance/extensions/GovernorPreventLateQuorum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5051,6 +5264,7 @@
             },
             "contracts/governance/utils/VotesExtended.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5092,6 +5306,7 @@
             },
             "contracts/interfaces/draft-IERC4337.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5133,6 +5348,7 @@
             },
             "contracts/interfaces/draft-IERC7579.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5183,6 +5399,7 @@
             },
             "contracts/proxy/Clones.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5224,6 +5441,7 @@
             },
             "contracts/token/ERC20/extensions/ERC1363.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5238,6 +5456,7 @@
             },
             "contracts/token/ERC20/utils/ERC1363Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5252,6 +5471,7 @@
             },
             "contracts/utils/Bytes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5275,6 +5495,7 @@
             },
             "contracts/utils/CAIP10.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5307,6 +5528,7 @@
             },
             "contracts/utils/CAIP2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5330,6 +5552,7 @@
             },
             "contracts/utils/NoncesKeyed.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5371,6 +5594,7 @@
             },
             "contracts/utils/Strings.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5434,6 +5658,7 @@
           "paths": {
             "contracts/access/manager/AuthorityUtils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5457,6 +5682,7 @@
             },
             "contracts/account/utils/draft-ERC4337Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5480,6 +5706,7 @@
             },
             "contracts/governance/Governor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5503,6 +5730,7 @@
             },
             "contracts/governance/IGovernor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5526,6 +5754,7 @@
             },
             "contracts/governance/extensions/GovernorProposalGuardian.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5549,6 +5778,7 @@
             },
             "contracts/governance/extensions/GovernorSequentialProposalId.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5572,6 +5802,7 @@
             },
             "contracts/governance/extensions/GovernorSuperQuorum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5595,6 +5826,7 @@
             },
             "contracts/governance/extensions/GovernorVotesQuorumFraction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5618,6 +5850,7 @@
             },
             "contracts/governance/extensions/GovernorVotesSuperQuorumFraction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5641,6 +5874,7 @@
             },
             "contracts/interfaces/draft-IERC6909.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5664,6 +5898,7 @@
             },
             "contracts/metatx/ERC2771Forwarder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5687,6 +5922,7 @@
             },
             "contracts/proxy/utils/Initializable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5710,6 +5946,7 @@
             },
             "contracts/token/ERC20/extensions/ERC4626.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5733,6 +5970,7 @@
             },
             "contracts/token/ERC20/utils/SafeERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5756,6 +5994,7 @@
             },
             "contracts/token/ERC6909/draft-ERC6909.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5779,6 +6018,7 @@
             },
             "contracts/token/ERC6909/extensions/draft-ERC6909ContentURI.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5802,6 +6042,7 @@
             },
             "contracts/token/ERC6909/extensions/draft-ERC6909Metadata.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5825,6 +6066,7 @@
             },
             "contracts/token/ERC6909/extensions/draft-ERC6909TokenSupply.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5848,6 +6090,7 @@
             },
             "contracts/utils/Calldata.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5871,6 +6114,7 @@
             },
             "contracts/utils/Pausable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5894,6 +6138,7 @@
             },
             "contracts/utils/Strings.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5917,6 +6162,7 @@
             },
             "contracts/utils/cryptography/Hashes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5940,6 +6186,7 @@
             },
             "contracts/utils/cryptography/MessageHashUtils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5963,6 +6210,7 @@
             },
             "contracts/utils/math/Math.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5986,6 +6234,7 @@
             },
             "contracts/utils/structs/EnumerableMap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6009,6 +6258,7 @@
             },
             "contracts/utils/structs/EnumerableSet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6032,6 +6282,7 @@
             },
             "contracts/utils/structs/MerkleTree.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6055,6 +6306,7 @@
             },
             "contracts/utils/cryptography/P256.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6091,6 +6343,7 @@
           "paths": {
             "contracts/access/extensions/AccessControlDefaultAdminRules.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6105,6 +6358,7 @@
             },
             "contracts/access/extensions/AccessControlEnumerable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6119,6 +6373,7 @@
             },
             "contracts/access/manager/AccessManaged.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6133,6 +6388,7 @@
             },
             "contracts/access/manager/IAccessManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6156,6 +6412,7 @@
             },
             "contracts/access/AccessControl.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6170,6 +6427,7 @@
             },
             "contracts/account/extensions/draft-AccountERC7579.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6184,6 +6442,7 @@
             },
             "contracts/account/extensions/draft-AccountERC7579Hooked.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6198,6 +6457,7 @@
             },
             "contracts/account/extensions/draft-ERC7821.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6212,6 +6472,7 @@
             },
             "contracts/interfaces/IERC7913.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6226,6 +6487,7 @@
             },
             "contracts/account/utils/draft-ERC7579Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6240,6 +6502,7 @@
             },
             "contracts/account/Account.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6254,6 +6517,7 @@
             },
             "contracts/governance/extensions/GovernorCountingFractional.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6268,6 +6532,7 @@
             },
             "contracts/governance/extensions/GovernorCountingOverridable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6282,6 +6547,7 @@
             },
             "contracts/governance/extensions/GovernorCountingSimple.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6296,6 +6562,7 @@
             },
             "contracts/governance/extensions/GovernorNoncesKeyed.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6319,6 +6586,7 @@
             },
             "contracts/governance/extensions/GovernorSequentialProposalId.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6333,6 +6601,7 @@
             },
             "contracts/governance/extensions/GovernorSettings.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6347,6 +6616,7 @@
             },
             "contracts/governance/extensions/GovernorSuperQuorum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6361,6 +6631,7 @@
             },
             "contracts/governance/extensions/GovernorTimelockAccess.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6375,6 +6646,7 @@
             },
             "contracts/governance/extensions/GovernorTimelockCompound.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6389,6 +6661,7 @@
             },
             "contracts/governance/extensions/GovernorTimelockControl.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6403,6 +6676,7 @@
             },
             "contracts/governance/extensions/GovernorVotes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6417,6 +6691,7 @@
             },
             "contracts/governance/Governor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6431,6 +6706,7 @@
             },
             "contracts/governance/TimelockController.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6445,6 +6721,7 @@
             },
             "contracts/interfaces/draft-IERC7821.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6459,6 +6736,7 @@
             },
             "contracts/token/common/ERC2981.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6473,6 +6751,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Capped.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6487,6 +6766,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Permit.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6501,6 +6781,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Wrapper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6515,6 +6796,7 @@
             },
             "contracts/token/ERC20/extensions/ERC1363.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6529,6 +6811,7 @@
             },
             "contracts/token/ERC20/extensions/ERC4626.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6543,6 +6826,7 @@
             },
             "contracts/token/ERC20/utils/ERC1363Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6557,6 +6841,7 @@
             },
             "contracts/token/ERC20/ERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6571,6 +6856,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Enumerable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6585,6 +6871,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Royalty.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6599,6 +6886,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721URIStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6613,6 +6901,7 @@
             },
             "contracts/token/ERC721/utils/ERC721Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6627,6 +6916,7 @@
             },
             "contracts/token/ERC721/ERC721.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6641,6 +6931,7 @@
             },
             "contracts/token/ERC1155/extensions/ERC1155Supply.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6655,6 +6946,7 @@
             },
             "contracts/token/ERC1155/utils/ERC1155Holder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6669,6 +6961,7 @@
             },
             "contracts/token/ERC1155/utils/ERC1155Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6683,6 +6976,7 @@
             },
             "contracts/token/ERC1155/ERC1155.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6697,6 +6991,7 @@
             },
             "contracts/utils/cryptography/signers/draft-ERC7739.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6711,6 +7006,7 @@
             },
             "contracts/utils/cryptography/signers/AbstractSigner.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6725,6 +7021,7 @@
             },
             "contracts/utils/cryptography/draft-ERC7739Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6739,6 +7036,7 @@
             },
             "contracts/utils/cryptography/EIP712.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6753,6 +7051,7 @@
             },
             "contracts/utils/cryptography/signers/MultiSignerERC7913.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6794,6 +7093,7 @@
             },
             "contracts/utils/cryptography/signers/MultiSignerERC7913Weighted.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6826,6 +7126,7 @@
             },
             "contracts/utils/cryptography/SignatureChecker.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6840,6 +7141,7 @@
             },
             "contracts/utils/cryptography/signers/SignerECDSA.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6854,6 +7156,7 @@
             },
             "contracts/utils/cryptography/signers/SignerERC7702.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6868,6 +7171,7 @@
             },
             "contracts/utils/cryptography/signers/SignerERC7913.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6882,6 +7186,7 @@
             },
             "contracts/utils/cryptography/signers/SignerP256.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6896,6 +7201,7 @@
             },
             "contracts/utils/cryptography/signers/SignerRSA.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6910,6 +7216,7 @@
             },
             "contracts/utils/introspection/ERC165.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6924,6 +7231,7 @@
             },
             "contracts/utils/structs/EnumerableMap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6956,6 +7264,7 @@
             },
             "contracts/utils/structs/EnumerableSet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6988,6 +7297,7 @@
             },
             "contracts/utils/Address.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7002,6 +7312,7 @@
             },
             "contracts/utils/Arrays.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7016,6 +7327,7 @@
             },
             "contracts/utils/Base64.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7030,6 +7342,7 @@
             },
             "contracts/utils/Blockhash.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7044,6 +7357,7 @@
             },
             "contracts/utils/Bytes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7067,6 +7381,7 @@
             },
             "contracts/utils/Strings.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7103,6 +7418,7 @@
           "paths": {
             "contracts/token/ERC20/utils/SafeERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7117,6 +7433,7 @@
             },
             "contracts/utils/cryptography/ECDSA.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7140,6 +7457,7 @@
             },
             "contracts/utils/cryptography/SignatureChecker.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7202,6 +7520,7 @@
           "paths": {
             "src/contracts/Receiver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7255,6 +7574,7 @@
             },
             "src/contracts/BlockHashProverPointer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7305,6 +7625,7 @@
             },
             "src/contracts/Broadcaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7355,6 +7676,7 @@
             },
             "src/contracts/interfaces/IReceiver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7378,6 +7700,7 @@
             },
             "src/contracts/interfaces/IBlockHashProver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7392,6 +7715,7 @@
             },
             "src/contracts/interfaces/IBlockHashProverPointer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7406,6 +7730,7 @@
             },
             "src/contracts/interfaces/IBroadcaster.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7420,6 +7745,7 @@
             },
             "src/contracts/libraries/ProverUtils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7448,6 +7774,7 @@
           "paths": {
             "contracts/utils/RLP.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7521,6 +7848,7 @@
           "paths": {
             "src/integrations/oracles/broadcaster/BroadcasterOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7584,6 +7912,7 @@
           "paths": {
             "contracts/access/AccessControl.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7608,6 +7937,7 @@
             },
             "contracts/access/extensions/AccessControlDefaultAdminRules.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7632,6 +7962,7 @@
             },
             "contracts/access/extensions/AccessControlEnumerable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7656,6 +7987,7 @@
             },
             "contracts/access/extensions/IAccessControlDefaultAdminRules.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7680,6 +8012,7 @@
             },
             "contracts/access/manager/AccessManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7704,6 +8037,7 @@
             },
             "contracts/access/manager/IAccessManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7728,6 +8062,7 @@
             },
             "contracts/account/Account.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7752,6 +8087,7 @@
             },
             "contracts/account/extensions/draft-AccountERC7579.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7776,6 +8112,7 @@
             },
             "contracts/account/extensions/draft-AccountERC7579Hooked.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7800,6 +8137,7 @@
             },
             "contracts/account/extensions/draft-ERC7821.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7824,6 +8162,7 @@
             },
             "contracts/account/utils/EIP7702Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7848,6 +8187,7 @@
             },
             "contracts/account/utils/draft-ERC4337Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7872,6 +8212,7 @@
             },
             "contracts/account/utils/draft-ERC7579Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7896,6 +8237,7 @@
             },
             "contracts/crosschain/CrosschainLinked.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7920,6 +8262,7 @@
             },
             "contracts/crosschain/ERC7786Recipient.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7944,6 +8287,7 @@
             },
             "contracts/crosschain/bridges/BridgeERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7968,6 +8312,7 @@
             },
             "contracts/crosschain/bridges/BridgeERC20Core.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7983,6 +8328,7 @@
             },
             "contracts/crosschain/bridges/abstract/BridgeFungible.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7997,6 +8343,7 @@
             },
             "contracts/crosschain/bridges/BridgeERC7802.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8021,6 +8368,7 @@
             },
             "contracts/finance/VestingWallet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8045,6 +8393,7 @@
             },
             "contracts/governance/Governor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8069,6 +8418,7 @@
             },
             "contracts/governance/IGovernor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8093,6 +8443,7 @@
             },
             "contracts/governance/TimelockController.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8117,6 +8468,7 @@
             },
             "contracts/governance/extensions/GovernorProposalGuardian.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8141,6 +8493,7 @@
             },
             "contracts/governance/extensions/GovernorStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8165,6 +8518,7 @@
             },
             "contracts/governance/extensions/GovernorSuperQuorum.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8189,6 +8543,7 @@
             },
             "contracts/governance/extensions/GovernorTimelockCompound.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8213,6 +8568,7 @@
             },
             "contracts/governance/extensions/GovernorTimelockControl.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8237,6 +8593,7 @@
             },
             "contracts/governance/extensions/GovernorVotesQuorumFraction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8261,6 +8618,7 @@
             },
             "contracts/governance/extensions/GovernorVotesSuperQuorumFraction.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8285,6 +8643,7 @@
             },
             "contracts/governance/utils/IVotes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8309,6 +8668,7 @@
             },
             "contracts/governance/utils/Votes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8333,6 +8693,7 @@
             },
             "contracts/governance/utils/VotesExtended.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8357,6 +8718,7 @@
             },
             "contracts/interfaces/IERC3156FlashLender.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8381,6 +8743,7 @@
             },
             "contracts/interfaces/IERC4626.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8405,6 +8768,7 @@
             },
             "contracts/interfaces/IERC6909.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8429,6 +8793,7 @@
             },
             "contracts/interfaces/IERC7751.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8453,6 +8818,7 @@
             },
             "contracts/interfaces/draft-IERC4337.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8477,6 +8843,7 @@
             },
             "contracts/interfaces/draft-IERC6093.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8501,6 +8868,7 @@
             },
             "contracts/interfaces/draft-IERC7579.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8525,6 +8893,7 @@
             },
             "contracts/interfaces/draft-IERC7786.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8549,6 +8918,7 @@
             },
             "contracts/interfaces/draft-IERC7802.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8573,6 +8943,7 @@
             },
             "contracts/metatx/ERC2771Context.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8597,6 +8968,7 @@
             },
             "contracts/metatx/ERC2771Forwarder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8621,6 +8993,7 @@
             },
             "contracts/proxy/Clones.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8645,6 +9018,7 @@
             },
             "contracts/proxy/Proxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8669,6 +9043,7 @@
             },
             "contracts/proxy/ERC1967/ERC1967Proxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8693,6 +9068,7 @@
             },
             "contracts/proxy/ERC1967/ERC1967Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8717,6 +9093,7 @@
             },
             "contracts/proxy/transparent/TransparentUpgradeableProxy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8741,6 +9118,7 @@
             },
             "contracts/proxy/utils/UUPSUpgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8765,6 +9143,7 @@
             },
             "contracts/token/ERC20/ERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8789,6 +9168,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Crosschain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8813,6 +9193,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20FlashMint.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8837,6 +9218,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Permit.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8861,6 +9243,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Votes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8885,6 +9268,7 @@
             },
             "contracts/token/ERC20/extensions/ERC20Wrapper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8909,6 +9293,7 @@
             },
             "contracts/token/ERC20/extensions/ERC4626.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8933,6 +9318,7 @@
             },
             "contracts/token/ERC20/extensions/IERC20Permit.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8957,6 +9343,7 @@
             },
             "contracts/token/ERC20/utils/SafeERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8981,6 +9368,7 @@
             },
             "contracts/token/ERC721/ERC721.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9005,6 +9393,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Burnable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9029,6 +9418,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Consecutive.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9053,6 +9443,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Enumerable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9077,6 +9468,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Pausable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9101,6 +9493,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Royalty.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9125,6 +9518,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721URIStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9149,6 +9543,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Votes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9173,6 +9568,7 @@
             },
             "contracts/token/ERC721/extensions/ERC721Wrapper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9197,6 +9593,7 @@
             },
             "contracts/token/ERC721/utils/ERC721Holder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9221,6 +9618,7 @@
             },
             "contracts/token/ERC721/utils/ERC721Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9245,6 +9643,7 @@
             },
             "contracts/token/ERC1155/ERC1155.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9269,6 +9668,7 @@
             },
             "contracts/token/ERC1155/extensions/ERC1155Burnable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9293,6 +9693,7 @@
             },
             "contracts/token/ERC1155/extensions/ERC1155Pausable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9317,6 +9718,7 @@
             },
             "contracts/token/ERC1155/extensions/ERC1155Supply.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9341,6 +9743,7 @@
             },
             "contracts/token/ERC1155/extensions/ERC1155URIStorage.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9365,6 +9768,7 @@
             },
             "contracts/token/ERC1155/utils/ERC1155Holder.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9389,6 +9793,7 @@
             },
             "contracts/token/ERC6909/ERC6909.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9413,6 +9818,7 @@
             },
             "contracts/token/ERC6909/extensions/ERC6909ContentURI.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9437,6 +9843,7 @@
             },
             "contracts/token/ERC6909/extensions/ERC6909Metadata.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9461,6 +9868,7 @@
             },
             "contracts/token/ERC6909/extensions/ERC6909TokenSupply.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9485,6 +9893,7 @@
             },
             "contracts/utils/Address.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9509,6 +9918,7 @@
             },
             "contracts/utils/Arrays.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9533,6 +9943,7 @@
             },
             "contracts/utils/Base58.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9557,6 +9968,7 @@
             },
             "contracts/utils/Base64.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9581,6 +9993,7 @@
             },
             "contracts/utils/Blockhash.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9605,6 +10018,7 @@
             },
             "contracts/utils/Bytes.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9629,6 +10043,7 @@
             },
             "contracts/utils/Create2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9653,6 +10068,7 @@
             },
             "contracts/utils/LowLevelCall.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9677,6 +10093,7 @@
             },
             "contracts/utils/Memory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9701,6 +10118,7 @@
             },
             "contracts/utils/Multicall.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9725,6 +10143,7 @@
             },
             "contracts/utils/RLP.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9749,6 +10168,7 @@
             },
             "contracts/utils/ReentrancyGuard.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9773,6 +10193,7 @@
             },
             "contracts/utils/ReentrancyGuardTransient.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9797,6 +10218,7 @@
             },
             "contracts/utils/RelayedCall.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9821,6 +10243,7 @@
             },
             "contracts/utils/ShortStrings.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9845,6 +10268,7 @@
             },
             "contracts/utils/SlotDerivation.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9869,6 +10293,7 @@
             },
             "contracts/utils/Strings.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9893,6 +10318,7 @@
             },
             "contracts/utils/draft-InteroperableAddress.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9917,6 +10343,7 @@
             },
             "contracts/utils/cryptography/ECDSA.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9941,6 +10368,7 @@
             },
             "contracts/utils/cryptography/EIP712.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9965,6 +10393,7 @@
             },
             "contracts/utils/cryptography/MerkleProof.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9989,6 +10418,7 @@
             },
             "contracts/utils/cryptography/MessageHashUtils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10013,6 +10443,7 @@
             },
             "contracts/utils/cryptography/SignatureChecker.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10037,6 +10468,7 @@
             },
             "contracts/utils/cryptography/TrieProof.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10061,6 +10493,7 @@
             },
             "contracts/utils/cryptography/WebAuthn.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10085,6 +10518,7 @@
             },
             "contracts/utils/cryptography/draft-ERC7739Utils.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10109,6 +10543,7 @@
             },
             "contracts/utils/cryptography/signers/MultiSignerERC7913.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10133,6 +10568,7 @@
             },
             "contracts/utils/cryptography/signers/SignerECDSA.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10157,6 +10593,7 @@
             },
             "contracts/utils/cryptography/signers/SignerEIP7702.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10181,6 +10618,7 @@
             },
             "contracts/utils/cryptography/signers/SignerWebAuthn.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10205,6 +10643,7 @@
             },
             "contracts/utils/cryptography/signers/draft-ERC7739.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10229,6 +10668,7 @@
             },
             "contracts/utils/cryptography/verifiers/ERC7913P256Verifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10253,6 +10693,7 @@
             },
             "contracts/utils/cryptography/verifiers/ERC7913RSAVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10277,6 +10718,7 @@
             },
             "contracts/utils/cryptography/verifiers/ERC7913WebAuthnVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10301,6 +10743,7 @@
             },
             "contracts/utils/introspection/ERC165Checker.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10325,6 +10768,7 @@
             },
             "contracts/utils/math/Math.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10349,6 +10793,7 @@
             },
             "contracts/utils/math/SafeCast.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10373,6 +10818,7 @@
             },
             "contracts/utils/structs/Accumulators.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10397,6 +10843,7 @@
             },
             "contracts/utils/structs/Checkpoints.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10421,6 +10868,7 @@
             },
             "contracts/utils/structs/CircularBuffer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10445,6 +10893,7 @@
             },
             "contracts/utils/structs/DoubleEndedQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10469,6 +10918,7 @@
             },
             "contracts/utils/structs/EnumerableMap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10493,6 +10943,7 @@
             },
             "contracts/utils/structs/EnumerableSet.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10517,6 +10968,7 @@
             },
             "contracts/utils/structs/Heap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10541,6 +10993,7 @@
             },
             "contracts/utils/structs/MerkleTree.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -10565,6 +11018,7 @@
             },
             "contracts/utils/types/Time.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {

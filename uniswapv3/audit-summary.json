@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "uniswapv3",
   "reports": [
     {
@@ -22,6 +22,7 @@
           "paths": {
             "contracts/NoDelegateCall.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -36,6 +37,7 @@
             },
             "contracts/UniswapV3Factory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -50,6 +52,7 @@
             },
             "contracts/UniswapV3Pool.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -67,6 +70,7 @@
             },
             "contracts/UniswapV3PoolDeployer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -81,6 +85,7 @@
             },
             "contracts/libraries/BitMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -95,6 +100,7 @@
             },
             "contracts/libraries/FullMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -109,6 +115,7 @@
             },
             "contracts/libraries/LiquidityMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -123,6 +130,7 @@
             },
             "contracts/libraries/LowGasSafeMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -137,6 +145,7 @@
             },
             "contracts/libraries/Oracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -151,6 +160,7 @@
             },
             "contracts/libraries/Position.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -165,6 +175,7 @@
             },
             "contracts/libraries/SafeCast.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -179,6 +190,7 @@
             },
             "contracts/libraries/SecondsOutside.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -193,6 +205,7 @@
             },
             "contracts/libraries/SqrtPriceMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -207,6 +220,7 @@
             },
             "contracts/libraries/SwapMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -221,6 +235,7 @@
             },
             "contracts/libraries/Tick.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -235,6 +250,7 @@
             },
             "contracts/libraries/TickBitmap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -249,6 +265,7 @@
             },
             "contracts/libraries/TickMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -263,6 +280,7 @@
             },
             "contracts/libraries/TransferHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -280,6 +298,7 @@
             },
             "contracts/libraries/UnsafeMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -316,6 +335,7 @@
           "paths": {
             "contracts/NoDelegateCall.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -331,6 +351,7 @@
             },
             "contracts/UniswapV3Factory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -346,6 +367,7 @@
             },
             "contracts/UniswapV3Pool.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -361,6 +383,7 @@
             },
             "contracts/UniswapV3PoolDeployer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -376,6 +399,7 @@
             },
             "contracts/interfaces/IERC20Minimal.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -391,6 +415,7 @@
             },
             "contracts/interfaces/IUniswapV3Factory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -415,6 +440,7 @@
             },
             "contracts/interfaces/IUniswapV3Pool.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -430,6 +456,7 @@
             },
             "contracts/interfaces/IUniswapV3PoolDeployer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -454,6 +481,7 @@
             },
             "contracts/interfaces/callback/IUniswapV3FlashCallback.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -478,6 +506,7 @@
             },
             "contracts/interfaces/callback/IUniswapV3MintCallback.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -502,6 +531,7 @@
             },
             "contracts/interfaces/callback/IUniswapV3SwapCallback.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -517,6 +547,7 @@
             },
             "contracts/interfaces/pool/IUniswapV3PoolActions.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -541,6 +572,7 @@
             },
             "contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -556,6 +588,7 @@
             },
             "contracts/interfaces/pool/IUniswapV3PoolEvents.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -580,6 +613,7 @@
             },
             "contracts/interfaces/pool/IUniswapV3PoolImmutables.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -595,6 +629,7 @@
             },
             "contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -610,6 +645,7 @@
             },
             "contracts/interfaces/pool/IUniswapV3PoolState.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -634,6 +670,7 @@
             },
             "contracts/libraries/BitMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -649,6 +686,7 @@
             },
             "contracts/libraries/FixedPoint128.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -664,6 +702,7 @@
             },
             "contracts/libraries/FixedPoint96.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -679,6 +718,7 @@
             },
             "contracts/libraries/FullMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -703,6 +743,7 @@
             },
             "contracts/libraries/LiquidityMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -718,6 +759,7 @@
             },
             "contracts/libraries/LowGasSafeMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -733,6 +775,7 @@
             },
             "contracts/libraries/Oracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -757,6 +800,7 @@
             },
             "contracts/libraries/Position.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -772,6 +816,7 @@
             },
             "contracts/libraries/SafeCast.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -787,6 +832,7 @@
             },
             "contracts/libraries/SecondsOutside.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -811,6 +857,7 @@
             },
             "contracts/libraries/SqrtPriceMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -844,6 +891,7 @@
             },
             "contracts/libraries/SwapMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -868,6 +916,7 @@
             },
             "contracts/libraries/Tick.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -892,6 +941,7 @@
             },
             "contracts/libraries/TickBitmap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -907,6 +957,7 @@
             },
             "contracts/libraries/TickMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -931,6 +982,7 @@
             },
             "contracts/libraries/TransferHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -946,6 +998,7 @@
             },
             "contracts/libraries/UnsafeMath.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -983,6 +1036,7 @@
           "paths": {
             "contracts/NonfungiblePositionManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1013,6 +1067,7 @@
             },
             "contracts/SwapRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {

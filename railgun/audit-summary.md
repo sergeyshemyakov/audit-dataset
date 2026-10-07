@@ -1,7 +1,7 @@
 # Audit source summary: railgun
 
 Generated from [audit-summary.json](audit-summary.json). Do not edit manually.
-Commit dates use Git committer timestamps (UTC).
+Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless marked zk, cairo or other.
 
 ## Smart Contract Audit Railgun: Circom and Solidity
 
@@ -23,8 +23,8 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/Railgun-Privacy/circuits/commit/2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68"><code>2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68</code></a> | — | <code>circuits/base/HashInputs.circom</code><br><code>circuits/base/MerkleTree.circom</code><br><code>circuits/JoinSplit.circom</code><br><code>circuits/Large.circom</code><br><code>circuits/Small.circom</code> |
-| <a href="https://github.com/Railgun-Privacy/circuits/releases/tag/v0.0.1"><code>v0.0.1</code></a> (unresolved tag) | — | <code>circuits/base/HashInputs.circom</code><br><code>circuits/base/MerkleTree.circom</code><br><code>circuits/JoinSplit.circom</code><br><code>circuits/Large.circom</code><br><code>circuits/Small.circom</code> |
+| <a href="https://github.com/Railgun-Privacy/circuits/commit/2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68"><code>2c3c3144635f72d3e1b7dd8d1f9c722c8ae3ff68</code></a> | — | <code>circuits/base/HashInputs.circom</code> (zk)<br><code>circuits/base/MerkleTree.circom</code> (zk)<br><code>circuits/JoinSplit.circom</code> (zk)<br><code>circuits/Large.circom</code> (zk)<br><code>circuits/Small.circom</code> (zk) |
+| <a href="https://github.com/Railgun-Privacy/circuits/releases/tag/v0.0.1"><code>v0.0.1</code></a> (unresolved tag) | — | <code>circuits/base/HashInputs.circom</code> (zk)<br><code>circuits/base/MerkleTree.circom</code> (zk)<br><code>circuits/JoinSplit.circom</code> (zk)<br><code>circuits/Large.circom</code> (zk)<br><code>circuits/Small.circom</code> (zk) |
 
 ## Smart Contract Code Review and Security Analysis Report for Right to Privacy
 
@@ -103,7 +103,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/Railgun-Privacy/circuits-v2/commit/67cd4ce7f49afd1dfae67c8e2d59ddf87ec3de43"><code>67cd4ce7f49afd1dfae67c8e2d59ddf87ec3de43</code></a> | March 18, 2022 | <code>src</code> (recursive directory) |
+| <a href="https://github.com/Railgun-Privacy/circuits-v2/commit/67cd4ce7f49afd1dfae67c8e2d59ddf87ec3de43"><code>67cd4ce7f49afd1dfae67c8e2d59ddf87ec3de43</code></a> | March 18, 2022 | <code>src</code> (recursive directory) (zk) |
 
 ### Repository: <a href="https://github.com/Railgun-Privacy/contract"><code>Railgun-Privacy/contract</code></a>
 

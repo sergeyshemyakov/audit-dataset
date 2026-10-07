@@ -1,7 +1,7 @@
 # Audit source summary: tornado-cash
 
 Generated from [audit-summary.json](audit-summary.json). Do not edit manually.
-Commit dates use Git committer timestamps (UTC).
+Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless marked zk, cairo or other.
 
 ## Tornado Circuit Audit. Final version
 
@@ -14,11 +14,11 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/circuits/merkleTree.circom"><code>0484408e82e8f1eebd081186cb11189aa0e9b57f</code></a> | October 17, 2019 | <code>circuits/merkleTree.circom</code><br><code>circuits/withdraw.circom</code> |
-| <a href="https://github.com/peppersec/tornado-mixer/commit/9efab84e"><code>9efab84e65d923410ce4418794a5ca2ddcd74f37</code></a> | November 2, 2019 | <code>circuits/withdraw.circom</code> |
-| <a href="https://github.com/peppersec/tornado-mixer/commit/7193655e"><code>7193655e4940476269426b80da40bc9a099598e4</code></a> | November 2, 2019 | <code>circuits/merkleTree.circom</code><br><code>circuits/withdraw.circom</code> |
-| <a href="https://github.com/peppersec/tornado-mixer/commit/07168f98"><code>07168f9816a6a78767f53aab25624bd1d739a66d</code></a> | November 2, 2019 | <code>circuits/merkleTree.circom</code> |
-| <a href="https://github.com/peppersec/tornado-mixer/commit/f8cd3fea"><code>f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371</code></a> | November 3, 2019 | <code>circuits/merkleTree.circom</code><br><code>circuits/withdraw.circom</code> |
+| <a href="https://github.com/peppersec/tornado-mixer/blob/0484408e82e8f1eebd081186cb11189aa0e9b57f/circuits/merkleTree.circom"><code>0484408e82e8f1eebd081186cb11189aa0e9b57f</code></a> | October 17, 2019 | <code>circuits/merkleTree.circom</code> (zk)<br><code>circuits/withdraw.circom</code> (zk) |
+| <a href="https://github.com/peppersec/tornado-mixer/commit/9efab84e"><code>9efab84e65d923410ce4418794a5ca2ddcd74f37</code></a> | November 2, 2019 | <code>circuits/withdraw.circom</code> (zk) |
+| <a href="https://github.com/peppersec/tornado-mixer/commit/7193655e"><code>7193655e4940476269426b80da40bc9a099598e4</code></a> | November 2, 2019 | <code>circuits/merkleTree.circom</code> (zk)<br><code>circuits/withdraw.circom</code> (zk) |
+| <a href="https://github.com/peppersec/tornado-mixer/commit/07168f98"><code>07168f9816a6a78767f53aab25624bd1d739a66d</code></a> | November 2, 2019 | <code>circuits/merkleTree.circom</code> (zk) |
+| <a href="https://github.com/peppersec/tornado-mixer/commit/f8cd3fea"><code>f8cd3fea1eb5664dd0f8b3e4b83ac6e0c0ba3371</code></a> | November 3, 2019 | <code>circuits/merkleTree.circom</code> (zk)<br><code>circuits/withdraw.circom</code> (zk) |
 
 ## Tornado Cash Smart Contracts Audit. Final Version
 
@@ -47,13 +47,13 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/peppersec/tornado-mixer/tree/master/contracts"><code>master</code></a> (mutable branch) | — | <code>contracts</code> (recursive directory)<br><code>cli.js</code> |
+| <a href="https://github.com/peppersec/tornado-mixer/tree/master/contracts"><code>master</code></a> (mutable branch) | — | <code>contracts</code> (recursive directory)<br><code>cli.js</code> (other) |
 
 ### Repository: <a href="https://github.com/iden3/circomlib"><code>iden3/circomlib</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/iden3/circomlib/tree/master/circuits"><code>master</code></a> (mutable branch) | — | <code>circuits</code> (recursive directory)<br><code>src/mimcsponge_gencontract.js</code> |
+| <a href="https://github.com/iden3/circomlib/tree/master/circuits"><code>master</code></a> (mutable branch) | — | <code>circuits</code> (recursive directory) (zk)<br><code>src/mimcsponge_gencontract.js</code> (zk) |
 
 ## Tornado Farm Smart Contracts and Circuits. Audit
 
@@ -72,7 +72,7 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/tornadocash/tornado-anonymity-mining/releases/tag/audit"><code>audit</code></a> (unresolved tag) | — | <code>circuits/Reward.circom</code> |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/releases/tag/audit"><code>audit</code></a> (unresolved tag) | — | <code>circuits/Reward.circom</code> (zk) |
 
 ## Tornado Farm Smart Contracts and Circuits. Final Audit
 
@@ -85,8 +85,8 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/tornadocash/tornado-anonymity-mining/releases/tag/audit"><code>audit</code></a> (unresolved tag) | — | <code>contracts/Farm.sol</code><br><code>circuits/Reward.circom</code> |
-| <a href="https://github.com/tornadocash/tornado-anonymity-mining/tree/audit-fixed"><code>audit-fixed</code></a> (mutable branch) | — | <code>contracts/Farm.sol</code><br><code>circuits/Reward.circom</code> |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/releases/tag/audit"><code>audit</code></a> (unresolved tag) | — | <code>contracts/Farm.sol</code><br><code>circuits/Reward.circom</code> (zk) |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/tree/audit-fixed"><code>audit-fixed</code></a> (mutable branch) | — | <code>contracts/Farm.sol</code><br><code>circuits/Reward.circom</code> (zk) |
 
 ## Tornado Cash Anonymity Mining Audit
 
@@ -99,12 +99,12 @@ Commit dates use Git committer timestamps (UTC).
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/tornadocash/tornado-anonymity-mining/tree/820bd83254f3264cebaf255869641ebc33288dc3/circuits"><code>820bd83254f3264cebaf255869641ebc33288dc3</code></a> | September 21, 2020 | <code>circuits</code> (recursive directory)<br><code>circuits/MerkleTree.circom</code> (explicitly not audited)<br><code>circuits/MerkleTreeUpdater.circom</code><br><code>circuits/Withdraw.circom</code><br><code>contracts</code> (recursive directory)<br><code>contracts/IVerifier.sol</code> (explicitly not audited)<br><code>contracts/RewardVerifier.sol</code> (explicitly not audited)<br><code>contracts/TreeUpdateVerifier.sol</code> (explicitly not audited)<br><code>contracts/WithdrawVerifier.sol</code> (explicitly not audited)<br><code>contracts/Miner.sol</code><br><code>contracts/RewardSwap.sol</code> |
-| <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/7487ac8b09dcfc78ecc166cff5208435010cec8e/circuits/MerkleTreeUpdater.circom"><code>7487ac8b09dcfc78ecc166cff5208435010cec8e</code></a> | October 12, 2020 | <code>circuits/MerkleTreeUpdater.circom</code> |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/tree/820bd83254f3264cebaf255869641ebc33288dc3/circuits"><code>820bd83254f3264cebaf255869641ebc33288dc3</code></a> | September 21, 2020 | <code>circuits</code> (recursive directory) (zk)<br><code>circuits/MerkleTree.circom</code> (zk) (explicitly not audited)<br><code>circuits/MerkleTreeUpdater.circom</code> (zk)<br><code>circuits/Withdraw.circom</code> (zk)<br><code>contracts</code> (recursive directory)<br><code>contracts/IVerifier.sol</code> (explicitly not audited)<br><code>contracts/RewardVerifier.sol</code> (explicitly not audited)<br><code>contracts/TreeUpdateVerifier.sol</code> (explicitly not audited)<br><code>contracts/WithdrawVerifier.sol</code> (explicitly not audited)<br><code>contracts/Miner.sol</code><br><code>contracts/RewardSwap.sol</code> |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/7487ac8b09dcfc78ecc166cff5208435010cec8e/circuits/MerkleTreeUpdater.circom"><code>7487ac8b09dcfc78ecc166cff5208435010cec8e</code></a> | October 12, 2020 | <code>circuits/MerkleTreeUpdater.circom</code> (zk) |
 | <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/c8865315c50f3a0cabdd4110a6c45ceba4d4b809/contracts/Miner.sol"><code>c8865315c50f3a0cabdd4110a6c45ceba4d4b809</code></a> | October 12, 2020 | <code>contracts/Miner.sol</code> |
 | <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/e0008b3ed46dbf127b452d1d086235f0fe2dfcb8/contracts/Miner.sol"><code>e0008b3ed46dbf127b452d1d086235f0fe2dfcb8</code></a> | October 12, 2020 | <code>contracts/Miner.sol</code> |
 | <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/49ce4e9375509c3bc866d32fbf6345361a85b9a0/contracts/Miner.sol"><code>49ce4e9375509c3bc866d32fbf6345361a85b9a0</code></a> | October 13, 2020 | <code>contracts/Miner.sol</code> |
-| <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/459fa79321b1b48eefc3cb85f82733528d5e56d3/circuits/Withdraw.circom"><code>459fa79321b1b48eefc3cb85f82733528d5e56d3</code></a> | October 14, 2020 | <code>circuits/Withdraw.circom</code> |
+| <a href="https://github.com/tornadocash/tornado-anonymity-mining/blob/459fa79321b1b48eefc3cb85f82733528d5e56d3/circuits/Withdraw.circom"><code>459fa79321b1b48eefc3cb85f82733528d5e56d3</code></a> | October 14, 2020 | <code>circuits/Withdraw.circom</code> (zk) |
 
 ## Tornado Smart Contract Audit Conclusion
 

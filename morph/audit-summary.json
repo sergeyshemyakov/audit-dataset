@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "morph",
   "reports": [
     {
@@ -78,6 +78,7 @@
           "paths": {
             "contracts/contracts": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -96,6 +97,7 @@
             },
             "contracts/contracts/L1/rollup/L1MessageQueueWithGasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -110,6 +112,7 @@
             },
             "contracts/contracts/L1/rollup/Rollup.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -127,6 +130,7 @@
             },
             "contracts/contracts/L1/staking/L1Staking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -141,6 +145,7 @@
             },
             "contracts/contracts/L2/staking/Distribute.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -155,6 +160,7 @@
             },
             "contracts/contracts/L2/staking/Gov.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -169,6 +175,7 @@
             },
             "contracts/contracts/L2/staking/L2Staking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -186,6 +193,7 @@
             },
             "contracts/contracts/L2/system/L2TxFeeVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -200,6 +208,7 @@
             },
             "contracts/contracts/L2/system/MorphToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -214,6 +223,7 @@
             },
             "node": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -228,6 +238,7 @@
             },
             "contracts/contracts/l2/staking/L2Staking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -260,6 +271,7 @@
             },
             "contracts/contracts/l2/staking/Distribute.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -292,6 +304,7 @@
             },
             "contracts/contracts/l2/system/MorphToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -306,6 +319,7 @@
             },
             "contracts/contracts/l1/staking/L1Staking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -320,6 +334,7 @@
             },
             "contracts/contracts/l2/staking/Gov.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -334,6 +349,7 @@
             },
             "contracts/contracts/l1/rollup/Rollup.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -360,6 +376,7 @@
             },
             "contracts/contracts/l2/system/L2TxFeeVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -374,6 +391,7 @@
             },
             "tx-submitter": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -393,6 +411,7 @@
           "paths": {
             "miner/worker.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -410,6 +429,7 @@
             },
             "miner/morph_worker.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -446,6 +466,7 @@
           "paths": {
             "contracts/contracts/l1/L1CrossDomainMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -469,6 +490,7 @@
             },
             "contracts/contracts/l1/gateways/EnforcedTxGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -492,6 +514,7 @@
             },
             "contracts/contracts/l1/gateways/L1CustomERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -515,6 +538,7 @@
             },
             "contracts/contracts/l1/gateways/L1ERC1155Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -538,6 +562,7 @@
             },
             "contracts/contracts/l1/gateways/L1ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -561,6 +586,7 @@
             },
             "contracts/contracts/l1/gateways/L1ERC721Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -584,6 +610,7 @@
             },
             "contracts/contracts/l1/gateways/L1ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -607,6 +634,7 @@
             },
             "contracts/contracts/l1/gateways/L1GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -630,6 +658,7 @@
             },
             "contracts/contracts/l1/gateways/L1ReverseCustomGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -665,6 +694,7 @@
             },
             "contracts/contracts/l1/gateways/L1StandardERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -688,6 +718,7 @@
             },
             "contracts/contracts/l1/gateways/L1WETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -711,6 +742,7 @@
             },
             "contracts/contracts/l1/gateways/usdc/L1USDCGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -734,6 +766,7 @@
             },
             "contracts/contracts/l1/rollup/L1MessageQueueWithGasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -757,6 +790,7 @@
             },
             "contracts/contracts/l1/rollup/MultipleVersionRollupVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -780,6 +814,7 @@
             },
             "contracts/contracts/l1/rollup/Rollup.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -851,6 +886,7 @@
             },
             "contracts/contracts/l1/staking/L1Staking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -874,6 +910,7 @@
             },
             "contracts/contracts/l2/L2CrossDomainMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -897,6 +934,7 @@
             },
             "contracts/contracts/l2/gateways/L2CustomERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -920,6 +958,7 @@
             },
             "contracts/contracts/l2/gateways/L2ERC1155Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -943,6 +982,7 @@
             },
             "contracts/contracts/l2/gateways/L2ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -966,6 +1006,7 @@
             },
             "contracts/contracts/l2/gateways/L2ERC721Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -989,6 +1030,7 @@
             },
             "contracts/contracts/l2/gateways/L2ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1012,6 +1054,7 @@
             },
             "contracts/contracts/l2/gateways/L2GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1035,6 +1078,7 @@
             },
             "contracts/contracts/l2/gateways/L2ReverseCustomGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1058,6 +1102,7 @@
             },
             "contracts/contracts/l2/gateways/L2StandardERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1081,6 +1126,7 @@
             },
             "contracts/contracts/l2/gateways/L2WETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1104,6 +1150,7 @@
             },
             "contracts/contracts/l2/gateways/L2WithdrawLockERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1127,6 +1174,7 @@
             },
             "contracts/contracts/l2/gateways/usdc/L2USDCGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1150,6 +1198,7 @@
             },
             "contracts/contracts/l2/staking/Distribute.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1191,6 +1240,7 @@
             },
             "contracts/contracts/l2/staking/Gov.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1223,6 +1273,7 @@
             },
             "contracts/contracts/l2/staking/L2Staking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1255,6 +1306,7 @@
             },
             "contracts/contracts/l2/staking/Record.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1278,6 +1330,7 @@
             },
             "contracts/contracts/l2/staking/Sequencer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1301,6 +1354,7 @@
             },
             "contracts/contracts/l2/system/GasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1324,6 +1378,7 @@
             },
             "contracts/contracts/l2/system/L2ToL1MessagePasser.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1347,6 +1402,7 @@
             },
             "contracts/contracts/l2/system/L2TxFeeVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1370,6 +1426,7 @@
             },
             "contracts/contracts/l2/system/MorphToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1393,6 +1450,7 @@
             },
             "contracts/contracts/l2/system/WrappedEther.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1416,6 +1474,7 @@
             },
             "contracts/contracts/libraries/CrossDomainMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1439,6 +1498,7 @@
             },
             "contracts/contracts/libraries/External.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1462,6 +1522,7 @@
             },
             "contracts/contracts/libraries/codec/BatchHeaderCodecV0.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1485,6 +1546,7 @@
             },
             "contracts/contracts/libraries/codec/ChunkCodecV0.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1499,6 +1561,7 @@
             },
             "contracts/contracts/libraries/common/AddressAliasHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1522,6 +1585,7 @@
             },
             "contracts/contracts/libraries/common/OwnableBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1545,6 +1609,7 @@
             },
             "contracts/contracts/libraries/common/Tree.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1568,6 +1633,7 @@
             },
             "contracts/contracts/libraries/common/Types.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1591,6 +1657,7 @@
             },
             "contracts/contracts/libraries/common/Verify.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1614,6 +1681,7 @@
             },
             "contracts/contracts/libraries/common/Whitelist.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1637,6 +1705,7 @@
             },
             "contracts/contracts/libraries/gateway/GatewayBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1660,6 +1729,7 @@
             },
             "contracts/contracts/libraries/staking/Staking.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1683,6 +1753,7 @@
             },
             "contracts/contracts/libraries/token/MorphStandardERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1706,6 +1777,7 @@
             },
             "contracts/contracts/libraries/token/MorphStandardERC20Factory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1729,6 +1801,7 @@
             },
             "contracts/contracts/libraries/verifier/RollupVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1752,6 +1825,7 @@
             },
             "contracts/contracts/libraries/verifier/ZkEvmVerifierV1.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1817,6 +1891,7 @@
           "paths": {
             "contracts/contracts/l2/system/L2TokenRegistry.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1848,6 +1923,7 @@
           "paths": {
             "accounts/abi/bind/base.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1873,6 +1949,7 @@
             },
             "accounts/external/backend.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1898,6 +1975,7 @@
             },
             "core/types/receipt.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1923,6 +2001,7 @@
             },
             "core/state_processor.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1948,6 +2027,7 @@
             },
             "core/tx_list.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1973,6 +2053,7 @@
             },
             "core/tx_pool.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -1998,6 +2079,7 @@
             },
             "core/types/alt_fee_tx.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2021,6 +2103,7 @@
             },
             "core/types/token_fee.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2044,6 +2127,7 @@
             },
             "core/types/transaction.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2069,6 +2153,7 @@
             },
             "internal/ethapi/api.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2094,6 +2179,7 @@
             },
             "internal/ethapi/transaction_args.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2119,6 +2205,7 @@
             },
             "light/txpool.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2144,6 +2231,7 @@
             },
             "core/state_transition.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2169,6 +2257,7 @@
             },
             "core/token_gas.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2192,6 +2281,7 @@
             },
             "rollup/fees/token_info.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2215,6 +2305,7 @@
             },
             "rollup/fees/rate.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2238,6 +2329,7 @@
             },
             "rollup/fees/rollup_fee.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2263,6 +2355,7 @@
             },
             "rollup/fees/token_transfer.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2286,6 +2379,7 @@
             },
             "signer/core/apitypes/types.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2311,6 +2405,7 @@
             },
             "core/vm/contracts.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2336,6 +2431,7 @@
             },
             "crypto/secp256r1/verifier.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2359,6 +2455,7 @@
             },
             "core/vm/eips.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2384,6 +2481,7 @@
             },
             "core/vm/jump_table.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -2409,6 +2507,7 @@
             },
             "core/vm/opcodes.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {

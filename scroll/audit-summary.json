@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.5.0",
+  "schema_version": "1.6.0",
   "project": "scroll",
   "reports": [
     {
@@ -26,6 +26,7 @@
           "paths": {
             "src/hash.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -45,6 +46,7 @@
           "paths": {
             "zkevm-circuits/src/bytecode_circuit/circuit/to_poseidon_hash.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -59,6 +61,7 @@
             },
             "gadgets/src/mul_add.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -85,6 +88,7 @@
             },
             "zkevm-circuits/src/exp_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -99,6 +103,7 @@
             },
             "zkevm-circuits/src/bytecode_circuit/circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -113,6 +118,7 @@
             },
             "gadgets/src/comparator.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -149,6 +155,7 @@
           "paths": {
             "contracts/src/External.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -163,6 +170,7 @@
             },
             "contracts/src/L1/L1ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -177,6 +185,7 @@
             },
             "contracts/src/L1/gateways/L1CustomERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -191,6 +200,7 @@
             },
             "contracts/src/L1/gateways/L1ERC1155Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -214,6 +224,7 @@
             },
             "contracts/src/L1/gateways/L1ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -228,6 +239,7 @@
             },
             "contracts/src/L1/gateways/L1ERC721Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -251,6 +263,7 @@
             },
             "contracts/src/L1/gateways/L1ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -274,6 +287,7 @@
             },
             "contracts/src/L1/gateways/L1GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -288,6 +302,7 @@
             },
             "contracts/src/L1/gateways/L1StandardERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -302,6 +317,7 @@
             },
             "contracts/src/L1/gateways/L1WETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -316,6 +332,7 @@
             },
             "contracts/src/L1/rollup/L1MessageQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -330,6 +347,7 @@
             },
             "contracts/src/L1/rollup/L2GasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -344,6 +362,7 @@
             },
             "contracts/src/L1/rollup/ScrollChainCommitmentVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -358,6 +377,7 @@
             },
             "contracts/src/L1/rollup/ScrollChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -372,6 +392,7 @@
             },
             "contracts/src/L2/L2ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -386,6 +407,7 @@
             },
             "contracts/src/L2/gateways/L2CustomERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -400,6 +422,7 @@
             },
             "contracts/src/L2/gateways/L2ERC1155Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -432,6 +455,7 @@
             },
             "contracts/src/L2/gateways/L2ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -446,6 +470,7 @@
             },
             "contracts/src/L2/gateways/L2ERC721Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -478,6 +503,7 @@
             },
             "contracts/src/L2/gateways/L2ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -501,6 +527,7 @@
             },
             "contracts/src/L2/gateways/L2GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -515,6 +542,7 @@
             },
             "contracts/src/L2/gateways/L2StandardERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -529,6 +557,7 @@
             },
             "contracts/src/L2/gateways/L2WETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -543,6 +572,7 @@
             },
             "contracts/src/L2/predeploys/L1BlockContainer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -557,6 +587,7 @@
             },
             "contracts/src/L2/predeploys/L1GasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -571,6 +602,7 @@
             },
             "contracts/src/L2/predeploys/L2MessageQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -585,6 +617,7 @@
             },
             "contracts/src/L2/predeploys/WETH9.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -599,6 +632,7 @@
             },
             "contracts/src/libraries/ScrollMessengerBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -613,6 +647,7 @@
             },
             "contracts/src/libraries/common/AddressAliasHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -627,6 +662,7 @@
             },
             "contracts/src/libraries/common/AppendOnlyMerkleTree.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -641,6 +677,7 @@
             },
             "contracts/src/libraries/common/OwnableBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -655,6 +692,7 @@
             },
             "contracts/src/libraries/constants/ScrollConstants.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -669,6 +707,7 @@
             },
             "contracts/src/libraries/constants/ScrollPredeploy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -683,6 +722,7 @@
             },
             "contracts/src/libraries/gateway/ScrollGatewayBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -697,6 +737,7 @@
             },
             "contracts/src/libraries/oracle/SimpleGasOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -711,6 +752,7 @@
             },
             "contracts/src/libraries/token/ScrollStandardERC20Factory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -725,6 +767,7 @@
             },
             "contracts/src/libraries/token/ScrollStandardERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -739,6 +782,7 @@
             },
             "contracts/src/libraries/verifier/PatriciaMerkleTrieVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -753,6 +797,7 @@
             },
             "contracts/src/libraries/verifier/RollupVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -767,6 +812,7 @@
             },
             "contracts/src/libraries/verifier/WithdrawTrieVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -781,6 +827,7 @@
             },
             "contracts/src/libraries/verifier/ZkTrieVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -795,6 +842,7 @@
             },
             "contracts/src/mocks/MockERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -809,6 +857,7 @@
             },
             "contracts/src/mocks/MockPatriciaMerkleTrieVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -823,6 +872,7 @@
             },
             "contracts/src/mocks/MockZkTrieVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -837,6 +887,7 @@
             },
             "contracts/src/test/mocks/MockScrollChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -851,6 +902,7 @@
             },
             "contracts/src/test/mocks/MockScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -865,6 +917,7 @@
             },
             "contracts/src/test/mocks/tokens/FeeOnTransferToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -879,6 +932,7 @@
             },
             "contracts/src/test/mocks/tokens/TransferReentrantToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -915,6 +969,7 @@
           "paths": {
             "contracts/src/External.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -929,6 +984,7 @@
             },
             "contracts/src/L1/IL1ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -943,6 +999,7 @@
             },
             "contracts/src/L1/L1ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -973,6 +1030,7 @@
             },
             "contracts/src/L1/gateways/EnforcedTxGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -996,6 +1054,7 @@
             },
             "contracts/src/L1/gateways/L1CustomERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1026,6 +1085,7 @@
             },
             "contracts/src/L1/gateways/L1ERC1155Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1056,6 +1116,7 @@
             },
             "contracts/src/L1/gateways/L1ERC721Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1086,6 +1147,7 @@
             },
             "contracts/src/L1/gateways/L1ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1116,6 +1178,7 @@
             },
             "contracts/src/L1/gateways/L1WETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1146,6 +1209,7 @@
             },
             "contracts/src/L1/gateways/L1ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1175,6 +1239,7 @@
             },
             "contracts/src/L1/gateways/L1GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1189,6 +1254,7 @@
             },
             "contracts/src/L1/gateways/L1StandardERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1233,6 +1299,7 @@
             },
             "contracts/src/L1/rollup/IL1MessageQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1247,6 +1314,7 @@
             },
             "contracts/src/L1/rollup/IL2GasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1261,6 +1329,7 @@
             },
             "contracts/src/L1/rollup/IScrollChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1284,6 +1353,7 @@
             },
             "contracts/src/L1/rollup/L1MessageQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1310,6 +1380,7 @@
             },
             "contracts/src/L1/rollup/L2GasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1324,6 +1395,7 @@
             },
             "contracts/src/L1/rollup/ScrollChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1403,6 +1475,7 @@
             },
             "contracts/src/L2/gateways/IL2ERC1155Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1417,6 +1490,7 @@
             },
             "contracts/src/L2/gateways/IL2ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1431,6 +1505,7 @@
             },
             "contracts/src/L2/gateways/IL2ERC721Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1445,6 +1520,7 @@
             },
             "contracts/src/L2/gateways/IL2ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1459,6 +1535,7 @@
             },
             "contracts/src/L2/gateways/IL2GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1473,6 +1550,7 @@
             },
             "contracts/src/interfaces/IERC20Metadata.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1487,6 +1565,7 @@
             },
             "contracts/src/interfaces/IWETH.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1501,6 +1580,7 @@
             },
             "contracts/src/libraries/FeeVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1524,6 +1604,7 @@
             },
             "contracts/src/libraries/IScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1538,6 +1619,7 @@
             },
             "contracts/src/libraries/ScrollMessengerBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1561,6 +1643,7 @@
             },
             "contracts/src/libraries/callbacks/IERC677Receiver.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1575,6 +1658,7 @@
             },
             "contracts/src/libraries/callbacks/IScrollGatewayCallback.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1589,6 +1673,7 @@
             },
             "contracts/src/libraries/codec/BatchHeaderV0Codec.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1621,6 +1706,7 @@
             },
             "contracts/src/libraries/codec/ChunkCodec.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1644,6 +1730,7 @@
             },
             "contracts/src/libraries/common/AddressAliasHelper.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1658,6 +1745,7 @@
             },
             "contracts/src/libraries/common/IWhitelist.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1672,6 +1760,7 @@
             },
             "contracts/src/libraries/constants/ScrollConstants.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1686,6 +1775,7 @@
             },
             "contracts/src/libraries/gateway/IScrollGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1700,6 +1790,7 @@
             },
             "contracts/src/libraries/gateway/ScrollGatewayBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1714,6 +1805,7 @@
             },
             "contracts/src/libraries/oracle/IGasOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1728,6 +1820,7 @@
             },
             "contracts/src/libraries/oracle/SimpleGasOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1742,6 +1835,7 @@
             },
             "contracts/src/libraries/token/IScrollERC1155.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1756,6 +1850,7 @@
             },
             "contracts/src/libraries/token/IScrollERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1770,6 +1865,7 @@
             },
             "contracts/src/libraries/token/IScrollERC20Upgradeable.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1784,6 +1880,7 @@
             },
             "contracts/src/libraries/token/IScrollERC721.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1798,6 +1895,7 @@
             },
             "contracts/src/libraries/token/IScrollStandardERC20Factory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1821,6 +1919,7 @@
             },
             "contracts/src/libraries/token/ScrollStandardERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1844,6 +1943,7 @@
             },
             "contracts/src/libraries/token/ScrollStandardERC20Factory.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1867,6 +1967,7 @@
             },
             "contracts/src/libraries/verifier/IRollupVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1881,6 +1982,7 @@
             },
             "contracts/src/libraries/verifier/PatriciaMerkleTrieVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1907,6 +2009,7 @@
             },
             "contracts/src/libraries/verifier/WithdrawTrieVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1952,6 +2055,7 @@
           "paths": {
             "contracts/src/L1/gateways/IL1ERC1155Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1966,6 +2070,7 @@
             },
             "contracts/src/L1/gateways/IL1ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1980,6 +2085,7 @@
             },
             "contracts/src/L1/gateways/IL1ERC721Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -1994,6 +2100,7 @@
             },
             "contracts/src/L1/gateways/IL1ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2008,6 +2115,7 @@
             },
             "contracts/src/L1/gateways/IL1GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2022,6 +2130,7 @@
             },
             "contracts/src/L2/gateways/L2CustomERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2036,6 +2145,7 @@
             },
             "contracts/src/L2/gateways/L2ERC1155Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2050,6 +2160,7 @@
             },
             "contracts/src/L2/gateways/L2ERC721Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2064,6 +2175,7 @@
             },
             "contracts/src/L2/gateways/L2ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2078,6 +2190,7 @@
             },
             "contracts/src/L2/gateways/L2StandardERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2092,6 +2205,7 @@
             },
             "contracts/src/L2/gateways/L2WETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2106,6 +2220,7 @@
             },
             "contracts/src/L2/gateways/L2ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2129,6 +2244,7 @@
             },
             "contracts/src/L2/gateways/L2GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2152,6 +2268,7 @@
             },
             "contracts/src/L2/predeploys/IL1BlockContainer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2166,6 +2283,7 @@
             },
             "contracts/src/L2/predeploys/IL1GasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2180,6 +2298,7 @@
             },
             "contracts/src/L2/predeploys/L1BlockContainer.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2203,6 +2322,7 @@
             },
             "contracts/src/L2/predeploys/L1GasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2217,6 +2337,7 @@
             },
             "contracts/src/L2/predeploys/L2MessageQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2240,6 +2361,7 @@
             },
             "contracts/src/L2/predeploys/L2TxFeeVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2254,6 +2376,7 @@
             },
             "contracts/src/L2/predeploys/WETH9.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2277,6 +2400,7 @@
             },
             "contracts/src/L2/predeploys/WrappedEther.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2291,6 +2415,7 @@
             },
             "contracts/src/L2/predeploys/Whitelist.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2305,6 +2430,7 @@
             },
             "contracts/src/L2/IL2ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2319,6 +2445,7 @@
             },
             "contracts/src/L2/L2ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2363,6 +2490,7 @@
             },
             "contracts/src/libraries/common/AppendOnlyMerkleTree.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2386,6 +2514,7 @@
             },
             "contracts/src/libraries/common/OwnableBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2400,6 +2529,7 @@
             },
             "contracts/src/libraries/constants/ScrollPredeploy.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2414,6 +2544,7 @@
             },
             "contracts/src/libraries/token/IScrollERC1155.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2428,6 +2559,7 @@
             },
             "contracts/src/libraries/token/IScrollERC721.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2442,6 +2574,7 @@
             },
             "contracts/src/libraries/FeeVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2482,6 +2615,7 @@
           "paths": {
             "zkevm-circuits/src/rlp_circuit_fsm.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2514,6 +2648,7 @@
             },
             "zkevm-circuits/src/tx_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2561,6 +2696,7 @@
             },
             "zkevm-circuits/src/pi_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2575,6 +2711,7 @@
             },
             "zkevm-circuits/src/witness/tx.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2594,6 +2731,7 @@
           "paths": {
             "src/gadgets/one_hot.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2608,6 +2746,7 @@
             },
             "src/constraint_builder/binary_column.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2622,6 +2761,7 @@
             },
             "src/gadgets/mpt_update.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2722,6 +2862,7 @@
             },
             "src/gadgets/byte_representation.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2745,6 +2886,7 @@
             },
             "src/types.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -2781,6 +2923,7 @@
           "paths": {
             "contracts/src/L1/gateways/usdc/L1USDCGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2799,6 +2942,7 @@
             },
             "contracts/src/L1/rollup/MultipleVersionRollupVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2822,6 +2966,7 @@
             },
             "contracts/src/L2/gateways/usdc/L2USDCGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2853,6 +2998,7 @@
             },
             "contracts/src/L2/predeploys/WrappedEther.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2867,6 +3013,7 @@
             },
             "contracts/src/gas-swap/GasSwap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2917,6 +3064,7 @@
             },
             "contracts/src/interfaces/IFiatToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2931,6 +3079,7 @@
             },
             "contracts/src/libraries/callbacks/IMessageDropCallback.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2945,6 +3094,7 @@
             },
             "contracts/src/libraries/token/IScrollERC1155Extension.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2959,6 +3109,7 @@
             },
             "contracts/src/libraries/token/IScrollERC20Extension.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2973,6 +3124,7 @@
             },
             "contracts/src/libraries/token/IScrollERC721Extension.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -2987,6 +3139,7 @@
             },
             "contracts/src/libraries/verifier/IZkEvmVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3001,6 +3154,7 @@
             },
             "contracts/src/libraries/ScrollMessengerBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3024,6 +3178,7 @@
             },
             "contracts/src/misc/Fallback.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3038,6 +3193,7 @@
             },
             "contracts/src/External.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3052,6 +3208,7 @@
             },
             "contracts/src/L1/gateways/EnforcedTxGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3068,6 +3225,7 @@
             },
             "contracts/src/L1/gateways/IL1ERC1155Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3084,6 +3242,7 @@
             },
             "contracts/src/L1/gateways/IL1ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3100,6 +3259,7 @@
             },
             "contracts/src/L1/gateways/IL1ERC721Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3116,6 +3276,7 @@
             },
             "contracts/src/L1/gateways/IL1ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3132,6 +3293,7 @@
             },
             "contracts/src/L1/gateways/IL1GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3157,6 +3319,7 @@
             },
             "contracts/src/L1/gateways/L1CustomERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3188,6 +3351,7 @@
             },
             "contracts/src/L1/gateways/L1ERC1155Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3219,6 +3383,7 @@
             },
             "contracts/src/L1/gateways/L1ERC721Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3250,6 +3415,7 @@
             },
             "contracts/src/L1/gateways/L1ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3293,6 +3459,7 @@
             },
             "contracts/src/L1/gateways/L1ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3336,6 +3503,7 @@
             },
             "contracts/src/L1/gateways/L1GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3370,6 +3538,7 @@
             },
             "contracts/src/L1/gateways/L1StandardERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3401,6 +3570,7 @@
             },
             "contracts/src/L1/gateways/L1WETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3432,6 +3602,7 @@
             },
             "contracts/src/L1/rollup/IL1MessageQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3448,6 +3619,7 @@
             },
             "contracts/src/L1/rollup/L1MessageQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3473,6 +3645,7 @@
             },
             "contracts/src/L1/rollup/ScrollChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3516,6 +3689,7 @@
             },
             "contracts/src/L1/IL1ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3541,6 +3715,7 @@
             },
             "contracts/src/L1/L1ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3620,6 +3795,7 @@
             },
             "contracts/src/L2/gateways/L2ERC1155Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3663,6 +3839,7 @@
             },
             "contracts/src/L2/gateways/L2ERC721Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3706,6 +3883,7 @@
             },
             "contracts/src/L2/gateways/L2ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3737,6 +3915,7 @@
             },
             "contracts/src/L2/predeploys/L1GasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3762,6 +3941,7 @@
             },
             "contracts/src/L2/IL2ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3787,6 +3967,7 @@
             },
             "contracts/src/L2/L2ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3866,6 +4047,7 @@
             },
             "contracts/src/libraries/constants/ScrollConstants.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3882,6 +4064,7 @@
             },
             "contracts/src/libraries/gateway/ScrollGatewayBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3907,6 +4090,7 @@
             },
             "contracts/src/libraries/token/IScrollERC1155.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3923,6 +4107,7 @@
             },
             "contracts/src/libraries/token/IScrollERC20.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3939,6 +4124,7 @@
             },
             "contracts/src/libraries/token/IScrollERC721.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3955,6 +4141,7 @@
             },
             "contracts/src/libraries/verifier/IRollupVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -3993,6 +4180,7 @@
           "paths": {
             "contracts/src/gas-swap/GasSwap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4007,6 +4195,7 @@
             },
             "contracts/src/L1/gateways/EnforcedTxGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4021,6 +4210,7 @@
             },
             "contracts/src/L1/rollup/MultipleVersionRollupVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4035,6 +4225,7 @@
             },
             "contracts/src/L2/gateways/usdc/L2USDCGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4049,6 +4240,7 @@
             },
             "contracts/src/libraries/codec/BatchHeaderV0Codec.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4063,6 +4255,7 @@
             },
             "contracts/src/libraries/codec/ChunkCodec.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4077,6 +4270,7 @@
             },
             "contracts/src/L1/L1ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4091,6 +4285,7 @@
             },
             "contracts/src/L1/gateways/L1CustomERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4105,6 +4300,7 @@
             },
             "contracts/src/L1/gateways/L1ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4119,6 +4315,7 @@
             },
             "contracts/src/L1/gateways/L1ERC721Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4133,6 +4330,7 @@
             },
             "contracts/src/L1/gateways/L1GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4147,6 +4345,7 @@
             },
             "contracts/src/L1/gateways/L1StandardERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4161,6 +4360,7 @@
             },
             "contracts/src/L1/gateways/L1WETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4175,6 +4375,7 @@
             },
             "contracts/src/L1/rollup/L1MessageQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4189,6 +4390,7 @@
             },
             "contracts/src/L1/rollup/L2GasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4212,6 +4414,7 @@
             },
             "contracts/src/L1/rollup/ScrollChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4226,6 +4429,7 @@
             },
             "contracts/src/L2/L2ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4240,6 +4444,7 @@
             },
             "contracts/src/L2/gateways/L2StandardERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4254,6 +4459,7 @@
             },
             "contracts/src/libraries/gateway/ScrollGatewayBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4268,6 +4474,7 @@
             },
             "contracts/src/libraries/verifier/RollupVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4282,6 +4489,7 @@
             },
             "contracts/src/libraries/verifier/WithdrawTrieVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4296,6 +4504,7 @@
             },
             "contracts/src/L1/gateways/usdc/L1USDCGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4336,6 +4545,7 @@
           "paths": {
             "src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4354,6 +4564,7 @@
             },
             "src/gadgets/mpt_update.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4380,6 +4591,7 @@
             },
             "src/constraint_builder/binary_column.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4418,6 +4630,7 @@
             },
             "src/gadgets/one_hot.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4446,6 +4659,7 @@
           "paths": {
             "zkevm-circuits/src/copy_circuit": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4469,6 +4683,7 @@
             },
             "zkevm-circuits/src/copy_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4492,6 +4707,7 @@
             },
             "zkevm-circuits/src/super_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4506,6 +4722,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/error_invalid_creation_code.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4554,6 +4771,7 @@
           "paths": {
             "trie": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4585,6 +4803,7 @@
             },
             "types": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4611,6 +4830,7 @@
             },
             "lib.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4637,6 +4857,7 @@
             },
             "c.go": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4651,6 +4872,7 @@
             },
             "src/lib.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -4732,6 +4954,7 @@
           "paths": {
             "contracts/src/L1/gateways/L1ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4764,6 +4987,7 @@
             },
             "contracts/src/L1/gateways/usdc/L1USDCGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4787,6 +5011,7 @@
             },
             "contracts/src/L2/gateways/usdc/L2USDCGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4837,6 +5062,7 @@
             },
             "contracts/src/interfaces/IMessageTransmitter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4860,6 +5086,7 @@
             },
             "contracts/src/interfaces/ITokenMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4883,6 +5110,7 @@
             },
             "contracts/src/interfaces/IUSDCBurnableSourceBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4906,6 +5134,7 @@
             },
             "contracts/src/interfaces/IUSDCDestinationBridge.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4929,6 +5158,7 @@
             },
             "contracts/src/libraries/gateway/CCTPGatewayBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4983,6 +5213,7 @@
           "paths": {
             "contracts/src/L1/rollup/IL1MessageQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -4997,6 +5228,7 @@
             },
             "contracts/src/L1/rollup/L1MessageQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5020,6 +5252,7 @@
             },
             "contracts/src/L1/rollup/ScrollChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5034,6 +5267,7 @@
             },
             "contracts/src/L2/predeploys/L2TxFeeVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5066,6 +5300,7 @@
             },
             "contracts/src/libraries/FeeVault.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5102,6 +5337,7 @@
           "paths": {
             "contracts/src/misc/ScrollOwner.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5161,6 +5397,7 @@
             },
             "contracts/src/rate-limiter/ETHRateLimiter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5214,6 +5451,7 @@
             },
             "contracts/src/rate-limiter/IETHRateLimiter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5228,6 +5466,7 @@
             },
             "contracts/src/rate-limiter/ITokenRateLimiter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5242,6 +5481,7 @@
             },
             "contracts/src/rate-limiter/TokenRateLimiter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5268,6 +5508,7 @@
             },
             "contracts/scripts/foundry/InitializeL2ScrollOwner.s.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5282,6 +5523,7 @@
             },
             "contracts/src/L1/gateways/L1ERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5296,6 +5538,7 @@
             },
             "contracts/src/L1/gateways/L1ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5310,6 +5553,7 @@
             },
             "contracts/src/L1/L1ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5324,6 +5568,7 @@
             },
             "contracts/src/L2/gateways/L2CustomERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5338,6 +5583,7 @@
             },
             "contracts/src/L2/gateways/L2StandardERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5352,6 +5598,7 @@
             },
             "contracts/src/L2/gateways/L2WETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5366,6 +5613,7 @@
             },
             "contracts/src/L2/gateways/L2ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5380,6 +5628,7 @@
             },
             "contracts/src/L2/L2ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5394,6 +5643,7 @@
             },
             "contracts/src/libraries/gateway/ScrollGatewayBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5408,6 +5658,7 @@
             },
             "contracts/src/libraries/ScrollMessengerBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5422,6 +5673,7 @@
             },
             "contracts/src/gas-swap/GasSwap.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -5466,6 +5718,7 @@
           "paths": {
             "src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5480,6 +5733,7 @@
             },
             "spec/mpt-proof.md": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -5499,6 +5753,7 @@
           "paths": {
             "aggregator": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5537,6 +5792,7 @@
             },
             "zkevm-circuits/src/pi_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5551,6 +5807,7 @@
             },
             "zkevm-circuits/src/sig_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5574,6 +5831,7 @@
             },
             "zkevm-circuits/src/sig_circuit": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5597,6 +5855,7 @@
             },
             "zkevm-circuits/src/tx_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5611,6 +5870,7 @@
             },
             "zkevm-circuits/src/modexp_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5625,6 +5885,7 @@
             },
             "zkevm-circuits/src/ecc_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5639,6 +5900,7 @@
             },
             "zkevm-circuits/src/ecc_circuit": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5653,6 +5915,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/precompiles": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5672,6 +5935,7 @@
           "paths": {
             "snark-verifier/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5686,6 +5950,7 @@
             },
             "snark-verifier-sdk/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5750,6 +6015,7 @@
           "paths": {
             "zkevm-circuits/src/evm_circuit": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5774,6 +6040,7 @@
             },
             "zkevm-circuits/src/evm_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5788,6 +6055,7 @@
             },
             "zkevm-circuits/src/state_circuit": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5802,6 +6070,7 @@
             },
             "zkevm-circuits/src/state_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5816,6 +6085,7 @@
             },
             "zkevm-circuits/src/bytecode_circuit": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5839,6 +6109,7 @@
             },
             "zkevm-circuits/src/bytecode_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5862,6 +6133,7 @@
             },
             "zkevm-circuits/src/keccak_circuit": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5876,6 +6148,7 @@
             },
             "zkevm-circuits/src/keccak_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5890,6 +6163,7 @@
             },
             "zkevm-circuits/src/evm_circuit/util/math_gadget/modulo.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5916,6 +6190,7 @@
             },
             "zkevm-circuits/src/evm_circuit/util/math_gadget/rlp.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5942,6 +6217,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/blockhash.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -5968,6 +6244,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/callop.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6007,6 +6284,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/begin_tx.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6030,6 +6308,7 @@
             },
             "zkevm-circuits/src/state_circuit/constraint_builder.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6053,6 +6332,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/create.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6079,6 +6359,7 @@
             },
             "zkevm-circuits/src/evm_circuit/step.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6102,6 +6383,7 @@
             },
             "zkevm-circuits/src/evm_circuit/util/math_gadget/constant_division.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6125,6 +6407,7 @@
             },
             "zkevm-circuits/src/evm_circuit/util/math_gadget/lt.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6148,6 +6431,7 @@
             },
             "zkevm-circuits/src/evm_circuit/util/constraint_builder.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6171,6 +6455,7 @@
             },
             "zkevm-circuits/src/util.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6194,6 +6479,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/return_revert.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6235,6 +6521,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/error_code_store.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6261,6 +6548,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/error_precompile_failed.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6287,6 +6575,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/error_invalid_creation_code.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6313,6 +6602,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/returndatacopy.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6339,6 +6629,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/error_return_data_oo_bound.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6365,6 +6656,7 @@
             },
             "zkevm-circuits/src/evm_circuit/util/common_gadget.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6397,6 +6689,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/exp.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6420,6 +6713,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/extcodecopy.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6443,6 +6737,7 @@
             },
             "zkevm-circuits/src/bytecode_circuit/circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6475,6 +6770,7 @@
             },
             "zkevm-circuits/Cargo.toml": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6498,6 +6794,7 @@
             },
             "zkevm-circuits/src/tx_circuit/sign_verify.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6517,6 +6814,7 @@
           "paths": {
             "snark-verifier/src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6540,6 +6838,7 @@
             },
             "snark-verifier/src/pcs/kzg/decider.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6563,6 +6862,7 @@
             },
             "snark-verifier/src/pcs/ipa/decider.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6591,6 +6891,7 @@
           "paths": {
             "src/circuits/modexp.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6632,6 +6933,7 @@
             },
             "src/circuits/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6664,6 +6966,7 @@
             },
             "src/utils/mod.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6692,6 +6995,7 @@
           "paths": {
             "halo2-base": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6718,6 +7022,7 @@
             },
             "halo2-ecc": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6744,6 +7049,7 @@
             },
             "hashes/zkevm-keccak/src/keccak_packed_multi.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -6786,6 +7092,7 @@
           "paths": {
             "contracts/src/lido/L1LidoGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6800,6 +7107,7 @@
             },
             "contracts/src/lido/L2LidoGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6814,6 +7122,7 @@
             },
             "contracts/src/lido/L2WstETHToken.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6828,6 +7137,7 @@
             },
             "contracts/src/lido/LidoBridgeableTokens.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6842,6 +7152,7 @@
             },
             "contracts/src/lido/LidoGatewayManager.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6861,6 +7172,7 @@
           "paths": {
             "contracts/bridges/ScrollBridgeExecutor.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6897,6 +7209,7 @@
           "paths": {
             "contracts/src/L1/gateways/L1CustomERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6920,6 +7233,7 @@
             },
             "contracts/src/L1/gateways/L1ERC1155Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6934,6 +7248,7 @@
             },
             "contracts/src/L1/gateways/L1ERC721Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6948,6 +7263,7 @@
             },
             "contracts/src/L1/gateways/L1ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -6971,6 +7287,7 @@
             },
             "contracts/src/L1/gateways/L1GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7006,6 +7323,7 @@
             },
             "contracts/src/L1/gateways/L1StandardERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7038,6 +7356,7 @@
             },
             "contracts/src/L1/gateways/L1WETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7052,6 +7371,7 @@
             },
             "contracts/src/L1/gateways/usdc/L1USDCGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7075,6 +7395,7 @@
             },
             "contracts/src/L1/L1ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7089,6 +7410,7 @@
             },
             "contracts/src/L1/rollup/IL1MessageQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7112,6 +7434,7 @@
             },
             "contracts/src/L1/rollup/IL1MessageQueueWithGasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7135,6 +7458,7 @@
             },
             "contracts/src/L1/rollup/IL2GasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7149,6 +7473,7 @@
             },
             "contracts/src/L1/rollup/IScrollChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7163,6 +7488,7 @@
             },
             "contracts/src/L1/rollup/L1MessageQueue.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7177,6 +7503,7 @@
             },
             "contracts/src/L1/rollup/L1MessageQueueWithGasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7209,6 +7536,7 @@
             },
             "contracts/src/L1/rollup/L2GasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7223,6 +7551,7 @@
             },
             "contracts/src/L1/rollup/ScrollChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7237,6 +7566,7 @@
             },
             "contracts/src/L2/gateways/L2CustomERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7251,6 +7581,7 @@
             },
             "contracts/src/L2/gateways/L2ERC1155Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7265,6 +7596,7 @@
             },
             "contracts/src/L2/gateways/L2ERC721Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7279,6 +7611,7 @@
             },
             "contracts/src/L2/gateways/L2ETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7311,6 +7644,7 @@
             },
             "contracts/src/L2/gateways/L2GatewayRouter.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7343,6 +7677,7 @@
             },
             "contracts/src/L2/gateways/L2StandardERC20Gateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7375,6 +7710,7 @@
             },
             "contracts/src/L2/gateways/L2WETHGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7389,6 +7725,7 @@
             },
             "contracts/src/L2/gateways/usdc/L2USDCGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7403,6 +7740,7 @@
             },
             "contracts/src/L2/L2ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7417,6 +7755,7 @@
             },
             "contracts/src/libraries/gateway/IScrollGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7431,6 +7770,7 @@
             },
             "contracts/src/libraries/gateway/ScrollGatewayBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7445,6 +7785,7 @@
             },
             "contracts/src/libraries/IScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7459,6 +7800,7 @@
             },
             "contracts/src/libraries/ScrollMessengerBase.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7473,6 +7815,7 @@
             },
             "contracts/src/misc/EmptyContract.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7509,6 +7852,7 @@
           "paths": {
             "contracts/src/L1/rollup/ScrollChainCommitmentVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7532,6 +7876,7 @@
             },
             "contracts/src/libraries/verifier/ZkTrieVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7604,6 +7949,7 @@
           "paths": {
             "contracts/src/L1/rollup/IScrollChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7627,6 +7973,7 @@
             },
             "contracts/src/L1/rollup/MultipleVersionRollupVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7650,6 +7997,7 @@
             },
             "contracts/src/L1/rollup/ScrollChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7691,6 +8039,7 @@
             },
             "contracts/src/libraries/verifier/IRollupVerifier.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7714,6 +8063,7 @@
             },
             "contracts/src/libraries/codec/BatchHeaderV0Codec.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7728,6 +8078,7 @@
             },
             "contracts/src/libraries/codec/ChunkCodecV0.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7742,6 +8093,7 @@
             },
             "contracts/src/libraries/codec/BatchHeaderV1Codec.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7756,6 +8108,7 @@
             },
             "contracts/src/libraries/codec/ChunkCodecV1.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7792,6 +8145,7 @@
           "paths": {
             "aggregator/src/aggregation/barycentric.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7806,6 +8160,7 @@
             },
             "aggregator/src/aggregation/blob_data.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7820,6 +8175,7 @@
             },
             "aggregator/src/blob.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7846,6 +8202,7 @@
             },
             "zkevm-circuits/src/pi_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7860,6 +8217,7 @@
             },
             "zkevm-circuits/src/tx_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -7896,6 +8254,7 @@
           "paths": {
             "contracts/src/batch-bridge/BatchBridgeCodec.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7910,6 +8269,7 @@
             },
             "contracts/src/batch-bridge/L1BatchBridgeGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7960,6 +8320,7 @@
             },
             "contracts/src/batch-bridge/L2BatchBridgeGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -7996,6 +8357,7 @@
           "paths": {
             "zkevm-circuits/src/evm_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8019,6 +8381,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8042,6 +8405,7 @@
             },
             "zkevm-circuits/src/evm_circuit/step.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8065,6 +8429,7 @@
             },
             "zkevm-circuits/src/witness/step.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8088,6 +8453,7 @@
             },
             "zkevm-circuits/src/table.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8111,6 +8477,7 @@
             },
             "zkevm-circuits/src/witness/rw.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8125,6 +8492,7 @@
             },
             "zkevm-circuits/src/evm_circuit/param.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8139,6 +8507,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/tload.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8153,6 +8522,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/tstore.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8167,6 +8537,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/sstore.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8181,6 +8552,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/error_write_protection.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8195,6 +8567,7 @@
             },
             "zkevm-circuits/src/copy_circuit/test.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8209,6 +8582,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/mcopy.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8232,6 +8606,7 @@
             },
             "zkevm-circuits/src/evm_circuit/execution/error_oog_memory_copy.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8258,6 +8633,7 @@
             },
             "zkevm-circuits/src/evm_circuit/util/constraint_builder.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8284,6 +8660,7 @@
             },
             "zkevm-circuits/src/copy_circuit.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8307,6 +8684,7 @@
             },
             "zkevm-circuits/src/copy_circuit/copy_gadgets.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8333,6 +8711,7 @@
             },
             "zkevm-circuits/src/state_circuit/constraint_builder.rs": {
               "path_kind": "file",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8389,6 +8768,7 @@
           "paths": {
             "crates/circuits/chunk-circuit": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8403,6 +8783,7 @@
             },
             "crates/circuits/batch-circuit": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8430,6 +8811,7 @@
             },
             "crates/circuits/bundle-circuit": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8468,6 +8850,7 @@
             },
             "crates/circuits/types": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8526,6 +8909,7 @@
           "paths": {
             "src/L1/rollup/ScrollChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8540,6 +8924,7 @@
             },
             "src/libraries/verifier/ZkEvmVerifierPostEuclid.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8554,6 +8939,7 @@
             },
             "src/libraries/codec/BatchHeaderV3Codec.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8568,6 +8954,7 @@
             },
             ".github/workflows/contracts.yml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8609,6 +8996,7 @@
             },
             ".github/workflows/docker-release.yml": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8655,6 +9043,7 @@
           "paths": {
             "cmd/migration-checker/main.go": {
               "path_kind": "file",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8669,6 +9058,7 @@
             },
             ".github/workflows": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8736,6 +9126,7 @@
           "paths": {
             "crates/circuits/chunk-circuit": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8750,6 +9141,7 @@
             },
             "crates/circuits/batch-circuit": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8764,6 +9156,7 @@
             },
             "crates/circuits/bundle-circuit": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8778,6 +9171,7 @@
             },
             "crates/circuits/types": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -8792,6 +9186,7 @@
             },
             ".github/workflows": {
               "path_kind": "directory_recursive",
+              "kind": "other",
               "versions": [
                 {
                   "revision": {
@@ -8838,6 +9233,7 @@
           "paths": {
             "src/L1/rollup/ScrollChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8852,6 +9248,7 @@
             },
             "src/L1/rollup/L1MessageQueueV2.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8866,6 +9263,7 @@
             },
             "src/L1/rollup/L1MessageQueueV1.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8880,6 +9278,7 @@
             },
             "src/L1/L1ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8894,6 +9293,7 @@
             },
             "src/L1/gateways/EnforcedTxGateway.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8908,6 +9308,7 @@
             },
             "src/L1/system-contract/SystemConfig.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8944,6 +9345,7 @@
           "paths": {
             "src/L1/L1ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8958,6 +9360,7 @@
             },
             "src/L1/rollup/ScrollChain.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8972,6 +9375,7 @@
             },
             "src/L2/L2ScrollMessenger.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -8986,6 +9390,7 @@
             },
             "src/misc/PauseController.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9000,6 +9405,7 @@
             },
             "src/L2/L2SystemConfig.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9014,6 +9420,7 @@
             },
             "src/L2/predeploys/L1GasPriceOracle.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9028,6 +9435,7 @@
             },
             "src/libraries/verifier/ZkEvmVerifierPostFeynman.sol": {
               "path_kind": "file",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9068,6 +9476,7 @@
           "paths": {
             "src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9087,6 +9496,7 @@
           "paths": {
             "crates/precompile": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9127,6 +9537,7 @@
           "paths": {
             "crates": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9146,6 +9557,7 @@
           "paths": {
             "src": {
               "path_kind": "directory_recursive",
+              "kind": "zk",
               "versions": [
                 {
                   "revision": {
@@ -9182,6 +9594,7 @@
           "paths": {
             "src/cloak": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {
@@ -9209,6 +9622,7 @@
             },
             "src": {
               "path_kind": "directory_recursive",
+              "kind": "evm",
               "versions": [
                 {
                   "revision": {

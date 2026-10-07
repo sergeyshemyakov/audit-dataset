@@ -9,11 +9,11 @@ In this repo I have extracted exact file versions that are covered by project au
 
 ## Independent audit data extraction
 
-1. Copy the reports directory of the collection into a scratchpad directory outside of this repo, laid out as `<scratchpad>/<collection>/reports`. Scratchpad has to either be in /tmp dir, or you have to delete it after you are done with the work. You MUST NOT read the contents of audit-summary.json or .md of the collection inside the repo.
+1. Copy the reports directory of the collection into a scratchpad directory outside of this repo, laid out as `<scratchpad>/<collection>/reports` (for a library collection such as `_libs/safe`, `<scratchpad>/_libs/safe/reports`). Scratchpad has to either be in /tmp dir, or you have to delete it after you are done with the work. You MUST NOT read the contents of audit-summary.json or .md of the collection inside the repo.
 
-2. Read the audit reports in the scratchpad and extract `<scratchpad>/<collection>/audit-summary.json` according to the audit-extract skill.
+2. Read the audit reports in the scratchpad and extract `<scratchpad>/<collection>/audit-summary.json` according to the audit-extract skill, including the `kind` of every scoped path.
 
-3. Generate audit-summary.md from the .json that you wrote: `python3 -m audit_dataset --dataset-root <scratchpad> render <collection>`.
+3. Validate it and generate audit-summary.md from the .json that you wrote, running from the root of this repo: `python3 -m audit_dataset --dataset-root <scratchpad> render <collection>`. Fix every validation problem it reports before continuing.
 
 ## Difference analysis
 
@@ -23,6 +23,8 @@ In this repo I have extracted exact file versions that are covered by project au
 
 3. Programmatically scan both audit-summary.json to compare the versions with major findings. Paths with major findings should ideally be identical in both files, with the same `major_finding_ids`. A difference is allowed when the audit is not explicit enough, but all clear contradictions between audit-summary.json and the audit text on the topic of major findings should be highlighted with explanations of the error.
 
-4. Do not check the correctness of metadata extracted from audits, it is not relevant.
+4. Programmatically compare the `kind` of every path present in both files. Only `evm` paths are fetched and exported, so a path that one file marks `evm` and the other `zk`, `cairo` or `other` either hides audited EVM code or stores code that is not EVM; highlight every such disagreement and say which kind the report supports.
+
+5. Do not check the correctness of metadata extracted from audits, it is not relevant.
 
 Prepare a report of your findings.

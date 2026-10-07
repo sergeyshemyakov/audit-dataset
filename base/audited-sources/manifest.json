@@ -1601,228 +1601,6 @@
     {
       "repository": "base/op-enclave",
       "repository_url": "https://github.com/base/op-enclave",
-      "source_path": "op-enclave",
-      "path_kind": "directory_recursive",
-      "commit": "4a7e36a0860ba408f2f5538ea7a9a117987d08d6",
-      "files": [
-        {
-          "path": "op-enclave/.dockerignore",
-          "git_object": "94143827ed065ca0d7d5be1b765d255c5c32cd9a",
-          "git_mode": "100644",
-          "sha256": "c750b6d776c1db92b55fcecbb51c80be008aae877e78a28691b3ae79be9ea63e"
-        },
-        {
-          "path": "op-enclave/Dockerfile",
-          "git_object": "26bdb232466dcbda909a94d285496730519c8583",
-          "git_mode": "100644",
-          "sha256": "645286daa74de6e0a0ec993734c6de84daa6dfe074f77ea48eabdad1d39b7413"
-        },
-        {
-          "path": "op-enclave/cmd/enclave/main.go",
-          "git_object": "69455adaceac443f8e77eb3d11f94085410310b6",
-          "git_mode": "100644",
-          "sha256": "15e4927787d3da8e47f29488e2b1e7e18e4b0fb0f7bff45446109beac25000c6"
-        },
-        {
-          "path": "op-enclave/cmd/server/main.go",
-          "git_object": "08ec932ff655b864e624db39599b493c130e0233",
-          "git_mode": "100644",
-          "sha256": "6c715fa3b517ccb2dca5f5785f131e419756f0c597b6fcea733b8fe41e953e00"
-        },
-        {
-          "path": "op-enclave/eif/cmdline-aarch64",
-          "git_object": "ea78dd00ede940217bb223877dd99557a3a1b5fc",
-          "git_mode": "100644",
-          "sha256": "b2863fac918fe57e9083ef434e8ac09a01ab97673f3d14c0afc1c017758ceb44"
-        },
-        {
-          "path": "op-enclave/eif/cmdline-x86_64",
-          "git_object": "942025a9811181533d9cf7a672bd9fadcf58c028",
-          "git_mode": "100644",
-          "sha256": "10e182738c73d88854c480aa22032474cfc9e82443d39ce92bf5fa1684fee68d"
-        },
-        {
-          "path": "op-enclave/eif/init-ramdisk.yaml",
-          "git_object": "5c53cb3980e64afc1044fa1b4f2bf0ed9b1cf215",
-          "git_mode": "100644",
-          "sha256": "194a7cd33263836a658e20df10884de12305e061e9548a2bf5f4807ec3381071"
-        },
-        {
-          "path": "op-enclave/eif/user-ramdisk.yaml",
-          "git_object": "abd9f3a6232be78dbdaea70cf5584dc0a2487819",
-          "git_mode": "100644",
-          "sha256": "4eb3773c7f98a671df7e6e1d7c38922cd878e74cd5218525fc98c9888462649d"
-        },
-        {
-          "path": "op-enclave/enclave/client.go",
-          "git_object": "c9056db74eba51036e9b48f386038fd122f62b5b",
-          "git_mode": "100644",
-          "sha256": "6e9a9162066adfe3ff03ff4b1245e55a0a78f38f6f7cd3c880413830b5ce1334"
-        },
-        {
-          "path": "op-enclave/enclave/config.go",
-          "git_object": "552fa32a19b62d536e873333c9e4fd41154cd2bd",
-          "git_mode": "100644",
-          "sha256": "5133bd0664f058a1f205767e539051aab7784c4aa1d0b3b3d746164524bb3e30"
-        },
-        {
-          "path": "op-enclave/enclave/l1_receipts_fetcher.go",
-          "git_object": "4187b42a0161e59908b649f393153007a091ab52",
-          "git_mode": "100644",
-          "sha256": "5a05bd4cb2c1c170de5855db216f85896fc1ba06a25f1fdaa73e4e10e0b4aeed"
-        },
-        {
-          "path": "op-enclave/enclave/l2_system_config_fetcher.go",
-          "git_object": "34d022d5e23172d621d265638042f0885ed0b74b",
-          "git_mode": "100644",
-          "sha256": "e99d3c23ed030e234face2563b3978e984bd79648cbca62cda3742a08dd115e8"
-        },
-        {
-          "path": "op-enclave/enclave/rpc.go",
-          "git_object": "756ef5dafe7bd71d202287ed27ed5460810cfd67",
-          "git_mode": "100644",
-          "sha256": "ff357df6ba69719e31c3c15c5a04af0a4813150b0cd74d7d13e7d56ced3b4da2"
-        },
-        {
-          "path": "op-enclave/enclave/server.go",
-          "git_object": "76b79efab569eeabe240cd7f654f8604cdeb48c6",
-          "git_mode": "100644",
-          "sha256": "c7e941b6aadbce97789610e7d98aca3bc4b07d43188842c716255193315c47ec"
-        },
-        {
-          "path": "op-enclave/enclave/stateless.go",
-          "git_object": "aab7e80aedb987d740cb9fef2d7fb024d0490e46",
-          "git_mode": "100644",
-          "sha256": "eb36ecf645135ee458dc320e920d10beb7c76774e8501b8ca75ff87a31705a5d"
-        },
-        {
-          "path": "op-enclave/go.mod",
-          "git_object": "b3157296c6366f58a59c78ca8aa3966cfa092d34",
-          "git_mode": "100644",
-          "sha256": "b81487b03c260300de012699e88852c8c661b4210bf18396f60851b47e3e683c"
-        },
-        {
-          "path": "op-enclave/go.sum",
-          "git_object": "4314cd45e69471858a4f264535a043403e66808d",
-          "git_mode": "100644",
-          "sha256": "f7bd87c6018863ab300cbb8bdf8895c6046f22d209a7171809fc946d584af6c5"
-        }
-      ]
-    },
-    {
-      "repository": "base/op-enclave",
-      "repository_url": "https://github.com/base/op-enclave",
-      "source_path": "op-enclave",
-      "path_kind": "directory_recursive",
-      "commit": "628aa61032c428a3e8f28e3f2925a758a545fc54",
-      "files": [
-        {
-          "path": "op-enclave/.dockerignore",
-          "git_object": "94143827ed065ca0d7d5be1b765d255c5c32cd9a",
-          "git_mode": "100644",
-          "sha256": "c750b6d776c1db92b55fcecbb51c80be008aae877e78a28691b3ae79be9ea63e"
-        },
-        {
-          "path": "op-enclave/Dockerfile",
-          "git_object": "26bdb232466dcbda909a94d285496730519c8583",
-          "git_mode": "100644",
-          "sha256": "645286daa74de6e0a0ec993734c6de84daa6dfe074f77ea48eabdad1d39b7413"
-        },
-        {
-          "path": "op-enclave/cmd/enclave/main.go",
-          "git_object": "69455adaceac443f8e77eb3d11f94085410310b6",
-          "git_mode": "100644",
-          "sha256": "15e4927787d3da8e47f29488e2b1e7e18e4b0fb0f7bff45446109beac25000c6"
-        },
-        {
-          "path": "op-enclave/cmd/server/main.go",
-          "git_object": "08ec932ff655b864e624db39599b493c130e0233",
-          "git_mode": "100644",
-          "sha256": "6c715fa3b517ccb2dca5f5785f131e419756f0c597b6fcea733b8fe41e953e00"
-        },
-        {
-          "path": "op-enclave/eif/cmdline-aarch64",
-          "git_object": "ea78dd00ede940217bb223877dd99557a3a1b5fc",
-          "git_mode": "100644",
-          "sha256": "b2863fac918fe57e9083ef434e8ac09a01ab97673f3d14c0afc1c017758ceb44"
-        },
-        {
-          "path": "op-enclave/eif/cmdline-x86_64",
-          "git_object": "942025a9811181533d9cf7a672bd9fadcf58c028",
-          "git_mode": "100644",
-          "sha256": "10e182738c73d88854c480aa22032474cfc9e82443d39ce92bf5fa1684fee68d"
-        },
-        {
-          "path": "op-enclave/eif/init-ramdisk.yaml",
-          "git_object": "5c53cb3980e64afc1044fa1b4f2bf0ed9b1cf215",
-          "git_mode": "100644",
-          "sha256": "194a7cd33263836a658e20df10884de12305e061e9548a2bf5f4807ec3381071"
-        },
-        {
-          "path": "op-enclave/eif/user-ramdisk.yaml",
-          "git_object": "abd9f3a6232be78dbdaea70cf5584dc0a2487819",
-          "git_mode": "100644",
-          "sha256": "4eb3773c7f98a671df7e6e1d7c38922cd878e74cd5218525fc98c9888462649d"
-        },
-        {
-          "path": "op-enclave/enclave/client.go",
-          "git_object": "0af7eac61bfd3e0c0a5c48a546b252a68be65a49",
-          "git_mode": "100644",
-          "sha256": "4b03f48643ff1fbb6f4f2bfed4d5d0e88c397e2c5c432a30c8a176462f77ad75"
-        },
-        {
-          "path": "op-enclave/enclave/config.go",
-          "git_object": "a72c96eec85f576e41a2bda9ebfa5d96f6b71dd2",
-          "git_mode": "100644",
-          "sha256": "e12003cf859d27dd9274ce86a6c3769a2c87837f88badd78953833a523454307"
-        },
-        {
-          "path": "op-enclave/enclave/l1_receipts_fetcher.go",
-          "git_object": "4187b42a0161e59908b649f393153007a091ab52",
-          "git_mode": "100644",
-          "sha256": "5a05bd4cb2c1c170de5855db216f85896fc1ba06a25f1fdaa73e4e10e0b4aeed"
-        },
-        {
-          "path": "op-enclave/enclave/l2_system_config_fetcher.go",
-          "git_object": "34d022d5e23172d621d265638042f0885ed0b74b",
-          "git_mode": "100644",
-          "sha256": "e99d3c23ed030e234face2563b3978e984bd79648cbca62cda3742a08dd115e8"
-        },
-        {
-          "path": "op-enclave/enclave/rpc.go",
-          "git_object": "991d9f551dc4d8f67a3e4c4d035b28a141450338",
-          "git_mode": "100644",
-          "sha256": "c4000a48e6c85149b0885e51b0272590e18191cca3af3af8ad4ad43d4221fc3d"
-        },
-        {
-          "path": "op-enclave/enclave/server.go",
-          "git_object": "950307a2d461b56b004a7f9ddc058ababc73efa6",
-          "git_mode": "100644",
-          "sha256": "2891a7f5ab21ab62bf8d742d49a48fbdfbb133ef6201afd709a5f9db1b30efa0"
-        },
-        {
-          "path": "op-enclave/enclave/stateless.go",
-          "git_object": "a6121f2ee638da743fb350cdfa79eef8fd33a5fa",
-          "git_mode": "100644",
-          "sha256": "8a43ba13000b79ad3a6b586d7f3ef703ca28046ee7d8a7129e7c8385510628a4"
-        },
-        {
-          "path": "op-enclave/go.mod",
-          "git_object": "a14d488d02451a7c0cce5660d66d82101f325f9f",
-          "git_mode": "100644",
-          "sha256": "d56b65095ecf7fa433d0b55bb8807d6885eec3a4451b0f667aadc5488bf7b06d"
-        },
-        {
-          "path": "op-enclave/go.sum",
-          "git_object": "e4c229563558579cd94015a75823530eba7b2bb9",
-          "git_mode": "100644",
-          "sha256": "82aba96886162d8902ced25e495e48d5bfd2c287265a559f7e3652712008a1ff"
-        }
-      ]
-    },
-    {
-      "repository": "base/op-enclave",
-      "repository_url": "https://github.com/base/op-enclave",
       "source_path": "contracts/src",
       "path_kind": "directory_recursive",
       "commit": "69990879c401bf3d859e9665772c90f93517dbeb",
@@ -1949,33 +1727,6 @@
     {
       "repository": "base/op-enclave",
       "repository_url": "https://github.com/base/op-enclave",
-      "source_path": "op-batcher",
-      "path_kind": "directory_recursive",
-      "commit": "8f28fbb6a30f4bcae8057a61e72120423554baca",
-      "files": [
-        {
-          "path": "op-batcher/batcher/batch_submitter.go",
-          "git_object": "45fff74d015e9445c72c4e529d7234ceff443839",
-          "git_mode": "100644",
-          "sha256": "9911f1630c7cf0a213f78ff5ba34ae06af4ec67990feee159b88031c81457180"
-        },
-        {
-          "path": "op-batcher/batcher/channel_out.go",
-          "git_object": "441e2853bc95be2dc9b88002a3f2431c4255a6b2",
-          "git_mode": "100644",
-          "sha256": "c5c76da6568315363f90dfedc1ca32213ceccd8eef9d0ca941561b2c6e3a4e6b"
-        },
-        {
-          "path": "op-batcher/cmd/main.go",
-          "git_object": "d4a6595a06ae813132a3eb1f264d0fab94a1009d",
-          "git_mode": "100644",
-          "sha256": "78e298681a32b6e01787105baefce39df66165a4ed4576704f63fefd64f2375d"
-        }
-      ]
-    },
-    {
-      "repository": "base/op-enclave",
-      "repository_url": "https://github.com/base/op-enclave",
       "source_path": "contracts/src",
       "path_kind": "directory_recursive",
       "commit": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
@@ -2033,348 +1784,6 @@
           "git_object": "1d517e870fc943159dbc85398db24f86e8429cfd",
           "git_mode": "100644",
           "sha256": "6412906f86cc704a1c03f4b122cc8041d728c7df9bc166187432bed95d691dc8"
-        }
-      ]
-    },
-    {
-      "repository": "base/op-enclave",
-      "repository_url": "https://github.com/base/op-enclave",
-      "source_path": "op-batcher",
-      "path_kind": "directory_recursive",
-      "commit": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
-      "files": [
-        {
-          "path": "op-batcher/batcher/batch_submitter.go",
-          "git_object": "45fff74d015e9445c72c4e529d7234ceff443839",
-          "git_mode": "100644",
-          "sha256": "9911f1630c7cf0a213f78ff5ba34ae06af4ec67990feee159b88031c81457180"
-        },
-        {
-          "path": "op-batcher/batcher/channel_out.go",
-          "git_object": "76f2d007b4a9b5e90f2339631ca5409e36327c19",
-          "git_mode": "100644",
-          "sha256": "c034f13db1ece1b382a3d53624330e599a72442facd7c91e3c806727ab7fda4e"
-        },
-        {
-          "path": "op-batcher/cmd/main.go",
-          "git_object": "d4a6595a06ae813132a3eb1f264d0fab94a1009d",
-          "git_mode": "100644",
-          "sha256": "78e298681a32b6e01787105baefce39df66165a4ed4576704f63fefd64f2375d"
-        }
-      ]
-    },
-    {
-      "repository": "base/op-enclave",
-      "repository_url": "https://github.com/base/op-enclave",
-      "source_path": "op-enclave",
-      "path_kind": "directory_recursive",
-      "commit": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
-      "files": [
-        {
-          "path": "op-enclave/.dockerignore",
-          "git_object": "94143827ed065ca0d7d5be1b765d255c5c32cd9a",
-          "git_mode": "100644",
-          "sha256": "c750b6d776c1db92b55fcecbb51c80be008aae877e78a28691b3ae79be9ea63e"
-        },
-        {
-          "path": "op-enclave/Dockerfile",
-          "git_object": "26bdb232466dcbda909a94d285496730519c8583",
-          "git_mode": "100644",
-          "sha256": "645286daa74de6e0a0ec993734c6de84daa6dfe074f77ea48eabdad1d39b7413"
-        },
-        {
-          "path": "op-enclave/cmd/enclave/main.go",
-          "git_object": "69455adaceac443f8e77eb3d11f94085410310b6",
-          "git_mode": "100644",
-          "sha256": "15e4927787d3da8e47f29488e2b1e7e18e4b0fb0f7bff45446109beac25000c6"
-        },
-        {
-          "path": "op-enclave/cmd/server/main.go",
-          "git_object": "08ec932ff655b864e624db39599b493c130e0233",
-          "git_mode": "100644",
-          "sha256": "6c715fa3b517ccb2dca5f5785f131e419756f0c597b6fcea733b8fe41e953e00"
-        },
-        {
-          "path": "op-enclave/eif/cmdline-aarch64",
-          "git_object": "ea78dd00ede940217bb223877dd99557a3a1b5fc",
-          "git_mode": "100644",
-          "sha256": "b2863fac918fe57e9083ef434e8ac09a01ab97673f3d14c0afc1c017758ceb44"
-        },
-        {
-          "path": "op-enclave/eif/cmdline-x86_64",
-          "git_object": "942025a9811181533d9cf7a672bd9fadcf58c028",
-          "git_mode": "100644",
-          "sha256": "10e182738c73d88854c480aa22032474cfc9e82443d39ce92bf5fa1684fee68d"
-        },
-        {
-          "path": "op-enclave/eif/init-ramdisk.yaml",
-          "git_object": "5c53cb3980e64afc1044fa1b4f2bf0ed9b1cf215",
-          "git_mode": "100644",
-          "sha256": "194a7cd33263836a658e20df10884de12305e061e9548a2bf5f4807ec3381071"
-        },
-        {
-          "path": "op-enclave/eif/user-ramdisk.yaml",
-          "git_object": "abd9f3a6232be78dbdaea70cf5584dc0a2487819",
-          "git_mode": "100644",
-          "sha256": "4eb3773c7f98a671df7e6e1d7c38922cd878e74cd5218525fc98c9888462649d"
-        },
-        {
-          "path": "op-enclave/enclave/client.go",
-          "git_object": "c9056db74eba51036e9b48f386038fd122f62b5b",
-          "git_mode": "100644",
-          "sha256": "6e9a9162066adfe3ff03ff4b1245e55a0a78f38f6f7cd3c880413830b5ce1334"
-        },
-        {
-          "path": "op-enclave/enclave/config.go",
-          "git_object": "552fa32a19b62d536e873333c9e4fd41154cd2bd",
-          "git_mode": "100644",
-          "sha256": "5133bd0664f058a1f205767e539051aab7784c4aa1d0b3b3d746164524bb3e30"
-        },
-        {
-          "path": "op-enclave/enclave/l1_receipts_fetcher.go",
-          "git_object": "4187b42a0161e59908b649f393153007a091ab52",
-          "git_mode": "100644",
-          "sha256": "5a05bd4cb2c1c170de5855db216f85896fc1ba06a25f1fdaa73e4e10e0b4aeed"
-        },
-        {
-          "path": "op-enclave/enclave/l2_system_config_fetcher.go",
-          "git_object": "34d022d5e23172d621d265638042f0885ed0b74b",
-          "git_mode": "100644",
-          "sha256": "e99d3c23ed030e234face2563b3978e984bd79648cbca62cda3742a08dd115e8"
-        },
-        {
-          "path": "op-enclave/enclave/rpc.go",
-          "git_object": "756ef5dafe7bd71d202287ed27ed5460810cfd67",
-          "git_mode": "100644",
-          "sha256": "ff357df6ba69719e31c3c15c5a04af0a4813150b0cd74d7d13e7d56ced3b4da2"
-        },
-        {
-          "path": "op-enclave/enclave/server.go",
-          "git_object": "c80abc7b24c914b7c43b633b959fa645afe138ec",
-          "git_mode": "100644",
-          "sha256": "5c8ad9c450cb4f6144127e28a624a87999976f79d32638b083a478029cbdd2a6"
-        },
-        {
-          "path": "op-enclave/enclave/stateless.go",
-          "git_object": "aab7e80aedb987d740cb9fef2d7fb024d0490e46",
-          "git_mode": "100644",
-          "sha256": "eb36ecf645135ee458dc320e920d10beb7c76774e8501b8ca75ff87a31705a5d"
-        },
-        {
-          "path": "op-enclave/go.mod",
-          "git_object": "b3157296c6366f58a59c78ca8aa3966cfa092d34",
-          "git_mode": "100644",
-          "sha256": "b81487b03c260300de012699e88852c8c661b4210bf18396f60851b47e3e683c"
-        },
-        {
-          "path": "op-enclave/go.sum",
-          "git_object": "4314cd45e69471858a4f264535a043403e66808d",
-          "git_mode": "100644",
-          "sha256": "f7bd87c6018863ab300cbb8bdf8895c6046f22d209a7171809fc946d584af6c5"
-        }
-      ]
-    },
-    {
-      "repository": "base/op-enclave",
-      "repository_url": "https://github.com/base/op-enclave",
-      "source_path": "op-proposer",
-      "path_kind": "directory_recursive",
-      "commit": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
-      "files": [
-        {
-          "path": "op-proposer/cmd/main.go",
-          "git_object": "d03a4664ec780ad5de3417c77dadab6ecc5c461c",
-          "git_mode": "100644",
-          "sha256": "d4bbe52c43f9b19cbdb8cf5cc0481dc3c65c0faee170472737a4544fa4366f6c"
-        },
-        {
-          "path": "op-proposer/flags/flags.go",
-          "git_object": "c928a50c6f4d3499f8a89158445c3f04d570ce62",
-          "git_mode": "100644",
-          "sha256": "61e9f8dbc802727c59379a47e234af375f19a2653ba63995fe61e01291a52475"
-        },
-        {
-          "path": "op-proposer/metrics/metrics.go",
-          "git_object": "33d4b94f960049a4eecd0672c7a4811a4b0ffcfc",
-          "git_mode": "100644",
-          "sha256": "785efcc189520374f27e728b38d50a2228c02e6dfa75032662774ff25ee2a8ff"
-        },
-        {
-          "path": "op-proposer/proposer/clients.go",
-          "git_object": "494d499ec2e97ab128e9865001a93298b1ebd6f6",
-          "git_mode": "100644",
-          "sha256": "3a58c17f6bdaa2ee35a5159a8612cefc8377d8f238225ba9e1225e48efc4dac0"
-        },
-        {
-          "path": "op-proposer/proposer/config.go",
-          "git_object": "284ab72507adbd51dcd8156bd58371f9efcce962",
-          "git_mode": "100644",
-          "sha256": "50d670c025fca9b91a7698c8dc841e21fa9c510ac075ccb46ecad3aabcba56ba"
-        },
-        {
-          "path": "op-proposer/proposer/driver.go",
-          "git_object": "fbee87997d4d521be8d337e6293350c8c068fa4e",
-          "git_mode": "100644",
-          "sha256": "517902754c9e7dd11e6fcfa1d2e4221d5b8957111e1f141b4cd181921e395343"
-        },
-        {
-          "path": "op-proposer/proposer/l2_output_submitter.go",
-          "git_object": "639305a8fc73b416287c97fb3af4f9f00b298135",
-          "git_mode": "100644",
-          "sha256": "c8cfc3014bda30de2328f2f34036c8bf845d551c26a8d14b0ea8fa9a4e117fed"
-        },
-        {
-          "path": "op-proposer/proposer/prover.go",
-          "git_object": "564d87203ad81c9a9ee0dfefc3955257e1f603e4",
-          "git_mode": "100644",
-          "sha256": "7e5c98766144f4d675cc0184f048aeef80e5d7448f4f41abebe285a7df41ee60"
-        },
-        {
-          "path": "op-proposer/proposer/reth_client.go",
-          "git_object": "0dc8368f38af5b97b4fe176be44c02554c05082f",
-          "git_mode": "100644",
-          "sha256": "d74b9eac22a194070a16fec9a2b669196dcab914f29f0838041edecb2f162f4e"
-        },
-        {
-          "path": "op-proposer/proposer/service.go",
-          "git_object": "6ca6415666dc0060bd17ed2cff99c55f426949ef",
-          "git_mode": "100644",
-          "sha256": "0c296f504e952ed7bbc7ab5e2facb8974be59f02dfd55bbb4610e1b89f6edd2c"
-        }
-      ]
-    },
-    {
-      "repository": "base/op-enclave",
-      "repository_url": "https://github.com/base/op-enclave",
-      "source_path": "op-withdrawer",
-      "path_kind": "directory_recursive",
-      "commit": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
-      "files": [
-        {
-          "path": "op-withdrawer/example/README.md",
-          "git_object": "4c85d6e36841ccf2e794912e12730dcb7eb18260",
-          "git_mode": "100644",
-          "sha256": "8c0f1ce3adc8691325396f6b13fbd551cdbe1dfa4df0162cc6bda07583b814fa"
-        },
-        {
-          "path": "op-withdrawer/example/main.go",
-          "git_object": "25e5b20eac9c1c6604578e78bff6655cf78ef137",
-          "git_mode": "100644",
-          "sha256": "6950753813ff3f1fef814c8876cae8e16a5addccbf6796160c9535cc825b4ecb"
-        },
-        {
-          "path": "op-withdrawer/main.go",
-          "git_object": "7dedbee4676e35db7d2ba424964a1372798f4f17",
-          "git_mode": "100644",
-          "sha256": "426533958650af5f078d934970a213ac7b9530780ab2571903f4c12933f9c6cf"
-        },
-        {
-          "path": "op-withdrawer/withdrawals/withdrawals.go",
-          "git_object": "11acd6fdfeecf3d48deb37fbca98c44bc88f2a0d",
-          "git_mode": "100644",
-          "sha256": "418bda49fcf4d20ad97f0ec523e2653ee9f4b39fa64ff7c50d6688b7713f2271"
-        }
-      ]
-    },
-    {
-      "repository": "base/op-enclave",
-      "repository_url": "https://github.com/base/op-enclave",
-      "source_path": "op-proposer",
-      "path_kind": "directory_recursive",
-      "commit": "ab2d40808ad61afe26e423285e650c723e877570",
-      "files": [
-        {
-          "path": "op-proposer/cmd/main.go",
-          "git_object": "d03a4664ec780ad5de3417c77dadab6ecc5c461c",
-          "git_mode": "100644",
-          "sha256": "d4bbe52c43f9b19cbdb8cf5cc0481dc3c65c0faee170472737a4544fa4366f6c"
-        },
-        {
-          "path": "op-proposer/flags/flags.go",
-          "git_object": "c928a50c6f4d3499f8a89158445c3f04d570ce62",
-          "git_mode": "100644",
-          "sha256": "61e9f8dbc802727c59379a47e234af375f19a2653ba63995fe61e01291a52475"
-        },
-        {
-          "path": "op-proposer/metrics/metrics.go",
-          "git_object": "33d4b94f960049a4eecd0672c7a4811a4b0ffcfc",
-          "git_mode": "100644",
-          "sha256": "785efcc189520374f27e728b38d50a2228c02e6dfa75032662774ff25ee2a8ff"
-        },
-        {
-          "path": "op-proposer/proposer/clients.go",
-          "git_object": "494d499ec2e97ab128e9865001a93298b1ebd6f6",
-          "git_mode": "100644",
-          "sha256": "3a58c17f6bdaa2ee35a5159a8612cefc8377d8f238225ba9e1225e48efc4dac0"
-        },
-        {
-          "path": "op-proposer/proposer/config.go",
-          "git_object": "284ab72507adbd51dcd8156bd58371f9efcce962",
-          "git_mode": "100644",
-          "sha256": "50d670c025fca9b91a7698c8dc841e21fa9c510ac075ccb46ecad3aabcba56ba"
-        },
-        {
-          "path": "op-proposer/proposer/driver.go",
-          "git_object": "65504bc8ad18b92071efcb452970a0519aa0b6a6",
-          "git_mode": "100644",
-          "sha256": "e501cdea528176676356d11fbf6f13adb04cd946e85cd29107642130d42e8dd9"
-        },
-        {
-          "path": "op-proposer/proposer/l2_output_submitter.go",
-          "git_object": "639305a8fc73b416287c97fb3af4f9f00b298135",
-          "git_mode": "100644",
-          "sha256": "c8cfc3014bda30de2328f2f34036c8bf845d551c26a8d14b0ea8fa9a4e117fed"
-        },
-        {
-          "path": "op-proposer/proposer/prover.go",
-          "git_object": "564d87203ad81c9a9ee0dfefc3955257e1f603e4",
-          "git_mode": "100644",
-          "sha256": "7e5c98766144f4d675cc0184f048aeef80e5d7448f4f41abebe285a7df41ee60"
-        },
-        {
-          "path": "op-proposer/proposer/reth_client.go",
-          "git_object": "0dc8368f38af5b97b4fe176be44c02554c05082f",
-          "git_mode": "100644",
-          "sha256": "d74b9eac22a194070a16fec9a2b669196dcab914f29f0838041edecb2f162f4e"
-        },
-        {
-          "path": "op-proposer/proposer/service.go",
-          "git_object": "6ca6415666dc0060bd17ed2cff99c55f426949ef",
-          "git_mode": "100644",
-          "sha256": "0c296f504e952ed7bbc7ab5e2facb8974be59f02dfd55bbb4610e1b89f6edd2c"
-        }
-      ]
-    },
-    {
-      "repository": "base/op-enclave",
-      "repository_url": "https://github.com/base/op-enclave",
-      "source_path": "op-withdrawer",
-      "path_kind": "directory_recursive",
-      "commit": "bfd6dbd91c5b06eb4c539e3c1bab25211d54137e",
-      "files": [
-        {
-          "path": "op-withdrawer/example/README.md",
-          "git_object": "4c85d6e36841ccf2e794912e12730dcb7eb18260",
-          "git_mode": "100644",
-          "sha256": "8c0f1ce3adc8691325396f6b13fbd551cdbe1dfa4df0162cc6bda07583b814fa"
-        },
-        {
-          "path": "op-withdrawer/example/main.go",
-          "git_object": "80234fd59b799471b656eca04ada26c7b9f47af5",
-          "git_mode": "100644",
-          "sha256": "098a9d8b2d393a8a8ed8017bc7d311d2c3b1e0df59ca7c8ad7ada59203ce9d74"
-        },
-        {
-          "path": "op-withdrawer/main.go",
-          "git_object": "a9590fc3f0e23466086175b20c2f7a8536caa046",
-          "git_mode": "100644",
-          "sha256": "61d77e127ca5049cf6774f425273dd1cd1ad4a902e4f1d5717db07a53730fd09"
-        },
-        {
-          "path": "op-withdrawer/withdrawals/withdrawals.go",
-          "git_object": "11acd6fdfeecf3d48deb37fbca98c44bc88f2a0d",
-          "git_mode": "100644",
-          "sha256": "418bda49fcf4d20ad97f0ec523e2653ee9f4b39fa64ff7c50d6688b7713f2271"
         }
       ]
     },
@@ -2440,152 +1849,86 @@
           "sha256": "6412906f86cc704a1c03f4b122cc8041d728c7df9bc166187432bed95d691dc8"
         }
       ]
-    },
-    {
-      "repository": "base/op-enclave",
-      "repository_url": "https://github.com/base/op-enclave",
-      "source_path": "op-enclave",
-      "path_kind": "directory_recursive",
-      "commit": "de236915c001d6a1d05ae22b1e369564cad5e44a",
-      "files": [
-        {
-          "path": "op-enclave/.dockerignore",
-          "git_object": "94143827ed065ca0d7d5be1b765d255c5c32cd9a",
-          "git_mode": "100644",
-          "sha256": "c750b6d776c1db92b55fcecbb51c80be008aae877e78a28691b3ae79be9ea63e"
-        },
-        {
-          "path": "op-enclave/Dockerfile",
-          "git_object": "26bdb232466dcbda909a94d285496730519c8583",
-          "git_mode": "100644",
-          "sha256": "645286daa74de6e0a0ec993734c6de84daa6dfe074f77ea48eabdad1d39b7413"
-        },
-        {
-          "path": "op-enclave/cmd/enclave/main.go",
-          "git_object": "69455adaceac443f8e77eb3d11f94085410310b6",
-          "git_mode": "100644",
-          "sha256": "15e4927787d3da8e47f29488e2b1e7e18e4b0fb0f7bff45446109beac25000c6"
-        },
-        {
-          "path": "op-enclave/cmd/server/main.go",
-          "git_object": "08ec932ff655b864e624db39599b493c130e0233",
-          "git_mode": "100644",
-          "sha256": "6c715fa3b517ccb2dca5f5785f131e419756f0c597b6fcea733b8fe41e953e00"
-        },
-        {
-          "path": "op-enclave/eif/cmdline-aarch64",
-          "git_object": "ea78dd00ede940217bb223877dd99557a3a1b5fc",
-          "git_mode": "100644",
-          "sha256": "b2863fac918fe57e9083ef434e8ac09a01ab97673f3d14c0afc1c017758ceb44"
-        },
-        {
-          "path": "op-enclave/eif/cmdline-x86_64",
-          "git_object": "942025a9811181533d9cf7a672bd9fadcf58c028",
-          "git_mode": "100644",
-          "sha256": "10e182738c73d88854c480aa22032474cfc9e82443d39ce92bf5fa1684fee68d"
-        },
-        {
-          "path": "op-enclave/eif/init-ramdisk.yaml",
-          "git_object": "5c53cb3980e64afc1044fa1b4f2bf0ed9b1cf215",
-          "git_mode": "100644",
-          "sha256": "194a7cd33263836a658e20df10884de12305e061e9548a2bf5f4807ec3381071"
-        },
-        {
-          "path": "op-enclave/eif/user-ramdisk.yaml",
-          "git_object": "abd9f3a6232be78dbdaea70cf5584dc0a2487819",
-          "git_mode": "100644",
-          "sha256": "4eb3773c7f98a671df7e6e1d7c38922cd878e74cd5218525fc98c9888462649d"
-        },
-        {
-          "path": "op-enclave/enclave/client.go",
-          "git_object": "c9056db74eba51036e9b48f386038fd122f62b5b",
-          "git_mode": "100644",
-          "sha256": "6e9a9162066adfe3ff03ff4b1245e55a0a78f38f6f7cd3c880413830b5ce1334"
-        },
-        {
-          "path": "op-enclave/enclave/config.go",
-          "git_object": "552fa32a19b62d536e873333c9e4fd41154cd2bd",
-          "git_mode": "100644",
-          "sha256": "5133bd0664f058a1f205767e539051aab7784c4aa1d0b3b3d746164524bb3e30"
-        },
-        {
-          "path": "op-enclave/enclave/l1_receipts_fetcher.go",
-          "git_object": "4187b42a0161e59908b649f393153007a091ab52",
-          "git_mode": "100644",
-          "sha256": "5a05bd4cb2c1c170de5855db216f85896fc1ba06a25f1fdaa73e4e10e0b4aeed"
-        },
-        {
-          "path": "op-enclave/enclave/l2_system_config_fetcher.go",
-          "git_object": "34d022d5e23172d621d265638042f0885ed0b74b",
-          "git_mode": "100644",
-          "sha256": "e99d3c23ed030e234face2563b3978e984bd79648cbca62cda3742a08dd115e8"
-        },
-        {
-          "path": "op-enclave/enclave/rpc.go",
-          "git_object": "756ef5dafe7bd71d202287ed27ed5460810cfd67",
-          "git_mode": "100644",
-          "sha256": "ff357df6ba69719e31c3c15c5a04af0a4813150b0cd74d7d13e7d56ced3b4da2"
-        },
-        {
-          "path": "op-enclave/enclave/server.go",
-          "git_object": "1fb0d9f7c1c6d3d4a559028fb676b0d508c69d2a",
-          "git_mode": "100644",
-          "sha256": "4d478f04e25ab9964c27925ad1707c821c6a01c8a8b292172037c736f4e1e7a3"
-        },
-        {
-          "path": "op-enclave/enclave/stateless.go",
-          "git_object": "aab7e80aedb987d740cb9fef2d7fb024d0490e46",
-          "git_mode": "100644",
-          "sha256": "eb36ecf645135ee458dc320e920d10beb7c76774e8501b8ca75ff87a31705a5d"
-        },
-        {
-          "path": "op-enclave/go.mod",
-          "git_object": "b3157296c6366f58a59c78ca8aa3966cfa092d34",
-          "git_mode": "100644",
-          "sha256": "b81487b03c260300de012699e88852c8c661b4210bf18396f60851b47e3e683c"
-        },
-        {
-          "path": "op-enclave/go.sum",
-          "git_object": "4314cd45e69471858a4f264535a043403e66808d",
-          "git_mode": "100644",
-          "sha256": "f7bd87c6018863ab300cbb8bdf8895c6046f22d209a7171809fc946d584af6c5"
-        }
-      ]
-    },
-    {
-      "repository": "base/op-enclave",
-      "repository_url": "https://github.com/base/op-enclave",
-      "source_path": "op-withdrawer",
-      "path_kind": "directory_recursive",
-      "commit": "e1f2146f8fe8fe9604fc51b938d24c7865cf7dc4",
-      "files": [
-        {
-          "path": "op-withdrawer/example/README.md",
-          "git_object": "4c85d6e36841ccf2e794912e12730dcb7eb18260",
-          "git_mode": "100644",
-          "sha256": "8c0f1ce3adc8691325396f6b13fbd551cdbe1dfa4df0162cc6bda07583b814fa"
-        },
-        {
-          "path": "op-withdrawer/example/main.go",
-          "git_object": "0ef0c468046c430eb0b12a359e672ed94578ce3f",
-          "git_mode": "100644",
-          "sha256": "afb7505a004013c3204d169c50c352272b6285436f8f1ec10f65c84b1c34c4c4"
-        },
-        {
-          "path": "op-withdrawer/main.go",
-          "git_object": "0b79901fe2f90c129f54fbc58c9062acd8e80889",
-          "git_mode": "100644",
-          "sha256": "21eed13e65ce038f11febc19cf10ced58627fed30e586fb9d24fafc7f7db802e"
-        },
-        {
-          "path": "op-withdrawer/withdrawals/withdrawals.go",
-          "git_object": "817f06f9f36b21de12ae63f08fe64b1819ff00a7",
-          "git_mode": "100644",
-          "sha256": "4213d34c039a6df96c593dbe92ab027b6edb2dc746ed667ae75f9e77609489fc"
-        }
-      ]
     }
   ],
-  "skipped": [],
+  "skipped": [
+    {
+      "repository": "base/op-enclave",
+      "source_path": "op-batcher",
+      "revision_kind": "commit",
+      "revision": "8f28fbb6a30f4bcae8057a61e72120423554baca",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "base/op-enclave",
+      "source_path": "op-batcher",
+      "revision_kind": "commit",
+      "revision": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "base/op-enclave",
+      "source_path": "op-enclave",
+      "revision_kind": "commit",
+      "revision": "4a7e36a0860ba408f2f5538ea7a9a117987d08d6",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "base/op-enclave",
+      "source_path": "op-enclave",
+      "revision_kind": "commit",
+      "revision": "628aa61032c428a3e8f28e3f2925a758a545fc54",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "base/op-enclave",
+      "source_path": "op-enclave",
+      "revision_kind": "commit",
+      "revision": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "base/op-enclave",
+      "source_path": "op-enclave",
+      "revision_kind": "commit",
+      "revision": "de236915c001d6a1d05ae22b1e369564cad5e44a",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "base/op-enclave",
+      "source_path": "op-proposer",
+      "revision_kind": "commit",
+      "revision": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "base/op-enclave",
+      "source_path": "op-proposer",
+      "revision_kind": "commit",
+      "revision": "ab2d40808ad61afe26e423285e650c723e877570",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "base/op-enclave",
+      "source_path": "op-withdrawer",
+      "revision_kind": "commit",
+      "revision": "98d346dd0e1cdbde75fba01efd36a07e7cf24391",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "base/op-enclave",
+      "source_path": "op-withdrawer",
+      "revision_kind": "commit",
+      "revision": "bfd6dbd91c5b06eb4c539e3c1bab25211d54137e",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "base/op-enclave",
+      "source_path": "op-withdrawer",
+      "revision_kind": "commit",
+      "revision": "e1f2146f8fe8fe9604fc51b938d24c7865cf7dc4",
+      "reason": "path kind other is not fetched"
+    }
+  ],
   "unavailable": []
 }

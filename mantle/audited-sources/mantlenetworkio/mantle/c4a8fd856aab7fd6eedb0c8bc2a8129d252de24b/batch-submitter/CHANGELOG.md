@@ -1,1 +1,0 @@
-# @mantlenetworkio/batch-submitter

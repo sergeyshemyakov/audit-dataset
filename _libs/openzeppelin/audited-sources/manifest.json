@@ -5950,18 +5950,6 @@
       "commit": "6d415c508be94ef8391ed6525df365452466da76",
       "files": [
         {
-          "path": "contracts/.npmignore",
-          "git_object": "e792d8bc64024abf036ee90b6a3d8272f96319ae",
-          "git_mode": "100644",
-          "sha256": "67054b9ff945477e01016ce3cb1783d0d17a70755e50bad0507d1186276b99c8"
-        },
-        {
-          "path": "contracts/ARCHITECTURE.md",
-          "git_object": "bfb6cff8d7f0e05a30da275694eb3d29bcfb7a71",
-          "git_mode": "100644",
-          "sha256": "76f24f65278c889cd2b0c9fe3adceb06e3e239b630ddee4362408dea6f1da4b8"
-        },
-        {
           "path": "contracts/access/Roles.sol",
           "git_object": "e3b97ddb7b3ff8974360fbf86e98305321f8209c",
           "git_mode": "100644",
@@ -6062,12 +6050,6 @@
           "git_object": "a0c304c57eb1dad4e9cf2800b4c0cb67bc7afd6b",
           "git_mode": "100644",
           "sha256": "7c7cf19b0e26fffe380228bc2c91bebbc453f153e61b7af2b52b3db7be3893fa"
-        },
-        {
-          "path": "contracts/drafts/.gitkeep",
-          "git_object": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
-          "git_mode": "100644",
-          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         },
         {
           "path": "contracts/drafts/Counter.sol",
@@ -11383,18 +11365,6 @@
       "commit": "dac5bccf803696d9d98d269b8c27c7aac5fa1c5c",
       "files": [
         {
-          "path": "contracts/.npmignore",
-          "git_object": "e792d8bc64024abf036ee90b6a3d8272f96319ae",
-          "git_mode": "100644",
-          "sha256": "67054b9ff945477e01016ce3cb1783d0d17a70755e50bad0507d1186276b99c8"
-        },
-        {
-          "path": "contracts/ARCHITECTURE.md",
-          "git_object": "3d0ebfdaadde9a656e90a3794961f5b641db3d11",
-          "git_mode": "100644",
-          "sha256": "c9c68e49cac7592b888e7b6bf7c7d317c89886e7530c73721c7f6f764a2b3ae4"
-        },
-        {
           "path": "contracts/access/Roles.sol",
           "git_object": "b0212c2be6def1fcf230906d1637ba90c532aee5",
           "git_mode": "100644",
@@ -11495,12 +11465,6 @@
           "git_object": "d490e7ff52e81589f01573979cb75baeb8851969",
           "git_mode": "100644",
           "sha256": "7c7cf19b0e26fffe380228bc2c91bebbc453f153e61b7af2b52b3db7be3893fa"
-        },
-        {
-          "path": "contracts/drafts/.gitkeep",
-          "git_object": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
-          "git_mode": "100644",
-          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         },
         {
           "path": "contracts/drafts/BreakInvariantBounty.sol",
