@@ -1,0 +1,308 @@
+{
+  "schema_version": "1.6.0",
+  "project": "_libs/zk-kit",
+  "reports": [
+    {
+      "id": "pse-semaphore-4-0-0-audit-2024-03",
+      "report_file": "PSE - Semaphore 4.0.0 Audit.md",
+      "title": "Semaphore PSE audit",
+      "description": "In-house audit performed by PSE (Privacy & Scaling Explorations) in March 2024 of Semaphore v4.0.0-beta.1 (smart contracts, Circom circuits and TypeScript) and of the zk-kit packages it depends on (InternalLeanIMT.sol, binary-merkle-root.circom and related TypeScript libraries) at tag imt.sol-v2.0.0-beta.8. It reports three Critical and three High findings, each with an implemented fix PR.",
+      "isRelevant": true,
+      "auditor": "PSE (Privacy & Scaling Explorations)",
+      "report_date": null,
+      "repositories": [
+        {
+          "id": "semaphore-protocol/semaphore",
+          "url": "https://github.com/semaphore-protocol/semaphore"
+        },
+        {
+          "id": "privacy-scaling-explorations/zk-kit",
+          "url": "https://github.com/privacy-scaling-explorations/zk-kit"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "semaphore-protocol/semaphore",
+          "paths": {
+            "packages/contracts": {
+              "path_kind": "directory_recursive",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8eb19e83fda62644872b2fcfbd85011d3b2c21e2",
+                    "timestamp": "2024-02-28T20:37:35Z",
+                    "url": "https://github.com/semaphore-protocol/semaphore/commit/8eb19e83fda62644872b2fcfbd85011d3b2c21e2"
+                  },
+                  "status": "audited_with_major_findings",
+                  "major_finding_ids": [
+                    "Missing admin access check",
+                    "`createGroup()` can be frontrun"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f06ddd32e49e41973178f2500911d5d26cb16779",
+                    "timestamp": "2024-03-12T15:41:15Z",
+                    "url": "https://github.com/semaphore-protocol/semaphore/commit/f06ddd32e49e41973178f2500911d5d26cb16779"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "major_finding_ids": [
+                    "Missing admin access check",
+                    "`createGroup()` can be frontrun"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "baa18c885eea73932edfce570840bf2284e6bcd9",
+                    "timestamp": "2024-03-13T22:28:53Z",
+                    "url": "https://github.com/semaphore-protocol/semaphore/commit/baa18c885eea73932edfce570840bf2284e6bcd9"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "major_finding_ids": [
+                    "`createGroup()` can be frontrun"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b12dd0fd984fa3d5de9f2c2bd17f1e470cd6f4d1",
+                    "timestamp": "2024-03-14T13:34:49Z",
+                    "url": "https://github.com/semaphore-protocol/semaphore/commit/b12dd0fd984fa3d5de9f2c2bd17f1e470cd6f4d1"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c3b9b98370598b78bc1d6d9d7e91546773f37631",
+                    "timestamp": "2024-03-15T16:39:42Z",
+                    "url": "https://github.com/semaphore-protocol/semaphore/commit/c3b9b98370598b78bc1d6d9d7e91546773f37631"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "255bccf2ebc7a1ebfe06ebc7bb1bff2f8141fa83",
+                    "timestamp": "2024-03-21T15:54:46Z",
+                    "url": "https://github.com/semaphore-protocol/semaphore/commit/255bccf2ebc7a1ebfe06ebc7bb1bff2f8141fa83"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7c99c74fac080fbf66d9b1de1ee8245debcf476d",
+                    "timestamp": "2024-04-08T22:12:08Z",
+                    "url": "https://github.com/semaphore-protocol/semaphore/commit/7c99c74fac080fbf66d9b1de1ee8245debcf476d"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/circuits": {
+              "path_kind": "directory_recursive",
+              "kind": "zk",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8eb19e83fda62644872b2fcfbd85011d3b2c21e2",
+                    "timestamp": "2024-02-28T20:37:35Z",
+                    "url": "https://github.com/semaphore-protocol/semaphore/commit/8eb19e83fda62644872b2fcfbd85011d3b2c21e2"
+                  },
+                  "status": "audited_with_major_findings",
+                  "major_finding_ids": [
+                    "Constrain babyjubjub secret scalar to be < `l`"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ba8132561a115cfc2c097bf0a8f3550914b757bf",
+                    "timestamp": "2024-04-17T08:46:45Z",
+                    "url": "https://github.com/semaphore-protocol/semaphore/commit/ba8132561a115cfc2c097bf0a8f3550914b757bf"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "privacy-scaling-explorations/zk-kit",
+          "paths": {
+            "packages/imt.sol/contracts/internal/InternalLeanIMT.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "215dfb30ba548918181419df5598d0a652901b7c",
+                    "timestamp": "2024-03-18T19:26:09Z",
+                    "url": "https://github.com/privacy-scaling-explorations/zk-kit/commit/215dfb30ba548918181419df5598d0a652901b7c"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "21df170d6d969d8dcfa763bc1aeb1390c320a627",
+                    "timestamp": "2024-03-20T10:36:06Z",
+                    "url": "https://github.com/privacy-scaling-explorations/zk-kit/commit/21df170d6d969d8dcfa763bc1aeb1390c320a627"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "18b8ed9fe2fc089af9ff8ac67a05b096fe7cc470",
+                    "timestamp": "2024-03-20T10:52:01Z",
+                    "url": "https://github.com/privacy-scaling-explorations/zk-kit/commit/18b8ed9fe2fc089af9ff8ac67a05b096fe7cc470"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f9f409f190e8de427e67d9270bad3a3e07403783",
+                    "timestamp": "2024-03-20T21:57:35Z",
+                    "url": "https://github.com/privacy-scaling-explorations/zk-kit/commit/f9f409f190e8de427e67d9270bad3a3e07403783"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c8173a4e668ba68e7d560555bf9da11c8120a7c2",
+                    "timestamp": "2024-03-21T15:05:51Z",
+                    "url": "https://github.com/privacy-scaling-explorations/zk-kit/commit/c8173a4e668ba68e7d560555bf9da11c8120a7c2"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c5ceca07673e89b112e849c2689ea0b1c3bf4d9",
+                    "timestamp": "2024-03-26T20:34:32Z",
+                    "url": "https://github.com/privacy-scaling-explorations/zk-kit/commit/4c5ceca07673e89b112e849c2689ea0b1c3bf4d9"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/circuits/circom/binary-merkle-root.circom": {
+              "path_kind": "file",
+              "kind": "zk",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "749de51d8372881239242528319312b4dfd7bafb",
+                    "timestamp": "2024-03-17T16:12:19Z",
+                    "url": "https://github.com/privacy-scaling-explorations/zk-kit/commit/749de51d8372881239242528319312b4dfd7bafb"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "215dfb30ba548918181419df5598d0a652901b7c",
+                    "timestamp": "2024-03-18T19:26:09Z",
+                    "url": "https://github.com/privacy-scaling-explorations/zk-kit/commit/215dfb30ba548918181419df5598d0a652901b7c"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            },
+            "packages/utils/src/f1-field.ts": {
+              "path_kind": "file",
+              "kind": "other",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "215dfb30ba548918181419df5598d0a652901b7c",
+                    "timestamp": "2024-03-18T19:26:09Z",
+                    "url": "https://github.com/privacy-scaling-explorations/zk-kit/commit/215dfb30ba548918181419df5598d0a652901b7c"
+                  },
+                  "status": "audited_with_major_findings",
+                  "major_finding_ids": [
+                    "`inv()` returns garbage for `0n`",
+                    "`pow()` doesn't work for negative exponents"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a79dfc496ec7f76ac31b9b779b75a7d5f1ba192e",
+                    "timestamp": "2024-04-17T16:10:23Z",
+                    "url": "https://github.com/privacy-scaling-explorations/zk-kit/commit/a79dfc496ec7f76ac31b9b779b75a7d5f1ba192e"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "major_finding_ids": [
+                    "`inv()` returns garbage for `0n`",
+                    "`pow()` doesn't work for negative exponents"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "41b4fb8ae929b52ff4d1b84c751d0a93dcdc9156",
+                    "timestamp": "2024-04-18T11:10:40Z",
+                    "url": "https://github.com/privacy-scaling-explorations/zk-kit/commit/41b4fb8ae929b52ff4d1b84c751d0a93dcdc9156"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "major_finding_ids": [
+                    "`inv()` returns garbage for `0n`"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "dbc7c70a54dcbd6c83b71621b7da1e66644d4559",
+                    "timestamp": "2024-04-22T14:32:45Z",
+                    "url": "https://github.com/privacy-scaling-explorations/zk-kit/commit/dbc7c70a54dcbd6c83b71621b7da1e66644d4559"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/eddsa-poseidon/src/eddsa-poseidon.ts": {
+              "path_kind": "file",
+              "kind": "other",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "215dfb30ba548918181419df5598d0a652901b7c",
+                    "timestamp": "2024-03-18T19:26:09Z",
+                    "url": "https://github.com/privacy-scaling-explorations/zk-kit/commit/215dfb30ba548918181419df5598d0a652901b7c"
+                  },
+                  "status": "audited_with_major_findings",
+                  "major_finding_ids": [
+                    "Private key can be out of range"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a8c6d3d6f41f680200cae90618944485009cbd87",
+                    "timestamp": "2024-04-23T08:08:38Z",
+                    "url": "https://github.com/privacy-scaling-explorations/zk-kit/commit/a8c6d3d6f41f680200cae90618944485009cbd87"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

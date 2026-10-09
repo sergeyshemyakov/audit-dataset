@@ -236,6 +236,43 @@ def document_fingerprint(root: Path, documents: list[str]) -> tuple[tuple[str, s
     return tuple(fingerprint)
 
 
+# Files a directory scope sweeps in that are not audit evidence of deployed code:
+# tests, mocks and deployment scripts, told apart by a path segment below the
+# scoped directory or by the Foundry test and script suffixes. A file scope
+# stores its file whatever its name.
+EXCLUDED_SEGMENTS = frozenset({"test", "tests", "mock", "mocks", "script", "scripts"})
+EXCLUDED_SUFFIXES = (".t.sol", ".s.sol")
+
+
+def is_test_or_mock(path: str, scoped_path: str) -> bool:
+    """Whether a file below a directory scope is a test, mock or script."""
+    relative = path[len(scoped_path) + 1:] if scoped_path else path
+    parts = PurePosixPath(relative).parts
+    return (
+        any(part.lower() in EXCLUDED_SEGMENTS for part in parts[:-1])
+        or relative.lower().endswith(EXCLUDED_SUFFIXES)
+    )
+
+
+def is_under(path: str, scoped_path: str) -> bool:
+    return path == scoped_path or path.startswith(f"{scoped_path}/")
+
+
+def not_audited_paths(summary: dict[str, Any]) -> dict[tuple[str, str, str], list[str]]:
+    """Paths a report marks ``not_audited`` at a commit, by (report id, repository, commit).
+
+    They are excluded from what the same report audited at that commit through
+    a scope above them, so a report scoping ``src`` and excluding ``src/vendor``
+    covers no file under ``src/vendor``.
+    """
+    excluded: dict[tuple[str, str, str], list[str]] = defaultdict(list)
+    for report, repository, path, _, _, version in relevant_versions(summary):
+        commit = full_commit(version["revision"])
+        if commit is not None and version["status"] == "not_audited":
+            excluded[(report["id"], repository, commit)].append(path)
+    return excluded
+
+
 def collection_audits(
     collection: Collection,
     summary: dict[str, Any],
@@ -247,6 +284,7 @@ def collection_audits(
     unavailable = unavailable_keys(manifest)
     if unavailable & fetched.keys():
         raise ExportError(f"{collection.name}: manifest lists a source as both fetched and unavailable")
+    excluded = not_audited_paths(summary)
     blob_ids: dict[Path, str] = {}
     audits: list[Audit] = []
     for report, repository, path, path_data, version_index, version in relevant_versions(summary):
@@ -263,7 +301,12 @@ def collection_audits(
             raise ExportError(f"{origin} is not in the manifest; rerun fetch")
         if source["path_kind"] != path_kind:
             raise ExportError(f"{origin}: manifest path_kind is {source['path_kind']!r}")
-        files = solidity_files(collection.sources_dir, source, blob_ids)
+        exclusions = excluded.get((report["id"], repository, commit), [])
+        files = tuple(
+            file for file in solidity_files(collection.sources_dir, source, blob_ids)
+            if not any(is_under(file.path, exclusion) for exclusion in exclusions)
+            and not (path_kind == "directory_recursive" and is_test_or_mock(file.path, path))
+        )
         if not files:
             continue
         timestamp = timestamps[(repository, commit)]

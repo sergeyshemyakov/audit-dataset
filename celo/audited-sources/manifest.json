@@ -13200,306 +13200,6 @@
     {
       "repository": "celo-org/optimism",
       "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/interfaces/L1/IOptimismPortal2.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/interfaces/L1/IOptimismPortal2.sol",
-          "git_object": "391c409dbbeff50c1f064bdb0612df163e6a425a",
-          "git_mode": "100644",
-          "sha256": "228626c83a7ead372d30332ece7d227ac068a9e6cb0b4b6a17b404d66122e50a"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/interfaces/L1/ISystemConfig.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/interfaces/L1/ISystemConfig.sol",
-          "git_object": "9a13dcf17ba1c57153a8ae4afad5eda7b9d12df4",
-          "git_mode": "100644",
-          "sha256": "a30bbb9d875ab38f985d19c9b4485352e03dcfc13de36befa60e5de6a270c3a1"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/interfaces/L2/IETHLiquidity.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/interfaces/L2/IETHLiquidity.sol",
-          "git_object": "7018847aa70138b8d19ac141394a491a446e4135",
-          "git_mode": "100644",
-          "sha256": "f4904d744427f05bcf115d41552e1347e1a5a6494e3749c5444307a3738826fc"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/interfaces/L2/IL1Block.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/interfaces/L2/IL1Block.sol",
-          "git_object": "b2dce0d3aeadf60733cd7d1f1c67e50bc95ab55c",
-          "git_mode": "100644",
-          "sha256": "944103020ee5804cf5e948b2730fbaac36a852e3fb63ff2683cd394a7d82fc65"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/interfaces/L2/ISuperchainETHBridge.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/interfaces/L2/ISuperchainETHBridge.sol",
-          "git_object": "24f203db22d740f977ee037bbe153ac2cd33b8d4",
-          "git_mode": "100644",
-          "sha256": "c92255a069d1132b2320168f03c6668f84fe44224741632fb363c825b6d148c3"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol",
-          "git_object": "777990e8ee3470ee2c5cf1b4994121df048888c6",
-          "git_mode": "100644",
-          "sha256": "ada7ecc6e8f429b255157bbcfb9ca4cc63224e06fe6fa0770ae1183ea4ed66c9"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/L1/L1StandardBridge.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/L1/L1StandardBridge.sol",
-          "git_object": "76b68a6084e8cc60523909a0690f935f1852c89c",
-          "git_mode": "100644",
-          "sha256": "ff63b20f09defdaef34a96d9b95ee64c39dc63261390599ae7264673a19cb59f"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/L1/OPContractsManager.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/L1/OPContractsManager.sol",
-          "git_object": "b5007d5aabba616e6babc225578d4086bdba78f2",
-          "git_mode": "100644",
-          "sha256": "ff53bed4fa5b33f24d0256714195d27eceb589732b590fb5d713b1801806e507"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/L1/OptimismPortal2.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/L1/OptimismPortal2.sol",
-          "git_object": "36f69639d6ffe4fe03ea9fe765f150fa480adbd9",
-          "git_mode": "100644",
-          "sha256": "7d366372f85415d7e96ba7ca465081a664803823f646cac95faeeefebae93f30"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/L1/SystemConfig.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/L1/SystemConfig.sol",
-          "git_object": "7910e6f9d073fdf6293602ec41f92be579a4be37",
-          "git_mode": "100644",
-          "sha256": "c1cb217c85376efd0daa705e684ac2367750c71cd5e4321ef2315a1595bcf304"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/L2/ETHLiquidity.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/L2/ETHLiquidity.sol",
-          "git_object": "e817c31a8423c3fc0100b166026f840aa1918544",
-          "git_mode": "100644",
-          "sha256": "22a8fe8f202d28d529d0fb7c23897bc60324c3a999b257c085714225defa8cac"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/L2/L1Block.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/L2/L1Block.sol",
-          "git_object": "aa7dd979a074f7a749785ea766d32e7f7948bfa5",
-          "git_mode": "100644",
-          "sha256": "b65e102ca6e87e27a862db4b3c5c6ca1c9f0182f1fd70dd898d60764698c8ae0"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol",
-          "git_object": "0b8e0f59fbeade8fdd682b2770b059da7d2fd9c8",
-          "git_mode": "100644",
-          "sha256": "7d8ea5bb863c8b4155f039dd82470574f2081a1165615a1ed077cb1bb4dc8480"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/L2/L2StandardBridge.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/L2/L2StandardBridge.sol",
-          "git_object": "fe413e17d963f0a51ce8b0ed5a50a7fbc714abd2",
-          "git_mode": "100644",
-          "sha256": "858cad73f0283c13555ec3c4dc4a6192ff1d94a596a463b76bd2a4f359814950"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/L2/SuperchainETHBridge.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/L2/SuperchainETHBridge.sol",
-          "git_object": "da7ada506274eaac3b26782ce8902ef9c444d1b8",
-          "git_mode": "100644",
-          "sha256": "57e0b149ed09d8d9bf046495e28a4cc44d45e39f1cb3728726f4a9f3f55351ea"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/L2/WETH.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/L2/WETH.sol",
-          "git_object": "fcfc5956ca9e4b84d78d3d65627c88a236c63aa6",
-          "git_mode": "100644",
-          "sha256": "e520a9b9d378357aae997c19705c22186d571a7d496b5fb706b23e06bf78b572"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/libraries/errors/CommonErrors.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/libraries/errors/CommonErrors.sol",
-          "git_object": "429f24c87ae8e890d4429acfd051227df142b451",
-          "git_mode": "100644",
-          "sha256": "7cdea520b1febd4f3560b05f87f22a4bfc6c683b1528f0a84be46e6590081828"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol",
-          "git_object": "b0fb26d73a5af8ea8027d0ba2da12901afd69316",
-          "git_mode": "100644",
-          "sha256": "50d9b1c240456ebd9610f9da55557388d1f0330f8fcc10470f7430d53888f44f"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/universal/OptimismMintableERC20.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/universal/OptimismMintableERC20.sol",
-          "git_object": "93ee9b9269ab266b469e8e2122a722c7ddedcf82",
-          "git_mode": "100644",
-          "sha256": "81e43fc1a88fdfbdb86b77b73cbcdf095b41a85effa5dea413a45316086bb2f3"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/src/universal/StandardBridge.sol",
-      "path_kind": "file",
-      "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-      "files": [
-        {
-          "path": "packages/contracts-bedrock/src/universal/StandardBridge.sol",
-          "git_object": "c5fb227ca35155179230f8f30317bffc0f6baf2d",
-          "git_mode": "100644",
-          "sha256": "64543c1d430338f9b884bc2220314659fe710d91b7460ade6c287f03c42d919f"
-        }
-      ]
-    },
-    {
-      "repository": "celo-org/optimism",
-      "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/celo/CeloSuperchainConfig.sol",
       "path_kind": "file",
       "commit": "39e96786cefc75bec597b229f339262fc6ec72f6",
@@ -13515,15 +13215,30 @@
     {
       "repository": "celo-org/optimism",
       "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/interfaces/L1/ICeloSuperchainConfig.sol",
+      "path_kind": "file",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/interfaces/L1/ICeloSuperchainConfig.sol",
+          "git_object": "ef96ea52b490b83541fbbe5a6310a83f235b8d80",
+          "git_mode": "100644",
+          "sha256": "cfbf845fffc33d62df9653046a37ed977eca77448c9287e70d5a8bd8747415d6"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/interfaces/L1/IOptimismPortal2.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/interfaces/L1/IOptimismPortal2.sol",
-          "git_object": "987450481d6b6f56eea6d12a65437123964357e8",
+          "git_object": "a318374e28205eb6cf10609c34352125e6ef3305",
           "git_mode": "100644",
-          "sha256": "f0c25cdf135a587920e026bca4c5ac872a306039b78843815cbcf08cd4a7408a"
+          "sha256": "a85e59dc64fb1879ed88f5d7798b5b34071e6b4fcf367d1c83fe65c32a966637"
         }
       ]
     },
@@ -13532,13 +13247,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/interfaces/L1/ISystemConfig.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/interfaces/L1/ISystemConfig.sol",
-          "git_object": "5edb73d8ae793c8c9e45c2e47e6a752aba0e9d8c",
+          "git_object": "41fe4e461cf0bcec0bd171a5e711a989bcdd6f4c",
           "git_mode": "100644",
-          "sha256": "e84d06b4f729d303c6ef2b31051b70537f7f67943b9c4367830af708bf40c687"
+          "sha256": "d96fcbeed6dc1ae15b04fa59e99d08a693b4b7a6f65b1106e1a2dc02421567a6"
         }
       ]
     },
@@ -13547,13 +13262,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/interfaces/L2/IETHLiquidity.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/interfaces/L2/IETHLiquidity.sol",
-          "git_object": "768edea181ed47485b53b56397663e81f4a29644",
+          "git_object": "7018847aa70138b8d19ac141394a491a446e4135",
           "git_mode": "100644",
-          "sha256": "14a6586076428aafa89f8be1e80f42a4005ea4a7cf3df0619f77bc7ae485fe74"
+          "sha256": "f4904d744427f05bcf115d41552e1347e1a5a6494e3749c5444307a3738826fc"
         }
       ]
     },
@@ -13562,13 +13277,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/interfaces/L2/IL1Block.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/interfaces/L2/IL1Block.sol",
-          "git_object": "65b9ef0f2029b1eaad9e6547af2c8fd514d0885d",
+          "git_object": "b2dce0d3aeadf60733cd7d1f1c67e50bc95ab55c",
           "git_mode": "100644",
-          "sha256": "e373b790c7a012d79debc4edd4862758ccd3aa9e5a8054aa354a61c75756be31"
+          "sha256": "944103020ee5804cf5e948b2730fbaac36a852e3fb63ff2683cd394a7d82fc65"
         }
       ]
     },
@@ -13577,13 +13292,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/interfaces/L2/ISuperchainETHBridge.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/interfaces/L2/ISuperchainETHBridge.sol",
-          "git_object": "33b4c725fef27c40ed6755f6170dbd7be5b514c2",
+          "git_object": "24f203db22d740f977ee037bbe153ac2cd33b8d4",
           "git_mode": "100644",
-          "sha256": "a17e089db3482fa6f404f19e781532b5818d96b6af2c0304b0c6ef9f26f325a7"
+          "sha256": "c92255a069d1132b2320168f03c6668f84fe44224741632fb363c825b6d148c3"
         }
       ]
     },
@@ -13592,13 +13307,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol",
-          "git_object": "b6208c8018091539b578a78682c51b41121c434d",
+          "git_object": "2a6d3500925cf3dbcf97fda507e993cd8898c6f4",
           "git_mode": "100644",
-          "sha256": "bd90fe68c7834f863751c0d8dbf4d3324ce89edaf16b0a46baf80e8280c15790"
+          "sha256": "bbe680ec01301ccd5a7607328e0c6d9ffe7820dfbb1ddbdb069f42b41c8ceb51"
         }
       ]
     },
@@ -13607,13 +13322,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/L1/L1StandardBridge.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/L1/L1StandardBridge.sol",
-          "git_object": "465ec7f7ed5ebcd793c81e0dbae60bd328036245",
+          "git_object": "58fa406e16955457efc816e868e1bccfc1d9386f",
           "git_mode": "100644",
-          "sha256": "8bba7cfc2893a119b3edd618a57cd2540da3cef30afebac70a0a2a439fed5d56"
+          "sha256": "5bbb0f86bdc9dc33dea33f284b2473b2486450fdfe4236fe62e4568e6e4cc15c"
         }
       ]
     },
@@ -13622,13 +13337,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/L1/OPContractsManager.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/L1/OPContractsManager.sol",
-          "git_object": "d87b903c86e232af0ff26d50f37d9ff6c29184b9",
+          "git_object": "427f4aa37376e481fff7000f721cd38e22a896ac",
           "git_mode": "100644",
-          "sha256": "7a1a0408a1567712ef02629c1e631dc69cb264445d324daa06f760dc7323d97f"
+          "sha256": "7813566f342edd4030438039eba692baa939dab463b41f374bd6e08a19da8382"
         }
       ]
     },
@@ -13637,13 +13352,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/L1/OptimismPortal2.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/L1/OptimismPortal2.sol",
-          "git_object": "071bf55a8892230103bbcf552105b0ac6431f585",
+          "git_object": "16aff2c02f2a1f36abe7180cda1cfb5598c70a35",
           "git_mode": "100644",
-          "sha256": "a8b6b7f67a4113a15fcb0fd764520d3d457cc8f9266a252bdb54e03e97db0307"
+          "sha256": "d6dcb75f421acab28ef8ef3a852a46e54f553c849bf22ab5dc6ea3b19f18b7b0"
         }
       ]
     },
@@ -13652,13 +13367,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/L1/SystemConfig.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/L1/SystemConfig.sol",
-          "git_object": "ae5a00f8aace023f2c0856f48f57406fc547a618",
+          "git_object": "5a7cb7c8790fed9a9e66e737246110827be35a8d",
           "git_mode": "100644",
-          "sha256": "75ccc3bb1b7100cdb2e420b3639eca5bfefdd49aa4741f7eea7890ae991685e4"
+          "sha256": "760ea3648ec3c9c9d74d544bd89a6e22fadfaa9f859509e0b517b6a09b08efe4"
         }
       ]
     },
@@ -13667,13 +13382,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/L2/ETHLiquidity.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/L2/ETHLiquidity.sol",
-          "git_object": "e9776db878507746840a11d00f4ea4bef2bc678d",
+          "git_object": "e817c31a8423c3fc0100b166026f840aa1918544",
           "git_mode": "100644",
-          "sha256": "aca11efd89963da439b9e5842e7b40e6768bbb36d944cc357c77f070f1aacb6d"
+          "sha256": "22a8fe8f202d28d529d0fb7c23897bc60324c3a999b257c085714225defa8cac"
         }
       ]
     },
@@ -13682,13 +13397,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/L2/L1Block.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/L2/L1Block.sol",
-          "git_object": "fffce12bb5115efcfd172aaeeb8a90f7e7396ae9",
+          "git_object": "aa7dd979a074f7a749785ea766d32e7f7948bfa5",
           "git_mode": "100644",
-          "sha256": "f8d25cc2e304c1699f3ca241dc037380b02068e4ed58a255d71d94e350462f67"
+          "sha256": "b65e102ca6e87e27a862db4b3c5c6ca1c9f0182f1fd70dd898d60764698c8ae0"
         }
       ]
     },
@@ -13697,13 +13412,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol",
-          "git_object": "3e33c55dd0c19b9045617b16560d5b2fb8b7fc49",
+          "git_object": "0b8e0f59fbeade8fdd682b2770b059da7d2fd9c8",
           "git_mode": "100644",
-          "sha256": "32a468b54e3e8ccd74fb62cff6874c6cb32a453a9f956cafa0840c0c69f600c1"
+          "sha256": "7d8ea5bb863c8b4155f039dd82470574f2081a1165615a1ed077cb1bb4dc8480"
         }
       ]
     },
@@ -13712,13 +13427,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/L2/L2StandardBridge.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/L2/L2StandardBridge.sol",
-          "git_object": "1e9c2ac15f315f2b66b63b3eab472b66d2d0aec5",
+          "git_object": "fe413e17d963f0a51ce8b0ed5a50a7fbc714abd2",
           "git_mode": "100644",
-          "sha256": "a910dc69de6cbb8d4e3c65a7bbbd0816393a636de75498ad04e3e3403454edf4"
+          "sha256": "858cad73f0283c13555ec3c4dc4a6192ff1d94a596a463b76bd2a4f359814950"
         }
       ]
     },
@@ -13727,13 +13442,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/L2/SuperchainETHBridge.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/L2/SuperchainETHBridge.sol",
-          "git_object": "73673af11ed5377ad50620316b14c7367782a07c",
+          "git_object": "da7ada506274eaac3b26782ce8902ef9c444d1b8",
           "git_mode": "100644",
-          "sha256": "d4b977c007d250488e5cf16412f012b611aec85af53191881ca7bd402cfdc134"
+          "sha256": "57e0b149ed09d8d9bf046495e28a4cc44d45e39f1cb3728726f4a9f3f55351ea"
         }
       ]
     },
@@ -13742,13 +13457,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/L2/WETH.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/L2/WETH.sol",
-          "git_object": "42b51261a98382b5ad36b083cee23291db5292cf",
+          "git_object": "fcfc5956ca9e4b84d78d3d65627c88a236c63aa6",
           "git_mode": "100644",
-          "sha256": "428b3b6300598758074e4ec7cf86355390325315b3d26dbc3b64227728775a28"
+          "sha256": "e520a9b9d378357aae997c19705c22186d571a7d496b5fb706b23e06bf78b572"
         }
       ]
     },
@@ -13757,13 +13472,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/libraries/errors/CommonErrors.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/libraries/errors/CommonErrors.sol",
-          "git_object": "cfbec072b4ed57d29e6b14296c7aecb348b5d2fc",
+          "git_object": "429f24c87ae8e890d4429acfd051227df142b451",
           "git_mode": "100644",
-          "sha256": "752d357c5e8dd5dcd39bc8d8206f99e90b06cebfec0746e2b6e5d61cdd9fd136"
+          "sha256": "7cdea520b1febd4f3560b05f87f22a4bfc6c683b1528f0a84be46e6590081828"
         }
       ]
     },
@@ -13772,13 +13487,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol",
-          "git_object": "ba21a0c7c51ea982fd4c91b47e7fe63b92d318f2",
+          "git_object": "b0fb26d73a5af8ea8027d0ba2da12901afd69316",
           "git_mode": "100644",
-          "sha256": "13c214a03a930e35d6cc5d0182088f86f4af9cc9e8d22d43964a0917bffb0946"
+          "sha256": "50d9b1c240456ebd9610f9da55557388d1f0330f8fcc10470f7430d53888f44f"
         }
       ]
     },
@@ -13787,13 +13502,13 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/universal/OptimismMintableERC20.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/universal/OptimismMintableERC20.sol",
-          "git_object": "1ef7370f288241fba81f0a9f699c78eb16206b1e",
+          "git_object": "23a8ad3ccbd1fb69742a9679f49b05f4ee514805",
           "git_mode": "100644",
-          "sha256": "5d15b2bf8356fdddd2c00edf3e7d151cbfe2822bbabc36dac10d79a4078a7806"
+          "sha256": "70ff4135b802da4b8e3701121d9c4496d35704eb8111f5afb4ae385895892d96"
         }
       ]
     },
@@ -13802,13 +13517,328 @@
       "repository_url": "https://github.com/celo-org/optimism",
       "source_path": "packages/contracts-bedrock/src/universal/StandardBridge.sol",
       "path_kind": "file",
-      "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
+      "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
       "files": [
         {
           "path": "packages/contracts-bedrock/src/universal/StandardBridge.sol",
-          "git_object": "9473b5f321044464025be51ed73e93acd7deeb54",
+          "git_object": "c5fb227ca35155179230f8f30317bffc0f6baf2d",
           "git_mode": "100644",
-          "sha256": "caa3cf2a14c9a6bd1607290313fedc581d8e9758fade95d1463ea8ab911ba2f1"
+          "sha256": "64543c1d430338f9b884bc2220314659fe710d91b7460ade6c287f03c42d919f"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/interfaces/L1/ICeloSuperchainConfig.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/interfaces/L1/ICeloSuperchainConfig.sol",
+          "git_object": "ef96ea52b490b83541fbbe5a6310a83f235b8d80",
+          "git_mode": "100644",
+          "sha256": "cfbf845fffc33d62df9653046a37ed977eca77448c9287e70d5a8bd8747415d6"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/interfaces/L1/IOptimismPortal2.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/interfaces/L1/IOptimismPortal2.sol",
+          "git_object": "14714462ebb36ef115d2c2dec193076275fb362a",
+          "git_mode": "100644",
+          "sha256": "b3ced8a85d7324ada58ba168ca9102132e58827bd2ba6da267b2f6b86bf57044"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/interfaces/L1/ISystemConfig.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/interfaces/L1/ISystemConfig.sol",
+          "git_object": "53442ff68a8d95b987d229f51cf41d906d3ddf00",
+          "git_mode": "100644",
+          "sha256": "013a238ad5ff01e1e691f7fea1715867fcd5c94eeb3bcd481e3892fc15abd02a"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/interfaces/L2/IETHLiquidity.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/interfaces/L2/IETHLiquidity.sol",
+          "git_object": "7018847aa70138b8d19ac141394a491a446e4135",
+          "git_mode": "100644",
+          "sha256": "f4904d744427f05bcf115d41552e1347e1a5a6494e3749c5444307a3738826fc"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/interfaces/L2/IL1Block.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/interfaces/L2/IL1Block.sol",
+          "git_object": "fc989b0d59477943da489d36600b7bf10b9edabd",
+          "git_mode": "100644",
+          "sha256": "f696805cbb7aeda5afcd3a7e58237ff0ecf8d85e97d18a1f466ae88e319fe962"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/interfaces/L2/ISuperchainETHBridge.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/interfaces/L2/ISuperchainETHBridge.sol",
+          "git_object": "24f203db22d740f977ee037bbe153ac2cd33b8d4",
+          "git_mode": "100644",
+          "sha256": "c92255a069d1132b2320168f03c6668f84fe44224741632fb363c825b6d148c3"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol",
+          "git_object": "815c9dc02a62bcd34dbb694834b6c00162893ecb",
+          "git_mode": "100644",
+          "sha256": "4af97564dd10dcc8a7b4bc8c9fe6fb014ec08cd10758795804100cde510db83d"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L1/L1StandardBridge.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L1/L1StandardBridge.sol",
+          "git_object": "941665c4c479ae2448e170f66a119ff6d4edf9b5",
+          "git_mode": "100644",
+          "sha256": "e1ee61ab0229cb2952f70ab2eb56b29ebfce3fc70e685862b0db266c1a52b905"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L1/OPContractsManager.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L1/OPContractsManager.sol",
+          "git_object": "2d215b134a05a44d95ac67072b5c6cd522019179",
+          "git_mode": "100644",
+          "sha256": "caf37bdaadec520be589a7daab9b99426defd63c3834b8aab06fe4794a08223c"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L1/OptimismPortal2.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L1/OptimismPortal2.sol",
+          "git_object": "33b7d46ef363b5fba87f555ffc97984b84df95b3",
+          "git_mode": "100644",
+          "sha256": "8360f5f722c28cfedc2a66fc339ec80044e62ef4cde79c0bf9ffbbae6d1ef891"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L1/SystemConfig.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L1/SystemConfig.sol",
+          "git_object": "37d16b3c9bcfecc94a01956cd0c092406933e984",
+          "git_mode": "100644",
+          "sha256": "d6c66855cd5e6eccd18a3efa11a6bd9624078275a4c3a8538f1def53f885231f"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L2/ETHLiquidity.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L2/ETHLiquidity.sol",
+          "git_object": "e817c31a8423c3fc0100b166026f840aa1918544",
+          "git_mode": "100644",
+          "sha256": "22a8fe8f202d28d529d0fb7c23897bc60324c3a999b257c085714225defa8cac"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L2/L1Block.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L2/L1Block.sol",
+          "git_object": "2b9051c38e9b5371a5926dd741194f1d9028f2c0",
+          "git_mode": "100644",
+          "sha256": "3a665d6fd8939899428058ff1297de2deef147f311e69fda088eff54af1fc6d7"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol",
+          "git_object": "0b8e0f59fbeade8fdd682b2770b059da7d2fd9c8",
+          "git_mode": "100644",
+          "sha256": "7d8ea5bb863c8b4155f039dd82470574f2081a1165615a1ed077cb1bb4dc8480"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L2/L2StandardBridge.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L2/L2StandardBridge.sol",
+          "git_object": "fe413e17d963f0a51ce8b0ed5a50a7fbc714abd2",
+          "git_mode": "100644",
+          "sha256": "858cad73f0283c13555ec3c4dc4a6192ff1d94a596a463b76bd2a4f359814950"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L2/SuperchainETHBridge.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L2/SuperchainETHBridge.sol",
+          "git_object": "da7ada506274eaac3b26782ce8902ef9c444d1b8",
+          "git_mode": "100644",
+          "sha256": "57e0b149ed09d8d9bf046495e28a4cc44d45e39f1cb3728726f4a9f3f55351ea"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L2/WETH.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L2/WETH.sol",
+          "git_object": "fcfc5956ca9e4b84d78d3d65627c88a236c63aa6",
+          "git_mode": "100644",
+          "sha256": "e520a9b9d378357aae997c19705c22186d571a7d496b5fb706b23e06bf78b572"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/libraries/errors/CommonErrors.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/libraries/errors/CommonErrors.sol",
+          "git_object": "429f24c87ae8e890d4429acfd051227df142b451",
+          "git_mode": "100644",
+          "sha256": "7cdea520b1febd4f3560b05f87f22a4bfc6c683b1528f0a84be46e6590081828"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol",
+          "git_object": "b0fb26d73a5af8ea8027d0ba2da12901afd69316",
+          "git_mode": "100644",
+          "sha256": "50d9b1c240456ebd9610f9da55557388d1f0330f8fcc10470f7430d53888f44f"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/universal/OptimismMintableERC20.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/universal/OptimismMintableERC20.sol",
+          "git_object": "e9454f934ebf64162432adf98a1c0d1402a3f777",
+          "git_mode": "100644",
+          "sha256": "47a46082c0271684bfa9593b5cfcee6d513155e65403cfa4f57ab32290dcafcc"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/universal/StandardBridge.sol",
+      "path_kind": "file",
+      "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/universal/StandardBridge.sol",
+          "git_object": "c5fb227ca35155179230f8f30317bffc0f6baf2d",
+          "git_mode": "100644",
+          "sha256": "64543c1d430338f9b884bc2220314659fe710d91b7460ade6c287f03c42d919f"
         }
       ]
     },
@@ -14064,6 +14094,36 @@
           "git_object": "c5fb227ca35155179230f8f30317bffc0f6baf2d",
           "git_mode": "100644",
           "sha256": "64543c1d430338f9b884bc2220314659fe710d91b7460ade6c287f03c42d919f"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L1/OptimismPortal2.sol",
+      "path_kind": "file",
+      "commit": "d80448275d1cc3577f07374432617fd808163c8c",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L1/OptimismPortal2.sol",
+          "git_object": "7d9cf4a3665232314e04ef6b6baf34e3a7aea633",
+          "git_mode": "100644",
+          "sha256": "594f8da0a5546321c37af6ce42952f452274e6b455f3d36eeb49d0e7c01414e6"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L1/SystemConfig.sol",
+      "path_kind": "file",
+      "commit": "d80448275d1cc3577f07374432617fd808163c8c",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L1/SystemConfig.sol",
+          "git_object": "a1928c322badde987715077bbbb5e3aa541142ee",
+          "git_mode": "100644",
+          "sha256": "c9341d46734bf71038f52f246952b542cf75871d883fc812ac1cd6bb896dbcfa"
         }
       ]
     },
@@ -14349,6 +14409,36 @@
           "git_object": "8237b34a849377c29020b02dbef377aee7e9edf5",
           "git_mode": "100644",
           "sha256": "7c68bf7bab5f7c500f8961ce1555022a296d370f7baeb821e23c2d2cf20aba27"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L1/OptimismPortal2.sol",
+      "path_kind": "file",
+      "commit": "f62faa2e93a1af36568761dc7c7a3de5ba5b5750",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L1/OptimismPortal2.sol",
+          "git_object": "0a167f8692f80f762b0e866ab8cccaed22b6cc28",
+          "git_mode": "100644",
+          "sha256": "8b923e1f5e098ed3b1ae9339df463979bc4e9fb82e2bfa17fe5dcfd11527858d"
+        }
+      ]
+    },
+    {
+      "repository": "celo-org/optimism",
+      "repository_url": "https://github.com/celo-org/optimism",
+      "source_path": "packages/contracts-bedrock/src/L1/SystemConfig.sol",
+      "path_kind": "file",
+      "commit": "f62faa2e93a1af36568761dc7c7a3de5ba5b5750",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L1/SystemConfig.sol",
+          "git_object": "732797babcdb1bb2dd340fde11cf5e29f04e3f93",
+          "git_mode": "100644",
+          "sha256": "50f84ad084a4a6056b8acdbb59f8d9e27776458cb7543307bae56d8bdc1a399d"
         }
       ]
     },
@@ -15924,20 +16014,6 @@
       "source_path": "op-chain-ops/cmd/check-derivation/main.go",
       "revision_kind": "branch",
       "revision": "celo10",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/interfaces/L1/ICeloSuperchainConfig.sol",
-      "revision_kind": "branch",
-      "revision": "celo-contracts/v4.1.0",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "celo-org/optimism",
-      "source_path": "packages/contracts-bedrock/interfaces/L1/ICeloSuperchainConfig.sol",
-      "revision_kind": "branch",
-      "revision": "celo-contracts/v5.0.0",
       "reason": "revision is not a commit"
     },
     {

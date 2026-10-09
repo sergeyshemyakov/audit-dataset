@@ -52,7 +52,7 @@
       "id": "hashlock-celo-optimism-superchain-2026-02",
       "report_file": "Hashlock - Celo Optimism and Superchain (2nd Audit).md",
       "title": "Celo Smart Contract Audit Report (Optimism and Superchain, 2nd audit)",
-      "description": "Second Hashlock review of Celo's custom-gas-token (CGT) modifications to the OP Stack contracts in celo-org/optimism, covering the Celo diffs against op-deployer/v0.4.7 (celo-contracts/v4.1.0, commit 2c50c87) and op-deployer/v0.5.2 (celo-contracts/v5.0.0, commit c138180) across L1 portal/bridge/messenger/SystemConfig/OPContractsManager contracts, L2 bridge/messenger/L1Block/ETHLiquidity/WETH contracts, and related interfaces and libraries. One Medium (ETHLockbox misaccounting in OptimismPortal2 with CGT withdrawals, resolved), four QA and one gas finding were reported; no High/Critical findings.",
+      "description": "Second Hashlock review of Celo's custom-gas-token (CGT) modifications to the OP Stack contracts in celo-org/optimism, scoped as the diffs op-deployer/v0.4.7...celo-contracts/v4.1.0 and op-deployer/v0.5.2...celo-contracts/v5.0.0 across L1 portal/bridge/messenger/SystemConfig/OPContractsManager contracts, L2 bridge/messenger/L1Block/ETHLiquidity/WETH contracts, and related interfaces and libraries. The report prints the commits 2c50c87 (the first Celo commit of the v4.1.0 branch) and c138180 (the upstream base of the v5.0.0 branch), neither of which holds the audited Celo changes; the audited revisions are the heads of the two branches before the audit, 55317e3 (v4.1.0) and 8d76b55 (v5.0.0), and the fix of the one Medium finding (ETHLockbox misaccounting in OptimismPortal2 with CGT withdrawals, resolved) is f62faa2 / d804482 \"Audit fix: CGT vs Lockbox\", which changes OptimismPortal2.sol and SystemConfig.sol. Four QA and one gas finding were also reported; no High/Critical findings.",
       "isRelevant": true,
       "auditor": "Hashlock Pty Ltd",
       "report_date": "2026-02-28",
@@ -73,18 +73,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/interfaces/L1/IOptimismPortal2.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/interfaces/L1/IOptimismPortal2.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/interfaces/L1/IOptimismPortal2.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/interfaces/L1/IOptimismPortal2.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -97,18 +97,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/interfaces/L1/ISystemConfig.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/interfaces/L1/ISystemConfig.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/interfaces/L1/ISystemConfig.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/interfaces/L1/ISystemConfig.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -121,18 +121,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/interfaces/L2/IETHLiquidity.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/interfaces/L2/IETHLiquidity.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/interfaces/L2/IETHLiquidity.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/interfaces/L2/IETHLiquidity.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -145,18 +145,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/interfaces/L2/IL1Block.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/interfaces/L2/IL1Block.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/interfaces/L2/IL1Block.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/interfaces/L2/IL1Block.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -169,18 +169,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/interfaces/L2/ISuperchainETHBridge.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/interfaces/L2/ISuperchainETHBridge.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/interfaces/L2/ISuperchainETHBridge.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/interfaces/L2/ISuperchainETHBridge.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -193,18 +193,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -217,18 +217,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/L1/L1StandardBridge.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/L1/L1StandardBridge.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/L1/L1StandardBridge.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/L1/L1StandardBridge.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -241,18 +241,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/L1/OPContractsManager.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/L1/OPContractsManager.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/L1/OPContractsManager.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/L1/OPContractsManager.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -265,20 +265,38 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/L1/OptimismPortal2.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/L1/OptimismPortal2.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/L1/OptimismPortal2.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/L1/OptimismPortal2.sol"
                   },
                   "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f62faa2e93a1af36568761dc7c7a3de5ba5b5750",
+                    "timestamp": "2026-02-19T10:59:00Z",
+                    "url": "https://github.com/celo-org/optimism/blob/f62faa2e93a1af36568761dc7c7a3de5ba5b5750/packages/contracts-bedrock/src/L1/OptimismPortal2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d80448275d1cc3577f07374432617fd808163c8c",
+                    "timestamp": "2026-02-19T10:59:13Z",
+                    "url": "https://github.com/celo-org/optimism/blob/d80448275d1cc3577f07374432617fd808163c8c/packages/contracts-bedrock/src/L1/OptimismPortal2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -289,20 +307,38 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/L1/SystemConfig.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/L1/SystemConfig.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/L1/SystemConfig.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/L1/SystemConfig.sol"
                   },
                   "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f62faa2e93a1af36568761dc7c7a3de5ba5b5750",
+                    "timestamp": "2026-02-19T10:59:00Z",
+                    "url": "https://github.com/celo-org/optimism/blob/f62faa2e93a1af36568761dc7c7a3de5ba5b5750/packages/contracts-bedrock/src/L1/SystemConfig.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d80448275d1cc3577f07374432617fd808163c8c",
+                    "timestamp": "2026-02-19T10:59:13Z",
+                    "url": "https://github.com/celo-org/optimism/blob/d80448275d1cc3577f07374432617fd808163c8c/packages/contracts-bedrock/src/L1/SystemConfig.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -313,18 +349,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/L2/ETHLiquidity.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/L2/ETHLiquidity.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/L2/ETHLiquidity.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/L2/ETHLiquidity.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -337,18 +373,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/L2/L1Block.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/L2/L1Block.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/L2/L1Block.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/L2/L1Block.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -361,18 +397,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -385,18 +421,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/L2/L2StandardBridge.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/L2/L2StandardBridge.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/L2/L2StandardBridge.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/L2/L2StandardBridge.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -409,18 +445,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/L2/SuperchainETHBridge.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/L2/SuperchainETHBridge.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/L2/SuperchainETHBridge.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/L2/SuperchainETHBridge.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -433,18 +469,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/L2/WETH.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/L2/WETH.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/L2/WETH.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/L2/WETH.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -457,18 +493,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/libraries/errors/CommonErrors.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/libraries/errors/CommonErrors.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/libraries/errors/CommonErrors.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/libraries/errors/CommonErrors.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -481,18 +517,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -505,18 +541,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/universal/OptimismMintableERC20.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/universal/OptimismMintableERC20.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/universal/OptimismMintableERC20.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/universal/OptimismMintableERC20.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -529,18 +565,18 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "2c50c87bab8a37aeb363664b22ace82b898c2d8b",
-                    "timestamp": "2026-01-14T10:59:08Z",
-                    "url": "https://github.com/celo-org/optimism/blob/2c50c87bab8a37aeb363664b22ace82b898c2d8b/packages/contracts-bedrock/src/universal/StandardBridge.sol"
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/src/universal/StandardBridge.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "c138180e992f54502a62e3fcf803eb701e38b990",
-                    "timestamp": "2026-01-20T14:26:35Z",
-                    "url": "https://github.com/celo-org/optimism/blob/c138180e992f54502a62e3fcf803eb701e38b990/packages/contracts-bedrock/src/universal/StandardBridge.sol"
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/src/universal/StandardBridge.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }
@@ -552,23 +588,19 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "branch",
-                    "ref": "celo-contracts/v4.1.0",
-                    "commit": null,
-                    "timestamp": null,
-                    "immutable": false,
-                    "url": "https://github.com/celo-org/optimism/blob/celo-contracts/v4.1.0/packages/contracts-bedrock/interfaces/L1/ICeloSuperchainConfig.sol"
+                    "kind": "commit",
+                    "commit": "55317e34b608cb39ff52c63026f174bb748a7e7e",
+                    "timestamp": "2026-01-20T14:10:26Z",
+                    "url": "https://github.com/celo-org/optimism/blob/55317e34b608cb39ff52c63026f174bb748a7e7e/packages/contracts-bedrock/interfaces/L1/ICeloSuperchainConfig.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 },
                 {
                   "revision": {
-                    "kind": "branch",
-                    "ref": "celo-contracts/v5.0.0",
-                    "commit": null,
-                    "timestamp": null,
-                    "immutable": false,
-                    "url": "https://github.com/celo-org/optimism/blob/celo-contracts/v5.0.0/packages/contracts-bedrock/interfaces/L1/ICeloSuperchainConfig.sol"
+                    "kind": "commit",
+                    "commit": "8d76b55c7fdb88f723291f83adee3af8d1206235",
+                    "timestamp": "2026-01-22T21:39:32Z",
+                    "url": "https://github.com/celo-org/optimism/blob/8d76b55c7fdb88f723291f83adee3af8d1206235/packages/contracts-bedrock/interfaces/L1/ICeloSuperchainConfig.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }

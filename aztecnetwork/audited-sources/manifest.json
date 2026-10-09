@@ -1118,21 +1118,6 @@
     {
       "repository": "AztecProtocol/aztec-packages",
       "repository_url": "https://github.com/AztecProtocol/aztec-packages",
-      "source_path": "l1-contracts/src/shared/libraries/BN254Lib.sol",
-      "path_kind": "file",
-      "commit": "1856c6133d4f5f5d8e465722be5d752dff3864bb",
-      "files": [
-        {
-          "path": "l1-contracts/src/shared/libraries/BN254Lib.sol",
-          "git_object": "b15389900e5e45734500dc1d84d92a92b34d3b80",
-          "git_mode": "100644",
-          "sha256": "56a3febe343834079d8367d2dab9c9a306d82bd7feda6348269919ac61ab7d74"
-        }
-      ]
-    },
-    {
-      "repository": "AztecProtocol/aztec-packages",
-      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
       "source_path": "l1-contracts/src/core/slashing/TallySlashingProposer.sol",
       "path_kind": "file",
       "commit": "1929135b11cefff7384005d021041a058fa5c44f",
@@ -1187,6 +1172,507 @@
           "git_object": "eb8fd2b0cb57c7ce03ece20f340814684f8360e8",
           "git_mode": "100644",
           "sha256": "c63abcd60a139aa899f15a0f2a79145e58f1b52a616f06df02c41a85d2ca9c90"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src",
+      "path_kind": "directory_recursive",
+      "commit": "270e2a58ae2a378472f9be791900bbd4342c7881",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/Rollup.sol",
+          "git_object": "b592980302aa4abe140f87e1ad92ef8a63272379",
+          "git_mode": "100644",
+          "sha256": "1aa0c1e3c5967b10441447102f7361a3e6214e39347bd010352e106591a93b80"
+        },
+        {
+          "path": "l1-contracts/src/core/RollupCore.sol",
+          "git_object": "c38cbd14dd8028cfe0b1a501fc0e70f1755f3ce9",
+          "git_mode": "100644",
+          "sha256": "1a639ff780063d6ac76d0b8472c4aa874749a5e4dfc6f4094343ba15783cf50f"
+        },
+        {
+          "path": "l1-contracts/src/core/interfaces/IFeeJuicePortal.sol",
+          "git_object": "4f5f24b0d489bc81f408995703358ae2b18fb9a6",
+          "git_mode": "100644",
+          "sha256": "670861cebefbcdae7132842662af6e58bb9aef086a879fabb2f90623a9dcd6c8"
+        },
+        {
+          "path": "l1-contracts/src/core/interfaces/IInstance.sol",
+          "git_object": "4a2549a7a6772afeb668f697b317f7810816e013",
+          "git_mode": "100644",
+          "sha256": "b6a2b5b95b765d42453f3595ebe82929c1f57898b80c24c11f39d722e3dbe9b6"
+        },
+        {
+          "path": "l1-contracts/src/core/interfaces/IRollup.sol",
+          "git_object": "2928485212a705ae8c65f22dd6b4550c8e1ec096",
+          "git_mode": "100644",
+          "sha256": "20ac1f4d5d938de4b007d6507da04b21ed6277a2e64ef2d440a56f032596e4ac"
+        },
+        {
+          "path": "l1-contracts/src/core/interfaces/ISlasher.sol",
+          "git_object": "b10fc725a392fc5b51868dbd5853133570797de0",
+          "git_mode": "100644",
+          "sha256": "8ff3070f25e627b609a121e61e126705715bd82796c37c23f56fd7ec3c58a7e3"
+        },
+        {
+          "path": "l1-contracts/src/core/interfaces/IStaking.sol",
+          "git_object": "a91d6a0f940abba770e702a3745db35eeeea2fe4",
+          "git_mode": "100644",
+          "sha256": "11db381304b79c86398a7cdef723913b426d99bfcfd9a00b90a2daef7149e4a4"
+        },
+        {
+          "path": "l1-contracts/src/core/interfaces/IValidatorSelection.sol",
+          "git_object": "ab646ba8e4d53506978b927952a0f17721b26600",
+          "git_mode": "100644",
+          "sha256": "3bb22a680acdbe0cb3c0c6d9d5eef755ce6e7fb6f9b3ba94d6f1d9180d2affb0"
+        },
+        {
+          "path": "l1-contracts/src/core/interfaces/IVerifier.sol",
+          "git_object": "3e78ac84b905fc9192b2d69f001d193d9f662870",
+          "git_mode": "100644",
+          "sha256": "12374e976914090ff005279e2b8d2272e23d7a16fe00ba5ee3ef02439fbfa0f9"
+        },
+        {
+          "path": "l1-contracts/src/core/interfaces/messagebridge/IInbox.sol",
+          "git_object": "db2f6982cab6890032ec161709b60b4920b07617",
+          "git_mode": "100644",
+          "sha256": "4a33e302e833acd66773fb827659d33f51a7c2f23266db7c14ba5562e488d4a8"
+        },
+        {
+          "path": "l1-contracts/src/core/interfaces/messagebridge/IOutbox.sol",
+          "git_object": "328e9fb4a3cca47e7d23692107b820d24196010d",
+          "git_mode": "100644",
+          "sha256": "73e257133cbc7d6ead624e1d5150d957f1e06415ab488844abd3ac6728fda49c"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/ConstantsGen.sol",
+          "git_object": "43f2d080a3e433467497a35bda1a9894c1db3c51",
+          "git_mode": "100644",
+          "sha256": "973aaf5a6d11bdb10b2e18acabb47fdb9b3224b3339b14878ed4be30d93c527e"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/DataStructures.sol",
+          "git_object": "a9c5ac9f38eb531b2172eb0dfff1ddf9a07198a1",
+          "git_mode": "100644",
+          "sha256": "ba5b91c2b0a79d641afe71364c6b0803127a4d4490a42197dd86bcaca30f1c63"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/Errors.sol",
+          "git_object": "d8665f62a65acb587f4a26a45895a2a5b95e1dc0",
+          "git_mode": "100644",
+          "sha256": "d0f23f33e88e6474d899805193688d519ecb0ec661cbb5dd4b60734200ed4f70"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/StakingQueue.sol",
+          "git_object": "ac547eb90bf9f821debd764b3e00b254d40e560d",
+          "git_mode": "100644",
+          "sha256": "44ea8662376b3ed0ce76d148746fe665d0f340f40c45467803f2c0ea881d1fb4"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/TimeLib.sol",
+          "git_object": "4caddcc54c27877d7b31b279299a77d7369d7c5a",
+          "git_mode": "100644",
+          "sha256": "d9c811aa3dfa4860b7301e2d34074bf81848aea325ed53eb4650e2fb5edb2b85"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/compressed-data/BlockLog.sol",
+          "git_object": "a3f3dc4e8b36c1abc95d8ed92ce574157f2e2daf",
+          "git_mode": "100644",
+          "sha256": "562a97ca2f09ceba7fe4ba6354522f9539f310a101453ecc3766f6447d6f6e94"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/compressed-data/StakingQueueConfig.sol",
+          "git_object": "33baa4633389348b99c3c67daa4074a4e8205c64",
+          "git_mode": "100644",
+          "sha256": "029df5957328f4f110a86ff0767cc224f869d9555dfde6b48ec34fc45d018276"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/compressed-data/Tips.sol",
+          "git_object": "44075ca3c494a1d328e10db70025eef5d874a0b4",
+          "git_mode": "100644",
+          "sha256": "bba82a37884ec9f69190576c11e4adbeb226fbbd78e125901920ba04716c15ca"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/compressed-data/fees/FeeConfig.sol",
+          "git_object": "d597f987067ed05cb9dd1a79660ee10d5fbf90ed",
+          "git_mode": "100644",
+          "sha256": "06920e5d012c56c6d9c5bafb4cf460eec2574215676c467322b09a0d0401d9d7"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/compressed-data/fees/FeeStructs.sol",
+          "git_object": "4f516929a9784e95b77ee59b86ca736a785c0cfa",
+          "git_mode": "100644",
+          "sha256": "5801cec04e47c9582fbd54a587ac96488ee11270a9e007cdf42dd0920d2a7676"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/crypto/FrontierLib.sol",
+          "git_object": "6fd66130a15aa71fa7c541ed881dc95f95de260a",
+          "git_mode": "100644",
+          "sha256": "3f70caaefbd634862b11fcac210ad7486333e2dab9c310ad084dca8761a8c599"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/crypto/Hash.sol",
+          "git_object": "b2d4df0aac56a277d2d93c2eaa62978d220f7506",
+          "git_mode": "100644",
+          "sha256": "38bddc4475f1a0b3228f7a08d4f4df9cbac22519cd73856c913ee12b4b0ae387"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/crypto/MerkleLib.sol",
+          "git_object": "7b9e6fcfe718cb09ece00471d0feea595d6087c3",
+          "git_mode": "100644",
+          "sha256": "bc1d84174c8c40bdbb9e824ff895aaea9a565aa82c60ee52b88b45aa394c88f1"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/crypto/SampleLib.sol",
+          "git_object": "f0121267cabd03df89040799ea5e90972a286c48",
+          "git_mode": "100644",
+          "sha256": "5fa658186f50b19b4d865ca4c11b16cd6ef7c9ceb35c978b788c9c14f590ac8f"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/AttestationLib.sol",
+          "git_object": "32db868293e6a1cb51ae154bffd1f39e435acdbf",
+          "git_mode": "100644",
+          "sha256": "d44dc8bd4c6b9331719f583c7517fe56dacbba0455fd5afd6a39cf38ca4ead09"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/BlobLib.sol",
+          "git_object": "33382d7de22fe89fc7b5ec67e2499bca751f79f1",
+          "git_mode": "100644",
+          "sha256": "a3aaa316c8041e8b6a6d0d954ba83ac5418ca5f7c2e275750fa02d647db72589"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/EpochProofLib.sol",
+          "git_object": "3e75bcd6c14c81c83450b158d1b71542fbb182db",
+          "git_mode": "100644",
+          "sha256": "f63e26b712aa6a53b68f2d4fec5a5b6709784feb69e57329657b494cf3aedb7c"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/ExtRollupLib.sol",
+          "git_object": "a341a751348d724d100186e6f6b6a2f59fa1f10f",
+          "git_mode": "100644",
+          "sha256": "cd7eb114a7092809be40432bf8ff91ce9fa01b1fc64ebe77e1f3e9c7f1f8fe33"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/ExtRollupLib2.sol",
+          "git_object": "264b0a858c015f271c3805f6a8036d790365a76b",
+          "git_mode": "100644",
+          "sha256": "169217fe53e6d2c305241822af7fb72d612995b2b8f9e702ad92a6abf9da48e2"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/ExtRollupLib3.sol",
+          "git_object": "287f88eafb406b9b3a381a348ca91191635ccfbb",
+          "git_mode": "100644",
+          "sha256": "b0853df606cf6dafcb35ead412255cc025ff076147482982c2c1d48cb89cd07b"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/FeeLib.sol",
+          "git_object": "be73d7cb67deb291b9e98dc69b69eb5bd71d7fd6",
+          "git_mode": "100644",
+          "sha256": "a8b40e5fd106400a011f641c7ec2b952e83b5407ec63489ffea4737aac740112"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/InvalidateLib.sol",
+          "git_object": "e42d56e315506964c38224dba1842c1fbaf6b252",
+          "git_mode": "100644",
+          "sha256": "a9126aa1947402b33f8a8754d8cfbea9857ad08305e0f9876622ca7cb0fb89ef"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/ProposeLib.sol",
+          "git_object": "6f2637a81d435b2c2fea585de1351fc1e0b445c5",
+          "git_mode": "100644",
+          "sha256": "4516661bfb8b565ac644b925e3f7514775603769039f2ae661bc75b8d2b2aa3f"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/ProposedHeaderLib.sol",
+          "git_object": "042ec04e549f064e86557bb8657f57ffdfbc9cbd",
+          "git_mode": "100644",
+          "sha256": "57cd3c1c3b007246a9b74849f5ee23d3c0feab310a8149331d052190ee5fc48a"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/RewardLib.sol",
+          "git_object": "865fcbc76e19a94b1516e6787cf7c822f01246ae",
+          "git_mode": "100644",
+          "sha256": "f4afbfb0420011fdce246c618eedd9192db9fe89e186bb3bd84305146385666a"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/STFLib.sol",
+          "git_object": "ea8d71c4601fbb215c9e1a9363001c7281cbb298",
+          "git_mode": "100644",
+          "sha256": "5f7f2a686d5f960ea1c3c3d86bf8e2688bc04c337c2a5bf1bd07a0d82a735c0f"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/StakingLib.sol",
+          "git_object": "cac956254180c3a98ee3c09322593759f5b455d5",
+          "git_mode": "100644",
+          "sha256": "bb96288ed941ff937c9c690fdbb1aded414529f2012ff773a980b763f85ad958"
+        },
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/ValidatorSelectionLib.sol",
+          "git_object": "75285b12570cac1ff27831ff49538f22fc2dc808",
+          "git_mode": "100644",
+          "sha256": "9eaa32f4b53b39c7d82505718b64324c9ed0f76fcc49f551cf244d7b46ad8605"
+        },
+        {
+          "path": "l1-contracts/src/core/messagebridge/FeeJuicePortal.sol",
+          "git_object": "0bab84d305348398e263694b4dfc6ceccc31a838",
+          "git_mode": "100644",
+          "sha256": "a77c79c25e095005207abcf7deeecfe17dde0edfbd7a6f920a79ffe189f05248"
+        },
+        {
+          "path": "l1-contracts/src/core/messagebridge/Inbox.sol",
+          "git_object": "922f1864d5202fa782b75d65fbc097c96561ba01",
+          "git_mode": "100644",
+          "sha256": "5916f111f44ccf50d33a5ebb55db0a2512f64dc80ccf0c5f921a3bbb22da1ecb"
+        },
+        {
+          "path": "l1-contracts/src/core/messagebridge/Outbox.sol",
+          "git_object": "8deeedcf7a8fdb7b9604afbe914b83a294fa1071",
+          "git_mode": "100644",
+          "sha256": "a2e19c02cb78fa8b6c160bee9ec822fa6c5aadbe0caeca77952076a0afd97921"
+        },
+        {
+          "path": "l1-contracts/src/core/reward-boost/RewardBooster.sol",
+          "git_object": "f498333b1c72def6c9d58fb9c4252a426d408503",
+          "git_mode": "100644",
+          "sha256": "8f9b1db7b6ebe0d113e91f7a8a5424c64af4b9121ac5d7966b6fe57c487bc481"
+        },
+        {
+          "path": "l1-contracts/src/core/slashing/Slasher.sol",
+          "git_object": "2357ed2ba58ee42eb6511d799348cac41f89da4d",
+          "git_mode": "100644",
+          "sha256": "fb93341e9cce2e8b7dda660f8ccf25986e2d9d12c5dda461429ae618cce817fb"
+        },
+        {
+          "path": "l1-contracts/src/core/slashing/SlashingProposer.sol",
+          "git_object": "9705e58c16f9d11828887df08c3a7c6074b62b1d",
+          "git_mode": "100644",
+          "sha256": "12349b06058d6758519d6e9e7d478315bdb2f6ac4a7b2156fcdcd64423e45d71"
+        },
+        {
+          "path": "l1-contracts/src/governance/CoinIssuer.sol",
+          "git_object": "b4767dcb07ea22e31c61d2cc80174eac8f16bfc2",
+          "git_mode": "100644",
+          "sha256": "07c948353095b059d53096e855c09dcee561e140ba5c57cfcde83ce4429d5f0e"
+        },
+        {
+          "path": "l1-contracts/src/governance/GSE.sol",
+          "git_object": "bb3e31d90769dc633c37e0643d2536ccfe0e3bb1",
+          "git_mode": "100644",
+          "sha256": "dcaa9375c10887330e09e1f7c067d2069f0f4319a2d119fa79a46e03f8d6aec0"
+        },
+        {
+          "path": "l1-contracts/src/governance/GSEPayload.sol",
+          "git_object": "742ec6a8b3785ba9b700358c21f84556bb0118b8",
+          "git_mode": "100644",
+          "sha256": "6158bf9e3933861b7663711c4b66e80894c6d04dd01d7c4f808d91935a387b2e"
+        },
+        {
+          "path": "l1-contracts/src/governance/Governance.sol",
+          "git_object": "8e71800d5df017c7c44c7b11b5cc668cb67c74a6",
+          "git_mode": "100644",
+          "sha256": "9a112c3655224f4fd598743361d8ce3b3e7fb1f966e8a32318ebc13a16ee1b24"
+        },
+        {
+          "path": "l1-contracts/src/governance/Registry.sol",
+          "git_object": "044e4ca5be5a02e7867d805b3c06dafa613735d2",
+          "git_mode": "100644",
+          "sha256": "1e3f836e2a8242ab5af49f11a37ac62e0a46e7242328932a7f066ff3d982f8c6"
+        },
+        {
+          "path": "l1-contracts/src/governance/RewardDistributor.sol",
+          "git_object": "fc5c37bb313dbca83b85d43e636904546bc7a1ac",
+          "git_mode": "100644",
+          "sha256": "7c61454b118967c3c923a5ebeec074cde2e31b1e5b579f20a34a4982cf8ba16f"
+        },
+        {
+          "path": "l1-contracts/src/governance/interfaces/ICoinIssuer.sol",
+          "git_object": "b770c11352d6c4b1c45cd635df64c6b1ff50341c",
+          "git_mode": "100644",
+          "sha256": "393cf72bcbc3cb04085243177454ed5753712324f7bb32624683c8b503be726a"
+        },
+        {
+          "path": "l1-contracts/src/governance/interfaces/IEmpire.sol",
+          "git_object": "71bb4b6c3dfb519968c209e007f0c5a834a72644",
+          "git_mode": "100644",
+          "sha256": "ba258949197deeea0dc5d8a4bc3233522b51ad5631b9a78284f9e9ed2c05026b"
+        },
+        {
+          "path": "l1-contracts/src/governance/interfaces/IGovernance.sol",
+          "git_object": "d3b7349c84666ef0c08f8ebe4de0b0c4bcc4b20e",
+          "git_mode": "100644",
+          "sha256": "5c37ce1a019629658e44520b3a093767c45485bf3cd5b1935468b3ce2453b1f4"
+        },
+        {
+          "path": "l1-contracts/src/governance/interfaces/IGovernanceProposer.sol",
+          "git_object": "a5474948d4a8ea80c2a41bc6d379831993173634",
+          "git_mode": "100644",
+          "sha256": "895877ccba158d61694ace38ea9f8667fbd0bb0626d1ac350cb54b42ca2a37d5"
+        },
+        {
+          "path": "l1-contracts/src/governance/interfaces/IPayload.sol",
+          "git_object": "064eaf6ac296cdd761dbd16045fc3e92b6114dcd",
+          "git_mode": "100644",
+          "sha256": "b408d295356dc29438eb1ed41953ac3c0e58cd54f99d11f0ec9f497a3854d021"
+        },
+        {
+          "path": "l1-contracts/src/governance/interfaces/IProposerPayload.sol",
+          "git_object": "8994bd71b3abaed5b2a855396aeeff73bc2ce113",
+          "git_mode": "100644",
+          "sha256": "cb504c90eb8d08b719d6d8d7b706a176b11fe2dc77d38aa90969600ba38c8531"
+        },
+        {
+          "path": "l1-contracts/src/governance/interfaces/IRegistry.sol",
+          "git_object": "0ba84122dd51569208192aee79fb66f302755b90",
+          "git_mode": "100644",
+          "sha256": "e2ea3dccaa547b10ffd0d472a8d79fa208a9c6d6c050a18b34631d3f51c48b78"
+        },
+        {
+          "path": "l1-contracts/src/governance/interfaces/IRewardDistributor.sol",
+          "git_object": "c1ccea0ccd09758dbe0b06cc6af30b7d6c57f117",
+          "git_mode": "100644",
+          "sha256": "64b0795ad5b5fe886689fa542054a4310a460c18a2c11af8f65a32cdf3f4b852"
+        },
+        {
+          "path": "l1-contracts/src/governance/libraries/AddressSnapshotLib.sol",
+          "git_object": "9e65139372e542652dbcc21e09eb5b17ffa68709",
+          "git_mode": "100644",
+          "sha256": "bf39949e0ff1d6fb939dac824bbb29fc0f3ee9b245ee347050ca713783c4df48"
+        },
+        {
+          "path": "l1-contracts/src/governance/libraries/CheckpointedUintLib.sol",
+          "git_object": "2a06f4db9530c93932150ce77b222db1568e4494",
+          "git_mode": "100644",
+          "sha256": "c10fb8d2301d4058991507d39ecaabaf047d5e90f3cda4cc7658dcf978f9fb89"
+        },
+        {
+          "path": "l1-contracts/src/governance/libraries/ConfigurationLib.sol",
+          "git_object": "e5683fbc3ce1371929738bb0aca5353c4c6eb671",
+          "git_mode": "100644",
+          "sha256": "50be0bcddbcb5691ae9313052e2bb98a7cdd4f36dc7b8f6332da123c2da03c1f"
+        },
+        {
+          "path": "l1-contracts/src/governance/libraries/DepositDelegationLib.sol",
+          "git_object": "74dfe5e48c119afaa7f8baf55858e6d2ee46feae",
+          "git_mode": "100644",
+          "sha256": "1b6282f48112fa310921241033e0ded1fa04686b0b32d684535ece8f944dfcab"
+        },
+        {
+          "path": "l1-contracts/src/governance/libraries/Errors.sol",
+          "git_object": "a24b18442e0f283bb4850cd864f55ed6c55923bf",
+          "git_mode": "100644",
+          "sha256": "cda452ea33fabbf7cfbaeafe8505683ded7facdcefa893f95697ca9d6b3942e6"
+        },
+        {
+          "path": "l1-contracts/src/governance/libraries/ProposalLib.sol",
+          "git_object": "3d33475a515b24c9f7768585ce6025ef2d09be46",
+          "git_mode": "100644",
+          "sha256": "1ed0c9b441be4cc156df15a69741136b043b65d0871375976e6f85627537aa44"
+        },
+        {
+          "path": "l1-contracts/src/governance/proposer/EmpireBase.sol",
+          "git_object": "6f5bd8f75fe9225dcda587bd53059736792934d4",
+          "git_mode": "100644",
+          "sha256": "a8fd96780259043cc323193c79c71aab4da47293bdaeabc22360006e7585e930"
+        },
+        {
+          "path": "l1-contracts/src/governance/proposer/GovernanceProposer.sol",
+          "git_object": "29205ee17d7a301a5eb57dc5c620f8af61652d8a",
+          "git_mode": "100644",
+          "sha256": "2a554e30605ce19d735f1f79dfa3b37198a114deb314e77bc8c0bf8c399782c2"
+        },
+        {
+          "path": "l1-contracts/src/mock/FeeAssetHandler.sol",
+          "git_object": "cc2bc6438bc938ba2f728d714d62c002505a9c1d",
+          "git_mode": "100644",
+          "sha256": "cfaee3a3aadb405236cd65b7c17be9f6ce8f227a70de119cabda554e4121ef85"
+        },
+        {
+          "path": "l1-contracts/src/mock/MockFeeJuicePortal.sol",
+          "git_object": "8401bcd340aa21fc894a53def4b8cbc1996af7c9",
+          "git_mode": "100644",
+          "sha256": "d8f1235d807d8547325e432c76c57365f62ebacce23d3b933de916d17666209c"
+        },
+        {
+          "path": "l1-contracts/src/mock/MockVerifier.sol",
+          "git_object": "895761032ef620a1029a7bb3635091b63770cdb5",
+          "git_mode": "100644",
+          "sha256": "21a373939d8e2903a63f5261878e3f7a51a91ef6091fb04f1345e03725c99765"
+        },
+        {
+          "path": "l1-contracts/src/mock/MultiAdder.sol",
+          "git_object": "9449724c519b79abe1b15640f8eb772ef0c5dc09",
+          "git_mode": "100644",
+          "sha256": "adf0bd19707f53250f89d886c2b9f448abb2aa219e65225bbb558e2998acfb92"
+        },
+        {
+          "path": "l1-contracts/src/mock/StakingAssetHandler.sol",
+          "git_object": "410392232c828f6a23124e5403bcfe0f0e8eced3",
+          "git_mode": "100644",
+          "sha256": "22cf0eb33c04674ac7632ec47d0d175cbfb7b2278c3a8c3a4378a52e225c9cf8"
+        },
+        {
+          "path": "l1-contracts/src/mock/TestERC20.sol",
+          "git_object": "4771c9286d97544be91d7107b9036bdbf8c8d31c",
+          "git_mode": "100644",
+          "sha256": "0b8f1a2ef9542543955f4bb514202a736379f170892a2083e8b0b8753a8f19bd"
+        },
+        {
+          "path": "l1-contracts/src/mock/staking_asset_handler/MockZKPassportVerifier.sol",
+          "git_object": "4e07094f355e85eb51c1ac979015e00526360678",
+          "git_mode": "100644",
+          "sha256": "66d3666cd536f1b9d484cf26273bf982a164ae010e9f3a8382e672467cb22d02"
+        },
+        {
+          "path": "l1-contracts/src/periphery/SlashFactory.sol",
+          "git_object": "bfc2200363880d4cd4a09d667ea161c47ca81504",
+          "git_mode": "100644",
+          "sha256": "b4da97dfce6ce02167b5eded3b0cf966d45a99efc95753d1a2f5c928eb9ae3df"
+        },
+        {
+          "path": "l1-contracts/src/periphery/SlashPayload.sol",
+          "git_object": "d7c29cb339a11df0a0ee9d79ab61cd418c0f9698",
+          "git_mode": "100644",
+          "sha256": "b76b9e23f3905c9a520a374e7995963524d6fafde0626dbf96ca2f25d0087854"
+        },
+        {
+          "path": "l1-contracts/src/periphery/interfaces/ISlashFactory.sol",
+          "git_object": "f47ba0069d0e06fe7eaa5934bfd8784fa46beb40",
+          "git_mode": "100644",
+          "sha256": "d580a9d7fe9ed04ef97eafd701a2c0005fa85c314a240b395a221a14e5c2b032"
+        },
+        {
+          "path": "l1-contracts/src/shared/interfaces/IMintableERC20.sol",
+          "git_object": "5a4214087be1be28105e776830ae84ce333603e8",
+          "git_mode": "100644",
+          "sha256": "1fd908ee2d03bea0fed95c473faeae2fd0e374b7d26fd42b3657f4076db1ff0b"
+        },
+        {
+          "path": "l1-contracts/src/shared/libraries/BN254Lib.sol",
+          "git_object": "3bf47a702b909631b5575307bb9bfea23d7ebd8b",
+          "git_mode": "100644",
+          "sha256": "98c548fc2db8dc6ce85a58fd9813746defeaa63b7a6f7c05d2812e3836a9d83a"
+        },
+        {
+          "path": "l1-contracts/src/shared/libraries/CompressedTimeMath.sol",
+          "git_object": "6ce6290804ce7fbd939d3d3faef8e5a86f646e4f",
+          "git_mode": "100644",
+          "sha256": "337aed55de6795c1520892b753f406f7a22d60c90ad6c649e944d6593c628a18"
+        },
+        {
+          "path": "l1-contracts/src/shared/libraries/SignatureLib.sol",
+          "git_object": "a0ca660ff9208f0ac84ac89a3b2174420dcdee2f",
+          "git_mode": "100644",
+          "sha256": "59798932ef570250ff99676c7810c011cf5cb7058b2dba8e5c14ceccf3a9f3ab"
+        },
+        {
+          "path": "l1-contracts/src/shared/libraries/TimeMath.sol",
+          "git_object": "aab7c27cdad5df5e9179674926ea58aa85a98ae9",
+          "git_mode": "100644",
+          "sha256": "cdc27bfab89368f8ca47c8e8477191bd2ae3cc9ac264b8a770914d720e08c695"
         }
       ]
     },
@@ -1628,6 +2114,201 @@
     {
       "repository": "AztecProtocol/aztec-packages",
       "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/Rollup.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/Rollup.sol",
+          "git_object": "85d01f2e9529221942b8f1e6d19db45178be6c19",
+          "git_mode": "100644",
+          "sha256": "908d6af246e2a730da039a8cd5ec986b08dcf9b32196992357587817aa6e9350"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/RollupCore.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/RollupCore.sol",
+          "git_object": "16316929fe3e08aef24829fab3d8f124a53cd9c8",
+          "git_mode": "100644",
+          "sha256": "cd964c78d2dc4ab62f7cde830517a63a5d5dfc6fd092071a5c9beb193267d2fb"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/interfaces/IRollup.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/interfaces/IRollup.sol",
+          "git_object": "bfa3eb795466a44bd9bdef1f7e4553072e9be16e",
+          "git_mode": "100644",
+          "sha256": "3bbb5cbb3c873e13eb1e7fc388c3d142353fceb515742d89649642791b68f618"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/interfaces/ISlasher.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/interfaces/ISlasher.sol",
+          "git_object": "f4b8c62a38c8cff67d3f40cfdd805e06bc8bee6d",
+          "git_mode": "100644",
+          "sha256": "993dc013df93f16e86bab699d8db0df34827bfd1ec0c6838e7d3418480f427e6"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/interfaces/IValidatorSelection.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/interfaces/IValidatorSelection.sol",
+          "git_object": "b4cb2bd3500d53d2fa7b39ac4ccbbd89bbb2d248",
+          "git_mode": "100644",
+          "sha256": "5a2e6870febfce00a2cd15bad9d8257d1243ee78e14bed6be0e4d75ba1b431d9"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/Errors.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/libraries/Errors.sol",
+          "git_object": "7725ebde32c8333260e262259f430638e50ad087",
+          "git_mode": "100644",
+          "sha256": "5b6c086ea89340689cb42b823541f75aa4773087721e8a02bbb1aa0fbe764d57"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/SlashRoundLib.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/libraries/SlashRoundLib.sol",
+          "git_object": "a2b287226678e4a1bb13a470789bb94c312e495d",
+          "git_mode": "100644",
+          "sha256": "822e379ec1dba1865b4401cda78bb006ba040849f27a2115ff2a4a1aab5c6aec"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/EmpireSlasherDeploymentExtLib.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/EmpireSlasherDeploymentExtLib.sol",
+          "git_object": "724e7a9b32997835848ca02b3d24c78d9c1471cd",
+          "git_mode": "100644",
+          "sha256": "f2f16144618b4d85ae03fec1b43642b074ff97542a5710e1ffe4c1203c19f0d3"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/EpochProofLib.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/EpochProofLib.sol",
+          "git_object": "0d5b39152eea35a6d100956a9895e186559e82de",
+          "git_mode": "100644",
+          "sha256": "0d018a36281b51ff3244ed45534a9cd410cf00ccdc61a5b8e09c2746740cce8d"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/RewardDeploymentExtLib.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/RewardDeploymentExtLib.sol",
+          "git_object": "6e26cd16d288dc2a65a5015ec63459bae6d69b34",
+          "git_mode": "100644",
+          "sha256": "0f1ec18eb61c0a3f2067d147856fb0dc6f8e50e1945a2ead93a57a53ecf38a22"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/RollupOperationsExtLib.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/RollupOperationsExtLib.sol",
+          "git_object": "84a087ccec8fcbd20b2a46163c4590ba6a041d9c",
+          "git_mode": "100644",
+          "sha256": "880110921b2a4f0d36422d2bf8abccd90e80e32fe4179e98febff82598802c09"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/TallySlasherDeploymentExtLib.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/TallySlasherDeploymentExtLib.sol",
+          "git_object": "333c987d7f3012623bb8a26a6d96cb2a8f052ebc",
+          "git_mode": "100644",
+          "sha256": "c7ab03b8b885c5be0fd7cc397612fe3e36d8fd73be0ff658a9fe249294affdb7"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/libraries/rollup/ValidatorOperationsExtLib.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/libraries/rollup/ValidatorOperationsExtLib.sol",
+          "git_object": "803716bfc95e7df7b62aaf769e8eb474e48caf13",
+          "git_mode": "100644",
+          "sha256": "757d18956e60f9b28f7ab21e694fd10c39bf5f5de02d68c3c898bbbc3d7af6ca"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
       "source_path": "l1-contracts/src/core/slashing/EmpireSlashingProposer.sol",
       "path_kind": "file",
       "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
@@ -1637,6 +2318,51 @@
           "git_object": "aa3fbd2af8d7821243105f8a5c38c4c6677b35fe",
           "git_mode": "100644",
           "sha256": "ccdcada4587042a4076aa1d783d263a1b4744228693b620d09d07bcd3b105980"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/slashing/Slasher.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/slashing/Slasher.sol",
+          "git_object": "1701830d93535794fc75f0ec8d004087d0603433",
+          "git_mode": "100644",
+          "sha256": "6748a31f27c544b95e6a1b5b44ab5f325d7b82b610ebf66503b676cfe180ae4a"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/core/slashing/TallySlashingProposer.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/core/slashing/TallySlashingProposer.sol",
+          "git_object": "21c777489af4451309fd55db1070d17d3a744014",
+          "git_mode": "100644",
+          "sha256": "503a56224c10ec99188aee06aceb60496961fb7dd805d9927962977925a72fea"
+        }
+      ]
+    },
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "repository_url": "https://github.com/AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/governance/proposer/EmpireBase.sol",
+      "path_kind": "file",
+      "commit": "474754f58e7ce6a6e0350306f4c144d0a9ee8d14",
+      "files": [
+        {
+          "path": "l1-contracts/src/governance/proposer/EmpireBase.sol",
+          "git_object": "c4dd5bb42da5e41b71b7c3f618b4b733607d125b",
+          "git_mode": "100644",
+          "sha256": "305839cc9b4acf9871180752a256887332b9d465dfea5f5a1a74ca8abe6682bf"
         }
       ]
     },
@@ -4323,5 +5049,13 @@
       "reason": "path kind zk is not fetched"
     }
   ],
-  "unavailable": []
+  "unavailable": [
+    {
+      "repository": "AztecProtocol/aztec-packages",
+      "source_path": "l1-contracts/src/shared/libraries/BN254Lib.sol",
+      "path_kind": "file",
+      "commit": "1856c6133d4f5f5d8e465722be5d752dff3864bb",
+      "reason": "commit could not be fetched"
+    }
+  ]
 }

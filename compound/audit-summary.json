@@ -1,0 +1,508 @@
+{
+  "schema_version": "1.6.0",
+  "project": "compound",
+  "reports": [
+    {
+      "id": "openzeppelin-compound-timelock-2019-10",
+      "report_file": "OpenZeppelin - Compound Timelock Audit.md",
+      "title": "Compound Finance - Timelock Audit",
+      "description": "OpenZeppelin diff audit of the Compound patch between commits f385d71 and f244c22 that introduced the Timelock contract and the Comptroller pauseGuardian role, with a fix review at commit 681833a. Timelock is a new file in the patch and is therefore fully covered; the other scoped contracts are covered only for their changes.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": "2019-10-23",
+      "repositories": [
+        {
+          "id": "compound-finance/compound-protocol",
+          "url": "https://github.com/compound-finance/compound-protocol"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "compound-finance/compound-protocol",
+          "paths": {
+            "contracts/CErc20.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f244c2270f905287cb731d8fd3693ac77f8404f9",
+                    "timestamp": "2019-10-07T22:29:31Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/f244c2270f905287cb731d8fd3693ac77f8404f9/contracts/CErc20.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/CEther.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f244c2270f905287cb731d8fd3693ac77f8404f9",
+                    "timestamp": "2019-10-07T22:29:31Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/f244c2270f905287cb731d8fd3693ac77f8404f9/contracts/CEther.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/CToken.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f244c2270f905287cb731d8fd3693ac77f8404f9",
+                    "timestamp": "2019-10-07T22:29:31Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/f244c2270f905287cb731d8fd3693ac77f8404f9/contracts/CToken.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "681833a557a282fba5441b7d49edb05153bb28ec",
+                    "timestamp": "2019-10-12T17:40:33Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/681833a557a282fba5441b7d49edb05153bb28ec/contracts/CToken.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/Comptroller.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f244c2270f905287cb731d8fd3693ac77f8404f9",
+                    "timestamp": "2019-10-07T22:29:31Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/f244c2270f905287cb731d8fd3693ac77f8404f9/contracts/Comptroller.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "681833a557a282fba5441b7d49edb05153bb28ec",
+                    "timestamp": "2019-10-12T17:40:33Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/681833a557a282fba5441b7d49edb05153bb28ec/contracts/Comptroller.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/ComptrollerStorage.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f244c2270f905287cb731d8fd3693ac77f8404f9",
+                    "timestamp": "2019-10-07T22:29:31Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/f244c2270f905287cb731d8fd3693ac77f8404f9/contracts/ComptrollerStorage.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/ErrorReporter.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f244c2270f905287cb731d8fd3693ac77f8404f9",
+                    "timestamp": "2019-10-07T22:29:31Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/f244c2270f905287cb731d8fd3693ac77f8404f9/contracts/ErrorReporter.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/Exponential.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f244c2270f905287cb731d8fd3693ac77f8404f9",
+                    "timestamp": "2019-10-07T22:29:31Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/f244c2270f905287cb731d8fd3693ac77f8404f9/contracts/Exponential.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/Timelock.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f244c2270f905287cb731d8fd3693ac77f8404f9",
+                    "timestamp": "2019-10-07T22:29:31Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/f244c2270f905287cb731d8fd3693ac77f8404f9/contracts/Timelock.sol"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "681833a557a282fba5441b7d49edb05153bb28ec",
+                    "timestamp": "2019-10-12T17:40:33Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/681833a557a282fba5441b7d49edb05153bb28ec/contracts/Timelock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/Unitroller.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f244c2270f905287cb731d8fd3693ac77f8404f9",
+                    "timestamp": "2019-10-07T22:29:31Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/f244c2270f905287cb731d8fd3693ac77f8404f9/contracts/Unitroller.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "openzeppelin-compound-alpha-governance-2020-02",
+      "report_file": "OpenZeppelin - Compound Alpha Governance System Audit.md",
+      "title": "Compound Alpha Governance System Audit",
+      "description": "OpenZeppelin audit of the Compound Governance Token (COMP) and Governor Alpha contracts at commit 6858417, with a follow-up review of commit f5976a8 that fixed H02; H01 (unbounded number of proposal actions) stays open. The report cites the private compound-protocol-alpha repository, but both commits are reachable in the public compound-finance/compound-protocol repository, which is where the scope is recorded.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": "2020-02-25",
+      "repositories": [
+        {
+          "id": "compound-finance/compound-protocol-alpha",
+          "url": "https://github.com/compound-finance/compound-protocol-alpha"
+        },
+        {
+          "id": "compound-finance/compound-protocol",
+          "url": "https://github.com/compound-finance/compound-protocol"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "compound-finance/compound-protocol",
+          "paths": {
+            "contracts/Governance/Comp.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6858417c91921208c0b3ff342b11065c09665b1b",
+                    "timestamp": "2020-01-16T02:11:24Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/6858417c91921208c0b3ff342b11065c09665b1b/contracts/Governance/Comp.sol"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f5976a8a1dcf4e14e435e5581bade8ef6b5d38ea",
+                    "timestamp": "2020-01-23T04:15:42Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/f5976a8a1dcf4e14e435e5581bade8ef6b5d38ea/contracts/Governance/Comp.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/Governance/GovernorAlpha.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6858417c91921208c0b3ff342b11065c09665b1b",
+                    "timestamp": "2020-01-16T02:11:24Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/6858417c91921208c0b3ff342b11065c09665b1b/contracts/Governance/GovernorAlpha.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "major_finding_ids": [
+                    "H01",
+                    "H02"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f5976a8a1dcf4e14e435e5581bade8ef6b5d38ea",
+                    "timestamp": "2020-01-23T04:15:42Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/f5976a8a1dcf4e14e435e5581bade8ef6b5d38ea/contracts/Governance/GovernorAlpha.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "major_finding_ids": [
+                    "H01"
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "trailofbits-compound-governance-2020-02",
+      "report_file": "Trail of Bits - Compound Governance.md",
+      "title": "Compound Governance Security Assessment",
+      "description": "Trail of Bits review of the Compound Governance Token (Comp.sol) and GovernorAlpha.sol, including their interactions with Timelock.sol, at commit 55729b3 (version 2.5-rc1) of the compound-protocol-alpha repository; three informational findings. The commit is reachable in the public compound-finance/compound-protocol repository, where the scope is recorded.",
+      "isRelevant": true,
+      "auditor": "Trail of Bits",
+      "report_date": "2020-02-28",
+      "repositories": [
+        {
+          "id": "compound-finance/compound-protocol-alpha",
+          "url": "https://github.com/compound-finance/compound-protocol-alpha"
+        },
+        {
+          "id": "compound-finance/compound-protocol",
+          "url": "https://github.com/compound-finance/compound-protocol"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "compound-finance/compound-protocol",
+          "paths": {
+            "contracts/Governance/Comp.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "55729b31b85220ab42e26d7b6db0ff6c0eb0dd23",
+                    "timestamp": "2020-02-08T01:07:51Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/55729b31b85220ab42e26d7b6db0ff6c0eb0dd23/contracts/Governance/Comp.sol"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            },
+            "contracts/Governance/GovernorAlpha.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "55729b31b85220ab42e26d7b6db0ff6c0eb0dd23",
+                    "timestamp": "2020-02-08T01:07:51Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/55729b31b85220ab42e26d7b6db0ff6c0eb0dd23/contracts/Governance/GovernorAlpha.sol"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            },
+            "contracts/Timelock.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "55729b31b85220ab42e26d7b6db0ff6c0eb0dd23",
+                    "timestamp": "2020-02-08T01:07:51Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/55729b31b85220ab42e26d7b6db0ff6c0eb0dd23/contracts/Timelock.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "openzeppelin-compound-governor-bravo-2021-02",
+      "report_file": "OpenZeppelin - Compound Governor Bravo Audit.md",
+      "title": "Compound Governor Bravo Audit",
+      "description": "OpenZeppelin audit of Compound's upgradeable Governor Bravo governance (GovernorBravoDelegate, GovernorBravoDelegator and GovernorBravoInterfaces) at commit f86c247 of pull request #91, with no critical or high severity findings. Fixes for the medium and lower findings were reviewed as pull requests #4 to #10 in the Arr00-Blurr/compound-protocol fork.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": "2021-02-12",
+      "repositories": [
+        {
+          "id": "compound-finance/compound-protocol",
+          "url": "https://github.com/compound-finance/compound-protocol"
+        },
+        {
+          "id": "Arr00-Blurr/compound-protocol",
+          "url": "https://github.com/Arr00-Blurr/compound-protocol"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "compound-finance/compound-protocol",
+          "paths": {
+            "contracts/Governance/GovernorBravoDelegate.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f86c247f6f81e14f8e0fd78402653a0b8371266a",
+                    "timestamp": "2021-01-26T00:33:21Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/f86c247f6f81e14f8e0fd78402653a0b8371266a/contracts/Governance/GovernorBravoDelegate.sol"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            },
+            "contracts/Governance/GovernorBravoDelegator.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f86c247f6f81e14f8e0fd78402653a0b8371266a",
+                    "timestamp": "2021-01-26T00:33:21Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/f86c247f6f81e14f8e0fd78402653a0b8371266a/contracts/Governance/GovernorBravoDelegator.sol"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            },
+            "contracts/Governance/GovernorBravoInterfaces.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f86c247f6f81e14f8e0fd78402653a0b8371266a",
+                    "timestamp": "2021-01-26T00:33:21Z",
+                    "url": "https://github.com/compound-finance/compound-protocol/blob/f86c247f6f81e14f8e0fd78402653a0b8371266a/contracts/Governance/GovernorBravoInterfaces.sol"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "Arr00-Blurr/compound-protocol",
+          "paths": {
+            "contracts/Governance/GovernorBravoDelegator.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "a3f69611180ee008cffd4048ce9137271bfe1a83",
+                    "timestamp": "2021-02-15T04:56:02Z",
+                    "url": "https://github.com/Arr00-Blurr/compound-protocol/blob/a3f69611180ee008cffd4048ce9137271bfe1a83/contracts/Governance/GovernorBravoDelegator.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ac040f9f462bfc80c4b5817c062267e34285b087",
+                    "timestamp": "2021-02-23T22:24:15Z",
+                    "url": "https://github.com/Arr00-Blurr/compound-protocol/blob/ac040f9f462bfc80c4b5817c062267e34285b087/contracts/Governance/GovernorBravoDelegator.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/Governance/GovernorBravoDelegate.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "feb7f5aa204e644fbe2dcb5cf30664acded9df09",
+                    "timestamp": "2021-02-16T04:39:41Z",
+                    "url": "https://github.com/Arr00-Blurr/compound-protocol/blob/feb7f5aa204e644fbe2dcb5cf30664acded9df09/contracts/Governance/GovernorBravoDelegate.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2da44f2ef1fadf4359b2469c31af3cab95553637",
+                    "timestamp": "2021-02-18T22:40:03Z",
+                    "url": "https://github.com/Arr00-Blurr/compound-protocol/blob/2da44f2ef1fadf4359b2469c31af3cab95553637/contracts/Governance/GovernorBravoDelegate.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ac040f9f462bfc80c4b5817c062267e34285b087",
+                    "timestamp": "2021-02-23T22:24:15Z",
+                    "url": "https://github.com/Arr00-Blurr/compound-protocol/blob/ac040f9f462bfc80c4b5817c062267e34285b087/contracts/Governance/GovernorBravoDelegate.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "bd807558a01f74ade300366b4e96b6c9ce6dd3cc",
+                    "timestamp": "2021-02-23T22:25:09Z",
+                    "url": "https://github.com/Arr00-Blurr/compound-protocol/blob/bd807558a01f74ade300366b4e96b6c9ce6dd3cc/contracts/Governance/GovernorBravoDelegate.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "149849ddc9528b5675ab5937a2abd4f0b8995e68",
+                    "timestamp": "2021-02-23T22:37:56Z",
+                    "url": "https://github.com/Arr00-Blurr/compound-protocol/blob/149849ddc9528b5675ab5937a2abd4f0b8995e68/contracts/Governance/GovernorBravoDelegate.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/Governance/GovernorBravoInterfaces.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "413fce0c4e3b97f80465000354ef8f4091c2de81",
+                    "timestamp": "2021-02-17T23:52:00Z",
+                    "url": "https://github.com/Arr00-Blurr/compound-protocol/blob/413fce0c4e3b97f80465000354ef8f4091c2de81/contracts/Governance/GovernorBravoInterfaces.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

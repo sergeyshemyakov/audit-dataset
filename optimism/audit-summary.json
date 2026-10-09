@@ -2927,7 +2927,7 @@
       "id": "cantina-mcp-l1-2024-02",
       "report_file": "2024_02-MCP_L1-Cantina.md",
       "title": "Optimism Cycle 19 Security Review (Cantina, MCP L1)",
-      "description": "Cantina Managed review of the MCP L1 (multi-chain prep) upgrade that moves L1 contract immutables into storage and adds initializer parameters, covering the affected contracts-bedrock Solidity contracts and the op-chain-ops upgrade tooling in Go. No Critical, High or Medium issues; the report declares no explicit file list.",
+      "description": "Cantina Managed review of the MCP L1 (multi-chain prep) upgrade that moves L1 contract immutables into storage and adds initializer parameters, covering the affected contracts-bedrock Solidity contracts and the op-chain-ops upgrade tooling in Go. No Critical, High or Medium issues; the report declares no explicit file list. Every contracts-bedrock source the MCP L1 commit e6ef3a90 changes is in scope.",
       "isRelevant": true,
       "auditor": "Cantina",
       "report_date": "2024-02-15",
@@ -3041,6 +3041,111 @@
                     "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
                     "timestamp": "2024-01-22T20:42:47Z",
                     "url": "https://github.com/ethereum-optimism/optimism/commit/e6ef3a900c42c8722e72c2e2314027f85d12ced5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+                    "timestamp": "2024-01-22T20:42:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/blob/e6ef3a900c42c8722e72c2e2314027f85d12ced5/packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/L1StandardBridge.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+                    "timestamp": "2024-01-22T20:42:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/blob/e6ef3a900c42c8722e72c2e2314027f85d12ced5/packages/contracts-bedrock/src/L1/L1StandardBridge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L1/L2OutputOracle.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+                    "timestamp": "2024-01-22T20:42:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/blob/e6ef3a900c42c8722e72c2e2314027f85d12ced5/packages/contracts-bedrock/src/L1/L2OutputOracle.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/L2ERC721Bridge.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+                    "timestamp": "2024-01-22T20:42:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/blob/e6ef3a900c42c8722e72c2e2314027f85d12ced5/packages/contracts-bedrock/src/L2/L2ERC721Bridge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/L2/L2StandardBridge.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+                    "timestamp": "2024-01-22T20:42:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/blob/e6ef3a900c42c8722e72c2e2314027f85d12ced5/packages/contracts-bedrock/src/L2/L2StandardBridge.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/universal/OptimismMintableERC20Factory.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+                    "timestamp": "2024-01-22T20:42:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/blob/e6ef3a900c42c8722e72c2e2314027f85d12ced5/packages/contracts-bedrock/src/universal/OptimismMintableERC20Factory.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/universal/StandardBridge.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+                    "timestamp": "2024-01-22T20:42:47Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/blob/e6ef3a900c42c8722e72c2e2314027f85d12ced5/packages/contracts-bedrock/src/universal/StandardBridge.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -3185,6 +3290,21 @@
               ]
             },
             "packages/contracts-bedrock/src/Safe/LivenessModule.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "48393a6a1ea32efac65bb3ce6617cf101ad88225",
+                    "timestamp": "2024-05-10T05:04:52Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/48393a6a1ea32efac65bb3ce6617cf101ad88225"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/Safe/SafeSigners.sol": {
               "path_kind": "file",
               "kind": "evm",
               "versions": [
@@ -6311,6 +6431,30 @@
                   "status": "audited_with_no_major_findings"
                 }
               ]
+            },
+            "packages/contracts-bedrock/src/universal/ReinitializableBase.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cd84fed9554193c2dcd683e1ff2d0e2605448f6",
+                    "timestamp": "2025-05-06T20:46:20Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/7cd84fed9554193c2dcd683e1ff2d0e2605448f6"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "54c19f6acb7a6d3505f884bae601733d3d54a3a6",
+                    "timestamp": "2025-06-11T23:26:49Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/54c19f6acb7a6d3505f884bae601733d3d54a3a6"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
             }
           }
         }
@@ -7142,6 +7286,21 @@
                     "url": "https://github.com/ethereum-optimism/optimism/commit/0326b2b4f847656d2a9a5ad5dd2598d410b18d26"
                   },
                   "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/libraries/SemverComp.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "475801690f7a451469ee4da87b5fe3c54c92f372",
+                    "timestamp": "2025-09-08T23:51:38Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/commit/475801690f7a451469ee4da87b5fe3c54c92f372"
+                  },
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             }
@@ -9570,6 +9729,21 @@
                     "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
                     "timestamp": "2026-05-01T18:55:04Z",
                     "url": "https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
+                    "timestamp": "2026-05-01T18:55:04Z",
+                    "url": "https://github.com/ethereum-optimism/optimism/blob/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e/packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }

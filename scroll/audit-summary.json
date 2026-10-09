@@ -2907,7 +2907,7 @@
       "id": "openzeppelin-scroll-gasswap-multiverifier-weth-diff-audit-2023-08",
       "report_file": "openzeppelin-scroll-gasswap-multiverifier-weth-diff-audit-2023-08.md",
       "title": "Scroll GasSwap, Multiple Verifier, Wrapped Ether and Diff Audit",
-      "description": "OpenZeppelin audit of the GasSwap contract, MultipleVersionRollupVerifier, the WrappedEther predeploy and the L1/L2 USDC gateways, plus a diff audit of the remaining bridge contracts, in scroll-tech/scroll at commit 2eb458c. Two high-severity issues were reported and acknowledged without a fix.",
+      "description": "OpenZeppelin audit of the GasSwap contract, MultipleVersionRollupVerifier, the WrappedEther predeploy and the L1/L2 USDC gateways, plus a diff audit of the remaining bridge contracts, in scroll-tech/scroll at commit 2eb458c. Two high-severity issues were reported and acknowledged without a fix. The diff-reviewed files are pinned to the end commit 2eb458c of the reviewed range, which is the state the diff audit covered.",
       "isRelevant": true,
       "auditor": "OpenZeppelin",
       "report_date": "2023-08-31",
@@ -3212,12 +3212,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/gateways/EnforcedTxGateway.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -3229,12 +3227,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/gateways/IL1ERC1155Gateway.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -3246,12 +3242,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/gateways/IL1ERC20Gateway.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -3263,12 +3257,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/gateways/IL1ERC721Gateway.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -3280,12 +3272,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/gateways/IL1ETHGateway.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -3297,21 +3287,19 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
+                    "timestamp": "2023-07-25T16:30:22Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/gateways/IL1GatewayRouter.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
-                    "timestamp": "2023-07-25T16:30:22Z",
-                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/gateways/IL1GatewayRouter.sol"
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/gateways/IL1GatewayRouter.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -3323,12 +3311,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
+                    "timestamp": "2023-07-25T16:30:22Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/gateways/L1CustomERC20Gateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3338,9 +3324,9 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
-                    "timestamp": "2023-07-25T16:30:22Z",
-                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/gateways/L1CustomERC20Gateway.sol"
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/gateways/L1CustomERC20Gateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3355,12 +3341,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
+                    "timestamp": "2023-07-25T16:30:22Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/gateways/L1ERC1155Gateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3370,9 +3354,9 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
-                    "timestamp": "2023-07-25T16:30:22Z",
-                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/gateways/L1ERC1155Gateway.sol"
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/gateways/L1ERC1155Gateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3387,12 +3371,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
+                    "timestamp": "2023-07-25T16:30:22Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/gateways/L1ERC721Gateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3402,9 +3384,9 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
-                    "timestamp": "2023-07-25T16:30:22Z",
-                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/gateways/L1ERC721Gateway.sol"
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/gateways/L1ERC721Gateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3419,12 +3401,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/gateways/L1ERC20Gateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3463,12 +3443,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/gateways/L1ETHGateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3507,21 +3485,19 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
+                    "timestamp": "2023-07-25T16:30:22Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/gateways/L1GatewayRouter.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
-                    "timestamp": "2023-07-25T16:30:22Z",
-                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/gateways/L1GatewayRouter.sol"
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/gateways/L1GatewayRouter.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 },
@@ -3542,12 +3518,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/gateways/L1StandardERC20Gateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3574,12 +3548,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/gateways/L1WETHGateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3606,12 +3578,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/rollup/IL1MessageQueue.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -3623,21 +3593,19 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
+                    "timestamp": "2023-07-25T16:30:22Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/rollup/L1MessageQueue.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
-                    "timestamp": "2023-07-25T16:30:22Z",
-                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/rollup/L1MessageQueue.sol"
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/rollup/L1MessageQueue.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -3649,21 +3617,19 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
+                    "timestamp": "2023-07-25T16:30:22Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/rollup/ScrollChain.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
-                    "timestamp": "2023-07-25T16:30:22Z",
-                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/rollup/ScrollChain.sol"
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/rollup/ScrollChain.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 },
@@ -3693,21 +3659,19 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
+                    "timestamp": "2023-07-25T16:30:22Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/IL1ScrollMessenger.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
-                    "timestamp": "2023-07-25T16:30:22Z",
-                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/IL1ScrollMessenger.sol"
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/IL1ScrollMessenger.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -3719,12 +3683,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
+                    "timestamp": "2023-07-25T16:30:22Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/L1ScrollMessenger.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3734,9 +3696,9 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
-                    "timestamp": "2023-07-25T16:30:22Z",
-                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L1/L1ScrollMessenger.sol"
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L1/L1ScrollMessenger.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3799,12 +3761,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
+                    "timestamp": "2023-07-25T16:30:22Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L2/gateways/L2ERC1155Gateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3814,9 +3774,9 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
-                    "timestamp": "2023-07-25T16:30:22Z",
-                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L2/gateways/L2ERC1155Gateway.sol"
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L2/gateways/L2ERC1155Gateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3843,12 +3803,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
+                    "timestamp": "2023-07-25T16:30:22Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L2/gateways/L2ERC721Gateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3858,9 +3816,9 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
-                    "timestamp": "2023-07-25T16:30:22Z",
-                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L2/gateways/L2ERC721Gateway.sol"
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L2/gateways/L2ERC721Gateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3887,12 +3845,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L2/gateways/L2ETHGateway.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3919,12 +3875,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L2/predeploys/L1GasPriceOracle.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 },
@@ -3945,21 +3899,19 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
+                    "timestamp": "2023-07-25T16:30:22Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L2/IL2ScrollMessenger.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 },
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
-                    "timestamp": "2023-07-25T16:30:22Z",
-                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L2/IL2ScrollMessenger.sol"
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L2/IL2ScrollMessenger.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -3971,12 +3923,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
+                    "timestamp": "2023-07-25T16:30:22Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L2/L2ScrollMessenger.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -3986,9 +3936,9 @@
                 {
                   "revision": {
                     "kind": "commit",
-                    "commit": "b7a02fbe54cf14fb0149df520343bf0195e00c99",
-                    "timestamp": "2023-07-25T16:30:22Z",
-                    "url": "https://github.com/scroll-tech/scroll/blob/b7a02fbe54cf14fb0149df520343bf0195e00c99/contracts/src/L2/L2ScrollMessenger.sol"
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/L2/L2ScrollMessenger.sol"
                   },
                   "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
@@ -4051,12 +4001,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/libraries/constants/ScrollConstants.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -4068,12 +4016,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/libraries/gateway/ScrollGatewayBase.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 },
@@ -4094,12 +4040,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/libraries/token/IScrollERC1155.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -4111,12 +4055,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/libraries/token/IScrollERC20.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -4128,12 +4070,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/libraries/token/IScrollERC721.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -4145,12 +4085,10 @@
               "versions": [
                 {
                   "revision": {
-                    "kind": "commit_range",
-                    "start_commit": "3bc8a3f5c6ac816ddffadca41024331dcf4d3064",
-                    "start_timestamp": "2023-05-22T07:41:40Z",
-                    "end_commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
-                    "end_timestamp": "2023-07-25T17:25:27Z",
-                    "url": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb"
+                    "kind": "commit",
+                    "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+                    "timestamp": "2023-07-25T17:25:27Z",
+                    "url": "https://github.com/scroll-tech/scroll/blob/2eb458cf4224d82fc56254e91e297a9ed261cefb/contracts/src/libraries/verifier/IRollupVerifier.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }
@@ -9320,6 +9258,21 @@
                   "status": "partially_audited_without_major_findings"
                 }
               ]
+            },
+            "src/libraries/codec/BatchHeaderV7Codec.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1a44cc4cd5bb29067051f59c09dd4407511f1a3a",
+                    "timestamp": "2025-03-12T15:03:19Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/1a44cc4cd5bb29067051f59c09dd4407511f1a3a/src/libraries/codec/BatchHeaderV7Codec.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
             }
           }
         }
@@ -9329,7 +9282,7 @@
       "id": "trailofbits-scroll-feynman-upgrade",
       "report_file": "trailofbits-scroll-feynman-upgrade.md",
       "title": "Scroll Feynman Upgrade Smart Contract Changes Security Assessment (Summary Report)",
-      "description": "Trail of Bits summary report of the review (June 30 to July 4, 2025) of the Scroll rollup and bridge smart contract changes for the Feynman upgrade, including the new L2SystemConfig and PauseController contracts, the post-Feynman zkEVM verifier and the L1/L2 messenger changes. The review was performed as a diff against release v2.0.0.",
+      "description": "Trail of Bits summary report of the review (June 30 to July 4, 2025) of the Scroll rollup and bridge smart contract changes for the Feynman upgrade, including the new L2SystemConfig and PauseController contracts, the post-Feynman zkEVM verifier and the L1/L2 messenger changes. The review was performed as a diff against release v2.0.0. The scope is the diff 8e6a02b..00e2a89 of scroll-contracts; every Solidity source changed in that range is recorded at the end commit.",
       "isRelevant": true,
       "auditor": "Trail of Bits",
       "report_date": "2025-07-10",
@@ -9443,6 +9396,396 @@
                     "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
                     "timestamp": "2025-06-26T17:12:11Z",
                     "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/libraries/verifier/ZkEvmVerifierPostFeynman.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/IL1ScrollMessenger.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/IL1ScrollMessenger.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/gateways/L1ERC1155Gateway.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/gateways/L1ERC1155Gateway.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/gateways/L1ERC20Gateway.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/gateways/L1ERC20Gateway.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/gateways/L1ERC721Gateway.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/gateways/L1ERC721Gateway.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/gateways/L1ETHGateway.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/gateways/L1ETHGateway.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/gateways/L1GatewayRouter.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/gateways/L1GatewayRouter.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/gateways/L1WETHGateway.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/gateways/L1WETHGateway.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/rollup/IL1MessageQueueV1.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/rollup/IL1MessageQueueV1.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/rollup/IL1MessageQueueWithGasPriceOracle.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/rollup/IL1MessageQueueWithGasPriceOracle.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/rollup/IL2GasPriceOracle.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/rollup/IL2GasPriceOracle.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/rollup/IScrollChain.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/rollup/IScrollChain.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/rollup/L1MessageQueueV1.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/rollup/L1MessageQueueV1.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/rollup/L1MessageQueueV1WithGasPriceOracle.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/rollup/L1MessageQueueV1WithGasPriceOracle.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/rollup/L1MessageQueueV2.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/rollup/L1MessageQueueV2.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/rollup/L2GasPriceOracle.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/rollup/L2GasPriceOracle.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L1/system-contract/SystemConfig.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L1/system-contract/SystemConfig.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L2/gateways/L2ETHGateway.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L2/gateways/L2ETHGateway.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L2/gateways/L2WETHGateway.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L2/gateways/L2WETHGateway.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L2/predeploys/IL1GasPriceOracle.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L2/predeploys/IL1GasPriceOracle.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L2/predeploys/L2TxFeeVault.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L2/predeploys/L2TxFeeVault.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L2/predeploys/WrappedEther.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/L2/predeploys/WrappedEther.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/batch-bridge/L1BatchBridgeGateway.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/batch-bridge/L1BatchBridgeGateway.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/batch-bridge/L2BatchBridgeGateway.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/batch-bridge/L2BatchBridgeGateway.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/libraries/gateway/ScrollGatewayBase.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/libraries/gateway/ScrollGatewayBase.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/misc/IPausable.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/misc/IPausable.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/misc/ScrollOwner.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+                    "timestamp": "2025-06-26T17:12:11Z",
+                    "url": "https://github.com/scroll-tech/scroll-contracts/blob/00e2a897db429eb4bc3918d1e40b410a68fb6eac/src/misc/ScrollOwner.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }

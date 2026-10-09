@@ -38,6 +38,10 @@
     "ArbitrumFoundation/governance": {
       "url": "https://github.com/ArbitrumFoundation/governance"
     },
+    "Arr00-Blurr/compound-protocol": {
+      "url": "https://github.com/Arr00-Blurr/compound-protocol",
+      "fork_of": "compound-finance/compound-protocol"
+    },
     "AztecProtocol/AZTEC": {
       "url": "https://github.com/AztecProtocol/AZTEC"
     },
@@ -378,6 +382,12 @@
     "code-423n4/2025-09-succinct": {
       "url": "https://github.com/code-423n4/2025-09-succinct"
     },
+    "compound-finance/compound-protocol": {
+      "url": "https://github.com/compound-finance/compound-protocol"
+    },
+    "compound-finance/compound-protocol-alpha": {
+      "url": "https://github.com/compound-finance/compound-protocol-alpha"
+    },
     "defi-wonderland/optimism": {
       "url": "https://github.com/defi-wonderland/optimism",
       "fork_of": "ethereum-optimism/optimism"
@@ -609,6 +619,9 @@
     "privacy-ethereum/zkevm-circuits": {
       "url": "https://github.com/privacy-ethereum/zkevm-circuits"
     },
+    "privacy-scaling-explorations/zk-kit": {
+      "url": "https://github.com/privacy-scaling-explorations/zk-kit"
+    },
     "protofire/safe-contracts": {
       "url": "https://github.com/protofire/safe-contracts",
       "fork_of": "safe-fndn/safe-smart-account"
@@ -677,6 +690,9 @@
     },
     "scroll-tech/zkvm-prover": {
       "url": "https://github.com/scroll-tech/zkvm-prover"
+    },
+    "semaphore-protocol/semaphore": {
+      "url": "https://github.com/semaphore-protocol/semaphore"
     },
     "sherlock-audit/2024-02-optimism-2024": {
       "url": "https://github.com/sherlock-audit/2024-02-optimism-2024"
@@ -755,6 +771,12 @@
     },
     "trailofbits/audit-arbitrum-nitro": {
       "url": "https://github.com/trailofbits/audit-arbitrum-nitro"
+    },
+    "voteagora/ERC20VotesPartialDelegationUpgradeable": {
+      "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable"
+    },
+    "voteagora/agora-governor": {
+      "url": "https://github.com/voteagora/agora-governor"
     },
     "voteagora/optimism-gov": {
       "url": "https://github.com/voteagora/optimism-gov"

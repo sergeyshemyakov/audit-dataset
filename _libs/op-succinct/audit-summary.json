@@ -1,0 +1,433 @@
+{
+  "schema_version": "1.6.0",
+  "project": "_libs/op-succinct",
+  "reports": [
+    {
+      "id": "cantina-op-succinct-2024-12",
+      "report_file": "Spearbit - OP Succinct.md",
+      "title": "OP Succinct Security Review",
+      "description": "Cantina Managed review (Dec 3-8, 2024) of op-succinct at commit b73cc7d0, covering the OPSuccinctL2OutputOracle contract that verifies SP1 proofs of the OP Stack state transition onchain and the aggregation program that verifies the range proofs. No Critical, High or Medium issues; one Low and five Informational findings, with the reinitializer fix verified in PR 265.",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2024-12-20",
+      "repositories": [
+        {
+          "id": "succinctlabs/op-succinct",
+          "url": "https://github.com/succinctlabs/op-succinct"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "succinctlabs/op-succinct",
+          "paths": {
+            "contracts/src/OPSuccinctL2OutputOracle.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b73cc7d008fc0a39d41b9ce384dff2d85b6eaa3e",
+                    "timestamp": "2024-12-02T17:40:28Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/b73cc7d008fc0a39d41b9ce384dff2d85b6eaa3e"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "228610944399607fbe4fe6ffeced425f9feddf6f",
+                    "timestamp": "2024-12-09T23:44:16Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/228610944399607fbe4fe6ffeced425f9feddf6f"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "programs/aggregation": {
+              "path_kind": "directory_recursive",
+              "kind": "zk",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b73cc7d008fc0a39d41b9ce384dff2d85b6eaa3e",
+                    "timestamp": "2024-12-02T17:40:28Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/b73cc7d008fc0a39d41b9ce384dff2d85b6eaa3e"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            },
+            "programs/range/src/main.rs": {
+              "path_kind": "file",
+              "kind": "zk",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b73cc7d008fc0a39d41b9ce384dff2d85b6eaa3e",
+                    "timestamp": "2024-12-02T17:40:28Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/b73cc7d008fc0a39d41b9ce384dff2d85b6eaa3e"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "cantina-op-succinct-lite-2025-03",
+      "report_file": "Spearbit - OP Succinct Lite.md",
+      "title": "OP Succinct Lite Security Review",
+      "description": "Cantina Managed review (Feb 28 - Mar 2, 2025) of op-succinct at commit 99a540bc, covering the OP Succinct Lite fault-proof dispute game contract OPSuccinctFaultDisputeGame. No Critical or High issues; one Medium (prove front-running) and one Low finding were fixed in PRs 421 and 420 and the fixes verified.",
+      "isRelevant": true,
+      "auditor": "Cantina",
+      "report_date": "2025-03-08",
+      "repositories": [
+        {
+          "id": "succinctlabs/op-succinct",
+          "url": "https://github.com/succinctlabs/op-succinct"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "succinctlabs/op-succinct",
+          "paths": {
+            "contracts/src/fp/OPSuccinctFaultDisputeGame.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "99a540bcf7997902b34e2e85bc5d37012307c408",
+                    "timestamp": "2025-02-27T03:20:48Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/99a540bcf7997902b34e2e85bc5d37012307c408"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4c682da4ad5f0d1d4f5fa2319aab15b507e87e82",
+                    "timestamp": "2025-03-05T02:21:45Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/4c682da4ad5f0d1d4f5fa2319aab15b507e87e82"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "56c1f28027d81a36d225786e5e08bfb7080627e4",
+                    "timestamp": "2025-03-11T21:25:21Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/56c1f28027d81a36d225786e5e08bfb7080627e4"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zellic-op-succinct-v3-2025-07",
+      "report_file": "Zellic - OP Succinct v3.0.0.md",
+      "title": "OP Succinct Smart Contract Security Assessment",
+      "description": "Zellic diff review (Jul 16-17, 2025) of the op-succinct validity contracts OPSuccinctDisputeGame, OPSuccinctL2OutputOracle and fp/AccessManager, limited to the changes between commits 46482d3f and 530df863 that introduced multi-configuration support and the permissionless proposer fallback. Two Medium findings were reported, with fixes implemented in PR 575. The diff-reviewed files are pinned to the end commit 530df863 of the reviewed range, which is the state the diff audit covered.",
+      "isRelevant": true,
+      "auditor": "Zellic",
+      "report_date": "2025-07-30",
+      "repositories": [
+        {
+          "id": "succinctlabs/op-succinct",
+          "url": "https://github.com/succinctlabs/op-succinct"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "succinctlabs/op-succinct",
+          "paths": {
+            "contracts/src/validity/OPSuccinctDisputeGame.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "530df8630562292a9629303528d51307df954aec",
+                    "timestamp": "2025-07-10T07:12:15Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/blob/530df8630562292a9629303528d51307df954aec/contracts/src/validity/OPSuccinctDisputeGame.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4aacb882ce86204bdcb7c70b40f3f9ed38d37b8b",
+                    "timestamp": "2025-08-06T18:53:07Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/4aacb882ce86204bdcb7c70b40f3f9ed38d37b8b"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/src/validity/OPSuccinctL2OutputOracle.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "530df8630562292a9629303528d51307df954aec",
+                    "timestamp": "2025-07-10T07:12:15Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/blob/530df8630562292a9629303528d51307df954aec/contracts/src/validity/OPSuccinctL2OutputOracle.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "4aacb882ce86204bdcb7c70b40f3f9ed38d37b8b",
+                    "timestamp": "2025-08-06T18:53:07Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/4aacb882ce86204bdcb7c70b40f3f9ed38d37b8b"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/src/fp/AccessManager.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "530df8630562292a9629303528d51307df954aec",
+                    "timestamp": "2025-07-10T07:12:15Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/blob/530df8630562292a9629303528d51307df954aec/contracts/src/fp/AccessManager.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "zellic-op-succinct-altda-2026-09",
+      "report_file": "Zellic - OP Succinct AltDA.md",
+      "title": "AltDA OP Succinct Integration Zero Knowledge Application Security Assessment",
+      "description": "Zellic assessment (Sep 18-23, 2026) of the generic AltDA integration of op-succinct at commit 78129507: the AltDA client and host crates, the AltDA range program and range utilities, and the shared client crate files (boot, witness executor and preimage store, client driver, blob provider) that bind off-chain batch data to Keccak commitments on L1 inside the SP1 zkVM. No Critical or High issues; two Medium findings were fixed in follow-up commits and one Low was acknowledged.",
+      "isRelevant": true,
+      "auditor": "Zellic",
+      "report_date": "2026-09-28",
+      "repositories": [
+        {
+          "id": "succinctlabs/op-succinct",
+          "url": "https://github.com/succinctlabs/op-succinct"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "succinctlabs/op-succinct",
+          "paths": {
+            "utils/altda": {
+              "path_kind": "directory_recursive",
+              "kind": "zk",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "78129507cb0a46a1983606d403eb5b487d8369f9",
+                    "timestamp": "2026-09-12T08:01:23Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/78129507cb0a46a1983606d403eb5b487d8369f9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "3a1076744a273884c6b009c34e3a9dc2981d9597",
+                    "timestamp": "2026-10-01T02:17:03Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/3a1076744a273884c6b009c34e3a9dc2981d9597"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1d2e418cbe199d42c219cec94bbf349be28bc721",
+                    "timestamp": "2026-10-01T06:52:27Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/1d2e418cbe199d42c219cec94bbf349be28bc721"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "programs/range/altda": {
+              "path_kind": "directory_recursive",
+              "kind": "zk",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "78129507cb0a46a1983606d403eb5b487d8369f9",
+                    "timestamp": "2026-09-12T08:01:23Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/78129507cb0a46a1983606d403eb5b487d8369f9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            },
+            "programs/range/utils": {
+              "path_kind": "directory_recursive",
+              "kind": "zk",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "78129507cb0a46a1983606d403eb5b487d8369f9",
+                    "timestamp": "2026-09-12T08:01:23Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/78129507cb0a46a1983606d403eb5b487d8369f9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            },
+            "utils/client/src/boot.rs": {
+              "path_kind": "file",
+              "kind": "zk",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "78129507cb0a46a1983606d403eb5b487d8369f9",
+                    "timestamp": "2026-09-12T08:01:23Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/78129507cb0a46a1983606d403eb5b487d8369f9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            },
+            "utils/client/src/witness/executor.rs": {
+              "path_kind": "file",
+              "kind": "zk",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "78129507cb0a46a1983606d403eb5b487d8369f9",
+                    "timestamp": "2026-09-12T08:01:23Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/78129507cb0a46a1983606d403eb5b487d8369f9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "81f09688bc1271aac86ab6fdaffbe972cf624af5",
+                    "timestamp": "2026-10-02T11:01:37Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/81f09688bc1271aac86ab6fdaffbe972cf624af5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "58649923efd952bcd5c84cc17d4a81580cb93a6b",
+                    "timestamp": "2026-10-02T11:01:42Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/58649923efd952bcd5c84cc17d4a81580cb93a6b"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "utils/client/src/witness/mod.rs": {
+              "path_kind": "file",
+              "kind": "zk",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "78129507cb0a46a1983606d403eb5b487d8369f9",
+                    "timestamp": "2026-09-12T08:01:23Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/78129507cb0a46a1983606d403eb5b487d8369f9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            },
+            "utils/client/src/witness/preimage_store.rs": {
+              "path_kind": "file",
+              "kind": "zk",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "78129507cb0a46a1983606d403eb5b487d8369f9",
+                    "timestamp": "2026-09-12T08:01:23Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/78129507cb0a46a1983606d403eb5b487d8369f9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            },
+            "utils/client/src/client.rs": {
+              "path_kind": "file",
+              "kind": "zk",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "78129507cb0a46a1983606d403eb5b487d8369f9",
+                    "timestamp": "2026-09-12T08:01:23Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/78129507cb0a46a1983606d403eb5b487d8369f9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "81f09688bc1271aac86ab6fdaffbe972cf624af5",
+                    "timestamp": "2026-10-02T11:01:37Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/81f09688bc1271aac86ab6fdaffbe972cf624af5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "58649923efd952bcd5c84cc17d4a81580cb93a6b",
+                    "timestamp": "2026-10-02T11:01:42Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/58649923efd952bcd5c84cc17d4a81580cb93a6b"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "utils/client/src/oracle/blob_provider.rs": {
+              "path_kind": "file",
+              "kind": "zk",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "78129507cb0a46a1983606d403eb5b487d8369f9",
+                    "timestamp": "2026-09-12T08:01:23Z",
+                    "url": "https://github.com/succinctlabs/op-succinct/commit/78129507cb0a46a1983606d403eb5b487d8369f9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

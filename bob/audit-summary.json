@@ -543,6 +543,24 @@
                     "url": "https://github.com/boundless-xyz/kailua/tree/6e2ce8f35bb51d4f75eddf3dab0de225d5d8a224/crates/contracts/foundry/src/vendor"
                   },
                   "status": "not_audited"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5586e1dcad820ba6673c3d80a1cdb2878309d5af",
+                    "timestamp": "2025-01-27T09:44:48Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/5586e1dcad820ba6673c3d80a1cdb2878309d5af/crates/contracts/foundry/src/vendor"
+                  },
+                  "status": "not_audited"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "27dec82b67de1051df9258b36f8366ebf308e5bf",
+                    "timestamp": "2025-02-06T07:42:16Z",
+                    "url": "https://github.com/boundless-xyz/kailua/tree/27dec82b67de1051df9258b36f8366ebf308e5bf/crates/contracts/foundry/src/vendor"
+                  },
+                  "status": "not_audited"
                 }
               ]
             },

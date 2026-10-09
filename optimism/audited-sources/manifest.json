@@ -2657,6 +2657,21 @@
     {
       "repository": "ethereum-optimism/optimism",
       "repository_url": "https://github.com/ethereum-optimism/optimism",
+      "source_path": "packages/contracts-bedrock/src/libraries/SemverComp.sol",
+      "path_kind": "file",
+      "commit": "475801690f7a451469ee4da87b5fe3c54c92f372",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/libraries/SemverComp.sol",
+          "git_object": "23e2b1b7eb093abe20b6e138e672c6a7e98600f0",
+          "git_mode": "100644",
+          "sha256": "85e92cbe9bfeabcd8be1b3ab1d6570596898eca805e790512f8c04de129fa902"
+        }
+      ]
+    },
+    {
+      "repository": "ethereum-optimism/optimism",
+      "repository_url": "https://github.com/ethereum-optimism/optimism",
       "source_path": "packages/contracts-bedrock/src/Safe/LivenessGuard.sol",
       "path_kind": "file",
       "commit": "48393a6a1ea32efac65bb3ce6617cf101ad88225",
@@ -2681,6 +2696,21 @@
           "git_object": "77df19eece66744968e6b0f1bbf0f1a45de9a719",
           "git_mode": "100644",
           "sha256": "f67dc467f548334d3b8431f481e9ae89a3d4c2e5eb66c532655cf028804b910f"
+        }
+      ]
+    },
+    {
+      "repository": "ethereum-optimism/optimism",
+      "repository_url": "https://github.com/ethereum-optimism/optimism",
+      "source_path": "packages/contracts-bedrock/src/Safe/SafeSigners.sol",
+      "path_kind": "file",
+      "commit": "48393a6a1ea32efac65bb3ce6617cf101ad88225",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/Safe/SafeSigners.sol",
+          "git_object": "18c443582ebaacb0987f0028464c398033c75e8d",
+          "git_mode": "100644",
+          "sha256": "268ec9357facfde48fd0ffe22c209223f7a3cd4db680ab9cbc93913c11685e6e"
         }
       ]
     },
@@ -3236,6 +3266,21 @@
           "git_object": "967561e8bbe5a551eb88b62b373be0247cc7ba18",
           "git_mode": "100644",
           "sha256": "3cc372767f3dae4dfc9e79ae1169a251f618c7fdd6232d9477ca42621a058877"
+        }
+      ]
+    },
+    {
+      "repository": "ethereum-optimism/optimism",
+      "repository_url": "https://github.com/ethereum-optimism/optimism",
+      "source_path": "packages/contracts-bedrock/src/universal/ReinitializableBase.sol",
+      "path_kind": "file",
+      "commit": "54c19f6acb7a6d3505f884bae601733d3d54a3a6",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/universal/ReinitializableBase.sol",
+          "git_object": "056a15986e02a3420199921c5963d08a292e9b58",
+          "git_mode": "100644",
+          "sha256": "e6917f602a42b0dfa116a922e48de94922849d54cb14ddd16fc4ff95bef9d1c9"
         }
       ]
     },
@@ -4397,6 +4442,21 @@
     {
       "repository": "ethereum-optimism/optimism",
       "repository_url": "https://github.com/ethereum-optimism/optimism",
+      "source_path": "packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol",
+      "path_kind": "file",
+      "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol",
+          "git_object": "3289c430f58e071bb096084ad72221f36a3a3666",
+          "git_mode": "100644",
+          "sha256": "9b414812eac525c5257fdb117d6063fb3ce774b0041769070f4393e5b84a0f2c"
+        }
+      ]
+    },
+    {
+      "repository": "ethereum-optimism/optimism",
+      "repository_url": "https://github.com/ethereum-optimism/optimism",
       "source_path": "packages/contracts-bedrock/src/dispute/PermissionedDisputeGame.sol",
       "path_kind": "file",
       "commit": "7cbcb58ffb7322343f0ed6b926f65bea7630ce3e",
@@ -4706,6 +4766,21 @@
           "git_object": "9cf1da8ec1caa1bb78d222a77a275076f02e46b1",
           "git_mode": "100644",
           "sha256": "e75158bbd2b25bd973944d825c206913a12cb844c04eacf354981865e6a62d46"
+        }
+      ]
+    },
+    {
+      "repository": "ethereum-optimism/optimism",
+      "repository_url": "https://github.com/ethereum-optimism/optimism",
+      "source_path": "packages/contracts-bedrock/src/universal/ReinitializableBase.sol",
+      "path_kind": "file",
+      "commit": "7cd84fed9554193c2dcd683e1ff2d0e2605448f6",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/universal/ReinitializableBase.sol",
+          "git_object": "056a15986e02a3420199921c5963d08a292e9b58",
+          "git_mode": "100644",
+          "sha256": "e6917f602a42b0dfa116a922e48de94922849d54cb14ddd16fc4ff95bef9d1c9"
         }
       ]
     },
@@ -8267,6 +8342,51 @@
     {
       "repository": "ethereum-optimism/optimism",
       "repository_url": "https://github.com/ethereum-optimism/optimism",
+      "source_path": "packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol",
+      "path_kind": "file",
+      "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol",
+          "git_object": "c4e62c7f9b51b6318e0c35c53b1f38e9ff1d4f67",
+          "git_mode": "100644",
+          "sha256": "9afb49559475842be61a94f2b5bca1db6963d9e6a67d78bc4954193e621fbc43"
+        }
+      ]
+    },
+    {
+      "repository": "ethereum-optimism/optimism",
+      "repository_url": "https://github.com/ethereum-optimism/optimism",
+      "source_path": "packages/contracts-bedrock/src/L1/L1StandardBridge.sol",
+      "path_kind": "file",
+      "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L1/L1StandardBridge.sol",
+          "git_object": "9f399999b5f83192de8712c42b0027183845b94a",
+          "git_mode": "100644",
+          "sha256": "59a1b6a3ec8fbf770c46899b7baab0afe9f9e38d0902a582b65fd71f600285dd"
+        }
+      ]
+    },
+    {
+      "repository": "ethereum-optimism/optimism",
+      "repository_url": "https://github.com/ethereum-optimism/optimism",
+      "source_path": "packages/contracts-bedrock/src/L1/L2OutputOracle.sol",
+      "path_kind": "file",
+      "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L1/L2OutputOracle.sol",
+          "git_object": "105fbb99d1f7d9dc6f99d2491a71f6ccdfdb8319",
+          "git_mode": "100644",
+          "sha256": "a42ba148f4500633c2a303038b72b9bcfb56613d4f69bebdd1d196c98a5a78ec"
+        }
+      ]
+    },
+    {
+      "repository": "ethereum-optimism/optimism",
+      "repository_url": "https://github.com/ethereum-optimism/optimism",
       "source_path": "packages/contracts-bedrock/src/L1/OptimismPortal.sol",
       "path_kind": "file",
       "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
@@ -8312,6 +8432,36 @@
     {
       "repository": "ethereum-optimism/optimism",
       "repository_url": "https://github.com/ethereum-optimism/optimism",
+      "source_path": "packages/contracts-bedrock/src/L2/L2ERC721Bridge.sol",
+      "path_kind": "file",
+      "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L2/L2ERC721Bridge.sol",
+          "git_object": "ee68427acb17d3d97ad67215e4c32497a5c365fe",
+          "git_mode": "100644",
+          "sha256": "c56c3a327ea79c3c655e9b9ec93f1d555728920395df054c04b51678383958b0"
+        }
+      ]
+    },
+    {
+      "repository": "ethereum-optimism/optimism",
+      "repository_url": "https://github.com/ethereum-optimism/optimism",
+      "source_path": "packages/contracts-bedrock/src/L2/L2StandardBridge.sol",
+      "path_kind": "file",
+      "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/L2/L2StandardBridge.sol",
+          "git_object": "69319560ae103242e78252732f192a6cf639d101",
+          "git_mode": "100644",
+          "sha256": "c881c90974abc8f0a4f13e1346f72e80dddc175576ae794fe5990f6c63e03372"
+        }
+      ]
+    },
+    {
+      "repository": "ethereum-optimism/optimism",
+      "repository_url": "https://github.com/ethereum-optimism/optimism",
       "source_path": "packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol",
       "path_kind": "file",
       "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
@@ -8351,6 +8501,36 @@
           "git_object": "626251c7a9717340d0c0442c9bc3c6af1cdfe63a",
           "git_mode": "100644",
           "sha256": "215ef60d858b449576043c88c0863a1bfc1c9a2bf608690b0c348798efcb8df4"
+        }
+      ]
+    },
+    {
+      "repository": "ethereum-optimism/optimism",
+      "repository_url": "https://github.com/ethereum-optimism/optimism",
+      "source_path": "packages/contracts-bedrock/src/universal/OptimismMintableERC20Factory.sol",
+      "path_kind": "file",
+      "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/universal/OptimismMintableERC20Factory.sol",
+          "git_object": "6e7baf31f1fbe57c6d0327f6b6123af8f9829c36",
+          "git_mode": "100644",
+          "sha256": "c889b56bb95f75c7ab3865d246848874dcc6988d888960344469202f93ecdea6"
+        }
+      ]
+    },
+    {
+      "repository": "ethereum-optimism/optimism",
+      "repository_url": "https://github.com/ethereum-optimism/optimism",
+      "source_path": "packages/contracts-bedrock/src/universal/StandardBridge.sol",
+      "path_kind": "file",
+      "commit": "e6ef3a900c42c8722e72c2e2314027f85d12ced5",
+      "files": [
+        {
+          "path": "packages/contracts-bedrock/src/universal/StandardBridge.sol",
+          "git_object": "4c2dae82950812b0bc541e2a4826b3b5cd03d6e8",
+          "git_mode": "100644",
+          "sha256": "3293b56b6b3b79268bc1039c9aeee8bae45728911fa72d0faa4b2b37488758bf"
         }
       ]
     },

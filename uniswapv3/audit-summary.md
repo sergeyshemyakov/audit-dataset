@@ -8,7 +8,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Report: [audit.md](<reports/audit.md>)
 - Auditor: Trail of Bits
 - Date: 2021-03-12
-- Description: Trail of Bits manual review, Echidna fuzzing, Manticore verification and Slither analysis of the Uniswap V3 core contracts (factory, pool, pool deployer and arithmetic/tick/position/oracle libraries) at commit 99223f3 of uniswap-v3-core. Ten findings were reported, including two High-severity issues (free swaps/token draining via an incorrect balance comparison, and missing contract existence check in TransferHelper).
+- Description: Trail of Bits manual review, Echidna fuzzing, Manticore verification and Slither analysis of the Uniswap V3 core contracts (factory, pool, pool deployer and arithmetic/tick/position/oracle libraries) at commit 99223f3 of uniswap-v3-core. Ten findings were reported, including two High-severity issues: TOB-UNI-005 (free swaps via an incorrect balance comparison) is already fixed at the audited commit 99223f3 (commit a4fb75c, &#x27;fix swap underpayment bug&#x27;, precedes it), so it is not recorded as open there; TOB-UNI-009 (missing contract existence check in TransferHelper) remains open.
 
 ### Repository: <a href="https://github.com/Uniswap/v3-core"><code>Uniswap/v3-core</code></a>
 

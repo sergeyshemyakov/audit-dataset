@@ -1,0 +1,638 @@
+{
+  "schema_version": "1.6.0",
+  "project": "_libs/agora",
+  "reports": [
+    {
+      "id": "trust-agora-governor-2024-08",
+      "report_file": "Trust Security - Agora Governor v1.0.md",
+      "title": "Smart Contract Audit: Agora Governance (Trust Security)",
+      "description": "Trust Security manual audit of eight Agora Governor v1.0 contracts (AgoraGovernor, AgoraTimelock, ProxyAdmin, TokenDistributor, ProposalTypesConfigurator and the VotingModule, ApprovalVotingModule and OptimisticModule voting modules) at a pre-publication commit, followed by a mitigation review and a final review of the fixes. One High finding (TRST-H-1) whose first fix was insufficient and which was verified fixed at the final review hash.",
+      "isRelevant": true,
+      "auditor": "Trust Security",
+      "report_date": "2024-08-02",
+      "repositories": [
+        {
+          "id": "voteagora/agora-governor",
+          "url": "https://github.com/voteagora/agora-governor"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "voteagora/agora-governor",
+          "paths": {
+            "src/AgoraGovernor.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "286b6425bfcb76553170f2cac320f42f4ad67eda",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/286b6425bfcb76553170f2cac320f42f4ad67eda"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e702019f259f236062855f37abf12b95b310746e",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/e702019f259f236062855f37abf12b95b310746e"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "major_finding_ids": [
+                    "TRST-H-1"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c3d4a6c11a45d43d1e489fc00406e38df67ee0a",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/2c3d4a6c11a45d43d1e489fc00406e38df67ee0a"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/ProxyAdmin.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "286b6425bfcb76553170f2cac320f42f4ad67eda",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/286b6425bfcb76553170f2cac320f42f4ad67eda"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e702019f259f236062855f37abf12b95b310746e",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/e702019f259f236062855f37abf12b95b310746e"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c3d4a6c11a45d43d1e489fc00406e38df67ee0a",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/2c3d4a6c11a45d43d1e489fc00406e38df67ee0a"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/TokenDistributor.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "286b6425bfcb76553170f2cac320f42f4ad67eda",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/286b6425bfcb76553170f2cac320f42f4ad67eda"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e702019f259f236062855f37abf12b95b310746e",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/e702019f259f236062855f37abf12b95b310746e"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c3d4a6c11a45d43d1e489fc00406e38df67ee0a",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/2c3d4a6c11a45d43d1e489fc00406e38df67ee0a"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/AgoraTimelock.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "286b6425bfcb76553170f2cac320f42f4ad67eda",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/286b6425bfcb76553170f2cac320f42f4ad67eda"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e702019f259f236062855f37abf12b95b310746e",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/e702019f259f236062855f37abf12b95b310746e"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c3d4a6c11a45d43d1e489fc00406e38df67ee0a",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/2c3d4a6c11a45d43d1e489fc00406e38df67ee0a"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/ProposalTypesConfigurator.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "286b6425bfcb76553170f2cac320f42f4ad67eda",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/286b6425bfcb76553170f2cac320f42f4ad67eda"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e702019f259f236062855f37abf12b95b310746e",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/e702019f259f236062855f37abf12b95b310746e"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c3d4a6c11a45d43d1e489fc00406e38df67ee0a",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/2c3d4a6c11a45d43d1e489fc00406e38df67ee0a"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/modules/VotingModule.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "286b6425bfcb76553170f2cac320f42f4ad67eda",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/286b6425bfcb76553170f2cac320f42f4ad67eda"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e702019f259f236062855f37abf12b95b310746e",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/e702019f259f236062855f37abf12b95b310746e"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c3d4a6c11a45d43d1e489fc00406e38df67ee0a",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/2c3d4a6c11a45d43d1e489fc00406e38df67ee0a"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/modules/ApprovalVotingModule.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "286b6425bfcb76553170f2cac320f42f4ad67eda",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/286b6425bfcb76553170f2cac320f42f4ad67eda"
+                  },
+                  "status": "audited_with_major_findings",
+                  "major_finding_ids": [
+                    "TRST-H-1"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "29bb9c77ceb9ad5d9833c9e75154703d3d1fd908",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/29bb9c77ceb9ad5d9833c9e75154703d3d1fd908"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "major_finding_ids": [
+                    "TRST-H-1"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f46ff4924638a31683c14234a7b9b23383346984",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/f46ff4924638a31683c14234a7b9b23383346984"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "major_finding_ids": [
+                    "TRST-H-1"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2b0fa5bc2dc92b8583ccd6ccec080b1423f695b3",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/2b0fa5bc2dc92b8583ccd6ccec080b1423f695b3"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "major_finding_ids": [
+                    "TRST-H-1"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "7146c62b5026291f668dc108fe954da297c4234b",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/7146c62b5026291f668dc108fe954da297c4234b"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "major_finding_ids": [
+                    "TRST-H-1"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e702019f259f236062855f37abf12b95b310746e",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/e702019f259f236062855f37abf12b95b310746e"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "major_finding_ids": [
+                    "TRST-H-1"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "71e0404569ce976c2dad5322ca2ad82ed702bfd5",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/71e0404569ce976c2dad5322ca2ad82ed702bfd5"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "major_finding_ids": [
+                    "TRST-H-1"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c3d4a6c11a45d43d1e489fc00406e38df67ee0a",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/2c3d4a6c11a45d43d1e489fc00406e38df67ee0a"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/modules/OptimisticModule.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "286b6425bfcb76553170f2cac320f42f4ad67eda",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/286b6425bfcb76553170f2cac320f42f4ad67eda"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e702019f259f236062855f37abf12b95b310746e",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/e702019f259f236062855f37abf12b95b310746e"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2c3d4a6c11a45d43d1e489fc00406e38df67ee0a",
+                    "timestamp": null,
+                    "url": "https://github.com/voteagora/agora-governor/commit/2c3d4a6c11a45d43d1e489fc00406e38df67ee0a"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "openzeppelin-agora-partial-delegation-2024-06",
+      "report_file": "OpenZeppelin - Agora Partial Delegation v1.0.0.md",
+      "title": "Agora Partial Delegation Audit (OpenZeppelin)",
+      "description": "OpenZeppelin audit of Agora's partial-delegation governance token contracts (ERC20VotesPartialDelegationUpgradeable, VotesPartialDelegationUpgradeable, L2GovToken and the IERC5805Modified and IVotesPartialDelegation interfaces) in the voteagora/ERC20VotesPartialDelegationUpgradeable repository, with per-finding fix commits from pull requests 57-67. No Critical, High or Medium issues were found.",
+      "isRelevant": true,
+      "auditor": "OpenZeppelin",
+      "report_date": "2024-06-24",
+      "repositories": [
+        {
+          "id": "voteagora/ERC20VotesPartialDelegationUpgradeable",
+          "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "voteagora/ERC20VotesPartialDelegationUpgradeable",
+          "paths": {
+            "src/ERC20VotesPartialDelegationUpgradeable.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "92ffae9959d7cabe3ebe0378d24701aed31d9dd3",
+                    "timestamp": "2024-06-10T16:11:58Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/92ffae9959d7cabe3ebe0378d24701aed31d9dd3"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "526d4ca8fa82e6b786ac871bef10660ab8a33995",
+                    "timestamp": "2024-07-01T17:25:43Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/526d4ca8fa82e6b786ac871bef10660ab8a33995"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6676441c333e5c6f050ac04fdb6be4149eb69da8",
+                    "timestamp": "2024-07-01T18:18:48Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/6676441c333e5c6f050ac04fdb6be4149eb69da8"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "826e0d4255959f4184583f19d492acf170ec5890",
+                    "timestamp": "2024-07-01T19:34:20Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/826e0d4255959f4184583f19d492acf170ec5890"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/IERC5805Modified.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "92ffae9959d7cabe3ebe0378d24701aed31d9dd3",
+                    "timestamp": "2024-06-10T16:11:58Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/92ffae9959d7cabe3ebe0378d24701aed31d9dd3"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            },
+            "src/IVotesPartialDelegation.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "92ffae9959d7cabe3ebe0378d24701aed31d9dd3",
+                    "timestamp": "2024-06-10T16:11:58Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/92ffae9959d7cabe3ebe0378d24701aed31d9dd3"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d3edd01109fe4c2619f3b274d2d9004920732ec1",
+                    "timestamp": "2024-07-01T17:28:46Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/d3edd01109fe4c2619f3b274d2d9004920732ec1"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b61759119f898bdab33d2a24f9cc6f7107009057",
+                    "timestamp": "2024-07-01T18:11:52Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/b61759119f898bdab33d2a24f9cc6f7107009057"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6676441c333e5c6f050ac04fdb6be4149eb69da8",
+                    "timestamp": "2024-07-01T18:18:48Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/6676441c333e5c6f050ac04fdb6be4149eb69da8"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "826e0d4255959f4184583f19d492acf170ec5890",
+                    "timestamp": "2024-07-01T19:34:20Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/826e0d4255959f4184583f19d492acf170ec5890"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/L2GovToken.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "92ffae9959d7cabe3ebe0378d24701aed31d9dd3",
+                    "timestamp": "2024-06-10T16:11:58Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/92ffae9959d7cabe3ebe0378d24701aed31d9dd3"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6676441c333e5c6f050ac04fdb6be4149eb69da8",
+                    "timestamp": "2024-07-01T18:18:48Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/6676441c333e5c6f050ac04fdb6be4149eb69da8"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "826e0d4255959f4184583f19d492acf170ec5890",
+                    "timestamp": "2024-07-01T19:34:20Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/826e0d4255959f4184583f19d492acf170ec5890"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "src/VotesPartialDelegationUpgradeable.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "92ffae9959d7cabe3ebe0378d24701aed31d9dd3",
+                    "timestamp": "2024-06-10T16:11:58Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/92ffae9959d7cabe3ebe0378d24701aed31d9dd3"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ac5f5e5f6861f097620562eda2cd662407b6ccea",
+                    "timestamp": "2024-07-01T17:25:24Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/ac5f5e5f6861f097620562eda2cd662407b6ccea"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "526d4ca8fa82e6b786ac871bef10660ab8a33995",
+                    "timestamp": "2024-07-01T17:25:43Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/526d4ca8fa82e6b786ac871bef10660ab8a33995"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1bd4d23d0e9a7852470858425c3d2d6124dde1a9",
+                    "timestamp": "2024-07-01T17:27:44Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/1bd4d23d0e9a7852470858425c3d2d6124dde1a9"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "d3edd01109fe4c2619f3b274d2d9004920732ec1",
+                    "timestamp": "2024-07-01T17:28:46Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/d3edd01109fe4c2619f3b274d2d9004920732ec1"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e5c64c9e17918bd13fc514c47276d6e9fa220c74",
+                    "timestamp": "2024-07-01T17:39:05Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/e5c64c9e17918bd13fc514c47276d6e9fa220c74"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "ed615536a90197a48fd16d4ce81d812032278472",
+                    "timestamp": "2024-07-01T18:05:24Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/ed615536a90197a48fd16d4ce81d812032278472"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "b61759119f898bdab33d2a24f9cc6f7107009057",
+                    "timestamp": "2024-07-01T18:11:52Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/b61759119f898bdab33d2a24f9cc6f7107009057"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "6676441c333e5c6f050ac04fdb6be4149eb69da8",
+                    "timestamp": "2024-07-01T18:18:48Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/6676441c333e5c6f050ac04fdb6be4149eb69da8"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "826e0d4255959f4184583f19d492acf170ec5890",
+                    "timestamp": "2024-07-01T19:34:20Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/826e0d4255959f4184583f19d492acf170ec5890"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "f21bc397498225a4777ef497a873c239c22c7889",
+                    "timestamp": "2024-07-01T19:37:12Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/f21bc397498225a4777ef497a873c239c22c7889"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "c88170013fed385076def23a005b768de59cbad2",
+                    "timestamp": "2024-07-07T15:46:35Z",
+                    "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable/commit/c88170013fed385076def23a005b768de59cbad2"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

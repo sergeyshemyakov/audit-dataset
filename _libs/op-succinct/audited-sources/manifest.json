@@ -1,0 +1,278 @@
+{
+  "schema_version": "2.0.0",
+  "collection": "_libs/op-succinct",
+  "sources": [
+    {
+      "repository": "succinctlabs/op-succinct",
+      "repository_url": "https://github.com/succinctlabs/op-succinct",
+      "source_path": "contracts/src/OPSuccinctL2OutputOracle.sol",
+      "path_kind": "file",
+      "commit": "228610944399607fbe4fe6ffeced425f9feddf6f",
+      "files": [
+        {
+          "path": "contracts/src/OPSuccinctL2OutputOracle.sol",
+          "git_object": "5dd9ae4b5f2827ad5d55debfe7b2778e8c28fb5d",
+          "git_mode": "100644",
+          "sha256": "aa8cdabda51b6e0912ef674fa8ac074bfe64055431cd894fecadbf5ca67b7cae"
+        }
+      ]
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "repository_url": "https://github.com/succinctlabs/op-succinct",
+      "source_path": "contracts/src/validity/OPSuccinctDisputeGame.sol",
+      "path_kind": "file",
+      "commit": "4aacb882ce86204bdcb7c70b40f3f9ed38d37b8b",
+      "files": [
+        {
+          "path": "contracts/src/validity/OPSuccinctDisputeGame.sol",
+          "git_object": "f814afd336213ff644278df78a24823d2bf931d4",
+          "git_mode": "100644",
+          "sha256": "b09dea7e1152b0f24569f3b302373b46f77aeeca56802214abb07f679acd3c69"
+        }
+      ]
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "repository_url": "https://github.com/succinctlabs/op-succinct",
+      "source_path": "contracts/src/validity/OPSuccinctL2OutputOracle.sol",
+      "path_kind": "file",
+      "commit": "4aacb882ce86204bdcb7c70b40f3f9ed38d37b8b",
+      "files": [
+        {
+          "path": "contracts/src/validity/OPSuccinctL2OutputOracle.sol",
+          "git_object": "f54d7aa61528cc3b36ce3e0098c5a99920f6047e",
+          "git_mode": "100644",
+          "sha256": "d8216ce63ca36904c1c3cc47cba4eb341c24ab077e74fc87983557ab25b83127"
+        }
+      ]
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "repository_url": "https://github.com/succinctlabs/op-succinct",
+      "source_path": "contracts/src/fp/OPSuccinctFaultDisputeGame.sol",
+      "path_kind": "file",
+      "commit": "4c682da4ad5f0d1d4f5fa2319aab15b507e87e82",
+      "files": [
+        {
+          "path": "contracts/src/fp/OPSuccinctFaultDisputeGame.sol",
+          "git_object": "28a1529a637395e8d26806a32b925365d032d1d6",
+          "git_mode": "100644",
+          "sha256": "f1b7e3b66613afdaf3bf3c5ca6fd93e308b1b348bd18a06bdab74f16434ef3b2"
+        }
+      ]
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "repository_url": "https://github.com/succinctlabs/op-succinct",
+      "source_path": "contracts/src/fp/AccessManager.sol",
+      "path_kind": "file",
+      "commit": "530df8630562292a9629303528d51307df954aec",
+      "files": [
+        {
+          "path": "contracts/src/fp/AccessManager.sol",
+          "git_object": "2c148196105f810a193045b44797fbd0a09970f3",
+          "git_mode": "100644",
+          "sha256": "0a1869c52c7d096be3dbc5fcaf2aabed29386fceefa2f19906f4aaf1cfed28cc"
+        }
+      ]
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "repository_url": "https://github.com/succinctlabs/op-succinct",
+      "source_path": "contracts/src/validity/OPSuccinctDisputeGame.sol",
+      "path_kind": "file",
+      "commit": "530df8630562292a9629303528d51307df954aec",
+      "files": [
+        {
+          "path": "contracts/src/validity/OPSuccinctDisputeGame.sol",
+          "git_object": "e47c856320e5cf950e7a00efa3b4bb60159b679c",
+          "git_mode": "100644",
+          "sha256": "96c48b73fff849614cecc59065c4868037567e79ae6a902b406a5a6c4b2eae37"
+        }
+      ]
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "repository_url": "https://github.com/succinctlabs/op-succinct",
+      "source_path": "contracts/src/validity/OPSuccinctL2OutputOracle.sol",
+      "path_kind": "file",
+      "commit": "530df8630562292a9629303528d51307df954aec",
+      "files": [
+        {
+          "path": "contracts/src/validity/OPSuccinctL2OutputOracle.sol",
+          "git_object": "67f1097e7983e57388b3976a61f98862d9d1550d",
+          "git_mode": "100644",
+          "sha256": "43c17e1cccfa4b304ef60251d8037ae699005daa5a50d62dfa76f7639c8d538d"
+        }
+      ]
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "repository_url": "https://github.com/succinctlabs/op-succinct",
+      "source_path": "contracts/src/fp/OPSuccinctFaultDisputeGame.sol",
+      "path_kind": "file",
+      "commit": "56c1f28027d81a36d225786e5e08bfb7080627e4",
+      "files": [
+        {
+          "path": "contracts/src/fp/OPSuccinctFaultDisputeGame.sol",
+          "git_object": "33d63a0a513707081e796ec0a5b4722bd4bac0ed",
+          "git_mode": "100644",
+          "sha256": "46baefa5c5584a6dad061d99d00cbf90346cfd615ce93b37c2d2b6115d4bfa27"
+        }
+      ]
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "repository_url": "https://github.com/succinctlabs/op-succinct",
+      "source_path": "contracts/src/fp/OPSuccinctFaultDisputeGame.sol",
+      "path_kind": "file",
+      "commit": "99a540bcf7997902b34e2e85bc5d37012307c408",
+      "files": [
+        {
+          "path": "contracts/src/fp/OPSuccinctFaultDisputeGame.sol",
+          "git_object": "6c07a5ef2cbc0dbb9677e8ff0f120bd6cb1191b5",
+          "git_mode": "100644",
+          "sha256": "5ec8cc5cae1e927f10ffb1f166b8e083cc13964333d1104b12cb72df56da7a09"
+        }
+      ]
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "repository_url": "https://github.com/succinctlabs/op-succinct",
+      "source_path": "contracts/src/OPSuccinctL2OutputOracle.sol",
+      "path_kind": "file",
+      "commit": "b73cc7d008fc0a39d41b9ce384dff2d85b6eaa3e",
+      "files": [
+        {
+          "path": "contracts/src/OPSuccinctL2OutputOracle.sol",
+          "git_object": "86666bd5ebf2daed003f5f9aa9cea56e2599b9f9",
+          "git_mode": "100644",
+          "sha256": "2450ec1d2b23ed17a63e1c1b5c9650c0f304777c616897b421254370a8cfbd72"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "programs/aggregation",
+      "revision_kind": "commit",
+      "revision": "b73cc7d008fc0a39d41b9ce384dff2d85b6eaa3e",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "programs/range/altda",
+      "revision_kind": "commit",
+      "revision": "78129507cb0a46a1983606d403eb5b487d8369f9",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "programs/range/src/main.rs",
+      "revision_kind": "commit",
+      "revision": "b73cc7d008fc0a39d41b9ce384dff2d85b6eaa3e",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "programs/range/utils",
+      "revision_kind": "commit",
+      "revision": "78129507cb0a46a1983606d403eb5b487d8369f9",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "utils/altda",
+      "revision_kind": "commit",
+      "revision": "1d2e418cbe199d42c219cec94bbf349be28bc721",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "utils/altda",
+      "revision_kind": "commit",
+      "revision": "3a1076744a273884c6b009c34e3a9dc2981d9597",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "utils/altda",
+      "revision_kind": "commit",
+      "revision": "78129507cb0a46a1983606d403eb5b487d8369f9",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "utils/client/src/boot.rs",
+      "revision_kind": "commit",
+      "revision": "78129507cb0a46a1983606d403eb5b487d8369f9",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "utils/client/src/client.rs",
+      "revision_kind": "commit",
+      "revision": "58649923efd952bcd5c84cc17d4a81580cb93a6b",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "utils/client/src/client.rs",
+      "revision_kind": "commit",
+      "revision": "78129507cb0a46a1983606d403eb5b487d8369f9",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "utils/client/src/client.rs",
+      "revision_kind": "commit",
+      "revision": "81f09688bc1271aac86ab6fdaffbe972cf624af5",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "utils/client/src/oracle/blob_provider.rs",
+      "revision_kind": "commit",
+      "revision": "78129507cb0a46a1983606d403eb5b487d8369f9",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "utils/client/src/witness/executor.rs",
+      "revision_kind": "commit",
+      "revision": "58649923efd952bcd5c84cc17d4a81580cb93a6b",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "utils/client/src/witness/executor.rs",
+      "revision_kind": "commit",
+      "revision": "78129507cb0a46a1983606d403eb5b487d8369f9",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "utils/client/src/witness/executor.rs",
+      "revision_kind": "commit",
+      "revision": "81f09688bc1271aac86ab6fdaffbe972cf624af5",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "utils/client/src/witness/mod.rs",
+      "revision_kind": "commit",
+      "revision": "78129507cb0a46a1983606d403eb5b487d8369f9",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "succinctlabs/op-succinct",
+      "source_path": "utils/client/src/witness/preimage_store.rs",
+      "revision_kind": "commit",
+      "revision": "78129507cb0a46a1983606d403eb5b487d8369f9",
+      "reason": "path kind zk is not fetched"
+    }
+  ],
+  "unavailable": []
+}

@@ -1,0 +1,502 @@
+{
+  "schema_version": "2.0.0",
+  "collection": "_libs/zk-kit",
+  "sources": [
+    {
+      "repository": "privacy-scaling-explorations/zk-kit",
+      "repository_url": "https://github.com/privacy-scaling-explorations/zk-kit",
+      "source_path": "packages/imt.sol/contracts/internal/InternalLeanIMT.sol",
+      "path_kind": "file",
+      "commit": "18b8ed9fe2fc089af9ff8ac67a05b096fe7cc470",
+      "files": [
+        {
+          "path": "packages/imt.sol/contracts/internal/InternalLeanIMT.sol",
+          "git_object": "d665f9b279f797ac8f194797551f1bb5e409b383",
+          "git_mode": "100644",
+          "sha256": "08dde4f207b4e9cbf5142bfbb283a8bcf675d82c887df4b8c74d378c9002151a"
+        }
+      ]
+    },
+    {
+      "repository": "privacy-scaling-explorations/zk-kit",
+      "repository_url": "https://github.com/privacy-scaling-explorations/zk-kit",
+      "source_path": "packages/imt.sol/contracts/internal/InternalLeanIMT.sol",
+      "path_kind": "file",
+      "commit": "215dfb30ba548918181419df5598d0a652901b7c",
+      "files": [
+        {
+          "path": "packages/imt.sol/contracts/internal/InternalLeanIMT.sol",
+          "git_object": "572dbde290b13b9baa5b1f1301da19858043331c",
+          "git_mode": "100644",
+          "sha256": "f8de35d5aee2381893218e611db04577efdb80ef47c1f59df26a9776fc983b16"
+        }
+      ]
+    },
+    {
+      "repository": "privacy-scaling-explorations/zk-kit",
+      "repository_url": "https://github.com/privacy-scaling-explorations/zk-kit",
+      "source_path": "packages/imt.sol/contracts/internal/InternalLeanIMT.sol",
+      "path_kind": "file",
+      "commit": "21df170d6d969d8dcfa763bc1aeb1390c320a627",
+      "files": [
+        {
+          "path": "packages/imt.sol/contracts/internal/InternalLeanIMT.sol",
+          "git_object": "00ee1909b5f4875156dec4f2b3cce0af7e640a69",
+          "git_mode": "100644",
+          "sha256": "0a52de8bfe506be4b09546e334aba5ed2806fc1ac9d2bd1735f3c1a29e0bea8a"
+        }
+      ]
+    },
+    {
+      "repository": "privacy-scaling-explorations/zk-kit",
+      "repository_url": "https://github.com/privacy-scaling-explorations/zk-kit",
+      "source_path": "packages/imt.sol/contracts/internal/InternalLeanIMT.sol",
+      "path_kind": "file",
+      "commit": "4c5ceca07673e89b112e849c2689ea0b1c3bf4d9",
+      "files": [
+        {
+          "path": "packages/imt.sol/contracts/internal/InternalLeanIMT.sol",
+          "git_object": "a7375d60dbf58e60c6cfc8ad510a25f2fa915f87",
+          "git_mode": "100644",
+          "sha256": "1b9cec876efa9791597b0977e8e3954f5c58e8f4721337fb774c64d3b23204b3"
+        }
+      ]
+    },
+    {
+      "repository": "privacy-scaling-explorations/zk-kit",
+      "repository_url": "https://github.com/privacy-scaling-explorations/zk-kit",
+      "source_path": "packages/imt.sol/contracts/internal/InternalLeanIMT.sol",
+      "path_kind": "file",
+      "commit": "c8173a4e668ba68e7d560555bf9da11c8120a7c2",
+      "files": [
+        {
+          "path": "packages/imt.sol/contracts/internal/InternalLeanIMT.sol",
+          "git_object": "19fac5395d2e20d709064d80cd7443242757045a",
+          "git_mode": "100644",
+          "sha256": "68d74951649e5994fcac57a6fada6392976f037f069f390df614707666b5eb67"
+        }
+      ]
+    },
+    {
+      "repository": "privacy-scaling-explorations/zk-kit",
+      "repository_url": "https://github.com/privacy-scaling-explorations/zk-kit",
+      "source_path": "packages/imt.sol/contracts/internal/InternalLeanIMT.sol",
+      "path_kind": "file",
+      "commit": "f9f409f190e8de427e67d9270bad3a3e07403783",
+      "files": [
+        {
+          "path": "packages/imt.sol/contracts/internal/InternalLeanIMT.sol",
+          "git_object": "bbafc7b190d2de1cf71fcc2e082dc2c4c0d2259c",
+          "git_mode": "100644",
+          "sha256": "4fd72a18a0c91df8cd8619ae8fcd1ce992a70bbee0b3ad0a70fac6fe305b5aef"
+        }
+      ]
+    },
+    {
+      "repository": "semaphore-protocol/semaphore",
+      "repository_url": "https://github.com/semaphore-protocol/semaphore",
+      "source_path": "packages/contracts",
+      "path_kind": "directory_recursive",
+      "commit": "255bccf2ebc7a1ebfe06ebc7bb1bff2f8141fa83",
+      "files": [
+        {
+          "path": "packages/contracts/contracts/Semaphore.sol",
+          "git_object": "b76aa98f13d8374531ee5635fd6442c269ed3987",
+          "git_mode": "100644",
+          "sha256": "b649d7668afcb231fd8176e6507f68e0f3ddc3af4479f13a61c9a66b62253d24"
+        },
+        {
+          "path": "packages/contracts/contracts/base/Constants.sol",
+          "git_object": "0868fc5d73f42818077ba214b6c8e5cad0a89fb9",
+          "git_mode": "100644",
+          "sha256": "f2ea1d4b2f1c650fd8c2dfb7b4682d68bab9b838f4be33bb5111b9b8720ad2fd"
+        },
+        {
+          "path": "packages/contracts/contracts/base/SemaphoreGroups.sol",
+          "git_object": "93a0faa5c7436b4b3efcc3e058a2eb4e76dd16d1",
+          "git_mode": "100644",
+          "sha256": "af295e6ab102198c4598e9fd59da4d472767c562fa682917645dd43c517b8c59"
+        },
+        {
+          "path": "packages/contracts/contracts/base/SemaphoreVerifier.sol",
+          "git_object": "a3793b03792084fd6baf145ee47d38bdfd29c8a4",
+          "git_mode": "100644",
+          "sha256": "3442612bd8aa76f990273e078a2a6ebc60d3fe5a7ecfe53302915317ae755e2d"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphore.sol",
+          "git_object": "b68feabc1e764d9b939f2fdb91245982150f2f18",
+          "git_mode": "100644",
+          "sha256": "3ce74db053556d48c19809be225116a68946fd95275d65c86a5a0e9e7fc5e985"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphoreGroups.sol",
+          "git_object": "b99bb7d665a09243befe3cc76b39454527701ede",
+          "git_mode": "100644",
+          "sha256": "40aad1b997ab7799183b22091480e06f8ad59e61ed2df29265e7d52a166f99ef"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphoreVerifier.sol",
+          "git_object": "8e54583fa7988c583a155c0be790a3fdcecb5604",
+          "git_mode": "100644",
+          "sha256": "67b3837a8d0ddb150ee688382a21bcffd3bf312df1c2618b253e26f4eab0f42c"
+        }
+      ]
+    },
+    {
+      "repository": "semaphore-protocol/semaphore",
+      "repository_url": "https://github.com/semaphore-protocol/semaphore",
+      "source_path": "packages/contracts",
+      "path_kind": "directory_recursive",
+      "commit": "7c99c74fac080fbf66d9b1de1ee8245debcf476d",
+      "files": [
+        {
+          "path": "packages/contracts/contracts/Semaphore.sol",
+          "git_object": "b76aa98f13d8374531ee5635fd6442c269ed3987",
+          "git_mode": "100644",
+          "sha256": "b649d7668afcb231fd8176e6507f68e0f3ddc3af4479f13a61c9a66b62253d24"
+        },
+        {
+          "path": "packages/contracts/contracts/base/Constants.sol",
+          "git_object": "0868fc5d73f42818077ba214b6c8e5cad0a89fb9",
+          "git_mode": "100644",
+          "sha256": "f2ea1d4b2f1c650fd8c2dfb7b4682d68bab9b838f4be33bb5111b9b8720ad2fd"
+        },
+        {
+          "path": "packages/contracts/contracts/base/SemaphoreGroups.sol",
+          "git_object": "93a0faa5c7436b4b3efcc3e058a2eb4e76dd16d1",
+          "git_mode": "100644",
+          "sha256": "af295e6ab102198c4598e9fd59da4d472767c562fa682917645dd43c517b8c59"
+        },
+        {
+          "path": "packages/contracts/contracts/base/SemaphoreVerifier.sol",
+          "git_object": "a3793b03792084fd6baf145ee47d38bdfd29c8a4",
+          "git_mode": "100644",
+          "sha256": "3442612bd8aa76f990273e078a2a6ebc60d3fe5a7ecfe53302915317ae755e2d"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphore.sol",
+          "git_object": "b68feabc1e764d9b939f2fdb91245982150f2f18",
+          "git_mode": "100644",
+          "sha256": "3ce74db053556d48c19809be225116a68946fd95275d65c86a5a0e9e7fc5e985"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphoreGroups.sol",
+          "git_object": "b99bb7d665a09243befe3cc76b39454527701ede",
+          "git_mode": "100644",
+          "sha256": "40aad1b997ab7799183b22091480e06f8ad59e61ed2df29265e7d52a166f99ef"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphoreVerifier.sol",
+          "git_object": "8e54583fa7988c583a155c0be790a3fdcecb5604",
+          "git_mode": "100644",
+          "sha256": "67b3837a8d0ddb150ee688382a21bcffd3bf312df1c2618b253e26f4eab0f42c"
+        }
+      ]
+    },
+    {
+      "repository": "semaphore-protocol/semaphore",
+      "repository_url": "https://github.com/semaphore-protocol/semaphore",
+      "source_path": "packages/contracts",
+      "path_kind": "directory_recursive",
+      "commit": "8eb19e83fda62644872b2fcfbd85011d3b2c21e2",
+      "files": [
+        {
+          "path": "packages/contracts/contracts/Semaphore.sol",
+          "git_object": "7932280835f55d95dcb32cf2a2bf8029fff56486",
+          "git_mode": "100644",
+          "sha256": "8eee978adb1bb299fe0a67d385e8dc1328e2b965761e4d77b7e29aa9ce3afd4a"
+        },
+        {
+          "path": "packages/contracts/contracts/base/SemaphoreGroups.sol",
+          "git_object": "a82006f5ce44d301d5f9169271fee247208c1791",
+          "git_mode": "100644",
+          "sha256": "fffd22df7061dfce7238b2c7ecdec3b6ee5834828c39364d7a80020d5ffeaf8d"
+        },
+        {
+          "path": "packages/contracts/contracts/base/SemaphoreVerifier.sol",
+          "git_object": "e74a85d7c176665724c528eeb62a9d5a56950609",
+          "git_mode": "100644",
+          "sha256": "e712321f3e0499d374107a6e3b6cc156dda050f627797878f70c694c21685d36"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphore.sol",
+          "git_object": "09dd7949115e0f2ea6781ff76fda6602c66eeb39",
+          "git_mode": "100644",
+          "sha256": "16739c7967916c32f9594b18448e75b4cb7d44c395f612c6af16e3d33d66c0ce"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphoreGroups.sol",
+          "git_object": "357bb3d1b6001e9db14a7f49c28e8336e5a4f870",
+          "git_mode": "100644",
+          "sha256": "24f3bfc5c2498d929d0eaeb50a478a56bdafb78e6b8252294d0147a275926fe9"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphoreVerifier.sol",
+          "git_object": "8e54583fa7988c583a155c0be790a3fdcecb5604",
+          "git_mode": "100644",
+          "sha256": "67b3837a8d0ddb150ee688382a21bcffd3bf312df1c2618b253e26f4eab0f42c"
+        }
+      ]
+    },
+    {
+      "repository": "semaphore-protocol/semaphore",
+      "repository_url": "https://github.com/semaphore-protocol/semaphore",
+      "source_path": "packages/contracts",
+      "path_kind": "directory_recursive",
+      "commit": "b12dd0fd984fa3d5de9f2c2bd17f1e470cd6f4d1",
+      "files": [
+        {
+          "path": "packages/contracts/contracts/Semaphore.sol",
+          "git_object": "8efa81560816c91e7c4939b4d9dde891355b2f78",
+          "git_mode": "100644",
+          "sha256": "fbd02b8f9d897ee2763252dfdaa6dd452856b2f54b3e32d443b94750fdde2a96"
+        },
+        {
+          "path": "packages/contracts/contracts/base/SemaphoreGroups.sol",
+          "git_object": "211acf09f0a9680c75cc808b37cc94ad12ed3d11",
+          "git_mode": "100644",
+          "sha256": "309a323423c562e6a69fd9d6f6329b5fd37bd8c64991b65f6374a04076e9246a"
+        },
+        {
+          "path": "packages/contracts/contracts/base/SemaphoreVerifier.sol",
+          "git_object": "e74a85d7c176665724c528eeb62a9d5a56950609",
+          "git_mode": "100644",
+          "sha256": "e712321f3e0499d374107a6e3b6cc156dda050f627797878f70c694c21685d36"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphore.sol",
+          "git_object": "71edfe6ae5b43212a73ea66dfd25b2c6c9618064",
+          "git_mode": "100644",
+          "sha256": "b2796ceef5e0f099d1031ad451a7b71939f290077c9fa89de1317d52ddc098df"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphoreGroups.sol",
+          "git_object": "357bb3d1b6001e9db14a7f49c28e8336e5a4f870",
+          "git_mode": "100644",
+          "sha256": "24f3bfc5c2498d929d0eaeb50a478a56bdafb78e6b8252294d0147a275926fe9"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphoreVerifier.sol",
+          "git_object": "8e54583fa7988c583a155c0be790a3fdcecb5604",
+          "git_mode": "100644",
+          "sha256": "67b3837a8d0ddb150ee688382a21bcffd3bf312df1c2618b253e26f4eab0f42c"
+        }
+      ]
+    },
+    {
+      "repository": "semaphore-protocol/semaphore",
+      "repository_url": "https://github.com/semaphore-protocol/semaphore",
+      "source_path": "packages/contracts",
+      "path_kind": "directory_recursive",
+      "commit": "baa18c885eea73932edfce570840bf2284e6bcd9",
+      "files": [
+        {
+          "path": "packages/contracts/contracts/Semaphore.sol",
+          "git_object": "daebc13c1996faaf15ca6c1b3489553c1c136610",
+          "git_mode": "100644",
+          "sha256": "33b861c35567ea2fa0635be4114f8dea1149c8c404043a4bace54ecca7d254e0"
+        },
+        {
+          "path": "packages/contracts/contracts/base/SemaphoreGroups.sol",
+          "git_object": "e8fd8dbe507b27cbc7fffd48dde1878296976422",
+          "git_mode": "100644",
+          "sha256": "3c0ad2ade7ea2aa8e1a10ad089ee8fb9c193a8de941b2099bd30f4ff0a815a17"
+        },
+        {
+          "path": "packages/contracts/contracts/base/SemaphoreVerifier.sol",
+          "git_object": "e74a85d7c176665724c528eeb62a9d5a56950609",
+          "git_mode": "100644",
+          "sha256": "e712321f3e0499d374107a6e3b6cc156dda050f627797878f70c694c21685d36"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphore.sol",
+          "git_object": "09dd7949115e0f2ea6781ff76fda6602c66eeb39",
+          "git_mode": "100644",
+          "sha256": "16739c7967916c32f9594b18448e75b4cb7d44c395f612c6af16e3d33d66c0ce"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphoreGroups.sol",
+          "git_object": "357bb3d1b6001e9db14a7f49c28e8336e5a4f870",
+          "git_mode": "100644",
+          "sha256": "24f3bfc5c2498d929d0eaeb50a478a56bdafb78e6b8252294d0147a275926fe9"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphoreVerifier.sol",
+          "git_object": "8e54583fa7988c583a155c0be790a3fdcecb5604",
+          "git_mode": "100644",
+          "sha256": "67b3837a8d0ddb150ee688382a21bcffd3bf312df1c2618b253e26f4eab0f42c"
+        }
+      ]
+    },
+    {
+      "repository": "semaphore-protocol/semaphore",
+      "repository_url": "https://github.com/semaphore-protocol/semaphore",
+      "source_path": "packages/contracts",
+      "path_kind": "directory_recursive",
+      "commit": "c3b9b98370598b78bc1d6d9d7e91546773f37631",
+      "files": [
+        {
+          "path": "packages/contracts/contracts/Semaphore.sol",
+          "git_object": "e25c638f102cbb436d2a9c98708e94e599c3ac45",
+          "git_mode": "100644",
+          "sha256": "14de666dfa191fafd7b92610a85a1e00ece4372b4c1daaed13ae0fbcb1734858"
+        },
+        {
+          "path": "packages/contracts/contracts/base/Constants.sol",
+          "git_object": "0868fc5d73f42818077ba214b6c8e5cad0a89fb9",
+          "git_mode": "100644",
+          "sha256": "f2ea1d4b2f1c650fd8c2dfb7b4682d68bab9b838f4be33bb5111b9b8720ad2fd"
+        },
+        {
+          "path": "packages/contracts/contracts/base/SemaphoreGroups.sol",
+          "git_object": "e8fd8dbe507b27cbc7fffd48dde1878296976422",
+          "git_mode": "100644",
+          "sha256": "3c0ad2ade7ea2aa8e1a10ad089ee8fb9c193a8de941b2099bd30f4ff0a815a17"
+        },
+        {
+          "path": "packages/contracts/contracts/base/SemaphoreVerifier.sol",
+          "git_object": "a3793b03792084fd6baf145ee47d38bdfd29c8a4",
+          "git_mode": "100644",
+          "sha256": "3442612bd8aa76f990273e078a2a6ebc60d3fe5a7ecfe53302915317ae755e2d"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphore.sol",
+          "git_object": "71edfe6ae5b43212a73ea66dfd25b2c6c9618064",
+          "git_mode": "100644",
+          "sha256": "b2796ceef5e0f099d1031ad451a7b71939f290077c9fa89de1317d52ddc098df"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphoreGroups.sol",
+          "git_object": "357bb3d1b6001e9db14a7f49c28e8336e5a4f870",
+          "git_mode": "100644",
+          "sha256": "24f3bfc5c2498d929d0eaeb50a478a56bdafb78e6b8252294d0147a275926fe9"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphoreVerifier.sol",
+          "git_object": "8e54583fa7988c583a155c0be790a3fdcecb5604",
+          "git_mode": "100644",
+          "sha256": "67b3837a8d0ddb150ee688382a21bcffd3bf312df1c2618b253e26f4eab0f42c"
+        }
+      ]
+    },
+    {
+      "repository": "semaphore-protocol/semaphore",
+      "repository_url": "https://github.com/semaphore-protocol/semaphore",
+      "source_path": "packages/contracts",
+      "path_kind": "directory_recursive",
+      "commit": "f06ddd32e49e41973178f2500911d5d26cb16779",
+      "files": [
+        {
+          "path": "packages/contracts/contracts/Semaphore.sol",
+          "git_object": "77109342ae140af147c9bce610b1a7121f092723",
+          "git_mode": "100644",
+          "sha256": "7eb6006523e18bedd4db52464df965fac2c63817ed2f06af7967eb20c8715279"
+        },
+        {
+          "path": "packages/contracts/contracts/base/SemaphoreGroups.sol",
+          "git_object": "211acf09f0a9680c75cc808b37cc94ad12ed3d11",
+          "git_mode": "100644",
+          "sha256": "309a323423c562e6a69fd9d6f6329b5fd37bd8c64991b65f6374a04076e9246a"
+        },
+        {
+          "path": "packages/contracts/contracts/base/SemaphoreVerifier.sol",
+          "git_object": "e74a85d7c176665724c528eeb62a9d5a56950609",
+          "git_mode": "100644",
+          "sha256": "e712321f3e0499d374107a6e3b6cc156dda050f627797878f70c694c21685d36"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphore.sol",
+          "git_object": "09dd7949115e0f2ea6781ff76fda6602c66eeb39",
+          "git_mode": "100644",
+          "sha256": "16739c7967916c32f9594b18448e75b4cb7d44c395f612c6af16e3d33d66c0ce"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphoreGroups.sol",
+          "git_object": "357bb3d1b6001e9db14a7f49c28e8336e5a4f870",
+          "git_mode": "100644",
+          "sha256": "24f3bfc5c2498d929d0eaeb50a478a56bdafb78e6b8252294d0147a275926fe9"
+        },
+        {
+          "path": "packages/contracts/contracts/interfaces/ISemaphoreVerifier.sol",
+          "git_object": "8e54583fa7988c583a155c0be790a3fdcecb5604",
+          "git_mode": "100644",
+          "sha256": "67b3837a8d0ddb150ee688382a21bcffd3bf312df1c2618b253e26f4eab0f42c"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "repository": "privacy-scaling-explorations/zk-kit",
+      "source_path": "packages/circuits/circom/binary-merkle-root.circom",
+      "revision_kind": "commit",
+      "revision": "215dfb30ba548918181419df5598d0a652901b7c",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "privacy-scaling-explorations/zk-kit",
+      "source_path": "packages/circuits/circom/binary-merkle-root.circom",
+      "revision_kind": "commit",
+      "revision": "749de51d8372881239242528319312b4dfd7bafb",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "privacy-scaling-explorations/zk-kit",
+      "source_path": "packages/eddsa-poseidon/src/eddsa-poseidon.ts",
+      "revision_kind": "commit",
+      "revision": "215dfb30ba548918181419df5598d0a652901b7c",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "privacy-scaling-explorations/zk-kit",
+      "source_path": "packages/eddsa-poseidon/src/eddsa-poseidon.ts",
+      "revision_kind": "commit",
+      "revision": "a8c6d3d6f41f680200cae90618944485009cbd87",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "privacy-scaling-explorations/zk-kit",
+      "source_path": "packages/utils/src/f1-field.ts",
+      "revision_kind": "commit",
+      "revision": "215dfb30ba548918181419df5598d0a652901b7c",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "privacy-scaling-explorations/zk-kit",
+      "source_path": "packages/utils/src/f1-field.ts",
+      "revision_kind": "commit",
+      "revision": "41b4fb8ae929b52ff4d1b84c751d0a93dcdc9156",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "privacy-scaling-explorations/zk-kit",
+      "source_path": "packages/utils/src/f1-field.ts",
+      "revision_kind": "commit",
+      "revision": "a79dfc496ec7f76ac31b9b779b75a7d5f1ba192e",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "privacy-scaling-explorations/zk-kit",
+      "source_path": "packages/utils/src/f1-field.ts",
+      "revision_kind": "commit",
+      "revision": "dbc7c70a54dcbd6c83b71621b7da1e66644d4559",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "semaphore-protocol/semaphore",
+      "source_path": "packages/circuits",
+      "revision_kind": "commit",
+      "revision": "8eb19e83fda62644872b2fcfbd85011d3b2c21e2",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "semaphore-protocol/semaphore",
+      "source_path": "packages/circuits",
+      "revision_kind": "commit",
+      "revision": "ba8132561a115cfc2c097bf0a8f3550914b757bf",
+      "reason": "path kind zk is not fetched"
+    }
+  ],
+  "unavailable": []
+}

@@ -6,7 +6,7 @@
       "id": "trailofbits-uniswap-v3-core-2021-03",
       "report_file": "audit.md",
       "title": "Uniswap V3 Core Security Assessment",
-      "description": "Trail of Bits manual review, Echidna fuzzing, Manticore verification and Slither analysis of the Uniswap V3 core contracts (factory, pool, pool deployer and arithmetic/tick/position/oracle libraries) at commit 99223f3 of uniswap-v3-core. Ten findings were reported, including two High-severity issues (free swaps/token draining via an incorrect balance comparison, and missing contract existence check in TransferHelper).",
+      "description": "Trail of Bits manual review, Echidna fuzzing, Manticore verification and Slither analysis of the Uniswap V3 core contracts (factory, pool, pool deployer and arithmetic/tick/position/oracle libraries) at commit 99223f3 of uniswap-v3-core. Ten findings were reported, including two High-severity issues: TOB-UNI-005 (free swaps via an incorrect balance comparison) is already fixed at the audited commit 99223f3 (commit a4fb75c, 'fix swap underpayment bug', precedes it), so it is not recorded as open there; TOB-UNI-009 (missing contract existence check in TransferHelper) remains open.",
       "isRelevant": true,
       "auditor": "Trail of Bits",
       "report_date": "2021-03-12",
@@ -61,10 +61,7 @@
                     "timestamp": "2021-03-01T20:06:25Z",
                     "url": "https://github.com/Uniswap/v3-core/blob/99223f33fd69a9e024f00bd8eea17b029d3f8f2d/contracts/UniswapV3Pool.sol"
                   },
-                  "status": "audited_with_major_findings",
-                  "major_finding_ids": [
-                    "TOB-UNI-005"
-                  ]
+                  "status": "audited_with_no_major_findings"
                 }
               ]
             },

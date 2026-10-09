@@ -658,7 +658,7 @@
           "path": "contracts/src/libraries/verifier/ZkTrieVerifier.sol",
           "git_object": "fb89f2b3ee64d178ff0aae37e9a99c2e353fdeeb",
           "git_mode": "100644",
-          "sha256": "3d91b6778071bef917e5ee27212f95437d87f61998afd3544bb5624ed075be29"
+          "sha256": "60dd982bb6984c7c972aaa9a1f63245cdcfcdef649ae0ece222d5b76dcab3c38"
         }
       ]
     },
@@ -740,6 +740,246 @@
     {
       "repository": "scroll-tech/scroll",
       "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/IL1ScrollMessenger.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/IL1ScrollMessenger.sol",
+          "git_object": "e2ed03f3f9d03885044f1312cd750ca1e0fde98d",
+          "git_mode": "100644",
+          "sha256": "ffe3711b4a12977df4c8aad3c7807bf6c5706f716e01f4c25d0c65ea11920efa"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/L1ScrollMessenger.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/L1ScrollMessenger.sol",
+          "git_object": "a749444c718d524f21d393d617b3f744c64d7ee3",
+          "git_mode": "100644",
+          "sha256": "8d350725e8ca8aa3476646fa840385025fdb16bed4fe7dc43d03cae2a090d50e"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/gateways/EnforcedTxGateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/gateways/EnforcedTxGateway.sol",
+          "git_object": "b79de488081af3d38018fc0d4f3a36f4d7a262da",
+          "git_mode": "100644",
+          "sha256": "a83d75d82d8ee5c4a75ded2cd9e8753ffcfb4045f34e3193eb1bbc5f6a33cbcd"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/gateways/IL1ERC1155Gateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/gateways/IL1ERC1155Gateway.sol",
+          "git_object": "555ba27709b533fc280b96e50fab579313affb2e",
+          "git_mode": "100644",
+          "sha256": "1eb8b8c3f5f0a580d2b1e51fa61686aca1e09e45558f12390888fa1b7f8eccc4"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/gateways/IL1ERC20Gateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/gateways/IL1ERC20Gateway.sol",
+          "git_object": "d1266de18cef2aa3f58f9dd71183294b2fb960ca",
+          "git_mode": "100644",
+          "sha256": "3f932d0bda589c718c61b47935fcbe11eab887d4f44b772354f03a976b7e668e"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/gateways/IL1ERC721Gateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/gateways/IL1ERC721Gateway.sol",
+          "git_object": "2ea05488bed434c9c96e79fc849a907631bf6629",
+          "git_mode": "100644",
+          "sha256": "63f19549969d317bb0191eeba6baa470f13edc2c47ea22fd9e02cf2acd486f48"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/gateways/IL1ETHGateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/gateways/IL1ETHGateway.sol",
+          "git_object": "b991bbf1cbe8d10b3a13e0d496ad6b3b960b8518",
+          "git_mode": "100644",
+          "sha256": "fd88aa14588b58bd9055523d49718785f434876eed9209a7b5f6d8984437233c"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/gateways/IL1GatewayRouter.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/gateways/IL1GatewayRouter.sol",
+          "git_object": "57a63d3ca77b115880c27b64099ad76b31f3b8a1",
+          "git_mode": "100644",
+          "sha256": "fe3646a8c5f1a1cb72af8f8f2918f5745dc32d7695f002a5e4568fddb8040d20"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/gateways/L1CustomERC20Gateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/gateways/L1CustomERC20Gateway.sol",
+          "git_object": "03b5822bab016897965da674326f71f41b2f1ed7",
+          "git_mode": "100644",
+          "sha256": "8ef9ff372cdd879868177527805509ef6e6ca0fb8c170c601500eb113fe50731"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/gateways/L1ERC1155Gateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/gateways/L1ERC1155Gateway.sol",
+          "git_object": "86a7e0a434a89d46fb94fc8f4e946ab53ad7c4c0",
+          "git_mode": "100644",
+          "sha256": "e5554817c410c6c52196f714b41707ccb52ad3db344d5d5e0614618a39da1c35"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/gateways/L1ERC20Gateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/gateways/L1ERC20Gateway.sol",
+          "git_object": "1106fd0ae60e3c83454ed563ca5cec0da2d9b8a2",
+          "git_mode": "100644",
+          "sha256": "f535c955f2f005bbe42d02446ca418dd6588243d7da246e5f79e0d278ed54752"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/gateways/L1ERC721Gateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/gateways/L1ERC721Gateway.sol",
+          "git_object": "bafe0474821717a5293babdb792e8fc71639d141",
+          "git_mode": "100644",
+          "sha256": "75effc007c251604a1326ac4196214eec3e0ef4da63e9c61e0204ebe5ca5d9b4"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/gateways/L1ETHGateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/gateways/L1ETHGateway.sol",
+          "git_object": "7ae20d08b6b7417eac949ea70b4a7b16340609a6",
+          "git_mode": "100644",
+          "sha256": "39c3044cb54c35b1173b7c036f833db795fce3280d6d2262601c09b3f8b535b4"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/gateways/L1GatewayRouter.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/gateways/L1GatewayRouter.sol",
+          "git_object": "0e6435c33efe8b4cd496f5d5ec62bb87a0ff2ab2",
+          "git_mode": "100644",
+          "sha256": "230ef15366c43d8b5f623df66fc6543b6bf7c5d3813904207e9c8c2f35fe08b5"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/gateways/L1StandardERC20Gateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/gateways/L1StandardERC20Gateway.sol",
+          "git_object": "8ebdba9ad1b7d9dbb0fae4c9688b4b114aaa1ee1",
+          "git_mode": "100644",
+          "sha256": "af990da19cb9efe9e740874633dcfcf7cfad1b56d33f230233c6b354abe33b1f"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/gateways/L1WETHGateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/gateways/L1WETHGateway.sol",
+          "git_object": "ac21ee75c930c0a101b00e80b899b0ef6a053f73",
+          "git_mode": "100644",
+          "sha256": "e67a2800516d943e91fb2bb2c52802c26d8741e9c5ad2c9e9c52a71613c90e60"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
       "source_path": "contracts/src/L1/gateways/usdc/L1USDCGateway.sol",
       "path_kind": "file",
       "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
@@ -749,6 +989,36 @@
           "git_object": "d25bd7e568a6d57ad25675a02b0a3e3bed4cd8a8",
           "git_mode": "100644",
           "sha256": "dd860402069e5a6191ae6dc33aa9f3de04bd1dd9dc40ea8abfb55fc7b196d22f"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/rollup/IL1MessageQueue.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/rollup/IL1MessageQueue.sol",
+          "git_object": "51c911d78afa338046ad45ccdfbd27fbf2e9b6bb",
+          "git_mode": "100644",
+          "sha256": "c147077acafceef8d72edca7c12096feaa996aec0b44e416da22dff8f07405de"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/rollup/L1MessageQueue.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/rollup/L1MessageQueue.sol",
+          "git_object": "783d14ad5ea135c923b0db8c230a8a295e6b1dc1",
+          "git_mode": "100644",
+          "sha256": "861a135529c02b06bc882dac03f2287e983a8f56c4683463fce531be79487d7c"
         }
       ]
     },
@@ -770,6 +1040,96 @@
     {
       "repository": "scroll-tech/scroll",
       "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L1/rollup/ScrollChain.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L1/rollup/ScrollChain.sol",
+          "git_object": "7abec09d72f2e6c1c4e1f7e68233069d1433db24",
+          "git_mode": "100644",
+          "sha256": "70c5d66d3d586aef66b72a15e40aa634d87170245fcab8a45fee01923cf3a5df"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L2/IL2ScrollMessenger.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L2/IL2ScrollMessenger.sol",
+          "git_object": "1fd0657f05ced95c5b71400a50bd4461ca8b045f",
+          "git_mode": "100644",
+          "sha256": "0d9c10248fb7faa78eadee3c08fd0c476ec40a32621d2be7e9f43efc83194a61"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L2/L2ScrollMessenger.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L2/L2ScrollMessenger.sol",
+          "git_object": "c586a2348dbfd31344493f8b178119ca0fc3c3c1",
+          "git_mode": "100644",
+          "sha256": "2c99f57c99f0e17074193a931dc98b745cdfc0b46fd1a41a57161af1b5c3d4b1"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L2/gateways/L2ERC1155Gateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L2/gateways/L2ERC1155Gateway.sol",
+          "git_object": "939149c6a96bf9494e5dbe0d325cf137d5b3f2d2",
+          "git_mode": "100644",
+          "sha256": "7177ccc711cf6dba254ffa9719190b51530668e019446322d8ceac1c5668ee91"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L2/gateways/L2ERC721Gateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L2/gateways/L2ERC721Gateway.sol",
+          "git_object": "97f1d2beaf943e9e90cf1878440ac21375ffdaa3",
+          "git_mode": "100644",
+          "sha256": "829d62948d022d9379de301270667e114d131f617357dfde769d52fca6fdc411"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L2/gateways/L2ETHGateway.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L2/gateways/L2ETHGateway.sol",
+          "git_object": "1bd697f459d81442542cd46ad46eeeba42393df3",
+          "git_mode": "100644",
+          "sha256": "68d4a0dcc96f13f7abbb8bc43503feaaddf7c1f8d6dd48905dd68aff8e664cd8"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
       "source_path": "contracts/src/L2/gateways/usdc/L2USDCGateway.sol",
       "path_kind": "file",
       "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
@@ -779,6 +1139,21 @@
           "git_object": "0c76e62e8816d6ff2fabcaaaac431d921fea7417",
           "git_mode": "100644",
           "sha256": "0dd052d30d32361da591859fbc46e5ef1efb42328a997decc595c0b3ff588fe1"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/L2/predeploys/L1GasPriceOracle.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/L2/predeploys/L1GasPriceOracle.sol",
+          "git_object": "cc54a3b80ac8fd01fdba41fc0c7aaaceb388f210",
+          "git_mode": "100644",
+          "sha256": "c9ef010bafac1952fa75584ccdef18c755056084b830ddfe9958706b08e78e25"
         }
       ]
     },
@@ -860,6 +1235,51 @@
     {
       "repository": "scroll-tech/scroll",
       "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/libraries/constants/ScrollConstants.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/libraries/constants/ScrollConstants.sol",
+          "git_object": "ff80b141f8ba0463b4b1a45ac00fdf3eb8a1b4a0",
+          "git_mode": "100644",
+          "sha256": "5ea2eed53cce295555ca8952366907162e9c8ad1815180f41f2344e5871d89e3"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/libraries/gateway/ScrollGatewayBase.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/libraries/gateway/ScrollGatewayBase.sol",
+          "git_object": "7a471172fb64b2f310ff27888f0fdb12b12f42c9",
+          "git_mode": "100644",
+          "sha256": "a8c8368c58836122af13d01000672c119be2b297f567419f696af730dc4b6931"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/libraries/token/IScrollERC1155.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/libraries/token/IScrollERC1155.sol",
+          "git_object": "3a33816220d9e87cfa911fb340ede985345c9805",
+          "git_mode": "100644",
+          "sha256": "0edb9ec8a32e5eb965f0e9f59135122be3d07cb51a005807253cd156210f1750"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
       "source_path": "contracts/src/libraries/token/IScrollERC1155Extension.sol",
       "path_kind": "file",
       "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
@@ -869,6 +1289,21 @@
           "git_object": "45176bb7d961c9156aba08876f0ee317fc43b6f7",
           "git_mode": "100644",
           "sha256": "620ed8aae3c7d5a17725a3e73347694fbce038f51ad76474211a47ba26f80234"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/libraries/token/IScrollERC20.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/libraries/token/IScrollERC20.sol",
+          "git_object": "f626390766f47e880e693e1a484de3b08f4b8e70",
+          "git_mode": "100644",
+          "sha256": "4ed8ef28895ddfce74ab73ea387c2fab5aa3cb6838497af871b6b2b7d3774c38"
         }
       ]
     },
@@ -890,6 +1325,21 @@
     {
       "repository": "scroll-tech/scroll",
       "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/libraries/token/IScrollERC721.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/libraries/token/IScrollERC721.sol",
+          "git_object": "775f8be4f524ff34397acc758ec48f250d6ec4cc",
+          "git_mode": "100644",
+          "sha256": "9de09613c0123fe5df2748467b445d63833085c3cdc56ad94eda48925d816f8b"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
       "source_path": "contracts/src/libraries/token/IScrollERC721Extension.sol",
       "path_kind": "file",
       "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
@@ -899,6 +1349,21 @@
           "git_object": "14e2ce5e7d3cae3be922344dede838a21345755f",
           "git_mode": "100644",
           "sha256": "e129af1d73c0ba16644c958854755c4725a5b4b81356f77f1d510b88bb73808d"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll",
+      "repository_url": "https://github.com/scroll-tech/scroll",
+      "source_path": "contracts/src/libraries/verifier/IRollupVerifier.sol",
+      "path_kind": "file",
+      "commit": "2eb458cf4224d82fc56254e91e297a9ed261cefb",
+      "files": [
+        {
+          "path": "contracts/src/libraries/verifier/IRollupVerifier.sol",
+          "git_object": "8a43127f94b434f8601d93296a9091f07c97d379",
+          "git_mode": "100644",
+          "sha256": "1fd9771a41c33d4d68caf68acaa965d85e2c4c5529b9f4662e79260da5181dc8"
         }
       ]
     },
@@ -4648,7 +5113,7 @@
           "path": "contracts/src/libraries/verifier/ZkTrieVerifier.sol",
           "git_object": "16444c8b458cedeb09cf9f08b1650c701d78c6ae",
           "git_mode": "100644",
-          "sha256": "cebaacf45385c1b8807931cac1f560a8c4696c94153825e51cf5468185760ee7"
+          "sha256": "deee6c34175146075ab48d367081955d1247a44fea4472adb1e9902b7ae3ba6f"
         }
       ]
     },
@@ -5473,7 +5938,7 @@
           "path": "contracts/src/libraries/verifier/ZkTrieVerifier.sol",
           "git_object": "21fa3b7a5809ed44a7e3f437fc0b87762783b2a8",
           "git_mode": "100644",
-          "sha256": "f50ce98d12a7c0ff3adcc4ffda9e3110c56fc0f2d19fc61f8d61368a695dbbb8"
+          "sha256": "3d5cfaa04c828cbb634097cd55f2e192d0bd1adf3e2d802b888e9d3cbc9562c1"
         }
       ]
     },
@@ -5503,7 +5968,7 @@
           "path": "contracts/src/libraries/verifier/ZkTrieVerifier.sol",
           "git_object": "5e4f0c2d779d099bb0b93c959f9bbdb76c0de522",
           "git_mode": "100644",
-          "sha256": "6ab3f5bf3379a46ceef8112066d9434caf16303587be2323b27301c4ed02046a"
+          "sha256": "eb9f595d5e422517591f3bd7ce025de137b3b58cfd438f59b67ef877934c5514"
         }
       ]
     },
@@ -5518,7 +5983,7 @@
           "path": "contracts/src/libraries/verifier/ZkTrieVerifier.sol",
           "git_object": "aa2f13817170e4d472007c4d25e223f0d97be6af",
           "git_mode": "100644",
-          "sha256": "1bbc4b2a90bb284d4a4d2501108b59a624ff201b1112387892ef4cbb57ad4e95"
+          "sha256": "e7c6857c8affd60121aa77345ef1b7095180d0303b31e931025726995e28f472"
         }
       ]
     },
@@ -5765,6 +6230,21 @@
     {
       "repository": "scroll-tech/scroll-contracts",
       "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/IL1ScrollMessenger.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/IL1ScrollMessenger.sol",
+          "git_object": "0af440270a6026ab541bbb5e840e6f57324acec6",
+          "git_mode": "100644",
+          "sha256": "9a40ca0f9f6756efbd4861d8cdb006be3c46a6d092698c13288f0de02e0a111c"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
       "source_path": "src/L1/L1ScrollMessenger.sol",
       "path_kind": "file",
       "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
@@ -5780,6 +6260,216 @@
     {
       "repository": "scroll-tech/scroll-contracts",
       "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/gateways/L1ERC1155Gateway.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/gateways/L1ERC1155Gateway.sol",
+          "git_object": "9b0b4162031f9d14f9d9f479df13947cc476e94f",
+          "git_mode": "100644",
+          "sha256": "513ed84adc3cb83eb7bedc17391c69f620f618bcff1ab9eb4cb2169c604757bc"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/gateways/L1ERC20Gateway.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/gateways/L1ERC20Gateway.sol",
+          "git_object": "c9c5820a5a0b5cdf45889a82ded6ac01133639fe",
+          "git_mode": "100644",
+          "sha256": "280572ab1006f55c1c0841a18375bb1cba04b05abaeacfa92addc46ea552e04b"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/gateways/L1ERC721Gateway.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/gateways/L1ERC721Gateway.sol",
+          "git_object": "9055512b86f7bc6bd81e4953f66a5582c619f791",
+          "git_mode": "100644",
+          "sha256": "0d7e7f07bfbc195e11a2eee720dc88d04676966d1c7fe4e7caa8d92982a38631"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/gateways/L1ETHGateway.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/gateways/L1ETHGateway.sol",
+          "git_object": "e6e4a5a47a022894dc615a6e4a7f88d6c44459a8",
+          "git_mode": "100644",
+          "sha256": "47210a0ddc2b1294a961e8d3347575f01576e477790c5842fd68e3aa4cc6fb07"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/gateways/L1GatewayRouter.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/gateways/L1GatewayRouter.sol",
+          "git_object": "5e9f30d4a3032989248b0a99fabc60f0f72e86f5",
+          "git_mode": "100644",
+          "sha256": "e478bb01b3cfacc9ed901286d7c8bfc9d16220de722d6825fbf518111e723d6d"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/gateways/L1WETHGateway.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/gateways/L1WETHGateway.sol",
+          "git_object": "8c0f4b2213d02a15fc0bd19c062c68a4af73fcd4",
+          "git_mode": "100644",
+          "sha256": "426e4b66a830933eb265f78a512aad85829245b71b27c6877fedc85b140360ad"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/rollup/IL1MessageQueueV1.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/rollup/IL1MessageQueueV1.sol",
+          "git_object": "41c2de8e5f6dd6efb4dea3d56c773499d1cf43c0",
+          "git_mode": "100644",
+          "sha256": "c6278d211933f0f806acceebbad6e1319902aed9fa90f7d953e58a5fc056df24"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/rollup/IL1MessageQueueWithGasPriceOracle.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/rollup/IL1MessageQueueWithGasPriceOracle.sol",
+          "git_object": "88937ffd924532314937539f3916e09b7b70a5b9",
+          "git_mode": "100644",
+          "sha256": "a6bfca9f9c59be9bd1494357b68c4ae20a24aa1e014ea234a9d855ba4f5cdac5"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/rollup/IL2GasPriceOracle.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/rollup/IL2GasPriceOracle.sol",
+          "git_object": "e7da38ec3e0433b99fadaa187a4e4499d0f8d815",
+          "git_mode": "100644",
+          "sha256": "3aff45208073aee8cfdb3ccb66308ab134eb56d22b940d4b0983a8342c1e6e18"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/rollup/IScrollChain.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/rollup/IScrollChain.sol",
+          "git_object": "b22a061b7c4ebb2eda36dcd179586653981d0117",
+          "git_mode": "100644",
+          "sha256": "f63aaa548d93dbf5749150a4d9b981d61aa18554394cd6d6594625e0b3f7de56"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/rollup/L1MessageQueueV1.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/rollup/L1MessageQueueV1.sol",
+          "git_object": "dc5d8ffb5272cd2ffd7d34a55b572c101a5f6bd7",
+          "git_mode": "100644",
+          "sha256": "cbe059425b3b9f8c76f93da7e79d22651547cd7360e9417ef6572aa5f9519b54"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/rollup/L1MessageQueueV1WithGasPriceOracle.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/rollup/L1MessageQueueV1WithGasPriceOracle.sol",
+          "git_object": "b84f2bd0086c609b9443d766025b96cbe928e3bf",
+          "git_mode": "100644",
+          "sha256": "e717161d589399906b056b072dfd899dfdcd7747f7d0913c930a06545c024609"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/rollup/L1MessageQueueV2.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/rollup/L1MessageQueueV2.sol",
+          "git_object": "0b7961ec553c14547283c7e96b24c9609d6bad5c",
+          "git_mode": "100644",
+          "sha256": "ebab8ba611c28c97441d069e3d055509d5e6f8ae8cd77021a33107686c3e4cf4"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/rollup/L2GasPriceOracle.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/rollup/L2GasPriceOracle.sol",
+          "git_object": "7fe65029d892fa9652d1b2a3df4a1fda663f9d36",
+          "git_mode": "100644",
+          "sha256": "2c28152b3fbe1ca0b8a3797fba35359cef79fd0aa4885ec9f04653886b15a306"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
       "source_path": "src/L1/rollup/ScrollChain.sol",
       "path_kind": "file",
       "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
@@ -5789,6 +6479,21 @@
           "git_object": "c30c7efbfb415a498afa382458c3d837abad6517",
           "git_mode": "100644",
           "sha256": "632cf4dfc04e4ea046cfa9a5baa53fab29f4ee1b5f3edb702ab7335e7d1bffc2"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L1/system-contract/SystemConfig.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L1/system-contract/SystemConfig.sol",
+          "git_object": "2c8ce0b02797a89ced2a8ab3e74da55f03fd7af3",
+          "git_mode": "100644",
+          "sha256": "c354a17a96ed82b55278ae8d10cee3bd97f742b96f58f72aef2ffb28efc2cd95"
         }
       ]
     },
@@ -5825,6 +6530,51 @@
     {
       "repository": "scroll-tech/scroll-contracts",
       "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L2/gateways/L2ETHGateway.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L2/gateways/L2ETHGateway.sol",
+          "git_object": "695f1485bf20f6d5d93ad542e2ca046625459632",
+          "git_mode": "100644",
+          "sha256": "f58b6e1f1f627784ee9be85fee4b2fe8b0e2d4e36180e28a8f307b30106adf6f"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L2/gateways/L2WETHGateway.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L2/gateways/L2WETHGateway.sol",
+          "git_object": "593c4caeec9308b31284c167762610e2d578b801",
+          "git_mode": "100644",
+          "sha256": "702e04ce49b75bb06be7cd2773c62ddd18ae887d7585aff10476e1db1702fd8f"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L2/predeploys/IL1GasPriceOracle.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L2/predeploys/IL1GasPriceOracle.sol",
+          "git_object": "114903e0430b647018e5b81695bb20d6cf0eb11a",
+          "git_mode": "100644",
+          "sha256": "250cffb52fcd56feb924dabf09ac73c3c1cb3005fead599870c98cf852916a63"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
       "source_path": "src/L2/predeploys/L1GasPriceOracle.sol",
       "path_kind": "file",
       "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
@@ -5834,6 +6584,81 @@
           "git_object": "28a03792e8c8a262f97b21c6cd669a73d3a16cf0",
           "git_mode": "100644",
           "sha256": "e6c0bad53f8ae7109443adfbfcb2c9c9137cfc67f6235c667de74a7edc071a65"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L2/predeploys/L2TxFeeVault.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L2/predeploys/L2TxFeeVault.sol",
+          "git_object": "08cedf6dc339822d0c06ad7a17f4cb831330b965",
+          "git_mode": "100644",
+          "sha256": "5faf50ff804f49bbd9c4d47614bd49025d3fcc9cc3056b20b5d7260fadf35022"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/L2/predeploys/WrappedEther.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/L2/predeploys/WrappedEther.sol",
+          "git_object": "fa5e5c72b7f8d8a68eb8feb9047ced320918a077",
+          "git_mode": "100644",
+          "sha256": "0b049cbfd97fbc6c0be52075157f99bb5acc0b9d26ffca9d9370b9afe62c66bb"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/batch-bridge/L1BatchBridgeGateway.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/batch-bridge/L1BatchBridgeGateway.sol",
+          "git_object": "75b46b2a45c77d2293fd299423350b67d3ffbad1",
+          "git_mode": "100644",
+          "sha256": "28742f871080cb8010f1fdb28f5f821e3f09f54bbb38ffed64137c80e4c5f171"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/batch-bridge/L2BatchBridgeGateway.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/batch-bridge/L2BatchBridgeGateway.sol",
+          "git_object": "4e01e68f676c424c2961030a1b0450778cd738ed",
+          "git_mode": "100644",
+          "sha256": "b6590cb1bba2980c38d11c1041dc1477b38d5447dafbf41000e4cfc7ca51d527"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/libraries/gateway/ScrollGatewayBase.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/libraries/gateway/ScrollGatewayBase.sol",
+          "git_object": "59aa65d1e2a8ad0c02fb278e9c982ca510220957",
+          "git_mode": "100644",
+          "sha256": "305b46410d7c29fb97100c0bf0023654eed42ed4838880b9923a4c3d43d7bd7c"
         }
       ]
     },
@@ -5855,6 +6680,21 @@
     {
       "repository": "scroll-tech/scroll-contracts",
       "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/misc/IPausable.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/misc/IPausable.sol",
+          "git_object": "3e8a644c45d24d354be395bf9a87a0e8ffe315f0",
+          "git_mode": "100644",
+          "sha256": "1bab68c883dbc32bf5929ce1767075fd115757abb9b93715bd82c912896ebcd6"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
       "source_path": "src/misc/PauseController.sol",
       "path_kind": "file",
       "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
@@ -5864,6 +6704,21 @@
           "git_object": "29e3815fefb64818d9368058c72d414e64c2061b",
           "git_mode": "100644",
           "sha256": "d4668c69dd6bf3127216939ec8fe2ee50f8ba438185c7e4045963f17c096ccb4"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/misc/ScrollOwner.sol",
+      "path_kind": "file",
+      "commit": "00e2a897db429eb4bc3918d1e40b410a68fb6eac",
+      "files": [
+        {
+          "path": "src/misc/ScrollOwner.sol",
+          "git_object": "bf7f3fbe0a74652d385bbc3471dfaad70e566e70",
+          "git_mode": "100644",
+          "sha256": "27700babda645f6b386c12e5304e7a747bbcb9b1c38ecf8d0fc7c0e036f9bbdd"
         }
       ]
     },
@@ -5954,6 +6809,21 @@
           "git_object": "6dba3ffadf4d0cf125e555bb5cae1339dd393f7d",
           "git_mode": "100644",
           "sha256": "16522bc839ea5aa34db5601b0fd34ba2712f5384323bd26c1478eb0bfc2813cf"
+        }
+      ]
+    },
+    {
+      "repository": "scroll-tech/scroll-contracts",
+      "repository_url": "https://github.com/scroll-tech/scroll-contracts",
+      "source_path": "src/libraries/codec/BatchHeaderV7Codec.sol",
+      "path_kind": "file",
+      "commit": "1a44cc4cd5bb29067051f59c09dd4407511f1a3a",
+      "files": [
+        {
+          "path": "src/libraries/codec/BatchHeaderV7Codec.sol",
+          "git_object": "37ace964b51d2c12d9d29810cf6e93391252f836",
+          "git_mode": "100644",
+          "sha256": "7731e32b62ff611d4fdc102d752ca15e0bc4e2a5787dcc845939492d356618e6"
         }
       ]
     },
@@ -6509,223 +7379,6 @@
       "revision_kind": "commit",
       "revision": "912f5ed2c6cacd64a0006e868e3cb4b624acc019",
       "reason": "path kind zk is not fetched"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/IL1ScrollMessenger.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/L1ScrollMessenger.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/gateways/EnforcedTxGateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/gateways/IL1ERC1155Gateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/gateways/IL1ERC20Gateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/gateways/IL1ERC721Gateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/gateways/IL1ETHGateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/gateways/IL1GatewayRouter.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/gateways/L1CustomERC20Gateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/gateways/L1ERC1155Gateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/gateways/L1ERC20Gateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/gateways/L1ERC721Gateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/gateways/L1ETHGateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/gateways/L1GatewayRouter.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/gateways/L1StandardERC20Gateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/gateways/L1WETHGateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/rollup/IL1MessageQueue.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/rollup/L1MessageQueue.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L1/rollup/ScrollChain.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L2/IL2ScrollMessenger.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L2/L2ScrollMessenger.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L2/gateways/L2ERC1155Gateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L2/gateways/L2ERC721Gateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L2/gateways/L2ETHGateway.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/L2/predeploys/L1GasPriceOracle.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/libraries/constants/ScrollConstants.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/libraries/gateway/ScrollGatewayBase.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/libraries/token/IScrollERC1155.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/libraries/token/IScrollERC20.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/libraries/token/IScrollERC721.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
-    },
-    {
-      "repository": "scroll-tech/scroll",
-      "source_path": "contracts/src/libraries/verifier/IRollupVerifier.sol",
-      "revision_kind": "commit_range",
-      "revision": "https://github.com/scroll-tech/scroll/compare/3bc8a3f5c6ac816ddffadca41024331dcf4d3064...2eb458cf4224d82fc56254e91e297a9ed261cefb",
-      "reason": "revision is not a commit"
     },
     {
       "repository": "scroll-tech/scroll-contracts",
