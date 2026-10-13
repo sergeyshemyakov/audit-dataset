@@ -227,6 +227,12 @@
     "Uniswap/unichain-contracts": {
       "url": "https://github.com/Uniswap/unichain-contracts"
     },
+    "Uniswap/v2-core": {
+      "url": "https://github.com/Uniswap/v2-core"
+    },
+    "Uniswap/v2-periphery": {
+      "url": "https://github.com/Uniswap/v2-periphery"
+    },
     "Uniswap/v3-core": {
       "url": "https://github.com/Uniswap/v3-core"
     },

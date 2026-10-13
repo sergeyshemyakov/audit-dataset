@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.6.0",
+  "project": "uniswapv2",
+  "reports": [
+    {
+      "id": "dapp-org-uniswap-v2-2020-05",
+      "report_file": "dapp.org - Uniswap V2 Audit Report.md",
+      "title": "Uniswap V2 Audit Report",
+      "description": "dapp.org code review, numerical error analysis and K-framework formal verification (act specifications of UniswapV2Pair and UniswapV2Factory) of the Uniswap V2 core contracts in uniswap-v2-core at commit 8160750, where all core issues found during the January-April 2020 engagement were addressed, plus a cursory best-effort review of the uniswap-v2-periphery contracts (UniswapV2Router01) while they were still under development on master. Two Medium-severity bugs (a liquidity-deflation race condition in the Pair, whose fix the findings table attributes to core commit cbe801b5, and the Router's incompatibility with fee-on-transfer tokens) and one Low bug were found; no Major/Critical findings.",
+      "isRelevant": true,
+      "auditor": "dapp.org",
+      "report_date": "2020-05-06",
+      "repositories": [
+        {
+          "id": "Uniswap/v2-core",
+          "url": "https://github.com/Uniswap/v2-core"
+        },
+        {
+          "id": "Uniswap/v2-periphery",
+          "url": "https://github.com/Uniswap/v2-periphery"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "Uniswap/v2-core",
+          "paths": {
+            "contracts": {
+              "path_kind": "directory_recursive",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "816075049f811f1b061bca81d5d040b96f4c07eb",
+                    "timestamp": "2020-04-22T17:08:51Z",
+                    "url": "https://github.com/Uniswap/v2-core/tree/816075049f811f1b061bca81d5d040b96f4c07eb/contracts"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "repository": "Uniswap/v2-periphery",
+          "paths": {
+            "contracts": {
+              "path_kind": "directory_recursive",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "branch",
+                    "ref": "master",
+                    "commit": null,
+                    "timestamp": null,
+                    "immutable": false,
+                    "url": "https://github.com/Uniswap/v2-periphery/tree/master/contracts"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "schema_version": "2.0.0",
+  "collection": "uniswapv2",
+  "sources": [
+    {
+      "repository": "Uniswap/v2-core",
+      "repository_url": "https://github.com/Uniswap/v2-core",
+      "source_path": "contracts",
+      "path_kind": "directory_recursive",
+      "commit": "816075049f811f1b061bca81d5d040b96f4c07eb",
+      "files": [
+        {
+          "path": "contracts/UniswapV2ERC20.sol",
+          "git_object": "404a8beff385d50ab347b61409a35aa04ac260b0",
+          "git_mode": "100644",
+          "sha256": "44ffd6f0b42803095b1d2e1dec1373dd924f4cb417a5738cbcb6d84877782ccd"
+        },
+        {
+          "path": "contracts/UniswapV2Factory.sol",
+          "git_object": "a66ad8247b88cbd4e547b0f9dee8fceede51a358",
+          "git_mode": "100644",
+          "sha256": "21de210b2102898bec8c12392f9b37bfd79da83f1c27fa01e07218a96513e18f"
+        },
+        {
+          "path": "contracts/UniswapV2Pair.sol",
+          "git_object": "f87a1db262fba132862eae377d8cdaef74c79f97",
+          "git_mode": "100644",
+          "sha256": "bf9e2c76e0336baee4cbc2123cc3e689b60cc16cdc01d14b6d23e0719733867b"
+        },
+        {
+          "path": "contracts/interfaces/IERC20.sol",
+          "git_object": "c1e8c3e65171a323f163f28f0ba3dda901c12230",
+          "git_mode": "100644",
+          "sha256": "9e3e29f5f17c4e831fffebf3bb0265e4e233200fb596a09a87f8a79768d569f5"
+        },
+        {
+          "path": "contracts/interfaces/IUniswapV2Callee.sol",
+          "git_object": "f3910ab6ffc8731043badfcf3e2698df0d796a14",
+          "git_mode": "100644",
+          "sha256": "0ed69dd38b76687ade36c4d758b0926ab4e6ecdda2bf45086c5fd03bac601a99"
+        },
+        {
+          "path": "contracts/interfaces/IUniswapV2ERC20.sol",
+          "git_object": "871893151ebd7d2b2293df016c13f4fe250708d9",
+          "git_mode": "100644",
+          "sha256": "f49e373e6ece1a6e589de61385f98528642d4ee99e021d8d037fb1f8892e8630"
+        },
+        {
+          "path": "contracts/interfaces/IUniswapV2Factory.sol",
+          "git_object": "e73dc5916ec525341d9d10efb1773a9dc35d8ca3",
+          "git_mode": "100644",
+          "sha256": "27a7a4c07e2d877c9f7821897b81bf64ff663e16254aa43b598161b2354ec355"
+        },
+        {
+          "path": "contracts/interfaces/IUniswapV2Pair.sol",
+          "git_object": "762dd4d008025b3cec782c8a87981c749ae4d2f4",
+          "git_mode": "100644",
+          "sha256": "09f96640912333a329d35bc2470eb26bcddf734f9282d1b37fef914ec047e9a7"
+        },
+        {
+          "path": "contracts/libraries/Math.sol",
+          "git_object": "1cab10d2628630dfad34a0810f4fd56282208366",
+          "git_mode": "100644",
+          "sha256": "0b4b4ba16c336c108cbd959ba71f1136a82ba1a9f58347395037f5715a483324"
+        },
+        {
+          "path": "contracts/libraries/SafeMath.sol",
+          "git_object": "f2fbe164ffb143bc1c7116674654edd9113cbc54",
+          "git_mode": "100644",
+          "sha256": "af45f247face00cfe9b82b97ea6b69bcc81f02c625fdc90e9a60b536be036526"
+        },
+        {
+          "path": "contracts/libraries/UQ112x112.sol",
+          "git_object": "a453f72787580357fd0168c2331f1534b0c88918",
+          "git_mode": "100644",
+          "sha256": "5bf21c083956a51d604f9b98be47b7ca14ad0d9579637d5e41ef41057a910699"
+        },
+        {
+          "path": "contracts/test/ERC20.sol",
+          "git_object": "74f0777ed663d07a41e07955421cc3bfd1d5312c",
+          "git_mode": "100644",
+          "sha256": "13cf141b3e1a52bfe391710b2017e94b9176fa2cb26316737ce69ae946e0897a"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "repository": "Uniswap/v2-periphery",
+      "source_path": "contracts",
+      "revision_kind": "branch",
+      "revision": "master",
+      "reason": "revision is not a commit"
+    }
+  ],
+  "unavailable": []
+}

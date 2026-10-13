@@ -133,6 +133,10 @@
       "name": "Unichain",
       "kind": "project"
     },
+    "uniswapv2": {
+      "name": "Uniswap V2",
+      "kind": "project"
+    },
     "uniswapv3": {
       "name": "Uniswap V3",
       "kind": "project"
@@ -1601,6 +1605,15 @@
       "auditor": "Cyfrin",
       "date": "2026-08-20",
       "document": "linea/reports/2026_08-cyfrin-linea-yield-manager-audit.pdf"
+    },
+    "dapp-org-uniswap-v2-2020-05": {
+      "collections": [
+        "uniswapv2"
+      ],
+      "title": "Uniswap V2 Audit Report",
+      "auditor": "dapp.org",
+      "date": "2020-05-06",
+      "document": "uniswapv2/reports/dapp.org - Uniswap V2 Audit Report.html"
     },
     "dapphub-ecdsa-wallet-2020-11": {
       "collections": [
@@ -16335,6 +16348,29 @@
         "audits": {
           "cantina-unichain-contracts-2024-11": {
             "src": []
+          }
+        }
+      }
+    },
+    "Uniswap/v2-core": {
+      "816075049f811f1b061bca81d5d040b96f4c07eb": {
+        "timestamp": 1587575331,
+        "files": {
+          "contracts/UniswapV2ERC20.sol": "45ff1763897f",
+          "contracts/UniswapV2Factory.sol": "a61d24e44aa7",
+          "contracts/UniswapV2Pair.sol": "80d6a937b1fa",
+          "contracts/interfaces/IERC20.sol": "c31e4d7a3d99",
+          "contracts/interfaces/IUniswapV2Callee.sol": "9f14b7120df0",
+          "contracts/interfaces/IUniswapV2ERC20.sol": "cc48d54fdb1b",
+          "contracts/interfaces/IUniswapV2Factory.sol": "cfce76fbe5dc",
+          "contracts/interfaces/IUniswapV2Pair.sol": "6459515e840a",
+          "contracts/libraries/Math.sol": "ada374a3dd10",
+          "contracts/libraries/SafeMath.sol": "5f9c76532cd9",
+          "contracts/libraries/UQ112x112.sol": "73e366d021d0"
+        },
+        "audits": {
+          "dapp-org-uniswap-v2-2020-05": {
+            "contracts": []
           }
         }
       }
@@ -43676,18 +43712,64 @@
       "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9": {
         "timestamp": 1678185516,
         "files": {
+          "contracts/Safe.sol": "9c0374f85d18",
           "contracts/SafeL2.sol": "54aacdf59bff",
+          "contracts/base/Executor.sol": "91aada7d5a3e",
+          "contracts/base/FallbackManager.sol": "c7272dcae560",
+          "contracts/base/GuardManager.sol": "f8e06b79cb4f",
+          "contracts/base/ModuleManager.sol": "6db6fab4c38c",
+          "contracts/base/OwnerManager.sol": "a03b5c68f6ab",
+          "contracts/common/Enum.sol": "9ce0f5d539b7",
+          "contracts/common/NativeCurrencyPaymentFallback.sol": "5903ba1d7b26",
+          "contracts/common/SecuredTokenTransfer.sol": "b73600d05b85",
+          "contracts/common/SelfAuthorized.sol": "4e60bb9d6ba0",
+          "contracts/common/SignatureDecoder.sol": "6f478d204ff9",
+          "contracts/common/Singleton.sol": "9fafeba8c058",
+          "contracts/common/StorageAccessible.sol": "0b72714bacc7",
+          "contracts/external/SafeMath.sol": "37d4353a0de5",
           "contracts/handler/CompatibilityFallbackHandler.sol": "b234bbf123b8",
+          "contracts/handler/TokenCallbackHandler.sol": "a3fa4f8b32ad",
+          "contracts/interfaces/ERC1155TokenReceiver.sol": "16bc91daa4f9",
+          "contracts/interfaces/ERC721TokenReceiver.sol": "8a630a6d1025",
+          "contracts/interfaces/ERC777TokensRecipient.sol": "ac790c9f8d20",
+          "contracts/interfaces/IERC165.sol": "732cc02b109a",
+          "contracts/interfaces/ISignatureValidator.sol": "d2cd2e5fed06",
           "contracts/libraries/MultiSendCallOnly.sol": "d7877ddb3d4c",
+          "contracts/libraries/SafeStorage.sol": "7621fddcb5c0",
           "contracts/libraries/SignMessageLib.sol": "0b651b3b4051",
+          "contracts/proxies/IProxyCreationCallback.sol": "17ced3203ba3",
+          "contracts/proxies/SafeProxy.sol": "1e67fa067d1d",
           "contracts/proxies/SafeProxyFactory.sol": "bde03a4749a8"
         },
         "audits": {
           "ackee-safe-1-4-0": {
+            "contracts/Safe.sol": [],
             "contracts/SafeL2.sol": [],
+            "contracts/base/Executor.sol": [],
+            "contracts/base/FallbackManager.sol": [],
+            "contracts/base/GuardManager.sol": [],
+            "contracts/base/ModuleManager.sol": [],
+            "contracts/base/OwnerManager.sol": [],
+            "contracts/common/Enum.sol": [],
+            "contracts/common/NativeCurrencyPaymentFallback.sol": [],
+            "contracts/common/SecuredTokenTransfer.sol": [],
+            "contracts/common/SelfAuthorized.sol": [],
+            "contracts/common/SignatureDecoder.sol": [],
+            "contracts/common/Singleton.sol": [],
+            "contracts/common/StorageAccessible.sol": [],
+            "contracts/external/SafeMath.sol": [],
             "contracts/handler/CompatibilityFallbackHandler.sol": [],
+            "contracts/handler/TokenCallbackHandler.sol": [],
+            "contracts/interfaces/ERC1155TokenReceiver.sol": [],
+            "contracts/interfaces/ERC721TokenReceiver.sol": [],
+            "contracts/interfaces/ERC777TokensRecipient.sol": [],
+            "contracts/interfaces/IERC165.sol": [],
+            "contracts/interfaces/ISignatureValidator.sol": [],
             "contracts/libraries/MultiSendCallOnly.sol": [],
+            "contracts/libraries/SafeStorage.sol": [],
             "contracts/libraries/SignMessageLib.sol": [],
+            "contracts/proxies/IProxyCreationCallback.sol": [],
+            "contracts/proxies/SafeProxy.sol": [],
             "contracts/proxies/SafeProxyFactory.sol": []
           }
         }
@@ -43695,32 +43777,65 @@
       "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c": {
         "timestamp": 1680007752,
         "files": {
+          "contracts/Safe.sol": "668700b0b04b",
           "contracts/SafeL2.sol": "54aacdf59bff",
+          "contracts/base/Executor.sol": "1431f812a338",
+          "contracts/base/FallbackManager.sol": "62a4ee973483",
+          "contracts/base/GuardManager.sol": "d0d036bf8dba",
+          "contracts/base/ModuleManager.sol": "9c421d7aa0fb",
+          "contracts/base/OwnerManager.sol": "82fa53b0cf17",
+          "contracts/common/Enum.sol": "9ce0f5d539b7",
+          "contracts/common/NativeCurrencyPaymentFallback.sol": "5903ba1d7b26",
+          "contracts/common/SecuredTokenTransfer.sol": "e6e6b9466c58",
+          "contracts/common/SelfAuthorized.sol": "4e60bb9d6ba0",
+          "contracts/common/SignatureDecoder.sol": "6f478d204ff9",
+          "contracts/common/Singleton.sol": "9fafeba8c058",
+          "contracts/common/StorageAccessible.sol": "0b72714bacc7",
+          "contracts/external/SafeMath.sol": "37d4353a0de5",
           "contracts/handler/CompatibilityFallbackHandler.sol": "b234bbf123b8",
+          "contracts/handler/TokenCallbackHandler.sol": "a3fa4f8b32ad",
+          "contracts/interfaces/ERC1155TokenReceiver.sol": "16bc91daa4f9",
+          "contracts/interfaces/ERC721TokenReceiver.sol": "8a630a6d1025",
+          "contracts/interfaces/ERC777TokensRecipient.sol": "ac790c9f8d20",
+          "contracts/interfaces/IERC165.sol": "732cc02b109a",
+          "contracts/interfaces/ISignatureValidator.sol": "d2cd2e5fed06",
           "contracts/libraries/MultiSendCallOnly.sol": "d7877ddb3d4c",
+          "contracts/libraries/SafeStorage.sol": "7621fddcb5c0",
           "contracts/libraries/SignMessageLib.sol": "0b651b3b4051",
+          "contracts/proxies/IProxyCreationCallback.sol": "17ced3203ba3",
+          "contracts/proxies/SafeProxy.sol": "1e67fa067d1d",
           "contracts/proxies/SafeProxyFactory.sol": "bde03a4749a8"
         },
         "audits": {
           "ackee-safe-1-4-0": {
-            "contracts/SafeL2.sol": [],
-            "contracts/handler/CompatibilityFallbackHandler.sol": [],
-            "contracts/libraries/MultiSendCallOnly.sol": [],
-            "contracts/libraries/SignMessageLib.sol": [],
-            "contracts/proxies/SafeProxyFactory.sol": []
-          }
-        }
-      },
-      "e870f514ad34cd9654c72174d6d4a839e3c6639f": {
-        "timestamp": 1682516404,
-        "files": {
-          "contracts/Safe.sol": "668700b0b04b",
-          "contracts/base/ModuleManager.sol": "9c421d7aa0fb"
-        },
-        "audits": {
-          "nethermind-safe-1-3-0": {
             "contracts/Safe.sol": [],
-            "contracts/base/ModuleManager.sol": []
+            "contracts/SafeL2.sol": [],
+            "contracts/base/Executor.sol": [],
+            "contracts/base/FallbackManager.sol": [],
+            "contracts/base/GuardManager.sol": [],
+            "contracts/base/ModuleManager.sol": [],
+            "contracts/base/OwnerManager.sol": [],
+            "contracts/common/Enum.sol": [],
+            "contracts/common/NativeCurrencyPaymentFallback.sol": [],
+            "contracts/common/SecuredTokenTransfer.sol": [],
+            "contracts/common/SelfAuthorized.sol": [],
+            "contracts/common/SignatureDecoder.sol": [],
+            "contracts/common/Singleton.sol": [],
+            "contracts/common/StorageAccessible.sol": [],
+            "contracts/external/SafeMath.sol": [],
+            "contracts/handler/CompatibilityFallbackHandler.sol": [],
+            "contracts/handler/TokenCallbackHandler.sol": [],
+            "contracts/interfaces/ERC1155TokenReceiver.sol": [],
+            "contracts/interfaces/ERC721TokenReceiver.sol": [],
+            "contracts/interfaces/ERC777TokensRecipient.sol": [],
+            "contracts/interfaces/IERC165.sol": [],
+            "contracts/interfaces/ISignatureValidator.sol": [],
+            "contracts/libraries/MultiSendCallOnly.sol": [],
+            "contracts/libraries/SafeStorage.sol": [],
+            "contracts/libraries/SignMessageLib.sol": [],
+            "contracts/proxies/IProxyCreationCallback.sol": [],
+            "contracts/proxies/SafeProxy.sol": [],
+            "contracts/proxies/SafeProxyFactory.sol": []
           }
         }
       },
@@ -43771,12 +43886,6 @@
           "contracts/common/SignatureDecoder.sol": "7ef02c80d744",
           "contracts/common/Singleton.sol": "9fafeba8c058",
           "contracts/common/StorageAccessible.sol": "9b4e6a9c38e0",
-          "contracts/examples/guards/BaseGuard.sol": "12195b5a3251",
-          "contracts/examples/guards/DebugTransactionGuard.sol": "bd96544df97d",
-          "contracts/examples/guards/DelegateCallTransactionGuard.sol": "8fb917469c30",
-          "contracts/examples/guards/OnlyOwnersGuard.sol": "c2f7be4da680",
-          "contracts/examples/guards/ReentrancyTransactionGuard.sol": "c779a1764145",
-          "contracts/examples/libraries/Migrate_1_3_0_to_1_2_0.sol": "aae193b9f779",
           "contracts/external/SafeMath.sol": "f3b8944f25b1",
           "contracts/handler/CompatibilityFallbackHandler.sol": "2ee38423b381",
           "contracts/handler/ExtensibleFallbackHandler.sol": "7a460737063a",
@@ -43788,17 +43897,6 @@
           "contracts/handler/extensible/MarshalLib.sol": "b55436e7aa92",
           "contracts/handler/extensible/SignatureVerifierMuxer.sol": "994275a8180d",
           "contracts/handler/extensible/TokenCallbacks.sol": "d4b86290fa3e",
-          "contracts/interfaces/ERC1155TokenReceiver.sol": "16bc91daa4f9",
-          "contracts/interfaces/ERC721TokenReceiver.sol": "8a630a6d1025",
-          "contracts/interfaces/ERC777TokensRecipient.sol": "ac790c9f8d20",
-          "contracts/interfaces/IERC165.sol": "732cc02b109a",
-          "contracts/interfaces/IFallbackManager.sol": "45b626d87e2f",
-          "contracts/interfaces/IGuardManager.sol": "f5f12542408f",
-          "contracts/interfaces/IModuleManager.sol": "a90b143934dc",
-          "contracts/interfaces/IOwnerManager.sol": "7737e794dd8d",
-          "contracts/interfaces/ISafe.sol": "3fe622502863",
-          "contracts/interfaces/ISignatureValidator.sol": "6ee2d6a0b428",
-          "contracts/interfaces/ViewStorageAccessible.sol": "3c23a523cff6",
           "contracts/libraries/CreateCall.sol": "92e7cf993927",
           "contracts/libraries/Enum.sol": "0acd2cf2ad54",
           "contracts/libraries/ErrorMessage.sol": "26358c83bb22",
@@ -43809,13 +43907,48 @@
           "contracts/libraries/SafeToL2Migration.sol": "3c8e4944b76f",
           "contracts/libraries/SafeToL2Setup.sol": "0dc5f12265d9",
           "contracts/libraries/SignMessageLib.sol": "6061c64f3dd9",
-          "contracts/proxies/IProxyCreationCallback.sol": "86f95fc68dd9",
           "contracts/proxies/SafeProxy.sol": "7b58ef334575",
           "contracts/proxies/SafeProxyFactory.sol": "3577a1655e95"
         },
         "audits": {
           "certora-safe-1-5-0": {
-            "contracts": []
+            "contracts/Safe.sol": [],
+            "contracts/SafeL2.sol": [],
+            "contracts/accessors/SimulateTxAccessor.sol": [],
+            "contracts/base/Executor.sol": [],
+            "contracts/base/FallbackManager.sol": [],
+            "contracts/base/GuardManager.sol": [],
+            "contracts/base/ModuleManager.sol": [],
+            "contracts/base/OwnerManager.sol": [],
+            "contracts/common/NativeCurrencyPaymentFallback.sol": [],
+            "contracts/common/SecuredTokenTransfer.sol": [],
+            "contracts/common/SelfAuthorized.sol": [],
+            "contracts/common/SignatureDecoder.sol": [],
+            "contracts/common/Singleton.sol": [],
+            "contracts/common/StorageAccessible.sol": [],
+            "contracts/external/SafeMath.sol": [],
+            "contracts/handler/CompatibilityFallbackHandler.sol": [],
+            "contracts/handler/ExtensibleFallbackHandler.sol": [],
+            "contracts/handler/HandlerContext.sol": [],
+            "contracts/handler/TokenCallbackHandler.sol": [],
+            "contracts/handler/extensible/ERC165Handler.sol": [],
+            "contracts/handler/extensible/ExtensibleBase.sol": [],
+            "contracts/handler/extensible/FallbackHandler.sol": [],
+            "contracts/handler/extensible/MarshalLib.sol": [],
+            "contracts/handler/extensible/SignatureVerifierMuxer.sol": [],
+            "contracts/handler/extensible/TokenCallbacks.sol": [],
+            "contracts/libraries/CreateCall.sol": [],
+            "contracts/libraries/Enum.sol": [],
+            "contracts/libraries/ErrorMessage.sol": [],
+            "contracts/libraries/MultiSend.sol": [],
+            "contracts/libraries/MultiSendCallOnly.sol": [],
+            "contracts/libraries/SafeMigration.sol": [],
+            "contracts/libraries/SafeStorage.sol": [],
+            "contracts/libraries/SafeToL2Migration.sol": [],
+            "contracts/libraries/SafeToL2Setup.sol": [],
+            "contracts/libraries/SignMessageLib.sol": [],
+            "contracts/proxies/SafeProxy.sol": [],
+            "contracts/proxies/SafeProxyFactory.sol": []
           }
         }
       },
@@ -43836,12 +43969,6 @@
           "contracts/common/SignatureDecoder.sol": "7ef02c80d744",
           "contracts/common/Singleton.sol": "9fafeba8c058",
           "contracts/common/StorageAccessible.sol": "d4081e96f6c5",
-          "contracts/examples/guards/BaseGuard.sol": "12195b5a3251",
-          "contracts/examples/guards/DebugTransactionGuard.sol": "bd96544df97d",
-          "contracts/examples/guards/DelegateCallTransactionGuard.sol": "8fb917469c30",
-          "contracts/examples/guards/OnlyOwnersGuard.sol": "c2f7be4da680",
-          "contracts/examples/guards/ReentrancyTransactionGuard.sol": "c779a1764145",
-          "contracts/examples/libraries/Migrate_1_3_0_to_1_2_0.sol": "aae193b9f779",
           "contracts/external/SafeMath.sol": "f3b8944f25b1",
           "contracts/handler/CompatibilityFallbackHandler.sol": "2ee38423b381",
           "contracts/handler/ExtensibleFallbackHandler.sol": "d85ea6ba5ed5",
@@ -43853,17 +43980,6 @@
           "contracts/handler/extensible/MarshalLib.sol": "82b04139449b",
           "contracts/handler/extensible/SignatureVerifierMuxer.sol": "f64c5594bd91",
           "contracts/handler/extensible/TokenCallbacks.sol": "d4b86290fa3e",
-          "contracts/interfaces/ERC1155TokenReceiver.sol": "16bc91daa4f9",
-          "contracts/interfaces/ERC721TokenReceiver.sol": "8a630a6d1025",
-          "contracts/interfaces/ERC777TokensRecipient.sol": "ac790c9f8d20",
-          "contracts/interfaces/IERC165.sol": "732cc02b109a",
-          "contracts/interfaces/IFallbackManager.sol": "5e696465e640",
-          "contracts/interfaces/IGuardManager.sol": "f5f12542408f",
-          "contracts/interfaces/IModuleManager.sol": "a90b143934dc",
-          "contracts/interfaces/IOwnerManager.sol": "7737e794dd8d",
-          "contracts/interfaces/ISafe.sol": "3fe622502863",
-          "contracts/interfaces/ISignatureValidator.sol": "6ee2d6a0b428",
-          "contracts/interfaces/ViewStorageAccessible.sol": "3c23a523cff6",
           "contracts/libraries/CreateCall.sol": "dc1b664d41ac",
           "contracts/libraries/Enum.sol": "0acd2cf2ad54",
           "contracts/libraries/ErrorMessage.sol": "26358c83bb22",
@@ -43874,13 +43990,48 @@
           "contracts/libraries/SafeToL2Migration.sol": "85f9ed09154b",
           "contracts/libraries/SafeToL2Setup.sol": "0dc5f12265d9",
           "contracts/libraries/SignMessageLib.sol": "6061c64f3dd9",
-          "contracts/proxies/IProxyCreationCallback.sol": "86f95fc68dd9",
           "contracts/proxies/SafeProxy.sol": "428cc5ce6a43",
           "contracts/proxies/SafeProxyFactory.sol": "4a682bb093ff"
         },
         "audits": {
           "certora-safe-1-5-0": {
-            "contracts": []
+            "contracts/Safe.sol": [],
+            "contracts/SafeL2.sol": [],
+            "contracts/accessors/SimulateTxAccessor.sol": [],
+            "contracts/base/Executor.sol": [],
+            "contracts/base/FallbackManager.sol": [],
+            "contracts/base/GuardManager.sol": [],
+            "contracts/base/ModuleManager.sol": [],
+            "contracts/base/OwnerManager.sol": [],
+            "contracts/common/NativeCurrencyPaymentFallback.sol": [],
+            "contracts/common/SecuredTokenTransfer.sol": [],
+            "contracts/common/SelfAuthorized.sol": [],
+            "contracts/common/SignatureDecoder.sol": [],
+            "contracts/common/Singleton.sol": [],
+            "contracts/common/StorageAccessible.sol": [],
+            "contracts/external/SafeMath.sol": [],
+            "contracts/handler/CompatibilityFallbackHandler.sol": [],
+            "contracts/handler/ExtensibleFallbackHandler.sol": [],
+            "contracts/handler/HandlerContext.sol": [],
+            "contracts/handler/TokenCallbackHandler.sol": [],
+            "contracts/handler/extensible/ERC165Handler.sol": [],
+            "contracts/handler/extensible/ExtensibleBase.sol": [],
+            "contracts/handler/extensible/FallbackHandler.sol": [],
+            "contracts/handler/extensible/MarshalLib.sol": [],
+            "contracts/handler/extensible/SignatureVerifierMuxer.sol": [],
+            "contracts/handler/extensible/TokenCallbacks.sol": [],
+            "contracts/libraries/CreateCall.sol": [],
+            "contracts/libraries/Enum.sol": [],
+            "contracts/libraries/ErrorMessage.sol": [],
+            "contracts/libraries/MultiSend.sol": [],
+            "contracts/libraries/MultiSendCallOnly.sol": [],
+            "contracts/libraries/SafeMigration.sol": [],
+            "contracts/libraries/SafeStorage.sol": [],
+            "contracts/libraries/SafeToL2Migration.sol": [],
+            "contracts/libraries/SafeToL2Setup.sol": [],
+            "contracts/libraries/SignMessageLib.sol": [],
+            "contracts/proxies/SafeProxy.sol": [],
+            "contracts/proxies/SafeProxyFactory.sol": []
           }
         }
       },
@@ -43960,12 +44111,6 @@
           "contracts/common/SignatureDecoder.sol": "7ef02c80d744",
           "contracts/common/Singleton.sol": "9fafeba8c058",
           "contracts/common/StorageAccessible.sol": "581876131478",
-          "contracts/examples/guards/BaseGuard.sol": "12195b5a3251",
-          "contracts/examples/guards/DebugTransactionGuard.sol": "bd96544df97d",
-          "contracts/examples/guards/DelegateCallTransactionGuard.sol": "8fb917469c30",
-          "contracts/examples/guards/OnlyOwnersGuard.sol": "076de9287b5e",
-          "contracts/examples/guards/ReentrancyTransactionGuard.sol": "c779a1764145",
-          "contracts/examples/libraries/Migrate_1_3_0_to_1_2_0.sol": "aae193b9f779",
           "contracts/external/SafeMath.sol": "f3b8944f25b1",
           "contracts/handler/CompatibilityFallbackHandler.sol": "7822b07bd7a0",
           "contracts/handler/ExtensibleFallbackHandler.sol": "d85ea6ba5ed5",
@@ -44006,17 +44151,6 @@
         "audits": {
           "ackee-safe-1-5-0": {
             "contracts": []
-          }
-        }
-      },
-      "77901a5a1ad835b74ad3b72f73a8412cfe491c57": {
-        "timestamp": 1780642927,
-        "files": {
-          "contracts/Safe.sol": "9f1f6f545664"
-        },
-        "audits": {
-          "certora-safe-1-3-0": {
-            "contracts/Safe.sol": []
           }
         }
       }

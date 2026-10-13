@@ -2368,21 +2368,6 @@
                   "status": "audited_with_no_major_findings"
                 }
               ]
-            },
-            "contracts/Safe.sol": {
-              "path_kind": "file",
-              "kind": "evm",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "77901a5a1ad835b74ad3b72f73a8412cfe491c57",
-                    "timestamp": "2026-06-05T07:02:07Z",
-                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/77901a5a1ad835b74ad3b72f73a8412cfe491c57"
-                  },
-                  "status": "partially_audited_without_major_findings"
-                }
-              ]
             }
           }
         }
@@ -2508,16 +2493,6 @@
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/767ef36bba88bdbc0c9fe3708a4290cabef4c376"
                   },
                   "status": "audited_with_no_major_findings"
-                },
-                {
-                  "revision": {
-                    "kind": "tag",
-                    "tag": "v1.4.0",
-                    "commit": "e870f514ad34cd9654c72174d6d4a839e3c6639f",
-                    "timestamp": "2023-04-26T13:40:04Z",
-                    "url": "https://github.com/safe-fndn/safe-smart-account/tree/v1.4.0"
-                  },
-                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -2820,22 +2795,6 @@
                   "status": "audited_with_no_major_findings"
                 }
               ]
-            },
-            "contracts/Safe.sol": {
-              "path_kind": "file",
-              "kind": "evm",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "tag",
-                    "tag": "v1.4.0",
-                    "commit": "e870f514ad34cd9654c72174d6d4a839e3c6639f",
-                    "timestamp": "2023-04-26T13:40:04Z",
-                    "url": "https://github.com/safe-fndn/safe-smart-account/tree/v1.4.0"
-                  },
-                  "status": "partially_audited_without_major_findings"
-                }
-              ]
             }
           }
         }
@@ -2859,6 +2818,30 @@
         {
           "repository": "safe-fndn/safe-smart-account",
           "paths": {
+            "contracts/Safe.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
             "contracts/SafeL2.sol": {
               "path_kind": "file",
               "kind": "evm",
@@ -2883,7 +2866,295 @@
                 }
               ]
             },
-            "contracts/proxies/SafeProxyFactory.sol": {
+            "contracts/base/Executor.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/base/FallbackManager.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/base/GuardManager.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/base/ModuleManager.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/base/OwnerManager.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/common/Enum.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/common/NativeCurrencyPaymentFallback.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/common/SecuredTokenTransfer.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/common/SelfAuthorized.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/common/SignatureDecoder.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/common/Singleton.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/common/StorageAccessible.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/external/SafeMath.sol": {
               "path_kind": "file",
               "kind": "evm",
               "versions": [
@@ -2931,6 +3202,150 @@
                 }
               ]
             },
+            "contracts/handler/TokenCallbackHandler.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/interfaces/ERC1155TokenReceiver.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/interfaces/ERC721TokenReceiver.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/interfaces/ERC777TokensRecipient.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/interfaces/IERC165.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/interfaces/ISignatureValidator.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
             "contracts/libraries/MultiSendCallOnly.sol": {
               "path_kind": "file",
               "kind": "evm",
@@ -2955,7 +3370,103 @@
                 }
               ]
             },
+            "contracts/libraries/SafeStorage.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
             "contracts/libraries/SignMessageLib.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/proxies/IProxyCreationCallback.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/proxies/SafeProxy.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9",
+                    "timestamp": "2023-03-07T10:38:36Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/eb93dbb0f62e2dc1b308ac4c110038062df0a8c9"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c",
+                    "timestamp": "2023-03-28T12:49:12Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/cb4b2b19b3e336b8defd3b8c9e0e6a2ae130598c"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/proxies/SafeProxyFactory.sol": {
               "path_kind": "file",
               "kind": "evm",
               "versions": [
@@ -3037,6 +3548,15 @@
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/b115c4c5fe23dca6aefeeccc73d312ddd23322c2"
                   },
                   "status": "not_audited"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5d26505388e9ee014ad9ac497aa48e3a13426eb1",
+                    "timestamp": "2025-05-27T08:38:40Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/5d26505388e9ee014ad9ac497aa48e3a13426eb1"
+                  },
+                  "status": "not_audited"
                 }
               ]
             },
@@ -3050,6 +3570,15 @@
                     "commit": "b115c4c5fe23dca6aefeeccc73d312ddd23322c2",
                     "timestamp": "2025-04-29T07:52:39Z",
                     "url": "https://github.com/safe-fndn/safe-smart-account/commit/b115c4c5fe23dca6aefeeccc73d312ddd23322c2"
+                  },
+                  "status": "not_audited"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "5d26505388e9ee014ad9ac497aa48e3a13426eb1",
+                    "timestamp": "2025-05-27T08:38:40Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/5d26505388e9ee014ad9ac497aa48e3a13426eb1"
                   },
                   "status": "not_audited"
                 }
@@ -3244,8 +3773,872 @@
         {
           "repository": "safe-fndn/safe-smart-account",
           "paths": {
-            "contracts": {
-              "path_kind": "directory_recursive",
+            "contracts/Safe.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/SafeL2.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/accessors/SimulateTxAccessor.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/base/Executor.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/base/FallbackManager.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/base/GuardManager.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/base/ModuleManager.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/base/OwnerManager.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/common/NativeCurrencyPaymentFallback.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/common/SecuredTokenTransfer.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/common/SelfAuthorized.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/common/SignatureDecoder.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/common/Singleton.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/common/StorageAccessible.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/external/SafeMath.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/handler/CompatibilityFallbackHandler.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/handler/ExtensibleFallbackHandler.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/handler/HandlerContext.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/handler/TokenCallbackHandler.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/handler/extensible/ERC165Handler.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/handler/extensible/ExtensibleBase.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/handler/extensible/FallbackHandler.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/handler/extensible/MarshalLib.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/handler/extensible/SignatureVerifierMuxer.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/handler/extensible/TokenCallbacks.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/libraries/CreateCall.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/libraries/Enum.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/libraries/ErrorMessage.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/libraries/MultiSend.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/libraries/MultiSendCallOnly.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/libraries/SafeMigration.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/libraries/SafeStorage.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/libraries/SafeToL2Migration.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/libraries/SafeToL2Setup.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/libraries/SignMessageLib.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/proxies/SafeProxy.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "834e798aa51291cccaf0594921194928716e9892",
+                    "timestamp": "2024-12-14T09:14:39Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/834e798aa51291cccaf0594921194928716e9892"
+                  },
+                  "status": "audited_with_no_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "1c8b24a0a438e8c2cd089a9d830d1688a47a28d5",
+                    "timestamp": "2025-01-23T10:52:17Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/1c8b24a0a438e8c2cd089a9d830d1688a47a28d5"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "contracts/proxies/SafeProxyFactory.sol": {
+              "path_kind": "file",
               "kind": "evm",
               "versions": [
                 {

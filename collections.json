@@ -32,6 +32,7 @@
   "tornado-cash": "Tornado Cash",
   "umbra": "Umbra Cash",
   "unichain": "Unichain",
+  "uniswapv2": "Uniswap V2",
   "uniswapv3": "Uniswap V3",
   "zksync2": "ZKsync Era"
 }
