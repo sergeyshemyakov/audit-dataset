@@ -11,7 +11,7 @@ from pathlib import PurePosixPath
 from typing import Any
 
 from .collections import Collection
-from .summary import SummaryError, commit_timestamps, read_summary, revision_timestamps
+from .summary import IMPORTS_VALUES, SummaryError, commit_timestamps, read_summary, revision_timestamps
 
 RevisionKey = tuple[str, ...]
 CommitDates = dict[tuple[str, str], date]
@@ -20,6 +20,13 @@ MONTHS = (
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December",
 )
+
+
+IMPORTS_LABELS = {
+    "audited_unless_excluded": "audited, except the not_audited paths",
+    "not_audited": "not audited",
+}
+assert IMPORTS_LABELS.keys() == IMPORTS_VALUES
 
 
 def render_collection(collection: Collection) -> None:
@@ -64,6 +71,8 @@ def render_report(
     if report["report_date"]:
         details.append(f"Date: {html.escape(report['report_date'])}")
     details.append(f"Description: {html.escape(report['description'].strip())}")
+    if "imports" in report:
+        details.append(f"Imports of fully audited files: {IMPORTS_LABELS[report['imports']]}")
     lines.extend(f"- {detail}" for detail in details)
     lines.append("")
     if not include_sources:

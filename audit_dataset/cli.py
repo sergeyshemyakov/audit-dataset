@@ -68,7 +68,14 @@ def build_parser() -> argparse.ArgumentParser:
 
     sub = commands.add_parser("export", help="regenerate audit-index.json and audit-objects.json.zst")
     sub.add_argument("--check", action="store_true", help="verify the committed export, write nothing")
+    sub.add_argument("--output-dir", type=Path,
+                     help="write both files here instead of the dataset root, e.g. for a candidate")
     sub.set_defaults(handler=command_export)
+
+    sub = commands.add_parser("imports", help="explain the import expansion of a fetched collection")
+    sub.add_argument("collection", metavar="COLLECTION")
+    sub.add_argument("--report", help="only this report id")
+    sub.set_defaults(handler=command_imports)
 
     sub = commands.add_parser("pipeline", help="render, fetch, format, index, repositories and export")
     sub.add_argument("collection", metavar="COLLECTION")
@@ -160,7 +167,19 @@ def command_repositories(root: Path, args: argparse.Namespace) -> int:
 def command_export(root: Path, args: argparse.Namespace) -> int:
     from .export import export_dataset
 
-    return export_dataset(root, check=args.check)
+    return export_dataset(root, check=args.check, output=args.output_dir)
+
+
+def command_imports(root: Path, args: argparse.Namespace) -> int:
+    from .imports import explain, graph_from_manifest
+    from .manifest import read_manifest
+    from .summary import read_summary
+
+    collection = resolve(root, args.collection)
+    graph = graph_from_manifest(read_manifest(collection))
+    for line in explain(read_summary(collection), graph, args.report):
+        print(line)
+    return 0
 
 
 def command_pipeline(root: Path, args: argparse.Namespace) -> int:
