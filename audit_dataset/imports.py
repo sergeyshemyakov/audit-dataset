@@ -38,7 +38,11 @@ PROJECT_CONFIG_NAMES = (
 RESOLUTION_CONFIG_NAMES = ("foundry.toml", "remappings.txt")
 FOUNDRY_DEFAULT_LIBRARIES = ("lib",)
 DEPENDENCY_SEGMENTS = {"node_modules", ".deps"}
-VENDORED_SEGMENTS = {"vendor", "vendored", "thirdparty", "third_party", "dependencies"}
+VENDORED_SEGMENTS = {
+    "vendor", "vendored", "thirdparty", "third_party", "dependencies",
+    # copies of libraries that have their own collections under _libs/
+    "openzeppelin", "@openzeppelin", "openzeppelin-contracts", "openzeppelin-upgradeable", "solady", "solmate",
+}
 
 
 @dataclass(frozen=True)
