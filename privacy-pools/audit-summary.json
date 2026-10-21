@@ -8,6 +8,7 @@
       "title": "Privacy Pools Smart Contracts Security Audit Report (Privacy Pools v1)",
       "description": "Security audit by Oxorio of the Privacy Pools v1 onchain contracts and the proof-of-innocence membership circuit. Covers the ETH and ERC20 pools, the Merkle tree with history, and the circuit's constraint soundness.",
       "isRelevant": true,
+      "imports": "audited_unless_excluded",
       "auditor": "Oxorio",
       "report_date": "2024-05-24",
       "repositories": [
@@ -20,41 +21,6 @@
         {
           "repository": "ProofOfInnocence/privacy-pools-v1",
           "paths": {
-            "contracts/PrivacyPool.sol": {
-              "path_kind": "file",
-              "kind": "evm",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "e221f0b88e52fb5c214726e765997ef4067793a9",
-                    "timestamp": "2024-02-05T15:27:29Z",
-                    "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/contracts/PrivacyPool.sol"
-                  },
-                  "status": "audited_with_major_findings",
-                  "major_finding_ids": [
-                    "C-03",
-                    "C-04",
-                    "C-10",
-                    "M-02"
-                  ]
-                },
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "8ab7132877325e27b22053e974b3310d70b860b5",
-                    "timestamp": "2024-04-13T11:14:27Z",
-                    "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/PrivacyPool.sol"
-                  },
-                  "status": "audited_with_major_findings",
-                  "major_finding_ids": [
-                    "C-03",
-                    "C-10",
-                    "M-02"
-                  ]
-                }
-              ]
-            },
             "contracts/ERC20PrivacyPool.sol": {
               "path_kind": "file",
               "kind": "evm",
@@ -80,7 +46,7 @@
                     "timestamp": "2024-04-13T11:14:27Z",
                     "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/ERC20PrivacyPool.sol"
                   },
-                  "status": "audited_with_major_findings",
+                  "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
                     "C-10",
                     "M-03",
@@ -112,7 +78,7 @@
                     "timestamp": "2024-04-13T11:14:27Z",
                     "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/ETHPrivacyPool.sol"
                   },
-                  "status": "audited_with_major_findings",
+                  "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
                     "C-10"
                   ]
@@ -142,9 +108,44 @@
                     "timestamp": "2024-04-13T11:14:27Z",
                     "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/MerkleTreeWithHistory.sol"
                   },
-                  "status": "audited_with_major_findings",
+                  "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
                     "C-03"
+                  ]
+                }
+              ]
+            },
+            "contracts/PrivacyPool.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "e221f0b88e52fb5c214726e765997ef4067793a9",
+                    "timestamp": "2024-02-05T15:27:29Z",
+                    "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/contracts/PrivacyPool.sol"
+                  },
+                  "status": "audited_with_major_findings",
+                  "major_finding_ids": [
+                    "C-03",
+                    "C-04",
+                    "C-10",
+                    "M-02"
+                  ]
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "8ab7132877325e27b22053e974b3310d70b860b5",
+                    "timestamp": "2024-04-13T11:14:27Z",
+                    "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/PrivacyPool.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "major_finding_ids": [
+                    "C-03",
+                    "C-10",
+                    "M-02"
                   ]
                 }
               ]
@@ -180,7 +181,7 @@
                     "timestamp": "2024-04-13T11:14:27Z",
                     "url": "https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/membership-proof/circuits/proofOfInnocence.circom"
                   },
-                  "status": "audited_with_major_findings",
+                  "status": "partially_audited_with_major_findings",
                   "major_finding_ids": [
                     "C-05"
                   ]
@@ -291,6 +292,7 @@
       "title": "Privacy Pools Core Audit Report",
       "description": "Security review by Auditware of the Privacy Pools core contracts that provide public deposits and private partial withdrawals gated by ASP membership proofs. Covers Entrypoint, PrivacyPool, State, the simple and complex pool implementations, and the shared libraries.",
       "isRelevant": true,
+      "imports": "not_audited",
       "auditor": "Auditware",
       "report_date": null,
       "repositories": [
@@ -445,6 +447,7 @@
       "title": "Privacy Pools Smart Contracts Audit Report",
       "description": "Smart contract security audit by Oxorio of the seven Privacy Pools core contracts. Covers the Entrypoint, PrivacyPool and State logic plus the pool implementations and libraries, including a fix review of the final commit.",
       "isRelevant": true,
+      "imports": "audited_unless_excluded",
       "auditor": "Oxorio",
       "report_date": "2025-03-18",
       "repositories": [
@@ -653,6 +656,7 @@
       "title": "Privacy Pools Smart Contracts Audit Report (Entrypoint precommitment upgrade)",
       "description": "Oxorio audit of the precommitment pull request changes to the Privacy Pools Entrypoint contract and its interface. Scoped to the two modified contracts rather than the whole protocol.",
       "isRelevant": true,
+      "imports": "audited_unless_excluded",
       "auditor": "Oxorio",
       "report_date": "2025-05-20",
       "repositories": [
@@ -676,7 +680,7 @@
                     "timestamp": "2025-05-19T17:53:50Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/238e3594053becde68aa40e1e4cef6c0c46e68da/packages/contracts/src/contracts/Entrypoint.sol"
                   },
-                  "status": "audited_with_no_major_findings"
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             },
@@ -691,7 +695,7 @@
                     "timestamp": "2025-05-19T17:53:50Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/238e3594053becde68aa40e1e4cef6c0c46e68da/packages/contracts/src/interfaces/IEntrypoint.sol"
                   },
-                  "status": "audited_with_no_major_findings"
+                  "status": "partially_audited_without_major_findings"
                 }
               ]
             }
@@ -705,6 +709,7 @@
       "title": "Privacy Pools Batch Relayer Audit Report",
       "description": "Auditware security review of the Privacy Pools BatchRelayer contract, which enables atomic batch withdrawals from privacy pools. Covers the implementation, its interface and the deployment script.",
       "isRelevant": true,
+      "imports": "audited_unless_excluded",
       "auditor": "Auditware",
       "report_date": null,
       "repositories": [
@@ -717,6 +722,21 @@
         {
           "repository": "0xbow-io/privacy-pools-core",
           "paths": {
+            "packages/contracts/script/BatchRelayer.s.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "2f6a650b4cbc7872e163a70c56cdc977fe7839b4",
+                    "timestamp": "2025-08-11T21:59:47Z",
+                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2f6a650b4cbc7872e163a70c56cdc977fe7839b4/packages/contracts/script/BatchRelayer.s.sol"
+                  },
+                  "status": "audited_with_no_major_findings"
+                }
+              ]
+            },
             "packages/contracts/src/contracts/BatchRelayer.sol": {
               "path_kind": "file",
               "kind": "evm",
@@ -745,21 +765,6 @@
                     "commit": "2f6a650b4cbc7872e163a70c56cdc977fe7839b4",
                     "timestamp": "2025-08-11T21:59:47Z",
                     "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2f6a650b4cbc7872e163a70c56cdc977fe7839b4/packages/contracts/src/interfaces/IBatchRelayer.sol"
-                  },
-                  "status": "audited_with_no_major_findings"
-                }
-              ]
-            },
-            "packages/contracts/script/BatchRelayer.s.sol": {
-              "path_kind": "file",
-              "kind": "evm",
-              "versions": [
-                {
-                  "revision": {
-                    "kind": "commit",
-                    "commit": "2f6a650b4cbc7872e163a70c56cdc977fe7839b4",
-                    "timestamp": "2025-08-11T21:59:47Z",
-                    "url": "https://github.com/0xbow-io/privacy-pools-core/blob/2f6a650b4cbc7872e163a70c56cdc977fe7839b4/packages/contracts/script/BatchRelayer.s.sol"
                   },
                   "status": "audited_with_no_major_findings"
                 }

@@ -9,12 +9,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Trail of Bits
 - Date: 2020-10-30
 - Description: Trail of Bits whitebox assessment of the OVM Solidity contracts in the contracts-v2 repository, focused on the Merkle/RLP/trie libraries, OVM_SafetyChecker, the Canonical Transaction Chain, State Commitment Chain, Fraud Verifier and State Transitioner, plus access controls and arithmetic. The execution manager, bond manager, L2 precompiles, compiler fork and offchain components were out of scope.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/contracts-v2"><code>ethereum-optimism/contracts-v2</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"><code>f6f5f3a63bc99b4e9ab26b51db7206d22213c406</code></a> | October 20, 2020 | <code>contracts/optimistic-ethereum/libraries/utils/Lib_MerkleUtils.sol</code><br><code>contracts/optimistic-ethereum/libraries/rlp/Lib_RLPReader.sol</code><br><code>contracts/optimistic-ethereum/libraries/rlp/Lib_RLPWriter.sol</code><br><code>contracts/optimistic-ethereum/libraries/trie/Lib_MerkleTrie.sol</code><br><code>contracts/optimistic-ethereum/libraries/trie/Lib_SecureMerkleTrie.sol</code><br><code>contracts/optimistic-ethereum/libraries/resolver/Lib_AddressManager.sol</code><br><code>contracts/optimistic-ethereum/libraries/utils/Lib_RingBuffer.sol</code><br><code>contracts/optimistic-ethereum/OVM/execution/OVM_SafetyChecker.sol</code><br><code>contracts/optimistic-ethereum/OVM/chain/OVM_CanonicalTransactionChain.sol</code><br><code>contracts/optimistic-ethereum/OVM/chain/OVM_StateCommitmentChain.sol</code><br><code>contracts/optimistic-ethereum/OVM/verification/OVM_FraudVerifier.sol</code><br><code>contracts/optimistic-ethereum/OVM/verification/OVM_StateTransitioner.sol</code><br><code>contracts/optimistic-ethereum/OVM/verification/OVM_StateTransitionerFactory.sol</code><br><code>contracts/optimistic-ethereum/OVM/bridge/OVM_BaseCrossDomainMessenger.sol</code><br><code>contracts/optimistic-ethereum/OVM/bridge/OVM_L1CrossDomainMessenger.sol</code><br><code>contracts/optimistic-ethereum/OVM/bridge/OVM_L2CrossDomainMessenger.sol</code><br><code>contracts/optimistic-ethereum/OVM/execution/OVM_ExecutionManager.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/execution/OVM_StateManager.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/verification/OVM_BondManager.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/precompiles</code> (recursive directory) (explicitly not audited) |
+| <a href="https://github.com/ethereum-optimism/contracts-v2/commit/f6f5f3a63bc99b4e9ab26b51db7206d22213c406"><code>f6f5f3a63bc99b4e9ab26b51db7206d22213c406</code></a> | October 20, 2020 | <code>contracts/optimistic-ethereum/OVM/bridge/OVM_BaseCrossDomainMessenger.sol</code><br><code>contracts/optimistic-ethereum/OVM/bridge/OVM_L1CrossDomainMessenger.sol</code><br><code>contracts/optimistic-ethereum/OVM/bridge/OVM_L2CrossDomainMessenger.sol</code><br><code>contracts/optimistic-ethereum/OVM/chain/OVM_CanonicalTransactionChain.sol</code><br><code>contracts/optimistic-ethereum/OVM/chain/OVM_StateCommitmentChain.sol</code><br><code>contracts/optimistic-ethereum/OVM/execution/OVM_ExecutionManager.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/execution/OVM_SafetyChecker.sol</code><br><code>contracts/optimistic-ethereum/OVM/execution/OVM_StateManager.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/precompiles</code> (recursive directory) (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/verification/OVM_BondManager.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/verification/OVM_FraudVerifier.sol</code><br><code>contracts/optimistic-ethereum/OVM/verification/OVM_StateTransitioner.sol</code><br><code>contracts/optimistic-ethereum/OVM/verification/OVM_StateTransitionerFactory.sol</code><br><code>contracts/optimistic-ethereum/iOVM/execution/iOVM_ExecutionManager.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/iOVM/execution/iOVM_StateManager.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/iOVM/precompiles</code> (recursive directory) (explicitly not audited)<br><code>contracts/optimistic-ethereum/iOVM/verification/iOVM_BondManager.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/libraries/resolver/Lib_AddressManager.sol</code><br><code>contracts/optimistic-ethereum/libraries/rlp/Lib_RLPReader.sol</code><br><code>contracts/optimistic-ethereum/libraries/rlp/Lib_RLPWriter.sol</code><br><code>contracts/optimistic-ethereum/libraries/trie/Lib_MerkleTrie.sol</code><br><code>contracts/optimistic-ethereum/libraries/trie/Lib_SecureMerkleTrie.sol</code><br><code>contracts/optimistic-ethereum/libraries/utils/Lib_MerkleUtils.sol</code><br><code>contracts/optimistic-ethereum/libraries/utils/Lib_RingBuffer.sol</code> |
 
 ## Optimism Audit Report: ECDSA Wallet
 
@@ -22,12 +23,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: dapp.org
 - Date: 2021-01-12
 - Description: dapp.org review of the OVM ECDSA smart-wallet contracts OVM_ECDSAContractAccount and OVM_ProxyEOA in contracts-v2, validating authentication, EOA-equivalence, upgrade-consent and non-brickability properties with a dapptools test suite. Several High findings were located in the byte/RLP utility libraries reached through the wallet code, and per-finding fix commits are listed.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/contracts-v2"><code>ethereum-optimism/contracts-v2</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/contracts-v2/commit/bb3539bbd10c15a72a46cf4fb8d2472ef68f6322"><code>bb3539bbd10c15a72a46cf4fb8d2472ef68f6322</code></a> | November 18, 2020 | <code>contracts/optimistic-ethereum/OVM/accounts/OVM_ECDSAContractAccount.sol</code><br><code>contracts/optimistic-ethereum/OVM/accounts/OVM_ProxyEOA.sol</code><br><code>contracts/optimistic-ethereum/libraries/utils/Lib_Bytes32Utils.sol</code><br><code>contracts/optimistic-ethereum/libraries/utils/Lib_BytesUtils.sol</code><br><code>contracts/optimistic-ethereum/libraries/rlp/Lib_RLPWriter.sol</code> |
+| <a href="https://github.com/ethereum-optimism/contracts-v2/commit/bb3539bbd10c15a72a46cf4fb8d2472ef68f6322"><code>bb3539bbd10c15a72a46cf4fb8d2472ef68f6322</code></a> | November 18, 2020 | <code>contracts/optimistic-ethereum/OVM/accounts/OVM_ECDSAContractAccount.sol</code><br><code>contracts/optimistic-ethereum/OVM/accounts/OVM_ProxyEOA.sol</code><br><code>contracts/optimistic-ethereum/libraries/rlp/Lib_RLPWriter.sol</code><br><code>contracts/optimistic-ethereum/libraries/utils/Lib_Bytes32Utils.sol</code><br><code>contracts/optimistic-ethereum/libraries/utils/Lib_BytesUtils.sol</code><br><code>contracts/optimistic-ethereum/libraries/wrappers/Lib_SafeExecutionManagerWrapper.sol</code> (explicitly not audited) |
 | <a href="https://github.com/ethereum-optimism/contracts-v2/commit/0aa6e3a6380480355efe2afccc064bbd52d0be77"><code>0aa6e3a6380480355efe2afccc064bbd52d0be77</code></a> | November 30, 2020 | <code>contracts/optimistic-ethereum/OVM/accounts/OVM_ECDSAContractAccount.sol</code> |
 | <a href="https://github.com/ethereum-optimism/contracts-v2/commit/6712904754728a0bd195bc654d977bafa6ae8fbe"><code>6712904754728a0bd195bc654d977bafa6ae8fbe</code></a> | November 30, 2020 | <code>contracts/optimistic-ethereum/libraries/utils/Lib_BytesUtils.sol</code> |
 | <a href="https://github.com/ethereum-optimism/contracts-v2/commit/6a4d48ae185b7ea984bdac84e08f0b4da3e5e5cc"><code>6a4d48ae185b7ea984bdac84e08f0b4da3e5e5cc</code></a> | December 2, 2020 | <code>contracts/optimistic-ethereum/OVM/accounts/OVM_ECDSAContractAccount.sol</code> |
@@ -41,12 +43,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Report: [2021_03-OVM_and_Rollup-OpenZeppelin.md](<reports/2021_03-OVM_and_Rollup-OpenZeppelin.md>)
 - Auditor: OpenZeppelin
 - Description: Seven-week OpenZeppelin audit of the OVM Solidity contracts under contracts/optimistic-ethereum/OVM and contracts/optimistic-ethereum/libraries across two commits (the archived contracts repository and a personal fork), excluding the bond manager, safety checker, ERC1820 registry and deployer whitelist. A later update section records per-finding fixes in the archived repository and the optimism monorepo.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/ethereum-optimism/contracts"><code>ethereum-optimism/contracts</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/contracts/commit/18e128343731b9bde23812ce932e24d81440b6b7"><code>18e128343731b9bde23812ce932e24d81440b6b7</code></a> | March 15, 2021 | <code>contracts/optimistic-ethereum/OVM</code> (recursive directory)<br><code>contracts/optimistic-ethereum/libraries</code> (recursive directory)<br><code>contracts/optimistic-ethereum/OVM/verification/OVM_BondManager.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/execution/OVM_SafetyChecker.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/precompiles/ERC1820Registry.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/precompiles/OVM_DeployerWhitelist.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/libraries/utils/Lib_RingBuffer.sol</code> |
+| <a href="https://github.com/ethereum-optimism/contracts/commit/18e128343731b9bde23812ce932e24d81440b6b7"><code>18e128343731b9bde23812ce932e24d81440b6b7</code></a> | March 15, 2021 | <code>contracts/optimistic-ethereum/OVM</code> (recursive directory)<br><code>contracts/optimistic-ethereum/OVM/execution/OVM_SafetyChecker.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/precompiles/ERC1820Registry.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/precompiles/OVM_DeployerWhitelist.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/verification/OVM_BondManager.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/libraries</code> (recursive directory)<br><code>contracts/optimistic-ethereum/libraries/utils/Lib_RingBuffer.sol</code> |
 | <a href="https://github.com/ethereum-optimism/contracts/commit/eeb9f71fe0d99cb3147a9eca135e1650c8fad6ba"><code>eeb9f71fe0d99cb3147a9eca135e1650c8fad6ba</code></a> | April 6, 2021 | <code>contracts/optimistic-ethereum/OVM/execution/OVM_ExecutionManager.sol</code> |
 | <a href="https://github.com/ethereum-optimism/contracts/commit/8da1c24bb08b8a10b56747add78c414e58ebadf4"><code>8da1c24bb08b8a10b56747add78c414e58ebadf4</code></a> | April 7, 2021 | <code>contracts/optimistic-ethereum/OVM/verification/OVM_StateTransitioner.sol</code> |
 
@@ -54,7 +57,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ben-chain/contracts-v2/commit/a935e276f5620b40802b52721e3474232e458f72"><code>a935e276f5620b40802b52721e3474232e458f72</code></a> | April 12, 2021 | <code>contracts/optimistic-ethereum/OVM</code> (recursive directory)<br><code>contracts/optimistic-ethereum/libraries</code> (recursive directory)<br><code>contracts/optimistic-ethereum/OVM/verification/OVM_BondManager.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/execution/OVM_SafetyChecker.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/predeploys/ERC1820Registry.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/predeploys/OVM_DeployerWhitelist.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/libraries/utils/Lib_RingBuffer.sol</code> |
+| <a href="https://github.com/ben-chain/contracts-v2/commit/a935e276f5620b40802b52721e3474232e458f72"><code>a935e276f5620b40802b52721e3474232e458f72</code></a> | April 12, 2021 | <code>contracts/optimistic-ethereum/OVM</code> (recursive directory)<br><code>contracts/optimistic-ethereum/OVM/execution/OVM_SafetyChecker.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/predeploys/ERC1820Registry.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/predeploys/OVM_DeployerWhitelist.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/OVM/verification/OVM_BondManager.sol</code> (explicitly not audited)<br><code>contracts/optimistic-ethereum/libraries</code> (recursive directory)<br><code>contracts/optimistic-ethereum/libraries/utils/Lib_RingBuffer.sol</code> |
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -72,6 +75,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Report: [2021_03-SafetyChecker-ConsenSysDiligence.md](<reports/2021_03-SafetyChecker-ConsenSysDiligence.md>)
 - Auditor: ConsenSys Diligence
 - Description: Two-person-week differential fuzzing engagement comparing OVM_SafetyChecker.isBytecodeSafe against a custom Go reference implementation, with an informal specification of safe OVM bytecode and forward-looking recommendations. No divergences or vulnerability findings were reported.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/ethereum-optimism/contracts"><code>ethereum-optimism/contracts</code></a>
 
@@ -85,6 +89,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2022-05-16
 - Description: OpenZeppelin audit of the new Bedrock L1/L2 bridge and messaging contracts (OptimismPortal, L2OutputOracle, cross-domain messengers, standard bridges, L2ToL1MessagePasser, mintable tokens) in the optimistic-specs repository, reviewed across three successive commits during a rewrite. Offchain components and L2 nodes were assumed to work as documented.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimistic-specs"><code>ethereum-optimism/optimistic-specs</code></a>
 
@@ -106,6 +111,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Trail of Bits
 - Date: 2022-07-07
 - Description: Trail of Bits fix review of the twelve findings from its April 2022 audit of the Bedrock rollup node (optimistic-specs, Go and Solidity) and the reference execution engine (reference-optimistic-geth). Solidity findings target the L1 deposit/withdrawal contracts and the L1Block predeploy; the remaining findings target Go code and specifications.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimistic-specs"><code>ethereum-optimism/optimistic-specs</code></a>
 
@@ -133,12 +139,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2022-09-02
 - Description: OpenZeppelin audit of nineteen listed Solidity files in the optimism monorepo covering the Bedrock L1/L2 messengers, bridges, portal, output oracle, proxies and the periphery ERC721 bridges; no Critical or High issues were found. Fixes were reviewed in the separate optimism-audit-fixes repository, which is not publicly accessible.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"><code>93d3bd411a8ae75702539ac9c5fe00bad21d4104</code></a> | July 21, 2022 | <code>packages/contracts/contracts/chugsplash/L1ChugSplashProxy.sol</code><br><code>packages/contracts/contracts/libraries/bridge/CrossDomainEnabled.sol</code><br><code>packages/contracts/contracts/libraries/constants/Lib_PredeployAddresses.sol</code><br><code>packages/contracts-bedrock/contracts/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/contracts/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/contracts/L1/L2OutputOracle.sol</code><br><code>packages/contracts-bedrock/contracts/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/contracts/L1/ResourceMetering.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L2CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L2StandardBridge.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L2ToL1MessagePasser.sol</code><br><code>packages/contracts-bedrock/contracts/libraries/Hashing.sol</code><br><code>packages/contracts-bedrock/contracts/universal/CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/contracts/universal/Proxy.sol</code><br><code>packages/contracts-bedrock/contracts/universal/ProxyAdmin.sol</code><br><code>packages/contracts-bedrock/contracts/universal/Semver.sol</code><br><code>packages/contracts-bedrock/contracts/universal/StandardBridge.sol</code><br><code>packages/contracts-periphery/contracts/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-periphery/contracts/L2/L2ERC721Bridge.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/93d3bd411a8ae75702539ac9c5fe00bad21d4104"><code>93d3bd411a8ae75702539ac9c5fe00bad21d4104</code></a> | July 21, 2022 | <code>packages/contracts-bedrock/contracts/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/contracts/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/contracts/L1/L2OutputOracle.sol</code><br><code>packages/contracts-bedrock/contracts/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/contracts/L1/ResourceMetering.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L2CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L2StandardBridge.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L2ToL1MessagePasser.sol</code><br><code>packages/contracts-bedrock/contracts/libraries/Hashing.sol</code><br><code>packages/contracts-bedrock/contracts/universal/CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/contracts/universal/Proxy.sol</code><br><code>packages/contracts-bedrock/contracts/universal/ProxyAdmin.sol</code><br><code>packages/contracts-bedrock/contracts/universal/Semver.sol</code><br><code>packages/contracts-bedrock/contracts/universal/StandardBridge.sol</code><br><code>packages/contracts-periphery/contracts/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-periphery/contracts/L2/L2ERC721Bridge.sol</code><br><code>packages/contracts/contracts/chugsplash/L1ChugSplashProxy.sol</code><br><code>packages/contracts/contracts/libraries/bridge/CrossDomainEnabled.sol</code><br><code>packages/contracts/contracts/libraries/constants/Lib_PredeployAddresses.sol</code> |
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism-audit-fixes"><code>ethereum-optimism/optimism-audit-fixes</code></a>
 
@@ -152,13 +159,14 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Spearbit
 - Date: 2022-10-03
 - Description: Spearbit manual review plus Mythril of the Drippie automated contract-interaction system (Drippie, drip checks, AssetReceiver, Transactor) in the optimism monorepo&#x27;s contracts-periphery package. No Critical or High issues; fixes were reviewed in pull requests 3280 and 3567.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/2a7be367634f147736f960eb2f38a77291cdfcad"><code>2a7be367634f147736f960eb2f38a77291cdfcad</code></a> | July 29, 2022 | <code>packages/contracts-periphery/contracts/universal/drippie</code> (recursive directory)<br><code>packages/contracts-periphery/contracts/universal/AssetReceiver.sol</code><br><code>packages/contracts-periphery/contracts/universal/Transactor.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/eb2c55681306c5ee495378184fb9a0e97a99fc1a"><code>eb2c55681306c5ee495378184fb9a0e97a99fc1a</code></a> | September 19, 2022 | <code>packages/contracts-periphery/contracts/universal/drippie</code> (recursive directory)<br><code>packages/contracts-periphery/contracts/universal/AssetReceiver.sol</code><br><code>packages/contracts-periphery/contracts/universal/Transactor.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/2a7be367634f147736f960eb2f38a77291cdfcad"><code>2a7be367634f147736f960eb2f38a77291cdfcad</code></a> | July 29, 2022 | <code>packages/contracts-periphery/contracts/universal/AssetReceiver.sol</code><br><code>packages/contracts-periphery/contracts/universal/Transactor.sol</code><br><code>packages/contracts-periphery/contracts/universal/drippie</code> (recursive directory) |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/eb2c55681306c5ee495378184fb9a0e97a99fc1a"><code>eb2c55681306c5ee495378184fb9a0e97a99fc1a</code></a> | September 19, 2022 | <code>packages/contracts-periphery/contracts/universal/AssetReceiver.sol</code><br><code>packages/contracts-periphery/contracts/universal/Transactor.sol</code><br><code>packages/contracts-periphery/contracts/universal/drippie</code> (recursive directory) |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/b17f3c93b6fb00827c4b87573682c499415fc8e6"><code>b17f3c93b6fb00827c4b87573682c499415fc8e6</code></a> | September 26, 2022 | <code>packages/contracts-periphery/contracts/universal/drippie</code> (recursive directory) |
 
 ## Optimism Security Assessment (testing strategy and invariants, November 2022)
@@ -167,12 +175,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Trail of Bits
 - Date: 2022-11-10
 - Description: Trail of Bits review of Optimism&#x27;s testing strategy: documentation of invariants and Echidna property tests for Bedrock contracts (OptimismPortal, ResourceMetering, L2OutputOracle and libraries) plus Go fuzz/unit tests for op-node, op-e2e and op-geth. One Undetermined-severity finding; the Go components are offchain.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/b31d35b67755479645dd150e7cc8c6710f0b4a56"><code>b31d35b67755479645dd150e7cc8c6710f0b4a56</code></a> | August 17, 2022 | <code>packages/contracts-bedrock/contracts/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/contracts/L1/ResourceMetering.sol</code><br><code>packages/contracts-bedrock/contracts/L1/L2OutputOracle.sol</code><br><code>packages/contracts-bedrock/contracts/libraries/Burn.sol</code><br><code>packages/contracts-bedrock/contracts/libraries/Encoding.sol</code><br><code>packages/contracts-bedrock/contracts/libraries/Hashing.sol</code><br><code>packages/contracts-bedrock/contracts/vendor/AddressAliasHelper.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/b31d35b67755479645dd150e7cc8c6710f0b4a56"><code>b31d35b67755479645dd150e7cc8c6710f0b4a56</code></a> | August 17, 2022 | <code>packages/contracts-bedrock/contracts/L1/L2OutputOracle.sol</code><br><code>packages/contracts-bedrock/contracts/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/contracts/L1/ResourceMetering.sol</code><br><code>packages/contracts-bedrock/contracts/libraries/Burn.sol</code><br><code>packages/contracts-bedrock/contracts/libraries/Encoding.sol</code><br><code>packages/contracts-bedrock/contracts/libraries/Hashing.sol</code><br><code>packages/contracts-bedrock/contracts/vendor/AddressAliasHelper.sol</code> |
 
 ### Repository: <a href="https://github.com/ethereum-optimism/reference-optimistic-geth"><code>ethereum-optimism/reference-optimistic-geth</code></a>
 
@@ -193,15 +202,16 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Trail of Bits
 - Date: 2023-01-18
 - Description: Trail of Bits review of the L1 SystemConfig contract and the two-step withdrawal workflow of OptimismPortal, together with the related op-node config parsing and op-geth L1 cost logic. Late commits changing ResourceMetering, L2ToL1MessagePasser, L2OutputOracle, MerkleTrie and two portal pull requests were reviewed in isolation, and the single High finding was verified fixed.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/1bfe79f20b37a77c1158e7c5fdbff2ae109e0a1d"><code>1bfe79f20b37a77c1158e7c5fdbff2ae109e0a1d</code></a> | November 11, 2022 | <code>packages/contracts-bedrock/contracts/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/contracts/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/contracts/L1/ResourceMetering.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/1bfe79f20b37a77c1158e7c5fdbff2ae109e0a1d"><code>1bfe79f20b37a77c1158e7c5fdbff2ae109e0a1d</code></a> | November 11, 2022 | <code>packages/contracts-bedrock/contracts/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/contracts/L1/ResourceMetering.sol</code><br><code>packages/contracts-bedrock/contracts/L1/SystemConfig.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/f468e58ef9554501d0821008c98b233411e19915"><code>f468e58ef9554501d0821008c98b233411e19915</code></a> | November 22, 2022 | <code>packages/contracts-bedrock/contracts/L1/OptimismPortal.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/991120f6d2009b4a96580d7db3021694439c63f5"><code>991120f6d2009b4a96580d7db3021694439c63f5</code></a> | November 29, 2022 | <code>packages/contracts-bedrock/contracts/libraries/trie/MerkleTrie.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/ee96ff8585699b054c95c6ff4a2411ee9fedcc87"><code>ee96ff8585699b054c95c6ff4a2411ee9fedcc87</code></a> | December 5, 2022 | <code>packages/contracts-bedrock/contracts/L1/ResourceMetering.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L2ToL1MessagePasser.sol</code><br><code>packages/contracts-bedrock/contracts/L1/L2OutputOracle.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/ee96ff8585699b054c95c6ff4a2411ee9fedcc87"><code>ee96ff8585699b054c95c6ff4a2411ee9fedcc87</code></a> | December 5, 2022 | <code>packages/contracts-bedrock/contracts/L1/L2OutputOracle.sol</code><br><code>packages/contracts-bedrock/contracts/L1/ResourceMetering.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L2ToL1MessagePasser.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/5bb91e5166849f205ed045a3a1fb459b2d40cc5d"><code>5bb91e5166849f205ed045a3a1fb459b2d40cc5d</code></a> | December 8, 2022 | <code>packages/contracts-bedrock/contracts/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/contracts/universal/CrossDomainMessenger.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/2bd5143fa28d3faf7cbc7c89f9356935122f7f80"><code>2bd5143fa28d3faf7cbc7c89f9356935122f7f80</code></a> | December 9, 2022 | <code>packages/contracts-bedrock/contracts/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/contracts/universal/CrossDomainMessenger.sol</code> |
 
@@ -217,6 +227,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Sherlock
 - Date: 2023-03-03
 - Description: Public Sherlock contest on the Bedrock release covering the L1 contracts, L2 predeploys, op-node and op-geth at a fixed monorepo commit, with three High findings in OptimismPortal withdrawal finalization. No fix-review commit is given; op-node and op-geth are offchain and not recorded as source coverage.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -236,6 +247,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Zach Obront
 - Date: 2023-05-12
 - Description: Independent review by Zach Obront of Agora&#x27;s Optimism Governor V5 upgrade and the new Approval Voting Module in the voteagora/optimism-gov repository. Two High findings; fixes were verified per commit and pull request 10 was reviewed after completion.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/voteagora/optimism-gov"><code>voteagora/optimism-gov</code></a>
 
@@ -257,6 +269,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Code4rena
 - Date: 2023-08-10
 - Description: Code4rena competitive audit of the BASE (OP Stack Bedrock) system: fourteen Solidity contracts plus op-node and op-geth, frozen at the optimism monorepo commit named by the contest repository. Zero High or Medium findings; only the top QA and gas reports are reproduced.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/code-423n4/2023-05-base"><code>code-423n4/2023-05-base</code></a>
 
@@ -268,7 +281,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"><code>382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59</code></a> | May 15, 2023 | <code>packages/contracts-bedrock/contracts/deployment/SystemDictator.sol</code><br><code>packages/contracts-bedrock/contracts/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/contracts/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/contracts/L1/L2OutputOracle.sol</code><br><code>packages/contracts-bedrock/contracts/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/contracts/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/contracts/L2/GasPriceOracle.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L1Block.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L2CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L2StandardBridge.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L2ToL1MessagePasser.sol</code><br><code>packages/contracts-bedrock/contracts/L2/SequencerFeeVault.sol</code><br><code>packages/contracts-bedrock/contracts/universal/OptimismMintableERC20Factory.sol</code><br><code>packages/contracts-bedrock/contracts/universal/ProxyAdmin.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59"><code>382d38b7d45bcbf73cb5e1e3f28cbd45d24e8a59</code></a> | May 15, 2023 | <code>packages/contracts-bedrock/contracts/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/contracts/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/contracts/L1/L2OutputOracle.sol</code><br><code>packages/contracts-bedrock/contracts/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/contracts/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/contracts/L2/GasPriceOracle.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L1Block.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L2CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L2StandardBridge.sol</code><br><code>packages/contracts-bedrock/contracts/L2/L2ToL1MessagePasser.sol</code><br><code>packages/contracts-bedrock/contracts/L2/SequencerFeeVault.sol</code><br><code>packages/contracts-bedrock/contracts/deployment/SystemDictator.sol</code><br><code>packages/contracts-bedrock/contracts/universal/OptimismMintableERC20Factory.sol</code><br><code>packages/contracts-bedrock/contracts/universal/ProxyAdmin.sol</code> |
 
 ### Repository: <a href="https://github.com/ethereum-optimism/op-geth"><code>ethereum-optimism/op-geth</code></a>
 
@@ -282,12 +295,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2023-11-22
 - Description: OpenZeppelin audit of Agora&#x27;s Optimism Governance V6 upgrade: OptimismGovernorV6, ProposalTypesConfigurator, VotableSupplyOracle and AlligatorOP_V5, with per-finding resolutions in pull request 16. No Critical or High issues; the report prints no repository URL, so the voteagora/optimism-gov repository was identified from the matching commit and pull request.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/voteagora/optimism-gov"><code>voteagora/optimism-gov</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/voteagora/optimism-gov/commit/a22052d3957b4c963d57f78b52c12f9f8609a720"><code>a22052d3957b4c963d57f78b52c12f9f8609a720</code></a> | October 7, 2023 | <code>src/OptimismGovernorV6.sol</code><br><code>src/ProposalTypesConfigurator.sol</code><br><code>src/VotableSupplyOracle.sol</code><br><code>src/alligator/AlligatorOP_V5.sol</code> |
+| <code>a22052d3957b4c963d57f78b52c12f9f8609a720</code> | October 7, 2023 | <code>src/OptimismGovernorV5.sol</code> (explicitly not audited)<br><code>src/OptimismGovernorV6.sol</code><br><code>src/ProposalTypesConfigurator.sol</code><br><code>src/VotableSupplyOracle.sol</code><br><code>src/alligator/AlligatorOP_V5.sol</code><br><code>src/lib/openzeppelin/v2</code> (recursive directory) (explicitly not audited) |
 | <a href="https://github.com/voteagora/optimism-gov/commit/422928946c8df15c44cff17e3225b983b5707383"><code>422928946c8df15c44cff17e3225b983b5707383</code></a> | November 2, 2023 | <code>src/alligator/AlligatorOP_V5.sol</code> |
 | <a href="https://github.com/voteagora/optimism-gov/commit/0b40e397d688cfe33d297b52ccbf89b069f65ad6"><code>0b40e397d688cfe33d297b52ccbf89b069f65ad6</code></a> | November 2, 2023 | <code>src/OptimismGovernorV6.sol</code><br><code>src/ProposalTypesConfigurator.sol</code><br><code>src/VotableSupplyOracle.sol</code><br><code>src/alligator/AlligatorOP_V5.sol</code> |
 | <a href="https://github.com/voteagora/optimism-gov/commit/acba358f94ea230eb43e59580ec657b25072a917"><code>acba358f94ea230eb43e59580ec657b25072a917</code></a> | November 2, 2023 | <code>src/OptimismGovernorV6.sol</code> |
@@ -311,15 +325,16 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Trust Security
 - Date: 2024-01-11
 - Description: Trust Security diff-based review of eight Bedrock L1 and universal bridging contracts changed since the Sherlock contest commit, chiefly the SuperchainConfig pause integration, gas-issue mitigations, storage-layout safety and reentrancy changes. One High finding, verified fixed in the mitigation review.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/d1651bb22645ebd41ac4bb2ab4786f9a56fc1003"><code>d1651bb22645ebd41ac4bb2ab4786f9a56fc1003</code></a> | December 7, 2023 | <code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/universal/ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/universal/StandardBridge.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/d1651bb22645ebd41ac4bb2ab4786f9a56fc1003"><code>d1651bb22645ebd41ac4bb2ab4786f9a56fc1003</code></a> | December 7, 2023 | <code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/universal/ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/universal/StandardBridge.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/4e5415107384f21d687a9aeb5ca40e9a97270250"><code>4e5415107384f21d687a9aeb5ca40e9a97270250</code></a> | December 15, 2023 | <code>packages/contracts-bedrock/src/L1/OptimismPortal.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/d03df252b3c5eb0735781f3f498cb4b102be3544"><code>d03df252b3c5eb0735781f3f498cb4b102be3544</code></a> | January 8, 2024 | <code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/81b56fee40f96c798174115c375f41c3d2ff9d40"><code>81b56fee40f96c798174115c375f41c3d2ff9d40</code></a> | January 8, 2024 | <code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/universal/ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/universal/StandardBridge.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/81b56fee40f96c798174115c375f41c3d2ff9d40"><code>81b56fee40f96c798174115c375f41c3d2ff9d40</code></a> | January 8, 2024 | <code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/universal/ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/universal/StandardBridge.sol</code> |
 
 ## Optimism Cycle 19 Security Review (Cantina, MCP L1)
 
@@ -327,12 +342,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Cantina
 - Date: 2024-02-15
 - Description: Cantina Managed review of the MCP L1 (multi-chain prep) upgrade that moves L1 contract immutables into storage and adds initializer parameters, covering the affected contracts-bedrock Solidity contracts and the op-chain-ops upgrade tooling in Go. No Critical, High or Medium issues; the report declares no explicit file list. Every contracts-bedrock source the MCP L1 commit e6ef3a90 changes is in scope.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/e6ef3a900c42c8722e72c2e2314027f85d12ced5"><code>e6ef3a900c42c8722e72c2e2314027f85d12ced5</code></a> | January 22, 2024 | <code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/universal/FeeVault.sol</code><br><code>packages/contracts-bedrock/src/universal/ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L2OutputOracle.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L2/L2StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/universal/OptimismMintableERC20Factory.sol</code><br><code>packages/contracts-bedrock/src/universal/StandardBridge.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/e6ef3a900c42c8722e72c2e2314027f85d12ced5"><code>e6ef3a900c42c8722e72c2e2314027f85d12ced5</code></a> | January 22, 2024 | <code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L2OutputOracle.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L2/L2CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L2/L2StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/universal/ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/universal/FeeVault.sol</code><br><code>packages/contracts-bedrock/src/universal/OptimismMintableERC20Factory.sol</code><br><code>packages/contracts-bedrock/src/universal/StandardBridge.sol</code> |
 
 ## Sherlock Security Review for Optimism (Fault Proofs)
 
@@ -340,6 +356,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Sherlock
 - Date: 2024-06-07
 - Description: Public Sherlock contest on the fault proof system&#x27;s L1 contracts (OptimismPortal2, DisputeGameFactory, FaultDisputeGame, DelayedWETH, WETH98) at a fixed monorepo commit, with four Medium and no High findings. FaultDisputeGame resolution logic was explicitly excluded from the contest scope.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -359,6 +376,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Cantina
 - Date: 2024-06-06
 - Description: Cantina competition on the Security Council Safe extensions LivenessGuard and LivenessModule in contracts-bedrock, reporting six Medium findings out of 143 submissions and no Critical or High issues. The report prints no commit; the revision comes from the single GitHub permalink in the report.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -372,12 +390,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Code4rena
 - Date: 2024-08-16
 - Description: Code4rena contest on the fault proof contracts (FaultDisputeGame, DisputeGameFactory, MIPS, PreimageOracle and libraries) hosted in the contest mirror repository, yielding five High and eleven Medium findings with no fix review. The file list and pinned commit come from the contest repository, which the report names as the code under review.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/code-423n4/2024-07-optimism"><code>code-423n4/2024-07-optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/code-423n4/2024-07-optimism/commit/70556044e5e080930f686c4e5acde420104bb2c4"><code>70556044e5e080930f686c4e5acde420104bb2c4</code></a> | July 17, 2024 | <code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol</code><br><code>packages/contracts-bedrock/src/cannon/MIPS.sol</code><br><code>packages/contracts-bedrock/src/cannon/PreimageOracle.sol</code><br><code>packages/contracts-bedrock/src/cannon/PreimageKeyLib.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/CannonTypes.sol</code> |
+| <a href="https://github.com/code-423n4/2024-07-optimism/commit/70556044e5e080930f686c4e5acde420104bb2c4"><code>70556044e5e080930f686c4e5acde420104bb2c4</code></a> | July 17, 2024 | <code>packages/contracts-bedrock/src/cannon/MIPS.sol</code><br><code>packages/contracts-bedrock/src/cannon/PreimageKeyLib.sol</code><br><code>packages/contracts-bedrock/src/cannon/PreimageOracle.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/CannonTypes.sol</code><br><code>packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol</code><br><code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code> |
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -391,6 +410,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Cantina
 - Date: 2024-08-14
 - Description: Cantina Managed review, commissioned by Base, of the Cannon onchain MIPS single-step verifier MIPS.sol and its MIPSInstructions library at a fixed optimism monorepo commit, with one Critical and one High finding in MIPS.sol. All client responses are acknowledgements and no fix commit is given.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -404,12 +424,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Spearbit
 - Date: 2024-08-14
 - Description: Spearbit review, commissioned by Base, of the Optimism fault-proof dispute contracts (FaultDisputeGame, DisputeGameFactory, AnchorStateRegistry, dispute libraries, PreimageOracle) at a fixed monorepo commit, explicitly excluding MIPS. Four Medium and no Critical or High findings; no fix review.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/1f7081798ce2d49b8643514663d10681cb853a3d"><code>1f7081798ce2d49b8643514663d10681cb853a3d</code></a> | June 3, 2024 | <code>packages/contracts-bedrock/src/dispute</code> (recursive directory)<br><code>packages/contracts-bedrock/src/cannon/PreimageOracle.sol</code><br><code>packages/contracts-bedrock/src/cannon/PreimageKeyLib.sol</code><br><code>packages/contracts-bedrock/src/cannon/MIPS.sol</code> (explicitly not audited) |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/1f7081798ce2d49b8643514663d10681cb853a3d"><code>1f7081798ce2d49b8643514663d10681cb853a3d</code></a> | June 3, 2024 | <code>packages/contracts-bedrock/src/cannon/MIPS.sol</code> (explicitly not audited)<br><code>packages/contracts-bedrock/src/cannon/PreimageKeyLib.sol</code><br><code>packages/contracts-bedrock/src/cannon/PreimageOracle.sol</code><br><code>packages/contracts-bedrock/src/dispute</code> (recursive directory) |
 
 ## Audit Report - OP Cannon (3DOC Security, F_GETFD)
 
@@ -417,6 +438,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: 3DOC Security
 - Date: 2024-10-03
 - Description: Two-day 3DOC Security review of pull request 12050 adding F_GETFD syscall support to the Cannon MIPS VM in both the Go implementation and the onchain MIPS, MIPS2 and MIPSSyscalls contracts. No findings; the single reported item was withdrawn as a false positive.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -430,6 +452,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: MiloTruck
 - Date: 2025-01-07
 - Description: Two-day independent review by MiloTruck of the DeputyPauseModule Safe module for signature-based emergency pauses, followed by verification of the mitigation commit and pull request 13594. Three Low and two Informational findings, none Critical or High.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -447,6 +470,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Radiant Labs
 - Date: 2024-12-28
 - Description: Two-day Radiant Labs manual review of the DeputyPauseModule contract against its design document and specification invariants. Two Low and two Informational findings, none Critical or High; no fix review.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -460,6 +484,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Offbeat Labs
 - Date: 2025-01-24
 - Description: Offbeat Security review for Optimism Labs of the incident-response changes to the dispute game and portal contracts (OptimismPortal2, AnchorStateRegistry, FaultDisputeGame, DelayedWETH, OPContractsManager and libraries) at monorepo commits 984bae9 and ce2ce43, covering anchor state handling, game validation and bond distribution. One Low and three Informational findings; L-01 and I-01 fixes in PRs #14144 and #14139 were verified.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -476,12 +501,13 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Base
 - Date: 2025-02-06
 - Description: Coinbase Protocol Security (Base) review of the six MT64Cannon Solidity contracts (MIPS64 and its libraries) at a fixed optimism monorepo commit. One Medium finding (incorrect SLL/SLLV implementation) fixed in pull request 14114 and verified; no Critical or High findings.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/b8c011f18c79d735e01168345fc1c6f02fac584f"><code>b8c011f18c79d735e01168345fc1c6f02fac584f</code></a> | January 22, 2025 | <code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Memory.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Syscalls.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64State.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Instructions.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Arch.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/b8c011f18c79d735e01168345fc1c6f02fac584f"><code>b8c011f18c79d735e01168345fc1c6f02fac584f</code></a> | January 22, 2025 | <code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Arch.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Instructions.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Memory.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64State.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Syscalls.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/ac8f53cc4a6d641d6f71879c325f705bd1257a41"><code>ac8f53cc4a6d641d6f71879c325f705bd1257a41</code></a> | February 3, 2025 | <code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Instructions.sol</code> |
 
 ## Optimism Mt Cannon Security Review (Spearbit)
@@ -490,17 +516,18 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Spearbit
 - Date: 2025-02-20
 - Description: Spearbit review of the 64-bit multithreaded Cannon fault-proof VM (MIPS64 Solidity contracts and the Go mipsevm implementation) at a fixed monorepo commit. One High finding (futex value width) in MIPS64.sol, fixed in pull request 13453; a Medium SLL/SLLV finding is carried over from the parallel Base review.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/cc2715c3d6ebef374451b598f48980ad817e0a0e"><code>cc2715c3d6ebef374451b598f48980ad817e0a0e</code></a> | November 21, 2024 | <code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Instructions.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Syscalls.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Memory.sol</code><br><code>cannon/mipsevm</code> (recursive directory) (other) |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/0318a972fee3b0b2fe7ace999a1da6c8ff2d0126"><code>0318a972fee3b0b2fe7ace999a1da6c8ff2d0126</code></a> | December 16, 2024 | <code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Instructions.sol</code><br><code>cannon/mipsevm</code> (recursive directory) (other) |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/89f623e3d9b9c9591d21750707de89d97288140b"><code>89f623e3d9b9c9591d21750707de89d97288140b</code></a> | December 18, 2024 | <code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>cannon/mipsevm</code> (recursive directory) (other) |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/5b2de446c701ac1cba436c5e1cbaf3188a0a5782"><code>5b2de446c701ac1cba436c5e1cbaf3188a0a5782</code></a> | January 22, 2025 | <code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Syscalls.sol</code><br><code>cannon/mipsevm</code> (recursive directory) (other) |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/ac8f53cc4a6d641d6f71879c325f705bd1257a41"><code>ac8f53cc4a6d641d6f71879c325f705bd1257a41</code></a> | February 3, 2025 | <code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Instructions.sol</code><br><code>cannon/mipsevm</code> (recursive directory) (other) |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/8ffd448c0eed23fe3ab7c973703a1c8731b936b5"><code>8ffd448c0eed23fe3ab7c973703a1c8731b936b5</code></a> | February 6, 2025 | <code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Instructions.sol</code><br><code>cannon/mipsevm</code> (recursive directory) (other) |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/cc2715c3d6ebef374451b598f48980ad817e0a0e"><code>cc2715c3d6ebef374451b598f48980ad817e0a0e</code></a> | November 21, 2024 | <code>cannon/mipsevm</code> (recursive directory) (other)<br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Instructions.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Memory.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Syscalls.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/0318a972fee3b0b2fe7ace999a1da6c8ff2d0126"><code>0318a972fee3b0b2fe7ace999a1da6c8ff2d0126</code></a> | December 16, 2024 | <code>cannon/mipsevm</code> (recursive directory) (other)<br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Instructions.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/89f623e3d9b9c9591d21750707de89d97288140b"><code>89f623e3d9b9c9591d21750707de89d97288140b</code></a> | December 18, 2024 | <code>cannon/mipsevm</code> (recursive directory) (other)<br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/5b2de446c701ac1cba436c5e1cbaf3188a0a5782"><code>5b2de446c701ac1cba436c5e1cbaf3188a0a5782</code></a> | January 22, 2025 | <code>cannon/mipsevm</code> (recursive directory) (other)<br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Syscalls.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/ac8f53cc4a6d641d6f71879c325f705bd1257a41"><code>ac8f53cc4a6d641d6f71879c325f705bd1257a41</code></a> | February 3, 2025 | <code>cannon/mipsevm</code> (recursive directory) (other)<br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Instructions.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/8ffd448c0eed23fe3ab7c973703a1c8731b936b5"><code>8ffd448c0eed23fe3ab7c973703a1c8731b936b5</code></a> | February 6, 2025 | <code>cannon/mipsevm</code> (recursive directory) (other)<br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Instructions.sol</code> |
 
 ### Repository: <a href="https://github.com/cantina-forks/optimism"><code>cantina-forks/optimism</code></a>
 
@@ -514,13 +541,14 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2025-03-09
 - Description: Cantina Managed review (Feb 27 to Mar 1, 2025) of how the Pectra upgrade (EIP-7702 delegated EOAs and EIP-7623 calldata repricing) affects the Optimism L1/L2 messaging, bridge and EOA-check contracts at a single optimism commit. No Critical or High findings; 1 Medium, 1 Low and 2 Informational issues, with fixes in PR 14608 verified.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/8d0dd96e494b2ba154587877351e87788336a4ec"><code>8d0dd96e494b2ba154587877351e87788336a4ec</code></a> | February 25, 2025 | <code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L2/L2StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/libraries/EOA.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/safe/DeputyPauseModule.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/88419adbf689336913a3db7d4c3691b2b0102e75"><code>88419adbf689336913a3db7d4c3691b2b0102e75</code></a> | March 5, 2025 | <code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/libraries/EOA.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/8d0dd96e494b2ba154587877351e87788336a4ec"><code>8d0dd96e494b2ba154587877351e87788336a4ec</code></a> | February 25, 2025 | <code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L2/L2StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/libraries/EOA.sol</code><br><code>packages/contracts-bedrock/src/safe/DeputyPauseModule.sol</code><br><code>packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/88419adbf689336913a3db7d4c3691b2b0102e75"><code>88419adbf689336913a3db7d4c3691b2b0102e75</code></a> | March 5, 2025 | <code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/libraries/EOA.sol</code><br><code>packages/contracts-bedrock/src/universal/CrossDomainMessenger.sol</code> |
 
 ## Optimism Security Review (Spearbit, Upgrade 13)
 
@@ -528,19 +556,20 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Spearbit
 - Date: 2025-03-05
 - Description: Spearbit review (Jan 21 to Feb 21, 2025) of the Optimism Upgrade 13 L1 contracts at a single optimism commit, covering the OPContractsManager upgrade/addGameType flows, AnchorStateRegistry, FaultDisputeGame, OptimismPortal2 and SystemConfig changes. No Critical or High findings; 2 Medium, 6 Low and 11 Informational issues with fix PRs verified.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/7d6d15437b7580b022f4c8c1ea9c0cd8d2e587e1"><code>7d6d15437b7580b022f4c8c1ea9c0cd8d2e587e1</code></a> | January 28, 2025 | <code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/ProtocolVersions.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/dispute/DelayedWETH.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/7d6d15437b7580b022f4c8c1ea9c0cd8d2e587e1"><code>7d6d15437b7580b022f4c8c1ea9c0cd8d2e587e1</code></a> | January 28, 2025 | <code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/ProtocolVersions.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/dispute/DelayedWETH.sol</code><br><code>packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol</code><br><code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/5f045184d636cf7842c930d75abcfe5c36639f4b"><code>5f045184d636cf7842c930d75abcfe5c36639f4b</code></a> | February 13, 2025 | <code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/6d22e0894b72eeb2e4ea0eb1c88a76ca46b2aac9"><code>6d22e0894b72eeb2e4ea0eb1c88a76ca46b2aac9</code></a> | February 13, 2025 | <code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/5deaa70bb2404c7cba8b1e2ac746e9a0f1a58a2e"><code>5deaa70bb2404c7cba8b1e2ac746e9a0f1a58a2e</code></a> | February 15, 2025 | <code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/e2de1464de42e28cb1f7405e3947bed091a0393e"><code>e2de1464de42e28cb1f7405e3947bed091a0393e</code></a> | February 18, 2025 | <code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/29ae1d993d49880a70d16da1ca6aa88e642f7ade"><code>29ae1d993d49880a70d16da1ca6aa88e642f7ade</code></a> | February 19, 2025 | <code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/f63d0c028d37939c999efeccb9b9377cdbdc3040"><code>f63d0c028d37939c999efeccb9b9377cdbdc3040</code></a> | February 19, 2025 | <code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/6f75551f86834f4b4e95a47b1c7e50d2c4aef059"><code>6f75551f86834f4b4e95a47b1c7e50d2c4aef059</code></a> | February 19, 2025 | <code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/29ae1d993d49880a70d16da1ca6aa88e642f7ade"><code>29ae1d993d49880a70d16da1ca6aa88e642f7ade</code></a> | February 19, 2025 | <code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code> |
 
 ## Optimism Interop Security Review (Spearbit)
 
@@ -548,12 +577,13 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Spearbit
 - Date: 2025-03-19
 - Description: Spearbit review of the Optimism Interop L1 and L2 contracts (SharedLockbox, OptimismPortalInterop, SuperchainConfigInterop, CrossL2Inbox, L2ToL2CrossDomainMessenger, SuperchainWETH, SuperchainTokenBridge and related predeploys) in the monorepo at commit 6c80f23a. Two High findings were acknowledged; the report declares no explicit file list.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/6c80f23ab3074b5c66ff06e390ae2448bd4d2240"><code>6c80f23ab3074b5c66ff06e390ae2448bd4d2240</code></a> | February 7, 2025 | <code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainTokenBridge.sol</code><br><code>packages/contracts-bedrock/src/L2/CrossL2Inbox.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainWETH.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortalInterop.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfigInterop.sol</code><br><code>packages/contracts-bedrock/src/L2/L1BlockInterop.sol</code><br><code>packages/contracts-bedrock/src/L1/SharedLockbox.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/L2/ETHLiquidity.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ToL2CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainERC20.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/6c80f23ab3074b5c66ff06e390ae2448bd4d2240"><code>6c80f23ab3074b5c66ff06e390ae2448bd4d2240</code></a> | February 7, 2025 | <code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortalInterop.sol</code><br><code>packages/contracts-bedrock/src/L1/SharedLockbox.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfigInterop.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L2/CrossL2Inbox.sol</code><br><code>packages/contracts-bedrock/src/L2/ETHLiquidity.sol</code><br><code>packages/contracts-bedrock/src/L2/L1BlockInterop.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ToL2CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainERC20.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainTokenBridge.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainWETH.sol</code> |
 
 ## Optimism Interop Proofs Security Review (Cantina)
 
@@ -561,18 +591,19 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2025-05-07
 - Description: Cantina Managed review (Mar 18-29, 2025) of the Optimism interop fault-proof program logic: op-program super root state transition and cross-chain message consolidation, together with the shared op-supervisor cross-safety checks and super root encoding in op-service, at commit 9d86edb5. Two Critical and two High findings; the report declares no explicit file list, so paths are those where findings locate.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/9d86edb5848ec45eadf2b39e69d38b90b3a8dda9"><code>9d86edb5848ec45eadf2b39e69d38b90b3a8dda9</code></a> | March 14, 2025 | <code>op-program/client/interop/consolidate.go</code> (other)<br><code>op-program/client/interop/interop.go</code> (other)<br><code>op-program/client/interop/types/roots.go</code> (other)<br><code>op-supervisor/supervisor/backend/cross/hazard_set.go</code> (other)<br><code>op-supervisor/supervisor/backend/cross/cycle.go</code> (other)<br><code>op-supervisor/supervisor/backend/cross/unsafe_frontier.go</code> (other)<br><code>op-service/eth/super_root.go</code> (other)<br><code>packages/contracts-bedrock/test/setup/ForkLive.s.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/9d86edb5848ec45eadf2b39e69d38b90b3a8dda9"><code>9d86edb5848ec45eadf2b39e69d38b90b3a8dda9</code></a> | March 14, 2025 | <code>op-program/client/interop/consolidate.go</code> (other)<br><code>op-program/client/interop/interop.go</code> (other)<br><code>op-program/client/interop/types/roots.go</code> (other)<br><code>op-service/eth/super_root.go</code> (other)<br><code>op-supervisor/supervisor/backend/cross/cycle.go</code> (other)<br><code>op-supervisor/supervisor/backend/cross/hazard_set.go</code> (other)<br><code>op-supervisor/supervisor/backend/cross/unsafe_frontier.go</code> (other)<br><code>packages/contracts-bedrock/test/setup/ForkLive.s.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/172cad5ce2457eb26145d53fe5a32f32238dae2a"><code>172cad5ce2457eb26145d53fe5a32f32238dae2a</code></a> | April 1, 2025 | <code>op-supervisor/supervisor/backend/cross/hazard_set.go</code> (other) |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/cebf0d382aeb6c000993ae9f01940a3b60cdb993"><code>cebf0d382aeb6c000993ae9f01940a3b60cdb993</code></a> | April 11, 2025 | <code>op-program/client/interop/consolidate.go</code> (other) |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/725a30534dd7086ffda3cffd7a6227700d13b2dd"><code>725a30534dd7086ffda3cffd7a6227700d13b2dd</code></a> | April 17, 2025 | <code>op-program/client/interop/consolidate.go</code> (other) |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/5a1a65639668dfa0e88a1c848d4ce76f4c207958"><code>5a1a65639668dfa0e88a1c848d4ce76f4c207958</code></a> | April 24, 2025 | <code>op-program/client/interop/consolidate.go</code> (other)<br><code>op-supervisor/supervisor/backend/cross/hazard_set.go</code> (other) |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/faac706ebc7a5992c8d8f72ec864c304a5a7bf48"><code>faac706ebc7a5992c8d8f72ec864c304a5a7bf48</code></a> | April 28, 2025 | <code>op-supervisor/supervisor/backend/cross/hazard_set.go</code> (other) |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/96575332623b5b5e282248607021b22355112ea1"><code>96575332623b5b5e282248607021b22355112ea1</code></a> | April 28, 2025 | <code>op-supervisor/supervisor/backend/cross/cycle.go</code> (other) |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/faac706ebc7a5992c8d8f72ec864c304a5a7bf48"><code>faac706ebc7a5992c8d8f72ec864c304a5a7bf48</code></a> | April 28, 2025 | <code>op-supervisor/supervisor/backend/cross/hazard_set.go</code> (other) |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/748d4392386b0efcc00645a20b61012752a0b541"><code>748d4392386b0efcc00645a20b61012752a0b541</code></a> | May 2, 2025 | <code>packages/contracts-bedrock/test/setup/ForkLive.s.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/7c67713745f11cfd6a55962585d879c190db8511"><code>7c67713745f11cfd6a55962585d879c190db8511</code></a> | May 6, 2025 | <code>op-program/client/interop/types/roots.go</code> (other)<br><code>op-service/eth/super_root.go</code> (other) |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/6707100b11d57a460408e3cef675fc7c5fc5008e"><code>6707100b11d57a460408e3cef675fc7c5fc5008e</code></a> | May 6, 2025 | <code>op-program/client/interop/consolidate.go</code> (other) |
@@ -582,6 +613,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Report: [2025_03-Interop-Portal-Wonderland.md](<reports/2025_03-Interop-Portal-Wonderland.md>)
 - Auditor: Wonderland
 - Description: Wonderland review of the ETHLockbox redesign for interop (ETHLockbox, OptimismPortal2 migration to super roots and lockbox liquidity migration) in the defi-wonderland/optimism fork at commit 9df1fc15. Only Low and Informational findings; the report declares no explicit file list.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/defi-wonderland/optimism"><code>defi-wonderland/optimism</code></a>
 
@@ -595,13 +627,14 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2025-06-04
 - Description: Cantina competition (Mar 24 - Apr 7, 2025) on the OP Stack interop portal changes in ethereum-optimism/optimism: OptimismPortal2 Super Roots proving, ETHLockbox, AnchorStateRegistry, OPContractsManager and related L1 contracts, with fixes reviewed by lead researcher Phaze. 26 findings (7 Low, 19 Informational), no Critical/High.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/e4b921c9dbf8cd3a8db20ef4f15e0e2aa495fcc3"><code>e4b921c9dbf8cd3a8db20ef4f15e0e2aa495fcc3</code></a> | March 19, 2025 | <code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/L1/ETHLockbox.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/safe/DeputyGuardianModule.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/libraries/Hashing.sol</code><br><code>packages/contracts-bedrock/src/libraries/Encoding.sol</code><br><code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/SuperFaultDisputeGame.sol</code> (explicitly not audited)<br><code>packages/contracts-bedrock/src/dispute/SuperPermissionedDisputeGame.sol</code> (explicitly not audited) |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/b671b67f75f6fe2041672d91bd3a6a777cd6a367"><code>b671b67f75f6fe2041672d91bd3a6a777cd6a367</code></a> | April 30, 2025 | <code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/L1/ETHLockbox.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/e4b921c9dbf8cd3a8db20ef4f15e0e2aa495fcc3"><code>e4b921c9dbf8cd3a8db20ef4f15e0e2aa495fcc3</code></a> | March 19, 2025 | <code>packages/contracts-bedrock/src/L1/ETHLockbox.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/SuperFaultDisputeGame.sol</code> (explicitly not audited)<br><code>packages/contracts-bedrock/src/dispute/SuperPermissionedDisputeGame.sol</code> (explicitly not audited)<br><code>packages/contracts-bedrock/src/libraries/Encoding.sol</code><br><code>packages/contracts-bedrock/src/libraries/Hashing.sol</code><br><code>packages/contracts-bedrock/src/safe/DeputyGuardianModule.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/b671b67f75f6fe2041672d91bd3a6a777cd6a367"><code>b671b67f75f6fe2041672d91bd3a6a777cd6a367</code></a> | April 30, 2025 | <code>packages/contracts-bedrock/src/L1/ETHLockbox.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/e0c47fa78d77094f053c1747a8ed315eaabbe057"><code>e0c47fa78d77094f053c1747a8ed315eaabbe057</code></a> | May 2, 2025 | <code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code> |
 
 ## Optimism Blob Bug Fix Review (Aleph_v)
@@ -635,21 +668,22 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Spearbit
 - Date: 2025-05-20
 - Description: Spearbit five-day review of the Optimism monorepo contracts-bedrock changes for the interop-ready OptimismPortal2 / Upgrade 16 (SuperchainConfig pause model, ETHLockbox migration, ReinitializableBase upgrades, OPContractsManager) at commit 7cd84fed, followed by a fix review of PR 15939. Five Low, one Gas and eight Informational findings and no Critical, High or Medium issues; the report declares no explicit file list.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/7cd84fed9554193c2dcd683e1ff2d0e2605448f6"><code>7cd84fed9554193c2dcd683e1ff2d0e2605448f6</code></a> | May 6, 2025 | <code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/libraries/Encoding.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/safe/DeputyPauseModule.sol</code><br><code>packages/contracts-bedrock/src/L1/ProxyAdminOwnedBase.sol</code><br><code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/1891f660ee179b14fd09341a9554f59a120e625a"><code>1891f660ee179b14fd09341a9554f59a120e625a</code></a> | May 14, 2025 | <code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/7134b4c0d4dac073c4756458d008d34dc362dba2"><code>7134b4c0d4dac073c4756458d008d34dc362dba2</code></a> | May 14, 2025 | <code>packages/contracts-bedrock/src/libraries/Encoding.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/7cd84fed9554193c2dcd683e1ff2d0e2605448f6"><code>7cd84fed9554193c2dcd683e1ff2d0e2605448f6</code></a> | May 6, 2025 | <code>packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/ProxyAdminOwnedBase.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol</code><br><code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/libraries/Encoding.sol</code><br><code>packages/contracts-bedrock/src/safe/DeputyPauseModule.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/62dcc8a89693bccbd13e21b03de1595da7908f76"><code>62dcc8a89693bccbd13e21b03de1595da7908f76</code></a> | May 14, 2025 | <code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/3f77c1baf151091fb69aa672fc8543a2aeda261b"><code>3f77c1baf151091fb69aa672fc8543a2aeda261b</code></a> | May 14, 2025 | <code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/33695ee6adbbb29f8b49ae09af40c1aaf9989a6c"><code>33695ee6adbbb29f8b49ae09af40c1aaf9989a6c</code></a> | May 14, 2025 | <code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/c63713014bd22cd917557cf00515d7cc96d0c375"><code>c63713014bd22cd917557cf00515d7cc96d0c375</code></a> | May 14, 2025 | <code>packages/contracts-bedrock/src/L1/ProxyAdminOwnedBase.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/1891f660ee179b14fd09341a9554f59a120e625a"><code>1891f660ee179b14fd09341a9554f59a120e625a</code></a> | May 14, 2025 | <code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/4fc9181a73795334f0c657a79ea8177b8de1814c"><code>4fc9181a73795334f0c657a79ea8177b8de1814c</code></a> | May 14, 2025 | <code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/ProxyAdminOwnedBase.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol</code><br><code>packages/contracts-bedrock/src/safe/DeputyPauseModule.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/c7c974d1a208e7c1bf7e499bdb9530fe2954e40c"><code>c7c974d1a208e7c1bf7e499bdb9530fe2954e40c</code></a> | May 14, 2025 | <code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/3ad1915e5c0972632295b70ef63bab6c729392f9"><code>3ad1915e5c0972632295b70ef63bab6c729392f9</code></a> | May 14, 2025 | <code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/62dcc8a89693bccbd13e21b03de1595da7908f76"><code>62dcc8a89693bccbd13e21b03de1595da7908f76</code></a> | May 14, 2025 | <code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/4fc9181a73795334f0c657a79ea8177b8de1814c"><code>4fc9181a73795334f0c657a79ea8177b8de1814c</code></a> | May 14, 2025 | <code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/safe/DeputyPauseModule.sol</code><br><code>packages/contracts-bedrock/src/L1/ProxyAdminOwnedBase.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/7134b4c0d4dac073c4756458d008d34dc362dba2"><code>7134b4c0d4dac073c4756458d008d34dc362dba2</code></a> | May 14, 2025 | <code>packages/contracts-bedrock/src/libraries/Encoding.sol</code> |
 
 ## Optimism Security Review - Upgrade 16 (Spearbit)
 
@@ -657,6 +691,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Spearbit
 - Date: 2025-05-20
 - Description: Spearbit review (May 5-12, 2025) of the OP Stack L1 contracts changed for Upgrade 16 in the ethereum-optimism monorepo: ETHLockbox, OptimismPortal2, SuperchainConfig, SystemConfig, bridges, OPContractsManager U16 changes, MIPS64, dispute contracts, Encoding/Hashing and DeputyPauseModule. Five Low findings and no Critical/High/Medium; fixes verified in PR #15939 commits.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -678,12 +713,13 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: 3DOC Security
 - Date: 2025-06-06
 - Description: Radiant Labs (3DOC) manual review for OP Labs of the Cannon Go 1.24 support changes in PR #15737, primarily the new getrandom syscall in the Go MIPS64 VM (cannon/mipsevm) and the onchain MIPS64.sol verifier. One Medium (LL/SC reservation not cleared, fixed in d89e0ce), one Low and one Informational finding; no High findings.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/689111fca9a10e6670ba0b5c7f1a549a212c855b"><code>689111fca9a10e6670ba0b5c7f1a549a212c855b</code></a> | May 29, 2025 | <code>cannon/mipsevm/arch/arch64.go</code> (other)<br><code>cannon/mipsevm/iface.go</code> (other)<br><code>cannon/mipsevm/versions/state.go</code> (other)<br><code>cannon/mipsevm/versions/version.go</code> (other)<br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64State.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Syscalls.sol</code><br><code>cannon/mipsevm/multithreaded/mips.go</code> (other)<br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/689111fca9a10e6670ba0b5c7f1a549a212c855b"><code>689111fca9a10e6670ba0b5c7f1a549a212c855b</code></a> | May 29, 2025 | <code>cannon/mipsevm/arch/arch64.go</code> (other)<br><code>cannon/mipsevm/iface.go</code> (other)<br><code>cannon/mipsevm/multithreaded/mips.go</code> (other)<br><code>cannon/mipsevm/versions/state.go</code> (other)<br><code>cannon/mipsevm/versions/version.go</code> (other)<br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64State.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Syscalls.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/d89e0ce3a345acb5b98762ee1ca44d2f8e67e2a1"><code>d89e0ce3a345acb5b98762ee1ca44d2f8e67e2a1</code></a> | June 24, 2025 | <code>cannon/mipsevm/multithreaded/mips.go</code> (other)<br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code> |
 
 ## Optimism - Fix Review: MIPS EventFd and Syscall Error Handling (Spearbit/Cantina)
@@ -692,6 +728,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2025-06-21
 - Description: Solo Spearbit/Cantina fix review (Zigtur) of three OP Labs pull requests (#16341, #16346, #16384) on commit 7f7b9abb that add eventfd2 syscall support and correct the V0/A3 register convention for syscall errors in the Cannon Go MIPS64 VM and the onchain MIPS64 contracts, needed for the Go 1.23 runtime. Both fixes were confirmed accurate; no new findings were reported.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -708,6 +745,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Spearbit
 - Date: 2025-07-16
 - Description: Spearbit four-day review of the VerifyOPCM.s.sol Foundry script at commit 731280c6 and of whether it correctly verifies the OPContractsManager.sol contract at commit 54c19f6a for Upgrade 16. One Medium, one Low and one Informational finding, all acknowledged; no Critical or High issues and no fix review.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -722,21 +760,22 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: OpenZeppelin
 - Date: 2025-08-04
 - Description: OpenZeppelin reviewed the voteagora/optimism-governor repository at commit d585692: the authorized-proposer changes to OptimismGovernor.sol introduced in pull request #44, the entire RedeployTimelock.s.sol timelock redeployment script, and the Sepolia proposal calldata calling updateTimelock. The audit (2025-07-16 to 2025-07-18) found no Critical/High/Medium issues, only 8 Low and 4 Notes, all resolved in follow-up pull requests #47-#56.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/voteagora/optimism-governor"><code>voteagora/optimism-governor</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/voteagora/optimism-governor/commit/d585692582e907a69ecc066cc4196ea16630ab13"><code>d585692582e907a69ecc066cc4196ea16630ab13</code></a> | July 16, 2025 | <code>src/OptimismGovernor.sol</code><br><code>script/RedeployTimelock.s.sol</code> |
-| <a href="https://github.com/voteagora/optimism-governor/commit/ef27aaf4cf52f8666612c5f0e09274425e585dd9"><code>ef27aaf4cf52f8666612c5f0e09274425e585dd9</code></a> | July 23, 2025 | <code>src/OptimismGovernor.sol</code> |
+| <a href="https://github.com/voteagora/optimism-governor/commit/d585692582e907a69ecc066cc4196ea16630ab13"><code>d585692582e907a69ecc066cc4196ea16630ab13</code></a> | July 16, 2025 | <code>script/RedeployTimelock.s.sol</code><br><code>src/OptimismGovernor.sol</code> |
 | <a href="https://github.com/voteagora/optimism-governor/commit/ce323b50d73cce4fcf5c4c0d73dff073b02cfecc"><code>ce323b50d73cce4fcf5c4c0d73dff073b02cfecc</code></a> | July 23, 2025 | <code>script/RedeployTimelock.s.sol</code> |
+| <a href="https://github.com/voteagora/optimism-governor/commit/ef27aaf4cf52f8666612c5f0e09274425e585dd9"><code>ef27aaf4cf52f8666612c5f0e09274425e585dd9</code></a> | July 23, 2025 | <code>src/OptimismGovernor.sol</code> |
+| <a href="https://github.com/voteagora/optimism-governor/commit/600c183e2bdc2563de2bd00e64b6dabe232d57a5"><code>600c183e2bdc2563de2bd00e64b6dabe232d57a5</code></a> | July 24, 2025 | <code>script/RedeployTimelock.s.sol</code> |
 | <a href="https://github.com/voteagora/optimism-governor/commit/01d61708e3125dba01860c8b9a02ba396b426d6f"><code>01d61708e3125dba01860c8b9a02ba396b426d6f</code></a> | July 24, 2025 | <code>src/OptimismGovernor.sol</code> |
 | <a href="https://github.com/voteagora/optimism-governor/commit/68d60ba4ed8b94f100a3943de94630d3a886c186"><code>68d60ba4ed8b94f100a3943de94630d3a886c186</code></a> | July 24, 2025 | <code>src/OptimismGovernor.sol</code> |
-| <a href="https://github.com/voteagora/optimism-governor/commit/600c183e2bdc2563de2bd00e64b6dabe232d57a5"><code>600c183e2bdc2563de2bd00e64b6dabe232d57a5</code></a> | July 24, 2025 | <code>script/RedeployTimelock.s.sol</code> |
 | <a href="https://github.com/voteagora/optimism-governor/commit/c40620ffa47d0d4097bbc4344b05d669e4bf8d22"><code>c40620ffa47d0d4097bbc4344b05d669e4bf8d22</code></a> | July 25, 2025 | <code>src/OptimismGovernor.sol</code> |
-| <a href="https://github.com/voteagora/optimism-governor/commit/072970aad9ac0f36247213b7540104caa62f2dd4"><code>072970aad9ac0f36247213b7540104caa62f2dd4</code></a> | July 28, 2025 | <code>src/OptimismGovernor.sol</code> |
 | <a href="https://github.com/voteagora/optimism-governor/commit/e35f3c7b5aa6fd26cb0bcf9650df6a097c9cfaf6"><code>e35f3c7b5aa6fd26cb0bcf9650df6a097c9cfaf6</code></a> | July 28, 2025 | <code>script/RedeployTimelock.s.sol</code> |
 | <a href="https://github.com/voteagora/optimism-governor/commit/20e632d365b69548e7a6d32cdb3f9463bb7067c3"><code>20e632d365b69548e7a6d32cdb3f9463bb7067c3</code></a> | July 28, 2025 | <code>script/RedeployTimelock.s.sol</code> |
+| <a href="https://github.com/voteagora/optimism-governor/commit/072970aad9ac0f36247213b7540104caa62f2dd4"><code>072970aad9ac0f36247213b7540104caa62f2dd4</code></a> | July 28, 2025 | <code>src/OptimismGovernor.sol</code> |
 | <a href="https://github.com/voteagora/optimism-governor/commit/7d23fbc18329ca6096e334f62ca24912775a725a"><code>7d23fbc18329ca6096e334f62ca24912775a725a</code></a> | July 29, 2025 | <code>src/OptimismGovernor.sol</code> |
 
 ## Optimism u16 Security Review - U16a (Spearbit)
@@ -745,12 +784,13 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Spearbit
 - Date: 2025-10-07
 - Description: Spearbit 2-day review (Sep 9-11, 2025) of the Optimism U16a upgrade in the ethereum-optimism monorepo, covering OPContractsManager, OptimismPortal2, SystemConfig, the L1 bridges/messenger and the MIPS64 contracts. Three Low and seven Informational findings, no Critical/High/Medium; two fixes verified via PRs #17406 and #17482.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/475801690f7a451469ee4da87b5fe3c54c92f372"><code>475801690f7a451469ee4da87b5fe3c54c92f372</code></a> | September 8, 2025 | <code>packages/contracts-bedrock/src/cannon/libraries/MIPS64State.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Syscalls.sol</code><br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/libraries/SemverComp.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/475801690f7a451469ee4da87b5fe3c54c92f372"><code>475801690f7a451469ee4da87b5fe3c54c92f372</code></a> | September 8, 2025 | <code>packages/contracts-bedrock/src/L1/L1CrossDomainMessenger.sol</code><br><code>packages/contracts-bedrock/src/L1/L1ERC721Bridge.sol</code><br><code>packages/contracts-bedrock/src/L1/L1StandardBridge.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64State.sol</code><br><code>packages/contracts-bedrock/src/cannon/libraries/MIPS64Syscalls.sol</code><br><code>packages/contracts-bedrock/src/libraries/SemverComp.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/0326b2b4f847656d2a9a5ad5dd2598d410b18d26"><code>0326b2b4f847656d2a9a5ad5dd2598d410b18d26</code></a> | September 12, 2025 | <code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/6c20aa2b26f3d915c02cbcd49ff98523b69dd9dc"><code>6c20aa2b26f3d915c02cbcd49ff98523b69dd9dc</code></a> | September 16, 2025 | <code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code> |
 
@@ -760,21 +800,22 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2025-11-04
 - Description: Cantina Managed review (Oct 15-19, 2025) of the Optimism revenue-sharing / FeeSplitter feature developed by Wonderland in the optimism monorepo at commit 989afa81, covering the FeeSplitter, FeeVault, L1Withdrawer, SuperchainRevSharesCalculator and FeesDepositor contracts, their interfaces, genesis scripts and op-deployer tooling. No Critical, High or Medium issues were found; fixes were verified holistically at commit f1fcd964.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/989afa818dfee3ee1fba715584c2f7e8663268f8"><code>989afa818dfee3ee1fba715584c2f7e8663268f8</code></a> | October 13, 2025 | <code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeVault.sol</code><br><code>packages/contracts-bedrock/src/L1/FeesDepositor.sol</code><br><code>packages/contracts-bedrock/src/L2/L1Withdrawer.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainRevSharesCalculator.sol</code><br><code>packages/contracts-bedrock/scripts/L2Genesis.s.sol</code><br><code>packages/contracts-bedrock/scripts/Artifacts.s.sol</code><br><code>packages/contracts-bedrock/interfaces/L1/IFeesDepositor.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IFeeSplitter.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IBaseFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IL1FeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IOperatorFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/ISequencerFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/ISharesCalculator.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/ISuperchainRevSharesCalculator.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/ea0f449f7cdae83468bdca8f4c348ad1e0a04aa3"><code>ea0f449f7cdae83468bdca8f4c348ad1e0a04aa3</code></a> | October 22, 2025 | <code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IFeeSplitter.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/96951ff0fc19d99148c7202938a2e1138725293e"><code>96951ff0fc19d99148c7202938a2e1138725293e</code></a> | October 22, 2025 | <code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/ISharesCalculator.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/c407533a640d6d0e8d2e2ce60e9126e347b73888"><code>c407533a640d6d0e8d2e2ce60e9126e347b73888</code></a> | October 22, 2025 | <code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IFeeSplitter.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/fb22bccdc52734937ac45f1a57caf4cba9d26b5c"><code>fb22bccdc52734937ac45f1a57caf4cba9d26b5c</code></a> | October 28, 2025 | <code>packages/contracts-bedrock/scripts/L2Genesis.s.sol</code><br><code>packages/contracts-bedrock/scripts/Artifacts.s.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/989afa818dfee3ee1fba715584c2f7e8663268f8"><code>989afa818dfee3ee1fba715584c2f7e8663268f8</code></a> | October 13, 2025 | <code>packages/contracts-bedrock/interfaces/L1/IFeesDepositor.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IBaseFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IFeeSplitter.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IL1FeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IOperatorFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/ISequencerFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/ISharesCalculator.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/ISuperchainRevSharesCalculator.sol</code><br><code>packages/contracts-bedrock/scripts/Artifacts.s.sol</code><br><code>packages/contracts-bedrock/scripts/L2Genesis.s.sol</code><br><code>packages/contracts-bedrock/src/L1/FeesDepositor.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeVault.sol</code><br><code>packages/contracts-bedrock/src/L2/L1Withdrawer.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainRevSharesCalculator.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/ea0f449f7cdae83468bdca8f4c348ad1e0a04aa3"><code>ea0f449f7cdae83468bdca8f4c348ad1e0a04aa3</code></a> | October 22, 2025 | <code>packages/contracts-bedrock/interfaces/L2/IFeeSplitter.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/96951ff0fc19d99148c7202938a2e1138725293e"><code>96951ff0fc19d99148c7202938a2e1138725293e</code></a> | October 22, 2025 | <code>packages/contracts-bedrock/interfaces/L2/ISharesCalculator.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/c407533a640d6d0e8d2e2ce60e9126e347b73888"><code>c407533a640d6d0e8d2e2ce60e9126e347b73888</code></a> | October 22, 2025 | <code>packages/contracts-bedrock/interfaces/L2/IFeeSplitter.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/fb22bccdc52734937ac45f1a57caf4cba9d26b5c"><code>fb22bccdc52734937ac45f1a57caf4cba9d26b5c</code></a> | October 28, 2025 | <code>packages/contracts-bedrock/scripts/Artifacts.s.sol</code><br><code>packages/contracts-bedrock/scripts/L2Genesis.s.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/fa7f97c88271d0fd3c9a6df725e36a55ea43c0d0"><code>fa7f97c88271d0fd3c9a6df725e36a55ea43c0d0</code></a> | October 29, 2025 | <code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/68b32e134eaa2ce2bb312b70604ac4147f57d2b6"><code>68b32e134eaa2ce2bb312b70604ac4147f57d2b6</code></a> | October 29, 2025 | <code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeVault.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainRevSharesCalculator.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/9ba262294941bae165c150f00e3b923cfe90a928"><code>9ba262294941bae165c150f00e3b923cfe90a928</code></a> | October 29, 2025 | <code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeVault.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/14a2c14c86076192db076350642d35fa1dad665f"><code>14a2c14c86076192db076350642d35fa1dad665f</code></a> | October 29, 2025 | <code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code><br><code>packages/contracts-bedrock/scripts/L2Genesis.s.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IFeeSplitter.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/f1fcd96406d895f37c2d1a422d50ea7dbd03a491"><code>f1fcd96406d895f37c2d1a422d50ea7dbd03a491</code></a> | October 29, 2025 | <code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeVault.sol</code><br><code>packages/contracts-bedrock/src/L1/FeesDepositor.sol</code><br><code>packages/contracts-bedrock/src/L2/L1Withdrawer.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainRevSharesCalculator.sol</code><br><code>packages/contracts-bedrock/scripts/L2Genesis.s.sol</code><br><code>packages/contracts-bedrock/scripts/Artifacts.s.sol</code><br><code>packages/contracts-bedrock/interfaces/L1/IFeesDepositor.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IFeeSplitter.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IBaseFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IL1FeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IOperatorFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/ISequencerFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/ISharesCalculator.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/ISuperchainRevSharesCalculator.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/14a2c14c86076192db076350642d35fa1dad665f"><code>14a2c14c86076192db076350642d35fa1dad665f</code></a> | October 29, 2025 | <code>packages/contracts-bedrock/interfaces/L2/IFeeSplitter.sol</code><br><code>packages/contracts-bedrock/scripts/L2Genesis.s.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/f1fcd96406d895f37c2d1a422d50ea7dbd03a491"><code>f1fcd96406d895f37c2d1a422d50ea7dbd03a491</code></a> | October 29, 2025 | <code>packages/contracts-bedrock/interfaces/L1/IFeesDepositor.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IBaseFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IFeeSplitter.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IL1FeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/IOperatorFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/ISequencerFeeVault.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/ISharesCalculator.sol</code><br><code>packages/contracts-bedrock/interfaces/L2/ISuperchainRevSharesCalculator.sol</code><br><code>packages/contracts-bedrock/scripts/Artifacts.s.sol</code><br><code>packages/contracts-bedrock/scripts/L2Genesis.s.sol</code><br><code>packages/contracts-bedrock/src/L1/FeesDepositor.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeVault.sol</code><br><code>packages/contracts-bedrock/src/L2/L1Withdrawer.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainRevSharesCalculator.sol</code> |
 
 ## Optimism u17 Security Review
 
@@ -782,6 +823,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2025-10-27
 - Description: Cantina Managed review (2025-10-15 to 2025-10-21) of the ethereum-optimism/optimism u17 (op-contracts v5.0.0) contracts-bedrock release at commit aeed7033, covering 20 L1, L2, cannon MIPS64, dispute and universal contracts listed in the appendix, plus pull request 17998. The review found 3 Informational issues (all acknowledged) and no Critical/High/Medium/Low findings.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -796,12 +838,13 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2025-11-18
 - Description: Cantina Managed review of the Custom Gas Token (CGT) feature in the optimism monorepo at commit 1f888ede, covering the L1 OPContractsManager/OptimismPortal2/SystemConfig changes, the new L2 CGT predeploys (L1BlockCGT, L2ToL1MessagePasserCGT, LiquidityController, NativeAssetLiquidity) and the related deploy/genesis scripts. No Critical, High or Medium issues were found; fixes verified by Cantina concern out-of-scope Go tooling and the specs repository.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/1f888ede1940fce20f71db89fc13039fdd96757e"><code>1f888ede1940fce20f71db89fc13039fdd96757e</code></a> | October 30, 2025 | <code>packages/contracts-bedrock/scripts/deploy/DeployConfig.s.sol</code><br><code>packages/contracts-bedrock/scripts/deploy/DeployOPChain.s.sol</code><br><code>packages/contracts-bedrock/scripts/L2Genesis.s.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L2/L1BlockCGT.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ToL1MessagePasserCGT.sol</code><br><code>packages/contracts-bedrock/src/L2/LiquidityController.sol</code><br><code>packages/contracts-bedrock/src/L2/NativeAssetLiquidity.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/1f888ede1940fce20f71db89fc13039fdd96757e"><code>1f888ede1940fce20f71db89fc13039fdd96757e</code></a> | October 30, 2025 | <code>packages/contracts-bedrock/scripts/L2Genesis.s.sol</code><br><code>packages/contracts-bedrock/scripts/deploy/DeployConfig.s.sol</code><br><code>packages/contracts-bedrock/scripts/deploy/DeployOPChain.s.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L2/L1BlockCGT.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ToL1MessagePasserCGT.sol</code><br><code>packages/contracts-bedrock/src/L2/LiquidityController.sol</code><br><code>packages/contracts-bedrock/src/L2/NativeAssetLiquidity.sol</code> |
 
 ## Optimism SaferSafes Security Review (Spearbit)
 
@@ -809,14 +852,15 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Spearbit
 - Date: 2025-11-13
 - Description: Spearbit review of the SaferSafes Safe extensions in the optimism monorepo at commit cb54822c: LivenessModule2.sol, TimelockGuard.sol and SaferSafes.sol under packages/contracts-bedrock/src/safe. No Critical or High issues; one Medium and two Low findings, with fixes landed in PRs 18147 and 18172 and verified by Spearbit.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/cb54822c5e18925498f48d8677b71992bf402631"><code>cb54822c5e18925498f48d8677b71992bf402631</code></a> | October 24, 2025 | <code>packages/contracts-bedrock/src/safe/LivenessModule2.sol</code><br><code>packages/contracts-bedrock/src/safe/TimelockGuard.sol</code><br><code>packages/contracts-bedrock/src/safe/SaferSafes.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/8f0d87c5dcf4f570d43b5defe29e0815f2673305"><code>8f0d87c5dcf4f570d43b5defe29e0815f2673305</code></a> | November 4, 2025 | <code>packages/contracts-bedrock/src/safe/LivenessModule2.sol</code><br><code>packages/contracts-bedrock/src/safe/TimelockGuard.sol</code><br><code>packages/contracts-bedrock/src/safe/SaferSafes.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/ab2db708fc1d6992e35088c1c4b6df2b88508df5"><code>ab2db708fc1d6992e35088c1c4b6df2b88508df5</code></a> | November 6, 2025 | <code>packages/contracts-bedrock/src/safe/LivenessModule2.sol</code><br><code>packages/contracts-bedrock/src/safe/TimelockGuard.sol</code><br><code>packages/contracts-bedrock/src/safe/SaferSafes.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/cb54822c5e18925498f48d8677b71992bf402631"><code>cb54822c5e18925498f48d8677b71992bf402631</code></a> | October 24, 2025 | <code>packages/contracts-bedrock/src/safe/LivenessModule2.sol</code><br><code>packages/contracts-bedrock/src/safe/SaferSafes.sol</code><br><code>packages/contracts-bedrock/src/safe/TimelockGuard.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/8f0d87c5dcf4f570d43b5defe29e0815f2673305"><code>8f0d87c5dcf4f570d43b5defe29e0815f2673305</code></a> | November 4, 2025 | <code>packages/contracts-bedrock/src/safe/LivenessModule2.sol</code><br><code>packages/contracts-bedrock/src/safe/SaferSafes.sol</code><br><code>packages/contracts-bedrock/src/safe/TimelockGuard.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/ab2db708fc1d6992e35088c1c4b6df2b88508df5"><code>ab2db708fc1d6992e35088c1c4b6df2b88508df5</code></a> | November 6, 2025 | <code>packages/contracts-bedrock/src/safe/LivenessModule2.sol</code><br><code>packages/contracts-bedrock/src/safe/SaferSafes.sol</code><br><code>packages/contracts-bedrock/src/safe/TimelockGuard.sol</code> |
 
 ## Optimism PBC U18 Security Review (Cantina)
 
@@ -824,12 +868,13 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2026-01-12
 - Description: Cantina Managed review of the Optimism U18 upgrade at commit 87d406db, covering the contracts-bedrock dispute (DisputeGameFactory creator pattern, V2/Super/zk games), L1 (OPCM, portal, SystemConfig, FeesDepositor), L2 fee vault/splitter/CGT predeploys, libraries and Safe modules. No Critical, High or Medium issues were found; 4 Low, 1 Gas and 2 Informational findings, all acknowledged.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"><code>87d406db86907833f75d5c8fb26ade3dcb85eb41</code></a> | November 24, 2025 | <code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol</code><br><code>packages/contracts-bedrock/src/dispute/lib/Errors.sol</code><br><code>packages/contracts-bedrock/src/dispute/lib/LibGameArgs.sol</code><br><code>packages/contracts-bedrock/src/dispute/lib/Types.sol</code><br><code>packages/contracts-bedrock/src/dispute/SuperFaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/SuperPermissionedDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/v2/FaultDisputeGameV2.sol</code><br><code>packages/contracts-bedrock/src/dispute/v2/PermissionedDisputeGameV2.sol</code><br><code>packages/contracts-bedrock/src/dispute/zk/AccessManager.sol</code><br><code>packages/contracts-bedrock/src/dispute/zk/ISP1Verifier.sol</code><br><code>packages/contracts-bedrock/src/dispute/zk/OPSuccinctFaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/L1/FeesDepositor.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManagerStandardValidator.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L2/BaseFeeVault.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeVault.sol</code><br><code>packages/contracts-bedrock/src/L2/L1Block.sol</code><br><code>packages/contracts-bedrock/src/L2/L1BlockCGT.sol</code><br><code>packages/contracts-bedrock/src/L2/L1FeeVault.sol</code><br><code>packages/contracts-bedrock/src/L2/L1Withdrawer.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ToL1MessagePasserCGT.sol</code><br><code>packages/contracts-bedrock/src/L2/LiquidityController.sol</code><br><code>packages/contracts-bedrock/src/L2/NativeAssetLiquidity.sol</code><br><code>packages/contracts-bedrock/src/L2/OperatorFeeVault.sol</code><br><code>packages/contracts-bedrock/src/L2/SequencerFeeVault.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainRevSharesCalculator.sol</code><br><code>packages/contracts-bedrock/src/libraries/Constants.sol</code><br><code>packages/contracts-bedrock/src/libraries/DevFeatures.sol</code><br><code>packages/contracts-bedrock/src/libraries/Features.sol</code><br><code>packages/contracts-bedrock/src/libraries/Predeploys.sol</code><br><code>packages/contracts-bedrock/src/safe/DeputyPauseModule.sol</code><br><code>packages/contracts-bedrock/src/safe/LivenessGuard.sol</code><br><code>packages/contracts-bedrock/src/safe/LivenessModule.sol</code><br><code>packages/contracts-bedrock/src/safe/LivenessModule2.sol</code><br><code>packages/contracts-bedrock/src/safe/SaferSafes.sol</code><br><code>packages/contracts-bedrock/src/safe/TimelockGuard.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/87d406db86907833f75d5c8fb26ade3dcb85eb41"><code>87d406db86907833f75d5c8fb26ade3dcb85eb41</code></a> | November 24, 2025 | <code>packages/contracts-bedrock/src/L1/FeesDepositor.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManagerStandardValidator.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L2/BaseFeeVault.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeSplitter.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeVault.sol</code><br><code>packages/contracts-bedrock/src/L2/L1Block.sol</code><br><code>packages/contracts-bedrock/src/L2/L1BlockCGT.sol</code><br><code>packages/contracts-bedrock/src/L2/L1FeeVault.sol</code><br><code>packages/contracts-bedrock/src/L2/L1Withdrawer.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ToL1MessagePasser.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ToL1MessagePasserCGT.sol</code><br><code>packages/contracts-bedrock/src/L2/LiquidityController.sol</code><br><code>packages/contracts-bedrock/src/L2/NativeAssetLiquidity.sol</code><br><code>packages/contracts-bedrock/src/L2/OperatorFeeVault.sol</code><br><code>packages/contracts-bedrock/src/L2/SequencerFeeVault.sol</code><br><code>packages/contracts-bedrock/src/L2/SuperchainRevSharesCalculator.sol</code><br><code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/dispute/DisputeGameFactory.sol</code><br><code>packages/contracts-bedrock/src/dispute/SuperFaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/SuperPermissionedDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/lib/Errors.sol</code><br><code>packages/contracts-bedrock/src/dispute/lib/LibGameArgs.sol</code><br><code>packages/contracts-bedrock/src/dispute/lib/Types.sol</code><br><code>packages/contracts-bedrock/src/dispute/v2/FaultDisputeGameV2.sol</code><br><code>packages/contracts-bedrock/src/dispute/v2/PermissionedDisputeGameV2.sol</code><br><code>packages/contracts-bedrock/src/dispute/zk/AccessManager.sol</code><br><code>packages/contracts-bedrock/src/dispute/zk/ISP1Verifier.sol</code><br><code>packages/contracts-bedrock/src/dispute/zk/OPSuccinctFaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/libraries/Constants.sol</code><br><code>packages/contracts-bedrock/src/libraries/DevFeatures.sol</code><br><code>packages/contracts-bedrock/src/libraries/Features.sol</code><br><code>packages/contracts-bedrock/src/libraries/Predeploys.sol</code><br><code>packages/contracts-bedrock/src/safe/DeputyPauseModule.sol</code><br><code>packages/contracts-bedrock/src/safe/LivenessGuard.sol</code><br><code>packages/contracts-bedrock/src/safe/LivenessModule.sol</code><br><code>packages/contracts-bedrock/src/safe/LivenessModule2.sol</code><br><code>packages/contracts-bedrock/src/safe/SaferSafes.sol</code><br><code>packages/contracts-bedrock/src/safe/TimelockGuard.sol</code> |
 
 ## Coinbase: Kona Security Review
 
@@ -856,13 +901,14 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2026-03-27
 - Description: Cantina Managed review of the PolicyEngineStaking contract, its interface and deployment script in contracts-bedrock at commit 60679313, followed by a holistic fix review at commit 13c74c6d. No Critical, High or Medium issues; 1 Low and 9 Informational findings, 9 fixed and 1 acknowledged.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/606793132710967158a8888d26702241f794fca1"><code>606793132710967158a8888d26702241f794fca1</code></a> | February 24, 2026 | <code>packages/contracts-bedrock/src/periphery/staking/PolicyEngineStaking.sol</code><br><code>packages/contracts-bedrock/interfaces/periphery/staking/IPolicyEngineStaking.sol</code><br><code>packages/contracts-bedrock/scripts/deploy/DeployPolicyEngineStaking.s.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/13c74c6d0855caf59b575ccf5fbf74ffe104cb4f"><code>13c74c6d0855caf59b575ccf5fbf74ffe104cb4f</code></a> | March 16, 2026 | <code>packages/contracts-bedrock/src/periphery/staking/PolicyEngineStaking.sol</code><br><code>packages/contracts-bedrock/interfaces/periphery/staking/IPolicyEngineStaking.sol</code><br><code>packages/contracts-bedrock/scripts/deploy/DeployPolicyEngineStaking.s.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/606793132710967158a8888d26702241f794fca1"><code>606793132710967158a8888d26702241f794fca1</code></a> | February 24, 2026 | <code>packages/contracts-bedrock/interfaces/periphery/staking/IPolicyEngineStaking.sol</code><br><code>packages/contracts-bedrock/scripts/deploy/DeployPolicyEngineStaking.s.sol</code><br><code>packages/contracts-bedrock/src/periphery/staking/PolicyEngineStaking.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/13c74c6d0855caf59b575ccf5fbf74ffe104cb4f"><code>13c74c6d0855caf59b575ccf5fbf74ffe104cb4f</code></a> | March 16, 2026 | <code>packages/contracts-bedrock/interfaces/periphery/staking/IPolicyEngineStaking.sol</code><br><code>packages/contracts-bedrock/scripts/deploy/DeployPolicyEngineStaking.s.sol</code><br><code>packages/contracts-bedrock/src/periphery/staking/PolicyEngineStaking.sol</code> |
 
 ## Optimism: Upgrade 19 Security Review (Cantina)
 
@@ -870,12 +916,13 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2026-05-23
 - Description: Cantina Managed review of the Optimism Upgrade 19 contracts-bedrock changes at commit 7cbcb58f, covering OPCMv2 / validator utilities, L2ContractsManager, FeeVault, dispute and portal contracts. No Critical or High issues; 3 Medium, 10 Low and 3 Informational findings, none reported as fixed.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"><code>7cbcb58ffb7322343f0ed6b926f65bea7630ce3e</code></a> | May 1, 2026 | <code>packages/contracts-bedrock/src/L2/L2ContractsManager.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtils.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeVault.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/StandardValidatorUtils.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerMigrationValidator.sol</code><br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManagerStandardValidator.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerV2.sol</code><br><code>packages/contracts-bedrock/src/dispute/PermissionedDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/7cbcb58ffb7322343f0ed6b926f65bea7630ce3e"><code>7cbcb58ffb7322343f0ed6b926f65bea7630ce3e</code></a> | May 1, 2026 | <code>packages/contracts-bedrock/src/L1/OPContractsManagerStandardValidator.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerMigrationValidator.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtils.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerV2.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/StandardValidatorUtils.sol</code><br><code>packages/contracts-bedrock/src/L2/FeeVault.sol</code><br><code>packages/contracts-bedrock/src/L2/L2ContractsManager.sol</code><br><code>packages/contracts-bedrock/src/cannon/MIPS64.sol</code><br><code>packages/contracts-bedrock/src/dispute/AnchorStateRegistry.sol</code><br><code>packages/contracts-bedrock/src/dispute/FaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/PermissionedDisputeGame.sol</code> |
 
 ## Optimism L2 Interop Re-review (Cantina Managed)
 
@@ -883,6 +930,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2026-06-18
 - Description: Cantina Managed re-review of the OP Stack L2 interop predeploys (CrossL2Inbox, L2ToL2CrossDomainMessenger, SuperchainETHBridge, ETHLiquidity) and their supporting libraries (Hashing, TransientContext, SafeSend) at commit fa9974a2. The review found 4 Low and 25 Informational issues and no Critical, High or Medium findings; several documentation/code fixes were verified.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
@@ -902,16 +950,17 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2026-06-08
 - Description: Cantina Managed review of the OPCMv2 contracts in contracts-bedrock (OPContractsManagerV2, Migrator, Utils, UtilsCaller, Container and the VerifyOPCM script) at commit a00b3972, with fix verification of PRs #19271, #19272, #19281, #19285, #20289 and #20371. No Critical or High issues; 1 Medium, 6 Low and 15 Informational findings, 21 fixed and 1 acknowledged.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/a00b39720a3f61276d2fa3991abfb672c9dd35ce"><code>a00b39720a3f61276d2fa3991abfb672c9dd35ce</code></a> | February 6, 2026 | <code>packages/contracts-bedrock/scripts/deploy/VerifyOPCM.s.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerMigrator.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerV2.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtils.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtilsCaller.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerContainer.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/a00b39720a3f61276d2fa3991abfb672c9dd35ce"><code>a00b39720a3f61276d2fa3991abfb672c9dd35ce</code></a> | February 6, 2026 | <code>packages/contracts-bedrock/scripts/deploy/VerifyOPCM.s.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerContainer.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerMigrator.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtils.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtilsCaller.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerV2.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/8d80aac5355b80563ad2636155d593d6448f3c87"><code>8d80aac5355b80563ad2636155d593d6448f3c87</code></a> | February 22, 2026 | <code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerMigrator.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerV2.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/8083ebcb4c149e094841ae1369285158ebc643c2"><code>8083ebcb4c149e094841ae1369285158ebc643c2</code></a> | February 23, 2026 | <code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerMigrator.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/5161204097d10ff8888d4e793506b0db818c7517"><code>5161204097d10ff8888d4e793506b0db818c7517</code></a> | March 3, 2026 | <code>packages/contracts-bedrock/scripts/deploy/VerifyOPCM.s.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/f68cd8e3ca7e59b0bd0d267fcafdcd7b13cf7ec6"><code>f68cd8e3ca7e59b0bd0d267fcafdcd7b13cf7ec6</code></a> | March 5, 2026 | <code>packages/contracts-bedrock/scripts/deploy/VerifyOPCM.s.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerV2.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtils.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/f68cd8e3ca7e59b0bd0d267fcafdcd7b13cf7ec6"><code>f68cd8e3ca7e59b0bd0d267fcafdcd7b13cf7ec6</code></a> | March 5, 2026 | <code>packages/contracts-bedrock/scripts/deploy/VerifyOPCM.s.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtils.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerV2.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/56ee47e5f515425dfcb9e42c4f08b7b4d15e1469"><code>56ee47e5f515425dfcb9e42c4f08b7b4d15e1469</code></a> | March 5, 2026 | <code>packages/contracts-bedrock/scripts/deploy/VerifyOPCM.s.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerMigrator.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/b78ae8c48bbd721c9c28d6c97ad25346a5aa3bf0"><code>b78ae8c48bbd721c9c28d6c97ad25346a5aa3bf0</code></a> | March 5, 2026 | <code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerMigrator.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerV2.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/992bc6b06465107bee15c1e2df27836d0f2e4651"><code>992bc6b06465107bee15c1e2df27836d0f2e4651</code></a> | April 23, 2026 | <code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtils.sol</code> |
@@ -923,16 +972,17 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2026-08-20
 - Description: Cantina Managed review of the Upgrade 20 (super-roots) L1 contract changes at commit 7799a246, covering the super fault dispute games, OPContractsManagerV2 and its validator/utility contracts, OptimismPortal2, SystemConfig, SuperchainConfig and related interfaces and libraries. The review found 6 Low and 8 Informational issues and no Critical, High or Medium findings; four Low fixes were verified.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ethereum-optimism/optimism"><code>ethereum-optimism/optimism</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"><code>7799a2464f23b4e19abd5e29843545f960e677be</code></a> | July 31, 2026 | <code>packages/contracts-bedrock/interfaces/dispute/ISuperFaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/interfaces/dispute/ISuperPermissionedDisputeGame.sol</code><br><code>packages/contracts-bedrock/interfaces/L1/IOptimismPortal2.sol</code><br><code>packages/contracts-bedrock/interfaces/L1/ISystemConfig.sol</code><br><code>packages/contracts-bedrock/interfaces/L1/opcm/IOPContractsManagerMigrationValidator.sol</code><br><code>packages/contracts-bedrock/interfaces/L1/opcm/IOPContractsManagerMigrator.sol</code><br><code>packages/contracts-bedrock/interfaces/L1/opcm/IStandardValidatorUtils.sol</code><br><code>packages/contracts-bedrock/src/dispute/SuperFaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/lib/LibGameArgs.sol</code><br><code>packages/contracts-bedrock/src/dispute/lib/Types.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerContainer.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtils.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtilsCaller.sol</code><br><code>packages/contracts-bedrock/src/libraries/Constants.sol</code><br><code>packages/contracts-bedrock/src/libraries/Features.sol</code><br><code>packages/contracts-bedrock/src/universal/SafeSend.sol</code><br><code>packages/contracts-bedrock/interfaces/L1/opcm/IOPContractsManagerContainer.sol</code><br><code>packages/contracts-bedrock/src/dispute/SuperPermissionedDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManagerStandardValidator.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerV2.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/StandardValidatorUtils.sol</code><br><code>packages/contracts-bedrock/src/libraries/DevFeatures.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/7799a2464f23b4e19abd5e29843545f960e677be"><code>7799a2464f23b4e19abd5e29843545f960e677be</code></a> | July 31, 2026 | <code>packages/contracts-bedrock/interfaces/L1/IOptimismPortal2.sol</code><br><code>packages/contracts-bedrock/interfaces/L1/ISystemConfig.sol</code><br><code>packages/contracts-bedrock/interfaces/L1/opcm/IOPContractsManagerContainer.sol</code><br><code>packages/contracts-bedrock/interfaces/L1/opcm/IOPContractsManagerMigrationValidator.sol</code><br><code>packages/contracts-bedrock/interfaces/L1/opcm/IOPContractsManagerMigrator.sol</code><br><code>packages/contracts-bedrock/interfaces/L1/opcm/IStandardValidatorUtils.sol</code><br><code>packages/contracts-bedrock/interfaces/dispute/ISuperFaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/interfaces/dispute/ISuperPermissionedDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/L1/OPContractsManagerStandardValidator.sol</code><br><code>packages/contracts-bedrock/src/L1/OptimismPortal2.sol</code><br><code>packages/contracts-bedrock/src/L1/SuperchainConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/SystemConfig.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerContainer.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtils.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerUtilsCaller.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/OPContractsManagerV2.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/StandardValidatorUtils.sol</code><br><code>packages/contracts-bedrock/src/dispute/SuperFaultDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/SuperPermissionedDisputeGame.sol</code><br><code>packages/contracts-bedrock/src/dispute/lib/LibGameArgs.sol</code><br><code>packages/contracts-bedrock/src/dispute/lib/Types.sol</code><br><code>packages/contracts-bedrock/src/libraries/Constants.sol</code><br><code>packages/contracts-bedrock/src/libraries/DevFeatures.sol</code><br><code>packages/contracts-bedrock/src/libraries/Features.sol</code><br><code>packages/contracts-bedrock/src/universal/SafeSend.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/cba37e86e44a6bc4fb414da62f2bb1d5b906502a"><code>cba37e86e44a6bc4fb414da62f2bb1d5b906502a</code></a> | August 12, 2026 | <code>packages/contracts-bedrock/src/L1/OPContractsManagerStandardValidator.sol</code> |
-| <a href="https://github.com/ethereum-optimism/optimism/commit/44eb9547baef1331df04b826a15ca0e05ddedc1f"><code>44eb9547baef1331df04b826a15ca0e05ddedc1f</code></a> | August 13, 2026 | <code>packages/contracts-bedrock/src/dispute/SuperPermissionedDisputeGame.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/283bb456cf5b17f407f8f72826820d3852d966fe"><code>283bb456cf5b17f407f8f72826820d3852d966fe</code></a> | August 13, 2026 | <code>packages/contracts-bedrock/src/L1/OPContractsManagerStandardValidator.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/StandardValidatorUtils.sol</code> |
 | <a href="https://github.com/ethereum-optimism/optimism/commit/ef695a353f8fd71ad03220a7b9e20f05d5c1715f"><code>ef695a353f8fd71ad03220a7b9e20f05d5c1715f</code></a> | August 13, 2026 | <code>packages/contracts-bedrock/src/L1/OPContractsManagerStandardValidator.sol</code><br><code>packages/contracts-bedrock/src/L1/opcm/StandardValidatorUtils.sol</code> |
+| <a href="https://github.com/ethereum-optimism/optimism/commit/44eb9547baef1331df04b826a15ca0e05ddedc1f"><code>44eb9547baef1331df04b826a15ca0e05ddedc1f</code></a> | August 13, 2026 | <code>packages/contracts-bedrock/src/dispute/SuperPermissionedDisputeGame.sol</code> |
 
 ## Irrelevant reports
 

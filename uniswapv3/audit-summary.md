@@ -9,6 +9,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Trail of Bits
 - Date: 2021-03-12
 - Description: Trail of Bits manual review, Echidna fuzzing, Manticore verification and Slither analysis of the Uniswap V3 core contracts (factory, pool, pool deployer and arithmetic/tick/position/oracle libraries) at commit 99223f3 of uniswap-v3-core. Ten findings were reported, including two High-severity issues: TOB-UNI-005 (free swaps via an incorrect balance comparison) is already fixed at the audited commit 99223f3 (commit a4fb75c, &#x27;fix swap underpayment bug&#x27;, precedes it), so it is not recorded as open there; TOB-UNI-009 (missing contract existence check in TransferHelper) remains open.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/Uniswap/v3-core"><code>Uniswap/v3-core</code></a>
 
@@ -22,6 +23,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: ABDK Consulting
 - Date: 2021-03-23
 - Description: ABDK Consulting code review of the Uniswap V3 core contracts, libraries and interfaces at tag v1.0.0-beta.3 of uniswap-v3-core, with fixes tracked to specific pull requests and commits. 159 findings were reported, none Major or Critical; two Moderate issues (one FullMath overflow, fixed) and the rest Minor.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/Uniswap/v3-core"><code>Uniswap/v3-core</code></a>
 
@@ -39,11 +41,12 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: ABDK Consulting
 - Date: 2021-05-04
 - Description: ABDK Consulting review of the Uniswap V3 periphery contracts NonfungiblePositionManager.sol and SwapRouter.sol in uniswap-v3-periphery, with fixes applied in two named periphery commits. Two Critical findings (SwapRouter exact-input payer bug and NonfungiblePositionManager liquidity theft via unchecked decreaseLiquidity) were fixed, and one Major finding remained open.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/Uniswap/v3-periphery"><code>Uniswap/v3-periphery</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/Uniswap/v3-periphery/blob/8ad273f45cd42e04b5f8f15b6f4da57827122273/contracts/NonfungiblePositionManager.sol"><code>8ad273f45cd42e04b5f8f15b6f4da57827122273</code></a> | April 12, 2021 | <code>contracts/NonfungiblePositionManager.sol</code><br><code>contracts/SwapRouter.sol</code> |
+| <a href="https://github.com/Uniswap/v3-periphery/blob/8ad273f45cd42e04b5f8f15b6f4da57827122273/contracts/NonfungiblePositionManager.sol"><code>8ad273f45cd42e04b5f8f15b6f4da57827122273</code></a> | April 12, 2021 | <code>contracts/NonfungiblePositionManager.sol</code><br><code>contracts/SwapRouter.sol</code><br><code>contracts/base/ERC721Permit.sol</code> (explicitly not audited)<br><code>contracts/base/LiquidityManagement.sol</code> (explicitly not audited)<br><code>contracts/base/Multicall.sol</code> (explicitly not audited)<br><code>contracts/base/PeripheryImmutableState.sol</code> (explicitly not audited)<br><code>contracts/base/PeripheryPayments.sol</code> (explicitly not audited)<br><code>contracts/base/PeripheryValidation.sol</code> (explicitly not audited)<br><code>contracts/base/SelfPermit.sol</code> (explicitly not audited)<br><code>contracts/interfaces/INonfungiblePositionManager.sol</code> (explicitly not audited)<br><code>contracts/interfaces/INonfungibleTokenPositionDescriptor.sol</code> (explicitly not audited)<br><code>contracts/interfaces/ISwapRouter.sol</code> (explicitly not audited)<br><code>contracts/interfaces/external/IWETH9.sol</code> (explicitly not audited)<br><code>contracts/libraries/CallbackValidation.sol</code> (explicitly not audited)<br><code>contracts/libraries/Path.sol</code> (explicitly not audited)<br><code>contracts/libraries/PoolAddress.sol</code> (explicitly not audited)<br><code>contracts/libraries/PositionKey.sol</code> (explicitly not audited) |
 | <a href="https://github.com/Uniswap/v3-periphery/blob/987842552ede76d428e60116672fb0ff67fe551e/contracts/NonfungiblePositionManager.sol"><code>987842552ede76d428e60116672fb0ff67fe551e</code></a> | April 14, 2021 | <code>contracts/NonfungiblePositionManager.sol</code> |
 | <a href="https://github.com/Uniswap/v3-periphery/blob/2353765fe799b987ac5236971398fcb0be2bc5c0/contracts/SwapRouter.sol"><code>2353765fe799b987ac5236971398fcb0be2bc5c0</code></a> | April 14, 2021 | <code>contracts/SwapRouter.sol</code> |

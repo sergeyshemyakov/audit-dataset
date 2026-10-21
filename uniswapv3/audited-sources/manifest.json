@@ -110,6 +110,201 @@
     {
       "repository": "Uniswap/v3-core",
       "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/interfaces/IERC20Minimal.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/interfaces/IERC20Minimal.sol",
+          "git_object": "1780b40cf7775b7204759629211776d70fb62aa4",
+          "git_mode": "100644",
+          "sha256": "b7b65aa128ceb68c9f8eb10daa6080209038c3309b2b6e6c6b7bfac2c0e57d91"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/interfaces/IUniswapV3Factory.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/interfaces/IUniswapV3Factory.sol",
+          "git_object": "ec7a698ab9144c1f2a978207903027d397460ba5",
+          "git_mode": "100644",
+          "sha256": "e61eb73e83062876b874749e776d5e5ed3db0a3a13f9da686d089983d04d4aaa"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/interfaces/IUniswapV3Pool.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/interfaces/IUniswapV3Pool.sol",
+          "git_object": "38ee067ab63c3933fa25e5aca0136b01c9db0545",
+          "git_mode": "100644",
+          "sha256": "f550ac05cd6b2c783a6a9baf16db50d57c8df37405eac37f231d310c4db55254"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/interfaces/IUniswapV3PoolDeployer.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/interfaces/IUniswapV3PoolDeployer.sol",
+          "git_object": "5b279d81c59afe6bcbeff00cf9cd8d0e2b288df3",
+          "git_mode": "100644",
+          "sha256": "8d8dc34b6afce3e57df3411bf6b79a67641a853b1e1dbb9131eb3f355be9934f"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/interfaces/callback/IUniswapV3FlashCallback.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/interfaces/callback/IUniswapV3FlashCallback.sol",
+          "git_object": "1656b3672c6b964ca005bca6cc9c31f4dc1415d7",
+          "git_mode": "100644",
+          "sha256": "c482170f191b0f841843cfa8a96a3667b3fe88c2870404e8845f539f6020a9f7"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/interfaces/callback/IUniswapV3MintCallback.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/interfaces/callback/IUniswapV3MintCallback.sol",
+          "git_object": "45361c52c14eea2b3ac2fddc34176c4ed46aca2f",
+          "git_mode": "100644",
+          "sha256": "beeb8862fa79568f350884f4e8c6c9fde1d2c92ee5fd8b4b12cb4d64cfd70489"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/interfaces/callback/IUniswapV3SwapCallback.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/interfaces/callback/IUniswapV3SwapCallback.sol",
+          "git_object": "5464243e6fd6626dcf9bda669e2a66da226d58b6",
+          "git_mode": "100644",
+          "sha256": "ab4d103e33c25d53197c2bff02039310039a151d9494886ae5eafbbbe22a3d5c"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/interfaces/pool/IUniswapV3PoolActions.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/interfaces/pool/IUniswapV3PoolActions.sol",
+          "git_object": "a5635f91448daf9b08849812bf838e452ee1b16f",
+          "git_mode": "100644",
+          "sha256": "de6c8363c597ea01e18fdac4f41a796ac907b81f3949b7c87577c76c1e40ee9d"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol",
+          "git_object": "1a59de42c5d0983d397019c658cfc6bc55c538ad",
+          "git_mode": "100644",
+          "sha256": "3dee97b0e184db441ec05ffc3cc45c3296a1460cf8a73f483140cda5e0f2f18b"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/interfaces/pool/IUniswapV3PoolEvents.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/interfaces/pool/IUniswapV3PoolEvents.sol",
+          "git_object": "27f9e26e0d310c791fea4bf2998ad5ddc9135ff8",
+          "git_mode": "100644",
+          "sha256": "f69b7b908cfe2e27572a6f1b28cfb7d8eba99fd305d12d88c86fa98d4615e8bb"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/interfaces/pool/IUniswapV3PoolImmutables.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/interfaces/pool/IUniswapV3PoolImmutables.sol",
+          "git_object": "f7c87028768ab9490b4bc281ef0179d83a1e1252",
+          "git_mode": "100644",
+          "sha256": "a4cc134ec1c0e4e70867b269aeced1f859b08587f05c8f26aee96a4111ebb5b3"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol",
+          "git_object": "f316ba46b5f646a84297390dedcfd4e4369afb9c",
+          "git_mode": "100644",
+          "sha256": "da09f7b7c4be9a9f3b03c57b604747a396328da8e9df46d7946b0ceb36c2ba0f"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/interfaces/pool/IUniswapV3PoolState.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/interfaces/pool/IUniswapV3PoolState.sol",
+          "git_object": "745620109a04a728a4c1da2d1118f50b01ed9734",
+          "git_mode": "100644",
+          "sha256": "e4e7ae5422ae2a2f65d6033ad7c3f100bcec745731dd6714d6bc8e0c96459c8b"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
       "source_path": "contracts/libraries/BitMath.sol",
       "path_kind": "file",
       "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
@@ -119,6 +314,36 @@
           "git_object": "31f2b156951301af87b461187aea132e757bd149",
           "git_mode": "100644",
           "sha256": "b8ae680e37b35d8b6efc9d47c9f771cf9c9765d769ccbfec790e0d939eeb5160"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/libraries/FixedPoint128.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/libraries/FixedPoint128.sol",
+          "git_object": "8aa1e5b61ce8db63b3205555cbba846c5fa5c2b0",
+          "git_mode": "100644",
+          "sha256": "3bab10561cf14f6ff55ea36d1260bef62fc9d25b2f31a7031782b49b7d680bc6"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-core",
+      "repository_url": "https://github.com/Uniswap/v3-core",
+      "source_path": "contracts/libraries/FixedPoint96.sol",
+      "path_kind": "file",
+      "commit": "99223f33fd69a9e024f00bd8eea17b029d3f8f2d",
+      "files": [
+        {
+          "path": "contracts/libraries/FixedPoint96.sol",
+          "git_object": "1138570bc167aaf339de5de829f134b49c5497f9",
+          "git_mode": "100644",
+          "sha256": "e9ef347af6c7e0f0a58f6fc81de3b83d23aa33785c3e1bf36d9d0642d81652e7"
         }
       ]
     },
@@ -1084,5 +1309,613 @@
     }
   ],
   "skipped": [],
-  "unavailable": []
+  "unavailable": [],
+  "imports": {
+    "Uniswap/v3-core": {
+      "99223f33fd69a9e024f00bd8eea17b029d3f8f2d": {
+        "contracts/NoDelegateCall.sol": [],
+        "contracts/UniswapV3Factory.sol": [
+          {
+            "import": "./interfaces/IUniswapV3Factory.sol",
+            "path": "contracts/interfaces/IUniswapV3Factory.sol"
+          },
+          {
+            "import": "./UniswapV3PoolDeployer.sol",
+            "path": "contracts/UniswapV3PoolDeployer.sol"
+          },
+          {
+            "import": "./NoDelegateCall.sol",
+            "path": "contracts/NoDelegateCall.sol"
+          },
+          {
+            "import": "./UniswapV3Pool.sol",
+            "path": "contracts/UniswapV3Pool.sol"
+          }
+        ],
+        "contracts/UniswapV3Pool.sol": [
+          {
+            "import": "./interfaces/IUniswapV3Pool.sol",
+            "path": "contracts/interfaces/IUniswapV3Pool.sol"
+          },
+          {
+            "import": "./NoDelegateCall.sol",
+            "path": "contracts/NoDelegateCall.sol"
+          },
+          {
+            "import": "./libraries/LowGasSafeMath.sol",
+            "path": "contracts/libraries/LowGasSafeMath.sol"
+          },
+          {
+            "import": "./libraries/SafeCast.sol",
+            "path": "contracts/libraries/SafeCast.sol"
+          },
+          {
+            "import": "./libraries/Tick.sol",
+            "path": "contracts/libraries/Tick.sol"
+          },
+          {
+            "import": "./libraries/TickBitmap.sol",
+            "path": "contracts/libraries/TickBitmap.sol"
+          },
+          {
+            "import": "./libraries/SecondsOutside.sol",
+            "path": "contracts/libraries/SecondsOutside.sol"
+          },
+          {
+            "import": "./libraries/Position.sol",
+            "path": "contracts/libraries/Position.sol"
+          },
+          {
+            "import": "./libraries/Oracle.sol",
+            "path": "contracts/libraries/Oracle.sol"
+          },
+          {
+            "import": "./libraries/FullMath.sol",
+            "path": "contracts/libraries/FullMath.sol"
+          },
+          {
+            "import": "./libraries/FixedPoint128.sol",
+            "path": "contracts/libraries/FixedPoint128.sol"
+          },
+          {
+            "import": "./libraries/TransferHelper.sol",
+            "path": "contracts/libraries/TransferHelper.sol"
+          },
+          {
+            "import": "./libraries/TickMath.sol",
+            "path": "contracts/libraries/TickMath.sol"
+          },
+          {
+            "import": "./libraries/LiquidityMath.sol",
+            "path": "contracts/libraries/LiquidityMath.sol"
+          },
+          {
+            "import": "./libraries/SqrtPriceMath.sol",
+            "path": "contracts/libraries/SqrtPriceMath.sol"
+          },
+          {
+            "import": "./libraries/SwapMath.sol",
+            "path": "contracts/libraries/SwapMath.sol"
+          },
+          {
+            "import": "./interfaces/IUniswapV3PoolDeployer.sol",
+            "path": "contracts/interfaces/IUniswapV3PoolDeployer.sol"
+          },
+          {
+            "import": "./interfaces/IUniswapV3Factory.sol",
+            "path": "contracts/interfaces/IUniswapV3Factory.sol"
+          },
+          {
+            "import": "./interfaces/IERC20Minimal.sol",
+            "path": "contracts/interfaces/IERC20Minimal.sol"
+          },
+          {
+            "import": "./interfaces/callback/IUniswapV3MintCallback.sol",
+            "path": "contracts/interfaces/callback/IUniswapV3MintCallback.sol"
+          },
+          {
+            "import": "./interfaces/callback/IUniswapV3SwapCallback.sol",
+            "path": "contracts/interfaces/callback/IUniswapV3SwapCallback.sol"
+          },
+          {
+            "import": "./interfaces/callback/IUniswapV3FlashCallback.sol",
+            "path": "contracts/interfaces/callback/IUniswapV3FlashCallback.sol"
+          }
+        ],
+        "contracts/UniswapV3PoolDeployer.sol": [
+          {
+            "import": "./interfaces/IUniswapV3PoolDeployer.sol",
+            "path": "contracts/interfaces/IUniswapV3PoolDeployer.sol"
+          },
+          {
+            "import": "./UniswapV3Pool.sol",
+            "path": "contracts/UniswapV3Pool.sol"
+          }
+        ],
+        "contracts/interfaces/IERC20Minimal.sol": [],
+        "contracts/interfaces/IUniswapV3Factory.sol": [],
+        "contracts/interfaces/IUniswapV3Pool.sol": [
+          {
+            "import": "./pool/IUniswapV3PoolImmutables.sol",
+            "path": "contracts/interfaces/pool/IUniswapV3PoolImmutables.sol"
+          },
+          {
+            "import": "./pool/IUniswapV3PoolState.sol",
+            "path": "contracts/interfaces/pool/IUniswapV3PoolState.sol"
+          },
+          {
+            "import": "./pool/IUniswapV3PoolDerivedState.sol",
+            "path": "contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol"
+          },
+          {
+            "import": "./pool/IUniswapV3PoolActions.sol",
+            "path": "contracts/interfaces/pool/IUniswapV3PoolActions.sol"
+          },
+          {
+            "import": "./pool/IUniswapV3PoolOwnerActions.sol",
+            "path": "contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol"
+          },
+          {
+            "import": "./pool/IUniswapV3PoolEvents.sol",
+            "path": "contracts/interfaces/pool/IUniswapV3PoolEvents.sol"
+          }
+        ],
+        "contracts/interfaces/IUniswapV3PoolDeployer.sol": [],
+        "contracts/interfaces/callback/IUniswapV3FlashCallback.sol": [],
+        "contracts/interfaces/callback/IUniswapV3MintCallback.sol": [],
+        "contracts/interfaces/callback/IUniswapV3SwapCallback.sol": [],
+        "contracts/interfaces/pool/IUniswapV3PoolActions.sol": [],
+        "contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol": [],
+        "contracts/interfaces/pool/IUniswapV3PoolEvents.sol": [],
+        "contracts/interfaces/pool/IUniswapV3PoolImmutables.sol": [],
+        "contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol": [],
+        "contracts/interfaces/pool/IUniswapV3PoolState.sol": [],
+        "contracts/libraries/BitMath.sol": [],
+        "contracts/libraries/FixedPoint128.sol": [],
+        "contracts/libraries/FixedPoint96.sol": [],
+        "contracts/libraries/FullMath.sol": [],
+        "contracts/libraries/LiquidityMath.sol": [],
+        "contracts/libraries/LowGasSafeMath.sol": [],
+        "contracts/libraries/Oracle.sol": [],
+        "contracts/libraries/Position.sol": [
+          {
+            "import": "./FullMath.sol",
+            "path": "contracts/libraries/FullMath.sol"
+          },
+          {
+            "import": "./FixedPoint128.sol",
+            "path": "contracts/libraries/FixedPoint128.sol"
+          },
+          {
+            "import": "./LiquidityMath.sol",
+            "path": "contracts/libraries/LiquidityMath.sol"
+          }
+        ],
+        "contracts/libraries/SafeCast.sol": [],
+        "contracts/libraries/SecondsOutside.sol": [],
+        "contracts/libraries/SqrtPriceMath.sol": [
+          {
+            "import": "./LowGasSafeMath.sol",
+            "path": "contracts/libraries/LowGasSafeMath.sol"
+          },
+          {
+            "import": "./SafeCast.sol",
+            "path": "contracts/libraries/SafeCast.sol"
+          },
+          {
+            "import": "./FullMath.sol",
+            "path": "contracts/libraries/FullMath.sol"
+          },
+          {
+            "import": "./UnsafeMath.sol",
+            "path": "contracts/libraries/UnsafeMath.sol"
+          },
+          {
+            "import": "./FixedPoint96.sol",
+            "path": "contracts/libraries/FixedPoint96.sol"
+          }
+        ],
+        "contracts/libraries/SwapMath.sol": [
+          {
+            "import": "./FullMath.sol",
+            "path": "contracts/libraries/FullMath.sol"
+          },
+          {
+            "import": "./SqrtPriceMath.sol",
+            "path": "contracts/libraries/SqrtPriceMath.sol"
+          }
+        ],
+        "contracts/libraries/Tick.sol": [
+          {
+            "import": "./LowGasSafeMath.sol",
+            "path": "contracts/libraries/LowGasSafeMath.sol"
+          },
+          {
+            "import": "./SafeCast.sol",
+            "path": "contracts/libraries/SafeCast.sol"
+          },
+          {
+            "import": "./TickMath.sol",
+            "path": "contracts/libraries/TickMath.sol"
+          },
+          {
+            "import": "./LiquidityMath.sol",
+            "path": "contracts/libraries/LiquidityMath.sol"
+          }
+        ],
+        "contracts/libraries/TickBitmap.sol": [
+          {
+            "import": "./BitMath.sol",
+            "path": "contracts/libraries/BitMath.sol"
+          }
+        ],
+        "contracts/libraries/TickMath.sol": [],
+        "contracts/libraries/TransferHelper.sol": [
+          {
+            "import": "../interfaces/IERC20Minimal.sol",
+            "path": "contracts/interfaces/IERC20Minimal.sol"
+          }
+        ],
+        "contracts/libraries/UnsafeMath.sol": []
+      },
+      "e8de69a550d579c475f52d59a6fb2f7ef9e7f364": {
+        "contracts/NoDelegateCall.sol": [],
+        "contracts/UniswapV3Factory.sol": [
+          {
+            "import": "./interfaces/IUniswapV3Factory.sol",
+            "path": "contracts/interfaces/IUniswapV3Factory.sol"
+          },
+          {
+            "import": "./UniswapV3PoolDeployer.sol",
+            "path": "contracts/UniswapV3PoolDeployer.sol"
+          },
+          {
+            "import": "./NoDelegateCall.sol",
+            "path": "contracts/NoDelegateCall.sol"
+          },
+          {
+            "import": "./UniswapV3Pool.sol",
+            "path": "contracts/UniswapV3Pool.sol"
+          }
+        ],
+        "contracts/UniswapV3Pool.sol": [
+          {
+            "import": "./interfaces/IUniswapV3Pool.sol",
+            "path": "contracts/interfaces/IUniswapV3Pool.sol"
+          },
+          {
+            "import": "./NoDelegateCall.sol",
+            "path": "contracts/NoDelegateCall.sol"
+          },
+          {
+            "import": "./libraries/LowGasSafeMath.sol",
+            "path": "contracts/libraries/LowGasSafeMath.sol"
+          },
+          {
+            "import": "./libraries/SafeCast.sol",
+            "path": "contracts/libraries/SafeCast.sol"
+          },
+          {
+            "import": "./libraries/Tick.sol",
+            "path": "contracts/libraries/Tick.sol"
+          },
+          {
+            "import": "./libraries/TickBitmap.sol",
+            "path": "contracts/libraries/TickBitmap.sol"
+          },
+          {
+            "import": "./libraries/SecondsOutside.sol",
+            "path": "contracts/libraries/SecondsOutside.sol"
+          },
+          {
+            "import": "./libraries/Position.sol",
+            "path": "contracts/libraries/Position.sol"
+          },
+          {
+            "import": "./libraries/Oracle.sol",
+            "path": "contracts/libraries/Oracle.sol"
+          },
+          {
+            "import": "./libraries/FullMath.sol",
+            "path": "contracts/libraries/FullMath.sol"
+          },
+          {
+            "import": "./libraries/FixedPoint128.sol",
+            "path": "contracts/libraries/FixedPoint128.sol"
+          },
+          {
+            "import": "./libraries/TransferHelper.sol",
+            "path": "contracts/libraries/TransferHelper.sol"
+          },
+          {
+            "import": "./libraries/TickMath.sol",
+            "path": "contracts/libraries/TickMath.sol"
+          },
+          {
+            "import": "./libraries/LiquidityMath.sol",
+            "path": "contracts/libraries/LiquidityMath.sol"
+          },
+          {
+            "import": "./libraries/SqrtPriceMath.sol",
+            "path": "contracts/libraries/SqrtPriceMath.sol"
+          },
+          {
+            "import": "./libraries/SwapMath.sol",
+            "path": "contracts/libraries/SwapMath.sol"
+          },
+          {
+            "import": "./interfaces/IUniswapV3PoolDeployer.sol",
+            "path": "contracts/interfaces/IUniswapV3PoolDeployer.sol"
+          },
+          {
+            "import": "./interfaces/IUniswapV3Factory.sol",
+            "path": "contracts/interfaces/IUniswapV3Factory.sol"
+          },
+          {
+            "import": "./interfaces/IERC20Minimal.sol",
+            "path": "contracts/interfaces/IERC20Minimal.sol"
+          },
+          {
+            "import": "./interfaces/callback/IUniswapV3MintCallback.sol",
+            "path": "contracts/interfaces/callback/IUniswapV3MintCallback.sol"
+          },
+          {
+            "import": "./interfaces/callback/IUniswapV3SwapCallback.sol",
+            "path": "contracts/interfaces/callback/IUniswapV3SwapCallback.sol"
+          },
+          {
+            "import": "./interfaces/callback/IUniswapV3FlashCallback.sol",
+            "path": "contracts/interfaces/callback/IUniswapV3FlashCallback.sol"
+          }
+        ],
+        "contracts/UniswapV3PoolDeployer.sol": [
+          {
+            "import": "./interfaces/IUniswapV3PoolDeployer.sol",
+            "path": "contracts/interfaces/IUniswapV3PoolDeployer.sol"
+          },
+          {
+            "import": "./UniswapV3Pool.sol",
+            "path": "contracts/UniswapV3Pool.sol"
+          }
+        ],
+        "contracts/interfaces/IERC20Minimal.sol": [],
+        "contracts/interfaces/IUniswapV3Factory.sol": [],
+        "contracts/interfaces/IUniswapV3Pool.sol": [
+          {
+            "import": "./pool/IUniswapV3PoolImmutables.sol",
+            "path": "contracts/interfaces/pool/IUniswapV3PoolImmutables.sol"
+          },
+          {
+            "import": "./pool/IUniswapV3PoolState.sol",
+            "path": "contracts/interfaces/pool/IUniswapV3PoolState.sol"
+          },
+          {
+            "import": "./pool/IUniswapV3PoolDerivedState.sol",
+            "path": "contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol"
+          },
+          {
+            "import": "./pool/IUniswapV3PoolActions.sol",
+            "path": "contracts/interfaces/pool/IUniswapV3PoolActions.sol"
+          },
+          {
+            "import": "./pool/IUniswapV3PoolOwnerActions.sol",
+            "path": "contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol"
+          },
+          {
+            "import": "./pool/IUniswapV3PoolEvents.sol",
+            "path": "contracts/interfaces/pool/IUniswapV3PoolEvents.sol"
+          }
+        ],
+        "contracts/interfaces/IUniswapV3PoolDeployer.sol": [],
+        "contracts/interfaces/callback/IUniswapV3FlashCallback.sol": [],
+        "contracts/interfaces/callback/IUniswapV3MintCallback.sol": [],
+        "contracts/interfaces/callback/IUniswapV3SwapCallback.sol": [],
+        "contracts/interfaces/pool/IUniswapV3PoolActions.sol": [],
+        "contracts/interfaces/pool/IUniswapV3PoolDerivedState.sol": [],
+        "contracts/interfaces/pool/IUniswapV3PoolEvents.sol": [],
+        "contracts/interfaces/pool/IUniswapV3PoolImmutables.sol": [],
+        "contracts/interfaces/pool/IUniswapV3PoolOwnerActions.sol": [],
+        "contracts/interfaces/pool/IUniswapV3PoolState.sol": [],
+        "contracts/libraries/BitMath.sol": [],
+        "contracts/libraries/FixedPoint128.sol": [],
+        "contracts/libraries/FixedPoint96.sol": [],
+        "contracts/libraries/FullMath.sol": [],
+        "contracts/libraries/LiquidityMath.sol": [],
+        "contracts/libraries/LowGasSafeMath.sol": [],
+        "contracts/libraries/Oracle.sol": [],
+        "contracts/libraries/Position.sol": [
+          {
+            "import": "./FullMath.sol",
+            "path": "contracts/libraries/FullMath.sol"
+          },
+          {
+            "import": "./FixedPoint128.sol",
+            "path": "contracts/libraries/FixedPoint128.sol"
+          },
+          {
+            "import": "./LiquidityMath.sol",
+            "path": "contracts/libraries/LiquidityMath.sol"
+          }
+        ],
+        "contracts/libraries/SafeCast.sol": [],
+        "contracts/libraries/SecondsOutside.sol": [],
+        "contracts/libraries/SqrtPriceMath.sol": [
+          {
+            "import": "./LowGasSafeMath.sol",
+            "path": "contracts/libraries/LowGasSafeMath.sol"
+          },
+          {
+            "import": "./SafeCast.sol",
+            "path": "contracts/libraries/SafeCast.sol"
+          },
+          {
+            "import": "./FullMath.sol",
+            "path": "contracts/libraries/FullMath.sol"
+          },
+          {
+            "import": "./UnsafeMath.sol",
+            "path": "contracts/libraries/UnsafeMath.sol"
+          },
+          {
+            "import": "./FixedPoint96.sol",
+            "path": "contracts/libraries/FixedPoint96.sol"
+          }
+        ],
+        "contracts/libraries/SwapMath.sol": [
+          {
+            "import": "./FullMath.sol",
+            "path": "contracts/libraries/FullMath.sol"
+          },
+          {
+            "import": "./SqrtPriceMath.sol",
+            "path": "contracts/libraries/SqrtPriceMath.sol"
+          }
+        ],
+        "contracts/libraries/Tick.sol": [
+          {
+            "import": "./LowGasSafeMath.sol",
+            "path": "contracts/libraries/LowGasSafeMath.sol"
+          },
+          {
+            "import": "./SafeCast.sol",
+            "path": "contracts/libraries/SafeCast.sol"
+          },
+          {
+            "import": "./TickMath.sol",
+            "path": "contracts/libraries/TickMath.sol"
+          },
+          {
+            "import": "./LiquidityMath.sol",
+            "path": "contracts/libraries/LiquidityMath.sol"
+          }
+        ],
+        "contracts/libraries/TickBitmap.sol": [
+          {
+            "import": "./BitMath.sol",
+            "path": "contracts/libraries/BitMath.sol"
+          }
+        ],
+        "contracts/libraries/TickMath.sol": [],
+        "contracts/libraries/TransferHelper.sol": [
+          {
+            "import": "../interfaces/IERC20Minimal.sol",
+            "path": "contracts/interfaces/IERC20Minimal.sol"
+          }
+        ],
+        "contracts/libraries/UnsafeMath.sol": []
+      }
+    },
+    "Uniswap/v3-periphery": {
+      "8ad273f45cd42e04b5f8f15b6f4da57827122273": {
+        "contracts/NonfungiblePositionManager.sol": [
+          {
+            "import": "@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol",
+            "skipped": "not in the repository: @uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol"
+          },
+          {
+            "import": "@uniswap/v3-core/contracts/libraries/FixedPoint128.sol",
+            "skipped": "not in the repository: @uniswap/v3-core/contracts/libraries/FixedPoint128.sol"
+          },
+          {
+            "import": "@uniswap/v3-core/contracts/libraries/FullMath.sol",
+            "skipped": "not in the repository: @uniswap/v3-core/contracts/libraries/FullMath.sol"
+          },
+          {
+            "import": "./interfaces/INonfungiblePositionManager.sol",
+            "path": "contracts/interfaces/INonfungiblePositionManager.sol"
+          },
+          {
+            "import": "./interfaces/INonfungibleTokenPositionDescriptor.sol",
+            "path": "contracts/interfaces/INonfungibleTokenPositionDescriptor.sol"
+          },
+          {
+            "import": "./libraries/PositionKey.sol",
+            "path": "contracts/libraries/PositionKey.sol"
+          },
+          {
+            "import": "./libraries/PoolAddress.sol",
+            "path": "contracts/libraries/PoolAddress.sol"
+          },
+          {
+            "import": "./base/LiquidityManagement.sol",
+            "path": "contracts/base/LiquidityManagement.sol"
+          },
+          {
+            "import": "./base/PeripheryImmutableState.sol",
+            "path": "contracts/base/PeripheryImmutableState.sol"
+          },
+          {
+            "import": "./base/Multicall.sol",
+            "path": "contracts/base/Multicall.sol"
+          },
+          {
+            "import": "./base/ERC721Permit.sol",
+            "path": "contracts/base/ERC721Permit.sol"
+          },
+          {
+            "import": "./base/PeripheryValidation.sol",
+            "path": "contracts/base/PeripheryValidation.sol"
+          },
+          {
+            "import": "./base/SelfPermit.sol",
+            "path": "contracts/base/SelfPermit.sol"
+          }
+        ],
+        "contracts/SwapRouter.sol": [
+          {
+            "import": "@uniswap/v3-core/contracts/libraries/SafeCast.sol",
+            "skipped": "not in the repository: @uniswap/v3-core/contracts/libraries/SafeCast.sol"
+          },
+          {
+            "import": "@uniswap/v3-core/contracts/libraries/TickMath.sol",
+            "skipped": "not in the repository: @uniswap/v3-core/contracts/libraries/TickMath.sol"
+          },
+          {
+            "import": "@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol",
+            "skipped": "not in the repository: @uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol"
+          },
+          {
+            "import": "./interfaces/ISwapRouter.sol",
+            "path": "contracts/interfaces/ISwapRouter.sol"
+          },
+          {
+            "import": "./base/PeripheryImmutableState.sol",
+            "path": "contracts/base/PeripheryImmutableState.sol"
+          },
+          {
+            "import": "./base/PeripheryValidation.sol",
+            "path": "contracts/base/PeripheryValidation.sol"
+          },
+          {
+            "import": "./base/PeripheryPayments.sol",
+            "path": "contracts/base/PeripheryPayments.sol"
+          },
+          {
+            "import": "./base/Multicall.sol",
+            "path": "contracts/base/Multicall.sol"
+          },
+          {
+            "import": "./base/SelfPermit.sol",
+            "path": "contracts/base/SelfPermit.sol"
+          },
+          {
+            "import": "./libraries/Path.sol",
+            "path": "contracts/libraries/Path.sol"
+          },
+          {
+            "import": "./libraries/PoolAddress.sol",
+            "path": "contracts/libraries/PoolAddress.sol"
+          },
+          {
+            "import": "./libraries/CallbackValidation.sol",
+            "path": "contracts/libraries/CallbackValidation.sol"
+          },
+          {
+            "import": "./interfaces/external/IWETH9.sol",
+            "path": "contracts/interfaces/external/IWETH9.sol"
+          }
+        ]
+      }
+    }
+  }
 }
