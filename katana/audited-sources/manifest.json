@@ -4982,6 +4982,36 @@
     {
       "repository": "katana-network/sushi-v3-lp-staking-offchainAccounting",
       "repository_url": "https://github.com/katana-network/sushi-v3-lp-staking-offchainAccounting",
+      "source_path": "src/interfaces/IAddressGaugeVoter.sol",
+      "path_kind": "file",
+      "commit": "1790d736438d773c4f6963ef6baf24040025fd08",
+      "files": [
+        {
+          "path": "src/interfaces/IAddressGaugeVoter.sol",
+          "git_object": "6294e2de3fc0f26ba8f7233d13f4488f8303e2f6",
+          "git_mode": "100644",
+          "sha256": "485b3ec8c3a8b8681edefbef4c3a4a81ce852cbebee310353d5a4a0a51a959b1"
+        }
+      ]
+    },
+    {
+      "repository": "katana-network/sushi-v3-lp-staking-offchainAccounting",
+      "repository_url": "https://github.com/katana-network/sushi-v3-lp-staking-offchainAccounting",
+      "source_path": "src/interfaces/INonfungiblePositionManager.sol",
+      "path_kind": "file",
+      "commit": "1790d736438d773c4f6963ef6baf24040025fd08",
+      "files": [
+        {
+          "path": "src/interfaces/INonfungiblePositionManager.sol",
+          "git_object": "db7406e0ae1926ebe12e21a77d14adbccdae2b57",
+          "git_mode": "100644",
+          "sha256": "ab06bc024134c264a6a1f6f6337cf43bd897a15bf978c671e7bd9d7dc578eead"
+        }
+      ]
+    },
+    {
+      "repository": "katana-network/sushi-v3-lp-staking-offchainAccounting",
+      "repository_url": "https://github.com/katana-network/sushi-v3-lp-staking-offchainAccounting",
       "source_path": "src/SushiStaker.sol",
       "path_kind": "file",
       "commit": "591e63878c626a20d2e97e3fd8947667f29431d2",
@@ -5011,5 +5041,1680 @@
       "commit": "5af6fff31bddc76e205f15227081a7ef45c06cce",
       "reason": "repository is not reachable"
     }
-  ]
+  ],
+  "imports": {
+    "agglayer/vault-bridge": {
+      "47f5a8cf28d0488cae3907dc089a9d77545aef17": {
+        "src/etc/IBridgeMessageReceiver.sol": []
+      },
+      "7289ca32a9dfddbd7a6d2b6e5af4dd3384c665d5": {
+        "src/etc/ERC20PermitUser.sol": [],
+        "src/etc/IAgglayerBridge.sol": [],
+        "src/etc/IBridgeMessageReceiver.sol": [],
+        "src/etc/IFiatTokenV2_2.sol": [
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          }
+        ],
+        "src/etc/IVaultBridgeTokenInitializer.sol": [
+          {
+            "import": "../primary-chain/VaultBridgeToken.sol",
+            "path": "src/primary-chain/VaultBridgeToken.sol"
+          }
+        ],
+        "src/etc/IWETH9.sol": [
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          }
+        ],
+        "src/etc/InitializationCounterUpgradeable.sol": [],
+        "src/etc/Versioned.sol": [],
+        "src/primary-chain/MigrationManager.sol": [
+          {
+            "import": "../etc/IBridgeMessageReceiver.sol",
+            "path": "src/etc/IBridgeMessageReceiver.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/access/AccessControlUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/access/AccessControlUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/PausableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/PausableUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/ReentrancyGuardTransientUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/ReentrancyGuardTransientUpgradeable.sol"
+          },
+          {
+            "import": "../etc/InitializationCounterUpgradeable.sol",
+            "path": "src/etc/InitializationCounterUpgradeable.sol"
+          },
+          {
+            "import": "../etc/Versioned.sol",
+            "path": "src/etc/Versioned.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "./VaultBridgeToken.sol",
+            "path": "src/primary-chain/VaultBridgeToken.sol"
+          },
+          {
+            "import": "../etc/IAgglayerBridge.sol",
+            "path": "src/etc/IAgglayerBridge.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          },
+          {
+            "import": "../etc/IWETH9.sol",
+            "path": "src/etc/IWETH9.sol"
+          }
+        ],
+        "src/primary-chain/VaultBridgeToken.sol": [
+          {
+            "import": "@openzeppelin/contracts/interfaces/IERC4626.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/interfaces/IERC4626.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/token/ERC20/extensions/ERC20PermitUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/token/ERC20/extensions/ERC20PermitUpgradeable.sol"
+          },
+          {
+            "import": "../etc/IVaultBridgeTokenInitializer.sol",
+            "path": "src/etc/IVaultBridgeTokenInitializer.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/access/AccessControlUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/access/AccessControlUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/PausableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/PausableUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/ReentrancyGuardTransientUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/ReentrancyGuardTransientUpgradeable.sol"
+          },
+          {
+            "import": "../etc/ERC20PermitUser.sol",
+            "path": "src/etc/ERC20PermitUser.sol"
+          },
+          {
+            "import": "../etc/InitializationCounterUpgradeable.sol",
+            "path": "src/etc/InitializationCounterUpgradeable.sol"
+          },
+          {
+            "import": "../etc/Versioned.sol",
+            "path": "src/etc/Versioned.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/utils/math/Math.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/utils/math/Math.sol"
+          },
+          {
+            "import": "../etc/IAgglayerBridge.sol",
+            "path": "src/etc/IAgglayerBridge.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/token/ERC20/ERC20Upgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/extensions/IERC20Metadata.sol"
+          }
+        ],
+        "src/primary-chain/VaultBridgeTokenInitializer.sol": [
+          {
+            "import": "../etc/IVaultBridgeTokenInitializer.sol",
+            "path": "src/etc/IVaultBridgeTokenInitializer.sol"
+          },
+          {
+            "import": "./VaultBridgeToken.sol",
+            "path": "src/primary-chain/VaultBridgeToken.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/extensions/IERC20Metadata.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/interfaces/IERC4626.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/interfaces/IERC4626.sol"
+          },
+          {
+            "import": "../etc/IAgglayerBridge.sol",
+            "path": "src/etc/IAgglayerBridge.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          }
+        ],
+        "src/primary-chain/VaultBridgeTokenPart2.sol": [
+          {
+            "import": "./VaultBridgeToken.sol",
+            "path": "src/primary-chain/VaultBridgeToken.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/interfaces/IERC4626.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/interfaces/IERC4626.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/utils/math/Math.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/utils/math/Math.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          }
+        ],
+        "src/primary-chain/ethereum/GenericVaultBridgeToken.sol": [
+          {
+            "import": "../VaultBridgeToken.sol",
+            "path": "src/primary-chain/VaultBridgeToken.sol"
+          }
+        ],
+        "src/primary-chain/ethereum/vbETH/VbETH.sol": [
+          {
+            "import": "../../VaultBridgeToken.sol",
+            "path": "src/primary-chain/VaultBridgeToken.sol"
+          },
+          {
+            "import": "../../../etc/IWETH9.sol",
+            "path": "src/etc/IWETH9.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/interfaces/IERC4626.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/interfaces/IERC4626.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          }
+        ],
+        "src/primary-chain/layerzero/NonDefaultOftAdapter.sol": [
+          {
+            "import": "@layerzerolabs-oft-evm-upgradeable/contracts/oft/OFTAdapterUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@layerzerolabs-oft-evm-upgradeable-3.2.0/contracts/oft/OFTAdapterUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/ReentrancyGuardTransientUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/ReentrancyGuardTransientUpgradeable.sol"
+          },
+          {
+            "import": "../../etc/InitializationCounterUpgradeable.sol",
+            "path": "src/etc/InitializationCounterUpgradeable.sol"
+          }
+        ],
+        "src/secondary-chain/CustomToken.sol": [
+          {
+            "import": "@openzeppelin-contracts-upgradeable/token/ERC20/extensions/ERC20PermitUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/token/ERC20/extensions/ERC20PermitUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/access/AccessControlUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/access/AccessControlUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/PausableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/PausableUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/ReentrancyGuardUpgradeable.sol"
+          },
+          {
+            "import": "../etc/InitializationCounterUpgradeable.sol",
+            "path": "src/etc/InitializationCounterUpgradeable.sol"
+          },
+          {
+            "import": "../etc/Versioned.sol",
+            "path": "src/etc/Versioned.sol"
+          }
+        ],
+        "src/secondary-chain/CustomTokenWethExtension.sol": [
+          {
+            "import": "./CustomToken.sol",
+            "path": "src/secondary-chain/CustomToken.sol"
+          },
+          {
+            "import": "../etc/IAgglayerBridge.sol",
+            "path": "src/etc/IAgglayerBridge.sol"
+          },
+          {
+            "import": "./NativeConverter.sol",
+            "path": "src/secondary-chain/NativeConverter.sol"
+          }
+        ],
+        "src/secondary-chain/NativeConverter.sol": [
+          {
+            "import": "@openzeppelin-contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/access/AccessControlUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/access/AccessControlUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/PausableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/PausableUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/ReentrancyGuardUpgradeable.sol"
+          },
+          {
+            "import": "../etc/ERC20PermitUser.sol",
+            "path": "src/etc/ERC20PermitUser.sol"
+          },
+          {
+            "import": "../etc/InitializationCounterUpgradeable.sol",
+            "path": "src/etc/InitializationCounterUpgradeable.sol"
+          },
+          {
+            "import": "../etc/Versioned.sol",
+            "path": "src/etc/Versioned.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/utils/math/Math.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/utils/math/Math.sol"
+          },
+          {
+            "import": "./CustomToken.sol",
+            "path": "src/secondary-chain/CustomToken.sol"
+          },
+          {
+            "import": "./CustomTokenWethExtension.sol",
+            "path": "src/secondary-chain/CustomTokenWethExtension.sol"
+          },
+          {
+            "import": "../etc/IAgglayerBridge.sol",
+            "path": "src/etc/IAgglayerBridge.sol"
+          },
+          {
+            "import": "../primary-chain/MigrationManager.sol",
+            "path": "src/primary-chain/MigrationManager.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/extensions/IERC20Metadata.sol"
+          }
+        ],
+        "src/secondary-chain/agglayer/CustomTokenAgglayer.sol": [
+          {
+            "import": "../CustomToken.sol",
+            "path": "src/secondary-chain/CustomToken.sol"
+          },
+          {
+            "import": "../NativeConverter.sol",
+            "path": "src/secondary-chain/NativeConverter.sol"
+          }
+        ],
+        "src/secondary-chain/agglayer/GenericCustomTokenAgglayer.sol": [
+          {
+            "import": "./CustomTokenAgglayer.sol",
+            "path": "src/secondary-chain/agglayer/CustomTokenAgglayer.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/token/ERC20/extensions/ERC20PermitUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/token/ERC20/extensions/ERC20PermitUpgradeable.sol"
+          },
+          {
+            "import": "../CustomToken.sol",
+            "path": "src/secondary-chain/CustomToken.sol"
+          }
+        ],
+        "src/secondary-chain/agglayer/GenericNativeConverterAgglayer.sol": [
+          {
+            "import": "./NativeConverterAgglayer.sol",
+            "path": "src/secondary-chain/agglayer/NativeConverterAgglayer.sol"
+          },
+          {
+            "import": "../NativeConverter.sol",
+            "path": "src/secondary-chain/NativeConverter.sol"
+          }
+        ],
+        "src/secondary-chain/agglayer/NativeConverterAgglayer.sol": [
+          {
+            "import": "../NativeConverter.sol",
+            "path": "src/secondary-chain/NativeConverter.sol"
+          },
+          {
+            "import": "./GenericCustomTokenAgglayer.sol",
+            "path": "src/secondary-chain/agglayer/GenericCustomTokenAgglayer.sol"
+          }
+        ],
+        "src/secondary-chain/agglayer/vbETH/WethAgglayer.sol": [
+          {
+            "import": "../CustomTokenAgglayer.sol",
+            "path": "src/secondary-chain/agglayer/CustomTokenAgglayer.sol"
+          },
+          {
+            "import": "../../CustomTokenWethExtension.sol",
+            "path": "src/secondary-chain/CustomTokenWethExtension.sol"
+          },
+          {
+            "import": "../../CustomToken.sol",
+            "path": "src/secondary-chain/CustomToken.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/token/ERC20/extensions/ERC20PermitUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/token/ERC20/extensions/ERC20PermitUpgradeable.sol"
+          },
+          {
+            "import": "../../../etc/IAgglayerBridge.sol",
+            "path": "src/etc/IAgglayerBridge.sol"
+          }
+        ],
+        "src/secondary-chain/agglayer/vbETH/WethNativeConverterAgglayer.sol": [
+          {
+            "import": "../NativeConverterAgglayer.sol",
+            "path": "src/secondary-chain/agglayer/NativeConverterAgglayer.sol"
+          },
+          {
+            "import": "../../NativeConverter.sol",
+            "path": "src/secondary-chain/NativeConverter.sol"
+          },
+          {
+            "import": "./WethAgglayer.sol",
+            "path": "src/secondary-chain/agglayer/vbETH/WethAgglayer.sol"
+          },
+          {
+            "import": "../../../primary-chain/MigrationManager.sol",
+            "path": "src/primary-chain/MigrationManager.sol"
+          },
+          {
+            "import": "../../../etc/IAgglayerBridge.sol",
+            "path": "src/etc/IAgglayerBridge.sol"
+          }
+        ],
+        "src/secondary-chain/agglayer/vbUSDC/bridged-usdc-standard/VbUsdcNativeConverterAgglayerBridgedUsdcStandard.sol": [
+          {
+            "import": "../../GenericNativeConverterAgglayer.sol",
+            "path": "src/secondary-chain/agglayer/GenericNativeConverterAgglayer.sol"
+          },
+          {
+            "import": "../../GenericNativeConverterAgglayer.sol",
+            "path": "src/secondary-chain/agglayer/GenericNativeConverterAgglayer.sol"
+          },
+          {
+            "import": "../../../../etc/IFiatTokenV2_2.sol",
+            "path": "src/etc/IFiatTokenV2_2.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          }
+        ],
+        "src/secondary-chain/layerzero/CustomTokenLayerZero.sol": [
+          {
+            "import": "../CustomToken.sol",
+            "path": "src/secondary-chain/CustomToken.sol"
+          }
+        ],
+        "src/secondary-chain/layerzero/GenericCustomTokenLayerZero.sol": [
+          {
+            "import": "./CustomTokenLayerZero.sol",
+            "path": "src/secondary-chain/layerzero/CustomTokenLayerZero.sol"
+          },
+          {
+            "import": "../CustomToken.sol",
+            "path": "src/secondary-chain/CustomToken.sol"
+          }
+        ],
+        "src/secondary-chain/layerzero/NonDefaultMintBurnOftAdapter.sol": [
+          {
+            "import": "@layerzerolabs-oft-evm-upgradeable/contracts/oft/OFTCoreUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@layerzerolabs-oft-evm-upgradeable-3.2.0/contracts/oft/OFTCoreUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/ReentrancyGuardTransientUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/ReentrancyGuardTransientUpgradeable.sol"
+          },
+          {
+            "import": "../../etc/InitializationCounterUpgradeable.sol",
+            "path": "src/etc/InitializationCounterUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/extensions/IERC20Metadata.sol"
+          },
+          {
+            "import": "./CustomTokenLayerZero.sol",
+            "path": "src/secondary-chain/layerzero/CustomTokenLayerZero.sol"
+          },
+          {
+            "import": "../../etc/IFiatTokenV2_2.sol",
+            "path": "src/etc/IFiatTokenV2_2.sol"
+          }
+        ],
+        "src/secondary-chain/layerzero/vbETH/WethLayerZero.sol": [
+          {
+            "import": "../CustomTokenLayerZero.sol",
+            "path": "src/secondary-chain/layerzero/CustomTokenLayerZero.sol"
+          },
+          {
+            "import": "../../CustomTokenWethExtension.sol",
+            "path": "src/secondary-chain/CustomTokenWethExtension.sol"
+          },
+          {
+            "import": "../../CustomToken.sol",
+            "path": "src/secondary-chain/CustomToken.sol"
+          }
+        ],
+        "src/secondary-chain/polygon/CustomTokenPolygon.sol": [
+          {
+            "import": "../CustomToken.sol",
+            "path": "src/secondary-chain/CustomToken.sol"
+          }
+        ],
+        "src/secondary-chain/polygon/GenericCustomTokenPolygon.sol": [
+          {
+            "import": "./CustomTokenPolygon.sol",
+            "path": "src/secondary-chain/polygon/CustomTokenPolygon.sol"
+          },
+          {
+            "import": "../CustomToken.sol",
+            "path": "src/secondary-chain/CustomToken.sol"
+          }
+        ],
+        "src/secondary-chain/wormhole/CustomTokenWormhole.sol": [
+          {
+            "import": "../CustomToken.sol",
+            "path": "src/secondary-chain/CustomToken.sol"
+          }
+        ],
+        "src/secondary-chain/wormhole/GenericCustomTokenWormhole.sol": [
+          {
+            "import": "./CustomTokenWormhole.sol",
+            "path": "src/secondary-chain/wormhole/CustomTokenWormhole.sol"
+          },
+          {
+            "import": "../CustomToken.sol",
+            "path": "src/secondary-chain/CustomToken.sol"
+          }
+        ],
+        "src/secondary-chain/wormhole/vbETH/WethWormhole.sol": [
+          {
+            "import": "../CustomTokenWormhole.sol",
+            "path": "src/secondary-chain/wormhole/CustomTokenWormhole.sol"
+          },
+          {
+            "import": "../../CustomTokenWethExtension.sol",
+            "path": "src/secondary-chain/CustomTokenWethExtension.sol"
+          },
+          {
+            "import": "../../CustomToken.sol",
+            "path": "src/secondary-chain/CustomToken.sol"
+          }
+        ]
+      },
+      "76081f6fcb655c487a5c4d9173615208b2a19914": {
+        "src/CustomToken.sol": [
+          {
+            "import": "@openzeppelin-contracts-upgradeable/token/ERC20/extensions/ERC20PermitUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/token/ERC20/extensions/ERC20PermitUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/access/AccessControlUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/access/AccessControlUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/PausableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/PausableUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/ReentrancyGuardUpgradeable.sol"
+          },
+          {
+            "import": "./etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          }
+        ],
+        "src/ITransferFeeCalculator.sol": [],
+        "src/MigrationManager.sol": [
+          {
+            "import": "@openzeppelin-contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/access/AccessControlUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/access/AccessControlUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/PausableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/PausableUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/ReentrancyGuardUpgradeable.sol"
+          },
+          {
+            "import": "./etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "./VaultBridgeToken.sol",
+            "path": "src/VaultBridgeToken.sol"
+          },
+          {
+            "import": "./etc/ILxLyBridge.sol",
+            "path": "src/etc/ILxLyBridge.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          }
+        ],
+        "src/NativeConverter.sol": [
+          {
+            "import": "@openzeppelin-contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/access/AccessControlUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/access/AccessControlUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/PausableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/PausableUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/ReentrancyGuardUpgradeable.sol"
+          },
+          {
+            "import": "./etc/ERC20PermitUser.sol",
+            "path": "src/etc/ERC20PermitUser.sol"
+          },
+          {
+            "import": "./etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/utils/math/Math.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/utils/math/Math.sol"
+          },
+          {
+            "import": "./CustomToken.sol",
+            "path": "src/CustomToken.sol"
+          },
+          {
+            "import": "./etc/ILxLyBridge.sol",
+            "path": "src/etc/ILxLyBridge.sol"
+          },
+          {
+            "import": "./MigrationManager.sol",
+            "path": "src/MigrationManager.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/extensions/IERC20Metadata.sol"
+          }
+        ],
+        "src/VaultBridgeToken.sol": [
+          {
+            "import": "./etc/IVaultBridgeTokenInitializer.sol",
+            "path": "src/etc/IVaultBridgeTokenInitializer.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/interfaces/IERC4626.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/interfaces/IERC4626.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/token/ERC20/extensions/ERC20PermitUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/token/ERC20/extensions/ERC20PermitUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/access/AccessControlUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/access/AccessControlUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/PausableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/PausableUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/ReentrancyGuardUpgradeable.sol"
+          },
+          {
+            "import": "./etc/ERC20PermitUser.sol",
+            "path": "src/etc/ERC20PermitUser.sol"
+          },
+          {
+            "import": "./ITransferFeeCalculator.sol",
+            "path": "src/ITransferFeeCalculator.sol"
+          },
+          {
+            "import": "./etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/utils/math/Math.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/utils/math/Math.sol"
+          },
+          {
+            "import": "./etc/ILxLyBridge.sol",
+            "path": "src/etc/ILxLyBridge.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/token/ERC20/ERC20Upgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/extensions/IERC20Metadata.sol"
+          }
+        ],
+        "src/VaultBridgeTokenInitializer.sol": [
+          {
+            "import": "./etc/IVaultBridgeTokenInitializer.sol",
+            "path": "src/etc/IVaultBridgeTokenInitializer.sol"
+          },
+          {
+            "import": "./VaultBridgeToken.sol",
+            "path": "src/VaultBridgeToken.sol"
+          },
+          {
+            "import": "./etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/extensions/IERC20Metadata.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/interfaces/IERC4626.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/interfaces/IERC4626.sol"
+          },
+          {
+            "import": "./etc/ILxLyBridge.sol",
+            "path": "src/etc/ILxLyBridge.sol"
+          },
+          {
+            "import": "./ITransferFeeCalculator.sol",
+            "path": "src/ITransferFeeCalculator.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          }
+        ],
+        "src/custom-tokens/GenericCustomToken.sol": [
+          {
+            "import": "../CustomToken.sol",
+            "path": "src/CustomToken.sol"
+          },
+          {
+            "import": "../etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          }
+        ],
+        "src/custom-tokens/GenericNativeConverter.sol": [
+          {
+            "import": "../NativeConverter.sol",
+            "path": "src/NativeConverter.sol"
+          },
+          {
+            "import": "../etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          }
+        ],
+        "src/custom-tokens/WETH/WETH.sol": [
+          {
+            "import": "../../CustomToken.sol",
+            "path": "src/CustomToken.sol"
+          },
+          {
+            "import": "../../etc/IWETH9.sol",
+            "path": "src/etc/IWETH9.sol"
+          },
+          {
+            "import": "../../etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          }
+        ],
+        "src/custom-tokens/WETH/WETHNativeConverter.sol": [
+          {
+            "import": "../../NativeConverter.sol",
+            "path": "src/NativeConverter.sol"
+          },
+          {
+            "import": "./WETH.sol",
+            "path": "src/custom-tokens/WETH/WETH.sol"
+          },
+          {
+            "import": "../../etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          },
+          {
+            "import": "../../MigrationManager.sol",
+            "path": "src/MigrationManager.sol"
+          }
+        ],
+        "src/etc/ERC20PermitUser.sol": [],
+        "src/etc/ILxLyBridge.sol": [],
+        "src/etc/IUSDT.sol": [],
+        "src/etc/IVaultBridgeTokenInitializer.sol": [
+          {
+            "import": "../VaultBridgeToken.sol",
+            "path": "src/VaultBridgeToken.sol"
+          }
+        ],
+        "src/etc/IVersioned.sol": [],
+        "src/etc/IWETH9.sol": [
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          }
+        ],
+        "src/vault-bridge-tokens/GenericVaultBridgeToken.sol": [
+          {
+            "import": "../VaultBridgeToken.sol",
+            "path": "src/VaultBridgeToken.sol"
+          },
+          {
+            "import": "../etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          }
+        ],
+        "src/vault-bridge-tokens/vbETH/VbETH.sol": [
+          {
+            "import": "../../VaultBridgeToken.sol",
+            "path": "src/VaultBridgeToken.sol"
+          },
+          {
+            "import": "../../etc/IWETH9.sol",
+            "path": "src/etc/IWETH9.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/interfaces/IERC4626.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/interfaces/IERC4626.sol"
+          },
+          {
+            "import": "../../etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          }
+        ],
+        "src/vault-bridge-tokens/vbUSDT/USDTTransferFeeCalculator.sol": [
+          {
+            "import": "../../ITransferFeeCalculator.sol",
+            "path": "src/ITransferFeeCalculator.sol"
+          },
+          {
+            "import": "../../etc/IUSDT.sol",
+            "path": "src/etc/IUSDT.sol"
+          }
+        ]
+      },
+      "d282975946fe638e4b9b7d0e99e40413418c577d": {
+        "src/CustomToken.sol": [
+          {
+            "import": "@openzeppelin-contracts-upgradeable/token/ERC20/extensions/ERC20PermitUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/token/ERC20/extensions/ERC20PermitUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/access/OwnableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/access/OwnableUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/PausableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/PausableUpgradeable.sol"
+          },
+          {
+            "import": "./etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          }
+        ],
+        "src/NativeConverter.sol": [
+          {
+            "import": "@openzeppelin-contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/access/OwnableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/access/OwnableUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/PausableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/PausableUpgradeable.sol"
+          },
+          {
+            "import": "./etc/ERC20PermitUser.sol",
+            "path": "src/etc/ERC20PermitUser.sol"
+          },
+          {
+            "import": "./etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "./CustomToken.sol",
+            "path": "src/CustomToken.sol"
+          },
+          {
+            "import": "./etc/ILxLyBridge.sol",
+            "path": "src/etc/ILxLyBridge.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/extensions/IERC20Metadata.sol"
+          }
+        ],
+        "src/YieldExposedToken.sol": [
+          {
+            "import": "@openzeppelin/contracts/interfaces/IERC4626.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/interfaces/IERC4626.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/token/ERC20/extensions/ERC20PermitUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/token/ERC20/extensions/ERC20PermitUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/access/OwnableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/access/OwnableUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/utils/PausableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/utils/PausableUpgradeable.sol"
+          },
+          {
+            "import": "./etc/ERC20PermitUser.sol",
+            "path": "src/etc/ERC20PermitUser.sol"
+          },
+          {
+            "import": "./etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/utils/math/Math.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/utils/math/Math.sol"
+          },
+          {
+            "import": "./etc/ILxLyBridge.sol",
+            "path": "src/etc/ILxLyBridge.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/extensions/IERC20Metadata.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.1.0/token/ERC20/ERC20Upgradeable.sol"
+          }
+        ],
+        "src/custom-tokens/GenericCustomToken.sol": [
+          {
+            "import": "../CustomToken.sol",
+            "path": "src/CustomToken.sol"
+          },
+          {
+            "import": "../etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          }
+        ],
+        "src/custom-tokens/GenericNativeConverter.sol": [
+          {
+            "import": "../NativeConverter.sol",
+            "path": "src/NativeConverter.sol"
+          },
+          {
+            "import": "../etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          }
+        ],
+        "src/custom-tokens/WETH/WETHNativeConverter.sol": [
+          {
+            "import": "../../NativeConverter.sol",
+            "path": "src/NativeConverter.sol"
+          },
+          {
+            "import": "./zETH.sol",
+            "path": "src/custom-tokens/WETH/zETH.sol"
+          },
+          {
+            "import": "../../etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          }
+        ],
+        "src/custom-tokens/WETH/zETH.sol": [
+          {
+            "import": "../../CustomToken.sol",
+            "path": "src/CustomToken.sol"
+          },
+          {
+            "import": "../../etc/IWETH9.sol",
+            "path": "src/etc/IWETH9.sol"
+          },
+          {
+            "import": "../../etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          }
+        ],
+        "src/etc/ERC20PermitUser.sol": [],
+        "src/etc/ILxLyBridge.sol": [],
+        "src/etc/IUSDT.sol": [],
+        "src/etc/IVersioned.sol": [],
+        "src/etc/IWETH9.sol": [
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/IERC20.sol"
+          }
+        ],
+        "src/yield-exposed-tokens/GenericYeToken.sol": [
+          {
+            "import": "../YieldExposedToken.sol",
+            "path": "src/YieldExposedToken.sol"
+          },
+          {
+            "import": "../etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          }
+        ],
+        "src/yield-exposed-tokens/yeETH/YeETH.sol": [
+          {
+            "import": "../../YieldExposedToken.sol",
+            "path": "src/YieldExposedToken.sol"
+          },
+          {
+            "import": "../../etc/IWETH9.sol",
+            "path": "src/etc/IWETH9.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/interfaces/IERC4626.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/interfaces/IERC4626.sol"
+          },
+          {
+            "import": "../../etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/utils/SafeERC20.sol"
+          }
+        ],
+        "src/yield-exposed-tokens/yeUSDT/YeUSDT.sol": [
+          {
+            "import": "../../YieldExposedToken.sol",
+            "path": "src/YieldExposedToken.sol"
+          },
+          {
+            "import": "../../etc/IVersioned.sol",
+            "path": "src/etc/IVersioned.sol"
+          },
+          {
+            "import": "../../etc/IUSDT.sol",
+            "path": "src/etc/IUSDT.sol"
+          }
+        ]
+      }
+    },
+    "aragon/katana-governance": {
+      "5048116bf754c5d2efa8b8dbcfe5666cdba3abbc": {
+        "src/AvKATVault.sol": [
+          {
+            "import": "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC20/IERC20Upgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC4626Upgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC20/extensions/ERC4626Upgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/token/ERC721/utils/ERC721HolderUpgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC721/utils/ERC721HolderUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/UUPSUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/security/PausableUpgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/security/PausableUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC20/utils/SafeERC20Upgradeable.sol"
+          },
+          {
+            "import": "@setup/GaugeVoterSetup_v1_4_0.sol",
+            "skipped": "submodule dependency: lib/ve-governance/src/setup/GaugeVoterSetup_v1_4_0.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/permission/auth/DaoAuthorizableUpgradeable.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/permission/auth/DaoAuthorizableUpgradeable.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/dao/IDAO.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/dao/IDAO.sol"
+          },
+          {
+            "import": "src/interfaces/IStrategyNFT.sol",
+            "path": "src/interfaces/IStrategyNFT.sol"
+          },
+          {
+            "import": "src/interfaces/IVaultNFT.sol",
+            "path": "src/interfaces/IVaultNFT.sol"
+          },
+          {
+            "import": "forge-std/console2.sol",
+            "skipped": "not in the repository: forge-std/console2.sol"
+          }
+        ],
+        "src/Factory.sol": [
+          {
+            "import": "@aragon/osx-commons-contracts/src/permission/PermissionLib.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/permission/PermissionLib.sol"
+          },
+          {
+            "import": "@aragon/osx/core/permission/PermissionManager.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/osx/packages/contracts/src/core/permission/PermissionManager.sol"
+          },
+          {
+            "import": "@setup/GaugeVoterSetup_v1_4_0.sol",
+            "skipped": "submodule dependency: lib/ve-governance/src/setup/GaugeVoterSetup_v1_4_0.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/executors/IExecutor.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/executors/IExecutor.sol"
+          },
+          {
+            "import": "@aragon/osx/core/dao/DAO.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/osx/packages/contracts/src/core/dao/DAO.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/utils/deployment/ProxyLib.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/utils/deployment/ProxyLib.sol"
+          },
+          {
+            "import": "src/AvKATVault.sol",
+            "path": "src/AvKATVault.sol"
+          },
+          {
+            "import": "src/VKatMetadata.sol",
+            "path": "src/VKatMetadata.sol"
+          },
+          {
+            "import": "src/interfaces/IVKatMetadata.sol",
+            "path": "src/interfaces/IVKatMetadata.sol"
+          },
+          {
+            "import": "src/strategies/AragonMerklAutoCompoundStrategy.sol",
+            "path": "src/strategies/AragonMerklAutoCompoundStrategy.sol"
+          },
+          {
+            "import": "src/utils/Deployers.sol",
+            "path": "src/utils/Deployers.sol"
+          },
+          {
+            "import": "src/strategies/DefaultStrategy.sol",
+            "path": "src/strategies/DefaultStrategy.sol"
+          }
+        ],
+        "src/Swapper.sol": [
+          {
+            "import": "@openzeppelin/contracts/security/ReentrancyGuard.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts/contracts/security/ReentrancyGuard.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol"
+          },
+          {
+            "import": "@escrow/VotingEscrowIncreasing_v1_2_0.sol",
+            "skipped": "submodule dependency: lib/ve-governance/src/escrow/VotingEscrowIncreasing_v1_2_0.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/executors/IExecutor.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/executors/IExecutor.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/executors/IExecutor.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/executors/IExecutor.sol"
+          },
+          {
+            "import": "src/interfaces/ISwapper.sol",
+            "path": "src/interfaces/ISwapper.sol"
+          },
+          {
+            "import": "src/interfaces/IRewardsDistributor.sol",
+            "path": "src/interfaces/IRewardsDistributor.sol"
+          }
+        ],
+        "src/VKatMetadata.sol": [
+          {
+            "import": "@openzeppelin/contracts/utils/structs/EnumerableSet.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts/contracts/utils/structs/EnumerableSet.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/UUPSUpgradeable.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/permission/auth/DaoAuthorizableUpgradeable.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/permission/auth/DaoAuthorizableUpgradeable.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/dao/IDAO.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/dao/IDAO.sol"
+          },
+          {
+            "import": "src/interfaces/IVKatMetadata.sol",
+            "path": "src/interfaces/IVKatMetadata.sol"
+          },
+          {
+            "import": "@setup/GaugeVoterSetup_v1_4_0.sol",
+            "skipped": "submodule dependency: lib/ve-governance/src/setup/GaugeVoterSetup_v1_4_0.sol"
+          }
+        ],
+        "src/abstracts/NFTBaseStrategy.sol": [
+          {
+            "import": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC20/IERC20Upgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/UUPSUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/token/ERC721/ERC721Upgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC721/ERC721Upgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/token/ERC721/utils/ERC721HolderUpgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC721/utils/ERC721HolderUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/access/OwnableUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC20/utils/SafeERC20Upgradeable.sol"
+          },
+          {
+            "import": "@setup/GaugeVoterSetup_v1_4_0.sol",
+            "skipped": "submodule dependency: lib/ve-governance/src/setup/GaugeVoterSetup_v1_4_0.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/permission/auth/DaoAuthorizableUpgradeable.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/permission/auth/DaoAuthorizableUpgradeable.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/dao/IDAO.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/dao/IDAO.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/executors/IExecutor.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/executors/IExecutor.sol"
+          },
+          {
+            "import": "src/AvKATVault.sol",
+            "path": "src/AvKATVault.sol"
+          },
+          {
+            "import": "src/Swapper.sol",
+            "path": "src/Swapper.sol"
+          },
+          {
+            "import": "src/interfaces/ISwapper.sol",
+            "path": "src/interfaces/ISwapper.sol"
+          },
+          {
+            "import": "src/interfaces/IRewardsDistributor.sol",
+            "path": "src/interfaces/IRewardsDistributor.sol"
+          },
+          {
+            "import": "src/interfaces/IStrategyNFT.sol",
+            "path": "src/interfaces/IStrategyNFT.sol"
+          },
+          {
+            "import": "src/interfaces/IStrategy.sol",
+            "path": "src/interfaces/IStrategy.sol"
+          }
+        ],
+        "src/interfaces/IRewardsDistributor.sol": [],
+        "src/interfaces/IStrategy.sol": [],
+        "src/interfaces/IStrategyNFT.sol": [
+          {
+            "import": "./IStrategy.sol",
+            "path": "src/interfaces/IStrategy.sol"
+          }
+        ],
+        "src/interfaces/ISwapper.sol": [
+          {
+            "import": "@aragon/osx-commons-contracts/src/executors/IExecutor.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/executors/IExecutor.sol"
+          }
+        ],
+        "src/interfaces/IVKatMetadata.sol": [],
+        "src/interfaces/IVaultNFT.sol": [],
+        "src/strategies/AragonMerklAutoCompoundStrategy.sol": [
+          {
+            "import": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC20/IERC20Upgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/UUPSUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/token/ERC721/utils/ERC721HolderUpgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC721/utils/ERC721HolderUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC20/utils/SafeERC20Upgradeable.sol"
+          },
+          {
+            "import": "@setup/GaugeVoterSetup_v1_4_0.sol",
+            "skipped": "submodule dependency: lib/ve-governance/src/setup/GaugeVoterSetup_v1_4_0.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/permission/auth/DaoAuthorizableUpgradeable.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/permission/auth/DaoAuthorizableUpgradeable.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/dao/IDAO.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/dao/IDAO.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/executors/IExecutor.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/executors/IExecutor.sol"
+          },
+          {
+            "import": "src/AvKATVault.sol",
+            "path": "src/AvKATVault.sol"
+          },
+          {
+            "import": "src/Swapper.sol",
+            "path": "src/Swapper.sol"
+          },
+          {
+            "import": "src/interfaces/ISwapper.sol",
+            "path": "src/interfaces/ISwapper.sol"
+          },
+          {
+            "import": "src/interfaces/IRewardsDistributor.sol",
+            "path": "src/interfaces/IRewardsDistributor.sol"
+          },
+          {
+            "import": "src/interfaces/IStrategyNFT.sol",
+            "path": "src/interfaces/IStrategyNFT.sol"
+          },
+          {
+            "import": "src/interfaces/IStrategy.sol",
+            "path": "src/interfaces/IStrategy.sol"
+          },
+          {
+            "import": "../abstracts/NFTBaseStrategy.sol",
+            "path": "src/abstracts/NFTBaseStrategy.sol"
+          }
+        ],
+        "src/strategies/DefaultStrategy.sol": [
+          {
+            "import": "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/token/ERC20/IERC20Upgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC20/IERC20Upgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/proxy/utils/UUPSUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/token/ERC721/utils/ERC721HolderUpgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC721/utils/ERC721HolderUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/token/ERC20/utils/SafeERC20Upgradeable.sol",
+            "skipped": "submodule dependency: lib/ve-governance/lib/openzeppelin-contracts-upgradeable/contracts/token/ERC20/utils/SafeERC20Upgradeable.sol"
+          },
+          {
+            "import": "@setup/GaugeVoterSetup_v1_4_0.sol",
+            "skipped": "submodule dependency: lib/ve-governance/src/setup/GaugeVoterSetup_v1_4_0.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/permission/auth/DaoAuthorizableUpgradeable.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/permission/auth/DaoAuthorizableUpgradeable.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/dao/IDAO.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/dao/IDAO.sol"
+          },
+          {
+            "import": "@aragon/osx-commons-contracts/src/executors/IExecutor.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/executors/IExecutor.sol"
+          },
+          {
+            "import": "src/AvKATVault.sol",
+            "path": "src/AvKATVault.sol"
+          },
+          {
+            "import": "src/Swapper.sol",
+            "path": "src/Swapper.sol"
+          },
+          {
+            "import": "src/interfaces/ISwapper.sol",
+            "path": "src/interfaces/ISwapper.sol"
+          },
+          {
+            "import": "src/interfaces/IRewardsDistributor.sol",
+            "path": "src/interfaces/IRewardsDistributor.sol"
+          },
+          {
+            "import": "src/interfaces/IStrategyNFT.sol",
+            "path": "src/interfaces/IStrategyNFT.sol"
+          },
+          {
+            "import": "src/interfaces/IStrategy.sol",
+            "path": "src/interfaces/IStrategy.sol"
+          },
+          {
+            "import": "../abstracts/NFTBaseStrategy.sol",
+            "path": "src/abstracts/NFTBaseStrategy.sol"
+          }
+        ],
+        "src/utils/Deployers.sol": [
+          {
+            "import": "@aragon/osx-commons-contracts/src/utils/deployment/ProxyLib.sol",
+            "skipped": "submodule dependency: lib/osx-commons/contracts/src/utils/deployment/ProxyLib.sol"
+          },
+          {
+            "import": "@merkl/AccessControlManager.sol",
+            "skipped": "submodule dependency: lib/merkl/contracts/AccessControlManager.sol"
+          },
+          {
+            "import": "@merkl/Distributor.sol",
+            "skipped": "submodule dependency: lib/merkl/contracts/Distributor.sol"
+          },
+          {
+            "import": "src/AvKATVault.sol",
+            "path": "src/AvKATVault.sol"
+          },
+          {
+            "import": "src/Swapper.sol",
+            "path": "src/Swapper.sol"
+          },
+          {
+            "import": "src/strategies/AragonMerklAutoCompoundStrategy.sol",
+            "path": "src/strategies/AragonMerklAutoCompoundStrategy.sol"
+          },
+          {
+            "import": "src/VKatMetadata.sol",
+            "path": "src/VKatMetadata.sol"
+          },
+          {
+            "import": "src/interfaces/IVKatMetadata.sol",
+            "path": "src/interfaces/IVKatMetadata.sol"
+          }
+        ]
+      }
+    },
+    "katana-network/kat-token": {
+      "21644ffdb2f00d3b8ba5f2fc84e9e3d0888faeed": {
+        "src/KatToken.sol": [
+          {
+            "import": "dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/extensions/ERC20Permit.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/token/ERC20/extensions/ERC20Permit.sol"
+          },
+          {
+            "import": "./Powutil.sol",
+            "path": "src/Powutil.sol"
+          }
+        ],
+        "src/MerkleMinter.sol": [
+          {
+            "import": "./KatToken.sol",
+            "path": "src/KatToken.sol"
+          },
+          {
+            "import": "dependencies/@openzeppelin-contracts-5.1.0/utils/cryptography/MerkleProof.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/utils/cryptography/MerkleProof.sol"
+          },
+          {
+            "import": "dependencies/@openzeppelin-contracts-5.1.0/utils/structs/BitMaps.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.1.0/utils/structs/BitMaps.sol"
+          }
+        ],
+        "src/Powutil.sol": []
+      }
+    },
+    "katana-network/lz-kat-upgradeable": {
+      "e88b7151420bae54d7ea7074abd6064ddcadba48": {
+        "contracts/KATCustomOFTAdapterUpgradeable.sol": [
+          {
+            "import": "./KATOFTAdapterStorageLayout.sol",
+            "path": "contracts/KATOFTAdapterStorageLayout.sol"
+          },
+          {
+            "import": "./interfaces/IKATVault.sol",
+            "path": "contracts/interfaces/IKATVault.sol"
+          },
+          {
+            "import": "@layerzerolabs/oft-evm-upgradeable/contracts/oft/OFTAdapterUpgradeable.sol",
+            "skipped": "package dependency: node_modules/@layerzerolabs/oft-evm-upgradeable/contracts/oft/OFTAdapterUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol",
+            "skipped": "package dependency: node_modules/@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol"
+          }
+        ],
+        "contracts/KATCustomOFTUpgradeable.sol": [
+          {
+            "import": "@layerzerolabs/oft-evm-upgradeable/contracts/oft/OFTUpgradeable.sol",
+            "skipped": "package dependency: node_modules/@layerzerolabs/oft-evm-upgradeable/contracts/oft/OFTUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol",
+            "skipped": "package dependency: node_modules/@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol"
+          }
+        ],
+        "contracts/KATOFTAdapterStorageLayout.sol": [
+          {
+            "import": "./interfaces/IKATVault.sol",
+            "path": "contracts/interfaces/IKATVault.sol"
+          }
+        ],
+        "contracts/KATOFTAdapterUpgradeable.sol": [
+          {
+            "import": "./KATOFTAdapterStorageLayout.sol",
+            "path": "contracts/KATOFTAdapterStorageLayout.sol"
+          },
+          {
+            "import": "@layerzerolabs/oft-evm-upgradeable/contracts/oft/OFTAdapterUpgradeable.sol",
+            "skipped": "package dependency: node_modules/@layerzerolabs/oft-evm-upgradeable/contracts/oft/OFTAdapterUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol",
+            "skipped": "package dependency: node_modules/@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol"
+          }
+        ],
+        "contracts/KATOFTUpgradeable.sol": [
+          {
+            "import": "@layerzerolabs/oft-evm-upgradeable/contracts/oft/OFTUpgradeable.sol",
+            "skipped": "package dependency: node_modules/@layerzerolabs/oft-evm-upgradeable/contracts/oft/OFTUpgradeable.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol",
+            "skipped": "package dependency: node_modules/@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol"
+          }
+        ],
+        "contracts/interfaces/IKATVault.sol": []
+      }
+    },
+    "katana-network/sushi-v3-lp-staking-offchainAccounting": {
+      "1790d736438d773c4f6963ef6baf24040025fd08": {
+        "src/SushiStaker.sol": [
+          {
+            "import": "./interfaces/IAddressGaugeVoter.sol",
+            "path": "src/interfaces/IAddressGaugeVoter.sol"
+          },
+          {
+            "import": "./interfaces/INonfungiblePositionManager.sol",
+            "path": "src/interfaces/INonfungiblePositionManager.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-5.5.0/proxy/utils/Initializable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.5.0/proxy/utils/Initializable.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-5.5.0/token/ERC721/IERC721.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.5.0/token/ERC721/IERC721.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-5.5.0/token/ERC721/IERC721Receiver.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.5.0/token/ERC721/IERC721Receiver.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-5.5.0/utils/ReentrancyGuard.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-5.5.0/utils/ReentrancyGuard.sol"
+          },
+          {
+            "import": "@openzeppelin-contracts-upgradeable-5.5.0/access/OwnableUpgradeable.sol",
+            "skipped": "vendored dependency: dependencies/@openzeppelin-contracts-upgradeable-5.5.0/access/OwnableUpgradeable.sol"
+          },
+          {
+            "import": "@sushiswap-v3-core/interfaces/IUniswapV3Factory.sol",
+            "skipped": "vendored dependency: dependencies/@sushiswap-v3-core-v1/contracts/interfaces/IUniswapV3Factory.sol"
+          },
+          {
+            "import": "@sushiswap-v3-core/interfaces/IUniswapV3Pool.sol",
+            "skipped": "vendored dependency: dependencies/@sushiswap-v3-core-v1/contracts/interfaces/IUniswapV3Pool.sol"
+          }
+        ],
+        "src/interfaces/IAddressGaugeVoter.sol": [],
+        "src/interfaces/INonfungiblePositionManager.sol": []
+      }
+    }
+  }
 }

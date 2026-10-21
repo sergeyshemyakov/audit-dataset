@@ -38,10 +38,12 @@ if sys.version_info < (3, 14):
 from compression import zstd
 
 from . import DatasetError
+from . import imports
 from .collections import LIBRARIES_DIR, REPORTS_DIR, Collection, discover
 from .git import GitError, blob_id, full_commit, hash_algorithm, run
 from .manifest import read_manifest, sources_by_key, stored_path, unavailable_keys
 from .repositories import canonical_repository_id, repository_url
+from .scope import is_test_or_mock, is_under
 from .summary import commit_timestamps, path_problem, read_summary, relevant_versions, valid_date
 
 SCHEMA_VERSION = "1.1.0"
@@ -108,8 +110,11 @@ class Export:
     manifest_paths: set[str]  # dataset path of every file a manifest names, Solidity or not
 
 
-def export_dataset(root: Path, check: bool) -> int:
-    """Write the export, or with ``check`` verify the committed one; 0 on success."""
+def export_dataset(root: Path, check: bool, output: Path | None = None) -> int:
+    """Write the export (to ``output``, the dataset root by default), or with ``check``
+    verify the committed one; 0 on success."""
+    if check and output is not None:
+        raise ExportError("check verifies the committed export and writes nothing; drop the output")
     export = build_export(root)
     index_text = serialize_index(export.index)
     objects_text = serialize_objects(export.objects)
@@ -123,7 +128,9 @@ def export_dataset(root: Path, check: bool) -> int:
     if check:
         print(f"{INDEX_NAME} and {OBJECTS_NAME} are valid and up to date")
     else:
-        write_export(root, index_text, objects_text)
+        target = root if output is None else output.resolve()
+        target.mkdir(parents=True, exist_ok=True)
+        write_export(target, index_text, objects_text)
     print_statistics(export, index_text, objects_text)
     return 0
 
@@ -154,6 +161,8 @@ def build_export(root: Path) -> Export:
             for record in source["files"]
         )
         for audit in collection_audits(collection, summary, manifest, timestamps):
+            add_audit(audits, audit)
+        for audit in collection_import_audits(collection, summary, manifest, timestamps):
             add_audit(audits, audit)
     return assemble_export(names, reports, audits, manifest_paths)
 
@@ -236,28 +245,6 @@ def document_fingerprint(root: Path, documents: list[str]) -> tuple[tuple[str, s
     return tuple(fingerprint)
 
 
-# Files a directory scope sweeps in that are not audit evidence of deployed code:
-# tests, mocks and deployment scripts, told apart by a path segment below the
-# scoped directory or by the Foundry test and script suffixes. A file scope
-# stores its file whatever its name.
-EXCLUDED_SEGMENTS = frozenset({"test", "tests", "mock", "mocks", "script", "scripts"})
-EXCLUDED_SUFFIXES = (".t.sol", ".s.sol")
-
-
-def is_test_or_mock(path: str, scoped_path: str) -> bool:
-    """Whether a file below a directory scope is a test, mock or script."""
-    relative = path[len(scoped_path) + 1:] if scoped_path else path
-    parts = PurePosixPath(relative).parts
-    return (
-        any(part.lower() in EXCLUDED_SEGMENTS for part in parts[:-1])
-        or relative.lower().endswith(EXCLUDED_SUFFIXES)
-    )
-
-
-def is_under(path: str, scoped_path: str) -> bool:
-    return path == scoped_path or path.startswith(f"{scoped_path}/")
-
-
 def not_audited_paths(summary: dict[str, Any]) -> dict[tuple[str, str, str], list[str]]:
     """Paths a report marks ``not_audited`` at a commit, by (report id, repository, commit).
 
@@ -324,6 +311,73 @@ def collection_audits(
             origin=origin,
         ))
     return audits
+
+
+def collection_import_audits(
+    collection: Collection,
+    summary: dict[str, Any],
+    manifest: dict[str, Any],
+    timestamps: dict[tuple[str, str], int | None],
+) -> list[Audit]:
+    """Audits of the files that fully audited files import, see ``imports``."""
+    fetched = sources_by_key(manifest)
+    unavailable = unavailable_keys(manifest)
+    graph = imports.graph_from_manifest(manifest)
+    blob_ids: dict[Path, str] = {}
+    audits: list[Audit] = []
+    for report in summary["reports"]:
+        for (repository, commit), scope in sorted(imports.report_scope_paths(report).items()):
+            if any((repository, path, commit) in unavailable for path, _ in scope.audited):
+                continue
+            where = f"{collection.name}: report {report['id']!r}, {repository}@{commit}"
+            expansion = import_expansion(where, repository, commit, scope, fetched, graph)
+            for path, importer in sorted(expansion.added.items()):
+                source = fetched.get((repository, path, commit))
+                origin = f"{where}: {path} imported by {importer}"
+                if source is None or source["path_kind"] != "file":
+                    raise ExportError(f"{origin} is not fetched; rerun fetch")
+                files = solidity_files(collection.sources_dir, source, blob_ids)
+                if not files:
+                    continue
+                timestamp = timestamps[(repository, commit)]
+                if timestamp is None:
+                    raise ExportError(f"{origin}: commit {commit} has no timestamp")
+                audits.append(Audit(
+                    collection=collection.name,
+                    report_id=report["id"],
+                    repository=repository,
+                    commit=commit,
+                    timestamp=timestamp,
+                    scoped_path=path,
+                    finding_ids=(),
+                    files=files,
+                    origin=origin,
+                ))
+    return audits
+
+
+def import_expansion(
+    where: str,
+    repository: str,
+    commit: str,
+    scope: imports.ScopePaths,
+    fetched: dict[tuple[str, str, str], dict[str, Any]],
+    graph: dict[tuple[str, str], dict[str, list[imports.Edge]]],
+) -> imports.Expansion:
+    """Expand one scope over the imports the manifest resolved, which must be complete."""
+    files = graph.get((repository, commit))
+    if files is None:
+        raise ExportError(f"{where}: the manifest has no imports; rerun fetch")
+
+    def directory_files(directory: str) -> list[str]:
+        return [record["path"] for record in fetched[(repository, directory, commit)]["files"]]
+
+    expansion = imports.expand(imports.scope_roots(scope, directory_files), scope, files)
+    if expansion.missing:
+        raise ExportError(
+            f"{where}: imports of {sorted(expansion.missing)[0]} are not in the manifest; rerun fetch"
+        )
+    return expansion
 
 
 def solidity_files(

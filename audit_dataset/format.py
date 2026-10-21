@@ -101,10 +101,26 @@ def format_collection(
     return len(sources), sorted(changed), sorted(failed)
 
 
+def require_forge_fmt(forge: str) -> None:
+    """Fail unless ``forge`` has an ``fmt`` command.
+
+    Formatting reads failures out of forge's output rather than its exit status,
+    so another program named ``forge`` on the PATH would otherwise format
+    nothing and report every file as already formatted.
+    """
+    try:
+        result = subprocess.run([forge, "fmt", "--help"], capture_output=True, text=True)
+    except FileNotFoundError as error:
+        raise DatasetError(f"{forge} not found; install Foundry or pass --forge PATH") from error
+    if result.returncode != 0:
+        raise DatasetError(f"{forge} has no fmt command, so it is not Foundry's forge; pass --forge PATH")
+
+
 def format_collections(
     root: Path, collections: list[Collection], forge: str, check: bool
 ) -> tuple[int, int, int]:
     """Format every collection; returns totals of files, changed and failed."""
+    require_forge_fmt(forge)
     if not check and export_config(root):
         print(f"exported fmt config to {root / EXPORTED_CONFIG_NAME}")
     totals = [0, 0, 0]

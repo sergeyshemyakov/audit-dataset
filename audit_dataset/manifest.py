@@ -34,8 +34,16 @@ Manifest schema::
       }],
       "skipped": [{"repository", "source_path", "revision_kind", "revision", "reason"}],
           // versions not fetched: unpinned revisions, and paths whose kind is not fetched (zk, cairo, other)
-      "unavailable": [{"repository", "source_path", "path_kind", "commit", "reason"}]
+      "unavailable": [{"repository", "source_path", "path_kind", "commit", "reason"}],
+      // only when a report opted in to import expansion (see ``imports``): the resolved
+      // imports of every file an expansion reached, each followed to an own file or skipped
+      "imports": {"<repository>": {"<commit>": {"<path>": [
+          {"import": "./base/X.sol", "path": "contracts/base/X.sol"}
+          | {"import": "@openzeppelin/...", "skipped": "<why it is not followed>"}
+      ]}}}
     }
+
+A file an expansion adds is fetched as a ``file`` source of its own.
 
 ``git_object`` is the upstream blob; Solidity is reformatted after fetching, so
 ``sha256`` is the only hash of the stored bytes. A directory scope lists only

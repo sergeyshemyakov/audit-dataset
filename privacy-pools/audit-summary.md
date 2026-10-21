@@ -9,13 +9,14 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Oxorio
 - Date: 2024-05-24
 - Description: Security audit by Oxorio of the Privacy Pools v1 onchain contracts and the proof-of-innocence membership circuit. Covers the ETH and ERC20 pools, the Merkle tree with history, and the circuit&#x27;s constraint soundness.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/ProofOfInnocence/privacy-pools-v1"><code>ProofOfInnocence/privacy-pools-v1</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/contracts/PrivacyPool.sol"><code>e221f0b88e52fb5c214726e765997ef4067793a9</code></a> | February 5, 2024 | <code>contracts/PrivacyPool.sol</code><br><code>contracts/ERC20PrivacyPool.sol</code><br><code>contracts/ETHPrivacyPool.sol</code><br><code>contracts/MerkleTreeWithHistory.sol</code><br><code>membership-proof/circuits/proofOfInnocence.circom</code> (zk) |
-| <a href="https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/PrivacyPool.sol"><code>8ab7132877325e27b22053e974b3310d70b860b5</code></a> | April 13, 2024 | <code>contracts/PrivacyPool.sol</code><br><code>contracts/ERC20PrivacyPool.sol</code><br><code>contracts/ETHPrivacyPool.sol</code><br><code>contracts/MerkleTreeWithHistory.sol</code><br><code>membership-proof/circuits/proofOfInnocence.circom</code> (zk) |
+| <a href="https://github.com/ProofOfInnocence/privacy-pools-v1/blob/e221f0b88e52fb5c214726e765997ef4067793a9/contracts/ERC20PrivacyPool.sol"><code>e221f0b88e52fb5c214726e765997ef4067793a9</code></a> | February 5, 2024 | <code>contracts/ERC20PrivacyPool.sol</code><br><code>contracts/ETHPrivacyPool.sol</code><br><code>contracts/MerkleTreeWithHistory.sol</code><br><code>contracts/PrivacyPool.sol</code><br><code>membership-proof/circuits/proofOfInnocence.circom</code> (zk) |
+| <a href="https://github.com/ProofOfInnocence/privacy-pools-v1/blob/8ab7132877325e27b22053e974b3310d70b860b5/contracts/ERC20PrivacyPool.sol"><code>8ab7132877325e27b22053e974b3310d70b860b5</code></a> | April 13, 2024 | <code>contracts/ERC20PrivacyPool.sol</code><br><code>contracts/ETHPrivacyPool.sol</code><br><code>contracts/MerkleTreeWithHistory.sol</code><br><code>contracts/PrivacyPool.sol</code><br><code>membership-proof/circuits/proofOfInnocence.circom</code> (zk) |
 
 ## Privacy Pools circuits audit report
 
@@ -36,6 +37,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Report: [auditware-privacy-pools-core-audit.md](<reports/auditware-privacy-pools-core-audit.md>)
 - Auditor: Auditware
 - Description: Security review by Auditware of the Privacy Pools core contracts that provide public deposits and private partial withdrawals gated by ASP membership proofs. Covers Entrypoint, PrivacyPool, State, the simple and complex pool implementations, and the shared libraries.
+- Imports of fully audited files: not audited
 
 ### Repository: <a href="https://github.com/0xbow-io/privacy-pools-core"><code>0xbow-io/privacy-pools-core</code></a>
 
@@ -51,6 +53,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Oxorio
 - Date: 2025-03-18
 - Description: Smart contract security audit by Oxorio of the seven Privacy Pools core contracts. Covers the Entrypoint, PrivacyPool and State logic plus the pool implementations and libraries, including a fix review of the final commit.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/0xbow-io/privacy-pools-core"><code>0xbow-io/privacy-pools-core</code></a>
 
@@ -66,6 +69,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Oxorio
 - Date: 2025-05-20
 - Description: Oxorio audit of the precommitment pull request changes to the Privacy Pools Entrypoint contract and its interface. Scoped to the two modified contracts rather than the whole protocol.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/0xbow-io/privacy-pools-core"><code>0xbow-io/privacy-pools-core</code></a>
 
@@ -78,12 +82,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Report: [auditware-privacy-pools-batch-relayer-audit.md](<reports/auditware-privacy-pools-batch-relayer-audit.md>)
 - Auditor: Auditware
 - Description: Auditware security review of the Privacy Pools BatchRelayer contract, which enables atomic batch withdrawals from privacy pools. Covers the implementation, its interface and the deployment script.
+- Imports of fully audited files: audited, except the not_audited paths
 
 ### Repository: <a href="https://github.com/0xbow-io/privacy-pools-core"><code>0xbow-io/privacy-pools-core</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/0xbow-io/privacy-pools-core/blob/2f6a650b4cbc7872e163a70c56cdc977fe7839b4/packages/contracts/src/contracts/BatchRelayer.sol"><code>2f6a650b4cbc7872e163a70c56cdc977fe7839b4</code></a> | August 11, 2025 | <code>packages/contracts/src/contracts/BatchRelayer.sol</code><br><code>packages/contracts/src/interfaces/IBatchRelayer.sol</code><br><code>packages/contracts/script/BatchRelayer.s.sol</code> |
+| <a href="https://github.com/0xbow-io/privacy-pools-core/blob/2f6a650b4cbc7872e163a70c56cdc977fe7839b4/packages/contracts/script/BatchRelayer.s.sol"><code>2f6a650b4cbc7872e163a70c56cdc977fe7839b4</code></a> | August 11, 2025 | <code>packages/contracts/script/BatchRelayer.s.sol</code><br><code>packages/contracts/src/contracts/BatchRelayer.sol</code><br><code>packages/contracts/src/interfaces/IBatchRelayer.sol</code> |
 
 ## Irrelevant reports
 

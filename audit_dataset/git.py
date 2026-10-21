@@ -45,13 +45,20 @@ def blob_id(data: bytes, object_id_length: int) -> str:
     return algorithm.hexdigest()
 
 
-def run(repository: Path | None, *args: str) -> bytes:
+def run(
+    repository: Path | None, *args: str, input: bytes | None = None, lazy_fetch: bool = True
+) -> bytes:
+    """Run git; ``lazy_fetch=False`` makes a partial clone fail on a missing object
+    instead of fetching it on its own."""
     command = ["git"]
     if repository is not None:
         command.extend(["-C", os.fspath(repository)])
     command.extend(args)
+    environment = GIT_ENVIRONMENT if lazy_fetch else {**GIT_ENVIRONMENT, "GIT_NO_LAZY_FETCH": "1"}
     try:
-        completed = subprocess.run(command, check=True, capture_output=True, env=GIT_ENVIRONMENT)
+        completed = subprocess.run(
+            command, check=True, capture_output=True, input=input, env=environment
+        )
     except FileNotFoundError as error:
         raise GitError("git executable was not found") from error
     except subprocess.CalledProcessError as error:

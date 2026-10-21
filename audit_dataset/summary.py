@@ -19,7 +19,7 @@ from .collections import Collection
 from .git import FULL_COMMIT_RE, full_commit
 from .repositories import canonical_repository_id
 
-SCHEMA_VERSION = "1.6.0"
+SCHEMA_VERSION = "1.7.0"
 
 # What kind of code a scoped path holds. Only `evm` is fetched and exported today.
 KINDS = frozenset({"evm", "zk", "cairo", "other"})
@@ -36,9 +36,12 @@ STATUSES = STATUSES_WITH_MAJOR_FINDINGS | {
 PATH_KINDS = frozenset({"file", "directory_recursive"})
 
 REPORT_KEYS = frozenset({
-    "id", "report_file", "title", "description", "isRelevant", "auditor",
+    "id", "report_file", "title", "description", "isRelevant", "imports", "auditor",
     "report_date", "repositories", "scopes",
 })
+# Whether a report's audited files vouch for the files they import; see ``imports``.
+# Optional: a report without it keeps its listed files only.
+IMPORTS_VALUES = frozenset({"audited_unless_excluded", "not_audited"})
 VERSION_KEYS = frozenset({"revision", "status", "major_finding_ids"})
 # Keys of a revision by kind, with the ones that may be left out.
 REVISION_KEYS: dict[str, frozenset[str]] = {
@@ -195,6 +198,11 @@ def report_problems(
         problems.append(f"report_date must be null or YYYY-MM-DD, got {report_date!r}")
     if not isinstance(report.get("isRelevant"), bool):
         problems.append("isRelevant must be a boolean")
+    if "imports" in report:
+        if report["imports"] not in IMPORTS_VALUES:
+            problems.append(f"imports must be one of {sorted(IMPORTS_VALUES)}, got {report['imports']!r}")
+        if report.get("isRelevant") is not True:
+            problems.append("only a relevant report may have imports")
     problems.extend(report_file_problems(report.get("report_file"), reports_dir))
 
     repositories = report.get("repositories")
