@@ -18,7 +18,7 @@
       "kind": "library"
     },
     "_libs/safe": {
-      "name": "Safe",
+      "name": "Safe (library)",
       "kind": "library"
     },
     "_libs/solady": {
@@ -107,6 +107,10 @@
     },
     "roninnetwork": {
       "name": "Ronin",
+      "kind": "project"
+    },
+    "safe": {
+      "name": "Safe",
       "kind": "project"
     },
     "scroll": {
@@ -266,7 +270,8 @@
     },
     "ackee-safe-1-4-0": {
       "collections": [
-        "_libs/safe"
+        "_libs/safe",
+        "safe"
       ],
       "title": "Safe Contracts 1.4.0 Security Review",
       "auditor": "Ackee Blockchain",
@@ -275,7 +280,8 @@
     },
     "ackee-safe-1-5-0": {
       "collections": [
-        "_libs/safe"
+        "_libs/safe",
+        "safe"
       ],
       "title": "Safe Smart Account Security Review",
       "auditor": "Ackee Blockchain Security",
@@ -329,7 +335,8 @@
     },
     "akhunov-audit-results-note": {
       "collections": [
-        "_libs/safe"
+        "_libs/safe",
+        "safe"
       ],
       "title": "Gnosis Safe Audit Results",
       "auditor": "Alexey Akhunov",
@@ -338,7 +345,8 @@
     },
     "akhunov-gnosis-safe-2018": {
       "collections": [
-        "_libs/safe"
+        "_libs/safe",
+        "safe"
       ],
       "title": "Gnosis Safe Audit Report",
       "auditor": "Alexey Akhunov",
@@ -915,7 +923,8 @@
     },
     "certora-safe-1-3-0": {
       "collections": [
-        "_libs/safe"
+        "_libs/safe",
+        "safe"
       ],
       "title": "Safe Smart Account v1.3.0 Security Assessment",
       "auditor": "Certora",
@@ -924,7 +933,8 @@
     },
     "certora-safe-1-5-0": {
       "collections": [
-        "_libs/safe"
+        "_libs/safe",
+        "safe"
       ],
       "title": "Safe Smart Account v1.5.0 Formal Verification and Audit",
       "auditor": "Certora",
@@ -951,7 +961,8 @@
     },
     "certora-safe-library-contracts-1-4-1": {
       "collections": [
-        "_libs/safe"
+        "_libs/safe",
+        "safe"
       ],
       "title": "Safe Library Contracts Security Assessment and Formal Verification",
       "auditor": "Certora",
@@ -1671,7 +1682,8 @@
     },
     "g0-safe-1-1-0": {
       "collections": [
-        "_libs/safe"
+        "_libs/safe",
+        "safe"
       ],
       "title": "Security Review of Gnosis Safe v1.1.0",
       "auditor": "G0 Group",
@@ -1680,7 +1692,8 @@
     },
     "g0-safe-1-1-1": {
       "collections": [
-        "_libs/safe"
+        "_libs/safe",
+        "safe"
       ],
       "title": "Security Review of Gnosis Safe v1.1.0 and v1.1.1",
       "auditor": "G0 Group",
@@ -1689,7 +1702,8 @@
     },
     "g0-safe-1-3-0-final": {
       "collections": [
-        "_libs/safe"
+        "_libs/safe",
+        "safe"
       ],
       "title": "Security Review of Gnosis Safe 1.3.0 (Final)",
       "auditor": "G0 Group",
@@ -1698,7 +1712,8 @@
     },
     "g0-safe-1-3-0-initial": {
       "collections": [
-        "_libs/safe"
+        "_libs/safe",
+        "safe"
       ],
       "title": "Security Review of Gnosis Safe 1.3.0 (Initial)",
       "auditor": "G0 Group",
@@ -1716,7 +1731,8 @@
     },
     "g0-safe-gas-validation-1-2-0": {
       "collections": [
-        "_libs/safe"
+        "_libs/safe",
+        "safe"
       ],
       "title": "Gnosis Safe Gas Validation Adjustment",
       "auditor": "G0 Group",
@@ -2013,7 +2029,8 @@
     },
     "nethermind-safe-1-3-0": {
       "collections": [
-        "_libs/safe"
+        "_libs/safe",
+        "safe"
       ],
       "title": "Safe Smart Account v1.3.0 Security Review",
       "auditor": "Nethermind Security",
@@ -3012,7 +3029,8 @@
     },
     "runtime-verification-safe-1-0-0": {
       "collections": [
-        "_libs/safe"
+        "_libs/safe",
+        "safe"
       ],
       "title": "Formal Verification Report: GnosisSafe Contract",
       "auditor": "Runtime Verification",
