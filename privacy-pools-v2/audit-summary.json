@@ -216,8 +216,8 @@
                 }
               ]
             },
-            "packages/swaps/contracts/src": {
-              "path_kind": "directory_recursive",
+            "packages/swaps/contracts/src/IRelaySwaps.sol": {
+              "path_kind": "file",
               "kind": "evm",
               "versions": [
                 {
@@ -225,7 +225,7 @@
                     "kind": "commit",
                     "commit": "638bf8f4a0f4ef26761e439a338c8db6667dc30b",
                     "timestamp": "2026-09-08T15:34:57Z",
-                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/638bf8f4a0f4ef26761e439a338c8db6667dc30b/packages/swaps/contracts/src"
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/638bf8f4a0f4ef26761e439a338c8db6667dc30b/packages/swaps/contracts/src/IRelaySwaps.sol"
                   },
                   "status": "partially_audited_without_major_findings"
                 }

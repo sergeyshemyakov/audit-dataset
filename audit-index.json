@@ -5093,13 +5093,12 @@
           "packages/contracts/src/utils/Constants.sol": "c086f9ea8eba",
           "packages/contracts/src/utils/RolesConstants.sol": "45c13f044a50",
           "packages/swaps/contracts/src/IRelaySwaps.sol": "2060ab879cbf",
-          "packages/swaps/contracts/src/MockPool.sol": "131c8a1f49b4",
           "packages/swaps/contracts/src/RelaySwaps.sol": "44fd2621f1e9"
         },
         "audits": {
           "consensys-diligence-privacy-pools-v2-2026-09": {
             "packages/contracts/src": [],
-            "packages/swaps/contracts/src": [],
+            "packages/swaps/contracts/src/IRelaySwaps.sol": [],
             "packages/swaps/contracts/src/RelaySwaps.sol": [
               "#001"
             ]

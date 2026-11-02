@@ -581,8 +581,8 @@
     {
       "repository": "0xbow-io/v2-monorepo",
       "repository_url": "https://github.com/0xbow-io/v2-monorepo",
-      "source_path": "packages/swaps/contracts/src",
-      "path_kind": "directory_recursive",
+      "source_path": "packages/swaps/contracts/src/IRelaySwaps.sol",
+      "path_kind": "file",
       "commit": "638bf8f4a0f4ef26761e439a338c8db6667dc30b",
       "files": [
         {
@@ -590,18 +590,6 @@
           "git_object": "2060ab879cbfb34938ddcb3a77799f200797a197",
           "git_mode": "100644",
           "sha256": "db78b9c436eca944ca76a568e35b4e1ec23fc2bdea1b5fd37d73759923733c12"
-        },
-        {
-          "path": "packages/swaps/contracts/src/MockPool.sol",
-          "git_object": "a2e2537c233aa616082bf2a1739768c2a38f1656",
-          "git_mode": "100644",
-          "sha256": "d8d8b72dbab46cd50063c9cb97371d85e14bf18784526097cf435108423b8c33"
-        },
-        {
-          "path": "packages/swaps/contracts/src/RelaySwaps.sol",
-          "git_object": "f42b09bd88a3e8d4da538d63ff282e74399c5f84",
-          "git_mode": "100644",
-          "sha256": "c40a43d5bc7d15d3421d39d27d39d5db0e44f61f4458a0a3d12583c131a996b6"
         }
       ]
     },
