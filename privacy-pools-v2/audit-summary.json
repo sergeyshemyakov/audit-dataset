@@ -1,0 +1,302 @@
+{
+  "schema_version": "1.7.0",
+  "project": "privacy-pools-v2",
+  "reports": [
+    {
+      "id": "auditware-privacy-pools-v2-2026-08",
+      "report_file": "auditware-privacy-pools-v2-code-security-review-2026-08.md",
+      "title": "Privacy Pools v2 — Code Security Review",
+      "description": "Auditware re-audit of the Privacy Pools v2 contracts focused on the changes since its previous review: the Aave yield wrapper, batch transactions, proof-context binding of the relayer, cold-start relayed registration and stealth addresses. Findings are located in the core contracts, the deployment scripts, the relayer and the SDK, with a retest of the fixes.",
+      "isRelevant": true,
+      "auditor": "Auditware",
+      "report_date": "2026-08-25",
+      "repositories": [
+        {
+          "id": "0xbow-io/v2-monorepo",
+          "url": "https://github.com/0xbow-io/v2-monorepo"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "0xbow-io/v2-monorepo",
+          "paths": {
+            "packages/contracts/src": {
+              "path_kind": "directory_recursive",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "71263ca8acdca0ebd66b4a428733ed90857265cc",
+                    "timestamp": "2026-07-14T15:44:33Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/71263ca8acdca0ebd66b4a428733ed90857265cc/packages/contracts/src"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "38c16e7b2a6417f7aad584ac0413002e4e7e80a3",
+                    "timestamp": "2026-08-19T21:49:06Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/38c16e7b2a6417f7aad584ac0413002e4e7e80a3/packages/contracts/src"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/contracts/script/Deploy.s.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "71263ca8acdca0ebd66b4a428733ed90857265cc",
+                    "timestamp": "2026-07-14T15:44:33Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/71263ca8acdca0ebd66b4a428733ed90857265cc/packages/contracts/script/Deploy.s.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "38c16e7b2a6417f7aad584ac0413002e4e7e80a3",
+                    "timestamp": "2026-08-19T21:49:06Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/38c16e7b2a6417f7aad584ac0413002e4e7e80a3/packages/contracts/script/Deploy.s.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/contracts/script/DeployStaging.s.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "38c16e7b2a6417f7aad584ac0413002e4e7e80a3",
+                    "timestamp": "2026-08-19T21:49:06Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/38c16e7b2a6417f7aad584ac0413002e4e7e80a3/packages/contracts/script/DeployStaging.s.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/contracts/script/helpers/DeploymentVerifier.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "71263ca8acdca0ebd66b4a428733ed90857265cc",
+                    "timestamp": "2026-07-14T15:44:33Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/71263ca8acdca0ebd66b4a428733ed90857265cc/packages/contracts/script/helpers/DeploymentVerifier.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "38c16e7b2a6417f7aad584ac0413002e4e7e80a3",
+                    "timestamp": "2026-08-19T21:49:06Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/38c16e7b2a6417f7aad584ac0413002e4e7e80a3/packages/contracts/script/helpers/DeploymentVerifier.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/contracts/script/registries/ChainConfigRegistry.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "71263ca8acdca0ebd66b4a428733ed90857265cc",
+                    "timestamp": "2026-07-14T15:44:33Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/71263ca8acdca0ebd66b4a428733ed90857265cc/packages/contracts/script/registries/ChainConfigRegistry.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "38c16e7b2a6417f7aad584ac0413002e4e7e80a3",
+                    "timestamp": "2026-08-19T21:49:06Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/38c16e7b2a6417f7aad584ac0413002e4e7e80a3/packages/contracts/script/registries/ChainConfigRegistry.sol"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/relayer/relayer/src/chain.service/evm.chain.service.ts": {
+              "path_kind": "file",
+              "kind": "other",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "71263ca8acdca0ebd66b4a428733ed90857265cc",
+                    "timestamp": "2026-07-14T15:44:33Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/71263ca8acdca0ebd66b4a428733ed90857265cc/packages/relayer/relayer/src/chain.service/evm.chain.service.ts"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "38c16e7b2a6417f7aad584ac0413002e4e7e80a3",
+                    "timestamp": "2026-08-19T21:49:06Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/38c16e7b2a6417f7aad584ac0413002e4e7e80a3/packages/relayer/relayer/src/chain.service/evm.chain.service.ts"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/sdk/src/services/poolSessions/PoolSessionBatchWithdraw.ts": {
+              "path_kind": "file",
+              "kind": "other",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "71263ca8acdca0ebd66b4a428733ed90857265cc",
+                    "timestamp": "2026-07-14T15:44:33Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/71263ca8acdca0ebd66b4a428733ed90857265cc/packages/sdk/src/services/poolSessions/PoolSessionBatchWithdraw.ts"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                },
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "38c16e7b2a6417f7aad584ac0413002e4e7e80a3",
+                    "timestamp": "2026-08-19T21:49:06Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/38c16e7b2a6417f7aad584ac0413002e4e7e80a3/packages/sdk/src/services/poolSessions/PoolSessionBatchWithdraw.ts"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "consensys-diligence-privacy-pools-v2-2026-09",
+      "report_file": "consensys-diligence-privacy-pools-v2-security-review-2026-09.md",
+      "title": "Privacy Pools v2 — security review findings",
+      "description": "Consensys Diligence vulnerability-mining review of the Privacy Pools v2 monorepo at the tip of its v2.0 branch, covering the core and swap contracts, the circuits, the relayer services and the SDK. Reports 32 open findings, one of them High, in the RelaySwaps contract.",
+      "isRelevant": true,
+      "auditor": "Consensys Diligence",
+      "report_date": "2026-09-14",
+      "repositories": [
+        {
+          "id": "0xbow-io/v2-monorepo",
+          "url": "https://github.com/0xbow-io/v2-monorepo"
+        }
+      ],
+      "scopes": [
+        {
+          "repository": "0xbow-io/v2-monorepo",
+          "paths": {
+            "packages/contracts/src": {
+              "path_kind": "directory_recursive",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "638bf8f4a0f4ef26761e439a338c8db6667dc30b",
+                    "timestamp": "2026-09-08T15:34:57Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/638bf8f4a0f4ef26761e439a338c8db6667dc30b/packages/contracts/src"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/swaps/contracts/src": {
+              "path_kind": "directory_recursive",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "638bf8f4a0f4ef26761e439a338c8db6667dc30b",
+                    "timestamp": "2026-09-08T15:34:57Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/638bf8f4a0f4ef26761e439a338c8db6667dc30b/packages/swaps/contracts/src"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/swaps/contracts/src/RelaySwaps.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "638bf8f4a0f4ef26761e439a338c8db6667dc30b",
+                    "timestamp": "2026-09-08T15:34:57Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/638bf8f4a0f4ef26761e439a338c8db6667dc30b/packages/swaps/contracts/src/RelaySwaps.sol"
+                  },
+                  "status": "partially_audited_with_major_findings",
+                  "major_finding_ids": [
+                    "#001"
+                  ]
+                }
+              ]
+            },
+            "packages/circuits/circuits": {
+              "path_kind": "directory_recursive",
+              "kind": "zk",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "638bf8f4a0f4ef26761e439a338c8db6667dc30b",
+                    "timestamp": "2026-09-08T15:34:57Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/638bf8f4a0f4ef26761e439a338c8db6667dc30b/packages/circuits/circuits"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/relayer": {
+              "path_kind": "directory_recursive",
+              "kind": "other",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "638bf8f4a0f4ef26761e439a338c8db6667dc30b",
+                    "timestamp": "2026-09-08T15:34:57Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/638bf8f4a0f4ef26761e439a338c8db6667dc30b/packages/relayer"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            },
+            "packages/sdk": {
+              "path_kind": "directory_recursive",
+              "kind": "other",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "638bf8f4a0f4ef26761e439a338c8db6667dc30b",
+                    "timestamp": "2026-09-08T15:34:57Z",
+                    "url": "https://github.com/0xbow-io/v2-monorepo/blob/638bf8f4a0f4ef26761e439a338c8db6667dc30b/packages/sdk"
+                  },
+                  "status": "partially_audited_without_major_findings"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

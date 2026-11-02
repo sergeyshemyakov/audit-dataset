@@ -1,0 +1,976 @@
+{
+  "schema_version": "2.0.0",
+  "collection": "privacy-pools-v2",
+  "sources": [
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "repository_url": "https://github.com/0xbow-io/v2-monorepo",
+      "source_path": "packages/contracts/script/Deploy.s.sol",
+      "path_kind": "file",
+      "commit": "38c16e7b2a6417f7aad584ac0413002e4e7e80a3",
+      "files": [
+        {
+          "path": "packages/contracts/script/Deploy.s.sol",
+          "git_object": "5c8bc8ad2ebcf41964d7f736e63b641e3c095dc1",
+          "git_mode": "100644",
+          "sha256": "0be3349f80da6f2bf1730628158afe0b4765b7a63451307cf75b5886f3ef04f2"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "repository_url": "https://github.com/0xbow-io/v2-monorepo",
+      "source_path": "packages/contracts/script/DeployStaging.s.sol",
+      "path_kind": "file",
+      "commit": "38c16e7b2a6417f7aad584ac0413002e4e7e80a3",
+      "files": [
+        {
+          "path": "packages/contracts/script/DeployStaging.s.sol",
+          "git_object": "cb4b60ec896e84fd485b34ffcb9e1a592cd60646",
+          "git_mode": "100644",
+          "sha256": "8adab470bf7f720959e1fb052b0aa1508bea1d3aad5e48fd5655e82106ed28ce"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "repository_url": "https://github.com/0xbow-io/v2-monorepo",
+      "source_path": "packages/contracts/script/helpers/DeploymentVerifier.sol",
+      "path_kind": "file",
+      "commit": "38c16e7b2a6417f7aad584ac0413002e4e7e80a3",
+      "files": [
+        {
+          "path": "packages/contracts/script/helpers/DeploymentVerifier.sol",
+          "git_object": "4b9a51ba4c613ff1bd3cbdf6d5e27afcf532f5e3",
+          "git_mode": "100644",
+          "sha256": "24714d9c87d4596f393f6096956e41e3c40d99932b985eb50e8b42423b330df6"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "repository_url": "https://github.com/0xbow-io/v2-monorepo",
+      "source_path": "packages/contracts/script/registries/ChainConfigRegistry.sol",
+      "path_kind": "file",
+      "commit": "38c16e7b2a6417f7aad584ac0413002e4e7e80a3",
+      "files": [
+        {
+          "path": "packages/contracts/script/registries/ChainConfigRegistry.sol",
+          "git_object": "bce567bd5eea5703cd1f5c38b20e0b8437d17d73",
+          "git_mode": "100644",
+          "sha256": "065ffcbda3748525b64d20e79a3de675db2f1713e2e9c8e89ad1f283fa854845"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "repository_url": "https://github.com/0xbow-io/v2-monorepo",
+      "source_path": "packages/contracts/src",
+      "path_kind": "directory_recursive",
+      "commit": "38c16e7b2a6417f7aad584ac0413002e4e7e80a3",
+      "files": [
+        {
+          "path": "packages/contracts/src/abstracts/FeeCalculator.sol",
+          "git_object": "2b026f71fdb69840a4f282882a938566d1173a47",
+          "git_mode": "100644",
+          "sha256": "77f1c6e9d79c4262d1fc1ccaf18c7299f8e6ae3638bdb4cdb8aa0dcbefe6acb7"
+        },
+        {
+          "path": "packages/contracts/src/abstracts/Permissioned.sol",
+          "git_object": "b819e6930015886f4bd17818907f2c1def6317cf",
+          "git_mode": "100644",
+          "sha256": "20331ae1f2545b82584afa2385346bcdef7367c0fa4541582c4904bb304a5047"
+        },
+        {
+          "path": "packages/contracts/src/abstracts/RootBufferUpgradeable.sol",
+          "git_object": "eb7177bec1a628ac3cd9e00014e1d62e0b93d37c",
+          "git_mode": "100644",
+          "sha256": "e5f72ed70a14bf70d3bea10ddc488eae20a6f1da3714310d589f0500dc7ef850"
+        },
+        {
+          "path": "packages/contracts/src/abstracts/TransactVerifierRouter.sol",
+          "git_object": "b7b3ab60a76a605209392a182e63c3c81a7176c3",
+          "git_mode": "100644",
+          "sha256": "75c6bc5fc1e7f49173b08c97326650f279924b939c556b2fd8b4dce6b5211c36"
+        },
+        {
+          "path": "packages/contracts/src/contracts/ASPRegistry.sol",
+          "git_object": "a8e1254a3f08d31c2d0f22e3a9eb2169eb4ac684",
+          "git_mode": "100644",
+          "sha256": "132081d912ef0cd356630fcd8a5711b2a7bb37e5b3b3c42ba1672ab30e957645"
+        },
+        {
+          "path": "packages/contracts/src/contracts/AccessRouter.sol",
+          "git_object": "33177c4f742c3ab90d67a63604901ded4d54f0cd",
+          "git_mode": "100644",
+          "sha256": "702aa920cca7efe16601793438fbafbcdfe9a898020bfe4a9ee3273e74d03068"
+        },
+        {
+          "path": "packages/contracts/src/contracts/ERC5564Announcer.sol",
+          "git_object": "47603190010b5194be513761e70cb80aaeaf10f1",
+          "git_mode": "100644",
+          "sha256": "6cf53297c6f0152a7b444ae894670924ca2b623f753ba570691b0f8f02723c2c"
+        },
+        {
+          "path": "packages/contracts/src/contracts/Entrypoint.sol",
+          "git_object": "1d9708e1912db2c19e0400dd55438353ce562575",
+          "git_mode": "100644",
+          "sha256": "9a73240f1d064a7b88a31ee9404342b8706a832e6bed92204574bab069414ca3"
+        },
+        {
+          "path": "packages/contracts/src/contracts/Keystore.sol",
+          "git_object": "3dffa55510894070b6b1d00c59b90e0865a2cc83",
+          "git_mode": "100644",
+          "sha256": "2b2a6edf0b4e5d0f8068e38d7d284fd3703c63bb48855150176541a9b518c907"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPRouter.sol",
+          "git_object": "6d12bb6edb889baab345f4c045642d608a3b80e3",
+          "git_mode": "100644",
+          "sha256": "2aac6cfe8c777a45487bd82e3598b5183357c83ce3c6b16961b644f20c3598c9"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPRouterFactory.sol",
+          "git_object": "e5e10b1f333d655e787b7a5926589f8f5841f063",
+          "git_mode": "100644",
+          "sha256": "82d8416c8b5c86a61efe664087c83309cc0151d768b47997e3fbd77d1a4571af"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPYieldToken.sol",
+          "git_object": "68f39c5be21f6cbd0f3a1f2aa40d5e9eeff0728d",
+          "git_mode": "100644",
+          "sha256": "acade9397ff21298e25a70f14ba30c26d33b47bc4d457cfc66a1094c459332d9"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPYieldTokenFactory.sol",
+          "git_object": "17153d83ba855f062f597180f882be90969fe668",
+          "git_mode": "100644",
+          "sha256": "15e61ed06361a94c97991e15700cf26fb20371e76ad422c139183e7ffd04498c"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPYieldTokenZap.sol",
+          "git_object": "6229d1a24a925d4121d45b8eb4d04e4337248318",
+          "git_mode": "100644",
+          "sha256": "36b3674177a484156a23b840ca95337b7e6d83a5c1caf328d57a729fc831901d"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPYieldTokenZapFactory.sol",
+          "git_object": "66e6b93c143a9b624b4f8cc2d73dbb26d384e0d2",
+          "git_mode": "100644",
+          "sha256": "820977fbff51b5b5738a64a1541850ed9adb5893d549ac9219429c23a32226f0"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PoolVault.sol",
+          "git_object": "16f3be2f0f6feb985cd640127c9ddc6872021565",
+          "git_mode": "100644",
+          "sha256": "e7e761ac6a2e5836257dd4cf57b76b37092d6400e6cbaab99b05302a42b4d03e"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PrivacyPoolRelay.sol",
+          "git_object": "41d4761e16c03dea98d17e9f846040cde9070934",
+          "git_mode": "100644",
+          "sha256": "cb47a7b99d71bbcb8f26548f3651fb5568daca8e9ba5f8c32cbd6f1491572d64"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IASPRegistry.sol",
+          "git_object": "ad50fd8fa1bd2f7872679e005254d1c6bacb369f",
+          "git_mode": "100644",
+          "sha256": "d5a93d0774289f94f0b3f6110b6fa4bdda974df5a0ff83b5f9d5c05317a4f834"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IAToken.sol",
+          "git_object": "1d4b090c4bbe23915b15cac9177b8817b68c7f25",
+          "git_mode": "100644",
+          "sha256": "e722a963de8f798aba024cf973cfc2eaf280824a2ec4c70d6962b6bfb90072b3"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IAavePool.sol",
+          "git_object": "a01f0508f2f697d00902bed840ebe257c92611f0",
+          "git_mode": "100644",
+          "sha256": "6fe95eafd77cc05fdbfad794239fb61b8b1060995d977405b13fd73cd207238e"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IAaveRewardsController.sol",
+          "git_object": "a1ef8b4ba7fd35e7a768e72e113482c7504a6f96",
+          "git_mode": "100644",
+          "sha256": "c41f29ac5adb0c8ad630f227044f6d3f6134672e5d58361aee775a5a05a9c673"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IAccessRouter.sol",
+          "git_object": "91c81ca3f2c34fb58b152c04d522bd289d995b4f",
+          "git_mode": "100644",
+          "sha256": "77eeef0ca480d831532f98aaf99678290aefb3575224575ab7b8fb95808713aa"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IERC5564Announcer.sol",
+          "git_object": "3d09ce37870f7661f3b92f7f94d5dcd5e338461e",
+          "git_mode": "100644",
+          "sha256": "836fccd51496386ab13ea43fc65a28e6d15a8ac19962680b938cb449dbd597fc"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IEntrypoint.sol",
+          "git_object": "a48ab5efbce90570207199e71bbc963645727d52",
+          "git_mode": "100644",
+          "sha256": "85a1a7e03eb56f8138dd21f3bfcfb8cd333e75e111ff0977c17cc06bc7849cfb"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IGroth16Verifier.sol",
+          "git_object": "54f6c259ebed9d43f3127e20906ff93256a435f2",
+          "git_mode": "100644",
+          "sha256": "df139c5acf2eb728c3daae59d94fb3e1449857331eba6e990dccf32df7300294"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IKeystore.sol",
+          "git_object": "2871994da1d4510bc695d1da9a712d77da4be1d8",
+          "git_mode": "100644",
+          "sha256": "8766eb78e468e6a3b2081ebd91d71853705e7f858d3b259727652479c26c10c5"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPRouter.sol",
+          "git_object": "d74c1c9c06e084e9402982deac2bb7d3ad8b9880",
+          "git_mode": "100644",
+          "sha256": "2311d99d6387a0395120846f9a872a399941ae96c5b749b6fbef3ab2225d21c4"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPRouterFactory.sol",
+          "git_object": "7a2753f49317f58ef6ddcc0b29c09d8734748522",
+          "git_mode": "100644",
+          "sha256": "f14ba096251a3a1122d99d1c8157259efcdf676084819b27f0bde33d18785e59"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPYieldToken.sol",
+          "git_object": "00effa568ffb7fbb1fd751d6be851bb34f64f32c",
+          "git_mode": "100644",
+          "sha256": "2f522349de025aa22e277eff197b3d0e0cfad94cbb01ae226a9232bd0874d5b4"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPYieldTokenFactory.sol",
+          "git_object": "369339378add37ef075f7adb11684add1597b267",
+          "git_mode": "100644",
+          "sha256": "0ab855db726511c6dcbfa47ef919a33f921bea33cd89e94f2f459051986aa9d9"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPYieldTokenZap.sol",
+          "git_object": "a9120d4cd9e2b5e234fe23b336041750406492bd",
+          "git_mode": "100644",
+          "sha256": "5efb19ab56c59ed85d5c355b7a1e4d190e8990d9cf7182d373869e6e716dcda4"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPYieldTokenZapFactory.sol",
+          "git_object": "41b5b19165b1a7275316eeea6c3f864018f75192",
+          "git_mode": "100644",
+          "sha256": "138acbd6fd57f2d90e53997d5c4c2676826280e62d3aadd09394c49ec806a887"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPermissioned.sol",
+          "git_object": "914eb830b610a085104c5d0d24269388d66b8f92",
+          "git_mode": "100644",
+          "sha256": "2b34999a9d5a1dcf32fddf6d126a766cf880f6633bb3bd7232909a6ffcc9a7b0"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPoolVault.sol",
+          "git_object": "45e1e1ea3225c6803dc3a708d97c382241f431ae",
+          "git_mode": "100644",
+          "sha256": "092de61d746f42186047ee26857c889f11f5ac8395b888663ea9185466f8824f"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPrivacyPoolRelay.sol",
+          "git_object": "880a9c682abe51bea8ad3ec954e6375588431c96",
+          "git_mode": "100644",
+          "sha256": "7e488de9f57e8e07ec81556e3b7b0b801f6b1ca7ca1ca18eb0b22dbeac992a0b"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IRootBuffer.sol",
+          "git_object": "771c0662e0a595240669b05d1352381f772b73a1",
+          "git_mode": "100644",
+          "sha256": "7097a43461929e452e4879ce97790ca953667e28b1a6bfc993618310f214ce83"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/ITransactVerifierRouter.sol",
+          "git_object": "55894b619e16139a0324cd45f074ba16ee0f2ccb",
+          "git_mode": "100644",
+          "sha256": "0fdd8e0fb1f8d4a71aba7208b98e2ddc614b95e5b31f0be3bab12b55865efb3c"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/ITreeUpdates.sol",
+          "git_object": "a6c3349f9f3f7eafc55e183fbe951286b031671e",
+          "git_mode": "100644",
+          "sha256": "e82e686d6038b1dd45449a3885c495d7bdf51d700d159431ce670f522858caa9"
+        },
+        {
+          "path": "packages/contracts/src/libraries/ProofLibV2.sol",
+          "git_object": "7b2c86707ae59d8e9e31e5fbf20b79639124fd40",
+          "git_mode": "100644",
+          "sha256": "796a3910fe602ffc2987df143548b08a16c50e53f3a5649ced98df9fb5ba6c0a"
+        },
+        {
+          "path": "packages/contracts/src/utils/Constants.sol",
+          "git_object": "b7f0fcd7c234a1bbc16d496c4a11d489893081b9",
+          "git_mode": "100644",
+          "sha256": "208b22f84fe615b80868089bb25af44c3b1b93bfd55fadd09a5d35df2536abc8"
+        },
+        {
+          "path": "packages/contracts/src/utils/RolesConstants.sol",
+          "git_object": "82a0bf9e502ac41174ec7ba96d78c110c7c2437f",
+          "git_mode": "100644",
+          "sha256": "59ce20a6c0bf37e71d34a6e984204c1daea6478524f7a81cbc4b8d5505c84b46"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "repository_url": "https://github.com/0xbow-io/v2-monorepo",
+      "source_path": "packages/contracts/src",
+      "path_kind": "directory_recursive",
+      "commit": "638bf8f4a0f4ef26761e439a338c8db6667dc30b",
+      "files": [
+        {
+          "path": "packages/contracts/src/abstracts/FeeCalculator.sol",
+          "git_object": "2b026f71fdb69840a4f282882a938566d1173a47",
+          "git_mode": "100644",
+          "sha256": "77f1c6e9d79c4262d1fc1ccaf18c7299f8e6ae3638bdb4cdb8aa0dcbefe6acb7"
+        },
+        {
+          "path": "packages/contracts/src/abstracts/Permissioned.sol",
+          "git_object": "b819e6930015886f4bd17818907f2c1def6317cf",
+          "git_mode": "100644",
+          "sha256": "20331ae1f2545b82584afa2385346bcdef7367c0fa4541582c4904bb304a5047"
+        },
+        {
+          "path": "packages/contracts/src/abstracts/RootBufferUpgradeable.sol",
+          "git_object": "eb7177bec1a628ac3cd9e00014e1d62e0b93d37c",
+          "git_mode": "100644",
+          "sha256": "e5f72ed70a14bf70d3bea10ddc488eae20a6f1da3714310d589f0500dc7ef850"
+        },
+        {
+          "path": "packages/contracts/src/abstracts/TransactVerifierRouter.sol",
+          "git_object": "b7b3ab60a76a605209392a182e63c3c81a7176c3",
+          "git_mode": "100644",
+          "sha256": "75c6bc5fc1e7f49173b08c97326650f279924b939c556b2fd8b4dce6b5211c36"
+        },
+        {
+          "path": "packages/contracts/src/contracts/ASPRegistry.sol",
+          "git_object": "a8e1254a3f08d31c2d0f22e3a9eb2169eb4ac684",
+          "git_mode": "100644",
+          "sha256": "132081d912ef0cd356630fcd8a5711b2a7bb37e5b3b3c42ba1672ab30e957645"
+        },
+        {
+          "path": "packages/contracts/src/contracts/AccessRouter.sol",
+          "git_object": "33177c4f742c3ab90d67a63604901ded4d54f0cd",
+          "git_mode": "100644",
+          "sha256": "702aa920cca7efe16601793438fbafbcdfe9a898020bfe4a9ee3273e74d03068"
+        },
+        {
+          "path": "packages/contracts/src/contracts/ERC5564Announcer.sol",
+          "git_object": "47603190010b5194be513761e70cb80aaeaf10f1",
+          "git_mode": "100644",
+          "sha256": "6cf53297c6f0152a7b444ae894670924ca2b623f753ba570691b0f8f02723c2c"
+        },
+        {
+          "path": "packages/contracts/src/contracts/Entrypoint.sol",
+          "git_object": "1d9708e1912db2c19e0400dd55438353ce562575",
+          "git_mode": "100644",
+          "sha256": "9a73240f1d064a7b88a31ee9404342b8706a832e6bed92204574bab069414ca3"
+        },
+        {
+          "path": "packages/contracts/src/contracts/Keystore.sol",
+          "git_object": "3dffa55510894070b6b1d00c59b90e0865a2cc83",
+          "git_mode": "100644",
+          "sha256": "2b2a6edf0b4e5d0f8068e38d7d284fd3703c63bb48855150176541a9b518c907"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPRouter.sol",
+          "git_object": "b0d96d447590bda22b06e0d5deae559bc3957206",
+          "git_mode": "100644",
+          "sha256": "13c00f37fcbf8a1f7378d30418797d9841381053775da1e60148a4421286e50a"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPRouterFactory.sol",
+          "git_object": "2df3a44184ed095dccc2bb361aaa7020c54960fd",
+          "git_mode": "100644",
+          "sha256": "cc1fd7c2d1dbb0fe3adc71de4b3f5921bbfe4d9c58f317c13235ee11b6a614e7"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPYieldToken.sol",
+          "git_object": "68f39c5be21f6cbd0f3a1f2aa40d5e9eeff0728d",
+          "git_mode": "100644",
+          "sha256": "acade9397ff21298e25a70f14ba30c26d33b47bc4d457cfc66a1094c459332d9"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPYieldTokenFactory.sol",
+          "git_object": "17153d83ba855f062f597180f882be90969fe668",
+          "git_mode": "100644",
+          "sha256": "15e61ed06361a94c97991e15700cf26fb20371e76ad422c139183e7ffd04498c"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPYieldTokenZap.sol",
+          "git_object": "6229d1a24a925d4121d45b8eb4d04e4337248318",
+          "git_mode": "100644",
+          "sha256": "36b3674177a484156a23b840ca95337b7e6d83a5c1caf328d57a729fc831901d"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPYieldTokenZapFactory.sol",
+          "git_object": "66e6b93c143a9b624b4f8cc2d73dbb26d384e0d2",
+          "git_mode": "100644",
+          "sha256": "820977fbff51b5b5738a64a1541850ed9adb5893d549ac9219429c23a32226f0"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PoolVault.sol",
+          "git_object": "16f3be2f0f6feb985cd640127c9ddc6872021565",
+          "git_mode": "100644",
+          "sha256": "e7e761ac6a2e5836257dd4cf57b76b37092d6400e6cbaab99b05302a42b4d03e"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PrivacyPoolRelay.sol",
+          "git_object": "41d4761e16c03dea98d17e9f846040cde9070934",
+          "git_mode": "100644",
+          "sha256": "cb47a7b99d71bbcb8f26548f3651fb5568daca8e9ba5f8c32cbd6f1491572d64"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IASPRegistry.sol",
+          "git_object": "ad50fd8fa1bd2f7872679e005254d1c6bacb369f",
+          "git_mode": "100644",
+          "sha256": "d5a93d0774289f94f0b3f6110b6fa4bdda974df5a0ff83b5f9d5c05317a4f834"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IAToken.sol",
+          "git_object": "1d4b090c4bbe23915b15cac9177b8817b68c7f25",
+          "git_mode": "100644",
+          "sha256": "e722a963de8f798aba024cf973cfc2eaf280824a2ec4c70d6962b6bfb90072b3"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IAavePool.sol",
+          "git_object": "a01f0508f2f697d00902bed840ebe257c92611f0",
+          "git_mode": "100644",
+          "sha256": "6fe95eafd77cc05fdbfad794239fb61b8b1060995d977405b13fd73cd207238e"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IAaveRewardsController.sol",
+          "git_object": "a1ef8b4ba7fd35e7a768e72e113482c7504a6f96",
+          "git_mode": "100644",
+          "sha256": "c41f29ac5adb0c8ad630f227044f6d3f6134672e5d58361aee775a5a05a9c673"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IAccessRouter.sol",
+          "git_object": "91c81ca3f2c34fb58b152c04d522bd289d995b4f",
+          "git_mode": "100644",
+          "sha256": "77eeef0ca480d831532f98aaf99678290aefb3575224575ab7b8fb95808713aa"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IERC5564Announcer.sol",
+          "git_object": "3d09ce37870f7661f3b92f7f94d5dcd5e338461e",
+          "git_mode": "100644",
+          "sha256": "836fccd51496386ab13ea43fc65a28e6d15a8ac19962680b938cb449dbd597fc"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IEntrypoint.sol",
+          "git_object": "a48ab5efbce90570207199e71bbc963645727d52",
+          "git_mode": "100644",
+          "sha256": "85a1a7e03eb56f8138dd21f3bfcfb8cd333e75e111ff0977c17cc06bc7849cfb"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IGroth16Verifier.sol",
+          "git_object": "54f6c259ebed9d43f3127e20906ff93256a435f2",
+          "git_mode": "100644",
+          "sha256": "df139c5acf2eb728c3daae59d94fb3e1449857331eba6e990dccf32df7300294"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IKeystore.sol",
+          "git_object": "2871994da1d4510bc695d1da9a712d77da4be1d8",
+          "git_mode": "100644",
+          "sha256": "8766eb78e468e6a3b2081ebd91d71853705e7f858d3b259727652479c26c10c5"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPRouter.sol",
+          "git_object": "b470337e898e3c0a882bdf82d8c7f93ec9d34f7c",
+          "git_mode": "100644",
+          "sha256": "4b0f82c8e4f2bee8b5c0805c4c1cd49be102af6fbc6bdd82ac09d38b1e571278"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPRouterFactory.sol",
+          "git_object": "fbcbe4d8c72a4f93c4cc90062655513ca9e49657",
+          "git_mode": "100644",
+          "sha256": "498c51235a12678d465e1389dd6434820ff1f3210a5851b2c0bcf4332b4df153"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPYieldToken.sol",
+          "git_object": "00effa568ffb7fbb1fd751d6be851bb34f64f32c",
+          "git_mode": "100644",
+          "sha256": "2f522349de025aa22e277eff197b3d0e0cfad94cbb01ae226a9232bd0874d5b4"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPYieldTokenFactory.sol",
+          "git_object": "369339378add37ef075f7adb11684add1597b267",
+          "git_mode": "100644",
+          "sha256": "0ab855db726511c6dcbfa47ef919a33f921bea33cd89e94f2f459051986aa9d9"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPYieldTokenZap.sol",
+          "git_object": "a9120d4cd9e2b5e234fe23b336041750406492bd",
+          "git_mode": "100644",
+          "sha256": "5efb19ab56c59ed85d5c355b7a1e4d190e8990d9cf7182d373869e6e716dcda4"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPYieldTokenZapFactory.sol",
+          "git_object": "41b5b19165b1a7275316eeea6c3f864018f75192",
+          "git_mode": "100644",
+          "sha256": "138acbd6fd57f2d90e53997d5c4c2676826280e62d3aadd09394c49ec806a887"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPermissioned.sol",
+          "git_object": "914eb830b610a085104c5d0d24269388d66b8f92",
+          "git_mode": "100644",
+          "sha256": "2b34999a9d5a1dcf32fddf6d126a766cf880f6633bb3bd7232909a6ffcc9a7b0"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPoolVault.sol",
+          "git_object": "45e1e1ea3225c6803dc3a708d97c382241f431ae",
+          "git_mode": "100644",
+          "sha256": "092de61d746f42186047ee26857c889f11f5ac8395b888663ea9185466f8824f"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPrivacyPoolRelay.sol",
+          "git_object": "880a9c682abe51bea8ad3ec954e6375588431c96",
+          "git_mode": "100644",
+          "sha256": "7e488de9f57e8e07ec81556e3b7b0b801f6b1ca7ca1ca18eb0b22dbeac992a0b"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IRootBuffer.sol",
+          "git_object": "771c0662e0a595240669b05d1352381f772b73a1",
+          "git_mode": "100644",
+          "sha256": "7097a43461929e452e4879ce97790ca953667e28b1a6bfc993618310f214ce83"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/ITransactVerifierRouter.sol",
+          "git_object": "55894b619e16139a0324cd45f074ba16ee0f2ccb",
+          "git_mode": "100644",
+          "sha256": "0fdd8e0fb1f8d4a71aba7208b98e2ddc614b95e5b31f0be3bab12b55865efb3c"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/ITreeUpdates.sol",
+          "git_object": "a6c3349f9f3f7eafc55e183fbe951286b031671e",
+          "git_mode": "100644",
+          "sha256": "e82e686d6038b1dd45449a3885c495d7bdf51d700d159431ce670f522858caa9"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IWETH9.sol",
+          "git_object": "264758f058ce44e6f0dda089635b1f72e735161d",
+          "git_mode": "100644",
+          "sha256": "45e6bd412c560a679fd796e083909ef63d35fe855838fce9b30eb738b1be4fc7"
+        },
+        {
+          "path": "packages/contracts/src/libraries/ProofLibV2.sol",
+          "git_object": "7b2c86707ae59d8e9e31e5fbf20b79639124fd40",
+          "git_mode": "100644",
+          "sha256": "796a3910fe602ffc2987df143548b08a16c50e53f3a5649ced98df9fb5ba6c0a"
+        },
+        {
+          "path": "packages/contracts/src/utils/Constants.sol",
+          "git_object": "b7f0fcd7c234a1bbc16d496c4a11d489893081b9",
+          "git_mode": "100644",
+          "sha256": "208b22f84fe615b80868089bb25af44c3b1b93bfd55fadd09a5d35df2536abc8"
+        },
+        {
+          "path": "packages/contracts/src/utils/RolesConstants.sol",
+          "git_object": "82a0bf9e502ac41174ec7ba96d78c110c7c2437f",
+          "git_mode": "100644",
+          "sha256": "59ce20a6c0bf37e71d34a6e984204c1daea6478524f7a81cbc4b8d5505c84b46"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "repository_url": "https://github.com/0xbow-io/v2-monorepo",
+      "source_path": "packages/swaps/contracts/src",
+      "path_kind": "directory_recursive",
+      "commit": "638bf8f4a0f4ef26761e439a338c8db6667dc30b",
+      "files": [
+        {
+          "path": "packages/swaps/contracts/src/IRelaySwaps.sol",
+          "git_object": "2060ab879cbfb34938ddcb3a77799f200797a197",
+          "git_mode": "100644",
+          "sha256": "db78b9c436eca944ca76a568e35b4e1ec23fc2bdea1b5fd37d73759923733c12"
+        },
+        {
+          "path": "packages/swaps/contracts/src/MockPool.sol",
+          "git_object": "a2e2537c233aa616082bf2a1739768c2a38f1656",
+          "git_mode": "100644",
+          "sha256": "d8d8b72dbab46cd50063c9cb97371d85e14bf18784526097cf435108423b8c33"
+        },
+        {
+          "path": "packages/swaps/contracts/src/RelaySwaps.sol",
+          "git_object": "f42b09bd88a3e8d4da538d63ff282e74399c5f84",
+          "git_mode": "100644",
+          "sha256": "c40a43d5bc7d15d3421d39d27d39d5db0e44f61f4458a0a3d12583c131a996b6"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "repository_url": "https://github.com/0xbow-io/v2-monorepo",
+      "source_path": "packages/swaps/contracts/src/RelaySwaps.sol",
+      "path_kind": "file",
+      "commit": "638bf8f4a0f4ef26761e439a338c8db6667dc30b",
+      "files": [
+        {
+          "path": "packages/swaps/contracts/src/RelaySwaps.sol",
+          "git_object": "f42b09bd88a3e8d4da538d63ff282e74399c5f84",
+          "git_mode": "100644",
+          "sha256": "c40a43d5bc7d15d3421d39d27d39d5db0e44f61f4458a0a3d12583c131a996b6"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "repository_url": "https://github.com/0xbow-io/v2-monorepo",
+      "source_path": "packages/contracts/script/Deploy.s.sol",
+      "path_kind": "file",
+      "commit": "71263ca8acdca0ebd66b4a428733ed90857265cc",
+      "files": [
+        {
+          "path": "packages/contracts/script/Deploy.s.sol",
+          "git_object": "edc202e207648fc582bf8fca255f29a6a1629be4",
+          "git_mode": "100644",
+          "sha256": "4c19c5e43e87089ac7bf14a7633ee155d36a3a04c77cfa5b73bf48fc65f11a9d"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "repository_url": "https://github.com/0xbow-io/v2-monorepo",
+      "source_path": "packages/contracts/script/helpers/DeploymentVerifier.sol",
+      "path_kind": "file",
+      "commit": "71263ca8acdca0ebd66b4a428733ed90857265cc",
+      "files": [
+        {
+          "path": "packages/contracts/script/helpers/DeploymentVerifier.sol",
+          "git_object": "4b9a51ba4c613ff1bd3cbdf6d5e27afcf532f5e3",
+          "git_mode": "100644",
+          "sha256": "24714d9c87d4596f393f6096956e41e3c40d99932b985eb50e8b42423b330df6"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "repository_url": "https://github.com/0xbow-io/v2-monorepo",
+      "source_path": "packages/contracts/script/registries/ChainConfigRegistry.sol",
+      "path_kind": "file",
+      "commit": "71263ca8acdca0ebd66b4a428733ed90857265cc",
+      "files": [
+        {
+          "path": "packages/contracts/script/registries/ChainConfigRegistry.sol",
+          "git_object": "da1558d799817a3e17ff109e6750068e45cbe87f",
+          "git_mode": "100644",
+          "sha256": "e9f5988fcbcfddf6e7858b6a022e99f50b4160ab907f53fbd9c5680f5dbf898d"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "repository_url": "https://github.com/0xbow-io/v2-monorepo",
+      "source_path": "packages/contracts/src",
+      "path_kind": "directory_recursive",
+      "commit": "71263ca8acdca0ebd66b4a428733ed90857265cc",
+      "files": [
+        {
+          "path": "packages/contracts/src/abstracts/FeeCalculator.sol",
+          "git_object": "2b026f71fdb69840a4f282882a938566d1173a47",
+          "git_mode": "100644",
+          "sha256": "77f1c6e9d79c4262d1fc1ccaf18c7299f8e6ae3638bdb4cdb8aa0dcbefe6acb7"
+        },
+        {
+          "path": "packages/contracts/src/abstracts/Permissioned.sol",
+          "git_object": "b819e6930015886f4bd17818907f2c1def6317cf",
+          "git_mode": "100644",
+          "sha256": "20331ae1f2545b82584afa2385346bcdef7367c0fa4541582c4904bb304a5047"
+        },
+        {
+          "path": "packages/contracts/src/abstracts/RootBufferUpgradeable.sol",
+          "git_object": "eb7177bec1a628ac3cd9e00014e1d62e0b93d37c",
+          "git_mode": "100644",
+          "sha256": "e5f72ed70a14bf70d3bea10ddc488eae20a6f1da3714310d589f0500dc7ef850"
+        },
+        {
+          "path": "packages/contracts/src/abstracts/TransactVerifierRouter.sol",
+          "git_object": "b7b3ab60a76a605209392a182e63c3c81a7176c3",
+          "git_mode": "100644",
+          "sha256": "75c6bc5fc1e7f49173b08c97326650f279924b939c556b2fd8b4dce6b5211c36"
+        },
+        {
+          "path": "packages/contracts/src/contracts/ASPRegistry.sol",
+          "git_object": "a8e1254a3f08d31c2d0f22e3a9eb2169eb4ac684",
+          "git_mode": "100644",
+          "sha256": "132081d912ef0cd356630fcd8a5711b2a7bb37e5b3b3c42ba1672ab30e957645"
+        },
+        {
+          "path": "packages/contracts/src/contracts/AccessRouter.sol",
+          "git_object": "33177c4f742c3ab90d67a63604901ded4d54f0cd",
+          "git_mode": "100644",
+          "sha256": "702aa920cca7efe16601793438fbafbcdfe9a898020bfe4a9ee3273e74d03068"
+        },
+        {
+          "path": "packages/contracts/src/contracts/ERC5564Announcer.sol",
+          "git_object": "47603190010b5194be513761e70cb80aaeaf10f1",
+          "git_mode": "100644",
+          "sha256": "6cf53297c6f0152a7b444ae894670924ca2b623f753ba570691b0f8f02723c2c"
+        },
+        {
+          "path": "packages/contracts/src/contracts/Entrypoint.sol",
+          "git_object": "1d9708e1912db2c19e0400dd55438353ce562575",
+          "git_mode": "100644",
+          "sha256": "9a73240f1d064a7b88a31ee9404342b8706a832e6bed92204574bab069414ca3"
+        },
+        {
+          "path": "packages/contracts/src/contracts/Keystore.sol",
+          "git_object": "3dffa55510894070b6b1d00c59b90e0865a2cc83",
+          "git_mode": "100644",
+          "sha256": "2b2a6edf0b4e5d0f8068e38d7d284fd3703c63bb48855150176541a9b518c907"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPRouter.sol",
+          "git_object": "6d12bb6edb889baab345f4c045642d608a3b80e3",
+          "git_mode": "100644",
+          "sha256": "2aac6cfe8c777a45487bd82e3598b5183357c83ce3c6b16961b644f20c3598c9"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPRouterFactory.sol",
+          "git_object": "7687465ca1b79d046283e75f136d617b21c5d4ce",
+          "git_mode": "100644",
+          "sha256": "565462aa3ec3b457d6a5462baf11302f1b40d69128369a213095378d3ce42545"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPYieldToken.sol",
+          "git_object": "68f39c5be21f6cbd0f3a1f2aa40d5e9eeff0728d",
+          "git_mode": "100644",
+          "sha256": "acade9397ff21298e25a70f14ba30c26d33b47bc4d457cfc66a1094c459332d9"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPYieldTokenFactory.sol",
+          "git_object": "99a1489de993088a679aa37e6b407dfcc5f5c2b6",
+          "git_mode": "100644",
+          "sha256": "9376ce86c6b58f9c01727aa0f4bd9c0e383b0addd128fd60dfff71d0708b7f58"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPYieldTokenZap.sol",
+          "git_object": "6229d1a24a925d4121d45b8eb4d04e4337248318",
+          "git_mode": "100644",
+          "sha256": "36b3674177a484156a23b840ca95337b7e6d83a5c1caf328d57a729fc831901d"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PPYieldTokenZapFactory.sol",
+          "git_object": "297da2fc07074283e586a6362b91404209fc983f",
+          "git_mode": "100644",
+          "sha256": "995533eee3b3c9da6435bbd89fdd4e69de8860c67e445ddddb5a13469356f6ba"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PoolVault.sol",
+          "git_object": "16f3be2f0f6feb985cd640127c9ddc6872021565",
+          "git_mode": "100644",
+          "sha256": "e7e761ac6a2e5836257dd4cf57b76b37092d6400e6cbaab99b05302a42b4d03e"
+        },
+        {
+          "path": "packages/contracts/src/contracts/PrivacyPoolRelay.sol",
+          "git_object": "41d4761e16c03dea98d17e9f846040cde9070934",
+          "git_mode": "100644",
+          "sha256": "cb47a7b99d71bbcb8f26548f3651fb5568daca8e9ba5f8c32cbd6f1491572d64"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IASPRegistry.sol",
+          "git_object": "ad50fd8fa1bd2f7872679e005254d1c6bacb369f",
+          "git_mode": "100644",
+          "sha256": "d5a93d0774289f94f0b3f6110b6fa4bdda974df5a0ff83b5f9d5c05317a4f834"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IAToken.sol",
+          "git_object": "1d4b090c4bbe23915b15cac9177b8817b68c7f25",
+          "git_mode": "100644",
+          "sha256": "e722a963de8f798aba024cf973cfc2eaf280824a2ec4c70d6962b6bfb90072b3"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IAavePool.sol",
+          "git_object": "a01f0508f2f697d00902bed840ebe257c92611f0",
+          "git_mode": "100644",
+          "sha256": "6fe95eafd77cc05fdbfad794239fb61b8b1060995d977405b13fd73cd207238e"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IAaveRewardsController.sol",
+          "git_object": "a1ef8b4ba7fd35e7a768e72e113482c7504a6f96",
+          "git_mode": "100644",
+          "sha256": "c41f29ac5adb0c8ad630f227044f6d3f6134672e5d58361aee775a5a05a9c673"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IAccessRouter.sol",
+          "git_object": "91c81ca3f2c34fb58b152c04d522bd289d995b4f",
+          "git_mode": "100644",
+          "sha256": "77eeef0ca480d831532f98aaf99678290aefb3575224575ab7b8fb95808713aa"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IERC5564Announcer.sol",
+          "git_object": "3d09ce37870f7661f3b92f7f94d5dcd5e338461e",
+          "git_mode": "100644",
+          "sha256": "836fccd51496386ab13ea43fc65a28e6d15a8ac19962680b938cb449dbd597fc"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IEntrypoint.sol",
+          "git_object": "a48ab5efbce90570207199e71bbc963645727d52",
+          "git_mode": "100644",
+          "sha256": "85a1a7e03eb56f8138dd21f3bfcfb8cd333e75e111ff0977c17cc06bc7849cfb"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IGroth16Verifier.sol",
+          "git_object": "54f6c259ebed9d43f3127e20906ff93256a435f2",
+          "git_mode": "100644",
+          "sha256": "df139c5acf2eb728c3daae59d94fb3e1449857331eba6e990dccf32df7300294"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IKeystore.sol",
+          "git_object": "2871994da1d4510bc695d1da9a712d77da4be1d8",
+          "git_mode": "100644",
+          "sha256": "8766eb78e468e6a3b2081ebd91d71853705e7f858d3b259727652479c26c10c5"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPRouter.sol",
+          "git_object": "d74c1c9c06e084e9402982deac2bb7d3ad8b9880",
+          "git_mode": "100644",
+          "sha256": "2311d99d6387a0395120846f9a872a399941ae96c5b749b6fbef3ab2225d21c4"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPRouterFactory.sol",
+          "git_object": "7cd58299508add3696847237342c5dc621bfe71e",
+          "git_mode": "100644",
+          "sha256": "ae011e642152ce99d6358d048f8ccfa89047b09625bbbb2e91518aaaa5e491fe"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPYieldToken.sol",
+          "git_object": "00effa568ffb7fbb1fd751d6be851bb34f64f32c",
+          "git_mode": "100644",
+          "sha256": "2f522349de025aa22e277eff197b3d0e0cfad94cbb01ae226a9232bd0874d5b4"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPYieldTokenFactory.sol",
+          "git_object": "480b10f6aeb38822a84fdf95ae2ed971566315d6",
+          "git_mode": "100644",
+          "sha256": "2a24d4f66a2b8df9c10102df21c33613d02b088212dab8c5adf9fb083ee54717"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPYieldTokenZap.sol",
+          "git_object": "a9120d4cd9e2b5e234fe23b336041750406492bd",
+          "git_mode": "100644",
+          "sha256": "5efb19ab56c59ed85d5c355b7a1e4d190e8990d9cf7182d373869e6e716dcda4"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPPYieldTokenZapFactory.sol",
+          "git_object": "897a6a65c231903c4e2f8e19534aafdf80b1b78d",
+          "git_mode": "100644",
+          "sha256": "bf5c6063e2cae96e3fddd96078a8695b5828afbf2b7758174cd39f6d6d525077"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPermissioned.sol",
+          "git_object": "914eb830b610a085104c5d0d24269388d66b8f92",
+          "git_mode": "100644",
+          "sha256": "2b34999a9d5a1dcf32fddf6d126a766cf880f6633bb3bd7232909a6ffcc9a7b0"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPoolVault.sol",
+          "git_object": "45e1e1ea3225c6803dc3a708d97c382241f431ae",
+          "git_mode": "100644",
+          "sha256": "092de61d746f42186047ee26857c889f11f5ac8395b888663ea9185466f8824f"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IPrivacyPoolRelay.sol",
+          "git_object": "880a9c682abe51bea8ad3ec954e6375588431c96",
+          "git_mode": "100644",
+          "sha256": "7e488de9f57e8e07ec81556e3b7b0b801f6b1ca7ca1ca18eb0b22dbeac992a0b"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/IRootBuffer.sol",
+          "git_object": "771c0662e0a595240669b05d1352381f772b73a1",
+          "git_mode": "100644",
+          "sha256": "7097a43461929e452e4879ce97790ca953667e28b1a6bfc993618310f214ce83"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/ITransactVerifierRouter.sol",
+          "git_object": "55894b619e16139a0324cd45f074ba16ee0f2ccb",
+          "git_mode": "100644",
+          "sha256": "0fdd8e0fb1f8d4a71aba7208b98e2ddc614b95e5b31f0be3bab12b55865efb3c"
+        },
+        {
+          "path": "packages/contracts/src/interfaces/ITreeUpdates.sol",
+          "git_object": "a6c3349f9f3f7eafc55e183fbe951286b031671e",
+          "git_mode": "100644",
+          "sha256": "e82e686d6038b1dd45449a3885c495d7bdf51d700d159431ce670f522858caa9"
+        },
+        {
+          "path": "packages/contracts/src/libraries/ProofLibV2.sol",
+          "git_object": "7b2c86707ae59d8e9e31e5fbf20b79639124fd40",
+          "git_mode": "100644",
+          "sha256": "796a3910fe602ffc2987df143548b08a16c50e53f3a5649ced98df9fb5ba6c0a"
+        },
+        {
+          "path": "packages/contracts/src/utils/Constants.sol",
+          "git_object": "b7f0fcd7c234a1bbc16d496c4a11d489893081b9",
+          "git_mode": "100644",
+          "sha256": "208b22f84fe615b80868089bb25af44c3b1b93bfd55fadd09a5d35df2536abc8"
+        },
+        {
+          "path": "packages/contracts/src/utils/RolesConstants.sol",
+          "git_object": "82a0bf9e502ac41174ec7ba96d78c110c7c2437f",
+          "git_mode": "100644",
+          "sha256": "59ce20a6c0bf37e71d34a6e984204c1daea6478524f7a81cbc4b8d5505c84b46"
+        }
+      ]
+    }
+  ],
+  "skipped": [
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "source_path": "packages/circuits/circuits",
+      "revision_kind": "commit",
+      "revision": "638bf8f4a0f4ef26761e439a338c8db6667dc30b",
+      "reason": "path kind zk is not fetched"
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "source_path": "packages/relayer",
+      "revision_kind": "commit",
+      "revision": "638bf8f4a0f4ef26761e439a338c8db6667dc30b",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "source_path": "packages/relayer/relayer/src/chain.service/evm.chain.service.ts",
+      "revision_kind": "commit",
+      "revision": "38c16e7b2a6417f7aad584ac0413002e4e7e80a3",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "source_path": "packages/relayer/relayer/src/chain.service/evm.chain.service.ts",
+      "revision_kind": "commit",
+      "revision": "71263ca8acdca0ebd66b4a428733ed90857265cc",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "source_path": "packages/sdk",
+      "revision_kind": "commit",
+      "revision": "638bf8f4a0f4ef26761e439a338c8db6667dc30b",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "source_path": "packages/sdk/src/services/poolSessions/PoolSessionBatchWithdraw.ts",
+      "revision_kind": "commit",
+      "revision": "38c16e7b2a6417f7aad584ac0413002e4e7e80a3",
+      "reason": "path kind other is not fetched"
+    },
+    {
+      "repository": "0xbow-io/v2-monorepo",
+      "source_path": "packages/sdk/src/services/poolSessions/PoolSessionBatchWithdraw.ts",
+      "revision_kind": "commit",
+      "revision": "71263ca8acdca0ebd66b4a428733ed90857265cc",
+      "reason": "path kind other is not fetched"
+    }
+  ],
+  "unavailable": []
+}

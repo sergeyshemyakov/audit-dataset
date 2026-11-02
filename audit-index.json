@@ -101,6 +101,10 @@
       "name": "Privacy Pools",
       "kind": "project"
     },
+    "privacy-pools-v2": {
+      "name": "Privacy Pools v2",
+      "kind": "project"
+    },
     "railgun": {
       "name": "Railgun",
       "kind": "project"
@@ -424,6 +428,15 @@
       "auditor": "Auditware",
       "date": null,
       "document": "privacy-pools/reports/auditware-privacy-pools-core-audit.pdf"
+    },
+    "auditware-privacy-pools-v2-2026-08": {
+      "collections": [
+        "privacy-pools-v2"
+      ],
+      "title": "Privacy Pools v2 — Code Security Review",
+      "auditor": "Auditware",
+      "date": "2026-08-25",
+      "document": "privacy-pools-v2/reports/auditware-privacy-pools-v2-code-security-review-2026-08.md"
     },
     "bailsec-sushistaker-2026-02": {
       "collections": [
@@ -1364,6 +1377,15 @@
       "auditor": "Consensys Diligence",
       "date": null,
       "document": "linea/reports/2025_12-consensys-diligence-linea-yield-manager.pdf"
+    },
+    "consensys-diligence-privacy-pools-v2-2026-09": {
+      "collections": [
+        "privacy-pools-v2"
+      ],
+      "title": "Privacy Pools v2 — security review findings",
+      "auditor": "Consensys Diligence",
+      "date": "2026-09-14",
+      "document": "privacy-pools-v2/reports/consensys-diligence-privacy-pools-v2-security-review-2026-09.md"
     },
     "consensys-diligence-umbra-smart-contracts-2021-03": {
       "collections": [
@@ -4904,6 +4926,183 @@
             "packages/contracts/src/interfaces/IPrivacyPool.sol": [],
             "packages/contracts/src/interfaces/IState.sol": [],
             "packages/contracts/src/interfaces/IVerifier.sol": []
+          }
+        }
+      }
+    },
+    "0xbow-io/v2-monorepo": {
+      "71263ca8acdca0ebd66b4a428733ed90857265cc": {
+        "timestamp": 1784043873,
+        "files": {
+          "packages/contracts/script/Deploy.s.sol": "c20eb1042f69",
+          "packages/contracts/script/helpers/DeploymentVerifier.sol": "c58eb0f0f6d7",
+          "packages/contracts/script/registries/ChainConfigRegistry.sol": "201df221788c",
+          "packages/contracts/src/abstracts/FeeCalculator.sol": "39f531798441",
+          "packages/contracts/src/abstracts/Permissioned.sol": "d720d6cff8fc",
+          "packages/contracts/src/abstracts/RootBufferUpgradeable.sol": "08b20a2f4dec",
+          "packages/contracts/src/abstracts/TransactVerifierRouter.sol": "60f0116982f7",
+          "packages/contracts/src/contracts/ASPRegistry.sol": "7e3dacf0bf49",
+          "packages/contracts/src/contracts/AccessRouter.sol": "0a573e2cd814",
+          "packages/contracts/src/contracts/ERC5564Announcer.sol": "af1812c2210c",
+          "packages/contracts/src/contracts/Entrypoint.sol": "e6dadc170084",
+          "packages/contracts/src/contracts/Keystore.sol": "b226045d60a0",
+          "packages/contracts/src/contracts/PPRouter.sol": "ed172fbfa365",
+          "packages/contracts/src/contracts/PPRouterFactory.sol": "2d3c99e01978",
+          "packages/contracts/src/contracts/PPYieldToken.sol": "3c376ca2ca94",
+          "packages/contracts/src/contracts/PPYieldTokenFactory.sol": "b71bda9f9159",
+          "packages/contracts/src/contracts/PPYieldTokenZap.sol": "45830b3206d6",
+          "packages/contracts/src/contracts/PPYieldTokenZapFactory.sol": "a3d79a3746a5",
+          "packages/contracts/src/contracts/PoolVault.sol": "ddb753bac1d0",
+          "packages/contracts/src/contracts/PrivacyPoolRelay.sol": "7c6bc5ca0597",
+          "packages/contracts/src/interfaces/IASPRegistry.sol": "f905e62c6c6b",
+          "packages/contracts/src/interfaces/IAToken.sol": "84e8edf11755",
+          "packages/contracts/src/interfaces/IAavePool.sol": "72fa7d51cfb0",
+          "packages/contracts/src/interfaces/IAaveRewardsController.sol": "2c0324c4129b",
+          "packages/contracts/src/interfaces/IAccessRouter.sol": "e0401b890fd3",
+          "packages/contracts/src/interfaces/IERC5564Announcer.sol": "7e485d302fa5",
+          "packages/contracts/src/interfaces/IEntrypoint.sol": "4996623ed6da",
+          "packages/contracts/src/interfaces/IGroth16Verifier.sol": "a3a70bcb228a",
+          "packages/contracts/src/interfaces/IKeystore.sol": "a55feee8b32c",
+          "packages/contracts/src/interfaces/IPPRouter.sol": "9383bdcaeeaa",
+          "packages/contracts/src/interfaces/IPPRouterFactory.sol": "be341bbcbca9",
+          "packages/contracts/src/interfaces/IPPYieldToken.sol": "cddd612120ac",
+          "packages/contracts/src/interfaces/IPPYieldTokenFactory.sol": "22cd2e2e5012",
+          "packages/contracts/src/interfaces/IPPYieldTokenZap.sol": "ab3eaa261378",
+          "packages/contracts/src/interfaces/IPPYieldTokenZapFactory.sol": "b29c42a97d5e",
+          "packages/contracts/src/interfaces/IPermissioned.sol": "43fd691a6a12",
+          "packages/contracts/src/interfaces/IPoolVault.sol": "f736cb2007ac",
+          "packages/contracts/src/interfaces/IPrivacyPoolRelay.sol": "c84ad7ff59c8",
+          "packages/contracts/src/interfaces/IRootBuffer.sol": "ef348b2adf22",
+          "packages/contracts/src/interfaces/ITransactVerifierRouter.sol": "07ca98702d6e",
+          "packages/contracts/src/interfaces/ITreeUpdates.sol": "dc63f5fe4e93",
+          "packages/contracts/src/libraries/ProofLibV2.sol": "a648b1f62db9",
+          "packages/contracts/src/utils/Constants.sol": "c086f9ea8eba",
+          "packages/contracts/src/utils/RolesConstants.sol": "45c13f044a50"
+        },
+        "audits": {
+          "auditware-privacy-pools-v2-2026-08": {
+            "packages/contracts/script/Deploy.s.sol": [],
+            "packages/contracts/script/helpers/DeploymentVerifier.sol": [],
+            "packages/contracts/script/registries/ChainConfigRegistry.sol": [],
+            "packages/contracts/src": []
+          }
+        }
+      },
+      "38c16e7b2a6417f7aad584ac0413002e4e7e80a3": {
+        "timestamp": 1787176146,
+        "files": {
+          "packages/contracts/script/Deploy.s.sol": "a99943161c90",
+          "packages/contracts/script/DeployStaging.s.sol": "85c4a04877fe",
+          "packages/contracts/script/helpers/DeploymentVerifier.sol": "c58eb0f0f6d7",
+          "packages/contracts/script/registries/ChainConfigRegistry.sol": "d4b95c3aa2eb",
+          "packages/contracts/src/abstracts/FeeCalculator.sol": "39f531798441",
+          "packages/contracts/src/abstracts/Permissioned.sol": "d720d6cff8fc",
+          "packages/contracts/src/abstracts/RootBufferUpgradeable.sol": "08b20a2f4dec",
+          "packages/contracts/src/abstracts/TransactVerifierRouter.sol": "60f0116982f7",
+          "packages/contracts/src/contracts/ASPRegistry.sol": "7e3dacf0bf49",
+          "packages/contracts/src/contracts/AccessRouter.sol": "0a573e2cd814",
+          "packages/contracts/src/contracts/ERC5564Announcer.sol": "af1812c2210c",
+          "packages/contracts/src/contracts/Entrypoint.sol": "e6dadc170084",
+          "packages/contracts/src/contracts/Keystore.sol": "b226045d60a0",
+          "packages/contracts/src/contracts/PPRouter.sol": "ed172fbfa365",
+          "packages/contracts/src/contracts/PPRouterFactory.sol": "472df817ba17",
+          "packages/contracts/src/contracts/PPYieldToken.sol": "3c376ca2ca94",
+          "packages/contracts/src/contracts/PPYieldTokenFactory.sol": "f1206f156b24",
+          "packages/contracts/src/contracts/PPYieldTokenZap.sol": "45830b3206d6",
+          "packages/contracts/src/contracts/PPYieldTokenZapFactory.sol": "f0870a29e223",
+          "packages/contracts/src/contracts/PoolVault.sol": "ddb753bac1d0",
+          "packages/contracts/src/contracts/PrivacyPoolRelay.sol": "7c6bc5ca0597",
+          "packages/contracts/src/interfaces/IASPRegistry.sol": "f905e62c6c6b",
+          "packages/contracts/src/interfaces/IAToken.sol": "84e8edf11755",
+          "packages/contracts/src/interfaces/IAavePool.sol": "72fa7d51cfb0",
+          "packages/contracts/src/interfaces/IAaveRewardsController.sol": "2c0324c4129b",
+          "packages/contracts/src/interfaces/IAccessRouter.sol": "e0401b890fd3",
+          "packages/contracts/src/interfaces/IERC5564Announcer.sol": "7e485d302fa5",
+          "packages/contracts/src/interfaces/IEntrypoint.sol": "4996623ed6da",
+          "packages/contracts/src/interfaces/IGroth16Verifier.sol": "a3a70bcb228a",
+          "packages/contracts/src/interfaces/IKeystore.sol": "a55feee8b32c",
+          "packages/contracts/src/interfaces/IPPRouter.sol": "9383bdcaeeaa",
+          "packages/contracts/src/interfaces/IPPRouterFactory.sol": "98b13615299b",
+          "packages/contracts/src/interfaces/IPPYieldToken.sol": "cddd612120ac",
+          "packages/contracts/src/interfaces/IPPYieldTokenFactory.sol": "236978a76199",
+          "packages/contracts/src/interfaces/IPPYieldTokenZap.sol": "ab3eaa261378",
+          "packages/contracts/src/interfaces/IPPYieldTokenZapFactory.sol": "3daa0fee1f2b",
+          "packages/contracts/src/interfaces/IPermissioned.sol": "43fd691a6a12",
+          "packages/contracts/src/interfaces/IPoolVault.sol": "f736cb2007ac",
+          "packages/contracts/src/interfaces/IPrivacyPoolRelay.sol": "c84ad7ff59c8",
+          "packages/contracts/src/interfaces/IRootBuffer.sol": "ef348b2adf22",
+          "packages/contracts/src/interfaces/ITransactVerifierRouter.sol": "07ca98702d6e",
+          "packages/contracts/src/interfaces/ITreeUpdates.sol": "dc63f5fe4e93",
+          "packages/contracts/src/libraries/ProofLibV2.sol": "a648b1f62db9",
+          "packages/contracts/src/utils/Constants.sol": "c086f9ea8eba",
+          "packages/contracts/src/utils/RolesConstants.sol": "45c13f044a50"
+        },
+        "audits": {
+          "auditware-privacy-pools-v2-2026-08": {
+            "packages/contracts/script/Deploy.s.sol": [],
+            "packages/contracts/script/DeployStaging.s.sol": [],
+            "packages/contracts/script/helpers/DeploymentVerifier.sol": [],
+            "packages/contracts/script/registries/ChainConfigRegistry.sol": [],
+            "packages/contracts/src": []
+          }
+        }
+      },
+      "638bf8f4a0f4ef26761e439a338c8db6667dc30b": {
+        "timestamp": 1788881697,
+        "files": {
+          "packages/contracts/src/abstracts/FeeCalculator.sol": "39f531798441",
+          "packages/contracts/src/abstracts/Permissioned.sol": "d720d6cff8fc",
+          "packages/contracts/src/abstracts/RootBufferUpgradeable.sol": "08b20a2f4dec",
+          "packages/contracts/src/abstracts/TransactVerifierRouter.sol": "60f0116982f7",
+          "packages/contracts/src/contracts/ASPRegistry.sol": "7e3dacf0bf49",
+          "packages/contracts/src/contracts/AccessRouter.sol": "0a573e2cd814",
+          "packages/contracts/src/contracts/ERC5564Announcer.sol": "af1812c2210c",
+          "packages/contracts/src/contracts/Entrypoint.sol": "e6dadc170084",
+          "packages/contracts/src/contracts/Keystore.sol": "b226045d60a0",
+          "packages/contracts/src/contracts/PPRouter.sol": "ef9f6cf6c8cb",
+          "packages/contracts/src/contracts/PPRouterFactory.sol": "26befe063de0",
+          "packages/contracts/src/contracts/PPYieldToken.sol": "3c376ca2ca94",
+          "packages/contracts/src/contracts/PPYieldTokenFactory.sol": "f1206f156b24",
+          "packages/contracts/src/contracts/PPYieldTokenZap.sol": "45830b3206d6",
+          "packages/contracts/src/contracts/PPYieldTokenZapFactory.sol": "f0870a29e223",
+          "packages/contracts/src/contracts/PoolVault.sol": "ddb753bac1d0",
+          "packages/contracts/src/contracts/PrivacyPoolRelay.sol": "7c6bc5ca0597",
+          "packages/contracts/src/interfaces/IASPRegistry.sol": "f905e62c6c6b",
+          "packages/contracts/src/interfaces/IAToken.sol": "84e8edf11755",
+          "packages/contracts/src/interfaces/IAavePool.sol": "72fa7d51cfb0",
+          "packages/contracts/src/interfaces/IAaveRewardsController.sol": "2c0324c4129b",
+          "packages/contracts/src/interfaces/IAccessRouter.sol": "e0401b890fd3",
+          "packages/contracts/src/interfaces/IERC5564Announcer.sol": "7e485d302fa5",
+          "packages/contracts/src/interfaces/IEntrypoint.sol": "4996623ed6da",
+          "packages/contracts/src/interfaces/IGroth16Verifier.sol": "a3a70bcb228a",
+          "packages/contracts/src/interfaces/IKeystore.sol": "a55feee8b32c",
+          "packages/contracts/src/interfaces/IPPRouter.sol": "2aebd68f72d8",
+          "packages/contracts/src/interfaces/IPPRouterFactory.sol": "4bb1cfaf9d81",
+          "packages/contracts/src/interfaces/IPPYieldToken.sol": "cddd612120ac",
+          "packages/contracts/src/interfaces/IPPYieldTokenFactory.sol": "236978a76199",
+          "packages/contracts/src/interfaces/IPPYieldTokenZap.sol": "ab3eaa261378",
+          "packages/contracts/src/interfaces/IPPYieldTokenZapFactory.sol": "3daa0fee1f2b",
+          "packages/contracts/src/interfaces/IPermissioned.sol": "43fd691a6a12",
+          "packages/contracts/src/interfaces/IPoolVault.sol": "f736cb2007ac",
+          "packages/contracts/src/interfaces/IPrivacyPoolRelay.sol": "c84ad7ff59c8",
+          "packages/contracts/src/interfaces/IRootBuffer.sol": "ef348b2adf22",
+          "packages/contracts/src/interfaces/ITransactVerifierRouter.sol": "07ca98702d6e",
+          "packages/contracts/src/interfaces/ITreeUpdates.sol": "dc63f5fe4e93",
+          "packages/contracts/src/interfaces/IWETH9.sol": "355678fc9468",
+          "packages/contracts/src/libraries/ProofLibV2.sol": "a648b1f62db9",
+          "packages/contracts/src/utils/Constants.sol": "c086f9ea8eba",
+          "packages/contracts/src/utils/RolesConstants.sol": "45c13f044a50",
+          "packages/swaps/contracts/src/IRelaySwaps.sol": "2060ab879cbf",
+          "packages/swaps/contracts/src/MockPool.sol": "131c8a1f49b4",
+          "packages/swaps/contracts/src/RelaySwaps.sol": "44fd2621f1e9"
+        },
+        "audits": {
+          "consensys-diligence-privacy-pools-v2-2026-09": {
+            "packages/contracts/src": [],
+            "packages/swaps/contracts/src": [],
+            "packages/swaps/contracts/src/RelaySwaps.sol": [
+              "#001"
+            ]
           }
         }
       }

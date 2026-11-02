@@ -31,6 +31,9 @@
     "0xbow-io/privacy-pools-website": {
       "url": "https://github.com/0xbow-io/privacy-pools-website"
     },
+    "0xbow-io/v2-monorepo": {
+      "url": "https://github.com/0xbow-io/v2-monorepo"
+    },
     "5afe/CandideWalletContracts": {
       "url": "https://github.com/5afe/CandideWalletContracts",
       "fork_of": "candidelabs/candide-contracts"
