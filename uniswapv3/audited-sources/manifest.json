@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "collection": "uniswapv3",
   "sources": [
     {
@@ -1295,6 +1295,411 @@
     {
       "repository": "Uniswap/v3-periphery",
       "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/base/BlockTimestamp.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/base/BlockTimestamp.sol",
+          "git_object": "ac05cac0a562db4bad694d41519ff020013762de",
+          "git_mode": "100644",
+          "sha256": "e5ca9a8b6b9e0cafcd9a9966b05228a1572f82fccee396d2e0eff5f8aa9bb1f4"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/base/ERC721Permit.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/base/ERC721Permit.sol",
+          "git_object": "efe0f544554d632e48213e80b51f90c3d11472b4",
+          "git_mode": "100644",
+          "sha256": "261545beafb6c6c0eb08daa0544063bdc3c62129acb0f268fe57d747f4943abc"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/base/LiquidityManagement.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/base/LiquidityManagement.sol",
+          "git_object": "0301b397ad79b4f8e86ff1a1db3dc6e267a0fe00",
+          "git_mode": "100644",
+          "sha256": "867f054d08b704842bd7f1f801e77a1a25b8511b41da1aafddab6e813a172fc0"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/base/Multicall.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/base/Multicall.sol",
+          "git_object": "5bb7cbba277aa0e84d7c1825d7b348e3968fe510",
+          "git_mode": "100644",
+          "sha256": "d376f34fc1d25bce3d160aa483dbbf02a6f766319f7ff4c6381138d8c64e5b2b"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/base/PeripheryImmutableState.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/base/PeripheryImmutableState.sol",
+          "git_object": "75267a4dca90aea0d6bd0668d22763841d827884",
+          "git_mode": "100644",
+          "sha256": "e8125d27059b3d4cabee591800e3fb33812f0d49e16a5f4af2c31857dd1c9596"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/base/PeripheryPayments.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/base/PeripheryPayments.sol",
+          "git_object": "25947a7bf9fdc998ddab436630d123a076812aeb",
+          "git_mode": "100644",
+          "sha256": "5691e870469b99af97dc0f1d5f2ce820427a6211ff77a4ee235fd0909ff6421e"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/base/PeripheryValidation.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/base/PeripheryValidation.sol",
+          "git_object": "40fadd7ed76696d508a471a626509530a9051feb",
+          "git_mode": "100644",
+          "sha256": "c736f99049e6819015e9a1000364e69f1d08d41a35e71f459b6dfaae1d55ebfd"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/base/SelfPermit.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/base/SelfPermit.sol",
+          "git_object": "691acb4d5e855af0632fd02f76c1468af96425a2",
+          "git_mode": "100644",
+          "sha256": "ee200e89fe60e8e944edc0d202615987d97a73cab3f0ed8808ae972bf5d66ceb"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/interfaces/IERC721Permit.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/interfaces/IERC721Permit.sol",
+          "git_object": "744cd3a11145cade695a30bbd1d94ab558cd7190",
+          "git_mode": "100644",
+          "sha256": "f3d06d6555380276df01d0c9b70ae5589d0b7fc1fbf8c50285c3fd7aa2153b62"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/interfaces/IMulticall.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/interfaces/IMulticall.sol",
+          "git_object": "1ea39c692f5bf92f47208cc11195b80fe0eacd2a",
+          "git_mode": "100644",
+          "sha256": "fd259a304bdad5fd198ac0279109c6a97198869a2ae72121c7edd66cee91167f"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/interfaces/INonfungiblePositionManager.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/interfaces/INonfungiblePositionManager.sol",
+          "git_object": "fdcfea7c19f08a911b993b5d4c79d6c4c9889e9f",
+          "git_mode": "100644",
+          "sha256": "b2d4ee0065bec14c7b0994c21da15e60b518d758690c5fc891ad2252aa38a5c5"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/interfaces/INonfungibleTokenPositionDescriptor.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/interfaces/INonfungibleTokenPositionDescriptor.sol",
+          "git_object": "816f7fe9c2084b09498ed03a48f75742f4bfa8f4",
+          "git_mode": "100644",
+          "sha256": "9bf052c51370a65c638922b53269657cbccb25b63f17c2aa16f9baac17e1ae0c"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/interfaces/IPeripheryImmutableState.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/interfaces/IPeripheryImmutableState.sol",
+          "git_object": "b3378052de8c126d16aade0805ed43ce2df6d0db",
+          "git_mode": "100644",
+          "sha256": "87a6be0e845e5fef99ea73f2503ff2e9ab4244f6e87fd1f82416d93d152082eb"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/interfaces/IPeripheryPayments.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/interfaces/IPeripheryPayments.sol",
+          "git_object": "658ceb9c8dfd9af906d39436870de37c67341bdd",
+          "git_mode": "100644",
+          "sha256": "34040ba051f13957b15b22f19a4f67a213662e6610d71f0b0eff55f3d94e5efb"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/interfaces/ISelfPermit.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/interfaces/ISelfPermit.sol",
+          "git_object": "0ab8a25af9bb6fc6182e174426928550fe7cb80e",
+          "git_mode": "100644",
+          "sha256": "10d1687818a5a1822300de8a310f3e6cd935aa9cb17b7f21dce7332f5993eddc"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/interfaces/ISwapRouter.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/interfaces/ISwapRouter.sol",
+          "git_object": "35806a2a41323d3cd5c24b4ba1251bb2aa5f72ff",
+          "git_mode": "100644",
+          "sha256": "c8fb6a6b6649626bce74ac72a9d686d3a2dab123bed908ef063cd545498ccb7b"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/interfaces/external/IERC1271.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/interfaces/external/IERC1271.sol",
+          "git_object": "824b03ea437abe4ff936ee2f6ba7917f9c5b0261",
+          "git_mode": "100644",
+          "sha256": "a08bcd249feaabadb83f09ec60d1bbec8f13d7e2a9717f4ddc40c81c530e7201"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/interfaces/external/IERC20PermitAllowed.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/interfaces/external/IERC20PermitAllowed.sol",
+          "git_object": "a817e1cffd3fdf2ddc63436f0a9656edd64fa37e",
+          "git_mode": "100644",
+          "sha256": "97a8d607694194b6de26c0a15d9439394748e8157fa38813bc7614f7d2e4ba67"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/interfaces/external/IWETH9.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/interfaces/external/IWETH9.sol",
+          "git_object": "58ab43eb3b0d57ac904b1e4a9b56228e27aa3fe9",
+          "git_mode": "100644",
+          "sha256": "96150fd8d435d70e580bd07406f3bf26e7320dabb84f4ec76ce4fef60887f8e9"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/libraries/BytesLib.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/libraries/BytesLib.sol",
+          "git_object": "ca1ae84d6a7de2d00a44907a420509a76cb469b9",
+          "git_mode": "100644",
+          "sha256": "8d50041fe0c9722e0758bb9e230b871c751837e729a1e31048c274522607ae16"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/libraries/CallbackValidation.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/libraries/CallbackValidation.sol",
+          "git_object": "788109f4d46fc1ca212f9b0714b35919b16cb6e4",
+          "git_mode": "100644",
+          "sha256": "b4110c69356cb2841f62360c19f53cb43c79d818be64e432fb333843f05e71de"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/libraries/ChainId.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/libraries/ChainId.sol",
+          "git_object": "72cb8b7ce36b8c2e2800dc0d28b250536108b71d",
+          "git_mode": "100644",
+          "sha256": "f6520df5263c8938a53d2a53ee274d959ba63770c6e70c6863a5728a905ad751"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/libraries/LiquidityAmounts.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/libraries/LiquidityAmounts.sol",
+          "git_object": "14270224bf9b8c3191d4ed92f8772ab8f1ac5a7f",
+          "git_mode": "100644",
+          "sha256": "fc3588a620e12ed0352c980cbfbeb08d0a24f0907f2765a1d8497cb6228dbd6e"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/libraries/Path.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/libraries/Path.sol",
+          "git_object": "1a1d278e462b4b1002a0f4fd1ec69b7d2024d779",
+          "git_mode": "100644",
+          "sha256": "01268996a135d0e8154ab8851fba5f18ff9ca7db988700d77d9bddcb6d6622ed"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/libraries/PoolAddress.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/libraries/PoolAddress.sol",
+          "git_object": "d6f3cf72f208bd2c1843a890747c2ca2e5555249",
+          "git_mode": "100644",
+          "sha256": "b3c86c94dd69257bf166072b477316a16ce92142fe6b4c3b2994cc4b608b77fa"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/libraries/PositionKey.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/libraries/PositionKey.sol",
+          "git_object": "a60fc18f3776df3c742d0a4f6ffa6f3830eb989e",
+          "git_mode": "100644",
+          "sha256": "08d28bb87fbae6d6d31ab8fb6a752eb59e1c762c6c5812052cd1bd1b9fc557a8"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
+      "source_path": "contracts/libraries/TransferHelper.sol",
+      "path_kind": "file",
+      "commit": "8ad273f45cd42e04b5f8f15b6f4da57827122273",
+      "files": [
+        {
+          "path": "contracts/libraries/TransferHelper.sol",
+          "git_object": "7fc27979b2b684d10bf3aa97010575aa34dfdf5c",
+          "git_mode": "100644",
+          "sha256": "9826e2d0a7fc61636420d995a93d9edfd7030e9129a50c56f340c4ab461e684a"
+        }
+      ]
+    },
+    {
+      "repository": "Uniswap/v3-periphery",
+      "repository_url": "https://github.com/Uniswap/v3-periphery",
       "source_path": "contracts/NonfungiblePositionManager.sol",
       "path_kind": "file",
       "commit": "987842552ede76d428e60116672fb0ff67fe551e",
@@ -1914,8 +2319,243 @@
             "import": "./interfaces/external/IWETH9.sol",
             "path": "contracts/interfaces/external/IWETH9.sol"
           }
+        ],
+        "contracts/base/BlockTimestamp.sol": [],
+        "contracts/base/ERC721Permit.sol": [
+          {
+            "import": "@openzeppelin/contracts/token/ERC721/ERC721.sol",
+            "skipped": "not in the repository: @openzeppelin/contracts/token/ERC721/ERC721.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/utils/Address.sol",
+            "skipped": "not in the repository: @openzeppelin/contracts/utils/Address.sol"
+          },
+          {
+            "import": "../libraries/ChainId.sol",
+            "path": "contracts/libraries/ChainId.sol"
+          },
+          {
+            "import": "../interfaces/external/IERC1271.sol",
+            "path": "contracts/interfaces/external/IERC1271.sol"
+          },
+          {
+            "import": "../interfaces/IERC721Permit.sol",
+            "path": "contracts/interfaces/IERC721Permit.sol"
+          },
+          {
+            "import": "./BlockTimestamp.sol",
+            "path": "contracts/base/BlockTimestamp.sol"
+          }
+        ],
+        "contracts/base/LiquidityManagement.sol": [
+          {
+            "import": "@uniswap/v3-core/contracts/interfaces/IUniswapV3Factory.sol",
+            "skipped": "not in the repository: @uniswap/v3-core/contracts/interfaces/IUniswapV3Factory.sol"
+          },
+          {
+            "import": "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3MintCallback.sol",
+            "skipped": "not in the repository: @uniswap/v3-core/contracts/interfaces/callback/IUniswapV3MintCallback.sol"
+          },
+          {
+            "import": "@uniswap/v3-core/contracts/libraries/TickMath.sol",
+            "skipped": "not in the repository: @uniswap/v3-core/contracts/libraries/TickMath.sol"
+          },
+          {
+            "import": "../libraries/PoolAddress.sol",
+            "path": "contracts/libraries/PoolAddress.sol"
+          },
+          {
+            "import": "../libraries/CallbackValidation.sol",
+            "path": "contracts/libraries/CallbackValidation.sol"
+          },
+          {
+            "import": "../libraries/LiquidityAmounts.sol",
+            "path": "contracts/libraries/LiquidityAmounts.sol"
+          },
+          {
+            "import": "./PeripheryPayments.sol",
+            "path": "contracts/base/PeripheryPayments.sol"
+          },
+          {
+            "import": "./PeripheryImmutableState.sol",
+            "path": "contracts/base/PeripheryImmutableState.sol"
+          }
+        ],
+        "contracts/base/Multicall.sol": [
+          {
+            "import": "../interfaces/IMulticall.sol",
+            "path": "contracts/interfaces/IMulticall.sol"
+          }
+        ],
+        "contracts/base/PeripheryImmutableState.sol": [
+          {
+            "import": "../interfaces/IPeripheryImmutableState.sol",
+            "path": "contracts/interfaces/IPeripheryImmutableState.sol"
+          }
+        ],
+        "contracts/base/PeripheryPayments.sol": [
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "not in the repository: @openzeppelin/contracts/token/ERC20/IERC20.sol"
+          },
+          {
+            "import": "../interfaces/IPeripheryPayments.sol",
+            "path": "contracts/interfaces/IPeripheryPayments.sol"
+          },
+          {
+            "import": "../interfaces/external/IWETH9.sol",
+            "path": "contracts/interfaces/external/IWETH9.sol"
+          },
+          {
+            "import": "../libraries/TransferHelper.sol",
+            "path": "contracts/libraries/TransferHelper.sol"
+          },
+          {
+            "import": "./PeripheryImmutableState.sol",
+            "path": "contracts/base/PeripheryImmutableState.sol"
+          }
+        ],
+        "contracts/base/PeripheryValidation.sol": [
+          {
+            "import": "./BlockTimestamp.sol",
+            "path": "contracts/base/BlockTimestamp.sol"
+          }
+        ],
+        "contracts/base/SelfPermit.sol": [
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "not in the repository: @openzeppelin/contracts/token/ERC20/IERC20.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/drafts/IERC20Permit.sol",
+            "skipped": "not in the repository: @openzeppelin/contracts/drafts/IERC20Permit.sol"
+          },
+          {
+            "import": "../interfaces/ISelfPermit.sol",
+            "path": "contracts/interfaces/ISelfPermit.sol"
+          },
+          {
+            "import": "../interfaces/external/IERC20PermitAllowed.sol",
+            "path": "contracts/interfaces/external/IERC20PermitAllowed.sol"
+          }
+        ],
+        "contracts/interfaces/IERC721Permit.sol": [
+          {
+            "import": "@openzeppelin/contracts/token/ERC721/IERC721.sol",
+            "skipped": "not in the repository: @openzeppelin/contracts/token/ERC721/IERC721.sol"
+          }
+        ],
+        "contracts/interfaces/IMulticall.sol": [],
+        "contracts/interfaces/INonfungiblePositionManager.sol": [
+          {
+            "import": "@openzeppelin/contracts/token/ERC721/IERC721Metadata.sol",
+            "skipped": "not in the repository: @openzeppelin/contracts/token/ERC721/IERC721Metadata.sol"
+          },
+          {
+            "import": "@openzeppelin/contracts/token/ERC721/IERC721Enumerable.sol",
+            "skipped": "not in the repository: @openzeppelin/contracts/token/ERC721/IERC721Enumerable.sol"
+          },
+          {
+            "import": "./IERC721Permit.sol",
+            "path": "contracts/interfaces/IERC721Permit.sol"
+          },
+          {
+            "import": "./IPeripheryImmutableState.sol",
+            "path": "contracts/interfaces/IPeripheryImmutableState.sol"
+          },
+          {
+            "import": "../libraries/PoolAddress.sol",
+            "path": "contracts/libraries/PoolAddress.sol"
+          }
+        ],
+        "contracts/interfaces/INonfungibleTokenPositionDescriptor.sol": [
+          {
+            "import": "./INonfungiblePositionManager.sol",
+            "path": "contracts/interfaces/INonfungiblePositionManager.sol"
+          }
+        ],
+        "contracts/interfaces/IPeripheryImmutableState.sol": [],
+        "contracts/interfaces/IPeripheryPayments.sol": [],
+        "contracts/interfaces/ISelfPermit.sol": [],
+        "contracts/interfaces/ISwapRouter.sol": [
+          {
+            "import": "@uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol",
+            "skipped": "not in the repository: @uniswap/v3-core/contracts/interfaces/callback/IUniswapV3SwapCallback.sol"
+          }
+        ],
+        "contracts/interfaces/external/IERC1271.sol": [],
+        "contracts/interfaces/external/IERC20PermitAllowed.sol": [],
+        "contracts/interfaces/external/IWETH9.sol": [
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "not in the repository: @openzeppelin/contracts/token/ERC20/IERC20.sol"
+          }
+        ],
+        "contracts/libraries/BytesLib.sol": [],
+        "contracts/libraries/CallbackValidation.sol": [
+          {
+            "import": "@uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol",
+            "skipped": "not in the repository: @uniswap/v3-core/contracts/interfaces/IUniswapV3Pool.sol"
+          },
+          {
+            "import": "./PoolAddress.sol",
+            "path": "contracts/libraries/PoolAddress.sol"
+          }
+        ],
+        "contracts/libraries/ChainId.sol": [],
+        "contracts/libraries/LiquidityAmounts.sol": [
+          {
+            "import": "@uniswap/v3-core/contracts/libraries/FullMath.sol",
+            "skipped": "not in the repository: @uniswap/v3-core/contracts/libraries/FullMath.sol"
+          },
+          {
+            "import": "@uniswap/v3-core/contracts/libraries/FixedPoint96.sol",
+            "skipped": "not in the repository: @uniswap/v3-core/contracts/libraries/FixedPoint96.sol"
+          }
+        ],
+        "contracts/libraries/Path.sol": [
+          {
+            "import": "./BytesLib.sol",
+            "path": "contracts/libraries/BytesLib.sol"
+          }
+        ],
+        "contracts/libraries/PoolAddress.sol": [],
+        "contracts/libraries/PositionKey.sol": [],
+        "contracts/libraries/TransferHelper.sol": [
+          {
+            "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+            "skipped": "not in the repository: @openzeppelin/contracts/token/ERC20/IERC20.sol"
+          }
         ]
       }
     }
-  }
+  },
+  "trees": {
+    "Uniswap/v3-core": {
+      "99223f33fd69a9e024f00bd8eea17b029d3f8f2d": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@uniswap/v3-core"
+        }
+      },
+      "e8de69a550d579c475f52d59a6fb2f7ef9e7f364": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@uniswap/v3-core"
+        }
+      }
+    },
+    "Uniswap/v3-periphery": {
+      "8ad273f45cd42e04b5f8f15b6f4da57827122273": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@uniswap/v3-periphery"
+        }
+      }
+    }
+  },
+  "dependencies": {}
 }

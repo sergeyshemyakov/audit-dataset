@@ -25,6 +25,8 @@ In this repo I have extracted exact file versions that are covered by project au
 
 4. Programmatically compare the `kind` of every path present in both files. Only `evm` paths are fetched and exported, so a path that one file marks `evm` and the other `zk`, `cairo` or `other` either hides audited EVM code or stores code that is not EVM; highlight every such disagreement and say which kind the report supports.
 
-5. Do not check the correctness of metadata extracted from audits, it is not relevant.
+5. Programmatically compare `unlisted` and `dependencies` of every report present in both files. They decide which files count as implied by a report and which as excluded, so for every disagreement quote the sentence of the report that settles it, or say that the report has none: without words in the report, `unlisted` is `not_mentioned` and `dependencies` is absent. Compare the `not_audited` paths as well, including those inside a scoped directory.
+
+6. Do not check the correctness of other metadata extracted from audits, it is not relevant.
 
 Prepare a report of your findings.

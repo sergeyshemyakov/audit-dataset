@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.7.0",
+  "schema_version": "1.8.0",
   "project": "roninnetwork",
   "reports": [
     {
@@ -8,6 +8,7 @@
       "title": "Security Audit - Ronin Bridge Smart Contracts (Public Report, Version 1.1)",
       "description": "Verichains audited the Ronin bridge smart contracts, covering the mainchain and Ronin gateways together with the validator, withdrawal-limitation and governance extensions. All reported issues were fixed by Sky Mavis before publication, leaving no Medium or higher severity findings.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Verichains Lab",
       "report_date": "2022-06-28",
       "repositories": [
@@ -663,6 +664,8 @@
       "title": "Axie Infinity - Audit (Ronin Bridge Security Assessment)",
       "description": "CertiK's security assessment of the Axie Infinity Ronin bridge contracts, covering the mainchain and Ronin gateways, withdrawal limitation, validator and proxy extensions. The assessment reported major findings that were addressed in later revisions of the audited files.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
+      "dependencies": "excluded",
       "auditor": "CertiK",
       "report_date": "2022-06-21",
       "repositories": [
@@ -1533,6 +1536,7 @@
       "title": "Ronin Network Public Block Chain Security Audit V1.5 (No. 202303031441)",
       "description": "Beosin audited the Ronin Network public blockchain, covering consensus and precompiled-contract code in the Ronin node alongside the Ronin DPoS smart contracts. Major findings in the DPoS contracts were remediated in follow-up commits reviewed by the report.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Beosin",
       "report_date": "2023-03-03",
       "repositories": [
@@ -1933,6 +1937,8 @@
       "title": "Ronin DPoS Contracts Security Assessment",
       "description": "CertiK assessed the Ronin DPoS contract suite, including staking, validator, slashing, governance, trusted-organization and gateway contracts. No major findings remained at the audited revisions.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
+      "dependencies": "excluded",
       "auditor": "CertiK",
       "report_date": "2023-03-30",
       "repositories": [
@@ -5849,6 +5855,7 @@
       "title": "Ronin Bridge Smart Contract Security Audit (No. 202309081700)",
       "description": "Beosin audited the Ronin bridge contracts in the DPoS repository, covering the mainchain and Ronin bridge managers, gateways and the bridge reward, slash and tracking contracts. No major findings were reported.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Beosin",
       "report_date": "2023-09-08",
       "repositories": [
@@ -6488,6 +6495,7 @@
       "title": "Security Audit - Ronin Bridge Smart Contracts (Private Report, Version 1.0)",
       "description": "Verichains audited the Ronin bridge v3 contracts, covering the mainchain and Ronin gateway directories plus selected extensions and interfaces. A major finding in MainchainGatewayV3 was reported and re-examined in a follow-up partial review.",
       "isRelevant": true,
+      "unlisted": "excluded",
       "auditor": "Verichains Lab",
       "report_date": "2024-08-21",
       "repositories": [
@@ -6693,6 +6701,7 @@
       "title": "Ronin Bridge Security Analysis Audit (No. 202408211552)",
       "description": "Beosin analysed the Ronin bridge v3 gateway and bridge-manager contracts together with the accompanying upgrade and recovery deployment scripts. No major findings were reported.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Beosin",
       "report_date": "2024-08-21",
       "repositories": [
@@ -6805,6 +6814,7 @@
       "title": "Ronin Findings & Analysis Report (Katana V3)",
       "description": "Code4rena competitive audit of the Katana V3 decentralized exchange contracts and of the Katana aggregate router and governance operation contracts on the Ronin chain. The contest yielded no High or Medium severity vulnerabilities; one downgraded low-severity address-collision issue was remediated in follow-up pull requests.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Code4rena",
       "report_date": "2024-11-25",
       "repositories": [

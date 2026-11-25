@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.7.0",
+  "schema_version": "1.8.0",
   "project": "uniswapv3",
   "reports": [
     {
@@ -8,7 +8,7 @@
       "title": "Uniswap V3 Core Security Assessment",
       "description": "Trail of Bits manual review, Echidna fuzzing, Manticore verification and Slither analysis of the Uniswap V3 core contracts (factory, pool, pool deployer and arithmetic/tick/position/oracle libraries) at commit 99223f3 of uniswap-v3-core. Ten findings were reported, including two High-severity issues: TOB-UNI-005 (free swaps via an incorrect balance comparison) is already fixed at the audited commit 99223f3 (commit a4fb75c, 'fix swap underpayment bug', precedes it), so it is not recorded as open there; TOB-UNI-009 (missing contract existence check in TransferHelper) remains open.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Trail of Bits",
       "report_date": "2021-03-12",
       "repositories": [
@@ -319,7 +319,7 @@
       "title": "ABDK Consulting Smart Contract Audit: Uniswap V3",
       "description": "ABDK Consulting code review of the Uniswap V3 core contracts, libraries and interfaces at tag v1.0.0-beta.3 of uniswap-v3-core, with fixes tracked to specific pull requests and commits. 159 findings were reported, none Major or Critical; two Moderate issues (one FullMath overflow, fixed) and the rest Minor.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "ABDK Consulting",
       "report_date": "2021-03-23",
       "repositories": [
@@ -1021,7 +1021,7 @@
       "title": "ABDK Consulting Smart Contract Audit: Uniswap V3 Peripheral, Part 1",
       "description": "ABDK Consulting review of the Uniswap V3 periphery contracts NonfungiblePositionManager.sol and SwapRouter.sol in uniswap-v3-periphery, with fixes applied in two named periphery commits. Two Critical findings (SwapRouter exact-input payer bug and NonfungiblePositionManager liquidity theft via unchecked decreaseLiquidity) were fixed, and one Major finding remained open.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "ABDK Consulting",
       "report_date": "2021-05-04",
       "repositories": [

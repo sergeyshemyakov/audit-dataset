@@ -7,7 +7,8 @@ names the same repository the same way:
 - GitHub gists: ``gist/<owner>/<id>``.
 - Other hosts: ``<host>/<path>`` such as ``gitlab.com/owner/repo``.
 
-The registry lists every repository referenced by any collection with its URL
+The registry lists every repository referenced by any collection, in a summary or
+as a submodule its audited code imports from, with its URL
 and, when GitHub reports it as a fork, the canonical id of its parent under
 ``fork_of``. Lineage is a property of a repository, not of a report, which is why
 it lives here and not in the summaries. Parents appear in the registry even when
@@ -107,8 +108,31 @@ def github_parent(repository_id: str) -> tuple[str | None, str | None]:
     return None, None
 
 
+def github_name(repository_id: str) -> tuple[str | None, str | None]:
+    """``(owner/repo as GitHub spells it today, error)``, via the authenticated gh CLI.
+
+    A URL found in a ``.gitmodules`` may spell the owner in another letter case
+    or name a repository that was renamed since; GitHub answers both with the
+    current name.
+    """
+    try:
+        result = subprocess.run(
+            ["gh", "api", f"repos/{repository_id}", "--jq", ".full_name"],
+            capture_output=True, text=True, check=False,
+        )
+    except FileNotFoundError:
+        return None, "gh not found"
+    name = result.stdout.strip()
+    if result.returncode != 0 or name.count("/") != 1:
+        lines = result.stderr.strip().splitlines()
+        return None, lines[-1] if lines else "gh api failed"
+    return name, None
+
+
 def referenced_repositories(collections: list[Collection]) -> dict[str, str]:
-    """``{id: url}`` over every report of every collection."""
+    """``{id: url}`` over every report of every collection, and over the submodules
+    their manifests record as dependencies."""
+    from .manifest import read_manifest
     from .summary import read_summary
 
     referenced: dict[str, str] = {}
@@ -117,6 +141,10 @@ def referenced_repositories(collections: list[Collection]) -> dict[str, str]:
         for report in summary["reports"]:
             for repository in report["repositories"]:
                 referenced.setdefault(repository["id"], repository["url"].strip())
+    for collection in collections:
+        if collection.manifest_path.is_file():
+            for repository_id, entry in read_manifest(collection).get("dependencies", {}).items():
+                referenced.setdefault(repository_id, entry["url"])
     return referenced
 
 

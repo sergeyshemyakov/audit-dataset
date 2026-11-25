@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.7.0",
+  "schema_version": "1.8.0",
   "project": "tornado-cash",
   "reports": [
     {
@@ -8,6 +8,7 @@
       "title": "Tornado Circuit Audit. Final version",
       "description": "Review of the Tornado Cash circom circuit set (Withdraw, MerkleTree/MerkleTreeChecker, Selector and supporting templates) against the circom documentation and the Tornado spec. No major issues were found, only mostly non-optimal template patterns.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "ABDK Consulting",
       "report_date": "2019-11-25",
       "repositories": [
@@ -114,6 +115,7 @@
       "title": "Tornado Cash Smart Contracts Audit. Final Version",
       "description": "Audit of the Tornado Cash on-chain Solidity contract set in the peppersec/tornado-mixer repository, including ERC20Mixer, the mixer core, Merkle tree and hasher contracts. No critical issues were found and all other significant issues were fixed.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "ABDK Consulting",
       "report_date": "2019-11-19",
       "repositories": [
@@ -253,6 +255,7 @@
       "title": "Tornado Privacy Solution Cryptographic Review Version 1.1",
       "description": "Cryptographic review of the Tornado Cash zero-knowledge mixer protocol and its implementation: the deposit/withdraw scheme, Pedersen and MiMC hashing, the Merkle tree construction, and the zkSNARK statement, together with the circomlib primitives they rely on.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "ABDK Consulting",
       "report_date": "2019-11-29",
       "repositories": [
@@ -352,6 +355,7 @@
       "title": "Tornado Farm Smart Contracts and Circuits. Audit",
       "description": "First ABDK audit of the Tornado Cash anonymity mining (Farm) smart contract and its Reward circuit, delivered as private files with Farm.sol published as a gist. A critical circuit issue permitting a reward-value underflow was found, together with moderate and minor contract issues.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "ABDK Consulting",
       "report_date": "2020-09-01",
       "repositories": [
@@ -417,6 +421,7 @@
       "title": "Tornado Farm Smart Contracts and Circuits. Final Audit",
       "description": "Final ABDK audit of the Tornado Cash anonymity mining Farm contract and Reward circuit, comparing the audited release tag with the fixed version. The major circuit underflow issue was resolved by explicit range checks, and the remaining issues were judged to have no security impact.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "ABDK Consulting",
       "report_date": "2020-09-15",
       "repositories": [
@@ -496,6 +501,7 @@
       "title": "Tornado Cash Anonymity Mining Audit",
       "description": "Independent ZeroPool audit of the Tornado Cash anonymity mining smart contracts and zkSNARK circuits at commit 820bd83, excluding the generated verifiers and MerkleTree.circom. No critical issues were found; two major issues were reported, one fixed and one accepted as governance-controlled.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Igor Gulamov (ZeroPool)",
       "report_date": "2020-10-15",
       "repositories": [
@@ -741,6 +747,7 @@
       "title": "Tornado Smart Contract Audit Conclusion",
       "description": "ABDK re-review of the changed Tornado Cash anonymity mining Solidity contracts at commit 9ec05a6, covering the miner, tornado trees, reward swap, proxy, Merkle tree utilities and interfaces. Three major issues were reported, in IHasher.sol and TornadoTrees.sol.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "ABDK Consulting",
       "report_date": "2020-12-22",
       "repositories": [

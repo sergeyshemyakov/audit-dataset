@@ -1,22 +1,44 @@
-"""Expand a report's scope to the files its audited Solidity files import.
+"""Follow the imports of a report's audited Solidity files.
 
-A report whose ``imports`` is ``audited_unless_excluded`` audited, at every
-commit where it fully audited an ``evm`` file or directory, also every file of
-the audited repository those files import, transitively, except the files the
-report excludes (its ``not_audited`` paths in that repository, at any commit).
-The expansion never passes through an excluded file: a file imported only by
-excluded files stays unaudited. Dependencies are never followed: imports that
-resolve outside the repository, into a submodule, into a Foundry project's
-library directories (``lib`` or its ``libs``), or into ``node_modules`` or
-``vendor``-like directories are recorded as skipped.
+A report that was read for what it says about unlisted code (``unlisted`` in
+its summary) gets, at every commit where it fully audited an ``evm`` file or
+directory, the files those files import, transitively. Each reached file has
+one state, decided by what the report says:
 
-``fetch`` resolves the imports of every file the expansion reaches and stores
-them in the manifest under ``imports``; ``export`` expands the same way from
-that graph, and ``imports`` (the command) explains the expansion.
+- ``listed``: a path the report audited in full covers it. Its imports are followed.
+- ``partial``: only a partially audited path covers it. Nothing is implied from it.
+- ``excluded``: it is, or lies below, a ``not_audited`` path of the report in that
+  repository, at any commit; or it is dependency code and the report's general
+  statement about dependencies excludes them; or the report excludes everything
+  it does not list. The expansion stops there.
+- ``included``: dependency code the report's general statement says was reviewed.
+- ``implied``: the report is silent about it. Its imports are followed.
+
+Solidity makes everything a file imports nameable in the files that import it,
+so audited code can use a contract that only an excluded or partially audited
+file imports. The expansion therefore reads on from those files as well, but
+says less about what it finds there: a file the report is silent about is then
+``visible``, not ``implied``. Whether audited code names anything in it is for
+the consumer to tell, which parses the files.
+
+Imports are followed wherever they lead: into submodules at the commit the
+audited tree pins, into a Foundry project's library directories, ``vendor``-like
+directories, ``node_modules`` when committed, and other packages of the same
+repository. A path below a submodule is written as the audited repository sees
+it (``lib/solady/src/utils/LibClone.sol``); a ``SnapshotTree`` maps it back to
+the repository that holds it. An import that leads to nothing readable (an npm
+package that is not committed, a submodule that cannot be fetched) is recorded
+as skipped.
+
+``fetch`` resolves the imports of every file an expansion reads and stores them
+in the manifest under ``imports``, with what the tree knows about dependencies
+under ``trees``; ``export`` expands the same way from that, and ``imports``
+(the command) explains the expansion.
 """
 
 from __future__ import annotations
 
+import json
 import tomllib
 from collections import deque
 from dataclasses import dataclass
@@ -25,10 +47,23 @@ from typing import Any, Callable, Iterable, Mapping, Sequence
 
 from .git import full_commit
 from .scope import is_test_or_mock, is_under
+from .summary import (
+    DEPENDENCIES_EXCLUDED,
+    DEPENDENCIES_INCLUDED,
+    UNLISTED_NOT_MENTIONED,
+    scope_statements,
+)
 
-IMPORTS_AUDITED_UNLESS_EXCLUDED = "audited_unless_excluded"
-IMPORTS_NOT_AUDITED = "not_audited"
-IMPORTS_VALUES = {IMPORTS_AUDITED_UNLESS_EXCLUDED, IMPORTS_NOT_AUDITED}
+LISTED = "listed"
+PARTIAL = "partial"
+EXCLUDED = "excluded"
+INCLUDED = "included"
+IMPLIED = "implied"
+VISIBLE = "visible"
+# States from which a file's imports count as imports of the audited code.
+FOLLOWED_STATES = frozenset({LISTED, INCLUDED, IMPLIED})
+# States of files that are in a report's scope only because audited files import them.
+REACHED_STATES = (IMPLIED, EXCLUDED, INCLUDED, VISIBLE)
 FULL_AUDIT_STATUSES = {"audited_with_no_major_findings", "audited_with_major_findings"}
 PROJECT_CONFIG_NAMES = (
     "foundry.toml", "remappings.txt", "hardhat.config.js", "hardhat.config.ts",
@@ -37,6 +72,9 @@ PROJECT_CONFIG_NAMES = (
 # Files a project's imports are resolved with: remappings, and Foundry's library directories.
 RESOLUTION_CONFIG_NAMES = ("foundry.toml", "remappings.txt")
 FOUNDRY_DEFAULT_LIBRARIES = ("lib",)
+# Where a library keeps its sources, for the remapping forge derives for `lib/<name>`.
+LIBRARY_SOURCE_DIRECTORIES = ("src", "contracts", "")
+PACKAGE_CONFIG_NAME = "package.json"
 DEPENDENCY_SEGMENTS = {"node_modules", ".deps"}
 VENDORED_SEGMENTS = {
     "vendor", "vendored", "thirdparty", "third_party", "dependencies",
@@ -47,10 +85,10 @@ VENDORED_SEGMENTS = {
 
 @dataclass(frozen=True)
 class Edge:
-    """One import statement: the own file it resolves to, or why it is not followed."""
+    """One import statement: the file it resolves to, or why it leads to nothing readable."""
 
     import_path: str  # as written in the source
-    path: str | None = None
+    path: str | None = None  # as the audited repository sees it, also below a submodule
     skipped: str | None = None
 
     def __post_init__(self) -> None:
@@ -91,17 +129,106 @@ class ScopePaths:
     """One report's scope in one repository at one commit."""
 
     audited: tuple[tuple[str, str], ...]  # (path, path_kind) of fully audited versions
-    covered: tuple[str, ...]  # every audited scoped path, fully or partially
+    partial: tuple[tuple[str, str], ...]  # (path, path_kind) of partially audited versions
     excluded: tuple[str, ...]  # the report's not_audited paths in the repository
+    unlisted: str  # what the report says about code it does not list
+    dependencies: str | None  # its general statement about dependencies, if any
+
+
+@dataclass(frozen=True)
+class Reached:
+    """A file an expansion reached through imports, as one report sees it."""
+
+    state: str
+    importer: str  # the file that first imported it
+    dependency: bool  # third-party code for this report
+    reason: str  # for an excluded file: the excluding path, or which statement
 
 
 @dataclass
 class Expansion:
     roots: list[str]
-    added: dict[str, str]  # file -> the file that first imported it
-    pruned: dict[str, tuple[str, str]]  # excluded file -> (importer, excluding scope path)
-    skipped: list[tuple[str, Edge]]  # (importer, edge) not followed
-    missing: set[str]  # reached files without resolved imports in the graph
+    reached: dict[str, Reached]  # every reached file that is not a root
+    skipped: list[tuple[str, Edge]]  # (importer, edge) leading to nothing readable
+    missing: set[str]  # followed files without resolved imports in the graph
+    unread: set[str]  # other reached files without resolved imports in the graph
+
+    def in_state(self, state: str) -> list[str]:
+        return sorted(path for path, reached in self.reached.items() if reached.state == state)
+
+
+class SnapshotTree:
+    """What import resolution asks about a repository at a commit, submodules mounted."""
+
+    projects: Mapping[str, "Project"]  # by root, also those of mounted submodules
+    packages: Mapping[str, str]  # package directory -> name, of the audited repository
+
+    def has(self, path: str) -> bool:
+        """Whether a file exists at the path; may mount the submodule it lies in."""
+        raise NotImplementedError
+
+    def mount_of(self, path: str) -> str:
+        """Where the submodule holding the path is mounted, "" for the audited repository."""
+        raise NotImplementedError
+
+
+@dataclass(frozen=True)
+class TreeFacts:
+    """What deciding ``dependency`` needs to know about a tree, as the manifest keeps it."""
+
+    mounts: Mapping[str, tuple[str, str]]  # submodule mount path -> (repository, commit)
+    vendored: frozenset[str]  # reached files of the audited repository that are dependency code
+    packages: Mapping[str, str]  # package directory -> name, of the audited repository
+
+    def mount_of(self, path: str) -> str:
+        return max((mount for mount in self.mounts if is_under(path, mount)), key=len, default="")
+
+    def origin(self, path: str) -> tuple[str, str, str] | None:
+        """``(repository, commit, path there)`` of a path below a submodule."""
+        mount = self.mount_of(path)
+        if not mount:
+            return None
+        repository, commit = self.mounts[mount]
+        return repository, commit, path[len(mount) + 1:]
+
+    def package_of(self, path: str) -> str | None:
+        """The directory of the package holding a file of the audited repository."""
+        return max(
+            (directory for directory in self.packages if not directory or is_under(path, directory)),
+            key=len, default=None,
+        )
+
+    def own_packages(self, roots: Iterable[str]) -> frozenset[str]:
+        return frozenset(self.package_of(root) or "" for root in roots)
+
+    def is_dependency(self, path: str, own_packages: frozenset[str]) -> bool:
+        """Third-party code: in a submodule or a dependency directory, or in a package
+        of the repository that holds none of the audited files."""
+        if self.mount_of(path) or path in self.vendored:
+            return True
+        package = self.package_of(path)
+        return bool(package) and not any(is_under(own, package) for own in own_packages)
+
+    def to_json(self) -> dict[str, Any]:
+        return {
+            "mounts": {
+                mount: {"repository": repository, "commit": commit}
+                for mount, (repository, commit) in sorted(self.mounts.items())
+            },
+            "vendored": sorted(self.vendored),
+            "packages": dict(sorted(self.packages.items())),
+        }
+
+    @staticmethod
+    def from_json(value: dict[str, Any]) -> TreeFacts:
+        return TreeFacts(
+            {mount: (entry["repository"], entry["commit"]) for mount, entry in value["mounts"].items()},
+            frozenset(value["vendored"]),
+            dict(value["packages"]),
+        )
+
+
+NO_FACTS = TreeFacts({}, frozenset(), {})
 
 
 # --- Parsing ------------------------------------------------------------------
@@ -186,9 +313,19 @@ def load_project(root: str, configs: Mapping[str, bytes]) -> Project:
                 normalize_path(library) or library
                 for library in profile.get("libs", FOUNDRY_DEFAULT_LIBRARIES)
             )
-    except (UnicodeDecodeError, ValueError, tomllib.TOMLDecodeError, AttributeError) as error:
+    except (UnicodeDecodeError, ValueError, tomllib.TOMLDecodeError, AttributeError, TypeError) as error:
         return Project(root, (), libraries, f"invalid configuration: {error}")
     return Project(root, tuple(remappings), libraries, None)
+
+
+def package_name(config: bytes) -> str | None:
+    """The name a ``package.json`` gives its directory, by which other packages import it."""
+    try:
+        value = json.loads(config.decode("utf-8"))
+    except (UnicodeDecodeError, ValueError):
+        return None
+    name = value.get("name") if isinstance(value, dict) else None
+    return name if isinstance(name, str) and name else None
 
 
 # --- Resolving ----------------------------------------------------------------
@@ -213,17 +350,29 @@ def join_path(*parts: str) -> str:
     return "/".join(part for part in parts if part)
 
 
-def project_of(path: str, projects: Mapping[str, Project]) -> Project:
-    """The nearest project above a file; the repository root without configuration otherwise."""
-    directory = str(PurePosixPath(path).parent)
-    directory = "" if directory == "." else directory
+def parent_directory(path: str) -> str:
+    """The directory of a path, "" for the repository root."""
+    parent = str(PurePosixPath(path).parent)
+    return "" if parent == "." else parent
+
+
+def projects_of(path: str, tree: SnapshotTree) -> list[Project]:
+    """The projects whose settings apply to a file, nearest first.
+
+    The root of the audited repository and of every submodule is a project even
+    without configuration: imports resolve against it.
+    """
+    result: list[Project] = []
+    directory = parent_directory(path)
     while True:
-        if directory in projects:
-            return projects[directory]
+        project = tree.projects.get(directory)
+        if project is None and tree.mount_of(join_path(directory, "_")) == directory:
+            project = Project(directory, (), (), None)
+        if project is not None:
+            result.append(project)
         if not directory:
-            return Project("", (), (), None)
-        parent = str(PurePosixPath(directory).parent)
-        directory = "" if parent == "." else parent
+            return result
+        directory = parent_directory(directory)
 
 
 def select_remapping(project: Project, importer: str, import_path: str) -> Remapping | None:
@@ -242,72 +391,100 @@ def select_remapping(project: Project, importer: str, import_path: str) -> Remap
     return best
 
 
-def resolve_import(
-    importer: str,
-    import_path: str,
-    files: Mapping[str, Any],
-    gitlinks: frozenset[str],
-    projects: Mapping[str, Project],
-) -> Edge:
-    """Resolve one import of ``importer`` at a commit whose files are ``files``."""
+def resolve_import(importer: str, import_path: str, tree: SnapshotTree) -> Edge:
+    """Resolve one import of ``importer``, the way the audited project's toolchain would.
+
+    A relative import is resolved against the importing file. Any other import
+    is tried, in the projects that apply to the file from the nearest one up,
+    as a remapped path or else as a path below the project root; then as a path
+    in one of their library directories (the remapping forge derives for
+    ``lib/<name>``) or in ``node_modules``; then as a package of the repository.
+    """
     if import_path.startswith(("./", "../")):
-        directory = str(PurePosixPath(importer).parent)
-        candidate = normalize_path(join_path("" if directory == "." else directory, import_path))
+        candidate = normalize_path(join_path(parent_directory(importer), import_path))
         if candidate is None:
             return Edge(import_path, skipped="resolves outside the repository")
-        return classify(import_path, candidate, files, gitlinks, projects)
-    project = project_of(importer, projects)
-    if project.problem is not None:
-        return Edge(import_path, skipped=f"{project.root or '.'}: {project.problem}")
-    remapping = select_remapping(project, importer, import_path)
-    if remapping is not None:
-        target = remapping.target + import_path[len(remapping.prefix):]
+        return found(import_path, candidate, tree)
+    projects = projects_of(importer, tree)
+    hits: list[tuple[str, str]] = []  # ("remapped" | "direct", existing path), nearest project first
+    misses: list[str] = []
+    for project in projects:
+        if project.problem is not None:
+            misses.append(f"{project.root or '.'}: {project.problem}")
+            continue
+        remapping = select_remapping(project, importer, import_path)
+        target = import_path if remapping is None else remapping.target + import_path[len(remapping.prefix):]
         candidate = normalize_path(join_path(project.root, target))
         if candidate is None:
-            return Edge(import_path, skipped="remapped outside the repository")
-        return classify(import_path, candidate, files, gitlinks, projects)
-    project_candidate = normalize_path(join_path(project.root, import_path))
-    if project_candidate is None:
-        return Edge(import_path, skipped="resolves outside the repository")
-    candidates = sorted({project_candidate, normalize_path(import_path) or project_candidate})
-    existing = [path for path in candidates if path in files]
-    if len(existing) > 1:
-        return Edge(import_path, skipped=f"ambiguous: {' or '.join(existing)}")
-    return classify(import_path, existing[0] if existing else project_candidate,
-                    files, gitlinks, projects)
+            misses.append("resolves outside the repository")
+        elif not tree.has(candidate):
+            misses.append(f"not in the repository: {candidate}")
+        else:
+            hits.append(("direct" if remapping is None else "remapped", candidate))
+    if hits:
+        kind, path = hits[0]
+        # Two project roots of one repository both holding the path: solc would
+        # need the base path to choose, which the repository does not record.
+        others = sorted({
+            other for other_kind, other in hits[1:]
+            if kind == other_kind == "direct" and other != path
+            and tree.mount_of(other) == tree.mount_of(path)
+        })
+        if others:
+            return Edge(import_path, skipped=f"ambiguous: {' or '.join(sorted([path, *others]))}")
+        return Edge(import_path, path=path)
+    for project in projects:
+        for candidate in library_candidates(project, import_path):
+            if tree.has(candidate):
+                return Edge(import_path, path=candidate)
+    if not tree.mount_of(importer):
+        candidate = package_candidate(import_path, tree.packages)
+        if candidate is not None and tree.has(candidate):
+            return Edge(import_path, path=candidate)
+    return Edge(import_path, skipped=misses[0] if misses else f"not in the repository: {import_path}")
 
 
-def classify(
-    import_path: str,
-    candidate: str,
-    files: Mapping[str, Any],
-    gitlinks: frozenset[str],
-    projects: Mapping[str, Project],
-) -> Edge:
-    """Follow a resolved path only when it is an own file of the repository."""
-    reason = dependency_reason(candidate, gitlinks, projects)
-    if reason is not None:
-        return Edge(import_path, skipped=reason)
-    if candidate not in files:
+def found(import_path: str, candidate: str, tree: SnapshotTree) -> Edge:
+    if not tree.has(candidate):
         return Edge(import_path, skipped=f"not in the repository: {candidate}")
     return Edge(import_path, path=candidate)
 
 
-def dependency_reason(
-    path: str, gitlinks: frozenset[str], projects: Mapping[str, Project]
-) -> str | None:
+def library_candidates(project: Project, import_path: str) -> list[str]:
+    """Where a project's dependency directories may hold an import that names a library."""
+    name, _, rest = import_path.partition("/")
+    candidates: list[str | None] = []
+    for library in project.libraries:
+        for sources in LIBRARY_SOURCE_DIRECTORIES:
+            candidates.append(normalize_path(join_path(project.root, library, name, sources, rest)))
+        candidates.append(normalize_path(join_path(project.root, library, import_path)))
+    candidates.append(normalize_path(join_path(project.root, "node_modules", import_path)))
+    return [candidate for candidate in candidates if candidate is not None]
+
+
+def package_candidate(import_path: str, packages: Mapping[str, str]) -> str | None:
+    """``@scope/name/x.sol`` as a file of the repository's package named ``@scope/name``."""
+    matches = [
+        (name, directory) for directory, name in sorted(packages.items())
+        if import_path.startswith(f"{name}/")
+    ]
+    if not matches:
+        return None
+    name, directory = max(matches, key=lambda match: len(match[0]))
+    return normalize_path(join_path(directory, import_path[len(name) + 1:]))
+
+
+def vendored_reason(path: str, projects: Mapping[str, Project]) -> str | None:
+    """Why a file of the audited repository itself is dependency code, by its path."""
     parts = path.split("/")
-    for end in range(1, len(parts)):
-        if "/".join(parts[:end]) in gitlinks:
-            return f"submodule dependency: {path}"
     if DEPENDENCY_SEGMENTS & set(parts[:-1]):
-        return f"package dependency: {path}"
+        return "package dependency"
     if VENDORED_SEGMENTS & set(parts[:-1]):
-        return f"vendored dependency: {path}"
+        return "vendored dependency"
     for project in projects.values():
         for library in project.libraries:
             if is_under(path, join_path(project.root, library)):
-                return f"library dependency: {path}"
+                return "library dependency"
     return None
 
 
@@ -315,32 +492,57 @@ def dependency_reason(
 
 
 def report_scope_paths(report: dict[str, Any]) -> dict[tuple[str, str], ScopePaths]:
-    """The scopes a report expands, by ``(repository, commit)``; none unless it opted in."""
-    if not report["isRelevant"] or report.get("imports") != IMPORTS_AUDITED_UNLESS_EXCLUDED:
+    """The scopes of a report that are expanded, by ``(repository, commit)``: none
+    unless the report was read for what it says about unlisted code."""
+    unlisted, dependencies = scope_statements(report)
+    if not report["isRelevant"] or unlisted is None:
         return {}
     result: dict[tuple[str, str], ScopePaths] = {}
     for scope in report["scopes"]:
         repository = scope["repository"]
-        excluded = tuple(sorted(
-            path for path, path_data in scope["paths"].items()
-            if any(version["status"] == "not_audited" for version in path_data["versions"])
-        ))
+        excluded = excluded_paths(scope)
         audited: dict[str, set[tuple[str, str]]] = {}
-        covered: dict[str, set[str]] = {}
+        partial: dict[str, set[tuple[str, str]]] = {}
         for path, path_data in scope["paths"].items():
             for version in path_data["versions"]:
                 commit = full_commit(version["revision"])
                 if commit is None or version["status"] == "not_audited" or path_data["kind"] != "evm":
                     continue
-                covered.setdefault(commit, set()).add(path)
-                if version["status"] in FULL_AUDIT_STATUSES:
-                    audited.setdefault(commit, set()).add((path, path_data["path_kind"]))
+                paths = audited if version["status"] in FULL_AUDIT_STATUSES else partial
+                paths.setdefault(commit, set()).add((path, path_data["path_kind"]))
         for commit, paths in audited.items():
             assert (repository, commit) not in result, (report["id"], repository, commit)
             result[(repository, commit)] = ScopePaths(
-                tuple(sorted(paths)), tuple(sorted(covered[commit])), excluded
+                tuple(sorted(paths)), tuple(sorted(partial.get(commit, ()))), excluded,
+                unlisted, dependencies,
             )
     return result
+
+
+def excluded_paths(scope: dict[str, Any]) -> tuple[str, ...]:
+    """The paths a report says it did not review in one repository, at any commit."""
+    return tuple(sorted(
+        path for path, path_data in scope["paths"].items()
+        if any(version["status"] == "not_audited" for version in path_data["versions"])
+    ))
+
+
+def covers(scoped: Sequence[tuple[str, str]], path: str, scope: ScopePaths) -> bool:
+    """Whether one of the scoped paths covers a file: as the file itself, or as a
+    directory above it, which covers no test, mock, script or excluded file."""
+    for scoped_path, path_kind in scoped:
+        if path_kind == "file":
+            if path == scoped_path:
+                return True
+            continue
+        assert path_kind == "directory_recursive", path_kind
+        if (
+            path != scoped_path and is_under(path, scoped_path)
+            and not is_test_or_mock(path, scoped_path)
+            and excluding_path(path, scope) is None
+        ):
+            return True
+    return False
 
 
 def scope_roots(scope: ScopePaths, directory_files: Callable[[str], Iterable[str]]) -> list[str]:
@@ -352,15 +554,10 @@ def scope_roots(scope: ScopePaths, directory_files: Callable[[str], Iterable[str
             if path.endswith(".sol"):
                 roots.add(path)
             continue
-        assert path_kind == "directory_recursive", path_kind
-        for file in directory_files(path):
-            assert is_under(file, path), (file, path)
-            if (
-                file.endswith(".sol")
-                and not is_test_or_mock(file, path)
-                and excluding_path(file, scope) is None
-            ):
-                roots.add(file)
+        roots.update(
+            file for file in directory_files(path)
+            if file.endswith(".sol") and covers(((path, path_kind),), file, scope)
+        )
     return sorted(roots)
 
 
@@ -371,39 +568,72 @@ def excluding_path(path: str, scope: ScopePaths) -> str | None:
     return None
 
 
+def state_of(path: str, scope: ScopePaths, dependency: bool, mounted: bool) -> tuple[str, str]:
+    """The state of a reached file and, when it is excluded, what excludes it.
+
+    A scoped directory covers the files of the audited repository below it, not
+    those of a submodule mounted there.
+    """
+    if not mounted and covers(scope.audited, path, scope):
+        return LISTED, ""
+    if not mounted and covers(scope.partial, path, scope):
+        return PARTIAL, ""
+    excluded = excluding_path(path, scope)
+    if excluded is not None:
+        return EXCLUDED, excluded
+    if dependency and scope.dependencies == DEPENDENCIES_INCLUDED:
+        return INCLUDED, ""
+    if dependency and scope.dependencies == DEPENDENCIES_EXCLUDED:
+        return EXCLUDED, "the report's statement about dependencies"
+    if scope.unlisted == UNLISTED_NOT_MENTIONED:
+        return IMPLIED, ""
+    return EXCLUDED, "the report's statement about unlisted code"
+
+
 def expand(
-    roots: Sequence[str], scope: ScopePaths, graph: Mapping[str, Sequence[Edge]]
+    roots: Sequence[str],
+    scope: ScopePaths,
+    graph: Mapping[str, Sequence[Edge]],
+    facts: TreeFacts = NO_FACTS,
 ) -> Expansion:
-    """Breadth-first from the roots over own-file imports, never entering an excluded file."""
-    expansion = Expansion(list(roots), {}, {}, [], set())
-    reached_from: dict[str, str | None] = {root: None for root in roots}
-    queue = deque(roots)
-    visits = 0
-    while queue:
-        visits += 1
-        assert visits <= len(reached_from), "every file is enqueued once"
-        importer = queue.popleft()
-        edges = graph.get(importer)
-        if edges is None:
-            expansion.missing.add(importer)
-            continue
-        for edge in edges:
-            if edge.path is None:
-                expansion.skipped.append((importer, edge))
+    """Breadth-first from the roots over the imports, in two passes.
+
+    The first reads on only from files the report audited in full, includes by
+    its statement about dependencies, or is silent about: what it reaches is
+    imported by audited code, through code the report does not rule out. The
+    second reads on from everything else that was reached, so that every file
+    whose declarations the audited code can name is known; a file it finds that
+    the report is silent about is ``visible`` rather than ``implied``.
+    """
+    expansion = Expansion(list(roots), {}, [], set(), set())
+    own_packages = facts.own_packages(roots)
+    seen = set(roots)
+
+    def walk(queue: deque[str], follow_all: bool, without_imports: set[str]) -> None:
+        while queue:
+            importer = queue.popleft()
+            edges = graph.get(importer)
+            if edges is None:
+                without_imports.add(importer)
                 continue
-            if edge.path in reached_from:
-                continue
-            excluded = excluding_path(edge.path, scope)
-            if excluded is not None:
-                expansion.pruned.setdefault(edge.path, (importer, excluded))
-                continue
-            reached_from[edge.path] = importer
-            queue.append(edge.path)
-    for path, importer in reached_from.items():
-        if importer is None or any(is_under(path, covered) for covered in scope.covered):
-            continue
-        assert excluding_path(path, scope) is None, path
-        expansion.added[path] = importer
+            for edge in edges:
+                if edge.path is None:
+                    expansion.skipped.append((importer, edge))
+                    continue
+                if edge.path in seen:
+                    continue
+                seen.add(edge.path)
+                dependency = facts.is_dependency(edge.path, own_packages)
+                state, reason = state_of(edge.path, scope, dependency, bool(facts.mount_of(edge.path)))
+                if follow_all and state == IMPLIED:
+                    state = VISIBLE
+                expansion.reached[edge.path] = Reached(state, importer, dependency, reason)
+                if follow_all or state in FOLLOWED_STATES:
+                    queue.append(edge.path)
+
+    walk(deque(roots), False, expansion.missing)
+    stopped_at = [path for path, reached in expansion.reached.items() if reached.state not in FOLLOWED_STATES]
+    walk(deque(stopped_at), True, expansion.unread)
     return expansion
 
 
@@ -429,35 +659,61 @@ def graph_to_manifest(
     return result
 
 
+def facts_from_manifest(manifest: dict[str, Any]) -> dict[tuple[str, str], TreeFacts]:
+    """What a manifest knows about the dependencies of each tree, by ``(repository, commit)``."""
+    return {
+        (repository, commit): TreeFacts.from_json(tree)
+        for repository, commits in manifest.get("trees", {}).items()
+        for commit, tree in commits.items()
+    }
+
+
+def facts_to_manifest(facts: Mapping[tuple[str, str], TreeFacts]) -> dict[str, dict[str, Any]]:
+    result: dict[str, dict[str, Any]] = {}
+    for (repository, commit), tree in sorted(facts.items()):
+        result.setdefault(repository, {})[commit] = tree.to_json()
+    return result
+
+
 # --- Explaining ---------------------------------------------------------------
+
+STATE_MARKS = {LISTED: "=", PARTIAL: "~", EXCLUDED: "-", INCLUDED: "*", IMPLIED: "+", VISIBLE: "?"}
 
 
 def explain(
     summary: dict[str, Any],
     graph: Mapping[tuple[str, str], Mapping[str, Sequence[Edge]]],
+    facts: Mapping[tuple[str, str], TreeFacts],
     report_id: str | None,
 ) -> list[str]:
-    """Human-readable expansion of every opted-in report, or of one."""
+    """Human-readable expansion of every expanded report, or of one."""
     lines: list[str] = []
     for report in summary["reports"]:
         if report_id is not None and report["id"] != report_id:
             continue
         for (repository, commit), scope in sorted(report_scope_paths(report).items()):
             files = graph.get((repository, commit), {})
-            roots = scope_roots(scope, lambda directory: [p for p in files if is_under(p, directory)])
-            lines.extend(explain_expansion(report["id"], repository, commit, expand(roots, scope, files)))
+            tree = facts.get((repository, commit), NO_FACTS)
+            roots = scope_roots(scope, lambda directory: [
+                path for path in files if is_under(path, directory) and not tree.mount_of(path)
+            ])
+            expansion = expand(roots, scope, files, tree)
+            lines.extend(explain_expansion(report["id"], repository, commit, expansion))
     return lines
 
 
 def explain_expansion(report_id: str, repository: str, commit: str, expansion: Expansion) -> list[str]:
-    lines = [f"{report_id} {repository}@{commit[:8]}: {len(expansion.roots)} roots, "
-             f"{len(expansion.added)} added, {len(expansion.pruned)} excluded"]
-    for path, importer in sorted(expansion.added.items()):
-        lines.append(f"  + {path}  (imported by {importer})")
-    for path, (importer, excluded) in sorted(expansion.pruned.items()):
-        lines.append(f"  - {path}  (imported by {importer}, excluded by {excluded})")
+    counts = ", ".join(f"{len(expansion.in_state(state))} {state}" for state in REACHED_STATES)
+    lines = [f"{report_id} {repository}@{commit[:8]}: {len(expansion.roots)} roots, {counts}"]
+    for path, reached in sorted(expansion.reached.items()):
+        notes = [f"imported by {reached.importer}"]
+        if reached.dependency:
+            notes.append("dependency")
+        if reached.reason:
+            notes.append(f"excluded by {reached.reason}")
+        lines.append(f"  {STATE_MARKS[reached.state]} {path}  ({reached.state}, {', '.join(notes)})")
     for importer, edge in expansion.skipped:
         lines.append(f"  . {edge.import_path}  ({importer}: {edge.skipped})")
-    for path in sorted(expansion.missing):
+    for path in sorted(expansion.missing | expansion.unread):
         lines.append(f"  ! {path}  has no resolved imports; rerun fetch")
     return lines

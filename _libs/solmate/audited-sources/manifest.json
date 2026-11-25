@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "collection": "_libs/solmate",
   "sources": [
     {
@@ -170,6 +170,21 @@
     {
       "repository": "Rari-Capital/solmate",
       "repository_url": "https://github.com/Rari-Capital/solmate.git",
+      "source_path": "src/auth/Auth.sol",
+      "path_kind": "file",
+      "commit": "83607e0a9e10105ee1f5cf5eaa0ce61026c8eb32",
+      "files": [
+        {
+          "path": "src/auth/Auth.sol",
+          "git_object": "2cf755921768fbc0118e5472039dba3e2dc5e464",
+          "git_mode": "100644",
+          "sha256": "a5bfc94ae6d11043d754344a767b46ef80fad29e5416c677d48ec84e21034321"
+        }
+      ]
+    },
+    {
+      "repository": "Rari-Capital/solmate",
+      "repository_url": "https://github.com/Rari-Capital/solmate.git",
       "source_path": "src/auth/authorities/MultiRolesAuthority.sol",
       "path_kind": "file",
       "commit": "83607e0a9e10105ee1f5cf5eaa0ce61026c8eb32",
@@ -334,5 +349,105 @@
     }
   ],
   "skipped": [],
-  "unavailable": []
+  "unavailable": [],
+  "imports": {
+    "Rari-Capital/solmate": {
+      "0216f06c9f208ced1fdb3187d4a7a17aedec84a3": {
+        "src/tokens/ERC721.sol": []
+      },
+      "5d1533cbe94adf848bf322e1c9a4a43bb159bb5b": {
+        "src/tokens/ERC1155.sol": []
+      },
+      "83607e0a9e10105ee1f5cf5eaa0ce61026c8eb32": {
+        "src/auth/Auth.sol": [],
+        "src/auth/authorities/MultiRolesAuthority.sol": [
+          {
+            "import": "../Auth.sol",
+            "path": "src/auth/Auth.sol"
+          }
+        ]
+      },
+      "938b2d6925e24de7542bce4b08f3f03988a82245": {
+        "src/auth/Auth.sol": [],
+        "src/auth/Trust.sol": [],
+        "src/auth/authorities/RolesAuthority.sol": [
+          {
+            "import": "../Auth.sol",
+            "path": "src/auth/Auth.sol"
+          }
+        ],
+        "src/auth/authorities/TrustAuthority.sol": [
+          {
+            "import": "../Trust.sol",
+            "path": "src/auth/Trust.sol"
+          },
+          {
+            "import": "../Auth.sol",
+            "path": "src/auth/Auth.sol"
+          }
+        ],
+        "src/tokens/ERC20.sol": [],
+        "src/tokens/WETH.sol": [
+          {
+            "import": "./ERC20.sol",
+            "path": "src/tokens/ERC20.sol"
+          },
+          {
+            "import": "../utils/SafeTransferLib.sol",
+            "path": "src/utils/SafeTransferLib.sol"
+          }
+        ],
+        "src/utils/Bytes32AddressLib.sol": [],
+        "src/utils/CREATE3.sol": [
+          {
+            "import": "./Bytes32AddressLib.sol",
+            "path": "src/utils/Bytes32AddressLib.sol"
+          }
+        ],
+        "src/utils/FixedPointMathLib.sol": [],
+        "src/utils/ReentrancyGuard.sol": [],
+        "src/utils/SSTORE2.sol": [],
+        "src/utils/SafeCastLib.sol": [],
+        "src/utils/SafeTransferLib.sol": [
+          {
+            "import": "../tokens/ERC20.sol",
+            "path": "src/tokens/ERC20.sol"
+          }
+        ]
+      }
+    }
+  },
+  "trees": {
+    "Rari-Capital/solmate": {
+      "0216f06c9f208ced1fdb3187d4a7a17aedec84a3": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@rari-capital/solmate"
+        }
+      },
+      "5d1533cbe94adf848bf322e1c9a4a43bb159bb5b": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@rari-capital/solmate"
+        }
+      },
+      "83607e0a9e10105ee1f5cf5eaa0ce61026c8eb32": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@rari-capital/solmate"
+        }
+      },
+      "938b2d6925e24de7542bce4b08f3f03988a82245": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@rari-capital/solmate"
+        }
+      }
+    }
+  },
+  "dependencies": {}
 }

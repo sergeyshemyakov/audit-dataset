@@ -65,10 +65,11 @@ type PathEntry = {
 type Report = {
   id: string;
   report_file: string; // POSIX path of the Markdown report relative to <collection>/reports
-  title: string;
+  title: string; // without the auditor, which has a field of its own
   description: string; // audit scope and purpose in no more than 2 sentences
   isRelevant: boolean;
-  imports?: "audited_unless_excluded" | "not_audited"; // relevant reports only, see "Imports and exclusions"
+  unlisted?: "not_mentioned" | "excluded"; // relevant reports only, see "Unlisted code, dependencies and exclusions"
+  dependencies?: "included" | "excluded"; // relevant reports only, same section
   auditor: string;
   report_date: string | null; // YYYY-MM-DD when known
   repositories: { id: string; url: string }[];
@@ -79,7 +80,7 @@ type Report = {
 };
 
 type AuditSummary = {
-  schema_version: "1.7.0";
+  schema_version: "1.8.0";
   project: string;
   reports: Report[];
 };
@@ -88,6 +89,8 @@ type AuditSummary = {
 Repository ids are canonical and derived from the repository URL: GitHub repositories are `owner/repo` exactly as GitHub spells them (no `.git` suffix), GitHub gists are `gist/<owner>/<id>`, other hosts are `<host>/<path>`. Run `python3 -m audit_dataset repository-id <url>` to print the id for a URL. Every `scopes[].repository` must equal one of the report's `repositories[].id`. Do not record repository lineage (forks) in the summary; the `repositories` command derives it into the root `repositories.json`.
 
 For a project that forks another codebase (for example an OP stack fork), scope only what the report scopes. Never expand a fork's audit to upstream files: the consumer resolves upstream coverage through the repository registry.
+
+Write `title` without the auditor's name in trailing parentheses: "Optimism Bedrock Audit", not "Optimism Bedrock Audit (OpenZeppelin)"; "Optimism Cycle 19 Security Review (MCP L1)", not "(Cantina, MCP L1)". Parentheses that say something else stay, and so does a list of several firms such as "(Spearbit/Cantina)".
 
 Every report must have `description` and `isRelevant`. An irrelevant report must have `scopes: []`; do not extract its repository paths, revisions, or findings. `repositories` may contain repositories that are directly identified while classifying the report, including an inaccessible private repository, but do not investigate the report further merely to populate that array.
 
@@ -108,6 +111,14 @@ A version has major findings when the report leaves findings labeled **Major or 
 
 Every version with major findings has status `audited_with_major_findings` or `partially_audited_with_major_findings` and carries `major_finding_ids`: the identifiers of exactly those Major/Critical findings that are open in that revision of that path. Downstream consumers use them to name a specific finding when the vulnerable revision turns out to be deployed onchain. The array is omitted entirely (never empty) for every other status.
 
+A finding is open in a revision only if its code is there. Reports often pin one commit taken late in the engagement and give no fix status per finding, although the findings were made on earlier code and some were fixed before that commit. So when the report gives no fix status for a Major/Critical finding (no fix log, no label such as resolved or acknowledged, no fix-review revision) and the finding quotes code or cites lines of a file, read that file at the recorded commit (`gh api "repos/<owner>/<repo>/contents/<path>?ref=<commit>" -H "Accept: application/vnd.github.raw+json"`) and compare the quote with it:
+
+- The statement the finding blames is still there: the finding is open in that revision. A difference only in formatting, line numbers or identifier names keeps it.
+- The statement is gone or reads differently (another operator, another check, another call): the finding was made on an earlier revision that the report does not identify. Do not attribute it to the recorded revision, and tell the user which findings you left out and what differs.
+- You cannot tell: keep the finding and raise it with the user.
+
+Compare the text only; do not judge whether a vulnerability is fixed. A finding that quotes no code and cites no lines stays on the revision the report names.
+
 Write each identifier exactly as the report prints it, so that searching the report for the string locates the finding:
 
 1. If the report assigns explicit identifiers (`H-01`, `C01`, `TOB-SCROLL-13`, `CLAB-21`, `V-KLA-VUL-006`, `CVF-7`, `#00`, `GLOBAL-01`, an Immunefi submission number such as `37251`), copy the identifier verbatim. Drop only surrounding markdown, brackets (`[H01]` becomes `H01`), and trailing punctuation.
@@ -123,26 +134,37 @@ Derive status mechanically: full coverage of the file or directory gives `audite
 
 1. Discover every `.md` audit report recursively under the collection's `reports` directory, including `reports/irrelevant`. Read enough of every report to describe its audit scope and purpose in no more than two sentences and decide `isRelevant`. Do not extract paths, revisions, or findings until this decision is made.
 2. For each irrelevant report, create one `reports[]` entry with its identifying metadata, `description`, `isRelevant: false`, and `scopes: []`. Do not perform the detailed extraction rules below for it.
-3. For each relevant report, set `isRelevant: true` and extract each explicitly scoped repository and file path. Use `directory_recursive` only when the report scopes the directory or all files beneath it; never expand generic protocol prose into inferred files. Write every path relative to the repository root with `/` separators and no leading or trailing `/` (`contracts`, not `contracts/`), spelled exactly as the repository spells it at that revision, including letter case: `contracts/L1/Foo.sol` and `contracts/l1/Foo.sol` are different paths.
+3. For each relevant report, set `isRelevant: true` and extract each explicitly scoped repository and file path. Use `directory_recursive` only when the report scopes the directory or all files beneath it; never expand generic protocol prose into inferred files. When the scope list is not in the report but in a document it points to (a contest README, a scope file in the repository), take the paths from that document only if it is public and pinned to a commit; otherwise extract only what the report itself names. Write every path relative to the repository root with `/` separators and no leading or trailing `/` (`contracts`, not `contracts/`), spelled exactly as the repository spells it at that revision, including letter case: `contracts/L1/Foo.sol` and `contracts/l1/Foo.sol` are different paths.
 4. Record the most precise revision stated by the report. Expand abbreviated commit hashes when unambiguous. Never infer a historical commit from a report date or today's value of `master`. Preserve unresolved branches or tags with `commit: null`.
 5. Give every revision the committer timestamp of its commit, fetched from GitHub (never from the report text, the report date, or a guess). Use the authenticated GitHub CLI: `gh api repos/<owner>/<repo>/commits/<commit> --jq .commit.committer.date` for a repository commit, or `gh api gists/<gist_id>/commits --jq '.[] | select(.version == "<commit>") | .committed_at'` for a gist revision. Store the returned value verbatim as `timestamp` (or `start_timestamp`/`end_timestamp` for a `commit_range`). Set the timestamp to `null` whenever `commit` is `null` or GitHub no longer serves the commit; do not substitute another commit's date. If possible, write a script that fetches all timestamps for `audit-summary.json` instead of fetching it for each individual revision.
 6. Add every report-mentioned initial version, modification, fix review, and re-audit to the affected path's `versions[]`, earlier to later. Do not add unrelated intermediate repository commits.
 7. Use a full-audit status only when the whole file/directory was reviewed. Use a partial status for selected functions, properties, diffs, formal models, cryptographic aspects, or other limited coverage.
-8. Put a file explicitly excluded or explicitly left unaudited in `paths` with status `not_audited`; do not create a separate exclusion array. Always make sure to mention explicitly unaudited files, wherever the report says so: scope sections, "out of scope" notes, and findings such as ABDK's "We didn't review these files" followed by a listing of imports. Do not mark unmentioned repository files as unaudited. See "Imports and exclusions".
+8. Put a file explicitly excluded or explicitly left unaudited in `paths` with status `not_audited`; do not create a separate exclusion array. Always make sure to mention explicitly unaudited files, wherever the report says so: scope sections, "out of scope" notes, and findings such as ABDK's "We didn't review these files" followed by a listing of imports. Do not mark unmentioned repository files as unaudited. See "Unlisted code, dependencies and exclusions".
 9. Resolve every pull-request reference through the repository host or Git refs. Unless the report identifies a specific PR commit, use the PR's final head/tip commit after all PR changes, not the merge commit, and store its full hash as a normal `kind: "commit"` version for each path to which the report associates the PR. Confirm that the PR changes that path. Use the merge commit only when the report explicitly covers the merged snapshot. Insert the resolved commit at the correct point in each version chain. Retain `kind: "pull_request"` with `commit: null` only when the PR cannot be resolved; never create a separate PR/change collection.
 10. Create `<collection>/reports/irrelevant` if necessary. Move each newly classified irrelevant Markdown report and its corresponding raw report file, such as a same-stem PDF or HTML file, into that directory. Do not move an already nested report again, overwrite an existing file, or move a file whose association with the report is uncertain.
 11. After all moves, store `report_file` relative to `<collection>/reports` using `/` separators: for example, `Relevant.md` or `irrelevant/Wallet Audit.md`. Create exactly one `reports[]` entry for every recursively discovered Markdown report, whether it was already irrelevant or was moved during this run.
 
-## Imports and exclusions
+## Unlisted code, dependencies and exclusions
 
-A fully audited file counts as reviewed together with every file of the audited repository it imports, transitively, unless the report says that file was not reviewed. The `fetch` command resolves the imports at the audited commit (relative imports, remappings, project-root imports) and `export` adds them to the report's audits; never list imported files yourself. Your job is to record what the report excludes and whether the rule applies:
+The contracts in the files a report lists inherit from, link and call other code: other files of the audited repository, and third-party code such as OpenZeppelin. Reports rarely say whether that code was reviewed. The dataset records what the report says about it, and nothing more: `fetch` follows the imports of every fully audited file at the audited commit (relative imports, remappings, submodules at their pinned commits, packages of the same repository) and `export` labels each reached file as implied, excluded, included or merely visible. Never list imported files yourself. Your job is to record three things, each only from words in the report:
 
-1. Set `imports: "audited_unless_excluded"` on a relevant report after you have recorded every exclusion it states (rule 8). Imports are then expanded from every `evm` version with status `audited_with_*` of that report; partial versions (fix reviews, diffs, selected functions) never expand.
-2. Set `imports: "not_audited"` when the report excludes everything it does not list, for example "Any other file not explicitly mentioned in the scope section is considered out of scope", "the review was limited to the files listed above", or "imported contracts and libraries were not reviewed" said of the project's own code. Statements that only exclude third-party code (OpenZeppelin, other external libraries, `lib/`, `node_modules`) do not need this: dependencies are never expanded.
-3. Record each exclusion as a `not_audited` path of the report's scope, in the repository it belongs to, at the revision of the audit that excludes it: a `file`, or a `directory_recursive` for an excluded directory, with the `kind` of the code. Resolve relative import strings in listings against the importing file's directory (`./base/Multicall.sol` imported by `contracts/SwapRouter.sol` is `contracts/base/Multicall.sol`) and confirm that the path exists at that commit. An exclusion applies to the whole report in that repository, and the expansion never passes through an excluded file: what only an excluded file imports stays unaudited.
-4. When it is unclear whether a statement excludes the imports (for example "the scope is limited to the four files in `src`" when those files import other own files), choose `not_audited` and raise it with the user. Omitting `imports` keeps the report on its listed files only, which is the state of every report not yet reviewed for this rule.
+1. **`unlisted`: what the report says about code of the audited repository that it does not list.** Set it on a relevant report after you have read the report for such a statement and recorded every exclusion it states (rule 8).
+   - `"excluded"` when the report says in words that everything it does not list was not reviewed: "Any other file not explicitly mentioned in the scope section is considered out of scope", "the review was limited to the files listed above", a disclaimer that limits the review to the code noted as in scope, or "imported contracts and libraries were not reviewed" said of the project's own code.
+   - `"not_mentioned"` in every other case: the report names its files, a directory, a file tree or a commit and says nothing about the rest. A scope heading, a table of audited files, "the review focused on X", a narrow engagement, or your own doubt is not an exclusion. Neither is a statement that only limits depth ("we reviewed the changes only"): that is what the partial statuses are for.
+   - Omit the field only when you have not read the report for this. Nothing is derived from the imports of such a report.
+2. **`dependencies`: a general statement about third-party code** (OpenZeppelin and other external libraries, `lib/`, `node_modules`, submodules). Set it only when the report makes one, and only together with `unlisted`.
+   - `"excluded"`: "external libraries are assumed to behave correctly", "third-party dependencies are out of scope".
+   - `"included"`: "the listed contracts with all imports (recursively)", "dependencies were also reviewed".
+   - A liability disclaimer for third-party software, or a remark that the code uses OpenZeppelin, is not a statement about scope: omit the field.
+3. **Exclusions**: each file or directory the report says was not reviewed, as a `not_audited` path of the report's scope, in the repository it belongs to, at the revision of the audit that excludes it: a `file`, or a `directory_recursive` for an excluded directory, with the `kind` of the code. This includes exclusions inside a directory you scoped: when a report scopes `contracts` and says under Modules that only `StateChannelModule.sol` was audited, the other modules are `not_audited` paths. Resolve relative import strings in listings against the importing file's directory (`./base/Multicall.sol` imported by `contracts/SwapRouter.sol` is `contracts/base/Multicall.sol`) and confirm that the path exists at that commit. An exclusion applies to the whole report in that repository, and nothing is implied through an excluded file: what only an excluded file imports is recorded as visible to the audited code, not as implied by the report.
 
-Check the result with `python3 -m audit_dataset imports <collection> --report <id>` after `fetch`: it lists every added file with the file that imported it, every excluded file the expansion stopped at, and every import it did not follow.
+Only fully audited `evm` versions (status `audited_with_*`) are followed; partial versions (fix reviews, diffs, selected functions) imply nothing.
+
+When a statement is ambiguous between the two values of `unlisted` (for example "the scope is limited to the four files in `src`" when those files import other own files), choose `"excluded"` only if the sentence limits the review, and raise it with the user.
+
+Summaries with `schema_version: "1.7.0"` predate this section. They carry `imports` instead: `"audited_unless_excluded"` reads as `unlisted: "not_mentioned"` and `"not_audited"` as `unlisted: "excluded"`, although `"not_audited"` was also chosen for unclear reports. When you update such a summary, re-read every report that has `imports` for the three points above, replace the field, apply the title rule, and set `schema_version` to `"1.8.0"`.
+
+Check the result with `python3 -m audit_dataset imports <collection> --report <id>` after `fetch`: it lists every reached file with its state and the file that imported it, marks dependency code, and lists every import that led to nothing readable.
 
 ## Do not extract
 
@@ -150,17 +172,17 @@ Check the result with `python3 -m audit_dataset imports <collection> --report <i
 - Counts or details for findings below Major/Critical severity, or counts of any findings.
 - Coverage prose, review phases, finding severities, remediation lineage between versions, report evidence, line citations, version notes, scope notes, or scope-precision fields.
 - Team biographies, methodology boilerplate, person-days, disclaimers, severity explanations, or general protocol descriptions.
-- Files merely referenced as dependencies, examples, or context unless the report explicitly audits them or explicitly excludes them; imports are expanded by the pipeline, not by you.
+- Files merely referenced as dependencies, examples, or context unless the report explicitly audits them or explicitly excludes them; imports are followed by the pipeline, not by you.
 - Deployment addresses, production bytecode, or guesses about which audited version is deployed.
 
-`python3 -m audit_dataset render <collection>` validates the summary and fails on: unknown keys, non-canonical repository ids, scopes naming unknown repositories, malformed paths, unknown statuses, path kinds or kinds, `major_finding_ids` missing for a `*_with_major_findings` status or present for any other, missing or malformed `description`, `isRelevant`, `report_date` or `report_file`, an `imports` other than `audited_unless_excluded` or `not_audited` or on an irrelevant report, non-empty scopes on an irrelevant report, timestamps that are not ISO 8601 UTC whole seconds, and two versions disagreeing on one commit's timestamp. Confirm before running it: full-length commit hashes where known, timestamps that are `null` only when the commit is `null` or unavailable on GitHub, and chronological version order.
+`python3 -m audit_dataset render <collection>` validates the summary and fails on: unknown keys, non-canonical repository ids, scopes naming unknown repositories, malformed paths, unknown statuses, path kinds or kinds, `major_finding_ids` missing for a `*_with_major_findings` status or present for any other, missing or malformed `description`, `isRelevant`, `report_date` or `report_file`, an `unlisted` other than `not_mentioned` or `excluded`, a `dependencies` other than `included` or `excluded` or without `unlisted`, either of them on an irrelevant report, an `imports` field, a title that names the auditor in trailing parentheses, non-empty scopes on an irrelevant report, timestamps that are not ISO 8601 UTC whole seconds, and two versions disagreeing on one commit's timestamp. Confirm before running it: full-length commit hashes where known, timestamps that are `null` only when the commit is `null` or unavailable on GitHub, and chronological version order.
 
 # After writing the final audit-summary.json
 
 Run `python3 -m audit_dataset pipeline <collection>`. It executes, in order:
 
 1. `render`: validates the schema and the canonical repository ids and renders `audit-summary.md`. Confirm that every report has a description, only relevant reports have source tables, irrelevant reports appear at the bottom, the commit dates are populated, and all report links resolve after the moves.
-2. `fetch`: fetches every pinned, audited source of relevant reports into `<collection>/audited-sources`.
+2. `fetch`: fetches every pinned, audited source of relevant reports into `<collection>/audited-sources`, and every file the fully audited files of a report with `unlisted` import, also from submodules. It asks GitHub (authenticated `gh`) for the current name of each submodule's repository.
 3. `format`: formats the fetched Solidity files with the shared forge fmt config.
 4. `index`: verifies the stored files against `manifest.json` and records their post-format hashes.
 5. `repositories`: refreshes the root `repositories.json` registry (requires the authenticated GitHub CLI; pass `--no-lookup` to skip the GitHub lineage lookups).

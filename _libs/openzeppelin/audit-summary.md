@@ -8,6 +8,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Report: [contracts__audits__2017-03.md](<reports/contracts__audits__2017-03.md>)
 - Auditor: New Alchemy
 - Description: New Alchemy security audit of every contract in the contracts folder of the OpenZeppelin (then zeppelin-solidity) library at commit 9c5975a7, covering lifecycle, ownership, payment, token and root-level contracts. The purpose was to assess whether the library contracts are safe to deploy as-is as reusable building blocks.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts"><code>OpenZeppelin/openzeppelin-contracts</code></a>
 
@@ -21,6 +22,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Level K
 - Date: 2018-10-21
 - Description: Level K reviewed all smart contracts in the OpenZeppelin library&#x27;s contracts directory at commit dac5bccf to prepare the OpenZeppelin v2.0 release. The report records fix PRs for each finding, including the removal of BreakInvariantBounty after a Critical frontrunning issue.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts"><code>OpenZeppelin/openzeppelin-contracts</code></a>
 
@@ -34,6 +36,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Report: [formal-verification__fv__reports__2021-10.md](<reports/formal-verification__fv__reports__2021-10.md>)
 - Auditor: Certora
 - Description: Certora formally verified OpenZeppelin&#x27;s Governor module and five governance extensions against specifications covering proposal state validity and transitions, invocation privileges, and vote casting and counting integrity, and additionally performed a manual audit of these contracts. The review targeted commit 4088540a of the Certora fork of openzeppelin-contracts.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/Certora/openzeppelin-contracts"><code>Certora/openzeppelin-contracts</code></a>
 
@@ -52,6 +55,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Report: [formal-verification__fv__reports__2022-03.md](<reports/formal-verification__fv__reports__2022-03.md>)
 - Auditor: Certora
 - Description: Certora formal verification (March 2 to April 6, 2022) of OpenZeppelin governance-related contracts (ERC20Votes, ERC20FlashMint, ERC20Wrapper, TimelockController, draft-ERC721Votes, Votes, AccessControl, ERC1155) against CVL specifications written by Certora, complemented by a manual review of the same contracts. Guarantees are limited to the specified properties; the report lists two Medium, one Low and three Informational issues and no Critical/High findings.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/Certora/openzeppelin-contracts"><code>Certora/openzeppelin-contracts</code></a>
 
@@ -64,6 +68,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Report: [formal-verification__fv__reports__2022-05.md](<reports/formal-verification__fv__reports__2022-05.md>)
 - Auditor: Certora
 - Description: Certora formal verification (May 9 - June 10, 2022) of OpenZeppelin&#x27;s Initializable, GovernorPreventLateQuorum and ERC1155 Burnable/Pausable/Supply extensions at commit 109778c, proving CVL rules written by Certora and OpenZeppelin. It also documents three issues found by the prover, including a High-severity quorum-update bug in GovernorVotesQuorumFraction, and bug-injection tests of the specifications.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts"><code>OpenZeppelin/openzeppelin-contracts</code></a>
 
@@ -83,6 +88,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2022-11-15
 - Description: Security audit of the OpenZeppelin Checkpoints library (contracts/utils/Checkpoints.sol) together with its Math.sol and SafeCast.sol dependencies in the openzeppelin-contracts repository at commit 14f98db. The audit found no Critical, High, or Medium issues; two Low and four informational findings were reported, with three fixes reviewed at specific commits.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts"><code>OpenZeppelin/openzeppelin-contracts</code></a>
 
@@ -99,6 +105,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2022-11-15
 - Description: Security audit by the OpenZeppelin audit team of the new ERC4626 tokenized-vault extension and the Math library in OpenZeppelin/openzeppelin-contracts at commit 14f98db. The review found one High severity issue (vault deposit front-running / share-price inflation) that remained unresolved, plus low-severity and informational items whose fixes were verified in individual commits.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts"><code>OpenZeppelin/openzeppelin-contracts</code></a>
 
@@ -116,7 +123,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2023-05-09
 - Description: OpenZeppelin&#x27;s pre-release security audit of the new and changed contracts of OpenZeppelin Contracts v4.9, primarily the governance and access-control (AccessManager, AccessControlDefaultAdminRules) contracts plus selected token, proxy and utility files. Scoped files were reviewed in full at the stated commits, except a set of utility and token files where only the 4.8-to-4.9 diff was reviewed.
-- Imports of fully audited files: not audited
+- Code the report does not list: excluded by the report
 
 ### Repository: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts"><code>OpenZeppelin/openzeppelin-contracts</code></a>
 
@@ -139,7 +146,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2023-10-03
 - Description: OpenZeppelin Security Services audit of the OpenZeppelin Contracts v5.0 release, performed in five phases (2023-06-05 to 2023-09-15) covering ERC-20/ERC-1155 tokens, proxies and meta-transactions, ERC-721 and access control, the new AccessManager, and the governance module, each at a specific repository commit. Selected utility files were reviewed only for their changes between versions 4.9 and 5.0, and fixes were reviewed in the referenced pull requests.
-- Imports of fully audited files: not audited
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts"><code>OpenZeppelin/openzeppelin-contracts</code></a>
 
@@ -200,6 +207,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2024-10-03
 - Description: Two-phase security audit by OpenZeppelin of the OpenZeppelin Contracts v5.1 release at commit aba9ff6: Phase 1 reviewed only the changes since v5.0.0 in previously audited contracts, and Phase 2 fully reviewed the contracts newly added in v5.1 (VestingWalletCliff, GovernorCountingFractional, ERC1363, ERC20TemporaryApproval, ERC721/ERC1155 utils, and new utils such as P256, RSA, Heap, MerkleTree, CircularBuffer, SlotDerivation, Packing, ReentrancyGuardTransient). No Critical or High severity issues were found; fixes were reviewed per finding in individual pull requests.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts"><code>OpenZeppelin/openzeppelin-contracts</code></a>
 
@@ -239,6 +247,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2024-12-04
 - Description: OpenZeppelin security audit of the new and modified contracts of the OpenZeppelin Contracts v5.2 release (ERC-4337/ERC-7579 account utilities, CAIP-2/CAIP-10 libraries, GovernorCountingOverridable and VotesExtended, Clones with immutable args, Strings/Bytes/NoncesKeyed utilities and the ERC1363 refactor) at commit 98d28f9 of OpenZeppelin/openzeppelin-contracts. No Critical or High severity issues were found; fixes for the two Medium and the lower-severity issues were reviewed at specific pull-request commits.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts"><code>OpenZeppelin/openzeppelin-contracts</code></a>
 
@@ -270,6 +279,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2025-04-03
 - Description: Diff audit of the OpenZeppelin Contracts v5.3 release (commit d4b2e98 against acd4ff7) covering 27 explicitly listed Solidity files, with newly added files (ERC-6909, new Governor extensions, Calldata) reviewed in full and modified files reviewed on their diff. Fixes were reviewed at commit f3f0a64 on branch release-v5.3.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts"><code>OpenZeppelin/openzeppelin-contracts</code></a>
 
@@ -284,6 +294,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2025-07-17
 - Description: OpenZeppelin&#x27;s diff audit of the openzeppelin-contracts library at release v5.4 (commit f6fea857) compared against release v5.3 (commit e4f7021), with all new files fully audited. Covers ERC-7913 signers and multisigners, ERC-7821 batch execution, EIP-2935 Blockhash, GovernorNoncesKeyed, EnumerableMap/EnumerableSet enhancements, contracts ported from community-contracts, and trivially modified files.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts"><code>OpenZeppelin/openzeppelin-contracts</code></a>
 
@@ -305,6 +316,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2025-10-17
 - Description: Diff audit of the OpenZeppelin Contracts changes between base commit c64a1ed (v5.4.0) and target commit f5edfc0 (v5.5.0 rc), limited to SafeERC20, ECDSA, and SignatureChecker. The review covered the refactored assembly-based SafeERC20 helpers and the new calldata-based ECDSA and SignatureChecker functions.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts"><code>OpenZeppelin/openzeppelin-contracts</code></a>
 
@@ -321,6 +333,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2025-11-26
 - Description: OpenZeppelin security audit (October 27-31, 2025) of three scopes for the Open Intents Framework: the ERC-7888 Broadcaster, Receiver, BlockHashProverPointer, their interfaces and the ProverUtils library in openintentsframework/broadcaster at commit 3522b4c, the RLP library contracts/utils/RLP.sol in OpenZeppelin/openzeppelin-contracts at commit d9f966f, and BroadcasterOracle.sol in openintentsframework/oif-contracts at commit acc7f9c. One High severity issue (H-01, Receiver prover copies could not be updated) was found and resolved, one Medium issue remained acknowledged, and fixes were reviewed at individual pull-request commits.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/openintentsframework/broadcaster"><code>openintentsframework/broadcaster</code></a>
 
@@ -362,6 +375,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2026-02-27
 - Description: Diff audit by OpenZeppelin of the openzeppelin-contracts library between release v5.4.0 and release candidate v5.6.0-rc.1, covering 125 explicitly listed Solidity files across access, account, crosschain, finance, governance, interfaces, metatx, proxy, token and utils. Fixes were reviewed and the report states the final state including all implemented resolutions is reflected in commit 5fd1781 (release v5.6.1).
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/OpenZeppelin/openzeppelin-contracts"><code>OpenZeppelin/openzeppelin-contracts</code></a>
 

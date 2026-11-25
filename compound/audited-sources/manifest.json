@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "collection": "compound",
   "sources": [
     {
@@ -125,6 +125,21 @@
     {
       "repository": "compound-finance/compound-protocol",
       "repository_url": "https://github.com/compound-finance/compound-protocol",
+      "source_path": "contracts/EIP20Interface.sol",
+      "path_kind": "file",
+      "commit": "55729b31b85220ab42e26d7b6db0ff6c0eb0dd23",
+      "files": [
+        {
+          "path": "contracts/EIP20Interface.sol",
+          "git_object": "f0f8e69bf09d6244f0bcac8be74376f79537cc40",
+          "git_mode": "100644",
+          "sha256": "f5550b5dfc403e811ac74f9a0c60286c89abb019b8492e58a922cdbc71d702e0"
+        }
+      ]
+    },
+    {
+      "repository": "compound-finance/compound-protocol",
+      "repository_url": "https://github.com/compound-finance/compound-protocol",
       "source_path": "contracts/Governance/Comp.sol",
       "path_kind": "file",
       "commit": "55729b31b85220ab42e26d7b6db0ff6c0eb0dd23",
@@ -149,6 +164,21 @@
           "git_object": "1a7a027879fa74e656a2e5660b3e2427a0ddadc5",
           "git_mode": "100644",
           "sha256": "8959d6ee2f87760a4d84d1c94bac667da44c6677c93074e85ff6aab309f22c6e"
+        }
+      ]
+    },
+    {
+      "repository": "compound-finance/compound-protocol",
+      "repository_url": "https://github.com/compound-finance/compound-protocol",
+      "source_path": "contracts/SafeMath.sol",
+      "path_kind": "file",
+      "commit": "55729b31b85220ab42e26d7b6db0ff6c0eb0dd23",
+      "files": [
+        {
+          "path": "contracts/SafeMath.sol",
+          "git_object": "d42f81ce8b2717646a6acd88cc5f9f8185cadb7a",
+          "git_mode": "100644",
+          "sha256": "dcfabe2981b555b919cb750e2aba50711c6e5d11d9376238e97a56e0e26b8b46"
         }
       ]
     },
@@ -215,6 +245,21 @@
     {
       "repository": "compound-finance/compound-protocol",
       "repository_url": "https://github.com/compound-finance/compound-protocol",
+      "source_path": "contracts/EIP20Interface.sol",
+      "path_kind": "file",
+      "commit": "6858417c91921208c0b3ff342b11065c09665b1b",
+      "files": [
+        {
+          "path": "contracts/EIP20Interface.sol",
+          "git_object": "f0f8e69bf09d6244f0bcac8be74376f79537cc40",
+          "git_mode": "100644",
+          "sha256": "f5550b5dfc403e811ac74f9a0c60286c89abb019b8492e58a922cdbc71d702e0"
+        }
+      ]
+    },
+    {
+      "repository": "compound-finance/compound-protocol",
+      "repository_url": "https://github.com/compound-finance/compound-protocol",
       "source_path": "contracts/Governance/Comp.sol",
       "path_kind": "file",
       "commit": "6858417c91921208c0b3ff342b11065c09665b1b",
@@ -239,6 +284,21 @@
           "git_object": "caf126d43f5e474f2e69384f904b420b87ee70c6",
           "git_mode": "100644",
           "sha256": "2912f386a4359e8c9a85c61b6d7d76ce32bb30c675b21b3ab2e68946cb3d1155"
+        }
+      ]
+    },
+    {
+      "repository": "compound-finance/compound-protocol",
+      "repository_url": "https://github.com/compound-finance/compound-protocol",
+      "source_path": "contracts/SafeMath.sol",
+      "path_kind": "file",
+      "commit": "6858417c91921208c0b3ff342b11065c09665b1b",
+      "files": [
+        {
+          "path": "contracts/SafeMath.sol",
+          "git_object": "d42f81ce8b2717646a6acd88cc5f9f8185cadb7a",
+          "git_mode": "100644",
+          "sha256": "dcfabe2981b555b919cb750e2aba50711c6e5d11d9376238e97a56e0e26b8b46"
         }
       ]
     },
@@ -350,6 +410,21 @@
     {
       "repository": "compound-finance/compound-protocol",
       "repository_url": "https://github.com/compound-finance/compound-protocol",
+      "source_path": "contracts/SafeMath.sol",
+      "path_kind": "file",
+      "commit": "f244c2270f905287cb731d8fd3693ac77f8404f9",
+      "files": [
+        {
+          "path": "contracts/SafeMath.sol",
+          "git_object": "1217f8ff9f704f2aadee78d763ea962c354a7bb7",
+          "git_mode": "100644",
+          "sha256": "2b6f1ef6f590659a591cc9a020033b5da9307337177d042b0d33e38c67fa2acd"
+        }
+      ]
+    },
+    {
+      "repository": "compound-finance/compound-protocol",
+      "repository_url": "https://github.com/compound-finance/compound-protocol",
       "source_path": "contracts/Timelock.sol",
       "path_kind": "file",
       "commit": "f244c2270f905287cb731d8fd3693ac77f8404f9",
@@ -454,5 +529,106 @@
     }
   ],
   "skipped": [],
-  "unavailable": []
+  "unavailable": [],
+  "imports": {
+    "compound-finance/compound-protocol": {
+      "55729b31b85220ab42e26d7b6db0ff6c0eb0dd23": {
+        "contracts/EIP20Interface.sol": [],
+        "contracts/Governance/Comp.sol": [
+          {
+            "import": "../EIP20Interface.sol",
+            "path": "contracts/EIP20Interface.sol"
+          }
+        ],
+        "contracts/Governance/GovernorAlpha.sol": [
+          {
+            "import": "../SafeMath.sol",
+            "path": "contracts/SafeMath.sol"
+          }
+        ],
+        "contracts/SafeMath.sol": []
+      },
+      "6858417c91921208c0b3ff342b11065c09665b1b": {
+        "contracts/EIP20Interface.sol": [],
+        "contracts/Governance/Comp.sol": [
+          {
+            "import": "../EIP20Interface.sol",
+            "path": "contracts/EIP20Interface.sol"
+          },
+          {
+            "import": "../SafeMath.sol",
+            "path": "contracts/SafeMath.sol"
+          }
+        ],
+        "contracts/Governance/GovernorAlpha.sol": [
+          {
+            "import": "../SafeMath.sol",
+            "path": "contracts/SafeMath.sol"
+          }
+        ],
+        "contracts/SafeMath.sol": []
+      },
+      "f244c2270f905287cb731d8fd3693ac77f8404f9": {
+        "contracts/SafeMath.sol": [],
+        "contracts/Timelock.sol": [
+          {
+            "import": "./SafeMath.sol",
+            "path": "contracts/SafeMath.sol"
+          }
+        ]
+      },
+      "f86c247f6f81e14f8e0fd78402653a0b8371266a": {
+        "contracts/Governance/GovernorBravoDelegate.sol": [
+          {
+            "import": "./GovernorBravoInterfaces.sol",
+            "path": "contracts/Governance/GovernorBravoInterfaces.sol"
+          }
+        ],
+        "contracts/Governance/GovernorBravoDelegator.sol": [
+          {
+            "import": "./GovernorBravoInterfaces.sol",
+            "path": "contracts/Governance/GovernorBravoInterfaces.sol"
+          }
+        ],
+        "contracts/Governance/GovernorBravoInterfaces.sol": []
+      }
+    }
+  },
+  "trees": {
+    "compound-finance/compound-protocol": {
+      "55729b31b85220ab42e26d7b6db0ff6c0eb0dd23": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "compound-protocol",
+          "scenario": "compound-scenarios"
+        }
+      },
+      "6858417c91921208c0b3ff342b11065c09665b1b": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "compound-protocol",
+          "scenario": "compound-scenarios"
+        }
+      },
+      "f244c2270f905287cb731d8fd3693ac77f8404f9": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "compound-protocol",
+          "scenario": "compound-money-market"
+        }
+      },
+      "f86c247f6f81e14f8e0fd78402653a0b8371266a": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "compound-protocol",
+          "scenario": "compound-protocol-alpha"
+        }
+      }
+    }
+  },
+  "dependencies": {}
 }

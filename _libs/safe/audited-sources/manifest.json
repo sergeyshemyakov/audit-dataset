@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "collection": "_libs/safe",
   "sources": [
     {
@@ -3518,6 +3518,246 @@
     {
       "repository": "safe-fndn/safe-smart-account",
       "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/Safe.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/Safe.sol",
+          "git_object": "3bd2ed9e9693838db0fb21960d00b78427a63c87",
+          "git_mode": "100644",
+          "sha256": "b9787bca46b76a7303e0b32fb897f8cbf2db4cfb6026936ccb005e8c41bd1cac"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/base/Executor.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/base/Executor.sol",
+          "git_object": "121834566d72e6386a6f6f784a5142e9e2bfb4e6",
+          "git_mode": "100644",
+          "sha256": "fb211b8e5a528ec7279f28fbc836bbaf9b824925b276663ec81d9b85e379f43b"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/base/FallbackManager.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/base/FallbackManager.sol",
+          "git_object": "baf307a6c3bebea6fb446eb4a62fc95f1fe27730",
+          "git_mode": "100644",
+          "sha256": "0f0482edcf6428331d3162f2cae65bceff99f7b72a675d1ce6ba362b2ed870ef"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/base/GuardManager.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/base/GuardManager.sol",
+          "git_object": "4bd3cc0d327dd0581eb3bb50e2302ef75680b787",
+          "git_mode": "100644",
+          "sha256": "f85c7ccfbb72847b30ca46790c59351a5b582989fbbead709cc6df9ce5afbf05"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/base/ModuleManager.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/base/ModuleManager.sol",
+          "git_object": "ecc3938adaee3f7f13f93712f45bb0045368d28b",
+          "git_mode": "100644",
+          "sha256": "dd90f9dbe78dac3194e764a044fbcc2ee51663a50d9e48b3655f5053ba73a55d"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/base/OwnerManager.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/base/OwnerManager.sol",
+          "git_object": "29a5a4880d2257fa08a82c6fa13a4920c354b8a9",
+          "git_mode": "100644",
+          "sha256": "c40aafde524f55c8b7a6bdb329970f567639ca69055b8c7bc91b7f7a755ae97b"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/common/Enum.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/common/Enum.sol",
+          "git_object": "9ce0f5d539b7f1b8d3a92d2840bbd3f18fd25e0c",
+          "git_mode": "100644",
+          "sha256": "76b04cb0a85968b99472293017de4303d7532fd428d706dcded6b8e8bbd8bfc6"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/common/NativeCurrencyPaymentFallback.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/common/NativeCurrencyPaymentFallback.sol",
+          "git_object": "5903ba1d7b2604d83e023273a135acf87fa78caa",
+          "git_mode": "100644",
+          "sha256": "896a5812e4b9bd8a7b36329c37fb74b742d65f751ce56a633a6a9d536be163fc"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/common/SecuredTokenTransfer.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/common/SecuredTokenTransfer.sol",
+          "git_object": "bddffd8318a1cde4e92d65a38f7ac211c4239f1d",
+          "git_mode": "100644",
+          "sha256": "3d04ce35ac73c159db9101226313a63a1b669d6f5758e65f1b33275746de67cc"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/common/SelfAuthorized.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/common/SelfAuthorized.sol",
+          "git_object": "4e60bb9d6ba0e46aab3d2167e776930f12e8d6a0",
+          "git_mode": "100644",
+          "sha256": "482dc006038abf8f9bbd81428519f1051e58cc3166d980ca8d60ef81f88821ca"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/common/SignatureDecoder.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/common/SignatureDecoder.sol",
+          "git_object": "b505cbf67e45ad2ae6651b31e0fbbb7da73d07fb",
+          "git_mode": "100644",
+          "sha256": "e3f538b9e829947c620653ff7d274510d12e7b09089098a2951f845f83076c8e"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/common/Singleton.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/common/Singleton.sol",
+          "git_object": "9fafeba8c0589b764fe558a913411217e9420a9a",
+          "git_mode": "100644",
+          "sha256": "dd6e1eb6292caa256bcbc953a7f64ec26d3262c4b9e6893e002f0c602ec1985d"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/common/StorageAccessible.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/common/StorageAccessible.sol",
+          "git_object": "0b72714bacc7c6ebe6d72585672b2230e3024852",
+          "git_mode": "100644",
+          "sha256": "ad06db25e900974bba445ce033f3aa309187a4a2716148291d799beae9ec43dd"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/external/SafeMath.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/external/SafeMath.sol",
+          "git_object": "37d4353a0de5bd518be190bde9f74fe020aeef17",
+          "git_mode": "100644",
+          "sha256": "a581315d1b6dbd8057321411b15668c85004f5cc970a61e86dc4f476bfb1d4f7"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/interfaces/IERC165.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/interfaces/IERC165.sol",
+          "git_object": "732cc02b109aec16f55b6851bbdc1aaea463a5f5",
+          "git_mode": "100644",
+          "sha256": "a3c2a6c79e818860d6c1f8e404e1c95cbd4aec57131882e78e94ce212e021e38"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/interfaces/ISignatureValidator.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/interfaces/ISignatureValidator.sol",
+          "git_object": "d2cd2e5fed06065c7792f9de07d9e1c7d1fbfb17",
+          "git_mode": "100644",
+          "sha256": "72e20993af263b2c5c04ef5ac0923fb425ce1bd486a5ccb53c9c62ef028668d8"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
       "source_path": "contracts/libraries/SafeMigration.sol",
       "path_kind": "file",
       "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
@@ -3527,6 +3767,21 @@
           "git_object": "5db13ca606fa1aa0876b1d970aa2836d36014abc",
           "git_mode": "100644",
           "sha256": "c333445fa665d57170561341e29b923c6e08db1b800c19521fa7b2970ab07a71"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/libraries/SafeStorage.sol",
+      "path_kind": "file",
+      "commit": "07d4fc7b298a69226bfdfd260bed7d92557cfd26",
+      "files": [
+        {
+          "path": "contracts/libraries/SafeStorage.sol",
+          "git_object": "7621fddcb5c0404742e77faa5dcaac686a3ea54b",
+          "git_mode": "100644",
+          "sha256": "693771e89cefd30a72e15e97858fc1b270b0ec7f6298cbe8512e7f15d352e05f"
         }
       ]
     },
@@ -3737,6 +3992,21 @@
           "git_object": "fe2c981efb09f53e294d8a5c023741e111e1b075",
           "git_mode": "100644",
           "sha256": "0298c55ca5c40ab594e6d92f53e83ef342017b894c354f43dbd0ec9227c1bf89"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/external/SafeMath.sol",
+      "path_kind": "file",
+      "commit": "1a9e5ce768e134c556770ea50e114fd83666b8a8",
+      "files": [
+        {
+          "path": "contracts/external/SafeMath.sol",
+          "git_object": "84f95a0d9a0481a41bd69197b7f70744738f9345",
+          "git_mode": "100644",
+          "sha256": "a1140acdca191717e7f548c0517af850a9d4623c686e91c00f07768a0ee90fa7"
         }
       ]
     },
@@ -4553,6 +4823,51 @@
     {
       "repository": "safe-fndn/safe-smart-account",
       "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/base/Executor.sol",
+      "path_kind": "file",
+      "commit": "271921f4b37613b3d49bf33452dbcd81be219247",
+      "files": [
+        {
+          "path": "contracts/base/Executor.sol",
+          "git_object": "293c74799c29913504065fa4a0aa551e65b8f4d2",
+          "git_mode": "100644",
+          "sha256": "08362adee8c0d44cf3069d5f997e992dba366c5fd46d2334351adbbe222f889a"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/base/FallbackManager.sol",
+      "path_kind": "file",
+      "commit": "271921f4b37613b3d49bf33452dbcd81be219247",
+      "files": [
+        {
+          "path": "contracts/base/FallbackManager.sol",
+          "git_object": "8de981c4584576d67fe430055f29086e10f142d9",
+          "git_mode": "100644",
+          "sha256": "622595fc9aab74d0c28d3be3e95f1556f34082e6a35f93b671e00e0e90c216f2"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/base/Module.sol",
+      "path_kind": "file",
+      "commit": "271921f4b37613b3d49bf33452dbcd81be219247",
+      "files": [
+        {
+          "path": "contracts/base/Module.sol",
+          "git_object": "298fc41ca3a5f36d4d271b80a6fbf8db09f4fb53",
+          "git_mode": "100644",
+          "sha256": "a4ae8e6b6fd0514ae1254a304d8048e471e0c9e0b6e1dfaa28f418515fb45c23"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
       "source_path": "contracts/base/ModuleManager.sol",
       "path_kind": "file",
       "commit": "271921f4b37613b3d49bf33452dbcd81be219247",
@@ -4562,6 +4877,126 @@
           "git_object": "ba8668d900f2e150707f334f22cf4bbc2e859270",
           "git_mode": "100644",
           "sha256": "fc48467ae557ff5e6299b892da3d2a06d533d5865c0ff8c8366fa7c093b82b39"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/base/OwnerManager.sol",
+      "path_kind": "file",
+      "commit": "271921f4b37613b3d49bf33452dbcd81be219247",
+      "files": [
+        {
+          "path": "contracts/base/OwnerManager.sol",
+          "git_object": "4e99e4ea198160455688b6ac9d377cd8e169c606",
+          "git_mode": "100644",
+          "sha256": "258f40aa0a78ad538fd2fcb1dfa977facce060ec71dd62eab15a2bbab93c724a"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/common/Enum.sol",
+      "path_kind": "file",
+      "commit": "271921f4b37613b3d49bf33452dbcd81be219247",
+      "files": [
+        {
+          "path": "contracts/common/Enum.sol",
+          "git_object": "3288682a4f815e5eae51cb19452e8d0cff4ea98f",
+          "git_mode": "100644",
+          "sha256": "05126558aad7cf379d3b4d74d6631997163591823a8bb10f11c983fb93abf566"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/common/MasterCopy.sol",
+      "path_kind": "file",
+      "commit": "271921f4b37613b3d49bf33452dbcd81be219247",
+      "files": [
+        {
+          "path": "contracts/common/MasterCopy.sol",
+          "git_object": "d98cd37767588514f8d585508a664094efa44f98",
+          "git_mode": "100644",
+          "sha256": "ec465eaa0f00b7f042831da6298807726611a8e2ec77816523f4c77f4e8a7b19"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/common/SecuredTokenTransfer.sol",
+      "path_kind": "file",
+      "commit": "271921f4b37613b3d49bf33452dbcd81be219247",
+      "files": [
+        {
+          "path": "contracts/common/SecuredTokenTransfer.sol",
+          "git_object": "1ba688e9fd99178e8bc59962f5437fb576ef280b",
+          "git_mode": "100644",
+          "sha256": "310efb86de545b6a2294d725f26f86e5802c99da4625fc4d03675a90c6484d6d"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/common/SelfAuthorized.sol",
+      "path_kind": "file",
+      "commit": "271921f4b37613b3d49bf33452dbcd81be219247",
+      "files": [
+        {
+          "path": "contracts/common/SelfAuthorized.sol",
+          "git_object": "d5892fcf9eaf0546b741b9c6b39b39c27de05910",
+          "git_mode": "100644",
+          "sha256": "adf5f8844b4b5895177c653db341b31616c6b0889b2cb215ad23367fe79c60db"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/common/SignatureDecoder.sol",
+      "path_kind": "file",
+      "commit": "271921f4b37613b3d49bf33452dbcd81be219247",
+      "files": [
+        {
+          "path": "contracts/common/SignatureDecoder.sol",
+          "git_object": "87020c4658c5ed09a1a4352e437d73f73bbedea3",
+          "git_mode": "100644",
+          "sha256": "381bbd5064a1df976dae7d59c96e1b693f1f6eb2f052b7d076a044773f4a022a"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/external/GnosisSafeMath.sol",
+      "path_kind": "file",
+      "commit": "271921f4b37613b3d49bf33452dbcd81be219247",
+      "files": [
+        {
+          "path": "contracts/external/GnosisSafeMath.sol",
+          "git_object": "2e388666c8d8f9033fcb4f0dd172539f87ef3327",
+          "git_mode": "100644",
+          "sha256": "744e07a955d9efea27fb72f87689b7eca69e3bb15382ce492d3cecb5344c9fc6"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/interfaces/ISignatureValidator.sol",
+      "path_kind": "file",
+      "commit": "271921f4b37613b3d49bf33452dbcd81be219247",
+      "files": [
+        {
+          "path": "contracts/interfaces/ISignatureValidator.sol",
+          "git_object": "ff8a7478fd35b5dda0c7025bb2619d4b0cc918cd",
+          "git_mode": "100644",
+          "sha256": "a1b33ee53e52478045d0758bf33e323124a6f0b6a5c27ee61e967b7ec27fa0a6"
         }
       ]
     },
@@ -7025,6 +7460,156 @@
     {
       "repository": "safe-fndn/safe-smart-account",
       "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/interfaces/ERC1155TokenReceiver.sol",
+      "path_kind": "file",
+      "commit": "834e798aa51291cccaf0594921194928716e9892",
+      "files": [
+        {
+          "path": "contracts/interfaces/ERC1155TokenReceiver.sol",
+          "git_object": "6a13ebd1e875d44d53067035f938e61c3f1d9ff0",
+          "git_mode": "100644",
+          "sha256": "658334bb10cfe8c64193d8e6f6df65898671f93a101ef3e2b386059426f75019"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/interfaces/ERC721TokenReceiver.sol",
+      "path_kind": "file",
+      "commit": "834e798aa51291cccaf0594921194928716e9892",
+      "files": [
+        {
+          "path": "contracts/interfaces/ERC721TokenReceiver.sol",
+          "git_object": "a575050265ca5b41c03fbe9d0551e6e9ef9da52d",
+          "git_mode": "100644",
+          "sha256": "ba8b296279c87d4b22a6f110ec657c6352cabc93bebaf24dd87d30f6379fcc83"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/interfaces/ERC777TokensRecipient.sol",
+      "path_kind": "file",
+      "commit": "834e798aa51291cccaf0594921194928716e9892",
+      "files": [
+        {
+          "path": "contracts/interfaces/ERC777TokensRecipient.sol",
+          "git_object": "ac790c9f8d20d3d433c3fb9a0dab38502f1d0509",
+          "git_mode": "100644",
+          "sha256": "3bfd575aec28b870cba4c331c09af441ab16434d37f584dae412ecbbc821cf03"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/interfaces/IERC165.sol",
+      "path_kind": "file",
+      "commit": "834e798aa51291cccaf0594921194928716e9892",
+      "files": [
+        {
+          "path": "contracts/interfaces/IERC165.sol",
+          "git_object": "732cc02b109aec16f55b6851bbdc1aaea463a5f5",
+          "git_mode": "100644",
+          "sha256": "a3c2a6c79e818860d6c1f8e404e1c95cbd4aec57131882e78e94ce212e021e38"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/interfaces/IFallbackManager.sol",
+      "path_kind": "file",
+      "commit": "834e798aa51291cccaf0594921194928716e9892",
+      "files": [
+        {
+          "path": "contracts/interfaces/IFallbackManager.sol",
+          "git_object": "45b626d87e2fc2d90464f86f3107fcde3027c7f2",
+          "git_mode": "100644",
+          "sha256": "e15ba7178a1d1b2e29d159d22f5f51d49eea6d7a187de95ba10f99603342bb5d"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/interfaces/IGuardManager.sol",
+      "path_kind": "file",
+      "commit": "834e798aa51291cccaf0594921194928716e9892",
+      "files": [
+        {
+          "path": "contracts/interfaces/IGuardManager.sol",
+          "git_object": "f5f12542408fa49fefed2be47354f02d8a889d16",
+          "git_mode": "100644",
+          "sha256": "a817f0249d5c4bf40fb53da3e2d779fca9d6a49921d9ce1a0c1bfeeacc3feed9"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/interfaces/IModuleManager.sol",
+      "path_kind": "file",
+      "commit": "834e798aa51291cccaf0594921194928716e9892",
+      "files": [
+        {
+          "path": "contracts/interfaces/IModuleManager.sol",
+          "git_object": "a28b9bde695c11973d6789469e00a355dc696ebd",
+          "git_mode": "100644",
+          "sha256": "a2033fca628536e9393ecc48a3cfe5c6ecd8bf04eed3f72d553d538ea115206d"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/interfaces/IOwnerManager.sol",
+      "path_kind": "file",
+      "commit": "834e798aa51291cccaf0594921194928716e9892",
+      "files": [
+        {
+          "path": "contracts/interfaces/IOwnerManager.sol",
+          "git_object": "7737e794dd8d32253d6a75b6e3c20d097ce2f38e",
+          "git_mode": "100644",
+          "sha256": "8bfcb4f34996ad2569da4fef5dcca16b41f50d8154f8cc81b321a303572fb87a"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/interfaces/ISafe.sol",
+      "path_kind": "file",
+      "commit": "834e798aa51291cccaf0594921194928716e9892",
+      "files": [
+        {
+          "path": "contracts/interfaces/ISafe.sol",
+          "git_object": "9cfc971c00bf9081092dcd9ea0b9a027ccc0815d",
+          "git_mode": "100644",
+          "sha256": "dae7e5327cdc3f14edccf2ee5e2f91c5adef3f3715ded6a66f5284e1efb88c75"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/interfaces/ISignatureValidator.sol",
+      "path_kind": "file",
+      "commit": "834e798aa51291cccaf0594921194928716e9892",
+      "files": [
+        {
+          "path": "contracts/interfaces/ISignatureValidator.sol",
+          "git_object": "6ee2d6a0b42828ed74193cf8a0def736f70101cc",
+          "git_mode": "100644",
+          "sha256": "4720968bfb36625fb9d2f28f94459c969c65410fab343f291a65dbc904aae512"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
       "source_path": "contracts/libraries/CreateCall.sol",
       "path_kind": "file",
       "commit": "834e798aa51291cccaf0594921194928716e9892",
@@ -7169,6 +7754,21 @@
           "git_object": "2bdf6e4988f79f0802d8747f6a3cb7fc56f882c3",
           "git_mode": "100644",
           "sha256": "04b7598f398da70b472d1dda8d79b28510b09b2221aff1dc6a72c508592e6489"
+        }
+      ]
+    },
+    {
+      "repository": "safe-fndn/safe-smart-account",
+      "repository_url": "https://github.com/safe-fndn/safe-smart-account",
+      "source_path": "contracts/proxies/IProxyCreationCallback.sol",
+      "path_kind": "file",
+      "commit": "834e798aa51291cccaf0594921194928716e9892",
+      "files": [
+        {
+          "path": "contracts/proxies/IProxyCreationCallback.sol",
+          "git_object": "b247086e7699f09820e0b2245386a10e163e77f3",
+          "git_mode": "100644",
+          "sha256": "78ca88734b4de8023898b0f5ad0517ed68ad4174c183856ff9b5dcf633a55f4f"
         }
       ]
     },
@@ -9213,5 +9813,2250 @@
       "reason": "path kind other is not fetched"
     }
   ],
-  "unavailable": []
+  "unavailable": [],
+  "imports": {
+    "safe-fndn/safe-smart-account": {
+      "07d4fc7b298a69226bfdfd260bed7d92557cfd26": {
+        "contracts/Safe.sol": [
+          {
+            "import": "./base/ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          },
+          {
+            "import": "./base/OwnerManager.sol",
+            "path": "contracts/base/OwnerManager.sol"
+          },
+          {
+            "import": "./base/FallbackManager.sol",
+            "path": "contracts/base/FallbackManager.sol"
+          },
+          {
+            "import": "./base/GuardManager.sol",
+            "path": "contracts/base/GuardManager.sol"
+          },
+          {
+            "import": "./common/NativeCurrencyPaymentFallback.sol",
+            "path": "contracts/common/NativeCurrencyPaymentFallback.sol"
+          },
+          {
+            "import": "./common/Singleton.sol",
+            "path": "contracts/common/Singleton.sol"
+          },
+          {
+            "import": "./common/SignatureDecoder.sol",
+            "path": "contracts/common/SignatureDecoder.sol"
+          },
+          {
+            "import": "./common/SecuredTokenTransfer.sol",
+            "path": "contracts/common/SecuredTokenTransfer.sol"
+          },
+          {
+            "import": "./common/StorageAccessible.sol",
+            "path": "contracts/common/StorageAccessible.sol"
+          },
+          {
+            "import": "./interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "./external/SafeMath.sol",
+            "path": "contracts/external/SafeMath.sol"
+          }
+        ],
+        "contracts/base/Executor.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          }
+        ],
+        "contracts/base/FallbackManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/base/GuardManager.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "../interfaces/IERC165.sol",
+            "path": "contracts/interfaces/IERC165.sol"
+          }
+        ],
+        "contracts/base/ModuleManager.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "./Executor.sol",
+            "path": "contracts/base/Executor.sol"
+          }
+        ],
+        "contracts/base/OwnerManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/common/Enum.sol": [],
+        "contracts/common/NativeCurrencyPaymentFallback.sol": [],
+        "contracts/common/SecuredTokenTransfer.sol": [],
+        "contracts/common/SelfAuthorized.sol": [],
+        "contracts/common/SignatureDecoder.sol": [],
+        "contracts/common/Singleton.sol": [],
+        "contracts/common/StorageAccessible.sol": [],
+        "contracts/external/SafeMath.sol": [],
+        "contracts/interfaces/IERC165.sol": [],
+        "contracts/interfaces/ISignatureValidator.sol": [],
+        "contracts/libraries/SafeMigration.sol": [
+          {
+            "import": "../libraries/SafeStorage.sol",
+            "path": "contracts/libraries/SafeStorage.sol"
+          },
+          {
+            "import": "../Safe.sol",
+            "path": "contracts/Safe.sol"
+          }
+        ],
+        "contracts/libraries/SafeStorage.sol": [],
+        "contracts/libraries/SafeToL2Migration.sol": [
+          {
+            "import": "../libraries/SafeStorage.sol",
+            "path": "contracts/libraries/SafeStorage.sol"
+          },
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          }
+        ],
+        "contracts/libraries/SafeToL2Setup.sol": [
+          {
+            "import": "../libraries/SafeStorage.sol",
+            "path": "contracts/libraries/SafeStorage.sol"
+          }
+        ]
+      },
+      "1a9e5ce768e134c556770ea50e114fd83666b8a8": {
+        "contracts/GnosisSafe.sol": [
+          {
+            "import": "./base/ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          },
+          {
+            "import": "./base/OwnerManager.sol",
+            "path": "contracts/base/OwnerManager.sol"
+          },
+          {
+            "import": "./base/FallbackManager.sol",
+            "path": "contracts/base/FallbackManager.sol"
+          },
+          {
+            "import": "./common/MasterCopy.sol",
+            "path": "contracts/common/MasterCopy.sol"
+          },
+          {
+            "import": "./common/SignatureDecoder.sol",
+            "path": "contracts/common/SignatureDecoder.sol"
+          },
+          {
+            "import": "./common/SecuredTokenTransfer.sol",
+            "path": "contracts/common/SecuredTokenTransfer.sol"
+          },
+          {
+            "import": "./interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "./external/SafeMath.sol",
+            "path": "contracts/external/SafeMath.sol"
+          }
+        ],
+        "contracts/base/Executor.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          }
+        ],
+        "contracts/base/FallbackManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/base/Module.sol": [
+          {
+            "import": "../common/MasterCopy.sol",
+            "path": "contracts/common/MasterCopy.sol"
+          },
+          {
+            "import": "./ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          }
+        ],
+        "contracts/base/ModuleManager.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "./Executor.sol",
+            "path": "contracts/base/Executor.sol"
+          },
+          {
+            "import": "./Module.sol",
+            "path": "contracts/base/Module.sol"
+          }
+        ],
+        "contracts/base/OwnerManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/common/Enum.sol": [],
+        "contracts/common/EtherPaymentFallback.sol": [],
+        "contracts/common/MasterCopy.sol": [
+          {
+            "import": "./SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/common/SecuredTokenTransfer.sol": [],
+        "contracts/common/SelfAuthorized.sol": [],
+        "contracts/common/SignatureDecoder.sol": [],
+        "contracts/external/SafeMath.sol": [],
+        "contracts/handler/DefaultCallbackHandler.sol": [
+          {
+            "import": "../interfaces/ERC1155TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC1155TokenReceiver.sol"
+          },
+          {
+            "import": "../interfaces/ERC721TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC721TokenReceiver.sol"
+          },
+          {
+            "import": "../interfaces/ERC777TokensRecipient.sol",
+            "path": "contracts/interfaces/ERC777TokensRecipient.sol"
+          }
+        ],
+        "contracts/interfaces/ERC1155TokenReceiver.sol": [],
+        "contracts/interfaces/ERC721TokenReceiver.sol": [],
+        "contracts/interfaces/ERC777TokensRecipient.sol": [],
+        "contracts/interfaces/ISignatureValidator.sol": [],
+        "contracts/libraries/CreateAndAddModules.sol": [
+          {
+            "import": "../base/Module.sol",
+            "path": "contracts/base/Module.sol"
+          }
+        ],
+        "contracts/libraries/CreateCall.sol": [],
+        "contracts/libraries/MultiSend.sol": [],
+        "contracts/modules/DailyLimitModule.sol": [
+          {
+            "import": "../base/Module.sol",
+            "path": "contracts/base/Module.sol"
+          },
+          {
+            "import": "../base/ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          },
+          {
+            "import": "../base/OwnerManager.sol",
+            "path": "contracts/base/OwnerManager.sol"
+          },
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          }
+        ],
+        "contracts/modules/SocialRecoveryModule.sol": [
+          {
+            "import": "../base/Module.sol",
+            "path": "contracts/base/Module.sol"
+          },
+          {
+            "import": "../base/ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          },
+          {
+            "import": "../base/OwnerManager.sol",
+            "path": "contracts/base/OwnerManager.sol"
+          },
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          }
+        ],
+        "contracts/modules/StateChannelModule.sol": [
+          {
+            "import": "../base/Module.sol",
+            "path": "contracts/base/Module.sol"
+          },
+          {
+            "import": "../base/OwnerManager.sol",
+            "path": "contracts/base/OwnerManager.sol"
+          },
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../common/SignatureDecoder.sol",
+            "path": "contracts/common/SignatureDecoder.sol"
+          }
+        ],
+        "contracts/modules/WhitelistModule.sol": [
+          {
+            "import": "../base/Module.sol",
+            "path": "contracts/base/Module.sol"
+          },
+          {
+            "import": "../base/ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          },
+          {
+            "import": "../base/OwnerManager.sol",
+            "path": "contracts/base/OwnerManager.sol"
+          },
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          }
+        ],
+        "contracts/proxies/DelegateConstructorProxy.sol": [
+          {
+            "import": "./Proxy.sol",
+            "path": "contracts/proxies/Proxy.sol"
+          }
+        ],
+        "contracts/proxies/PayingProxy.sol": [
+          {
+            "import": "../common/SecuredTokenTransfer.sol",
+            "path": "contracts/common/SecuredTokenTransfer.sol"
+          },
+          {
+            "import": "./DelegateConstructorProxy.sol",
+            "path": "contracts/proxies/DelegateConstructorProxy.sol"
+          }
+        ],
+        "contracts/proxies/Proxy.sol": [],
+        "contracts/proxies/ProxyFactory.sol": [
+          {
+            "import": "./Proxy.sol",
+            "path": "contracts/proxies/Proxy.sol"
+          }
+        ]
+      },
+      "271921f4b37613b3d49bf33452dbcd81be219247": {
+        "contracts/GnosisSafe.sol": [
+          {
+            "import": "./base/ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          },
+          {
+            "import": "./base/OwnerManager.sol",
+            "path": "contracts/base/OwnerManager.sol"
+          },
+          {
+            "import": "./base/FallbackManager.sol",
+            "path": "contracts/base/FallbackManager.sol"
+          },
+          {
+            "import": "./common/MasterCopy.sol",
+            "path": "contracts/common/MasterCopy.sol"
+          },
+          {
+            "import": "./common/SignatureDecoder.sol",
+            "path": "contracts/common/SignatureDecoder.sol"
+          },
+          {
+            "import": "./common/SecuredTokenTransfer.sol",
+            "path": "contracts/common/SecuredTokenTransfer.sol"
+          },
+          {
+            "import": "./interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "./external/GnosisSafeMath.sol",
+            "path": "contracts/external/GnosisSafeMath.sol"
+          }
+        ],
+        "contracts/base/Executor.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          }
+        ],
+        "contracts/base/FallbackManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/base/Module.sol": [
+          {
+            "import": "../common/MasterCopy.sol",
+            "path": "contracts/common/MasterCopy.sol"
+          },
+          {
+            "import": "./ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          }
+        ],
+        "contracts/base/ModuleManager.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "./Executor.sol",
+            "path": "contracts/base/Executor.sol"
+          },
+          {
+            "import": "./Module.sol",
+            "path": "contracts/base/Module.sol"
+          }
+        ],
+        "contracts/base/OwnerManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/common/Enum.sol": [],
+        "contracts/common/MasterCopy.sol": [
+          {
+            "import": "./SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/common/SecuredTokenTransfer.sol": [],
+        "contracts/common/SelfAuthorized.sol": [],
+        "contracts/common/SignatureDecoder.sol": [],
+        "contracts/external/GnosisSafeMath.sol": [],
+        "contracts/interfaces/ISignatureValidator.sol": []
+      },
+      "4bfc0c8519f1893015d7edfd2c2780fca163c364": {
+        "contracts/GnosisSafe.sol": [
+          {
+            "import": "./base/ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          },
+          {
+            "import": "./base/OwnerManager.sol",
+            "path": "contracts/base/OwnerManager.sol"
+          },
+          {
+            "import": "./base/FallbackManager.sol",
+            "path": "contracts/base/FallbackManager.sol"
+          },
+          {
+            "import": "./base/GuardManager.sol",
+            "path": "contracts/base/GuardManager.sol"
+          },
+          {
+            "import": "./common/EtherPaymentFallback.sol",
+            "path": "contracts/common/EtherPaymentFallback.sol"
+          },
+          {
+            "import": "./common/Singleton.sol",
+            "path": "contracts/common/Singleton.sol"
+          },
+          {
+            "import": "./common/SignatureDecoder.sol",
+            "path": "contracts/common/SignatureDecoder.sol"
+          },
+          {
+            "import": "./common/SecuredTokenTransfer.sol",
+            "path": "contracts/common/SecuredTokenTransfer.sol"
+          },
+          {
+            "import": "./common/StorageAccessible.sol",
+            "path": "contracts/common/StorageAccessible.sol"
+          },
+          {
+            "import": "./interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "./external/GnosisSafeMath.sol",
+            "path": "contracts/external/GnosisSafeMath.sol"
+          }
+        ],
+        "contracts/GnosisSafeL2.sol": [
+          {
+            "import": "./GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/accessors/SimulateTxAccessor.sol": [
+          {
+            "import": "../base/Executor.sol",
+            "path": "contracts/base/Executor.sol"
+          }
+        ],
+        "contracts/base/Executor.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          }
+        ],
+        "contracts/base/FallbackManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/base/GuardManager.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/base/ModuleManager.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "./Executor.sol",
+            "path": "contracts/base/Executor.sol"
+          }
+        ],
+        "contracts/base/OwnerManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/common/Enum.sol": [],
+        "contracts/common/EtherPaymentFallback.sol": [],
+        "contracts/common/SecuredTokenTransfer.sol": [],
+        "contracts/common/SelfAuthorized.sol": [],
+        "contracts/common/SignatureDecoder.sol": [],
+        "contracts/common/Singleton.sol": [],
+        "contracts/common/StorageAccessible.sol": [],
+        "contracts/external/GnosisSafeMath.sol": [],
+        "contracts/guards/DelegateCallTransactionGuard.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../base/GuardManager.sol",
+            "path": "contracts/base/GuardManager.sol"
+          },
+          {
+            "import": "../GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/handler/CompatibilityFallbackHandler.sol": [
+          {
+            "import": "./DefaultCallbackHandler.sol",
+            "path": "contracts/handler/DefaultCallbackHandler.sol"
+          },
+          {
+            "import": "../interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "../GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/handler/DefaultCallbackHandler.sol": [
+          {
+            "import": "../interfaces/ERC1155TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC1155TokenReceiver.sol"
+          },
+          {
+            "import": "../interfaces/ERC721TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC721TokenReceiver.sol"
+          },
+          {
+            "import": "../interfaces/ERC777TokensRecipient.sol",
+            "path": "contracts/interfaces/ERC777TokensRecipient.sol"
+          },
+          {
+            "import": "../interfaces/IERC165.sol",
+            "path": "contracts/interfaces/IERC165.sol"
+          }
+        ],
+        "contracts/handler/HandlerContext.sol": [],
+        "contracts/interfaces/ERC1155TokenReceiver.sol": [],
+        "contracts/interfaces/ERC721TokenReceiver.sol": [],
+        "contracts/interfaces/ERC777TokensRecipient.sol": [],
+        "contracts/interfaces/IERC165.sol": [],
+        "contracts/interfaces/ISignatureValidator.sol": [],
+        "contracts/interfaces/ViewStorageAccessible.sol": [],
+        "contracts/libraries/CreateCall.sol": [],
+        "contracts/libraries/Migrate_1_3_0_to_1_2_0.sol": [],
+        "contracts/libraries/MultiSend.sol": [],
+        "contracts/libraries/MultiSendCallOnly.sol": [],
+        "contracts/proxies/GnosisSafeProxy.sol": [],
+        "contracts/proxies/GnosisSafeProxyFactory.sol": [
+          {
+            "import": "./GnosisSafeProxy.sol",
+            "path": "contracts/proxies/GnosisSafeProxy.sol"
+          },
+          {
+            "import": "./IProxyCreationCallback.sol",
+            "path": "contracts/proxies/IProxyCreationCallback.sol"
+          }
+        ],
+        "contracts/proxies/IProxyCreationCallback.sol": [
+          {
+            "import": "./GnosisSafeProxy.sol",
+            "path": "contracts/proxies/GnosisSafeProxy.sol"
+          }
+        ]
+      },
+      "767ef36bba88bdbc0c9fe3708a4290cabef4c376": {
+        "contracts/GnosisSafe.sol": [
+          {
+            "import": "./base/ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          },
+          {
+            "import": "./base/OwnerManager.sol",
+            "path": "contracts/base/OwnerManager.sol"
+          },
+          {
+            "import": "./base/FallbackManager.sol",
+            "path": "contracts/base/FallbackManager.sol"
+          },
+          {
+            "import": "./base/GuardManager.sol",
+            "path": "contracts/base/GuardManager.sol"
+          },
+          {
+            "import": "./common/EtherPaymentFallback.sol",
+            "path": "contracts/common/EtherPaymentFallback.sol"
+          },
+          {
+            "import": "./common/Singleton.sol",
+            "path": "contracts/common/Singleton.sol"
+          },
+          {
+            "import": "./common/SignatureDecoder.sol",
+            "path": "contracts/common/SignatureDecoder.sol"
+          },
+          {
+            "import": "./common/SecuredTokenTransfer.sol",
+            "path": "contracts/common/SecuredTokenTransfer.sol"
+          },
+          {
+            "import": "./common/StorageAccessible.sol",
+            "path": "contracts/common/StorageAccessible.sol"
+          },
+          {
+            "import": "./interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "./external/GnosisSafeMath.sol",
+            "path": "contracts/external/GnosisSafeMath.sol"
+          }
+        ],
+        "contracts/GnosisSafeL2.sol": [
+          {
+            "import": "./GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/accessors/SimulateTxAccessor.sol": [
+          {
+            "import": "../base/Executor.sol",
+            "path": "contracts/base/Executor.sol"
+          }
+        ],
+        "contracts/base/Executor.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          }
+        ],
+        "contracts/base/FallbackManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/base/GuardManager.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/base/ModuleManager.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "./Executor.sol",
+            "path": "contracts/base/Executor.sol"
+          }
+        ],
+        "contracts/base/OwnerManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/common/Enum.sol": [],
+        "contracts/common/EtherPaymentFallback.sol": [],
+        "contracts/common/SecuredTokenTransfer.sol": [],
+        "contracts/common/SelfAuthorized.sol": [],
+        "contracts/common/SignatureDecoder.sol": [],
+        "contracts/common/Singleton.sol": [],
+        "contracts/common/StorageAccessible.sol": [],
+        "contracts/external/GnosisSafeMath.sol": [],
+        "contracts/handler/CompatibilityFallbackHandler.sol": [
+          {
+            "import": "./DefaultCallbackHandler.sol",
+            "path": "contracts/handler/DefaultCallbackHandler.sol"
+          },
+          {
+            "import": "../interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "../GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/handler/DefaultCallbackHandler.sol": [
+          {
+            "import": "../interfaces/ERC1155TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC1155TokenReceiver.sol"
+          },
+          {
+            "import": "../interfaces/ERC721TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC721TokenReceiver.sol"
+          },
+          {
+            "import": "../interfaces/ERC777TokensRecipient.sol",
+            "path": "contracts/interfaces/ERC777TokensRecipient.sol"
+          },
+          {
+            "import": "../interfaces/IERC165.sol",
+            "path": "contracts/interfaces/IERC165.sol"
+          }
+        ],
+        "contracts/handler/HandlerContext.sol": [],
+        "contracts/interfaces/ERC1155TokenReceiver.sol": [],
+        "contracts/interfaces/ERC721TokenReceiver.sol": [],
+        "contracts/interfaces/ERC777TokensRecipient.sol": [],
+        "contracts/interfaces/IERC165.sol": [],
+        "contracts/interfaces/ISignatureValidator.sol": [],
+        "contracts/interfaces/ViewStorageAccessible.sol": [],
+        "contracts/libraries/CreateCall.sol": [],
+        "contracts/libraries/GnosisSafeStorage.sol": [],
+        "contracts/libraries/MultiSend.sol": [],
+        "contracts/libraries/MultiSendCallOnly.sol": [],
+        "contracts/libraries/SignMessageLib.sol": [
+          {
+            "import": "./GnosisSafeStorage.sol",
+            "path": "contracts/libraries/GnosisSafeStorage.sol"
+          },
+          {
+            "import": "../GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/proxies/GnosisSafeProxy.sol": [],
+        "contracts/proxies/GnosisSafeProxyFactory.sol": [
+          {
+            "import": "./GnosisSafeProxy.sol",
+            "path": "contracts/proxies/GnosisSafeProxy.sol"
+          },
+          {
+            "import": "./IProxyCreationCallback.sol",
+            "path": "contracts/proxies/IProxyCreationCallback.sol"
+          }
+        ],
+        "contracts/proxies/IProxyCreationCallback.sol": [
+          {
+            "import": "./GnosisSafeProxy.sol",
+            "path": "contracts/proxies/GnosisSafeProxy.sol"
+          }
+        ]
+      },
+      "834e798aa51291cccaf0594921194928716e9892": {
+        "contracts/Safe.sol": [
+          {
+            "import": "./base/FallbackManager.sol",
+            "path": "contracts/base/FallbackManager.sol"
+          },
+          {
+            "import": "./base/GuardManager.sol",
+            "path": "contracts/base/GuardManager.sol"
+          },
+          {
+            "import": "./base/ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          },
+          {
+            "import": "./base/OwnerManager.sol",
+            "path": "contracts/base/OwnerManager.sol"
+          },
+          {
+            "import": "./common/NativeCurrencyPaymentFallback.sol",
+            "path": "contracts/common/NativeCurrencyPaymentFallback.sol"
+          },
+          {
+            "import": "./common/SecuredTokenTransfer.sol",
+            "path": "contracts/common/SecuredTokenTransfer.sol"
+          },
+          {
+            "import": "./common/SignatureDecoder.sol",
+            "path": "contracts/common/SignatureDecoder.sol"
+          },
+          {
+            "import": "./common/Singleton.sol",
+            "path": "contracts/common/Singleton.sol"
+          },
+          {
+            "import": "./common/StorageAccessible.sol",
+            "path": "contracts/common/StorageAccessible.sol"
+          },
+          {
+            "import": "./external/SafeMath.sol",
+            "path": "contracts/external/SafeMath.sol"
+          },
+          {
+            "import": "./interfaces/ISafe.sol",
+            "path": "contracts/interfaces/ISafe.sol"
+          },
+          {
+            "import": "./interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "./libraries/Enum.sol",
+            "path": "contracts/libraries/Enum.sol"
+          }
+        ],
+        "contracts/SafeL2.sol": [
+          {
+            "import": "./base/ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          },
+          {
+            "import": "./Safe.sol",
+            "path": "contracts/Safe.sol"
+          }
+        ],
+        "contracts/accessors/SimulateTxAccessor.sol": [
+          {
+            "import": "../base/Executor.sol",
+            "path": "contracts/base/Executor.sol"
+          }
+        ],
+        "contracts/base/Executor.sol": [
+          {
+            "import": "../libraries/Enum.sol",
+            "path": "contracts/libraries/Enum.sol"
+          }
+        ],
+        "contracts/base/FallbackManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "../interfaces/IFallbackManager.sol",
+            "path": "contracts/interfaces/IFallbackManager.sol"
+          }
+        ],
+        "contracts/base/GuardManager.sol": [
+          {
+            "import": "./../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "./../interfaces/IERC165.sol",
+            "path": "contracts/interfaces/IERC165.sol"
+          },
+          {
+            "import": "./../interfaces/IGuardManager.sol",
+            "path": "contracts/interfaces/IGuardManager.sol"
+          },
+          {
+            "import": "./../libraries/Enum.sol",
+            "path": "contracts/libraries/Enum.sol"
+          }
+        ],
+        "contracts/base/ModuleManager.sol": [
+          {
+            "import": "./../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "./../interfaces/IERC165.sol",
+            "path": "contracts/interfaces/IERC165.sol"
+          },
+          {
+            "import": "./../interfaces/IModuleManager.sol",
+            "path": "contracts/interfaces/IModuleManager.sol"
+          },
+          {
+            "import": "./../libraries/Enum.sol",
+            "path": "contracts/libraries/Enum.sol"
+          },
+          {
+            "import": "./Executor.sol",
+            "path": "contracts/base/Executor.sol"
+          }
+        ],
+        "contracts/base/OwnerManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "../interfaces/IOwnerManager.sol",
+            "path": "contracts/interfaces/IOwnerManager.sol"
+          }
+        ],
+        "contracts/common/NativeCurrencyPaymentFallback.sol": [],
+        "contracts/common/SecuredTokenTransfer.sol": [],
+        "contracts/common/SelfAuthorized.sol": [
+          {
+            "import": "../libraries/ErrorMessage.sol",
+            "path": "contracts/libraries/ErrorMessage.sol"
+          }
+        ],
+        "contracts/common/SignatureDecoder.sol": [],
+        "contracts/common/Singleton.sol": [],
+        "contracts/common/StorageAccessible.sol": [],
+        "contracts/external/SafeMath.sol": [],
+        "contracts/handler/CompatibilityFallbackHandler.sol": [
+          {
+            "import": "./../interfaces/ISafe.sol",
+            "path": "contracts/interfaces/ISafe.sol"
+          },
+          {
+            "import": "./../interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "./HandlerContext.sol",
+            "path": "contracts/handler/HandlerContext.sol"
+          },
+          {
+            "import": "./TokenCallbackHandler.sol",
+            "path": "contracts/handler/TokenCallbackHandler.sol"
+          }
+        ],
+        "contracts/handler/ExtensibleFallbackHandler.sol": [
+          {
+            "import": "./extensible/ERC165Handler.sol",
+            "path": "contracts/handler/extensible/ERC165Handler.sol"
+          },
+          {
+            "import": "./extensible/FallbackHandler.sol",
+            "path": "contracts/handler/extensible/FallbackHandler.sol"
+          },
+          {
+            "import": "./extensible/SignatureVerifierMuxer.sol",
+            "path": "contracts/handler/extensible/SignatureVerifierMuxer.sol"
+          },
+          {
+            "import": "./extensible/TokenCallbacks.sol",
+            "path": "contracts/handler/extensible/TokenCallbacks.sol"
+          }
+        ],
+        "contracts/handler/HandlerContext.sol": [],
+        "contracts/handler/TokenCallbackHandler.sol": [
+          {
+            "import": "../interfaces/ERC1155TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC1155TokenReceiver.sol"
+          },
+          {
+            "import": "../interfaces/ERC721TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC721TokenReceiver.sol"
+          },
+          {
+            "import": "../interfaces/ERC777TokensRecipient.sol",
+            "path": "contracts/interfaces/ERC777TokensRecipient.sol"
+          },
+          {
+            "import": "../interfaces/IERC165.sol",
+            "path": "contracts/interfaces/IERC165.sol"
+          }
+        ],
+        "contracts/handler/extensible/ERC165Handler.sol": [
+          {
+            "import": "../../interfaces/IERC165.sol",
+            "path": "contracts/interfaces/IERC165.sol"
+          },
+          {
+            "import": "./ExtensibleBase.sol",
+            "path": "contracts/handler/extensible/ExtensibleBase.sol"
+          }
+        ],
+        "contracts/handler/extensible/ExtensibleBase.sol": [
+          {
+            "import": "../../interfaces/ISafe.sol",
+            "path": "contracts/interfaces/ISafe.sol"
+          },
+          {
+            "import": "../HandlerContext.sol",
+            "path": "contracts/handler/HandlerContext.sol"
+          },
+          {
+            "import": "./MarshalLib.sol",
+            "path": "contracts/handler/extensible/MarshalLib.sol"
+          }
+        ],
+        "contracts/handler/extensible/FallbackHandler.sol": [
+          {
+            "import": "./ExtensibleBase.sol",
+            "path": "contracts/handler/extensible/ExtensibleBase.sol"
+          }
+        ],
+        "contracts/handler/extensible/MarshalLib.sol": [],
+        "contracts/handler/extensible/SignatureVerifierMuxer.sol": [
+          {
+            "import": "./ExtensibleBase.sol",
+            "path": "contracts/handler/extensible/ExtensibleBase.sol"
+          }
+        ],
+        "contracts/handler/extensible/TokenCallbacks.sol": [
+          {
+            "import": "../../interfaces/ERC1155TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC1155TokenReceiver.sol"
+          },
+          {
+            "import": "../../interfaces/ERC721TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC721TokenReceiver.sol"
+          },
+          {
+            "import": "./ExtensibleBase.sol",
+            "path": "contracts/handler/extensible/ExtensibleBase.sol"
+          }
+        ],
+        "contracts/interfaces/ERC1155TokenReceiver.sol": [],
+        "contracts/interfaces/ERC721TokenReceiver.sol": [],
+        "contracts/interfaces/ERC777TokensRecipient.sol": [],
+        "contracts/interfaces/IERC165.sol": [],
+        "contracts/interfaces/IFallbackManager.sol": [],
+        "contracts/interfaces/IGuardManager.sol": [],
+        "contracts/interfaces/IModuleManager.sol": [
+          {
+            "import": "../libraries/Enum.sol",
+            "path": "contracts/libraries/Enum.sol"
+          }
+        ],
+        "contracts/interfaces/IOwnerManager.sol": [],
+        "contracts/interfaces/ISafe.sol": [
+          {
+            "import": "./../libraries/Enum.sol",
+            "path": "contracts/libraries/Enum.sol"
+          },
+          {
+            "import": "./IFallbackManager.sol",
+            "path": "contracts/interfaces/IFallbackManager.sol"
+          },
+          {
+            "import": "./IGuardManager.sol",
+            "path": "contracts/interfaces/IGuardManager.sol"
+          },
+          {
+            "import": "./IModuleManager.sol",
+            "path": "contracts/interfaces/IModuleManager.sol"
+          },
+          {
+            "import": "./IOwnerManager.sol",
+            "path": "contracts/interfaces/IOwnerManager.sol"
+          }
+        ],
+        "contracts/interfaces/ISignatureValidator.sol": [],
+        "contracts/libraries/CreateCall.sol": [],
+        "contracts/libraries/Enum.sol": [],
+        "contracts/libraries/ErrorMessage.sol": [],
+        "contracts/libraries/MultiSend.sol": [],
+        "contracts/libraries/MultiSendCallOnly.sol": [],
+        "contracts/libraries/SafeMigration.sol": [
+          {
+            "import": "./../interfaces/ISafe.sol",
+            "path": "contracts/interfaces/ISafe.sol"
+          },
+          {
+            "import": "./../libraries/SafeStorage.sol",
+            "path": "contracts/libraries/SafeStorage.sol"
+          }
+        ],
+        "contracts/libraries/SafeStorage.sol": [],
+        "contracts/libraries/SafeToL2Migration.sol": [
+          {
+            "import": "./../interfaces/ISafe.sol",
+            "path": "contracts/interfaces/ISafe.sol"
+          },
+          {
+            "import": "./../libraries/Enum.sol",
+            "path": "contracts/libraries/Enum.sol"
+          },
+          {
+            "import": "./../libraries/SafeStorage.sol",
+            "path": "contracts/libraries/SafeStorage.sol"
+          }
+        ],
+        "contracts/libraries/SafeToL2Setup.sol": [
+          {
+            "import": "../libraries/SafeStorage.sol",
+            "path": "contracts/libraries/SafeStorage.sol"
+          }
+        ],
+        "contracts/libraries/SignMessageLib.sol": [
+          {
+            "import": "./../interfaces/ISafe.sol",
+            "path": "contracts/interfaces/ISafe.sol"
+          },
+          {
+            "import": "./SafeStorage.sol",
+            "path": "contracts/libraries/SafeStorage.sol"
+          }
+        ],
+        "contracts/proxies/IProxyCreationCallback.sol": [
+          {
+            "import": "./SafeProxy.sol",
+            "path": "contracts/proxies/SafeProxy.sol"
+          }
+        ],
+        "contracts/proxies/SafeProxy.sol": [],
+        "contracts/proxies/SafeProxyFactory.sol": [
+          {
+            "import": "./IProxyCreationCallback.sol",
+            "path": "contracts/proxies/IProxyCreationCallback.sol"
+          },
+          {
+            "import": "./SafeProxy.sol",
+            "path": "contracts/proxies/SafeProxy.sol"
+          }
+        ]
+      },
+      "942968d66a4fa200fe9757d02b377dbfc3c88636": {
+        "contracts/DelegateConstructorProxy.sol": [
+          {
+            "import": "./Proxy.sol",
+            "path": "contracts/Proxy.sol"
+          }
+        ],
+        "contracts/Enum.sol": [],
+        "contracts/GnosisSafe.sol": [
+          {
+            "import": "./Module.sol",
+            "path": "contracts/Module.sol"
+          },
+          {
+            "import": "./ModuleManager.sol",
+            "path": "contracts/ModuleManager.sol"
+          },
+          {
+            "import": "./OwnerManager.sol",
+            "path": "contracts/OwnerManager.sol"
+          }
+        ],
+        "contracts/GnosisSafePersonalEdition.sol": [
+          {
+            "import": "./interfaces/ERC20Token.sol",
+            "path": "contracts/interfaces/ERC20Token.sol"
+          },
+          {
+            "import": "./GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          },
+          {
+            "import": "./MasterCopy.sol",
+            "path": "contracts/MasterCopy.sol"
+          },
+          {
+            "import": "./SignatureValidator.sol",
+            "path": "contracts/SignatureValidator.sol"
+          }
+        ],
+        "contracts/GnosisSafeTeamEdition.sol": [
+          {
+            "import": "./GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          },
+          {
+            "import": "./MasterCopy.sol",
+            "path": "contracts/MasterCopy.sol"
+          }
+        ],
+        "contracts/MasterCopy.sol": [
+          {
+            "import": "./SelfAuthorized.sol",
+            "path": "contracts/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/Migrations.sol": [],
+        "contracts/Module.sol": [
+          {
+            "import": "./MasterCopy.sol",
+            "path": "contracts/MasterCopy.sol"
+          },
+          {
+            "import": "./ModuleManager.sol",
+            "path": "contracts/ModuleManager.sol"
+          }
+        ],
+        "contracts/ModuleManager.sol": [
+          {
+            "import": "./Module.sol",
+            "path": "contracts/Module.sol"
+          },
+          {
+            "import": "./MasterCopy.sol",
+            "path": "contracts/MasterCopy.sol"
+          },
+          {
+            "import": "./Enum.sol",
+            "path": "contracts/Enum.sol"
+          }
+        ],
+        "contracts/OwnerManager.sol": [
+          {
+            "import": "./SelfAuthorized.sol",
+            "path": "contracts/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/PayingProxy.sol": [
+          {
+            "import": "./DelegateConstructorProxy.sol",
+            "path": "contracts/DelegateConstructorProxy.sol"
+          },
+          {
+            "import": "./interfaces/ERC20Token.sol",
+            "path": "contracts/interfaces/ERC20Token.sol"
+          }
+        ],
+        "contracts/Proxy.sol": [],
+        "contracts/ProxyFactory.sol": [
+          {
+            "import": "./Proxy.sol",
+            "path": "contracts/Proxy.sol"
+          }
+        ],
+        "contracts/SelfAuthorized.sol": [],
+        "contracts/SignatureValidator.sol": [],
+        "contracts/interfaces/ERC20Token.sol": [],
+        "contracts/libraries/CreateAndAddModules.sol": [
+          {
+            "import": "../Module.sol",
+            "path": "contracts/Module.sol"
+          }
+        ],
+        "contracts/libraries/MultiSend.sol": [],
+        "contracts/modules/DailyLimitModule.sol": [
+          {
+            "import": "../Module.sol",
+            "path": "contracts/Module.sol"
+          },
+          {
+            "import": "../ModuleManager.sol",
+            "path": "contracts/ModuleManager.sol"
+          },
+          {
+            "import": "../OwnerManager.sol",
+            "path": "contracts/OwnerManager.sol"
+          },
+          {
+            "import": "../Enum.sol",
+            "path": "contracts/Enum.sol"
+          }
+        ],
+        "contracts/modules/SocialRecoveryModule.sol": [
+          {
+            "import": "../Enum.sol",
+            "path": "contracts/Enum.sol"
+          },
+          {
+            "import": "../Module.sol",
+            "path": "contracts/Module.sol"
+          },
+          {
+            "import": "../ModuleManager.sol",
+            "path": "contracts/ModuleManager.sol"
+          },
+          {
+            "import": "../OwnerManager.sol",
+            "path": "contracts/OwnerManager.sol"
+          }
+        ],
+        "contracts/modules/StateChannelModule.sol": [
+          {
+            "import": "../Module.sol",
+            "path": "contracts/Module.sol"
+          },
+          {
+            "import": "../OwnerManager.sol",
+            "path": "contracts/OwnerManager.sol"
+          },
+          {
+            "import": "../SignatureValidator.sol",
+            "path": "contracts/SignatureValidator.sol"
+          }
+        ],
+        "contracts/modules/WhitelistModule.sol": [
+          {
+            "import": "../Enum.sol",
+            "path": "contracts/Enum.sol"
+          },
+          {
+            "import": "../Module.sol",
+            "path": "contracts/Module.sol"
+          },
+          {
+            "import": "../ModuleManager.sol",
+            "path": "contracts/ModuleManager.sol"
+          },
+          {
+            "import": "../OwnerManager.sol",
+            "path": "contracts/OwnerManager.sol"
+          }
+        ]
+      },
+      "ad6c7355d5bdf4f7fa348fbfcb9f07431769a3c9": {
+        "contracts/GnosisSafe.sol": [
+          {
+            "import": "./base/ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          },
+          {
+            "import": "./base/OwnerManager.sol",
+            "path": "contracts/base/OwnerManager.sol"
+          },
+          {
+            "import": "./base/FallbackManager.sol",
+            "path": "contracts/base/FallbackManager.sol"
+          },
+          {
+            "import": "./base/GuardManager.sol",
+            "path": "contracts/base/GuardManager.sol"
+          },
+          {
+            "import": "./common/EtherPaymentFallback.sol",
+            "path": "contracts/common/EtherPaymentFallback.sol"
+          },
+          {
+            "import": "./common/Singleton.sol",
+            "path": "contracts/common/Singleton.sol"
+          },
+          {
+            "import": "./common/SignatureDecoder.sol",
+            "path": "contracts/common/SignatureDecoder.sol"
+          },
+          {
+            "import": "./common/SecuredTokenTransfer.sol",
+            "path": "contracts/common/SecuredTokenTransfer.sol"
+          },
+          {
+            "import": "./common/StorageAccessible.sol",
+            "path": "contracts/common/StorageAccessible.sol"
+          },
+          {
+            "import": "./interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "./external/GnosisSafeMath.sol",
+            "path": "contracts/external/GnosisSafeMath.sol"
+          }
+        ],
+        "contracts/GnosisSafeL2.sol": [
+          {
+            "import": "./GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/accessors/SimulateTxAccessor.sol": [
+          {
+            "import": "../base/Executor.sol",
+            "path": "contracts/base/Executor.sol"
+          }
+        ],
+        "contracts/base/Executor.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          }
+        ],
+        "contracts/base/FallbackManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/base/GuardManager.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/base/ModuleManager.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "./Executor.sol",
+            "path": "contracts/base/Executor.sol"
+          }
+        ],
+        "contracts/base/OwnerManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/common/Enum.sol": [],
+        "contracts/common/EtherPaymentFallback.sol": [],
+        "contracts/common/SecuredTokenTransfer.sol": [],
+        "contracts/common/SelfAuthorized.sol": [],
+        "contracts/common/SignatureDecoder.sol": [],
+        "contracts/common/Singleton.sol": [],
+        "contracts/common/StorageAccessible.sol": [],
+        "contracts/examples/guards/DebugTransactionGuard.sol": [
+          {
+            "import": "../../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../../base/GuardManager.sol",
+            "path": "contracts/base/GuardManager.sol"
+          },
+          {
+            "import": "../../GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/examples/guards/DelegateCallTransactionGuard.sol": [
+          {
+            "import": "../../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../../base/GuardManager.sol",
+            "path": "contracts/base/GuardManager.sol"
+          },
+          {
+            "import": "../../GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/examples/guards/ReentrencyTransactionGuard.sol": [
+          {
+            "import": "../../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../../base/GuardManager.sol",
+            "path": "contracts/base/GuardManager.sol"
+          },
+          {
+            "import": "../../GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/examples/libraries/GnosisSafeStorage.sol": [],
+        "contracts/examples/libraries/Migrate_1_3_0_to_1_2_0.sol": [
+          {
+            "import": "./GnosisSafeStorage.sol",
+            "path": "contracts/examples/libraries/GnosisSafeStorage.sol"
+          }
+        ],
+        "contracts/examples/libraries/SignMessage.sol": [
+          {
+            "import": "./GnosisSafeStorage.sol",
+            "path": "contracts/examples/libraries/GnosisSafeStorage.sol"
+          },
+          {
+            "import": "../../GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/external/GnosisSafeMath.sol": [],
+        "contracts/handler/CompatibilityFallbackHandler.sol": [
+          {
+            "import": "./DefaultCallbackHandler.sol",
+            "path": "contracts/handler/DefaultCallbackHandler.sol"
+          },
+          {
+            "import": "../interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "../GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/handler/DefaultCallbackHandler.sol": [
+          {
+            "import": "../interfaces/ERC1155TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC1155TokenReceiver.sol"
+          },
+          {
+            "import": "../interfaces/ERC721TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC721TokenReceiver.sol"
+          },
+          {
+            "import": "../interfaces/ERC777TokensRecipient.sol",
+            "path": "contracts/interfaces/ERC777TokensRecipient.sol"
+          },
+          {
+            "import": "../interfaces/IERC165.sol",
+            "path": "contracts/interfaces/IERC165.sol"
+          }
+        ],
+        "contracts/handler/HandlerContext.sol": [],
+        "contracts/interfaces/ERC1155TokenReceiver.sol": [],
+        "contracts/interfaces/ERC721TokenReceiver.sol": [],
+        "contracts/interfaces/ERC777TokensRecipient.sol": [],
+        "contracts/interfaces/IERC165.sol": [],
+        "contracts/interfaces/ISignatureValidator.sol": [],
+        "contracts/interfaces/ViewStorageAccessible.sol": [],
+        "contracts/libraries/CreateCall.sol": [],
+        "contracts/libraries/MultiSend.sol": [],
+        "contracts/libraries/MultiSendCallOnly.sol": [],
+        "contracts/proxies/GnosisSafeProxy.sol": [],
+        "contracts/proxies/GnosisSafeProxyFactory.sol": [
+          {
+            "import": "./GnosisSafeProxy.sol",
+            "path": "contracts/proxies/GnosisSafeProxy.sol"
+          },
+          {
+            "import": "./IProxyCreationCallback.sol",
+            "path": "contracts/proxies/IProxyCreationCallback.sol"
+          }
+        ],
+        "contracts/proxies/IProxyCreationCallback.sol": [
+          {
+            "import": "./GnosisSafeProxy.sol",
+            "path": "contracts/proxies/GnosisSafeProxy.sol"
+          }
+        ]
+      },
+      "b115c4c5fe23dca6aefeeccc73d312ddd23322c2": {
+        "contracts/Safe.sol": [
+          {
+            "import": "./base/FallbackManager.sol",
+            "path": "contracts/base/FallbackManager.sol"
+          },
+          {
+            "import": "./base/GuardManager.sol",
+            "path": "contracts/base/GuardManager.sol"
+          },
+          {
+            "import": "./base/ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          },
+          {
+            "import": "./base/OwnerManager.sol",
+            "path": "contracts/base/OwnerManager.sol"
+          },
+          {
+            "import": "./common/NativeCurrencyPaymentFallback.sol",
+            "path": "contracts/common/NativeCurrencyPaymentFallback.sol"
+          },
+          {
+            "import": "./common/SecuredTokenTransfer.sol",
+            "path": "contracts/common/SecuredTokenTransfer.sol"
+          },
+          {
+            "import": "./common/SignatureDecoder.sol",
+            "path": "contracts/common/SignatureDecoder.sol"
+          },
+          {
+            "import": "./common/Singleton.sol",
+            "path": "contracts/common/Singleton.sol"
+          },
+          {
+            "import": "./common/StorageAccessible.sol",
+            "path": "contracts/common/StorageAccessible.sol"
+          },
+          {
+            "import": "./external/SafeMath.sol",
+            "path": "contracts/external/SafeMath.sol"
+          },
+          {
+            "import": "./interfaces/ISafe.sol",
+            "path": "contracts/interfaces/ISafe.sol"
+          },
+          {
+            "import": "./interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "./libraries/Enum.sol",
+            "path": "contracts/libraries/Enum.sol"
+          }
+        ],
+        "contracts/SafeL2.sol": [
+          {
+            "import": "./base/ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          },
+          {
+            "import": "./Safe.sol",
+            "path": "contracts/Safe.sol"
+          }
+        ],
+        "contracts/accessors/SimulateTxAccessor.sol": [
+          {
+            "import": "../base/Executor.sol",
+            "path": "contracts/base/Executor.sol"
+          }
+        ],
+        "contracts/base/Executor.sol": [
+          {
+            "import": "../libraries/Enum.sol",
+            "path": "contracts/libraries/Enum.sol"
+          }
+        ],
+        "contracts/base/FallbackManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "../interfaces/IFallbackManager.sol",
+            "path": "contracts/interfaces/IFallbackManager.sol"
+          }
+        ],
+        "contracts/base/GuardManager.sol": [
+          {
+            "import": "./../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "./../interfaces/IERC165.sol",
+            "path": "contracts/interfaces/IERC165.sol"
+          },
+          {
+            "import": "./../interfaces/IGuardManager.sol",
+            "path": "contracts/interfaces/IGuardManager.sol"
+          },
+          {
+            "import": "./../libraries/Enum.sol",
+            "path": "contracts/libraries/Enum.sol"
+          }
+        ],
+        "contracts/base/ModuleManager.sol": [
+          {
+            "import": "./../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "./../interfaces/IERC165.sol",
+            "path": "contracts/interfaces/IERC165.sol"
+          },
+          {
+            "import": "./../interfaces/IModuleManager.sol",
+            "path": "contracts/interfaces/IModuleManager.sol"
+          },
+          {
+            "import": "./../libraries/Enum.sol",
+            "path": "contracts/libraries/Enum.sol"
+          },
+          {
+            "import": "./Executor.sol",
+            "path": "contracts/base/Executor.sol"
+          }
+        ],
+        "contracts/base/OwnerManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "../interfaces/IOwnerManager.sol",
+            "path": "contracts/interfaces/IOwnerManager.sol"
+          }
+        ],
+        "contracts/common/NativeCurrencyPaymentFallback.sol": [],
+        "contracts/common/SecuredTokenTransfer.sol": [],
+        "contracts/common/SelfAuthorized.sol": [
+          {
+            "import": "../libraries/ErrorMessage.sol",
+            "path": "contracts/libraries/ErrorMessage.sol"
+          }
+        ],
+        "contracts/common/SignatureDecoder.sol": [],
+        "contracts/common/Singleton.sol": [],
+        "contracts/common/StorageAccessible.sol": [],
+        "contracts/external/SafeMath.sol": [],
+        "contracts/handler/CompatibilityFallbackHandler.sol": [
+          {
+            "import": "./../interfaces/ISafe.sol",
+            "path": "contracts/interfaces/ISafe.sol"
+          },
+          {
+            "import": "./../interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "./HandlerContext.sol",
+            "path": "contracts/handler/HandlerContext.sol"
+          },
+          {
+            "import": "./TokenCallbackHandler.sol",
+            "path": "contracts/handler/TokenCallbackHandler.sol"
+          }
+        ],
+        "contracts/handler/ExtensibleFallbackHandler.sol": [
+          {
+            "import": "./extensible/ERC165Handler.sol",
+            "path": "contracts/handler/extensible/ERC165Handler.sol"
+          },
+          {
+            "import": "./extensible/FallbackHandler.sol",
+            "path": "contracts/handler/extensible/FallbackHandler.sol"
+          },
+          {
+            "import": "./extensible/SignatureVerifierMuxer.sol",
+            "path": "contracts/handler/extensible/SignatureVerifierMuxer.sol"
+          },
+          {
+            "import": "./extensible/TokenCallbacks.sol",
+            "path": "contracts/handler/extensible/TokenCallbacks.sol"
+          }
+        ],
+        "contracts/handler/HandlerContext.sol": [],
+        "contracts/handler/TokenCallbackHandler.sol": [
+          {
+            "import": "../interfaces/ERC1155TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC1155TokenReceiver.sol"
+          },
+          {
+            "import": "../interfaces/ERC721TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC721TokenReceiver.sol"
+          },
+          {
+            "import": "../interfaces/ERC777TokensRecipient.sol",
+            "path": "contracts/interfaces/ERC777TokensRecipient.sol"
+          },
+          {
+            "import": "../interfaces/IERC165.sol",
+            "path": "contracts/interfaces/IERC165.sol"
+          }
+        ],
+        "contracts/handler/extensible/ERC165Handler.sol": [
+          {
+            "import": "../../interfaces/IERC165.sol",
+            "path": "contracts/interfaces/IERC165.sol"
+          },
+          {
+            "import": "./ExtensibleBase.sol",
+            "path": "contracts/handler/extensible/ExtensibleBase.sol"
+          }
+        ],
+        "contracts/handler/extensible/ExtensibleBase.sol": [
+          {
+            "import": "../../interfaces/ISafe.sol",
+            "path": "contracts/interfaces/ISafe.sol"
+          },
+          {
+            "import": "../HandlerContext.sol",
+            "path": "contracts/handler/HandlerContext.sol"
+          },
+          {
+            "import": "./MarshalLib.sol",
+            "path": "contracts/handler/extensible/MarshalLib.sol"
+          }
+        ],
+        "contracts/handler/extensible/FallbackHandler.sol": [
+          {
+            "import": "./ExtensibleBase.sol",
+            "path": "contracts/handler/extensible/ExtensibleBase.sol"
+          }
+        ],
+        "contracts/handler/extensible/MarshalLib.sol": [],
+        "contracts/handler/extensible/SignatureVerifierMuxer.sol": [
+          {
+            "import": "./ExtensibleBase.sol",
+            "path": "contracts/handler/extensible/ExtensibleBase.sol"
+          }
+        ],
+        "contracts/handler/extensible/TokenCallbacks.sol": [
+          {
+            "import": "../../interfaces/ERC1155TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC1155TokenReceiver.sol"
+          },
+          {
+            "import": "../../interfaces/ERC721TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC721TokenReceiver.sol"
+          },
+          {
+            "import": "./ExtensibleBase.sol",
+            "path": "contracts/handler/extensible/ExtensibleBase.sol"
+          }
+        ],
+        "contracts/interfaces/ERC1155TokenReceiver.sol": [],
+        "contracts/interfaces/ERC721TokenReceiver.sol": [],
+        "contracts/interfaces/ERC777TokensRecipient.sol": [],
+        "contracts/interfaces/IERC165.sol": [],
+        "contracts/interfaces/IFallbackManager.sol": [],
+        "contracts/interfaces/IGuardManager.sol": [],
+        "contracts/interfaces/IModuleManager.sol": [
+          {
+            "import": "../libraries/Enum.sol",
+            "path": "contracts/libraries/Enum.sol"
+          }
+        ],
+        "contracts/interfaces/IOwnerManager.sol": [],
+        "contracts/interfaces/ISafe.sol": [
+          {
+            "import": "./../libraries/Enum.sol",
+            "path": "contracts/libraries/Enum.sol"
+          },
+          {
+            "import": "./IFallbackManager.sol",
+            "path": "contracts/interfaces/IFallbackManager.sol"
+          },
+          {
+            "import": "./IGuardManager.sol",
+            "path": "contracts/interfaces/IGuardManager.sol"
+          },
+          {
+            "import": "./IModuleManager.sol",
+            "path": "contracts/interfaces/IModuleManager.sol"
+          },
+          {
+            "import": "./IOwnerManager.sol",
+            "path": "contracts/interfaces/IOwnerManager.sol"
+          }
+        ],
+        "contracts/interfaces/ISignatureValidator.sol": [],
+        "contracts/interfaces/ViewStorageAccessible.sol": [],
+        "contracts/libraries/CreateCall.sol": [],
+        "contracts/libraries/Enum.sol": [],
+        "contracts/libraries/ErrorMessage.sol": [],
+        "contracts/libraries/MultiSend.sol": [],
+        "contracts/libraries/MultiSendCallOnly.sol": [],
+        "contracts/libraries/SafeMigration.sol": [
+          {
+            "import": "./../interfaces/ISafe.sol",
+            "path": "contracts/interfaces/ISafe.sol"
+          },
+          {
+            "import": "./../libraries/SafeStorage.sol",
+            "path": "contracts/libraries/SafeStorage.sol"
+          }
+        ],
+        "contracts/libraries/SafeStorage.sol": [],
+        "contracts/libraries/SafeToL2Migration.sol": [
+          {
+            "import": "./../interfaces/ISafe.sol",
+            "path": "contracts/interfaces/ISafe.sol"
+          },
+          {
+            "import": "./../libraries/Enum.sol",
+            "path": "contracts/libraries/Enum.sol"
+          },
+          {
+            "import": "./../libraries/SafeStorage.sol",
+            "path": "contracts/libraries/SafeStorage.sol"
+          }
+        ],
+        "contracts/libraries/SafeToL2Setup.sol": [
+          {
+            "import": "../libraries/SafeStorage.sol",
+            "path": "contracts/libraries/SafeStorage.sol"
+          }
+        ],
+        "contracts/libraries/SignMessageLib.sol": [
+          {
+            "import": "./../interfaces/ISafe.sol",
+            "path": "contracts/interfaces/ISafe.sol"
+          },
+          {
+            "import": "./SafeStorage.sol",
+            "path": "contracts/libraries/SafeStorage.sol"
+          }
+        ],
+        "contracts/proxies/IProxyCreationCallback.sol": [
+          {
+            "import": "./SafeProxy.sol",
+            "path": "contracts/proxies/SafeProxy.sol"
+          }
+        ],
+        "contracts/proxies/SafeProxy.sol": [],
+        "contracts/proxies/SafeProxyFactory.sol": [
+          {
+            "import": "./IProxyCreationCallback.sol",
+            "path": "contracts/proxies/IProxyCreationCallback.sol"
+          },
+          {
+            "import": "./SafeProxy.sol",
+            "path": "contracts/proxies/SafeProxy.sol"
+          }
+        ]
+      },
+      "b1a80f23b99c4983229dbb678c9f77895c9d2b70": {
+        "contracts/Extension.sol": [
+          {
+            "import": "./GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/GnosisSafe.sol": [
+          {
+            "import": "./Extension.sol",
+            "path": "contracts/Extension.sol"
+          }
+        ],
+        "contracts/Migrations.sol": [],
+        "contracts/Proxy.sol": [],
+        "contracts/ProxyFactory.sol": [
+          {
+            "import": "./Proxy.sol",
+            "path": "contracts/Proxy.sol"
+          }
+        ],
+        "contracts/extensions/DailyLimitExtension.sol": [
+          {
+            "import": "../Extension.sol",
+            "path": "contracts/Extension.sol"
+          },
+          {
+            "import": "../GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/extensions/SocialRecoveryExtension.sol": [
+          {
+            "import": "../Extension.sol",
+            "path": "contracts/Extension.sol"
+          },
+          {
+            "import": "../GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/extensions/WhitelistExtension.sol": [
+          {
+            "import": "../Extension.sol",
+            "path": "contracts/Extension.sol"
+          },
+          {
+            "import": "../GnosisSafe.sol",
+            "path": "contracts/GnosisSafe.sol"
+          }
+        ],
+        "contracts/libraries/CreateAndAddExtension.sol": [
+          {
+            "import": "../Extension.sol",
+            "path": "contracts/Extension.sol"
+          }
+        ],
+        "contracts/libraries/MultiSend.sol": []
+      },
+      "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9": {
+        "contracts/Safe.sol": [
+          {
+            "import": "./base/ModuleManager.sol",
+            "path": "contracts/base/ModuleManager.sol"
+          },
+          {
+            "import": "./base/OwnerManager.sol",
+            "path": "contracts/base/OwnerManager.sol"
+          },
+          {
+            "import": "./base/FallbackManager.sol",
+            "path": "contracts/base/FallbackManager.sol"
+          },
+          {
+            "import": "./base/GuardManager.sol",
+            "path": "contracts/base/GuardManager.sol"
+          },
+          {
+            "import": "./common/NativeCurrencyPaymentFallback.sol",
+            "path": "contracts/common/NativeCurrencyPaymentFallback.sol"
+          },
+          {
+            "import": "./common/Singleton.sol",
+            "path": "contracts/common/Singleton.sol"
+          },
+          {
+            "import": "./common/SignatureDecoder.sol",
+            "path": "contracts/common/SignatureDecoder.sol"
+          },
+          {
+            "import": "./common/SecuredTokenTransfer.sol",
+            "path": "contracts/common/SecuredTokenTransfer.sol"
+          },
+          {
+            "import": "./common/StorageAccessible.sol",
+            "path": "contracts/common/StorageAccessible.sol"
+          },
+          {
+            "import": "./interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "./external/SafeMath.sol",
+            "path": "contracts/external/SafeMath.sol"
+          }
+        ],
+        "contracts/SafeL2.sol": [
+          {
+            "import": "./Safe.sol",
+            "path": "contracts/Safe.sol"
+          }
+        ],
+        "contracts/base/Executor.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          }
+        ],
+        "contracts/base/FallbackManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/base/GuardManager.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "../interfaces/IERC165.sol",
+            "path": "contracts/interfaces/IERC165.sol"
+          }
+        ],
+        "contracts/base/ModuleManager.sol": [
+          {
+            "import": "../common/Enum.sol",
+            "path": "contracts/common/Enum.sol"
+          },
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          },
+          {
+            "import": "./Executor.sol",
+            "path": "contracts/base/Executor.sol"
+          }
+        ],
+        "contracts/base/OwnerManager.sol": [
+          {
+            "import": "../common/SelfAuthorized.sol",
+            "path": "contracts/common/SelfAuthorized.sol"
+          }
+        ],
+        "contracts/common/Enum.sol": [],
+        "contracts/common/NativeCurrencyPaymentFallback.sol": [],
+        "contracts/common/SecuredTokenTransfer.sol": [],
+        "contracts/common/SelfAuthorized.sol": [],
+        "contracts/common/SignatureDecoder.sol": [],
+        "contracts/common/Singleton.sol": [],
+        "contracts/common/StorageAccessible.sol": [],
+        "contracts/external/SafeMath.sol": [],
+        "contracts/handler/CompatibilityFallbackHandler.sol": [
+          {
+            "import": "./TokenCallbackHandler.sol",
+            "path": "contracts/handler/TokenCallbackHandler.sol"
+          },
+          {
+            "import": "../interfaces/ISignatureValidator.sol",
+            "path": "contracts/interfaces/ISignatureValidator.sol"
+          },
+          {
+            "import": "../Safe.sol",
+            "path": "contracts/Safe.sol"
+          }
+        ],
+        "contracts/handler/TokenCallbackHandler.sol": [
+          {
+            "import": "../interfaces/ERC1155TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC1155TokenReceiver.sol"
+          },
+          {
+            "import": "../interfaces/ERC721TokenReceiver.sol",
+            "path": "contracts/interfaces/ERC721TokenReceiver.sol"
+          },
+          {
+            "import": "../interfaces/ERC777TokensRecipient.sol",
+            "path": "contracts/interfaces/ERC777TokensRecipient.sol"
+          },
+          {
+            "import": "../interfaces/IERC165.sol",
+            "path": "contracts/interfaces/IERC165.sol"
+          }
+        ],
+        "contracts/interfaces/ERC1155TokenReceiver.sol": [],
+        "contracts/interfaces/ERC721TokenReceiver.sol": [],
+        "contracts/interfaces/ERC777TokensRecipient.sol": [],
+        "contracts/interfaces/IERC165.sol": [],
+        "contracts/interfaces/ISignatureValidator.sol": [],
+        "contracts/libraries/MultiSendCallOnly.sol": [],
+        "contracts/libraries/SafeStorage.sol": [],
+        "contracts/libraries/SignMessageLib.sol": [
+          {
+            "import": "./SafeStorage.sol",
+            "path": "contracts/libraries/SafeStorage.sol"
+          },
+          {
+            "import": "../Safe.sol",
+            "path": "contracts/Safe.sol"
+          }
+        ],
+        "contracts/proxies/IProxyCreationCallback.sol": [
+          {
+            "import": "./SafeProxy.sol",
+            "path": "contracts/proxies/SafeProxy.sol"
+          }
+        ],
+        "contracts/proxies/SafeProxy.sol": [],
+        "contracts/proxies/SafeProxyFactory.sol": [
+          {
+            "import": "./SafeProxy.sol",
+            "path": "contracts/proxies/SafeProxy.sol"
+          },
+          {
+            "import": "./IProxyCreationCallback.sol",
+            "path": "contracts/proxies/IProxyCreationCallback.sol"
+          }
+        ]
+      }
+    }
+  },
+  "trees": {
+    "safe-fndn/safe-smart-account": {
+      "07d4fc7b298a69226bfdfd260bed7d92557cfd26": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@safe-global/safe-contracts"
+        }
+      },
+      "1a9e5ce768e134c556770ea50e114fd83666b8a8": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@gnosis.pm/safe-contracts"
+        }
+      },
+      "271921f4b37613b3d49bf33452dbcd81be219247": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@gnosis.pm/safe-contracts"
+        }
+      },
+      "4bfc0c8519f1893015d7edfd2c2780fca163c364": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@gnosis.pm/safe-contracts"
+        }
+      },
+      "767ef36bba88bdbc0c9fe3708a4290cabef4c376": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@gnosis.pm/safe-contracts"
+        }
+      },
+      "834e798aa51291cccaf0594921194928716e9892": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@safe-global/safe-smart-account"
+        }
+      },
+      "942968d66a4fa200fe9757d02b377dbfc3c88636": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "gnosis-safe"
+        }
+      },
+      "ad6c7355d5bdf4f7fa348fbfcb9f07431769a3c9": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@gnosis.pm/safe-contracts"
+        }
+      },
+      "b115c4c5fe23dca6aefeeccc73d312ddd23322c2": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@safe-global/safe-smart-account"
+        }
+      },
+      "b1a80f23b99c4983229dbb678c9f77895c9d2b70": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "gnosis-safe"
+        }
+      },
+      "eb93dbb0f62e2dc1b308ac4c110038062df0a8c9": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@safe-global/safe-contracts"
+        }
+      }
+    }
+  },
+  "dependencies": {}
 }

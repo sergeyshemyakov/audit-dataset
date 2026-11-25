@@ -8,13 +8,14 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Report: [safe-core__docs__Gnosis_Safe_Audit_Report.md](<reports/safe-core__docs__Gnosis_Safe_Audit_Report.md>)
 - Auditor: Alexey Akhunov
 - Description: Reviews the original Gnosis Safe contracts and a substantially refactored second iteration, covering wallet execution, proxies, extensions, and libraries.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/safe-fndn/safe-smart-account"><code>safe-fndn/safe-smart-account</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
 | <a href="https://github.com/safe-fndn/safe-smart-account/commit/b1a80f23b99c4983229dbb678c9f77895c9d2b70"><code>b1a80f23b99c4983229dbb678c9f77895c9d2b70</code></a> | January 28, 2018 | <code>contracts</code> (recursive directory)<br><code>contracts/libraries/MultiSendStruct.sol</code> (explicitly not audited) |
-| <a href="https://github.com/safe-fndn/safe-smart-account/commit/942968d66a4fa200fe9757d02b377dbfc3c88636"><code>942968d66a4fa200fe9757d02b377dbfc3c88636</code></a> | June 14, 2018 | <code>contracts</code> (recursive directory) |
+| <a href="https://github.com/safe-fndn/safe-smart-account/commit/942968d66a4fa200fe9757d02b377dbfc3c88636"><code>942968d66a4fa200fe9757d02b377dbfc3c88636</code></a> | June 14, 2018 | <code>contracts</code> (recursive directory)<br><code>contracts/modules/DailyLimitModule.sol</code> (explicitly not audited)<br><code>contracts/modules/SocialRecoveryModule.sol</code> (explicitly not audited)<br><code>contracts/modules/WhitelistModule.sol</code> (explicitly not audited) |
 
 ## Security Review of Gnosis Safe v1.1.0
 
@@ -22,6 +23,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: G0 Group
 - Date: 2019-11-11
 - Description: Reviews the listed Gnosis Safe core, module, handler, library, and proxy contracts and follows their remediation into v1.1.0.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/safe-fndn/safe-smart-account"><code>safe-fndn/safe-smart-account</code></a>
 
@@ -36,6 +38,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: G0 Group
 - Date: 2019-11-11
 - Description: Reviews the listed Safe contracts across the original, v1.1.0, and v1.1.1 revisions, including the additional v1.1.1 appendix checks.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/safe-fndn/safe-smart-account"><code>safe-fndn/safe-smart-account</code></a>
 
@@ -51,6 +54,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: G0 Group
 - Date: 2020-05-04
 - Description: Reviews the EIP-150 gas-validation adjustment in GnosisSafe and ModuleManager and verifies its correction.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/safe-fndn/safe-smart-account"><code>safe-fndn/safe-smart-account</code></a>
 
@@ -65,6 +69,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: G0 Group
 - Date: 2021-04-01
 - Description: Reviews all Solidity sources for the initial Safe 1.3.0 candidate and records follow-up changes implementing two optimization notes.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/safe-fndn/safe-smart-account"><code>safe-fndn/safe-smart-account</code></a>
 
@@ -79,6 +84,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: G0 Group
 - Date: 2021-05-01
 - Description: Reviews all Solidity sources in the final Safe 1.3.0 audit revision.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/safe-fndn/safe-smart-account"><code>safe-fndn/safe-smart-account</code></a>
 
@@ -92,6 +98,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Certora
 - Date: 2026-07-29
 - Description: Manually reviews the full listed Safe v1.3.0 contract set and assesses known security-relevant behaviors, with a follow-up finding fix.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/safe-fndn/safe-smart-account"><code>safe-fndn/safe-smart-account</code></a>
 
@@ -105,6 +112,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Nethermind Security
 - Date: 2026-08-17
 - Description: Reviews the listed Safe v1.3.0 contracts and records remediation of the identified issues in the v1.4.0 release.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/safe-fndn/safe-smart-account"><code>safe-fndn/safe-smart-account</code></a>
 
@@ -118,6 +126,8 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Ackee Blockchain
 - Date: 2023-03-28
 - Description: Reviews five Safe 1.4.0 entry-point contracts together with all of their recursively imported dependencies, followed by a remediation review.
+- Code the report does not list: not mentioned by the report
+- Third-party dependencies: the report says they were reviewed
 
 ### Repository: <a href="https://github.com/safe-fndn/safe-smart-account"><code>safe-fndn/safe-smart-account</code></a>
 
@@ -132,6 +142,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Ackee Blockchain Security
 - Date: 2025-05-28
 - Description: Reviews every Solidity file under the Safe smart-account contracts directory except examples and tests, then verifies implemented fixes.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/safe-fndn/safe-smart-account"><code>safe-fndn/safe-smart-account</code></a>
 
@@ -145,6 +156,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Report: [safe-early__docs__alexey_audit.md](<reports/safe-early__docs__alexey_audit.md>)
 - Auditor: Alexey Akhunov
 - Description: Identifies the source revision used by the attached Safe audit and the later revision checked with symbolic execution.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/safe-fndn/safe-smart-account"><code>safe-fndn/safe-smart-account</code></a>
 
@@ -159,6 +171,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Runtime Verification
 - Date: 2019-02-27
 - Description: Audits and formally verifies selected security-critical GnosisSafe, owner, module, master-copy, and signature-decoding behavior at the EVM bytecode level.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/safe-fndn/safe-smart-account"><code>safe-fndn/safe-smart-account</code></a>
 
@@ -172,6 +185,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Certora
 - Date: 2025-01-14
 - Description: Formally verifies and manually reviews the listed Safe v1.5.0 contracts, then checks the revision containing fixes.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/safe-fndn/safe-smart-account"><code>safe-fndn/safe-smart-account</code></a>
 
@@ -186,6 +200,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Certora
 - Date: 2024-08-23
 - Description: Manually reviews and formally verifies Safe migration and L2 setup library contracts, followed by a fix review.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/safe-fndn/safe-smart-account"><code>safe-fndn/safe-smart-account</code></a>
 

@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.7.0",
+  "schema_version": "1.8.0",
   "project": "optimism",
   "reports": [
     {
@@ -8,7 +8,7 @@
       "title": "Optimism Security Assessment (OVM contracts, October 2020)",
       "description": "Trail of Bits whitebox assessment of the OVM Solidity contracts in the contracts-v2 repository, focused on the Merkle/RLP/trie libraries, OVM_SafetyChecker, the Canonical Transaction Chain, State Commitment Chain, Fraud Verifier and State Transitioner, plus access controls and arithmetic. The execution manager, bond manager, L2 precompiles, compiler fork and offchain components were out of scope.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Trail of Bits",
       "report_date": "2020-10-30",
       "repositories": [
@@ -410,7 +410,7 @@
       "title": "Optimism Audit Report: ECDSA Wallet",
       "description": "dapp.org review of the OVM ECDSA smart-wallet contracts OVM_ECDSAContractAccount and OVM_ProxyEOA in contracts-v2, validating authentication, EOA-equivalence, upgrade-consent and non-brickability properties with a dapptools test suite. Several High findings were located in the byte/RLP utility libraries reached through the wallet code, and per-finding fix commits are listed.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "dapp.org",
       "report_date": "2021-01-12",
       "repositories": [
@@ -622,7 +622,7 @@
       "title": "OpenZeppelin OVM and Rollup Audit (March-May 2021)",
       "description": "Seven-week OpenZeppelin audit of the OVM Solidity contracts under contracts/optimistic-ethereum/OVM and contracts/optimistic-ethereum/libraries across two commits (the archived contracts repository and a personal fork), excluding the bond manager, safety checker, ERC1820 registry and deployer whitelist. A later update section records per-finding fixes in the archived repository and the optimism monorepo.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "excluded",
       "auditor": "OpenZeppelin",
       "report_date": null,
       "repositories": [
@@ -1016,10 +1016,10 @@
     {
       "id": "consensys-safetychecker-2021-03",
       "report_file": "2021_03-SafetyChecker-ConsenSysDiligence.md",
-      "title": "Optimism SafetyChecker (ConsenSys Diligence)",
+      "title": "Optimism SafetyChecker",
       "description": "Two-person-week differential fuzzing engagement comparing OVM_SafetyChecker.isBytecodeSafe against a custom Go reference implementation, with an informal specification of safe OVM bytecode and forward-looking recommendations. No divergences or vulnerability findings were reported.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
       "auditor": "ConsenSys Diligence",
       "report_date": null,
       "repositories": [
@@ -1054,10 +1054,10 @@
     {
       "id": "openzeppelin-bedrock-bridge-2022-05",
       "report_file": "2022_05-Bedrock_Contracts-Zeppelin.md",
-      "title": "Optimism Bridge Audit (OpenZeppelin, May 2022)",
+      "title": "Optimism Bridge Audit (May 2022)",
       "description": "OpenZeppelin audit of the new Bedrock L1/L2 bridge and messaging contracts (OptimismPortal, L2OutputOracle, cross-domain messengers, standard bridges, L2ToL1MessagePasser, mintable tokens) in the optimistic-specs repository, reviewed across three successive commits during a rewrite. Offchain components and L2 nodes were assumed to work as documented.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "OpenZeppelin",
       "report_date": "2022-05-16",
       "repositories": [
@@ -1124,7 +1124,7 @@
       "title": "Optimism: Rollup Node and Execution Engine - Fix Review",
       "description": "Trail of Bits fix review of the twelve findings from its April 2022 audit of the Bedrock rollup node (optimistic-specs, Go and Solidity) and the reference execution engine (reference-optimistic-geth). Solidity findings target the L1 deposit/withdrawal contracts and the L1Block predeploy; the remaining findings target Go code and specifications.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Trail of Bits",
       "report_date": "2022-07-07",
       "repositories": [
@@ -1197,7 +1197,7 @@
     {
       "id": "sigmaprime-bedrock-golang-2022-10",
       "report_file": "irrelevant/2022_08-Bedrock_GoLang-SigmaPrime.md",
-      "title": "Optimism Bedrock Security Assessment Report (Sigma Prime)",
+      "title": "Optimism Bedrock Security Assessment Report",
       "description": "Time-boxed Sigma Prime review of the Golang implementation of the Bedrock rollup node (op-node) and reference-optimistic-geth, with a retest. The scope is limited to offchain node and client software.",
       "isRelevant": false,
       "auditor": "Sigma Prime",
@@ -1221,10 +1221,10 @@
     {
       "id": "openzeppelin-bedrock-periphery-2022-09",
       "report_file": "2022_09-Bedrock_and_Periphery-Zeppelin.md",
-      "title": "Optimism Bedrock and Periphery Audit (OpenZeppelin)",
+      "title": "Optimism Bedrock and Periphery Audit",
       "description": "OpenZeppelin audit of nineteen listed Solidity files in the optimism monorepo covering the Bedrock L1/L2 messengers, bridges, portal, output oracle, proxies and the periphery ERC721 bridges; no Critical or High issues were found. Fixes were reviewed in the separate optimism-audit-fixes repository, which is not publicly accessible.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "OpenZeppelin",
       "report_date": "2022-09-02",
       "repositories": [
@@ -1536,7 +1536,7 @@
       "title": "Optimism Drippie Security Review",
       "description": "Spearbit manual review plus Mythril of the Drippie automated contract-interaction system (Drippie, drip checks, AssetReceiver, Transactor) in the optimism monorepo's contracts-periphery package. No Critical or High issues; fixes were reviewed in pull requests 3280 and 3567.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Spearbit",
       "report_date": "2022-10-03",
       "repositories": [
@@ -1640,7 +1640,7 @@
       "title": "Optimism Security Assessment (testing strategy and invariants, November 2022)",
       "description": "Trail of Bits review of Optimism's testing strategy: documentation of invariants and Echidna property tests for Bedrock contracts (OptimismPortal, ResourceMetering, L2OutputOracle and libraries) plus Go fuzz/unit tests for op-node, op-e2e and op-geth. One Undetermined-severity finding; the Go components are offchain.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
       "auditor": "Trail of Bits",
       "report_date": "2022-11-10",
       "repositories": [
@@ -1772,6 +1772,7 @@
       "title": "Formal Verification Report: OptimismPortal.depositTransaction",
       "description": "Runtime Verification pilot using KEVM-Foundry to prove that OptimismPortal.depositTransaction always emits the correct event except under enumerated invalid invocations, excluding the metered modifier. The report names no repository, commit or file path, so no source coverage can be pinned.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Runtime Verification",
       "report_date": "2022-12-23",
       "repositories": [],
@@ -1783,7 +1784,7 @@
       "title": "Optimism: SystemConfig and Withdrawal Updates - Security Assessment",
       "description": "Trail of Bits review of the L1 SystemConfig contract and the two-step withdrawal workflow of OptimismPortal, together with the related op-node config parsing and op-geth L1 cost logic. Late commits changing ResourceMetering, L2ToL1MessagePasser, L2OutputOracle, MerkleTrie and two portal pull requests were reviewed in isolation, and the single High finding was verified fixed.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
       "auditor": "Trail of Bits",
       "report_date": "2023-01-18",
       "repositories": [
@@ -1963,7 +1964,7 @@
       "title": "Sherlock Security Review for Optimism (Bedrock)",
       "description": "Public Sherlock contest on the Bedrock release covering the L1 contracts, L2 predeploys, op-node and op-geth at a fixed monorepo commit, with three High findings in OptimismPortal withdrawal finalization. No fix-review commit is given; op-node and op-geth are offchain and not recorded as source coverage.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Sherlock",
       "report_date": "2023-03-03",
       "repositories": [
@@ -2025,7 +2026,7 @@
       "title": "Agora Audit Report - Optimism Governor & Approval Voting Module",
       "description": "Independent review by Zach Obront of Agora's Optimism Governor V5 upgrade and the new Approval Voting Module in the voteagora/optimism-gov repository. Two High findings; fixes were verified per commit and pull request 10 was reviewed after completion.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Zach Obront",
       "report_date": "2023-05-12",
       "repositories": [
@@ -2244,10 +2245,10 @@
     {
       "id": "code4rena-base-2023-08",
       "report_file": "2023_08-OP-Stack-Base-Code4rena.md",
-      "title": "BASE Findings & Analysis Report (Code4rena)",
+      "title": "BASE Findings & Analysis Report",
       "description": "Code4rena competitive audit of the BASE (OP Stack Bedrock) system: fourteen Solidity contracts plus op-node and op-geth, frozen at the optimism monorepo commit named by the contest repository. Zero High or Medium findings; only the top QA and gas reports are reproduced.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
       "auditor": "Code4rena",
       "report_date": "2023-08-10",
       "repositories": [
@@ -2485,10 +2486,10 @@
     {
       "id": "openzeppelin-agora-governor-v6-2023-11",
       "report_file": "2023_11-Governor-OpenZeppelin.md",
-      "title": "Agora Optimism Governance Audit (OpenZeppelin)",
+      "title": "Agora Optimism Governance Audit",
       "description": "OpenZeppelin audit of Agora's Optimism Governance V6 upgrade: OptimismGovernorV6, ProposalTypesConfigurator, VotableSupplyOracle and AlligatorOP_V5, with per-finding resolutions in pull request 16. No Critical or High issues; the report prints no repository URL, so the voteagora/optimism-gov repository was identified from the matching commit and pull request.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "OpenZeppelin",
       "report_date": "2023-11-22",
       "repositories": [
@@ -2785,10 +2786,11 @@
     {
       "id": "trust-superchainconfig-upgrade-2024-01",
       "report_file": "2023_12_SuperchainConfigUpgrade_Trust.md",
-      "title": "Smart Contract Audit: Optimism Bedrock upgrade (Trust Security)",
+      "title": "Smart Contract Audit: Optimism Bedrock upgrade",
       "description": "Trust Security diff-based review of eight Bedrock L1 and universal bridging contracts changed since the Sherlock contest commit, chiefly the SuperchainConfig pause integration, gas-issue mitigations, storage-layout safety and reentrancy changes. One High finding, verified fixed in the mitigation review.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
+      "dependencies": "included",
       "auditor": "Trust Security",
       "report_date": "2024-01-11",
       "repositories": [
@@ -3039,10 +3041,10 @@
     {
       "id": "cantina-mcp-l1-2024-02",
       "report_file": "2024_02-MCP_L1-Cantina.md",
-      "title": "Optimism Cycle 19 Security Review (Cantina, MCP L1)",
+      "title": "Optimism Cycle 19 Security Review (MCP L1)",
       "description": "Cantina Managed review of the MCP L1 (multi-chain prep) upgrade that moves L1 contract immutables into storage and adds initializer parameters, covering the affected contracts-bedrock Solidity contracts and the op-chain-ops upgrade tooling in Go. No Critical, High or Medium issues; the report declares no explicit file list. Every contracts-bedrock source the MCP L1 commit e6ef3a90 changes is in scope.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2024-02-15",
       "repositories": [
@@ -3275,7 +3277,7 @@
       "title": "Sherlock Security Review for Optimism (Fault Proofs)",
       "description": "Public Sherlock contest on the fault proof system's L1 contracts (OptimismPortal2, DisputeGameFactory, FaultDisputeGame, DelayedWETH, WETH98) at a fixed monorepo commit, with four Medium and no High findings. FaultDisputeGame resolution logic was explicitly excluded from the contest scope.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Sherlock",
       "report_date": "2024-06-07",
       "repositories": [
@@ -3374,10 +3376,10 @@
     {
       "id": "cantina-safe-extensions-2024-06",
       "report_file": "2024_05_SafeLivenessExtensions-Cantina.md",
-      "title": "Optimism Safe Extensions Competition (Cantina)",
+      "title": "Optimism Safe Extensions Competition",
       "description": "Cantina competition on the Security Council Safe extensions LivenessGuard and LivenessModule in contracts-bedrock, reporting six Medium findings out of 143 submissions and no Critical or High issues. The report prints no commit; the revision comes from the single GitHub permalink in the report.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2024-06-06",
       "repositories": [
@@ -3442,10 +3444,10 @@
     {
       "id": "code4rena-superchain-2024-08",
       "report_file": "2024_08-Superchain-Code4rena.md",
-      "title": "Optimism Superchain Findings & Analysis Report (Code4rena)",
+      "title": "Optimism Superchain Findings & Analysis Report",
       "description": "Code4rena contest on the fault proof contracts (FaultDisputeGame, DisputeGameFactory, MIPS, PreimageOracle and libraries) hosted in the contest mirror repository, yielding five High and eleven Medium findings with no fix review. The file list and pinned commit come from the contest repository, which the report names as the code under review.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
       "auditor": "Code4rena",
       "report_date": "2024-08-16",
       "repositories": [
@@ -3569,10 +3571,10 @@
     {
       "id": "cantina-fault-proofs-mips-2024-08",
       "report_file": "2024_08_Fault-Proofs-MIPS_Cantina.md",
-      "title": "Base fault proofs mips Security Review (Cantina)",
+      "title": "Base fault proofs mips Security Review",
       "description": "Cantina Managed review, commissioned by Base, of the Cannon onchain MIPS single-step verifier MIPS.sol and its MIPSInstructions library at a fixed optimism monorepo commit, with one Critical and one High finding in MIPS.sol. All client responses are acknowledgements and no fix commit is given.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2024-08-14",
       "repositories": [
@@ -3626,10 +3628,10 @@
     {
       "id": "spearbit-fault-proofs-no-mips-2024-08",
       "report_file": "2024_08_Fault-Proofs-No-MIPS_Spearbit.md",
-      "title": "Base Fault Proofs no MIPS Security Review (Spearbit)",
+      "title": "Base Fault Proofs no MIPS Security Review",
       "description": "Spearbit review, commissioned by Base, of the Optimism fault-proof dispute contracts (FaultDisputeGame, DisputeGameFactory, AnchorStateRegistry, dispute libraries, PreimageOracle) at a fixed monorepo commit, explicitly excluding MIPS. Four Medium and no Critical or High findings; no fix review.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Spearbit",
       "report_date": "2024-08-14",
       "repositories": [
@@ -3709,10 +3711,10 @@
     {
       "id": "3docsecurity-cannon-fgetfd-2024-10",
       "report_file": "2024_10-Cannon-FGETFD-3DocSecurity.md",
-      "title": "Audit Report - OP Cannon (3DOC Security, F_GETFD)",
+      "title": "Audit Report - OP Cannon (F_GETFD)",
       "description": "Two-day 3DOC Security review of pull request 12050 adding F_GETFD syscall support to the Cannon MIPS VM in both the Go implementation and the onchain MIPS, MIPS2 and MIPSSyscalls contracts. No findings; the single reported item was withdrawn as a false positive.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
       "auditor": "3DOC Security",
       "report_date": "2024-10-03",
       "repositories": [
@@ -3777,10 +3779,10 @@
     {
       "id": "milotruck-deputypausemodule-2025-01",
       "report_file": "2024_12-DPM-MiloTruck.md",
-      "title": "Optimism DeputyPauseModule (MiloTruck)",
+      "title": "Optimism DeputyPauseModule",
       "description": "Two-day independent review by MiloTruck of the DeputyPauseModule Safe module for signature-based emergency pauses, followed by verification of the mitigation commit and pull request 13594. Three Low and two Informational findings, none Critical or High.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "MiloTruck",
       "report_date": "2025-01-07",
       "repositories": [
@@ -3833,10 +3835,10 @@
     {
       "id": "radiantlabs-deputypausemodule-2024-12",
       "report_file": "2024_12-DPM-RadiantLabs.md",
-      "title": "DeputyPauseModule Security Review (Radiant Labs)",
+      "title": "DeputyPauseModule Security Review",
       "description": "Two-day Radiant Labs manual review of the DeputyPauseModule contract against its design document and specification invariants. Two Low and two Informational findings, none Critical or High; no fix review.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Radiant Labs",
       "report_date": "2024-12-28",
       "repositories": [
@@ -3871,10 +3873,10 @@
     {
       "id": "offbeatlabs-incident-response-updates-2025-01",
       "report_file": "2025_01-IRI-OffbeatLabs.md",
-      "title": "Optimism Incident Response Updates Review (Offbeat Security)",
+      "title": "Optimism Incident Response Updates Review",
       "description": "Offbeat Security review for Optimism Labs of the incident-response changes to the dispute game and portal contracts (OptimismPortal2, AnchorStateRegistry, FaultDisputeGame, DelayedWETH, OPContractsManager and libraries) at monorepo commits 984bae9 and ce2ce43, covering anchor state handling, game validation and bond distribution. One Low and three Informational findings; L-01 and I-01 fixes in PRs #14144 and #14139 were verified.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
       "auditor": "Offbeat Labs",
       "report_date": "2025-01-24",
       "repositories": [
@@ -4083,10 +4085,10 @@
     {
       "id": "base-mt64cannon-2025-02",
       "report_file": "2025_01-MT-Cannon-Base.md",
-      "title": "MT64Cannon Security Review (Coinbase Protocol Security)",
+      "title": "MT64Cannon Security Review",
       "description": "Coinbase Protocol Security (Base) review of the six MT64Cannon Solidity contracts (MIPS64 and its libraries) at a fixed optimism monorepo commit. One Medium finding (incorrect SLL/SLLV implementation) fixed in pull request 14114 and verified; no Critical or High findings.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Base",
       "report_date": "2025-02-06",
       "repositories": [
@@ -4214,10 +4216,10 @@
     {
       "id": "spearbit-mt-cannon-2025-02",
       "report_file": "2025_01-MT-Cannon-Spearbit.md",
-      "title": "Optimism Mt Cannon Security Review (Spearbit)",
+      "title": "Optimism Mt Cannon Security Review",
       "description": "Spearbit review of the 64-bit multithreaded Cannon fault-proof VM (MIPS64 Solidity contracts and the Go mipsevm implementation) at a fixed monorepo commit. One High finding (futex value width) in MIPS64.sol, fixed in pull request 13453; a Medium SLL/SLLV finding is carried over from the parallel Base review.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Spearbit",
       "report_date": "2025-02-20",
       "repositories": [
@@ -4448,10 +4450,10 @@
     {
       "id": "cantina-eip7702-2025-02",
       "report_file": "2025_02-EIP7702-Cantina.md",
-      "title": "Optimism Security Review (Cantina, EIP-7702 / Pectra impact)",
+      "title": "Optimism Security Review (EIP-7702 / Pectra impact)",
       "description": "Cantina Managed review (Feb 27 to Mar 1, 2025) of how the Pectra upgrade (EIP-7702 delegated EOAs and EIP-7623 calldata repricing) affects the Optimism L1/L2 messaging, bridge and EOA-check contracts at a single optimism commit. No Critical or High findings; 1 Medium, 1 Low and 2 Informational issues, with fixes in PR 14608 verified.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2025-03-09",
       "repositories": [
@@ -4603,10 +4605,10 @@
     {
       "id": "spearbit-upgrade13-2025-02",
       "report_file": "2025_02-Upgrade13-Spearbit.md",
-      "title": "Optimism Security Review (Spearbit, Upgrade 13)",
+      "title": "Optimism Security Review (Upgrade 13)",
       "description": "Spearbit review (Jan 21 to Feb 21, 2025) of the Optimism Upgrade 13 L1 contracts at a single optimism commit, covering the OPContractsManager upgrade/addGameType flows, AnchorStateRegistry, FaultDisputeGame, OptimismPortal2 and SystemConfig changes. No Critical or High findings; 2 Medium, 6 Low and 11 Informational issues with fix PRs verified.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Spearbit",
       "report_date": "2025-03-05",
       "repositories": [
@@ -4839,10 +4841,10 @@
     {
       "id": "spearbit-interop-contracts-2025-03",
       "report_file": "2025_03-Interop-Contracts-Spearbit.md",
-      "title": "Optimism Interop Security Review (Spearbit)",
+      "title": "Optimism Interop Security Review",
       "description": "Spearbit review of the Optimism Interop L1 and L2 contracts (SharedLockbox, OptimismPortalInterop, SuperchainConfigInterop, CrossL2Inbox, L2ToL2CrossDomainMessenger, SuperchainWETH, SuperchainTokenBridge and related predeploys) in the monorepo at commit 6c80f23a. Two High findings were acknowledged; the report declares no explicit file list.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Spearbit",
       "report_date": "2025-03-19",
       "repositories": [
@@ -5063,10 +5065,10 @@
     {
       "id": "cantina-interop-op-program-2025-03",
       "report_file": "2025_03-Interop-OpProgram-Cantina.md",
-      "title": "Optimism Interop Proofs Security Review (Cantina)",
+      "title": "Optimism Interop Proofs Security Review",
       "description": "Cantina Managed review (Mar 18-29, 2025) of the Optimism interop fault-proof program logic: op-program super root state transition and cross-chain message consolidation, together with the shared op-supervisor cross-safety checks and super root encoding in op-service, at commit 9d86edb5. Two Critical and two High findings; the report declares no explicit file list, so paths are those where findings locate.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2025-05-07",
       "repositories": [
@@ -5328,10 +5330,10 @@
     {
       "id": "wonderland-interop-portal-2025-03",
       "report_file": "2025_03-Interop-Portal-Wonderland.md",
-      "title": "ETHLockbox redesign - Unified report (Wonderland)",
+      "title": "ETHLockbox redesign - Unified report",
       "description": "Wonderland review of the ETHLockbox redesign for interop (ETHLockbox, OptimismPortal2 migration to super roots and lockbox liquidity migration) in the defi-wonderland/optimism fork at commit 9df1fc15. Only Low and Informational findings; the report declares no explicit file list.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Wonderland",
       "report_date": null,
       "repositories": [
@@ -5399,7 +5401,7 @@
       "title": "Interop portal - Competition",
       "description": "Cantina competition (Mar 24 - Apr 7, 2025) on the OP Stack interop portal changes in ethereum-optimism/optimism: OptimismPortal2 Super Roots proving, ETHLockbox, AnchorStateRegistry, OPContractsManager and related L1 contracts, with fixes reviewed by lead researcher Phaze. 26 findings (7 Low, 19 Informational), no Critical/High.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2025-06-04",
       "repositories": [
@@ -5654,9 +5656,10 @@
     {
       "id": "alephv-op-program-blob-handling-2025-04",
       "report_file": "2025_04-op-program-blob-handling-aleph_v.md",
-      "title": "Optimism Blob Bug Fix Review (Aleph_v)",
+      "title": "Optimism Blob Bug Fix Review",
       "description": "Targeted four-day review of the fix for the fault-proof blob-handling bug (incorrect use of roots of unity in KZG point evaluation), covering the blob commitment mathematics, the op-program/challenger Go changes and the PreimageOracle.sol blob handling. Reviewed on a PR in a temporary private repository responding to GitHub advisory GHSA-r3crh2xh-wh4qs; no findings.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Aleph_v",
       "report_date": null,
       "repositories": [
@@ -5670,9 +5673,10 @@
     {
       "id": "coinbase-cannon-u16-2025-05",
       "report_file": "2025_05-Cannon-Go-Updates-Coinbase.md",
-      "title": "Cannon U16 Security Review (Coinbase Protocol Security)",
+      "title": "Cannon U16 Security Review",
       "description": "Coinbase Protocol Security review (May 27-30, 2025) of the Cannon state version 7 changes to the onchain MIPS64 contracts: no-op mprotect and eventfd2 syscalls and the dclz/dclo opcodes, with no issues found. The report names no repository, commit, pull request or file, so no source coverage can be pinned.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Coinbase",
       "report_date": "2025-05-30",
       "repositories": [
@@ -5689,7 +5693,7 @@
       "title": "Optimism Security Review",
       "description": "Spearbit five-day review of the Optimism monorepo contracts-bedrock changes for the interop-ready OptimismPortal2 / Upgrade 16 (SuperchainConfig pause model, ETHLockbox migration, ReinitializableBase upgrades, OPContractsManager) at commit 7cd84fed, followed by a fix review of PR 15939. Five Low, one Gas and eight Informational findings and no Critical, High or Medium issues; the report declares no explicit file list.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Spearbit",
       "report_date": "2025-05-20",
       "repositories": [
@@ -6009,10 +6013,10 @@
     {
       "id": "spearbit-upgrade16-2025-05",
       "report_file": "2025_05-Upgrade16-Spearbit.md",
-      "title": "Optimism Security Review - Upgrade 16 (Spearbit)",
+      "title": "Optimism Security Review - Upgrade 16",
       "description": "Spearbit review (May 5-12, 2025) of the OP Stack L1 contracts changed for Upgrade 16 in the ethereum-optimism monorepo: ETHLockbox, OptimismPortal2, SuperchainConfig, SystemConfig, bridges, OPContractsManager U16 changes, MIPS64, dispute contracts, Encoding/Hashing and DeputyPauseModule. Five Low findings and no Critical/High/Medium; fixes verified in PR #15939 commits.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Spearbit",
       "report_date": "2025-05-20",
       "repositories": [
@@ -6599,7 +6603,7 @@
       "title": "OP Cannon Security Review (3DOC / Radiant Labs)",
       "description": "Radiant Labs (3DOC) manual review for OP Labs of the Cannon Go 1.24 support changes in PR #15737, primarily the new getrandom syscall in the Go MIPS64 VM (cannon/mipsevm) and the onchain MIPS64.sol verifier. One Medium (LL/SC reservation not cleared, fixed in d89e0ce), one Low and one Informational finding; no High findings.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
       "auditor": "3DOC Security",
       "report_date": "2025-06-06",
       "repositories": [
@@ -6760,7 +6764,7 @@
       "title": "Optimism - Fix Review: MIPS EventFd and Syscall Error Handling (Spearbit/Cantina)",
       "description": "Solo Spearbit/Cantina fix review (Zigtur) of three OP Labs pull requests (#16341, #16346, #16384) on commit 7f7b9abb that add eventfd2 syscall support and correct the V0/A3 register convention for syscall errors in the Cannon Go MIPS64 VM and the onchain MIPS64 contracts, needed for the Go 1.23 runtime. Both fixes were confirmed accurate; no new findings were reported.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2025-06-21",
       "repositories": [
@@ -7056,7 +7060,7 @@
       "title": "Optimism Upgrade 16 Security Review",
       "description": "Spearbit four-day review of the VerifyOPCM.s.sol Foundry script at commit 731280c6 and of whether it correctly verifies the OPContractsManager.sol contract at commit 54c19f6a for Upgrade 16. One Medium, one Low and one Informational finding, all acknowledged; no Critical or High issues and no fix review.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
       "auditor": "Spearbit",
       "report_date": "2025-07-16",
       "repositories": [
@@ -7118,7 +7122,7 @@
       "title": "Optimism Governor Audit",
       "description": "OpenZeppelin reviewed the voteagora/optimism-governor repository at commit d585692: the authorized-proposer changes to OptimismGovernor.sol introduced in pull request #44, the entire RedeployTimelock.s.sol timelock redeployment script, and the Sepolia proposal calldata calling updateTimelock. The audit (2025-07-16 to 2025-07-18) found no Critical/High/Medium issues, only 8 Low and 4 Notes, all resolved in follow-up pull requests #47-#56.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
       "auditor": "OpenZeppelin",
       "report_date": "2025-08-04",
       "repositories": [
@@ -7258,10 +7262,10 @@
     {
       "id": "spearbit-u16a-2025-09",
       "report_file": "2025_09-U16a-Spearbit.md",
-      "title": "Optimism u16 Security Review - U16a (Spearbit)",
+      "title": "Optimism u16 Security Review - U16a",
       "description": "Spearbit 2-day review (Sep 9-11, 2025) of the Optimism U16a upgrade in the ethereum-optimism monorepo, covering OPContractsManager, OptimismPortal2, SystemConfig, the L1 bridges/messenger and the MIPS64 contracts. Three Low and seven Informational findings, no Critical/High/Medium; two fixes verified via PRs #17406 and #17482.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
       "auditor": "Spearbit",
       "report_date": "2025-10-07",
       "repositories": [
@@ -7449,10 +7453,10 @@
     {
       "id": "cantina-fee-splitter-2025-11",
       "report_file": "2025_10-Rev-Sharing-Spearbit.md",
-      "title": "Wonderland - Optimism Fee Splitter Security Review (Cantina Managed)",
+      "title": "Wonderland - Optimism Fee Splitter Security Review",
       "description": "Cantina Managed review (Oct 15-19, 2025) of the Optimism revenue-sharing / FeeSplitter feature developed by Wonderland in the optimism monorepo at commit 989afa81, covering the FeeSplitter, FeeVault, L1Withdrawer, SuperchainRevSharesCalculator and FeesDepositor contracts, their interfaces, genesis scripts and op-deployer tooling. No Critical, High or Medium issues were found; fixes were verified holistically at commit f1fcd964.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2025-11-04",
       "repositories": [
@@ -8012,7 +8016,7 @@
       "title": "Optimism u17 Security Review",
       "description": "Cantina Managed review (2025-10-15 to 2025-10-21) of the ethereum-optimism/optimism u17 (op-contracts v5.0.0) contracts-bedrock release at commit aeed7033, covering 20 L1, L2, cannon MIPS64, dispute and universal contracts listed in the appendix, plus pull request 17998. The review found 3 Informational issues (all acknowledged) and no Critical/High/Medium/Low findings.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2025-10-27",
       "repositories": [
@@ -8341,10 +8345,10 @@
     {
       "id": "cantina-custom-gas-token-2025-11",
       "report_file": "2025_11-Custom-Gas-Token-Spearbit.md",
-      "title": "Optimism: Custom Gas Token Security Review (Cantina Managed)",
+      "title": "Optimism: Custom Gas Token Security Review",
       "description": "Cantina Managed review of the Custom Gas Token (CGT) feature in the optimism monorepo at commit 1f888ede, covering the L1 OPContractsManager/OptimismPortal2/SystemConfig changes, the new L2 CGT predeploys (L1BlockCGT, L2ToL1MessagePasserCGT, LiquidityController, NativeAssetLiquidity) and the related deploy/genesis scripts. No Critical, High or Medium issues were found; fixes verified by Cantina concern out-of-scope Go tooling and the specs repository.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2025-11-18",
       "repositories": [
@@ -8514,7 +8518,7 @@
     {
       "id": "cantina-revshare-contracts-upgrader-2025-11",
       "report_file": "irrelevant/2025_11-Rev-Sharing-Contracts-Upgrader.md",
-      "title": "Optimism Superchain Security Review (Cantina Managed, RevShareContractsUpgrader)",
+      "title": "Optimism Superchain Security Review (RevShareContractsUpgrader)",
       "description": "Cantina Managed review (Nov 20-23, 2025) of the superchain-ops RevShareContractsUpgrader and its FeeSplitterSetup, FeeVaultUpgrader and RevShareCommon libraries at commit 5a01b8c1, i.e. one-time upgrade/task scripts used to migrate chains to the FeeSplitter revenue-sharing contracts. Only two Informational findings, fixed in PR 1308 (commit 692cab0d).",
       "isRelevant": false,
       "auditor": "Cantina",
@@ -8530,10 +8534,10 @@
     {
       "id": "spearbit-safersafes-2025-11",
       "report_file": "2025_11-SaferSafes-Spearbit.md",
-      "title": "Optimism SaferSafes Security Review (Spearbit)",
+      "title": "Optimism SaferSafes Security Review",
       "description": "Spearbit review of the SaferSafes Safe extensions in the optimism monorepo at commit cb54822c: LivenessModule2.sol, TimelockGuard.sol and SaferSafes.sol under packages/contracts-bedrock/src/safe. No Critical or High issues; one Medium and two Low findings, with fixes landed in PRs 18147 and 18172 and verified by Spearbit.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Spearbit",
       "report_date": "2025-11-13",
       "repositories": [
@@ -8652,10 +8656,10 @@
     {
       "id": "cantina-u18-2026-01",
       "report_file": "2026_01-U18-Cantina.md",
-      "title": "Optimism PBC U18 Security Review (Cantina)",
+      "title": "Optimism PBC U18 Security Review",
       "description": "Cantina Managed review of the Optimism U18 upgrade at commit 87d406db, covering the contracts-bedrock dispute (DisputeGameFactory creator pattern, V2/Super/zk games), L1 (OPCM, portal, SystemConfig, FeesDepositor), L2 fee vault/splitter/CGT predeploys, libraries and Safe modules. No Critical, High or Medium issues were found; 4 Low, 1 Gas and 2 Informational findings, all acknowledged.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2026-01-12",
       "repositories": [
@@ -9293,6 +9297,7 @@
       "title": "Coinbase: Kona Security Review",
       "description": "Cantina Managed review (Jan 19 - Feb 9, 2026) of the kona Rust fault-proof program at op-rs/kona commit 86910c91, covering the derivation pipeline (kona-derive), proof crates (driver, executor, mpt, preimage, proof, proof-interop, std-fpvm) and the FPVM EVM precompiles. Found 2 Critical and 1 High issue (all fixed) plus 2 Medium, 32 Low and 18 Informational (acknowledged).",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2026-03-28",
       "repositories": [
@@ -9515,6 +9520,21 @@
                   ]
                 }
               ]
+            },
+            "bin/client/src/interop/consolidate.rs": {
+              "path_kind": "file",
+              "kind": "other",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "86910c9112437bbb849eca28961f813c5450e103",
+                    "timestamp": "2025-12-15T17:17:05Z",
+                    "url": "https://github.com/op-rs/kona/commit/86910c9112437bbb849eca28961f813c5450e103"
+                  },
+                  "status": "not_audited"
+                }
+              ]
             }
           }
         },
@@ -9588,10 +9608,10 @@
     {
       "id": "cantina-policyenginestaking-2026-03",
       "report_file": "2026_03-PolicyEngineStaking-Cantina.md",
-      "title": "Optimism: PolicyEngine Staking Contract Security Review (Cantina)",
+      "title": "Optimism: PolicyEngine Staking Contract Security Review",
       "description": "Cantina Managed review of the PolicyEngineStaking contract, its interface and deployment script in contracts-bedrock at commit 60679313, followed by a holistic fix review at commit 13c74c6d. No Critical, High or Medium issues; 1 Low and 9 Informational findings, 9 fixed and 1 acknowledged.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2026-03-27",
       "repositories": [
@@ -9683,10 +9703,10 @@
     {
       "id": "cantina-u19-2026-05",
       "report_file": "2026_05-U19-Cantina.md",
-      "title": "Optimism: Upgrade 19 Security Review (Cantina)",
+      "title": "Optimism: Upgrade 19 Security Review",
       "description": "Cantina Managed review of the Optimism Upgrade 19 contracts-bedrock changes at commit 7cbcb58f, covering OPCMv2 / validator utilities, L2ContractsManager, FeeVault, dispute and portal contracts. No Critical or High issues; 3 Medium, 10 Low and 3 Informational findings, none reported as fixed.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2026-05-23",
       "repositories": [
@@ -9901,10 +9921,10 @@
     {
       "id": "cantina-interop-l2-rereview-2026-06",
       "report_file": "2026_06-Interop-L2-Contracts.md",
-      "title": "Optimism L2 Interop Re-review (Cantina Managed)",
+      "title": "Optimism L2 Interop Re-review",
       "description": "Cantina Managed re-review of the OP Stack L2 interop predeploys (CrossL2Inbox, L2ToL2CrossDomainMessenger, SuperchainETHBridge, ETHLiquidity) and their supporting libraries (Hashing, TransientContext, SafeSend) at commit fa9974a2. The review found 4 Low and 25 Informational issues and no Critical, High or Medium findings; several documentation/code fixes were verified.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2026-06-18",
       "repositories": [
@@ -10083,10 +10103,10 @@
     {
       "id": "cantina-opcmv2-2026-06",
       "report_file": "2026_06-OPCMv2-Cantina.md",
-      "title": "Optimism OPCMv2 Security Review (Cantina)",
+      "title": "Optimism OPCMv2 Security Review",
       "description": "Cantina Managed review of the OPCMv2 contracts in contracts-bedrock (OPContractsManagerV2, Migrator, Utils, UtilsCaller, Container and the VerifyOPCM script) at commit a00b3972, with fix verification of PRs #19271, #19272, #19281, #19285, #20289 and #20371. No Critical or High issues; 1 Medium, 6 Low and 15 Informational findings, 21 fixed and 1 acknowledged.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2026-06-08",
       "repositories": [
@@ -10313,10 +10333,10 @@
     {
       "id": "cantina-upgrade20-2026-08",
       "report_file": "2026_08-U20-Cantina.md",
-      "title": "Optimism Upgrade 20 Security Review (Cantina Managed)",
+      "title": "Optimism Upgrade 20 Security Review",
       "description": "Cantina Managed review of the Upgrade 20 (super-roots) L1 contract changes at commit 7799a246, covering the super fault dispute games, OPContractsManagerV2 and its validator/utility contracts, OptimismPortal2, SystemConfig, SuperchainConfig and related interfaces and libraries. The review found 6 Low and 8 Informational issues and no Critical, High or Medium findings; four Low fixes were verified.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2026-08-20",
       "repositories": [

@@ -9,6 +9,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Verichains Lab
 - Date: 2022-06-28
 - Description: Verichains audited the Ronin bridge smart contracts, covering the mainchain and Ronin gateways together with the validator, withdrawal-limitation and governance extensions. All reported issues were fixed by Sky Mavis before publication, leaving no Medium or higher severity findings.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/axieinfinity/ronin-smart-contracts"><code>axieinfinity/ronin-smart-contracts</code></a>
 
@@ -25,6 +26,8 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: CertiK
 - Date: 2022-06-21
 - Description: CertiK&#x27;s security assessment of the Axie Infinity Ronin bridge contracts, covering the mainchain and Ronin gateways, withdrawal limitation, validator and proxy extensions. The assessment reported major findings that were addressed in later revisions of the audited files.
+- Code the report does not list: not mentioned by the report
+- Third-party dependencies: the report says they were not reviewed
 
 ### Repository: <a href="https://github.com/axieinfinity/ronin-smart-contracts"><code>axieinfinity/ronin-smart-contracts</code></a>
 
@@ -44,6 +47,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Beosin
 - Date: 2023-03-03
 - Description: Beosin audited the Ronin Network public blockchain, covering consensus and precompiled-contract code in the Ronin node alongside the Ronin DPoS smart contracts. Major findings in the DPoS contracts were remediated in follow-up commits reviewed by the report.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/axieinfinity/ronin"><code>axieinfinity/ronin</code></a>
 
@@ -76,6 +80,8 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: CertiK
 - Date: 2023-03-30
 - Description: CertiK assessed the Ronin DPoS contract suite, including staking, validator, slashing, governance, trusted-organization and gateway contracts. No major findings remained at the audited revisions.
+- Code the report does not list: not mentioned by the report
+- Third-party dependencies: the report says they were not reviewed
 
 ### Repository: <a href="https://github.com/axieinfinity/ronin-dpos-contracts"><code>axieinfinity/ronin-dpos-contracts</code></a>
 
@@ -98,6 +104,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Beosin
 - Date: 2023-09-08
 - Description: Beosin audited the Ronin bridge contracts in the DPoS repository, covering the mainchain and Ronin bridge managers, gateways and the bridge reward, slash and tracking contracts. No major findings were reported.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/axieinfinity/ronin-dpos-contracts"><code>axieinfinity/ronin-dpos-contracts</code></a>
 
@@ -112,6 +119,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Verichains Lab
 - Date: 2024-08-21
 - Description: Verichains audited the Ronin bridge v3 contracts, covering the mainchain and Ronin gateway directories plus selected extensions and interfaces. A major finding in MainchainGatewayV3 was reported and re-examined in a follow-up partial review.
+- Code the report does not list: excluded by the report
 
 ### Repository: <a href="https://github.com/ronin-chain/bridge-contract"><code>ronin-chain/bridge-contract</code></a>
 
@@ -127,6 +135,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Beosin
 - Date: 2024-08-21
 - Description: Beosin analysed the Ronin bridge v3 gateway and bridge-manager contracts together with the accompanying upgrade and recovery deployment scripts. No major findings were reported.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/ronin-chain/bridge-contract"><code>ronin-chain/bridge-contract</code></a>
 
@@ -140,6 +149,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Code4rena
 - Date: 2024-11-25
 - Description: Code4rena competitive audit of the Katana V3 decentralized exchange contracts and of the Katana aggregate router and governance operation contracts on the Ronin chain. The contest yielded no High or Medium severity vulnerabilities; one downgraded low-severity address-collision issue was remediated in follow-up pull requests.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/ronin-chain/katana-v3-contracts"><code>ronin-chain/katana-v3-contracts</code></a>
 

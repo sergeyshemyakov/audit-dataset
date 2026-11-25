@@ -11,7 +11,15 @@ from pathlib import PurePosixPath
 from typing import Any
 
 from .collections import Collection
-from .summary import IMPORTS_VALUES, SummaryError, commit_timestamps, read_summary, revision_timestamps
+from .summary import (
+    DEPENDENCIES_VALUES,
+    UNLISTED_VALUES,
+    SummaryError,
+    commit_timestamps,
+    read_summary,
+    revision_timestamps,
+    scope_statements,
+)
 
 RevisionKey = tuple[str, ...]
 CommitDates = dict[tuple[str, str], date]
@@ -22,11 +30,16 @@ MONTHS = (
 )
 
 
-IMPORTS_LABELS = {
-    "audited_unless_excluded": "audited, except the not_audited paths",
-    "not_audited": "not audited",
+UNLISTED_LABELS = {
+    "not_mentioned": "not mentioned by the report",
+    "excluded": "excluded by the report",
 }
-assert IMPORTS_LABELS.keys() == IMPORTS_VALUES
+DEPENDENCIES_LABELS = {
+    "included": "the report says they were reviewed",
+    "excluded": "the report says they were not reviewed",
+}
+assert UNLISTED_LABELS.keys() == UNLISTED_VALUES
+assert DEPENDENCIES_LABELS.keys() == DEPENDENCIES_VALUES
 
 
 def render_collection(collection: Collection) -> None:
@@ -71,8 +84,11 @@ def render_report(
     if report["report_date"]:
         details.append(f"Date: {html.escape(report['report_date'])}")
     details.append(f"Description: {html.escape(report['description'].strip())}")
-    if "imports" in report:
-        details.append(f"Imports of fully audited files: {IMPORTS_LABELS[report['imports']]}")
+    unlisted, dependencies = scope_statements(report)
+    if unlisted is not None:
+        details.append(f"Code the report does not list: {UNLISTED_LABELS[unlisted]}")
+    if dependencies is not None:
+        details.append(f"Third-party dependencies: {DEPENDENCIES_LABELS[dependencies]}")
     lines.extend(f"- {detail}" for detail in details)
     lines.append("")
     if not include_sources:

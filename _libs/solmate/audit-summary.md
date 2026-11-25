@@ -9,6 +9,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Fixed Point Solutions, LLC
 - Date: 2021-12-31
 - Description: Security assessment of Solmate&#x27;s authentication, token, and utility Solidity libraries, including standalone reviews of later commits and selected files. The assessment also reviewed commits addressing its findings.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/Rari-Capital/solmate.git"><code>Rari-Capital/solmate</code></a>
 

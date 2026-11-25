@@ -13,7 +13,7 @@ source_path, commit)`` source of the summary, the files stored for it.
 Manifest schema::
 
     {
-      "schema_version": "2.0.0",
+      "schema_version": "2.1.0",
       "collection": "scroll",
       "sources": [{
         "repository": "scroll-tech/scroll",
@@ -35,15 +35,30 @@ Manifest schema::
       "skipped": [{"repository", "source_path", "revision_kind", "revision", "reason"}],
           // versions not fetched: unpinned revisions, and paths whose kind is not fetched (zk, cairo, other)
       "unavailable": [{"repository", "source_path", "path_kind", "commit", "reason"}],
-      // only when a report opted in to import expansion (see ``imports``): the resolved
-      // imports of every file an expansion reached, each followed to an own file or skipped
+      // The rest only when a report's scope was expanded (see ``imports``).
+      // The resolved imports of every file an expansion read (its roots and every file
+      // it reached, also the excluded ones), by audited repository and commit. Paths are as the audited repository sees them, also below a submodule.
       "imports": {"<repository>": {"<commit>": {"<path>": [
           {"import": "./base/X.sol", "path": "contracts/base/X.sol"}
-          | {"import": "@openzeppelin/...", "skipped": "<why it is not followed>"}
-      ]}}}
+          | {"import": "solady/utils/LibClone.sol", "path": "lib/solady/src/utils/LibClone.sol"}
+          | {"import": "@openzeppelin/...", "skipped": "<why it leads to nothing readable>"}
+      ]}}},
+      // What decides which reached files are dependency code, by audited repository and commit.
+      "trees": {"<repository>": {"<commit>": {
+          "mounts": {"lib/solady": {"repository": "Vectorized/solady", "commit": "<full hex>"}},
+          "vendored": ["<reached file of the audited repository in a dependency directory>"],
+          "packages": {"<directory of a package.json>": "<its name>"}
+      }}},
+      // The submodule commits mounted above: no summary pins them, so their URL and
+      // committer date (unix seconds) are recorded here.
+      "dependencies": {"<repository>": {"url": "...", "commits": {"<commit>": 1700000000}}}
     }
 
-A file an expansion adds is fetched as a ``file`` source of its own.
+A file an expansion reaches is fetched as a ``file`` source of its own, under the
+repository and commit that hold it: a file of a submodule is a source of the
+submodule's repository at the pinned commit. Manifests written before
+dependencies were followed (2.0.0) have ``imports`` only, with every import
+into a dependency skipped; they are still read, see ``LEGACY_SCHEMA_VERSION``.
 
 ``git_object`` is the upstream blob; Solidity is reformatted after fetching, so
 ``sha256`` is the only hash of the stored bytes. A directory scope lists only
@@ -60,7 +75,12 @@ from typing import Any
 from . import DatasetError
 from .collections import Collection
 
-SCHEMA_VERSION = "2.0.0"
+SCHEMA_VERSION = "2.1.0"
+# Fetched before imports were followed into dependencies and before the scopes of
+# reports that exclude unlisted code were expanded. ``export`` uses what such a
+# manifest has and says which collections need ``fetch`` to export the rest.
+LEGACY_SCHEMA_VERSION = "2.0.0"
+SCHEMA_VERSIONS = frozenset({SCHEMA_VERSION, LEGACY_SCHEMA_VERSION})
 
 # Files git itself interprets. Stored next to audited sources they would hide
 # siblings from the dataset's own git tree, so they are recorded but not stored.
@@ -77,7 +97,7 @@ def read_manifest(collection: Collection) -> dict[str, Any]:
     if not path.is_file():
         raise DatasetError(f"{collection.name}: {path.name} is missing; run fetch")
     manifest = json.loads(path.read_text(encoding="utf-8"))
-    if manifest.get("schema_version") != SCHEMA_VERSION:
+    if manifest.get("schema_version") not in SCHEMA_VERSIONS:
         raise DatasetError(
             f"{collection.name}: manifest schema_version must be {SCHEMA_VERSION!r}, "
             f"got {manifest.get('schema_version')!r}; rerun fetch"

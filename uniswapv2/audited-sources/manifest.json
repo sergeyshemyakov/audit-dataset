@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "collection": "uniswapv2",
   "sources": [
     {
@@ -93,5 +93,81 @@
       "reason": "revision is not a commit"
     }
   ],
-  "unavailable": []
+  "unavailable": [],
+  "imports": {
+    "Uniswap/v2-core": {
+      "816075049f811f1b061bca81d5d040b96f4c07eb": {
+        "contracts/UniswapV2ERC20.sol": [
+          {
+            "import": "./interfaces/IUniswapV2ERC20.sol",
+            "path": "contracts/interfaces/IUniswapV2ERC20.sol"
+          },
+          {
+            "import": "./libraries/SafeMath.sol",
+            "path": "contracts/libraries/SafeMath.sol"
+          }
+        ],
+        "contracts/UniswapV2Factory.sol": [
+          {
+            "import": "./interfaces/IUniswapV2Factory.sol",
+            "path": "contracts/interfaces/IUniswapV2Factory.sol"
+          },
+          {
+            "import": "./UniswapV2Pair.sol",
+            "path": "contracts/UniswapV2Pair.sol"
+          }
+        ],
+        "contracts/UniswapV2Pair.sol": [
+          {
+            "import": "./interfaces/IUniswapV2Pair.sol",
+            "path": "contracts/interfaces/IUniswapV2Pair.sol"
+          },
+          {
+            "import": "./UniswapV2ERC20.sol",
+            "path": "contracts/UniswapV2ERC20.sol"
+          },
+          {
+            "import": "./libraries/Math.sol",
+            "path": "contracts/libraries/Math.sol"
+          },
+          {
+            "import": "./libraries/UQ112x112.sol",
+            "path": "contracts/libraries/UQ112x112.sol"
+          },
+          {
+            "import": "./interfaces/IERC20.sol",
+            "path": "contracts/interfaces/IERC20.sol"
+          },
+          {
+            "import": "./interfaces/IUniswapV2Factory.sol",
+            "path": "contracts/interfaces/IUniswapV2Factory.sol"
+          },
+          {
+            "import": "./interfaces/IUniswapV2Callee.sol",
+            "path": "contracts/interfaces/IUniswapV2Callee.sol"
+          }
+        ],
+        "contracts/interfaces/IERC20.sol": [],
+        "contracts/interfaces/IUniswapV2Callee.sol": [],
+        "contracts/interfaces/IUniswapV2ERC20.sol": [],
+        "contracts/interfaces/IUniswapV2Factory.sol": [],
+        "contracts/interfaces/IUniswapV2Pair.sol": [],
+        "contracts/libraries/Math.sol": [],
+        "contracts/libraries/SafeMath.sol": [],
+        "contracts/libraries/UQ112x112.sol": []
+      }
+    }
+  },
+  "trees": {
+    "Uniswap/v2-core": {
+      "816075049f811f1b061bca81d5d040b96f4c07eb": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "@uniswap/v2-core"
+        }
+      }
+    }
+  },
+  "dependencies": {}
 }

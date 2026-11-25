@@ -66,11 +66,17 @@
     "AztecProtocol/ignition-monorepo": {
       "url": "https://github.com/AztecProtocol/ignition-monorepo"
     },
+    "AztecProtocol/rollup-encoder": {
+      "url": "https://github.com/AztecProtocol/rollup-encoder"
+    },
     "AztecProtocol/teegeeee": {
       "url": "https://github.com/AztecProtocol/teegeeee"
     },
     "AztecProtocol/uniswap-token-launcher": {
       "url": "https://github.com/AztecProtocol/uniswap-token-launcher"
+    },
+    "Brechtpd/base64": {
+      "url": "https://github.com/Brechtpd/base64"
     },
     "Certora/openzeppelin-contracts": {
       "url": "https://github.com/Certora/openzeppelin-contracts",
@@ -195,6 +201,9 @@
     "OpenZeppelin/openzeppelin-contracts": {
       "url": "https://github.com/OpenZeppelin/openzeppelin-contracts"
     },
+    "OpenZeppelin/openzeppelin-contracts-upgradeable": {
+      "url": "https://github.com/OpenZeppelin/openzeppelin-contracts-upgradeable"
+    },
     "OpenZeppelin/rust-contracts-stylus": {
       "url": "https://github.com/OpenZeppelin/rust-contracts-stylus"
     },
@@ -213,6 +222,10 @@
     "Rari-Capital/solmate": {
       "url": "https://github.com/Rari-Capital/solmate.git"
     },
+    "Saw-mon-and-Natalie/clones-with-immutable-args": {
+      "url": "https://github.com/Saw-mon-and-Natalie/clones-with-immutable-args",
+      "fork_of": "wighawag/clones-with-immutable-args"
+    },
     "ScopeLift/arbitrum-governance": {
       "url": "https://github.com/ScopeLift/arbitrum-governance",
       "fork_of": "ArbitrumFoundation/governance"
@@ -226,6 +239,9 @@
     },
     "ThomasPiellard/gnark-oz": {
       "url": "https://github.com/ThomasPiellard/gnark-oz"
+    },
+    "Uniswap/solidity-lib": {
+      "url": "https://github.com/Uniswap/solidity-lib"
     },
     "Uniswap/unichain-contracts": {
       "url": "https://github.com/Uniswap/unichain-contracts"
@@ -397,6 +413,9 @@
     "compound-finance/compound-protocol-alpha": {
       "url": "https://github.com/compound-finance/compound-protocol-alpha"
     },
+    "dapphub/ds-test": {
+      "url": "https://github.com/dapphub/ds-test"
+    },
     "defi-wonderland/optimism": {
       "url": "https://github.com/defi-wonderland/optimism",
       "fork_of": "ethereum-optimism/optimism"
@@ -424,6 +443,9 @@
     },
     "ethereum-optimism/contracts-v2": {
       "url": "https://github.com/ethereum-optimism/contracts-v2"
+    },
+    "ethereum-optimism/lib-keccak": {
+      "url": "https://github.com/ethereum-optimism/lib-keccak"
     },
     "ethereum-optimism/op-geth": {
       "url": "https://github.com/ethereum-optimism/op-geth"
@@ -463,6 +485,9 @@
     },
     "flashbots/rollup-boost": {
       "url": "https://github.com/flashbots/rollup-boost"
+    },
+    "foundry-rs/forge-std": {
+      "url": "https://github.com/foundry-rs/forge-std"
     },
     "gist/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6": {
       "url": "https://gist.github.com/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6"
@@ -644,6 +669,9 @@
     "ronin-chain/katana-v3-contracts": {
       "url": "https://github.com/ronin-chain/katana-v3-contracts"
     },
+    "ronin-chain/permit2x": {
+      "url": "https://github.com/ronin-chain/permit2x"
+    },
     "safe-fndn/safe-modules": {
       "url": "https://github.com/safe-fndn/safe-modules"
     },
@@ -781,6 +809,9 @@
     "trailofbits/audit-arbitrum-nitro": {
       "url": "https://github.com/trailofbits/audit-arbitrum-nitro"
     },
+    "transmissions11/solmate": {
+      "url": "https://github.com/transmissions11/solmate"
+    },
     "voteagora/ERC20VotesPartialDelegationUpgradeable": {
       "url": "https://github.com/voteagora/ERC20VotesPartialDelegationUpgradeable"
     },
@@ -792,6 +823,9 @@
     },
     "voteagora/optimism-governor": {
       "url": "https://github.com/voteagora/optimism-governor"
+    },
+    "wighawag/clones-with-immutable-args": {
+      "url": "https://github.com/wighawag/clones-with-immutable-args"
     },
     "zksync-association/zk-governance": {
       "url": "https://github.com/zksync-association/zk-governance"

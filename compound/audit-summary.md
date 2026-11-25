@@ -9,6 +9,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2019-10-23
 - Description: OpenZeppelin diff audit of the Compound patch between commits f385d71 and f244c22 that introduced the Timelock contract and the Comptroller pauseGuardian role, with a fix review at commit 681833a. Timelock is a new file in the patch and is therefore fully covered; the other scoped contracts are covered only for their changes.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/compound-finance/compound-protocol"><code>compound-finance/compound-protocol</code></a>
 
@@ -23,6 +24,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2020-02-25
 - Description: OpenZeppelin audit of the Compound Governance Token (COMP) and Governor Alpha contracts at commit 6858417, with a follow-up review of commit f5976a8 that fixed H02; H01 (unbounded number of proposal actions) stays open. The report cites the private compound-protocol-alpha repository, but both commits are reachable in the public compound-finance/compound-protocol repository, which is where the scope is recorded.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/compound-finance/compound-protocol-alpha"><code>compound-finance/compound-protocol-alpha</code></a>
 
@@ -43,6 +45,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Trail of Bits
 - Date: 2020-02-28
 - Description: Trail of Bits review of the Compound Governance Token (Comp.sol) and GovernorAlpha.sol, including their interactions with Timelock.sol, at commit 55729b3 (version 2.5-rc1) of the compound-protocol-alpha repository; three informational findings. The commit is reachable in the public compound-finance/compound-protocol repository, where the scope is recorded.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/compound-finance/compound-protocol-alpha"><code>compound-finance/compound-protocol-alpha</code></a>
 
@@ -62,6 +65,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2021-02-12
 - Description: OpenZeppelin audit of Compound&#x27;s upgradeable Governor Bravo governance (GovernorBravoDelegate, GovernorBravoDelegator and GovernorBravoInterfaces) at commit f86c247 of pull request #91, with no critical or high severity findings. Fixes for the medium and lower findings were reviewed as pull requests #4 to #10 in the Arr00-Blurr/compound-protocol fork.
+- Code the report does not list: excluded by the report
 
 ### Repository: <a href="https://github.com/compound-finance/compound-protocol"><code>compound-finance/compound-protocol</code></a>
 

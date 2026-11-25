@@ -9,7 +9,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Oxorio
 - Date: 2024-05-24
 - Description: Security audit by Oxorio of the Privacy Pools v1 onchain contracts and the proof-of-innocence membership circuit. Covers the ETH and ERC20 pools, the Merkle tree with history, and the circuit&#x27;s constraint soundness.
-- Imports of fully audited files: audited, except the not_audited paths
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/ProofOfInnocence/privacy-pools-v1"><code>ProofOfInnocence/privacy-pools-v1</code></a>
 
@@ -24,6 +24,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Oxorio
 - Date: 2025-02-21
 - Description: Express security audit by Oxorio of the three Privacy Pools Circom circuits: commitment, merkleTree and withdraw. Assesses constraint soundness and correctness of the withdrawal proof system.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/0xbow-io/privacy-pools-core"><code>0xbow-io/privacy-pools-core</code></a>
 
@@ -37,7 +38,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Report: [auditware-privacy-pools-core-audit.md](<reports/auditware-privacy-pools-core-audit.md>)
 - Auditor: Auditware
 - Description: Security review by Auditware of the Privacy Pools core contracts that provide public deposits and private partial withdrawals gated by ASP membership proofs. Covers Entrypoint, PrivacyPool, State, the simple and complex pool implementations, and the shared libraries.
-- Imports of fully audited files: not audited
+- Code the report does not list: excluded by the report
 
 ### Repository: <a href="https://github.com/0xbow-io/privacy-pools-core"><code>0xbow-io/privacy-pools-core</code></a>
 
@@ -53,7 +54,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Oxorio
 - Date: 2025-03-18
 - Description: Smart contract security audit by Oxorio of the seven Privacy Pools core contracts. Covers the Entrypoint, PrivacyPool and State logic plus the pool implementations and libraries, including a fix review of the final commit.
-- Imports of fully audited files: audited, except the not_audited paths
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/0xbow-io/privacy-pools-core"><code>0xbow-io/privacy-pools-core</code></a>
 
@@ -69,7 +70,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Oxorio
 - Date: 2025-05-20
 - Description: Oxorio audit of the precommitment pull request changes to the Privacy Pools Entrypoint contract and its interface. Scoped to the two modified contracts rather than the whole protocol.
-- Imports of fully audited files: audited, except the not_audited paths
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/0xbow-io/privacy-pools-core"><code>0xbow-io/privacy-pools-core</code></a>
 
@@ -82,7 +83,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Report: [auditware-privacy-pools-batch-relayer-audit.md](<reports/auditware-privacy-pools-batch-relayer-audit.md>)
 - Auditor: Auditware
 - Description: Auditware security review of the Privacy Pools BatchRelayer contract, which enables atomic batch withdrawals from privacy pools. Covers the implementation, its interface and the deployment script.
-- Imports of fully audited files: audited, except the not_audited paths
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/0xbow-io/privacy-pools-core"><code>0xbow-io/privacy-pools-core</code></a>
 

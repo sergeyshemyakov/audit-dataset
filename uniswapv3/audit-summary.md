@@ -9,7 +9,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Trail of Bits
 - Date: 2021-03-12
 - Description: Trail of Bits manual review, Echidna fuzzing, Manticore verification and Slither analysis of the Uniswap V3 core contracts (factory, pool, pool deployer and arithmetic/tick/position/oracle libraries) at commit 99223f3 of uniswap-v3-core. Ten findings were reported, including two High-severity issues: TOB-UNI-005 (free swaps via an incorrect balance comparison) is already fixed at the audited commit 99223f3 (commit a4fb75c, &#x27;fix swap underpayment bug&#x27;, precedes it), so it is not recorded as open there; TOB-UNI-009 (missing contract existence check in TransferHelper) remains open.
-- Imports of fully audited files: audited, except the not_audited paths
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/Uniswap/v3-core"><code>Uniswap/v3-core</code></a>
 
@@ -23,7 +23,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: ABDK Consulting
 - Date: 2021-03-23
 - Description: ABDK Consulting code review of the Uniswap V3 core contracts, libraries and interfaces at tag v1.0.0-beta.3 of uniswap-v3-core, with fixes tracked to specific pull requests and commits. 159 findings were reported, none Major or Critical; two Moderate issues (one FullMath overflow, fixed) and the rest Minor.
-- Imports of fully audited files: audited, except the not_audited paths
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/Uniswap/v3-core"><code>Uniswap/v3-core</code></a>
 
@@ -41,7 +41,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: ABDK Consulting
 - Date: 2021-05-04
 - Description: ABDK Consulting review of the Uniswap V3 periphery contracts NonfungiblePositionManager.sol and SwapRouter.sol in uniswap-v3-periphery, with fixes applied in two named periphery commits. Two Critical findings (SwapRouter exact-input payer bug and NonfungiblePositionManager liquidity theft via unchecked decreaseLiquidity) were fixed, and one Major finding remained open.
-- Imports of fully audited files: audited, except the not_audited paths
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/Uniswap/v3-periphery"><code>Uniswap/v3-periphery</code></a>
 

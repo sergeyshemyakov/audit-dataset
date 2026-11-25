@@ -1,0 +1,476 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.23;
+
+import {HasContracts, IHasContracts} from "../../extensions/collections/HasContracts.sol";
+import {BridgeManagerCallbackRegister, IBridgeManagerCallback} from "./BridgeManagerCallbackRegister.sol";
+import {Initializable} from "@openzeppelin/contracts/proxy/utils/Initializable.sol";
+
+import {IBridgeManager} from "../../interfaces/bridge/IBridgeManager.sol";
+import {AddressArrayUtils} from "../../libraries/AddressArrayUtils.sol";
+
+import {TUint256Slot} from "../../types/Types.sol";
+import "../../utils/CommonErrors.sol";
+import {ContractType} from "../../utils/ContractType.sol";
+import {RoleAccess} from "../../utils/RoleAccess.sol";
+import "./BridgeManagerQuorum.sol";
+
+abstract contract BridgeManager is IBridgeManager, BridgeManagerQuorum, BridgeManagerCallbackRegister {
+    using AddressArrayUtils for address[];
+
+    struct BridgeManagerStorage {
+        /// @notice List of the governors.
+        /// @dev We do not use EnumerableSet here to maintain identical order of `governors` and `operators`. If `.contains` is needed, use the corresponding weight mapping.
+        address[] _governors;
+        address[] _operators;
+        /// @dev Mapping from address to the governor weight
+        mapping(address governor => uint96 weight) _governorWeight;
+        /// @dev Mapping from address to the operator weight. This must always be identical `_governorWeight`.
+        mapping(address operator => uint96 weight) _operatorWeight;
+        /// @dev Total weight of all governors / operators.
+        uint256 _totalWeight;
+        /// @dev The minimum number of governors that must exist in the contract, to avoid the contract become non-accessible.
+        uint256 _minRequiredGovernor;
+    }
+
+    // keccak256(abi.encode(uint256(keccak256("ronin.storage.BridgeManagerStorageLocation")) - 1)) & ~bytes32(uint256(0xff))
+    bytes32 private constant $$_BridgeManagerStorageLocation =
+        0xc648703095712c0419b6431ae642c061f0a105ac2d7c3d9604061ef4ebc38300;
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    bytes32 public DOMAIN_SEPARATOR;
+
+    modifier onlyGovernor() virtual {
+        _requireGovernor(msg.sender);
+        _;
+    }
+
+    constructor() {
+        _disableInitializers();
+    }
+
+    function __BridgeManager_init(
+        uint256 num,
+        uint256 denom,
+        uint256 roninChainId,
+        address bridgeContract,
+        address[] memory callbackRegisters,
+        address[] memory bridgeOperators,
+        address[] memory governors,
+        uint96[] memory voteWeights
+    ) internal onlyInitializing {
+        __BridgeManagerQuorum_init_unchained(num, denom);
+        __BridgeManagerCallbackRegister_init_unchained(callbackRegisters);
+        __BridgeManager_init_unchained(roninChainId, bridgeContract, bridgeOperators, governors, voteWeights);
+    }
+
+    function __BridgeManager_init_unchained(
+        uint256 roninChainId,
+        address bridgeContract,
+        address[] memory bridgeOperators,
+        address[] memory governors,
+        uint96[] memory voteWeights
+    ) internal onlyInitializing {
+        _setContract(ContractType.BRIDGE, bridgeContract);
+
+        DOMAIN_SEPARATOR = keccak256(
+            abi.encode(
+                keccak256("EIP712Domain(string name,string version,bytes32 salt)"),
+                keccak256("BridgeManager"), // name hash
+                keccak256("3"), // version hash
+                keccak256(abi.encode("BRIDGE_MANAGER", roninChainId)) // salt
+            )
+        );
+
+        _addBridgeOperators(voteWeights, governors, bridgeOperators);
+        _setMinRequiredGovernor(3);
+    }
+
+    function _getBridgeManagerStorage() private pure returns (BridgeManagerStorage storage $) {
+        assembly {
+            $.slot := $$_BridgeManagerStorageLocation
+        }
+    }
+
+    // ===================== CONFIG ========================
+
+    /**
+     * @inheritdoc IHasContracts
+     */
+    function setContract(ContractType contractType, address addr) external override onlyProxyAdmin {
+        _requireHasCode(addr);
+        _setContract(contractType, addr);
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function setMinRequiredGovernor(uint256 min) external override onlyProxyAdmin {
+        _setMinRequiredGovernor(min);
+    }
+
+    function _setMinRequiredGovernor(uint256 min) internal {
+        if (min < 3) {
+            revert ErrInvalidInput();
+        }
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+        $._minRequiredGovernor = min;
+        emit MinRequiredGovernorUpdated(min);
+    }
+
+    /**
+     * @dev Internal function to require that the caller has governor role access.
+     */
+    function _requireGovernor(address addr) internal view {
+        if (_getGovernorWeight(addr) == 0) {
+            revert ErrUnauthorized(msg.sig, RoleAccess.GOVERNOR);
+        }
+    }
+
+    // ===================== WEIGHTS METHOD ========================
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getTotalWeight() public view returns (uint256) {
+        return _totalWeight();
+    }
+
+    function _totalWeight() internal view override returns (uint256) {
+        return _getBridgeManagerStorage()._totalWeight;
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getGovernorWeights(address[] calldata governors) external view returns (uint96[] memory weights) {
+        weights = _getGovernorWeights(governors);
+    }
+
+    /**
+     * @dev Internal function to get the vote weights of a given array of governors.
+     */
+    function _getGovernorWeights(address[] memory governors) internal view returns (uint96[] memory weights) {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+        weights = new uint96[](governors.length);
+
+        for (uint256 i; i < governors.length; i++) {
+            weights[i] = $._governorWeight[governors[i]];
+        }
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getGovernorWeight(address governor) external view returns (uint96 weight) {
+        weight = _getGovernorWeight(governor);
+    }
+
+    /**
+     * @dev Internal function to retrieve the vote weight of a specific governor.
+     */
+    function _getGovernorWeight(address governor) internal view returns (uint96) {
+        return _getBridgeManagerStorage()._governorWeight[governor];
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function sumGovernorsWeight(address[] calldata governors)
+        external
+        view
+        nonDuplicate(governors)
+        returns (uint256 sum)
+    {
+        sum = _sumGovernorsWeight(governors);
+    }
+
+    /**
+     * @dev Internal function to calculate the sum of vote weights for a given array of governors.
+     * @param governors The non-duplicated input.
+     */
+    function _sumGovernorsWeight(address[] memory governors)
+        internal
+        view
+        nonDuplicate(governors)
+        returns (uint256 sum)
+    {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+
+        for (uint256 i; i < governors.length; i++) {
+            sum += $._governorWeight[governors[i]];
+        }
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getBridgeOperatorWeight(address bridgeOperator) external view returns (uint96 weight) {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+
+        return $._operatorWeight[bridgeOperator];
+    }
+
+    /**
+     * @inheritdoc IQuorum
+     */
+    function minimumVoteWeight() public view virtual returns (uint256) {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+
+        (uint256 numerator, uint256 denominator) = getThreshold();
+        return (numerator * $._totalWeight + denominator - 1) / denominator;
+    }
+
+    // ===================== MANAGER CRUD ========================
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function addBridgeOperators(
+        uint96[] calldata voteWeights,
+        address[] calldata governors,
+        address[] calldata bridgeOperators
+    ) external onlyProxyAdmin {
+        _addBridgeOperators(voteWeights, governors, bridgeOperators);
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function removeBridgeOperators(address[] calldata bridgeOperators) external onlyProxyAdmin {
+        _removeBridgeOperators(bridgeOperators);
+    }
+
+    /**
+     * @dev Internal function to add bridge operators.
+     *
+     * This function adds the specified `bridgeOperators` to the bridge operator set and establishes the associated mappings.
+     *
+     * Requirements:
+     * - The caller must have the necessary permission to add bridge operators.
+     * - The lengths of `voteWeights`, `governors`, and `bridgeOperators` arrays must be equal.
+     *
+     * @return addeds An array of boolean values indicating whether each bridge operator was successfully added.
+     */
+    function _addBridgeOperators(
+        uint96[] memory voteWeights,
+        address[] memory newGovernors,
+        address[] memory newOperators
+    ) internal nonDuplicate(newGovernors.extend(newOperators)) returns (bool[] memory addeds) {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+
+        uint256 length = newOperators.length;
+        if (!(length == voteWeights.length && length == newGovernors.length)) {
+            revert ErrLengthMismatch(msg.sig);
+        }
+        addeds = new bool[](length);
+
+        // simply skip add operations if inputs are empty.
+        if (length == 0) {
+            return addeds;
+        }
+
+        address iGovernor;
+        address iOperator;
+        uint96 iVoteWeight;
+        uint256 accumulatedWeight;
+
+        for (uint256 i; i < length; i++) {
+            iGovernor = newGovernors[i];
+            iOperator = newOperators[i];
+            iVoteWeight = voteWeights[i];
+
+            // Check non-zero inputs
+            _requireNonZeroAddress(iGovernor);
+            _requireNonZeroAddress(iOperator);
+            if (iVoteWeight == 0) {
+                revert ErrInvalidVoteWeight(msg.sig);
+            }
+
+            // Check not yet added operators
+            addeds[i] = (
+                $._governorWeight[iGovernor] + $._governorWeight[iOperator] + $._operatorWeight[iOperator]
+                    + $._operatorWeight[iGovernor]
+            ) == 0;
+
+            // Only add the valid operator
+            if (addeds[i]) {
+                // Add governor to list, update governor weight
+                $._governors.push(iGovernor);
+                $._governorWeight[iGovernor] = iVoteWeight;
+
+                // Add operator to list, update governor weight
+                $._operators.push(iOperator);
+                $._operatorWeight[iOperator] = iVoteWeight;
+
+                accumulatedWeight += iVoteWeight;
+            }
+        }
+
+        $._totalWeight += accumulatedWeight;
+
+        _notifyRegisters(
+            IBridgeManagerCallback.onBridgeOperatorsAdded.selector, abi.encode(newOperators, voteWeights, addeds)
+        );
+
+        emit BridgeOperatorsAdded(addeds, voteWeights, newGovernors, newOperators);
+    }
+
+    /**
+     * @dev Internal function to remove bridge operators.
+     *
+     * This function removes the specified `bridgeOperators` from the bridge operator set and related mappings.
+     *
+     * Requirements:
+     * - The caller must have the necessary permission to remove bridge operators.
+     *
+     * @param removingOperators An array of addresses representing the bridge operators to be removed.
+     * @return removeds An array of boolean values indicating whether each bridge operator was successfully removed.
+     */
+    function _removeBridgeOperators(address[] memory removingOperators)
+        internal
+        nonDuplicate(removingOperators)
+        returns (bool[] memory removeds)
+    {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+
+        uint256 length = removingOperators.length;
+        removeds = new bool[](length);
+
+        // simply skip remove operations if inputs are empty.
+        if (length == 0) {
+            return removeds;
+        }
+        if ($._governors.length - length < $._minRequiredGovernor) {
+            revert ErrBelowMinRequiredGovernors();
+        }
+
+        address iGovernor;
+        address iOperator;
+        uint256 accumulatedWeight;
+        uint256 idx;
+
+        for (uint256 i; i < length; i++) {
+            iOperator = removingOperators[i];
+
+            // Check non-zero inputs
+            (iGovernor, idx) = _getGovernorOf(iOperator);
+            _requireNonZeroAddress(iGovernor);
+            _requireNonZeroAddress(iOperator);
+
+            // Check existing operators
+            removeds[i] = $._governorWeight[iGovernor] > 0 && $._operatorWeight[iOperator] > 0;
+
+            // Only remove the valid operator
+            if (removeds[i]) {
+                uint256 removingVoteWeight = $._governorWeight[iGovernor];
+
+                // Remove governor from list, update governor weight
+                uint256 lastIdx = $._governors.length - 1;
+                $._governors[idx] = $._governors[lastIdx];
+                $._governors.pop();
+                delete $._governorWeight[iGovernor];
+
+                // Remove operator from list, update operator weight
+                $._operators[idx] = $._operators[lastIdx];
+                $._operators.pop();
+                delete $._operatorWeight[iOperator];
+
+                accumulatedWeight += removingVoteWeight;
+            }
+        }
+
+        $._totalWeight -= accumulatedWeight;
+
+        _notifyRegisters(
+            IBridgeManagerCallback.onBridgeOperatorsRemoved.selector, abi.encode(removingOperators, removeds)
+        );
+
+        emit BridgeOperatorsRemoved(removeds, removingOperators);
+    }
+
+    function _findInArray(address[] storage $_array, address addr) internal view returns (bool found, uint256 idx) {
+        for (uint256 i; i < $_array.length; i++) {
+            if (addr == $_array[i]) {
+                return (true, i);
+            }
+        }
+
+        return (false, type(uint256).max);
+    }
+
+    // ================= MANAGER VIEW METHODS =============
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function totalBridgeOperator() external view returns (uint256) {
+        return _getBridgeManagerStorage()._operators.length;
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function isBridgeOperator(address addr) external view returns (bool) {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+        return $._operatorWeight[addr] > 0;
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getBridgeOperators() external view returns (address[] memory) {
+        return _getBridgeManagerStorage()._operators;
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getGovernors() external view returns (address[] memory) {
+        return _getBridgeManagerStorage()._governors;
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getOperatorOf(address governor) external view returns (address operator) {
+        (bool found, uint256 idx) = _findInArray(_getBridgeManagerStorage()._governors, governor);
+        if (!found) {
+            revert ErrGovernorNotFound(governor);
+        }
+
+        return _getBridgeManagerStorage()._operators[idx];
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getGovernorOf(address operator) external view returns (address governor) {
+        (governor,) = _getGovernorOf(operator);
+    }
+
+    function _getGovernorOf(address operator) internal view returns (address governor, uint256 idx) {
+        (bool found, uint256 foundId) = _findInArray(_getBridgeManagerStorage()._operators, operator);
+        if (!found) {
+            revert ErrOperatorNotFound(operator);
+        }
+
+        return (_getBridgeManagerStorage()._governors[foundId], foundId);
+    }
+
+    /**
+     * @inheritdoc IBridgeManager
+     */
+    function getFullBridgeOperatorInfos()
+        external
+        view
+        returns (address[] memory governors, address[] memory bridgeOperators, uint96[] memory weights)
+    {
+        BridgeManagerStorage storage $ = _getBridgeManagerStorage();
+
+        governors = $._governors;
+        bridgeOperators = $._operators;
+        weights = _getGovernorWeights(governors);
+    }
+}

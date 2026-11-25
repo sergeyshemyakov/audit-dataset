@@ -1,0 +1,136 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+import {HasContracts} from "../../extensions/collections/HasContracts.sol";
+import {IBridgeManagerCallback} from "../../interfaces/bridge/IBridgeManagerCallback.sol";
+import {IBridgeManagerCallbackRegister} from "../../interfaces/bridge/IBridgeManagerCallbackRegister.sol";
+
+import {IdentityGuard, TransparentUpgradeableProxyV2} from "../../utils/IdentityGuard.sol";
+import {Initializable} from "@openzeppelin/contracts/proxy/utils/Initializable.sol";
+import {EnumerableSet} from "@openzeppelin/contracts/utils/structs/EnumerableSet.sol";
+
+/**
+ * @title BridgeManagerCallbackRegister
+ * @dev A contract that manages callback registrations and execution for a bridge.
+ */
+abstract contract BridgeManagerCallbackRegister is
+    IBridgeManagerCallbackRegister,
+    IdentityGuard,
+    Initializable,
+    HasContracts
+{
+    using EnumerableSet for EnumerableSet.AddressSet;
+
+    /**
+     * @dev Storage slot for the address set of callback registers.
+     * @dev Value is equal to keccak256("@ronin.dpos.gateway.BridgeAdmin.callbackRegisters.slot") - 1.
+     */
+    bytes32 private constant CALLBACK_REGISTERS_SLOT =
+        0x5da136eb38f8d8e354915fc8a767c0dc81d49de5fb65d5477122a82ddd976240;
+
+    function __BridgeManagerCallbackRegister_init_unchained(address[] memory callbackRegisters)
+        internal
+        onlyInitializing
+    {
+        _registerCallbacks(callbackRegisters);
+    }
+
+    /**
+     * @inheritdoc IBridgeManagerCallbackRegister
+     */
+    function registerCallbacks(address[] calldata registers) external onlyProxyAdmin {
+        _registerCallbacks(registers);
+    }
+
+    /**
+     * @inheritdoc IBridgeManagerCallbackRegister
+     */
+    function unregisterCallbacks(address[] calldata registers) external onlyProxyAdmin nonDuplicate(registers) {
+        EnumerableSet.AddressSet storage _callbackRegisters = _getCallbackRegisters();
+
+        for (uint256 i; i < registers.length; i++) {
+            _callbackRegisters.remove(registers[i]);
+        }
+    }
+
+    /**
+     * @inheritdoc IBridgeManagerCallbackRegister
+     */
+    function getCallbackRegisters() external view returns (address[] memory registers) {
+        registers = _getCallbackRegisters().values();
+    }
+
+    /**
+     * @dev Internal function to register multiple callbacks with the bridge.
+     * @param registers The array of callback addresses to register.
+     */
+    function _registerCallbacks(address[] memory registers) internal nonDuplicate(registers) {
+        EnumerableSet.AddressSet storage _callbackRegisters = _getCallbackRegisters();
+        address register;
+        bool regSuccess;
+
+        for (uint256 i; i < registers.length; i++) {
+            register = registers[i];
+
+            _requireHasCode(register);
+            _requireSupportsInterface(register, type(IBridgeManagerCallback).interfaceId);
+
+            regSuccess = _callbackRegisters.add(register);
+
+            emit CallbackRegistered(register, regSuccess);
+        }
+    }
+
+    /**
+     * @dev Same as {_notifyRegistersUnsafe} but revert when there at least one failed internal call.
+     */
+    function _notifyRegisters(bytes4 callbackFnSig, bytes memory inputs) internal {
+        if (!_notifyRegistersUnsafe(callbackFnSig, inputs)) {
+            revert ErrExistOneInternalCallFailed(msg.sender, callbackFnSig, inputs);
+        }
+    }
+
+    /**
+     * @dev Internal function to notify all registered callbacks with the provided function signature and data.
+     * @param callbackFnSig The function signature of the callback method.
+     * @param inputs The data to pass to the callback method.
+     * @return allSuccess Return true if all internal calls are success
+     */
+    function _notifyRegistersUnsafe(bytes4 callbackFnSig, bytes memory inputs) internal returns (bool allSuccess) {
+        allSuccess = true;
+
+        address[] memory registers = _getCallbackRegisters().values();
+        uint256 length = registers.length;
+        if (length == 0) {
+            return allSuccess;
+        }
+
+        bool[] memory successes = new bool[](length);
+        bytes[] memory returnDatas = new bytes[](length);
+        bytes memory callData = abi.encodePacked(callbackFnSig, inputs);
+        bytes memory proxyCallData = abi.encodeCall(TransparentUpgradeableProxyV2.functionDelegateCall, (callData));
+
+        for (uint256 i; i < length; i++) {
+            // First, attempt to call normally
+            (successes[i], returnDatas[i]) = registers[i].call(callData);
+
+            // If cannot call normally, attempt to call as the recipient is the proxy, and this caller is its admin.
+            if (!successes[i]) {
+                (successes[i], returnDatas[i]) = registers[i].call(proxyCallData);
+                allSuccess = allSuccess && successes[i];
+            }
+        }
+
+        emit Notified(callData, registers, successes, returnDatas);
+    }
+
+    /**
+     * @dev Internal function to retrieve the address set of callback registers.
+     * @return callbackRegisters The storage reference to the callback registers.
+     */
+    function _getCallbackRegisters() internal pure returns (EnumerableSet.AddressSet storage callbackRegisters) {
+        assembly ("memory-safe") {
+            callbackRegisters.slot := CALLBACK_REGISTERS_SLOT
+        }
+    }
+}

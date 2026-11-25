@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.7.0",
+  "schema_version": "1.8.0",
   "project": "privacy-pools",
   "reports": [
     {
@@ -8,7 +8,7 @@
       "title": "Privacy Pools Smart Contracts Security Audit Report (Privacy Pools v1)",
       "description": "Security audit by Oxorio of the Privacy Pools v1 onchain contracts and the proof-of-innocence membership circuit. Covers the ETH and ERC20 pools, the Merkle tree with history, and the circuit's constraint soundness.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Oxorio",
       "report_date": "2024-05-24",
       "repositories": [
@@ -198,6 +198,7 @@
       "title": "Privacy Pools circuits audit report",
       "description": "Express security audit by Oxorio of the three Privacy Pools Circom circuits: commitment, merkleTree and withdraw. Assesses constraint soundness and correctness of the withdrawal proof system.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Oxorio",
       "report_date": "2025-02-21",
       "repositories": [
@@ -292,7 +293,7 @@
       "title": "Privacy Pools Core Audit Report",
       "description": "Security review by Auditware of the Privacy Pools core contracts that provide public deposits and private partial withdrawals gated by ASP membership proofs. Covers Entrypoint, PrivacyPool, State, the simple and complex pool implementations, and the shared libraries.",
       "isRelevant": true,
-      "imports": "not_audited",
+      "unlisted": "excluded",
       "auditor": "Auditware",
       "report_date": null,
       "repositories": [
@@ -447,7 +448,7 @@
       "title": "Privacy Pools Smart Contracts Audit Report",
       "description": "Smart contract security audit by Oxorio of the seven Privacy Pools core contracts. Covers the Entrypoint, PrivacyPool and State logic plus the pool implementations and libraries, including a fix review of the final commit.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Oxorio",
       "report_date": "2025-03-18",
       "repositories": [
@@ -656,7 +657,7 @@
       "title": "Privacy Pools Smart Contracts Audit Report (Entrypoint precommitment upgrade)",
       "description": "Oxorio audit of the precommitment pull request changes to the Privacy Pools Entrypoint contract and its interface. Scoped to the two modified contracts rather than the whole protocol.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Oxorio",
       "report_date": "2025-05-20",
       "repositories": [
@@ -709,7 +710,7 @@
       "title": "Privacy Pools Batch Relayer Audit Report",
       "description": "Auditware security review of the Privacy Pools BatchRelayer contract, which enables atomic batch withdrawals from privacy pools. Covers the implementation, its interface and the deployment script.",
       "isRelevant": true,
-      "imports": "audited_unless_excluded",
+      "unlisted": "not_mentioned",
       "auditor": "Auditware",
       "report_date": null,
       "repositories": [

@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import json
 from collections.abc import Iterator
+import re
 from datetime import date, datetime, timedelta
 from pathlib import Path, PurePosixPath
 from typing import Any
@@ -19,7 +20,11 @@ from .collections import Collection
 from .git import FULL_COMMIT_RE, full_commit
 from .repositories import canonical_repository_id
 
-SCHEMA_VERSION = "1.7.0"
+SCHEMA_VERSION = "1.8.0"
+# Summaries not yet re-read for what their reports say about unlisted code and
+# dependencies. They keep ``imports`` in place of ``unlisted``, see ``scope_statements``.
+LEGACY_SCHEMA_VERSION = "1.7.0"
+SCHEMA_VERSIONS = frozenset({SCHEMA_VERSION, LEGACY_SCHEMA_VERSION})
 
 # What kind of code a scoped path holds. Only `evm` is fetched and exported today.
 KINDS = frozenset({"evm", "zk", "cairo", "other"})
@@ -36,12 +41,30 @@ STATUSES = STATUSES_WITH_MAJOR_FINDINGS | {
 PATH_KINDS = frozenset({"file", "directory_recursive"})
 
 REPORT_KEYS = frozenset({
-    "id", "report_file", "title", "description", "isRelevant", "imports", "auditor",
-    "report_date", "repositories", "scopes",
+    "id", "report_file", "title", "description", "isRelevant", "unlisted", "dependencies",
+    "auditor", "report_date", "repositories", "scopes",
 })
-# Whether a report's audited files vouch for the files they import; see ``imports``.
-# Optional: a report without it keeps its listed files only.
-IMPORTS_VALUES = frozenset({"audited_unless_excluded", "not_audited"})
+# What the report says about code of the audited repository that it does not list:
+# nothing (``not_mentioned``), or in words that it was not reviewed (``excluded``).
+# Optional: a report without it was not read for such a statement, and nothing is
+# derived from what its files import.
+UNLISTED_NOT_MENTIONED = "not_mentioned"
+UNLISTED_EXCLUDED = "excluded"
+UNLISTED_VALUES = frozenset({UNLISTED_NOT_MENTIONED, UNLISTED_EXCLUDED})
+# A general statement of the report about third-party code its files depend on.
+# Optional: most reports make none.
+DEPENDENCIES_INCLUDED = "included"
+DEPENDENCIES_EXCLUDED = "excluded"
+DEPENDENCIES_VALUES = frozenset({DEPENDENCIES_INCLUDED, DEPENDENCIES_EXCLUDED})
+# Schema 1.7.0 had one field for both. ``not_audited`` was also chosen when the
+# report was unclear, so it reads as ``excluded`` only until the report is re-read.
+LEGACY_REPORT_KEYS = (REPORT_KEYS - {"unlisted", "dependencies"}) | {"imports"}
+LEGACY_IMPORTS = {
+    "audited_unless_excluded": UNLISTED_NOT_MENTIONED,
+    "not_audited": UNLISTED_EXCLUDED,
+}
+# "Optimism Bedrock Audit (OpenZeppelin)": the auditor has a field of its own.
+TITLE_PARENTHESIS_RE = re.compile(r"\(([^()]*)\)\s*\Z")
 VERSION_KEYS = frozenset({"revision", "status", "major_finding_ids"})
 # Keys of a revision by kind, with the ones that may be left out.
 REVISION_KEYS: dict[str, frozenset[str]] = {
@@ -80,6 +103,13 @@ def read_summary(collection: Collection) -> dict[str, Any]:
 
 def write_summary(path: Path, summary: dict[str, Any]) -> None:
     path.write_text(json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
+def scope_statements(report: dict[str, Any]) -> tuple[str | None, str | None]:
+    """``(unlisted, dependencies)`` of a report, reading a 1.7.0 report's ``imports``."""
+    if "imports" in report:
+        return LEGACY_IMPORTS[report["imports"]], None
+    return report.get("unlisted"), report.get("dependencies")
 
 
 def relevant_versions(summary: dict[str, Any]) -> Iterator[tuple[dict[str, Any], str, str, dict[str, Any], int, dict[str, Any]]]:
@@ -160,8 +190,9 @@ def validate(summary: Any, reports_dir: Path) -> list[str]:
     """Every problem with a summary, as human readable strings."""
     if not isinstance(summary, dict):
         return ["summary must be a JSON object"]
-    if summary.get("schema_version") != SCHEMA_VERSION:
+    if summary.get("schema_version") not in SCHEMA_VERSIONS:
         return [f"schema_version must be {SCHEMA_VERSION!r}, got {summary.get('schema_version')!r}"]
+    legacy = summary["schema_version"] == LEGACY_SCHEMA_VERSION
     if not isinstance(summary.get("project"), str) or not summary["project"].strip():
         return ["project must be a non-empty string"]
     if not isinstance(summary.get("reports"), list):
@@ -179,15 +210,21 @@ def validate(summary: Any, reports_dir: Path) -> list[str]:
         if report["id"] in report_ids:
             problems.append(f"{where}: duplicate id")
         report_ids.add(report["id"])
-        problems.extend(f"{where}: {problem}" for problem in report_problems(report, reports_dir, timestamps))
+        problems.extend(
+            f"{where}: {problem}"
+            for problem in report_problems(report, reports_dir, timestamps, legacy)
+        )
     return problems
 
 
 def report_problems(
-    report: dict[str, Any], reports_dir: Path, timestamps: dict[tuple[str, str], Any]
+    report: dict[str, Any],
+    reports_dir: Path,
+    timestamps: dict[tuple[str, str], Any],
+    legacy: bool = False,
 ) -> list[str]:
     problems: list[str] = []
-    unexpected = set(report) - REPORT_KEYS
+    unexpected = set(report) - (LEGACY_REPORT_KEYS if legacy else REPORT_KEYS)
     if unexpected:
         problems.append(f"unexpected keys {sorted(unexpected)}")
     for key in ("title", "auditor", "description"):
@@ -198,11 +235,23 @@ def report_problems(
         problems.append(f"report_date must be null or YYYY-MM-DD, got {report_date!r}")
     if not isinstance(report.get("isRelevant"), bool):
         problems.append("isRelevant must be a boolean")
-    if "imports" in report:
-        if report["imports"] not in IMPORTS_VALUES:
-            problems.append(f"imports must be one of {sorted(IMPORTS_VALUES)}, got {report['imports']!r}")
+    statements = (
+        (("imports", frozenset(LEGACY_IMPORTS)),) if legacy
+        else (("unlisted", UNLISTED_VALUES), ("dependencies", DEPENDENCIES_VALUES))
+    )
+    for key, values in statements:
+        if key not in report:
+            continue
+        if report[key] not in values:
+            problems.append(f"{key} must be one of {sorted(values)}, got {report[key]!r}")
         if report.get("isRelevant") is not True:
-            problems.append("only a relevant report may have imports")
+            problems.append(f"only a relevant report may have {key}")
+    if "dependencies" in report and "unlisted" not in report:
+        problems.append("dependencies needs unlisted: both come from reading the report's scope statements")
+    if not legacy and isinstance(report.get("title"), str) and isinstance(report.get("auditor"), str):
+        repeated = title_auditor(report["title"], report["auditor"])
+        if repeated is not None:
+            problems.append(f"title must not name the auditor in trailing parentheses: {repeated!r}")
     problems.extend(report_file_problems(report.get("report_file"), reports_dir))
 
     repositories = report.get("repositories")
@@ -238,6 +287,23 @@ def report_problems(
                 for problem in path_entry_problems(path_data, repository, timestamps)
             )
     return problems
+
+
+def title_auditor(title: str, auditor: str) -> str | None:
+    """The part of a title's trailing parentheses that only repeats the auditor.
+
+    "(Cantina Managed)" and the first part of "(Cantina, MCP L1)" repeat Cantina;
+    a list of firms such as "(Spearbit/Cantina)" says more than the auditor field.
+    """
+    match = TITLE_PARENTHESIS_RE.search(title.strip())
+    words = auditor.casefold().split()
+    if match is None or not words:
+        return None
+    for part in match.group(1).split(","):
+        part_words = part.casefold().split()
+        if part_words and "/" not in part and part_words[0] == words[0]:
+            return part.strip()
+    return None
 
 
 def valid_date(value: Any) -> bool:

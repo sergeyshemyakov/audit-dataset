@@ -9,6 +9,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: ABDK Consulting
 - Date: 2019-11-25
 - Description: Review of the Tornado Cash circom circuit set (Withdraw, MerkleTree/MerkleTreeChecker, Selector and supporting templates) against the circom documentation and the Tornado spec. No major issues were found, only mostly non-optimal template patterns.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/peppersec/tornado-mixer"><code>peppersec/tornado-mixer</code></a>
 
@@ -26,6 +27,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: ABDK Consulting
 - Date: 2019-11-19
 - Description: Audit of the Tornado Cash on-chain Solidity contract set in the peppersec/tornado-mixer repository, including ERC20Mixer, the mixer core, Merkle tree and hasher contracts. No critical issues were found and all other significant issues were fixed.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/peppersec/tornado-mixer"><code>peppersec/tornado-mixer</code></a>
 
@@ -42,6 +44,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: ABDK Consulting
 - Date: 2019-11-29
 - Description: Cryptographic review of the Tornado Cash zero-knowledge mixer protocol and its implementation: the deposit/withdraw scheme, Pedersen and MiMC hashing, the Merkle tree construction, and the zkSNARK statement, together with the circomlib primitives they rely on.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/peppersec/tornado-mixer"><code>peppersec/tornado-mixer</code></a>
 
@@ -61,6 +64,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: ABDK Consulting
 - Date: 2020-09-01
 - Description: First ABDK audit of the Tornado Cash anonymity mining (Farm) smart contract and its Reward circuit, delivered as private files with Farm.sol published as a gist. A critical circuit issue permitting a reward-value underflow was found, together with moderate and minor contract issues.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://gist.github.com/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6"><code>gist/AleksandraZv/ea0d4d3e4c00c5ab5e06499bf34356c6</code></a>
 
@@ -80,6 +84,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: ABDK Consulting
 - Date: 2020-09-15
 - Description: Final ABDK audit of the Tornado Cash anonymity mining Farm contract and Reward circuit, comparing the audited release tag with the fixed version. The major circuit underflow issue was resolved by explicit range checks, and the remaining issues were judged to have no security impact.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/tornadocash/tornado-anonymity-mining"><code>tornadocash/tornado-anonymity-mining</code></a>
 
@@ -94,6 +99,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Igor Gulamov (ZeroPool)
 - Date: 2020-10-15
 - Description: Independent ZeroPool audit of the Tornado Cash anonymity mining smart contracts and zkSNARK circuits at commit 820bd83, excluding the generated verifiers and MerkleTree.circom. No critical issues were found; two major issues were reported, one fixed and one accepted as governance-controlled.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/tornadocash/tornado-anonymity-mining"><code>tornadocash/tornado-anonymity-mining</code></a>
 
@@ -112,6 +118,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: ABDK Consulting
 - Date: 2020-12-22
 - Description: ABDK re-review of the changed Tornado Cash anonymity mining Solidity contracts at commit 9ec05a6, covering the miner, tornado trees, reward swap, proxy, Merkle tree utilities and interfaces. Three major issues were reported, in IHasher.sol and TornadoTrees.sol.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/tornadocash/tornado-anonymity-mining"><code>tornadocash/tornado-anonymity-mining</code></a>
 

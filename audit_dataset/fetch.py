@@ -8,9 +8,10 @@ source files of its kind (``.sol``, ``.yul`` and ``.vy`` for ``evm``); a file
 scope stores its file whatever the extension. Files are read straight from a bare clone's objects, never from a
 checkout, and stored at ``<repository>/<commit>/<path>`` (see ``manifest``).
 
-For reports that opted in to import expansion (see ``imports``), the files their
-fully audited Solidity files import are fetched as file sources too, and the
-resolved imports are recorded in the manifest.
+For reports read for what they say about unlisted code (see ``imports``), the
+files their fully audited Solidity files import are fetched as file sources too,
+also from the submodules the audited commit pins, and the resolved imports are
+recorded in the manifest with what is known about the dependencies.
 """
 
 from __future__ import annotations
@@ -20,7 +21,7 @@ import shutil
 import stat
 import tempfile
 from collections import defaultdict
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path, PurePosixPath
 from typing import Any
 
@@ -29,6 +30,8 @@ from . import git
 from . import imports
 from .collections import Collection
 from .manifest import GIT_METADATA_FILES, SCHEMA_VERSION, stored_path, write_manifest
+from .repositories import canonical_repository_id, github_name, github_url, is_github
+from .scope import is_under
 from .summary import path_problem, read_summary, relevant_versions
 
 # Path kinds whose sources are fetched by default; see summary.KINDS for all of them.
@@ -42,6 +45,7 @@ SOURCE_EXTENSIONS: dict[str, frozenset[str]] = {
 BLOB_MODES = frozenset({"100644", "100755"})
 SYMLINK_MODE = "120000"
 SUBMODULE_MODE = "160000"
+GITMODULES_NAME = ".gitmodules"
 
 
 class FetchError(DatasetError):
@@ -380,96 +384,140 @@ def export_source(repository: Path, source: Source, store: Store) -> tuple[list[
     return files, omitted
 
 
-# --- Import expansion ---------------------------------------------------------
+# --- Repositories of a run ----------------------------------------------------
 
 
 @dataclass
-class CommitTree:
-    """The files of one commit and what is known about their imports."""
+class RepositoryTree:
+    """The files of one repository at one commit and what resolves imports there."""
 
+    repository: str  # canonical id
+    url: str
+    commit: str
+    directory: Path  # the bare clone
     files: dict[str, tuple[str, str]]  # path -> (mode, object id) of every blob or symlink
-    gitlinks: frozenset[str]
-    projects: dict[str, imports.Project]
-    graph: dict[str, list[imports.Edge]]
+    gitlinks: dict[str, str]  # submodule path -> the commit it is pinned to
+    submodule_urls: dict[str, str]  # submodule path -> URL, from .gitmodules
+    projects: dict[str, imports.Project]  # by root
+    packages: dict[str, str] | None = None  # package directory -> name, once read
+    solidity_fetched: bool = False
+
+    def fetch_solidity(self) -> None:
+        """Bring every Solidity file of the commit in one request.
+
+        Following imports reads files level by level; asking for each level on
+        its own costs one round trip per level, repository and audited commit.
+        """
+        if not self.solidity_fetched:
+            fetch_blobs(self.directory, sorted({
+                object_id for path, (_, object_id) in self.files.items() if path.endswith(".sol")
+            }))
+            self.solidity_fetched = True
 
 
-def collect_import_scopes(summary: dict[str, Any]) -> dict[tuple[str, str], list[imports.ScopePaths]]:
-    """The scopes whose imports are expanded, by ``(repository, commit)``."""
-    scopes: dict[tuple[str, str], list[imports.ScopePaths]] = defaultdict(list)
-    for report in summary["reports"]:
-        for key, scope in imports.report_scope_paths(report).items():
-            scopes[key].append(scope)
-    return scopes
+class Repositories:
+    """The bare clones of one fetch run, by canonical repository id."""
+
+    def __init__(self, temporary: Path) -> None:
+        self.temporary = temporary
+        self.directories: dict[str, Path | None] = {}  # None when the URL is not reachable
+        self.urls: dict[str, str] = {}
+        self.fetched: dict[str, set[str]] = defaultdict(set)
+        self.trees: dict[tuple[str, str], RepositoryTree] = {}
+        self.unreadable: dict[tuple[str, str], str] = {}
+        self.submodules: dict[str, tuple[str, str]] = {}  # URL in a .gitmodules -> (id, URL)
+        self.warnings: list[str] = []
+
+    def submodule(self, url: str) -> tuple[str, str]:
+        """The canonical id and URL of a submodule's repository.
+
+        GitHub is asked for the name it gives the repository today, so that a
+        URL in another letter case or with a former name yields the id the rest
+        of the dataset uses. Without an answer the URL is taken as written.
+        """
+        if url not in self.submodules:
+            repository_id, canonical_url = canonical_repository_id(url), url
+            if is_github(repository_id):
+                name, error = github_name(repository_id)
+                if name is None:
+                    self.warnings.append(
+                        f"could not ask GitHub for the name of {repository_id} ({error}); "
+                        f"using it as written"
+                    )
+                else:
+                    repository_id, canonical_url = name, github_url(name)
+            self.submodules[url] = (repository_id, canonical_url)
+        return self.submodules[url]
+
+    def open(self, repository_id: str, url: str, object_format: str) -> Path | None:
+        """The clone of a repository, created empty on first use; None when unreachable."""
+        if repository_id not in self.directories:
+            self.urls[repository_id] = url
+            if repository_reachable(url):
+                directory = self.temporary / f"repository-{len(self.directories)}.git"
+                initialize_repository(directory, url, object_format)
+                self.directories[repository_id] = directory
+            else:
+                self.directories[repository_id] = None
+        return self.directories[repository_id]
+
+    def tree(self, repository_id: str, url: str, commit: str) -> RepositoryTree:
+        """The tree of a commit, fetched without file contents when the run has not
+        fetched it yet. Raises ``FetchError`` when it cannot be read."""
+        key = (repository_id, commit)
+        if key in self.unreadable:
+            raise FetchError(self.unreadable[key])
+        if key not in self.trees:
+            try:
+                self.trees[key] = self.read_tree(repository_id, url, commit)
+            except (FetchError, git.GitError) as error:
+                self.unreadable[key] = str(error)
+                raise FetchError(str(error)) from error
+        return self.trees[key]
+
+    def read_tree(self, repository_id: str, url: str, commit: str) -> RepositoryTree:
+        if not git.FULL_COMMIT_RE.fullmatch(commit):
+            raise FetchError(f"{commit!r} is not a full commit id")
+        directory = self.open(repository_id, url, git.hash_algorithm(len(commit)))
+        if directory is None:
+            raise FetchError(f"repository {self.urls[repository_id]} is not reachable")
+        if commit not in self.fetched[repository_id]:
+            warnings: list[str] = []
+            if fetch_commits(directory, [commit], set(), warnings):
+                raise FetchError(warnings[-1] if warnings else f"commit {commit} could not be fetched")
+            self.fetched[repository_id].add(commit)
+        return read_repository_tree(directory, repository_id, self.urls[repository_id], commit)
+
+    def package_names(self, tree: RepositoryTree) -> dict[str, str]:
+        """The npm packages of a repository: the directory of each named ``package.json``."""
+        if tree.packages is None:
+            configs = {
+                parent_directory(path): object_id
+                for path, (mode, object_id) in tree.files.items()
+                if PurePosixPath(path).name == imports.PACKAGE_CONFIG_NAME and mode in BLOB_MODES
+            }
+            contents = read_blobs(tree.directory, sorted(set(configs.values())))
+            names = {
+                directory: imports.package_name(contents[object_id])
+                for directory, object_id in configs.items()
+            }
+            tree.packages = {directory: name for directory, name in sorted(names.items()) if name}
+        return tree.packages
+
+    def timestamp(self, repository_id: str, commit: str) -> int:
+        """The committer date of a fetched commit, in unix seconds."""
+        directory = self.directories[repository_id]
+        assert directory is not None, repository_id
+        return int(git.run_text(directory, "show", "-s", "--format=%ct", commit).strip())
 
 
-def add_imported_sources(
-    repository: Path,
-    repository_id: str,
-    by_commit: dict[str, list[Source]],
-    missing: set[str],
-    import_scopes: dict[tuple[str, str], list[imports.ScopePaths]],
-    import_graph: dict[tuple[str, str], dict[str, list[imports.Edge]]],
-) -> None:
-    """Add a file source for every file an expansion adds, and record the resolved imports."""
-    scopes_by_commit = {
-        commit: import_scopes[(repository_id, commit)]
-        for commit in by_commit
-        if commit not in missing and (repository_id, commit) in import_scopes
-    }
-    if not scopes_by_commit:
-        return
-    graph, imported = expand_imports(repository, scopes_by_commit)
-    for commit, files in graph.items():
-        import_graph[(repository_id, commit)] = files
-    for commit, path in sorted(imported):
-        source = Source(repository_id, path, "file", commit, "evm")
-        for other in by_commit[commit]:
-            if (other.path, other.path_kind) == (path, "directory_recursive"):
-                raise FetchError(f"imported file {path!r} is also a directory scope at {commit}")
-        if source not in by_commit[commit]:
-            by_commit[commit].append(source)
-
-
-def expand_imports(
-    repository: Path, scopes_by_commit: dict[str, list[imports.ScopePaths]]
-) -> tuple[dict[str, dict[str, list[imports.Edge]]], set[tuple[str, str]]]:
-    """Resolve imports level by level until every expansion is complete.
-
-    Returns the resolved imports of every reached file, by commit, and the
-    ``(commit, path)`` of every file some expansion adds. Each round fetches the
-    blobs of all newly reached files of the repository in one request.
-    """
-    trees = {commit: read_commit_tree(repository, commit) for commit in sorted(scopes_by_commit)}
-    file_count = sum(len(tree.files) for tree in trees.values())
-    for _ in range(file_count + 1):
-        expansions = [
-            (commit, commit_expansion(trees[commit], scope))
-            for commit, scopes in sorted(scopes_by_commit.items())
-            for scope in scopes
-        ]
-        missing = {(commit, path) for commit, expansion in expansions for path in expansion.missing}
-        if not missing:
-            added = {(commit, path) for commit, expansion in expansions for path in expansion.added}
-            return {commit: tree.graph for commit, tree in trees.items()}, added
-        resolve_files(repository, trees, missing)
-    raise AssertionError("every round resolves at least one file")
-
-
-def commit_expansion(tree: CommitTree, scope: imports.ScopePaths) -> imports.Expansion:
-    def directory_files(directory: str) -> list[str]:
-        return [path for path in tree.files if imports.is_under(path, directory)]
-
-    roots = imports.scope_roots(scope, directory_files)
-    return imports.expand(roots, scope, tree.graph)
-
-
-def read_commit_tree(repository: Path, commit: str) -> CommitTree:
+def read_repository_tree(directory: Path, repository_id: str, url: str, commit: str) -> RepositoryTree:
     files: dict[str, tuple[str, str]] = {}
-    gitlinks: set[str] = set()
-    for mode, object_type, object_id, name in git.ls_tree(repository, commit, ".", recursive=True):
+    gitlinks: dict[str, str] = {}
+    for mode, object_type, object_id, name in git.ls_tree(directory, commit, ".", recursive=True):
         if object_type == "commit":
             assert mode == SUBMODULE_MODE, (mode, name)
-            gitlinks.add(name)
+            gitlinks[name] = object_id
         elif object_type == "blob":
             files[name] = (mode, object_id)
     roots = sorted({
@@ -482,7 +530,11 @@ def read_commit_tree(repository: Path, commit: str) -> CommitTree:
         for name in imports.RESOLUTION_CONFIG_NAMES
         if imports.join_path(root, name) in files
     }
-    contents = read_blobs(repository, sorted(set(configs.values())))
+    wanted = set(configs.values())
+    gitmodules = files.get(GITMODULES_NAME) if gitlinks else None
+    if gitmodules is not None:
+        wanted.add(gitmodules[1])
+    contents = read_blobs(directory, sorted(wanted))
     projects = {
         root: imports.load_project(root, {
             name: contents[object_id]
@@ -491,34 +543,245 @@ def read_commit_tree(repository: Path, commit: str) -> CommitTree:
         })
         for root in roots
     }
-    return CommitTree(files, frozenset(gitlinks), projects, {})
+    submodule_urls = (
+        {} if gitmodules is None
+        else parse_gitmodules(contents[gitmodules[1]].decode("utf-8", errors="replace"), url)
+    )
+    return RepositoryTree(repository_id, url, commit, directory, files, gitlinks, submodule_urls, projects)
+
+
+def parse_gitmodules(content: str, parent_url: str) -> dict[str, str]:
+    """Submodule path to URL, with a relative URL resolved against the parent's."""
+    urls: dict[str, str] = {}
+    path: str | None = None
+    url: str | None = None
+    for line in [*content.splitlines(), "["]:
+        line = line.strip()
+        if line.startswith("["):
+            if path is not None and url is not None:
+                urls[path.strip("/")] = submodule_url(url, parent_url)
+            path = url = None
+            continue
+        key, separator, value = line.partition("=")
+        if separator and key.strip() == "path":
+            path = value.strip()
+        elif separator and key.strip() == "url":
+            url = value.strip()
+    return urls
+
+
+def submodule_url(url: str, parent_url: str) -> str:
+    if url.startswith(("./", "../")):
+        parts = parent_url.rstrip("/").split("/")
+        for part in url.split("/"):
+            if part == "..":
+                parts.pop()
+            elif part not in {"", "."}:
+                parts.append(part)
+        url = "/".join(parts)
+    if url.startswith("git@") and ":" in url:
+        host, _, path = url[len("git@"):].partition(":")
+        url = f"https://{host}/{path}"
+    for scheme in ("git://", "ssh://git@", "http://"):
+        if url.startswith(scheme):
+            url = "https://" + url[len(scheme):]
+    return url.rstrip("/").removesuffix(".git")
 
 
 def parent_directory(path: str) -> str:
     """The repository path of a file's directory, "" for the repository root."""
-    parent = str(PurePosixPath(path).parent)
-    return "" if parent == "." else parent
+    return imports.parent_directory(path)
 
 
-def resolve_files(repository: Path, trees: dict[str, CommitTree], missing: set[tuple[str, str]]) -> None:
-    """Record the resolved imports of the given files, fetching their blobs in one request."""
-    object_ids: dict[tuple[str, str], str] = {}
-    for commit, path in sorted(missing):
-        tree = trees[commit]
-        if path not in tree.files:
-            raise FetchError(f"audited file {path!r} is not in commit {commit}")
-        object_ids[(commit, path)] = file_object_id(repository, tree, path)
-    contents = read_blobs(repository, sorted({oid for oid in object_ids.values() if oid}))
-    for (commit, path), object_id in object_ids.items():
-        tree = trees[commit]
-        source = contents[object_id].decode("utf-8", errors="replace") if object_id else ""
+# --- Import expansion ---------------------------------------------------------
+
+
+class LiveTree(imports.SnapshotTree):
+    """An audited repository at a commit, with every submodule an import leads into
+    mounted at the commit the tree pins, fetched on first use."""
+
+    def __init__(self, repositories: Repositories, root: RepositoryTree, warnings: list[str]) -> None:
+        self.repositories = repositories
+        self.warnings = warnings
+        self.mounts: dict[str, RepositoryTree] = {"": root}
+        self.unreadable: dict[str, str] = {}
+        self.projects: dict[str, imports.Project] = dict(root.projects)
+        self.packages = repositories.package_names(root)
+        self.graph: dict[str, list[imports.Edge]] = {}
+
+    @property
+    def root(self) -> RepositoryTree:
+        return self.mounts[""]
+
+    def locate(self, path: str) -> tuple[RepositoryTree, str] | None:
+        """The repository that holds a path and the path there; None below a
+        submodule that cannot be read."""
+        prefix, tree, relative = "", self.root, path
+        while True:
+            parts = relative.split("/")
+            gitlink = next(
+                (candidate for end in range(1, len(parts))
+                 if (candidate := "/".join(parts[:end])) in tree.gitlinks),
+                None,
+            )
+            if gitlink is None:
+                return tree, relative
+            prefix = imports.join_path(prefix, gitlink)
+            mounted = self.mount(tree, gitlink, prefix)
+            if mounted is None:
+                return None
+            tree, relative = mounted, relative[len(gitlink) + 1:]
+
+    def mount(self, parent: RepositoryTree, gitlink: str, prefix: str) -> RepositoryTree | None:
+        if prefix in self.mounts:
+            return self.mounts[prefix]
+        if prefix in self.unreadable:
+            return None
+        try:
+            url = parent.submodule_urls.get(gitlink)
+            if url is None:
+                raise FetchError(f"no URL in {GITMODULES_NAME}")
+            repository_id, url = self.repositories.submodule(url)
+            tree = self.repositories.tree(repository_id, url, parent.gitlinks[gitlink])
+        except DatasetError as error:
+            self.unreadable[prefix] = str(error)
+            self.warnings.append(
+                f"{self.root.repository}@{self.root.commit}: submodule {prefix} is unreadable: {error}"
+            )
+            return None
+        self.mounts[prefix] = tree
+        for root, project in tree.projects.items():
+            mounted_root = imports.join_path(prefix, root)
+            self.projects[mounted_root] = replace(project, root=mounted_root)
+        return tree
+
+    def has(self, path: str) -> bool:
+        located = self.locate(path)
+        return located is not None and located[1] in located[0].files
+
+    def mount_of(self, path: str) -> str:
+        return max(
+            (prefix for prefix in self.mounts if prefix and is_under(path, prefix)),
+            key=len, default="",
+        )
+
+    def facts(self) -> imports.TreeFacts:
+        targets = {edge.path for edges in self.graph.values() for edge in edges if edge.path is not None}
+        return imports.TreeFacts(
+            mounts={
+                prefix: (tree.repository, tree.commit)
+                for prefix, tree in self.mounts.items() if prefix
+            },
+            vendored=frozenset(
+                path for path in targets
+                if not self.mount_of(path) and imports.vendored_reason(path, self.projects) is not None
+            ),
+            packages=self.packages,
+        )
+
+
+@dataclass
+class ScopeExpansion:
+    """What expanding the scopes of a collection found."""
+
+    graph: dict[tuple[str, str], dict[str, list[imports.Edge]]] = field(default_factory=dict)
+    facts: dict[tuple[str, str], imports.TreeFacts] = field(default_factory=dict)
+    sources: set[Source] = field(default_factory=set)  # one file source per reached file
+
+
+def collect_import_scopes(summary: dict[str, Any]) -> dict[tuple[str, str], list[imports.ScopePaths]]:
+    """The scopes whose imports are expanded, by ``(repository, commit)``."""
+    scopes: dict[tuple[str, str], list[imports.ScopePaths]] = defaultdict(list)
+    for report in summary["reports"]:
+        for key, scope in imports.report_scope_paths(report).items():
+            scopes[key].append(scope)
+    return scopes
+
+
+def expand_scopes(
+    repositories: Repositories,
+    pinned: dict[str, dict[str, list[Source]]],
+    import_scopes: dict[tuple[str, str], list[imports.ScopePaths]],
+    warnings: list[str],
+) -> ScopeExpansion:
+    """Resolve the imports of every expanded scope whose commit was fetched, and name
+    the files to store for them."""
+    result = ScopeExpansion()
+    for (repository_id, commit), scopes in sorted(import_scopes.items()):
+        if commit not in pinned.get(repository_id, {}):
+            continue
+        root = repositories.tree(repository_id, repositories.urls[repository_id], commit)
+        tree = LiveTree(repositories, root, warnings)
+        reached = expand_tree(tree, scopes)
+        result.graph[(repository_id, commit)] = tree.graph
+        result.facts[(repository_id, commit)] = tree.facts()
+        blobs: dict[Path, set[str]] = defaultdict(set)
+        for path in sorted(reached):
+            located = tree.locate(path)
+            assert located is not None, path
+            origin, relative = located
+            result.sources.add(Source(origin.repository, relative, "file", origin.commit, "evm"))
+            blobs[origin.directory].add(file_object_id(origin, relative))
+        # One request per repository for the files that are stored without having been read.
+        for directory, object_ids in blobs.items():
+            read_blobs(directory, sorted(object_ids - {""}))
+    return result
+
+
+def expand_tree(tree: LiveTree, scopes: list[imports.ScopePaths]) -> set[str]:
+    """Resolve imports level by level until every expansion is complete.
+
+    Returns every file some expansion reached that is in its scope only through
+    imports. Each round reads the newly reached files of each repository in one
+    request.
+    """
+    def directory_files(directory: str) -> list[str]:
+        return [path for path in tree.root.files if is_under(path, directory)]
+
+    while True:
+        # Reading a file may mount a submodule or meet a dependency directory, which
+        # changes what counts as a dependency, so the facts are taken anew each round.
+        facts = tree.facts()
+        expansions = [
+            imports.expand(imports.scope_roots(scope, directory_files), scope, tree.graph, facts)
+            for scope in scopes
+        ]
+        missing = {path for expansion in expansions for path in expansion.missing | expansion.unread}
+        if not missing:
+            return {
+                path
+                for expansion in expansions
+                for path, reached in expansion.reached.items()
+                if reached.state in imports.REACHED_STATES
+            }
+        resolved = len(tree.graph)
+        resolve_files(tree, missing)
+        assert len(tree.graph) > resolved, "every round resolves at least one file"
+
+
+def resolve_files(tree: LiveTree, missing: set[str]) -> None:
+    """Record the resolved imports of the given files, reading each repository's in one request."""
+    object_ids: dict[str, tuple[Path, str]] = {}
+    for path in sorted(missing):
+        located = tree.locate(path)
+        if located is None or located[1] not in located[0].files:
+            raise FetchError(f"audited file {path!r} is not in commit {tree.root.commit}")
+        located[0].fetch_solidity()
+        object_ids[path] = (located[0].directory, file_object_id(*located))
+    contents: dict[tuple[Path, str], bytes] = {}
+    for directory in sorted({directory for directory, _ in object_ids.values()}):
+        wanted = sorted({oid for other, oid in object_ids.values() if other == directory and oid})
+        for object_id, content in read_blobs(directory, wanted).items():
+            contents[(directory, object_id)] = content
+    for path, (directory, object_id) in object_ids.items():
+        source = contents[(directory, object_id)].decode("utf-8", errors="replace") if object_id else ""
         tree.graph[path] = [
-            imports.resolve_import(path, import_path, tree.files, tree.gitlinks, tree.projects)
+            imports.resolve_import(path, import_path, tree)
             for import_path in imports.parse_imports(source)
         ]
 
 
-def file_object_id(repository: Path, tree: CommitTree, path: str) -> str:
+def file_object_id(tree: RepositoryTree, path: str) -> str:
     """The blob holding a file's contents, following symlinks; "" when a target is missing."""
     mode, object_id = tree.files[path]
     seen: set[str] = set()
@@ -526,7 +789,7 @@ def file_object_id(repository: Path, tree: CommitTree, path: str) -> str:
         if path in seen:
             raise FetchError(f"symlink cycle detected at {path!r}")
         seen.add(path)
-        _, path = resolve_symlink_target(path, read_blobs(repository, [object_id])[object_id])
+        _, path = resolve_symlink_target(path, read_blobs(tree.directory, [object_id])[object_id])
         if path not in tree.files:
             return ""
         mode, object_id = tree.files[path]
@@ -537,13 +800,7 @@ def read_blobs(repository: Path, object_ids: list[str]) -> dict[str, bytes]:
     """Contents of the given blobs, fetching the absent ones in one request."""
     if not object_ids:
         return {}
-    request = "".join(f"{object_id}\n" for object_id in object_ids).encode("ascii")
-    listing = git.run(repository, "cat-file", "--batch-check=%(objectname) %(objecttype)",
-                      input=request, lazy_fetch=False)
-    absent = [line.split(b" ")[0] for line in listing.splitlines() if line.endswith(b" missing")]
-    if absent:
-        git.run(repository, "fetch", "--quiet", "--no-tags", "--filter=blob:none", "--stdin", "origin",
-                input=b"".join(object_id + b"\n" for object_id in absent))
+    request = fetch_blobs(repository, object_ids)
     output = git.run(repository, "cat-file", "--batch", input=request, lazy_fetch=False)
     contents: dict[str, bytes] = {}
     offset = 0
@@ -559,6 +816,21 @@ def read_blobs(repository: Path, object_ids: list[str]) -> dict[str, bytes]:
     return contents
 
 
+def fetch_blobs(repository: Path, object_ids: list[str]) -> bytes:
+    """Fetch the absent ones of the given objects in one request; returns the
+    ids as ``git cat-file --batch`` reads them."""
+    request = "".join(f"{object_id}\n" for object_id in object_ids).encode("ascii")
+    if not object_ids:
+        return request
+    listing = git.run(repository, "cat-file", "--batch-check=%(objectname) %(objecttype)",
+                      input=request, lazy_fetch=False)
+    absent = [line.split(b" ")[0] for line in listing.splitlines() if line.endswith(b" missing")]
+    if absent:
+        git.run(repository, "fetch", "--quiet", "--no-tags", "--filter=blob:none", "--stdin", "origin",
+                input=b"".join(object_id + b"\n" for object_id in absent))
+    return request
+
+
 # --- Driver -------------------------------------------------------------------
 
 
@@ -567,7 +839,6 @@ def fetch_collection(collection: Collection, kinds: frozenset[str] = FETCHED_KIN
     urls = repository_urls(summary)
     sources, skipped = collect_sources(summary, kinds)
     import_scopes = collect_import_scopes(summary) if "evm" in kinds else {}
-    import_graph: dict[tuple[str, str], dict[str, list[imports.Edge]]] = {}
     for source in sources:
         if source.repository not in urls:
             raise FetchError(f"scope references repository {source.repository!r} without a URL")
@@ -584,12 +855,16 @@ def fetch_collection(collection: Collection, kinds: frozenset[str] = FETCHED_KIN
     try:
         store = Store(staging)
         with tempfile.TemporaryDirectory(prefix="audit-dataset-fetch-") as temporary:
-            for index, (repository_id, repository_sources) in enumerate(sorted(by_repository.items())):
+            repositories = Repositories(Path(temporary))
+            # The sources of every fetched commit, by repository.
+            pinned: dict[str, dict[str, list[Source]]] = {}
+            for repository_id, repository_sources in sorted(by_repository.items()):
                 url = urls[repository_id]
                 lengths = {len(source.commit) for source in repository_sources}
                 if len(lengths) != 1:
                     raise FetchError(f"repository {repository_id!r} mixes Git object formats")
-                if not repository_reachable(url):
+                directory = repositories.open(repository_id, url, "sha256" if lengths == {64} else "sha1")
+                if directory is None:
                     result.warnings.append(
                         f"repository {url} is not reachable; skipping {len(repository_sources)} source(s)"
                     )
@@ -597,27 +872,40 @@ def fetch_collection(collection: Collection, kinds: frozenset[str] = FETCHED_KIN
                         unavailable_record(source, "repository is not reachable") for source in repository_sources
                     )
                     continue
-                git_directory = Path(temporary) / f"repository-{index}.git"
-                initialize_repository(git_directory, url, "sha256" if lengths == {64} else "sha1")
                 by_commit: dict[str, list[Source]] = defaultdict(list)
                 for source in repository_sources:
                     by_commit[source.commit].append(source)
                 full_commits = {s.commit for s in repository_sources if s.path_kind == "directory_recursive"}
-                missing = fetch_commits(git_directory, sorted(by_commit), full_commits, result.warnings)
-                add_imported_sources(
-                    git_directory, repository_id, by_commit, missing, import_scopes, import_graph
-                )
+                missing = fetch_commits(directory, sorted(by_commit), full_commits, result.warnings)
+                repositories.fetched[repository_id].update(by_commit.keys() - missing)
+                pinned[repository_id] = {}
                 for commit, commit_sources in sorted(by_commit.items()):
                     if commit in missing:
                         unavailable.extend(
                             unavailable_record(source, "commit could not be fetched") for source in commit_sources
                         )
-                        continue
+                    else:
+                        pinned[repository_id][commit] = commit_sources
+            expansion = expand_scopes(repositories, pinned, import_scopes, result.warnings)
+            result.warnings.extend(repositories.warnings)
+            for source in sorted(expansion.sources):
+                commit_sources = pinned.setdefault(source.repository, {}).setdefault(source.commit, [])
+                for other in commit_sources:
+                    if (other.path, other.path_kind) == (source.path, "directory_recursive"):
+                        raise FetchError(
+                            f"imported file {source.path!r} is also a directory scope at {source.commit}"
+                        )
+                if source not in commit_sources:
+                    commit_sources.append(source)
+            for repository_id, by_commit in sorted(pinned.items()):
+                directory = repositories.directories[repository_id]
+                assert directory is not None, repository_id
+                for commit, commit_sources in sorted(by_commit.items()):
                     for source in sorted(commit_sources):
-                        files, omitted = export_source(git_directory, source, store)
+                        files, omitted = export_source(directory, source, store)
                         entry: dict[str, Any] = {
                             "repository": source.repository,
-                            "repository_url": url,
+                            "repository_url": repositories.urls[repository_id],
                             "source_path": source.path,
                             "path_kind": source.path_kind,
                             "commit": source.commit,
@@ -628,6 +916,7 @@ def fetch_collection(collection: Collection, kinds: frozenset[str] = FETCHED_KIN
                         exported.append(entry)
                         result.files += len(files)
                         result.omitted += len(omitted)
+            dependencies = dependency_commits(repositories, expansion)
         manifest = {
             "schema_version": SCHEMA_VERSION,
             "collection": collection.name,
@@ -644,8 +933,10 @@ def fetch_collection(collection: Collection, kinds: frozenset[str] = FETCHED_KIN
             ],
             "unavailable": unavailable,
         }
-        if import_graph:
-            manifest["imports"] = imports.graph_to_manifest(import_graph)
+        if expansion.graph:
+            manifest["imports"] = imports.graph_to_manifest(expansion.graph)
+            manifest["trees"] = imports.facts_to_manifest(expansion.facts)
+            manifest["dependencies"] = dependencies
         write_manifest(staging / collection.manifest_path.name, manifest)
         if destination.exists():
             shutil.rmtree(destination)
@@ -656,6 +947,21 @@ def fetch_collection(collection: Collection, kinds: frozenset[str] = FETCHED_KIN
     result.sources = len(exported)
     result.unavailable = len(unavailable)
     result.manifest_path = collection.manifest_path
+    return result
+
+
+def dependency_commits(repositories: Repositories, expansion: ScopeExpansion) -> dict[str, Any]:
+    """The submodule commits the expansions read, with their URL and committer date.
+
+    No summary pins them, so their timestamps come from the commits themselves.
+    """
+    commits = sorted({
+        mounted for facts in expansion.facts.values() for mounted in facts.mounts.values()
+    })
+    result: dict[str, Any] = {}
+    for repository_id, commit in commits:
+        entry = result.setdefault(repository_id, {"url": repositories.urls[repository_id], "commits": {}})
+        entry["commits"][commit] = repositories.timestamp(repository_id, commit)
     return result
 
 

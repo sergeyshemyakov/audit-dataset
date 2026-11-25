@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.7.0",
+  "schema_version": "1.8.0",
   "project": "Solady",
   "reports": [
     {
@@ -8,6 +8,7 @@
       "title": "Solady: Tokens & Utils Selection",
       "description": "Security review by Ackee Blockchain, funded by RockawayX, of a selection of Solady token contracts (ERC20, ERC721, ERC1155) and utility libraries (SafeTransferLib, ERC1967Factory, SignatureCheckerLib, MerkleProofLib, EIP712) using manual review and differential fuzzing. Revision 1.1 is a fix review of the reported findings.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Ackee Blockchain",
       "report_date": "2023-06-02",
       "repositories": [
@@ -216,6 +217,7 @@
       "title": "Solady ERC721 Security Review",
       "description": "Independent security review of the Solady ERC721 token contract by shung as part of the OpenSense Operation Solwaifu community audit initiative, covering the custom storage layout, manual memory operations, and inline assembly. No significant issues were found; the reported Low and Informational items were addressed with documentation.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "shung (OpenSense Solwaifu initiative)",
       "report_date": "2023-07-08",
       "repositories": [
@@ -259,9 +261,10 @@
     {
       "id": "cantina-solady-report",
       "report_file": "solady__audits__cantina-solady-report.md",
-      "title": "Solady Security Review (Cantina Public Goods)",
+      "title": "Solady Public Goods Security Review",
       "description": "Crowdfunded Cantina public goods security review of Solady targeting ERC1967Factory, ERC20, ERC721, ERC1155, LibClone, MerkleProofLib, SignatureCheckerLib and ECDSA. Fixes were applied in follow-up pull requests and confirmed by the reviewers.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Cantina",
       "report_date": "2023-09-14",
       "repositories": [
@@ -497,6 +500,7 @@
       "title": "Solady cbrt & cbrtWad Audit Report",
       "description": "Mathematical correctness proof by xuwinnie of the cbrt and cbrtWad functions in FixedPointMathLib, showing that the initial guess and iterative refinement return the exact integer cube root. No findings are reported.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "xuwinnie",
       "report_date": "2024-07-31",
       "repositories": [
@@ -534,6 +538,7 @@
       "title": "Coinbase Solady Security Review",
       "description": "Spearbit security review of the Solady library commissioned by Coinbase, conducted over 40 days on a single repository commit and reporting 55 issues across the accounts, tokens and utils modules. Fixes were applied in follow-up pull requests and verified by Spearbit.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Spearbit (via Cantina)",
       "report_date": "2025-01-22",
       "repositories": [

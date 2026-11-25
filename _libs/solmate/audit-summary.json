@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.7.0",
+  "schema_version": "1.8.0",
   "project": "Solmate",
   "reports": [
     {
@@ -8,6 +8,7 @@
       "title": "solmate Smart Contract Library Assessment",
       "description": "Security assessment of Solmate's authentication, token, and utility Solidity libraries, including standalone reviews of later commits and selected files. The assessment also reviewed commits addressing its findings.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Fixed Point Solutions, LLC",
       "report_date": "2021-12-31",
       "repositories": [

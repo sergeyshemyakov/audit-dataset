@@ -171,13 +171,16 @@ def command_export(root: Path, args: argparse.Namespace) -> int:
 
 
 def command_imports(root: Path, args: argparse.Namespace) -> int:
-    from .imports import explain, graph_from_manifest
+    from .imports import explain, facts_from_manifest, graph_from_manifest
     from .manifest import read_manifest
     from .summary import read_summary
 
     collection = resolve(root, args.collection)
-    graph = graph_from_manifest(read_manifest(collection))
-    for line in explain(read_summary(collection), graph, args.report):
+    manifest = read_manifest(collection)
+    lines = explain(
+        read_summary(collection), graph_from_manifest(manifest), facts_from_manifest(manifest), args.report
+    )
+    for line in lines:
         print(line)
     return 0
 

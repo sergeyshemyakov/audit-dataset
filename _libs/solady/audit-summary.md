@@ -9,6 +9,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Ackee Blockchain
 - Date: 2023-06-02
 - Description: Security review by Ackee Blockchain, funded by RockawayX, of a selection of Solady token contracts (ERC20, ERC721, ERC1155) and utility libraries (SafeTransferLib, ERC1967Factory, SignatureCheckerLib, MerkleProofLib, EIP712) using manual review and differential fuzzing. Revision 1.1 is a fix review of the reported findings.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/Vectorized/solady"><code>Vectorized/solady</code></a>
 
@@ -23,6 +24,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: shung (OpenSense Solwaifu initiative)
 - Date: 2023-07-08
 - Description: Independent security review of the Solady ERC721 token contract by shung as part of the OpenSense Operation Solwaifu community audit initiative, covering the custom storage layout, manual memory operations, and inline assembly. No significant issues were found; the reported Low and Informational items were addressed with documentation.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/Vectorized/solady"><code>Vectorized/solady</code></a>
 
@@ -31,12 +33,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 | <a href="https://github.com/Vectorized/solady/commit/7175c21f95255dc7711ce84cc32080a41864abd6"><code>7175c21f95255dc7711ce84cc32080a41864abd6</code></a> | June 22, 2023 | <code>src/tokens/ERC721.sol</code> |
 | <a href="https://github.com/Vectorized/solady/commit/e8d36d039bbf2c8742bc7d463131ed381c2e867b"><code>e8d36d039bbf2c8742bc7d463131ed381c2e867b</code></a> | July 8, 2023 | <code>src/tokens/ERC721.sol</code> |
 
-## Solady Security Review (Cantina Public Goods)
+## Solady Public Goods Security Review
 
 - Report: [solady__audits__cantina-solady-report.md](<reports/solady__audits__cantina-solady-report.md>)
 - Auditor: Cantina
 - Date: 2023-09-14
 - Description: Crowdfunded Cantina public goods security review of Solady targeting ERC1967Factory, ERC20, ERC721, ERC1155, LibClone, MerkleProofLib, SignatureCheckerLib and ECDSA. Fixes were applied in follow-up pull requests and confirmed by the reviewers.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/Vectorized/solady"><code>Vectorized/solady</code></a>
 
@@ -60,6 +63,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: xuwinnie
 - Date: 2024-07-31
 - Description: Mathematical correctness proof by xuwinnie of the cbrt and cbrtWad functions in FixedPointMathLib, showing that the initial guess and iterative refinement return the exact integer cube root. No findings are reported.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/Vectorized/solady"><code>Vectorized/solady</code></a>
 
@@ -73,6 +77,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Spearbit (via Cantina)
 - Date: 2025-01-22
 - Description: Spearbit security review of the Solady library commissioned by Coinbase, conducted over 40 days on a single repository commit and reporting 55 issues across the accounts, tokens and utils modules. Fixes were applied in follow-up pull requests and verified by Spearbit.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/Vectorized/solady"><code>Vectorized/solady</code></a>
 

@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.7.0",
+  "schema_version": "1.8.0",
   "project": "Safe",
   "reports": [
     {
@@ -8,6 +8,7 @@
       "title": "Gnosis Safe Audit Report",
       "description": "Reviews the original Gnosis Safe contracts and a substantially refactored second iteration, covering wallet execution, proxies, extensions, and libraries.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Alexey Akhunov",
       "report_date": null,
       "repositories": [
@@ -58,6 +59,51 @@
                   "status": "not_audited"
                 }
               ]
+            },
+            "contracts/modules/DailyLimitModule.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "942968d66a4fa200fe9757d02b377dbfc3c88636",
+                    "timestamp": "2018-06-14T14:57:07Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/942968d66a4fa200fe9757d02b377dbfc3c88636"
+                  },
+                  "status": "not_audited"
+                }
+              ]
+            },
+            "contracts/modules/SocialRecoveryModule.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "942968d66a4fa200fe9757d02b377dbfc3c88636",
+                    "timestamp": "2018-06-14T14:57:07Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/942968d66a4fa200fe9757d02b377dbfc3c88636"
+                  },
+                  "status": "not_audited"
+                }
+              ]
+            },
+            "contracts/modules/WhitelistModule.sol": {
+              "path_kind": "file",
+              "kind": "evm",
+              "versions": [
+                {
+                  "revision": {
+                    "kind": "commit",
+                    "commit": "942968d66a4fa200fe9757d02b377dbfc3c88636",
+                    "timestamp": "2018-06-14T14:57:07Z",
+                    "url": "https://github.com/safe-fndn/safe-smart-account/commit/942968d66a4fa200fe9757d02b377dbfc3c88636"
+                  },
+                  "status": "not_audited"
+                }
+              ]
             }
           }
         }
@@ -69,6 +115,7 @@
       "title": "Security Review of Gnosis Safe v1.1.0",
       "description": "Reviews the listed Gnosis Safe core, module, handler, library, and proxy contracts and follows their remediation into v1.1.0.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "G0 Group",
       "report_date": "2019-11-11",
       "repositories": [
@@ -763,6 +810,7 @@
       "title": "Security Review of Gnosis Safe v1.1.0 and v1.1.1",
       "description": "Reviews the listed Safe contracts across the original, v1.1.0, and v1.1.1 revisions, including the additional v1.1.1 appendix checks.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "G0 Group",
       "report_date": "2019-11-11",
       "repositories": [
@@ -1709,6 +1757,7 @@
       "title": "Gnosis Safe Gas Validation Adjustment",
       "description": "Reviews the EIP-150 gas-validation adjustment in GnosisSafe and ModuleManager and verifies its correction.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "G0 Group",
       "report_date": "2020-05-04",
       "repositories": [
@@ -1779,6 +1828,7 @@
       "title": "Security Review of Gnosis Safe 1.3.0 (Initial)",
       "description": "Reviews all Solidity sources for the initial Safe 1.3.0 candidate and records follow-up changes implementing two optimization notes.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "G0 Group",
       "report_date": "2021-04-01",
       "repositories": [
@@ -1825,6 +1875,7 @@
       "title": "Security Review of Gnosis Safe 1.3.0 (Final)",
       "description": "Reviews all Solidity sources in the final Safe 1.3.0 audit revision.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "G0 Group",
       "report_date": "2021-05-01",
       "repositories": [
@@ -1862,6 +1913,7 @@
       "title": "Safe Smart Account v1.3.0 Security Assessment",
       "description": "Manually reviews the full listed Safe v1.3.0 contract set and assesses known security-relevant behaviors, with a follow-up finding fix.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Certora",
       "report_date": "2026-07-29",
       "repositories": [
@@ -2379,6 +2431,7 @@
       "title": "Safe Smart Account v1.3.0 Security Review",
       "description": "Reviews the listed Safe v1.3.0 contracts and records remediation of the identified issues in the v1.4.0 release.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Nethermind Security",
       "report_date": "2026-08-17",
       "repositories": [
@@ -2806,6 +2859,8 @@
       "title": "Safe Contracts 1.4.0 Security Review",
       "description": "Reviews five Safe 1.4.0 entry-point contracts together with all of their recursively imported dependencies, followed by a remediation review.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
+      "dependencies": "included",
       "auditor": "Ackee Blockchain",
       "report_date": "2023-03-28",
       "repositories": [
@@ -3500,6 +3555,7 @@
       "title": "Safe Smart Account Security Review",
       "description": "Reviews every Solidity file under the Safe smart-account contracts directory except examples and tests, then verifies implemented fixes.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Ackee Blockchain Security",
       "report_date": "2025-05-28",
       "repositories": [
@@ -3594,6 +3650,7 @@
       "title": "Gnosis Safe Audit Results",
       "description": "Identifies the source revision used by the attached Safe audit and the later revision checked with symbolic execution.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Alexey Akhunov",
       "report_date": null,
       "repositories": [
@@ -3646,6 +3703,7 @@
       "title": "Formal Verification Report: GnosisSafe Contract",
       "description": "Audits and formally verifies selected security-critical GnosisSafe, owner, module, master-copy, and signature-decoding behavior at the EVM bytecode level.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Runtime Verification",
       "report_date": "2019-02-27",
       "repositories": [
@@ -3761,6 +3819,7 @@
       "title": "Safe Smart Account v1.5.0 Formal Verification and Audit",
       "description": "Formally verifies and manually reviews the listed Safe v1.5.0 contracts, then checks the revision containing fixes.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Certora",
       "report_date": "2025-01-14",
       "repositories": [
@@ -4671,6 +4730,7 @@
       "title": "Safe Library Contracts Security Assessment and Formal Verification",
       "description": "Manually reviews and formally verifies Safe migration and L2 setup library contracts, followed by a fix review.",
       "isRelevant": true,
+      "unlisted": "not_mentioned",
       "auditor": "Certora",
       "report_date": "2024-08-23",
       "repositories": [

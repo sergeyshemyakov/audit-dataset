@@ -3,12 +3,13 @@
 Generated from [audit-summary.json](audit-summary.json). Do not edit manually.
 Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless marked zk, cairo or other.
 
-## Mantle Network (Token Migration) Audit (Quantstamp)
+## Mantle Network (Token Migration) Audit
 
 - Report: [2023_06-quantstamp-mantle-token-migration.md](<reports/2023_06-quantstamp-mantle-token-migration.md>)
 - Auditor: Quantstamp
 - Date: 2023-06-16
 - Description: Quantstamp audit (1 to 12 June 2023) with fix review of the L1MantleToken (MNT) and MantleTokenMigrator (BIT to MNT migration) contracts in mantle-token-contracts. The High finding MNT-1 (conversion ratio not guaranteed to be 1:1) was fixed in commit b187163; the other findings were Medium or lower.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/mantlenetworkio/mantle-token-contracts"><code>mantlenetworkio/mantle-token-contracts</code></a>
 
@@ -21,12 +22,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 | <a href="https://github.com/mantlenetworkio/mantle-token-contracts/commit/b18716323f4054120856247ec5e3c28aa3bdb5da"><code>b18716323f4054120856247ec5e3c28aa3bdb5da</code></a> | June 14, 2023 | <code>contracts/Migration/MantleTokenMigrator.sol</code> |
 | <a href="https://github.com/mantlenetworkio/mantle-token-contracts/commit/51ea6473b44cae229589783da4e0eda29f57d40e"><code>51ea6473b44cae229589783da4e0eda29f57d40e</code></a> | June 14, 2023 | <code>contracts/Migration/MantleTokenMigrator.sol</code> |
 
-## Mantle Token and Bridge Audit (OpenZeppelin)
+## Mantle Token and Bridge Audit
 
 - Report: [2023_06-openzeppelin-mantle-token-and-bridge-audit.md](<reports/2023_06-openzeppelin-mantle-token-and-bridge-audit.md>)
 - Auditor: OpenZeppelin
 - Date: 2023-06-30
 - Description: OpenZeppelin audit (6 to 13 June 2023) of the Mantle v1 L1MantleToken (MNT) and MantleTokenMigrator contracts in mantle-token-contracts and the forked L1/L2 StandardBridge contracts in the mantle repository, assuming the cross-domain messengers work as documented. No Critical, High or Medium issues were found; three Low and thirteen Note findings were reported, with fixes reviewed in individual pull request commits.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/mantlenetworkio/mantle-token-contracts"><code>mantlenetworkio/mantle-token-contracts</code></a>
 
@@ -52,12 +54,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 | <a href="https://github.com/mantlenetworkio/mantle/commit/e641f0eac6ba8bf25fa7800ee4aecdf084cb41d2"><code>e641f0eac6ba8bf25fa7800ee4aecdf084cb41d2</code></a> | June 20, 2023 | <code>packages/contracts/contracts/L1/messaging/L1StandardBridge.sol</code> |
 | <a href="https://github.com/mantlenetworkio/mantle/commit/d140d183fdd4aeda7539c60323b09458c303a935"><code>d140d183fdd4aeda7539c60323b09458c303a935</code></a> | June 21, 2023 | <code>packages/contracts/contracts/L1/messaging/L1StandardBridge.sol</code> |
 
-## Mantle Smart Contract Security Assessment (Zellic)
+## Mantle Smart Contract Security Assessment
 
 - Report: [2023_07-zellic-mantle-token-and-bridge-security-assessment.md](<reports/2023_07-zellic-mantle-token-and-bridge-security-assessment.md>)
 - Auditor: Zellic
 - Date: 2023-07-11
 - Description: Zellic assessment (7 to 9 June 2023) of L1MantleToken and MantleTokenMigrator in mantle-token-contracts and the forked L1/L2 StandardBridge contracts in the mantle repository. One High finding (3.1, initialize not guarded by the initializer modifier in L1StandardBridge) was fixed in commit a53dd95; the remaining findings were Low or Informational.
+- Code the report does not list: excluded by the report
 
 ### Repository: <a href="https://github.com/mantlenetworkio/mantle"><code>mantlenetworkio/mantle</code></a>
 
@@ -72,18 +75,19 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 | --- | --- | --- |
 | <a href="https://github.com/mantlenetworkio/mantle-token-contracts/commit/b2016dfb932d85b8b33a9294e8280aa04ca46975"><code>b2016dfb932d85b8b33a9294e8280aa04ca46975</code></a> | June 6, 2023 | <code>contracts/L1/L1MantleToken.sol</code><br><code>contracts/Migration/MantleTokenMigrator.sol</code> |
 
-## Mantle Network (Bridge Contracts) Audit (Quantstamp)
+## Mantle Network (Bridge Contracts) Audit
 
 - Report: [2023_06-quantstamp-mantle-bridge-contracts.md](<reports/2023_06-quantstamp-mantle-bridge-contracts.md>)
 - Auditor: Quantstamp
 - Date: 2023-07-13
 - Description: Quantstamp audit (2 to 16 June 2023) with fix review of the Mantle v1 L1StandardBridge and L2StandardBridge contracts (forked from Optimism afdd020) in the mantle repository; the cross-chain transport layer and bridged tokens were out of scope. The High finding MANB-1 (incompatible ERC-20 tokens can lock funds) was acknowledged, not fixed.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/mantlenetworkio/mantle"><code>mantlenetworkio/mantle</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/mantlenetworkio/mantle/commit/d627d242fe19f50f344f1ff4b27532d1757303a6"><code>d627d242fe19f50f344f1ff4b27532d1757303a6</code></a> | June 5, 2023 | <code>packages/contracts/contracts/L1/messaging/L1StandardBridge.sol</code><br><code>packages/contracts/contracts/L2/messaging/L2StandardBridge.sol</code> |
+| <a href="https://github.com/mantlenetworkio/mantle/commit/d627d242fe19f50f344f1ff4b27532d1757303a6"><code>d627d242fe19f50f344f1ff4b27532d1757303a6</code></a> | June 5, 2023 | <code>packages/contracts/contracts/L1/messaging/L1StandardBridge.sol</code><br><code>packages/contracts/contracts/L2/messaging/L2StandardBridge.sol</code><br><code>packages/contracts/contracts/L1/messaging/IL1CrossDomainMessenger.sol</code> (explicitly not audited)<br><code>packages/contracts/contracts/L1/messaging/L1CrossDomainMessenger.sol</code> (explicitly not audited)<br><code>packages/contracts/contracts/L2/messaging/IL2CrossDomainMessenger.sol</code> (explicitly not audited)<br><code>packages/contracts/contracts/L2/messaging/L2CrossDomainMessenger.sol</code> (explicitly not audited)<br><code>packages/contracts/contracts/L2/predeploys/BVM_L2ToL1MessagePasser.sol</code> (explicitly not audited)<br><code>packages/contracts/contracts/L2/predeploys/iBVM_L2ToL1MessagePasser.sol</code> (explicitly not audited)<br><code>packages/contracts/contracts/libraries/bridge/CrossDomainEnabled.sol</code> (explicitly not audited)<br><code>packages/contracts/contracts/libraries/bridge/ICrossDomainMessenger.sol</code> (explicitly not audited)<br><code>packages/contracts/contracts/libraries/bridge/Lib_CrossDomainUtils.sol</code> (explicitly not audited) |
 | <a href="https://github.com/mantlenetworkio/mantle/commit/a53dd956c6a1330742c00f46f30aee881f76b958"><code>a53dd956c6a1330742c00f46f30aee881f76b958</code></a> | June 26, 2023 | <code>packages/contracts/contracts/L1/messaging/L1StandardBridge.sol</code><br><code>packages/contracts/contracts/L2/messaging/L2StandardBridge.sol</code> |
 
 ## Mantle Competitive Security Assessment
@@ -92,6 +96,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Secure3
 - Date: 2023-07-17
 - Description: Secure3 audit contest of the Mantle v1 monorepo mantlenetworkio/mantle at commit 3e2b6dbc (final commit c4a8fd85), covering the batch-submitter, bss-core, gas-oracle, l2geth, mt-batcher, mt-challenger, packages (L1/L2 contracts including bridges, StateCommitmentChain, TSS, fraud-proof Rollup and EigenDA/DataLayr contracts) and tss directories. It reported 14 Critical, 34 Medium, 35 Low and 57 Informational issues, of which 5 Critical were fixed.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/mantlenetworkio/mantle"><code>mantlenetworkio/mantle</code></a>
 
@@ -102,12 +107,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 | <a href="https://github.com/mantlenetworkio/mantle/tree/c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b/batch-submitter"><code>c4a8fd856aab7fd6eedb0c8bc2a8129d252de24b</code></a> | June 8, 2023 | <code>batch-submitter</code> (recursive directory) (other)<br><code>bss-core</code> (recursive directory) (other)<br><code>gas-oracle</code> (recursive directory) (other)<br><code>l2geth</code> (recursive directory)<br><code>mt-batcher</code> (recursive directory) (other)<br><code>mt-challenger</code> (recursive directory) (other)<br><code>packages</code> (recursive directory)<br><code>tss</code> (recursive directory) (other)<br><code>mt-batcher/mt_batcher.go</code> (other)<br><code>mt-batcher/services/common/crypto.go</code> (other)<br><code>tss/node/tsslib/conversion/conversion.go</code> (other)<br><code>packages/contracts/contracts/L2/messaging/L2StandardBridge.sol</code><br><code>packages/contracts/contracts/L1/messaging/L1StandardBridge.sol</code><br><code>tss/node/store/slash.go</code> (other)<br><code>packages/contracts/contracts/L1/rollup/StateCommitmentChain.sol</code><br><code>packages/contracts/contracts/L2/predeploys/TssRewardContract.sol</code><br><code>tss/node/server/http.go</code> (other)<br><code>packages/contracts/contracts/L1/fraud-proof/Rollup.sol</code><br><code>batch-submitter/drivers/sequencer/encoding.go</code> (other)<br><code>l2geth/core/vm/runtime/env.go</code> (other)<br><code>l2geth/core/vm/runtime/runtime.go</code> (other) |
 | <a href="https://github.com/mantlenetworkio/mantle/blob/136f5c5c12235ec9e8c9d5319be70bf3c0f868f5/tss/node/server/http.go"><code>136f5c5c12235ec9e8c9d5319be70bf3c0f868f5</code></a> | June 16, 2023 | <code>tss/node/server/http.go</code> (other) |
 
-## Mantle V2 Competitive Security Assessment (Secure3, March 2024)
+## Mantle V2 Competitive Security Assessment (March 2024)
 
 - Report: [2024_03-secure3-mantle-v2-tectonic-competitive-security-assessment.md](<reports/2024_03-secure3-mantle-v2-tectonic-competitive-security-assessment.md>)
 - Auditor: Secure3
 - Date: 2024-03-04
 - Description: Secure3 private audit contest on Mantle V2 (Tectonic) covering the Mantle v1-&gt;v2 changes of mantle-v2 PR #72 (contracts-bedrock L1 and L2 directories plus the other changed contracts and offchain components) and of op-geth PR #20, at audit commits 00ce7b0 and be91998 with final commits 7040d02 and 64996df. It reports eight Critical findings, seven in the L1/L2 messengers, portal and ERC721 bridge (MNT-6 only acknowledged) and MNT-8 in op-geth core/state_transition.go.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/mantle-xyz/mantle-v2"><code>mantle-xyz/mantle-v2</code></a>
 
@@ -145,6 +151,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: OpenZeppelin
 - Date: 2024-03-15
 - Description: OpenZeppelin audit of the Mantle V2 (OP Stack Bedrock fork with MNT as native token) L1 and L2 contracts in packages/contracts-bedrock at commit e29d360: bridges, messengers, OptimismPortal, L2OutputOracle, SystemConfig, BVM_ETH, GasPriceOracle and fee vaults, with a limited review of universal dependencies and a diff-only review of deployment, legacy and library files. Fixes are recorded per finding in pull requests #105 to #138.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/mantle-xyz/mantle-v2"><code>mantle-xyz/mantle-v2</code></a>
 
@@ -167,12 +174,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 | <a href="https://github.com/mantle-xyz/mantle-v2/commit/9032ff2d1b114b92605bfd9e8e43af328ab4b66f"><code>9032ff2d1b114b92605bfd9e8e43af328ab4b66f</code></a> | March 6, 2024 | <code>packages/contracts-bedrock/contracts/legacy/LegacyERC20MNT.sol</code> |
 | <a href="https://github.com/mantle-xyz/mantle-v2/commit/92ebaf96622e8126ce5322bdf3ea730640c7a548"><code>92ebaf96622e8126ce5322bdf3ea730640c7a548</code></a> | March 12, 2024 | <code>packages/contracts-bedrock/contracts/universal/CrossDomainMessenger.sol</code> |
 
-## Mantle_V2_Public Competitive Security Assessment (Secure3, April 2024 edition)
+## Mantle_V2_Public Competitive Security Assessment (April 2024 edition)
 
 - Report: [2024_04-secure3-mantle-v2-public-audit-contest.md](<reports/2024_04-secure3-mantle-v2-public-audit-contest.md>)
 - Auditor: Secure3
 - Date: 2024-04-18
 - Description: Earlier (April 18, 2024) edition of the Secure3 public audit contest on Mantle V2, scoping the whole mantle-v2 and op-geth repositories at audit versions 7040d02 and 64996df with final versions d8efd33 and 641584e. It reports five Critical findings, MNT-2, MNT-4 and MNT-5 in the contracts-bedrock messengers and ERC721 bridge and MNT-1 and MNT-3 in op-geth core/state_transition.go and core/vm/evm.go.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/mantle-xyz/mantle-v2"><code>mantle-xyz/mantle-v2</code></a>
 
@@ -192,12 +200,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 | <a href="https://github.com/mantle-xyz/op-geth/commit/64996df634fbd58d9eea82cd4cf7bf3a782c2e03"><code>64996df634fbd58d9eea82cd4cf7bf3a782c2e03</code></a> | March 3, 2024 | <code>core/state_transition.go</code> (other)<br><code>core/vm/evm.go</code> (other) |
 | <a href="https://github.com/mantle-xyz/op-geth/commit/641584e4fa3f67cc8f0aef5b0658846cd2d18dbb"><code>641584e4fa3f67cc8f0aef5b0658846cd2d18dbb</code></a> | March 13, 2024 | <code>core/state_transition.go</code> (other)<br><code>core/vm/evm.go</code> (other) |
 
-## Mantle_V2_Public Competitive Security Assessment (Secure3, May 2024 final edition)
+## Mantle_V2_Public Competitive Security Assessment (May 2024 final edition)
 
 - Report: [2024_05-secure3-mantle-v2-public-audit-contest-final.md](<reports/2024_05-secure3-mantle-v2-public-audit-contest-final.md>)
 - Auditor: Secure3
 - Date: 2024-05-10
 - Description: Final (May 10, 2024) edition of the Secure3 public audit contest on Mantle V2, scoping the whole mantle-v2 and op-geth repositories at audit versions 7040d02 and 64996df with final versions d8efd33 and 641584e, now listing declined submissions and several downgraded severities. It reports four Critical findings, MNT-4 in L1ERC721Bridge, the declined MNT-1 in the legacy v1 L1CrossDomainMessenger, the declined MNT-3 in op-chain-ops migration code and MNT-2 in op-geth core/state_transition.go.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/mantle-xyz/mantle-v2"><code>mantle-xyz/mantle-v2</code></a>
 
@@ -222,6 +231,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: EtherAuthority
 - Date: 2024-05-14
 - Description: Unsolicited EtherAuthority community audit, largely based on automated tools (Slither, Solhint, Remix), of the L1MantleToken.sol implementation taken from the verified Etherscan code at 0xcd368c1d80120b0dd92447c87eb570154f8e685c rather than from a git repository. It reports one very low severity issue and no repository revision, so no source coverage can be pinned.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://etherscan.io/address/0xcd368c1d80120b0dd92447c87eb570154f8e685c#code"><code>etherscan.io/address/0xcd368c1d80120b0dd92447c87eb570154f8e685c</code></a>
 
@@ -235,6 +245,8 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: CertiK
 - Date: 2026-03-26
 - Description: CertiK diff audit of the Mantle Arsia upgrade, which rebases Mantle on upstream OP Stack v1.16.3 and re-integrates Mantle features, covering listed files of mantle-v2 PR #290 (op-node, op-batcher, genesis tooling and the SystemConfig, GasPriceOracle, L1Block and OperatorFeeVault contracts), op-geth PR #148 (plus the tokenRatio fix PR #152), kona PR #19 and revm PR #20, with per-finding fix commits. One Major finding (MAN-31, latched blob-source flag in the op-node data source factory) was reported and resolved in 984e9ab.
+- Code the report does not list: excluded by the report
+- Third-party dependencies: the report says they were not reviewed
 
 ### Repository: <a href="https://github.com/mantle-xyz/mantle-v2"><code>mantle-xyz/mantle-v2</code></a>
 
@@ -284,11 +296,13 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 | <a href="https://github.com/mantle-xyz/revm/commit/3329ddcd99b9cd912294e4f86b4fd88cc372e560"><code>3329ddcd99b9cd912294e4f86b4fd88cc372e560</code></a> | March 5, 2026 | <code>crates/op-revm/src/handler.rs</code> (other) |
 | <a href="https://github.com/mantle-xyz/revm/commit/3ac6c6e9076dcbe0ccee3cf2c7a39513ea369375"><code>3ac6c6e9076dcbe0ccee3cf2c7a39513ea369375</code></a> | March 25, 2026 | <code>crates/op-revm/src/handler.rs</code> (other)<br><code>crates/op-revm/src/constants.rs</code> (other) |
 
-## Mantle L2 Rollup Security Assessment (Sigma Prime)
+## Mantle L2 Rollup Security Assessment
 
 - Report: [2023_07-sigmaprime-mantle-l2-rollup-security-assessment.md](<reports/2023_07-sigmaprime-mantle-l2-rollup-security-assessment.md>)
 - Auditor: Sigma Prime
 - Description: Sigma Prime time-boxed review of the Mantle v1 mantle repository at commit 3e2b6db, covering the Solidity contracts (TSS group manager and staking/slashing, EigenDA data-layer chain, predeploys, bridges) and the Go components (TSS, l2geth, mt-batcher, mt-challenger, fraud-proof, batch-submitter, proxyd and the datalayr-mantle submodule), with OpenZeppelin dependencies excluded. It reported 38 findings including 1 Critical and 5 High, with resolutions in follow-up pull requests and commits.
+- Code the report does not list: not mentioned by the report
+- Third-party dependencies: the report says they were not reviewed
 
 ### Repository: <a href="https://github.com/mantlenetworkio/mantle"><code>mantlenetworkio/mantle</code></a>
 
@@ -325,6 +339,8 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Report: [2024_04-sigmaprime-mantle-l2-rollup-v2-security-assessment.md](<reports/2024_04-sigmaprime-mantle-l2-rollup-v2-security-assessment.md>)
 - Auditor: Sigma Prime
 - Description: Sigma Prime time-boxed review of Mantle V2: the contracts-bedrock L1 and L2 contract directories at commit 9d2f150, the op-node/op-batcher/op-proposer changes of mantle-v2 pull request #72 and the op-geth changes of pull request #20. The scope was extended to mantle-v2 pull requests #89, #95 and #98 (reviewed at e29d360) and op-geth pull requests #31 and #37 (reviewed at 4d05b2c).
+- Code the report does not list: excluded by the report
+- Third-party dependencies: the report says they were not reviewed
 
 ### Repository: <a href="https://github.com/mantle-xyz/mantle-v2"><code>mantle-xyz/mantle-v2</code></a>
 
@@ -349,6 +365,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Report: [2025_12-sherlock-mantle-skadi-op-succinct-collaborative-audit.md](<reports/2025_12-sherlock-mantle-skadi-op-succinct-collaborative-audit.md>)
 - Auditor: Sherlock
 - Description: Sherlock collaborative audit (July 2 - August 22, 2025) in two parts: the Pectra/Skadi upgrade change set in mantle-v2 (node, batcher, proposer, gas oracle, service code) and op-geth, and Mantle&#x27;s OP Succinct validity-proof stack, i.e. the kona and op-succinct commit diffs, the whole hydro EigenDA repository and the op-revm BVM_ETH/fee changes in mantle-xyz/revm, each with a final fix commit; five High findings were reported (H-1 and H-2 in the mantle-v2 batcher/EigenDA client, H-3 to H-5 in op-revm deposit BVM_ETH handling), of which H-1 and H-3 were only acknowledged.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/mantle-xyz/mantle-v2"><code>mantle-xyz/mantle-v2</code></a>
 

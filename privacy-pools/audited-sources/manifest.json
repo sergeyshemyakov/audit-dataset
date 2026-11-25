@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "collection": "privacy-pools",
   "sources": [
     {
@@ -663,6 +663,66 @@
       ]
     },
     {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/interfaces/IEntrypoint.sol",
+      "path_kind": "file",
+      "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+      "files": [
+        {
+          "path": "packages/contracts/src/interfaces/IEntrypoint.sol",
+          "git_object": "78bc82eccc366af30b1fa73f6fa49a194cfce22e",
+          "git_mode": "100644",
+          "sha256": "24a65d714dc1343d0645d6b0cab90e11291f325e3a2c42e4816b081b27cee385"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/interfaces/IPrivacyPool.sol",
+      "path_kind": "file",
+      "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+      "files": [
+        {
+          "path": "packages/contracts/src/interfaces/IPrivacyPool.sol",
+          "git_object": "90361dcb2dbcaf531673df274c1a62ede7448a4b",
+          "git_mode": "100644",
+          "sha256": "e385625d709ca8d86122d667f3c7976c10b02cad34065fe4ba6c81d68b37af52"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/interfaces/IState.sol",
+      "path_kind": "file",
+      "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+      "files": [
+        {
+          "path": "packages/contracts/src/interfaces/IState.sol",
+          "git_object": "e1246d884b15d2e43af4a232d11241bebcc46773",
+          "git_mode": "100644",
+          "sha256": "ce69bffd7d8386a84ea2209eddc01d51d721cae4cf8dea841943fe5a9dd8d116"
+        }
+      ]
+    },
+    {
+      "repository": "0xbow-io/privacy-pools-core",
+      "repository_url": "https://github.com/0xbow-io/privacy-pools-core",
+      "source_path": "packages/contracts/src/interfaces/IVerifier.sol",
+      "path_kind": "file",
+      "commit": "f0b8fe5e7b91b942523e8af671c59c3a4c75f612",
+      "files": [
+        {
+          "path": "packages/contracts/src/interfaces/IVerifier.sol",
+          "git_object": "bc083e1690849e10317241bf957cef5382e3117b",
+          "git_mode": "100644",
+          "sha256": "1607360e810d619343eb09ce80afb2fedec16bc148e4475b4a894a22085e159a"
+        }
+      ]
+    },
+    {
       "repository": "ProofOfInnocence/privacy-pools-v1",
       "repository_url": "https://github.com/ProofOfInnocence/privacy-pools-v1",
       "source_path": "contracts/ERC20PrivacyPool.sol",
@@ -863,23 +923,23 @@
         "packages/contracts/src/contracts/Entrypoint.sol": [
           {
             "import": "@oz-upgradeable/access/AccessControlUpgradeable.sol",
-            "skipped": "package dependency: node_modules/@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol"
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol"
           },
           {
             "import": "@oz-upgradeable/proxy/utils/UUPSUpgradeable.sol",
-            "skipped": "package dependency: node_modules/@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol"
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol"
           },
           {
             "import": "@oz-upgradeable/utils/ReentrancyGuardUpgradeable.sol",
-            "skipped": "package dependency: node_modules/@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol"
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol"
           },
           {
             "import": "@oz/token/ERC20/utils/SafeERC20.sol",
-            "skipped": "package dependency: node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol"
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol"
           },
           {
             "import": "@oz/interfaces/IERC20.sol",
-            "skipped": "package dependency: node_modules/@openzeppelin/contracts/interfaces/IERC20.sol"
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts/interfaces/IERC20.sol"
           },
           {
             "import": "./lib/Constants.sol",
@@ -901,7 +961,7 @@
         "packages/contracts/src/contracts/PrivacyPool.sol": [
           {
             "import": "poseidon/PoseidonT4.sol",
-            "skipped": "package dependency: node_modules/poseidon-solidity/PoseidonT4.sol"
+            "skipped": "not in the repository: node_modules/poseidon-solidity/PoseidonT4.sol"
           },
           {
             "import": "./lib/Constants.sol",
@@ -927,7 +987,7 @@
           },
           {
             "import": "lean-imt/InternalLeanIMT.sol",
-            "skipped": "package dependency: node_modules/@zk-kit/lean-imt.sol/InternalLeanIMT.sol"
+            "skipped": "not in the repository: node_modules/@zk-kit/lean-imt.sol/InternalLeanIMT.sol"
           },
           {
             "import": "interfaces/IEntrypoint.sol",
@@ -945,7 +1005,7 @@
         "packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol": [
           {
             "import": "@oz/token/ERC20/utils/SafeERC20.sol",
-            "skipped": "package dependency: node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol"
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol"
           },
           {
             "import": "contracts/lib/Constants.sol",
@@ -979,7 +1039,7 @@
         "packages/contracts/src/interfaces/IEntrypoint.sol": [
           {
             "import": "@oz/interfaces/IERC20.sol",
-            "skipped": "package dependency: node_modules/@openzeppelin/contracts/interfaces/IERC20.sol"
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts/interfaces/IERC20.sol"
           },
           {
             "import": "../contracts/lib/ProofLib.sol",
@@ -1020,11 +1080,11 @@
           },
           {
             "import": "forge-std/Script.sol",
-            "skipped": "package dependency: node_modules/forge-std/src/Script.sol"
+            "skipped": "not in the repository: node_modules/forge-std/src/Script.sol"
           },
           {
             "import": "forge-std/console.sol",
-            "skipped": "package dependency: node_modules/forge-std/src/console.sol"
+            "skipped": "not in the repository: node_modules/forge-std/src/console.sol"
           },
           {
             "import": "interfaces/IBatchRelayer.sol",
@@ -1034,15 +1094,15 @@
         "packages/contracts/src/contracts/BatchRelayer.sol": [
           {
             "import": "@oz/interfaces/IERC20.sol",
-            "skipped": "package dependency: packages/contracts/node_modules/@openzeppelin/contracts/interfaces/IERC20.sol"
+            "skipped": "not in the repository: packages/contracts/node_modules/@openzeppelin/contracts/interfaces/IERC20.sol"
           },
           {
             "import": "@oz/token/ERC20/utils/SafeERC20.sol",
-            "skipped": "package dependency: packages/contracts/node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol"
+            "skipped": "not in the repository: packages/contracts/node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol"
           },
           {
             "import": "@oz/utils/ReentrancyGuard.sol",
-            "skipped": "package dependency: packages/contracts/node_modules/@openzeppelin/contracts/utils/ReentrancyGuard.sol"
+            "skipped": "not in the repository: packages/contracts/node_modules/@openzeppelin/contracts/utils/ReentrancyGuard.sol"
           },
           {
             "import": "contracts/lib/Constants.sol",
@@ -1076,7 +1136,7 @@
         "packages/contracts/src/interfaces/IEntrypoint.sol": [
           {
             "import": "@oz/interfaces/IERC20.sol",
-            "skipped": "package dependency: packages/contracts/node_modules/@openzeppelin/contracts/interfaces/IERC20.sol"
+            "skipped": "not in the repository: packages/contracts/node_modules/@openzeppelin/contracts/interfaces/IERC20.sol"
           },
           {
             "import": "../contracts/lib/ProofLib.sol",
@@ -1113,23 +1173,23 @@
         "packages/contracts/src/contracts/Entrypoint.sol": [
           {
             "import": "@oz-upgradeable/access/AccessControlUpgradeable.sol",
-            "skipped": "package dependency: node_modules/@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol"
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol"
           },
           {
             "import": "@oz-upgradeable/proxy/utils/UUPSUpgradeable.sol",
-            "skipped": "package dependency: node_modules/@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol"
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol"
           },
           {
             "import": "@oz-upgradeable/utils/ReentrancyGuardUpgradeable.sol",
-            "skipped": "package dependency: node_modules/@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol"
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol"
           },
           {
             "import": "@oz/token/ERC20/utils/SafeERC20.sol",
-            "skipped": "package dependency: node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol"
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol"
           },
           {
             "import": "@oz/interfaces/IERC20.sol",
-            "skipped": "package dependency: node_modules/@openzeppelin/contracts/interfaces/IERC20.sol"
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts/interfaces/IERC20.sol"
           },
           {
             "import": "./lib/Constants.sol",
@@ -1151,7 +1211,7 @@
         "packages/contracts/src/contracts/PrivacyPool.sol": [
           {
             "import": "poseidon/PoseidonT4.sol",
-            "skipped": "package dependency: node_modules/poseidon-solidity/PoseidonT4.sol"
+            "skipped": "not in the repository: node_modules/poseidon-solidity/PoseidonT4.sol"
           },
           {
             "import": "./lib/Constants.sol",
@@ -1177,7 +1237,7 @@
           },
           {
             "import": "lean-imt/InternalLeanIMT.sol",
-            "skipped": "package dependency: node_modules/@zk-kit/lean-imt.sol/InternalLeanIMT.sol"
+            "skipped": "not in the repository: node_modules/@zk-kit/lean-imt.sol/InternalLeanIMT.sol"
           },
           {
             "import": "interfaces/IEntrypoint.sol",
@@ -1195,7 +1255,7 @@
         "packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol": [
           {
             "import": "@oz/token/ERC20/utils/SafeERC20.sol",
-            "skipped": "package dependency: node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol"
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol"
           },
           {
             "import": "contracts/lib/Constants.sol",
@@ -1229,7 +1289,160 @@
         "packages/contracts/src/interfaces/IEntrypoint.sol": [
           {
             "import": "@oz/interfaces/IERC20.sol",
-            "skipped": "package dependency: node_modules/@openzeppelin/contracts/interfaces/IERC20.sol"
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts/interfaces/IERC20.sol"
+          },
+          {
+            "import": "../contracts/lib/ProofLib.sol",
+            "path": "packages/contracts/src/contracts/lib/ProofLib.sol"
+          },
+          {
+            "import": "interfaces/IPrivacyPool.sol",
+            "path": "packages/contracts/src/interfaces/IPrivacyPool.sol"
+          }
+        ],
+        "packages/contracts/src/interfaces/IPrivacyPool.sol": [
+          {
+            "import": "../contracts/lib/ProofLib.sol",
+            "path": "packages/contracts/src/contracts/lib/ProofLib.sol"
+          },
+          {
+            "import": "interfaces/IState.sol",
+            "path": "packages/contracts/src/interfaces/IState.sol"
+          }
+        ],
+        "packages/contracts/src/interfaces/IState.sol": [
+          {
+            "import": "interfaces/IEntrypoint.sol",
+            "path": "packages/contracts/src/interfaces/IEntrypoint.sol"
+          },
+          {
+            "import": "interfaces/IVerifier.sol",
+            "path": "packages/contracts/src/interfaces/IVerifier.sol"
+          }
+        ],
+        "packages/contracts/src/interfaces/IVerifier.sol": []
+      },
+      "f0b8fe5e7b91b942523e8af671c59c3a4c75f612": {
+        "packages/contracts/src/contracts/Entrypoint.sol": [
+          {
+            "import": "@oz-upgradeable/access/AccessControlUpgradeable.sol",
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts-upgradeable/access/AccessControlUpgradeable.sol"
+          },
+          {
+            "import": "@oz-upgradeable/proxy/utils/UUPSUpgradeable.sol",
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol"
+          },
+          {
+            "import": "@oz-upgradeable/utils/ReentrancyGuardUpgradeable.sol",
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts-upgradeable/utils/ReentrancyGuardUpgradeable.sol"
+          },
+          {
+            "import": "@oz/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "@oz/interfaces/IERC20.sol",
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts/interfaces/IERC20.sol"
+          },
+          {
+            "import": "./lib/Constants.sol",
+            "path": "packages/contracts/src/contracts/lib/Constants.sol"
+          },
+          {
+            "import": "./lib/ProofLib.sol",
+            "path": "packages/contracts/src/contracts/lib/ProofLib.sol"
+          },
+          {
+            "import": "interfaces/IEntrypoint.sol",
+            "path": "packages/contracts/src/interfaces/IEntrypoint.sol"
+          },
+          {
+            "import": "interfaces/IPrivacyPool.sol",
+            "path": "packages/contracts/src/interfaces/IPrivacyPool.sol"
+          }
+        ],
+        "packages/contracts/src/contracts/PrivacyPool.sol": [
+          {
+            "import": "poseidon/PoseidonT4.sol",
+            "skipped": "not in the repository: node_modules/poseidon-solidity/PoseidonT4.sol"
+          },
+          {
+            "import": "./lib/Constants.sol",
+            "path": "packages/contracts/src/contracts/lib/Constants.sol"
+          },
+          {
+            "import": "./lib/ProofLib.sol",
+            "path": "packages/contracts/src/contracts/lib/ProofLib.sol"
+          },
+          {
+            "import": "interfaces/IPrivacyPool.sol",
+            "path": "packages/contracts/src/interfaces/IPrivacyPool.sol"
+          },
+          {
+            "import": "./State.sol",
+            "path": "packages/contracts/src/contracts/State.sol"
+          }
+        ],
+        "packages/contracts/src/contracts/State.sol": [
+          {
+            "import": "./lib/Constants.sol",
+            "path": "packages/contracts/src/contracts/lib/Constants.sol"
+          },
+          {
+            "import": "lean-imt/InternalLeanIMT.sol",
+            "skipped": "not in the repository: node_modules/@zk-kit/lean-imt.sol/InternalLeanIMT.sol"
+          },
+          {
+            "import": "interfaces/IEntrypoint.sol",
+            "path": "packages/contracts/src/interfaces/IEntrypoint.sol"
+          },
+          {
+            "import": "interfaces/IState.sol",
+            "path": "packages/contracts/src/interfaces/IState.sol"
+          },
+          {
+            "import": "interfaces/IVerifier.sol",
+            "path": "packages/contracts/src/interfaces/IVerifier.sol"
+          }
+        ],
+        "packages/contracts/src/contracts/implementations/PrivacyPoolComplex.sol": [
+          {
+            "import": "@oz/token/ERC20/utils/SafeERC20.sol",
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol"
+          },
+          {
+            "import": "contracts/lib/Constants.sol",
+            "path": "packages/contracts/src/contracts/lib/Constants.sol"
+          },
+          {
+            "import": "interfaces/IPrivacyPool.sol",
+            "path": "packages/contracts/src/interfaces/IPrivacyPool.sol"
+          },
+          {
+            "import": "contracts/PrivacyPool.sol",
+            "path": "packages/contracts/src/contracts/PrivacyPool.sol"
+          }
+        ],
+        "packages/contracts/src/contracts/implementations/PrivacyPoolSimple.sol": [
+          {
+            "import": "contracts/lib/Constants.sol",
+            "path": "packages/contracts/src/contracts/lib/Constants.sol"
+          },
+          {
+            "import": "contracts/PrivacyPool.sol",
+            "path": "packages/contracts/src/contracts/PrivacyPool.sol"
+          },
+          {
+            "import": "interfaces/IPrivacyPool.sol",
+            "path": "packages/contracts/src/interfaces/IPrivacyPool.sol"
+          }
+        ],
+        "packages/contracts/src/contracts/lib/Constants.sol": [],
+        "packages/contracts/src/contracts/lib/ProofLib.sol": [],
+        "packages/contracts/src/interfaces/IEntrypoint.sol": [
+          {
+            "import": "@oz/interfaces/IERC20.sol",
+            "skipped": "not in the repository: node_modules/@openzeppelin/contracts/interfaces/IERC20.sol"
           },
           {
             "import": "../contracts/lib/ProofLib.sol",
@@ -1278,18 +1491,18 @@
           },
           {
             "import": "solmate/src/utils/SafeTransferLib.sol",
-            "skipped": "vendored dependency: solmate/src/utils/SafeTransferLib.sol"
+            "skipped": "not in the repository: solmate/src/utils/SafeTransferLib.sol"
           }
         ],
         "contracts/MerkleTreeWithHistory.sol": [],
         "contracts/PrivacyPool.sol": [
           {
             "import": "@openzeppelin/contracts/security/ReentrancyGuard.sol",
-            "skipped": "vendored dependency: @openzeppelin/contracts/security/ReentrancyGuard.sol"
+            "skipped": "not in the repository: @openzeppelin/contracts/security/ReentrancyGuard.sol"
           },
           {
             "import": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
-            "skipped": "vendored dependency: @openzeppelin/contracts/token/ERC20/IERC20.sol"
+            "skipped": "not in the repository: @openzeppelin/contracts/token/ERC20/IERC20.sol"
           },
           {
             "import": "./interfaces/IVerifier.sol",
@@ -1303,5 +1516,71 @@
         "contracts/interfaces/IVerifier.sol": []
       }
     }
-  }
+  },
+  "trees": {
+    "0xbow-io/privacy-pools-core": {
+      "2d4627ba55743d17ff62a2856d93ef7cc926fc64": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "privacy-pool-core",
+          "docs": "docs",
+          "packages/circuits": "@privacy-pool-core/circuits",
+          "packages/contracts": "@privacy-pool-core/contracts",
+          "packages/relayer": "@privacy-pool-core/relayer",
+          "packages/relayer/test/integration/relay": "api-test",
+          "packages/sdk": "@0xbow/privacy-pools-core-sdk"
+        }
+      },
+      "2f6a650b4cbc7872e163a70c56cdc977fe7839b4": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "privacy-pool-core",
+          "docs": "docs",
+          "packages/circuits": "@privacy-pool-core/circuits",
+          "packages/contracts": "@privacy-pool-core/contracts",
+          "packages/relayer": "@privacy-pool-core/relayer",
+          "packages/relayer/test/integration/relay": "api-test",
+          "packages/sdk": "@0xbow/privacy-pools-core-sdk"
+        }
+      },
+      "532eaa8ed151f06697249d400926d17adf442d8e": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "privacy-pool-core",
+          "docs": "docs",
+          "packages/circuits": "@privacy-pool-core/circuits",
+          "packages/contracts": "@privacy-pool-core/contracts",
+          "packages/relayer": "@privacy-pool-core/relayer",
+          "packages/relayer/test/integration/relay": "api-test",
+          "packages/sdk": "@0xbow/privacy-pools-core-sdk"
+        }
+      },
+      "f0b8fe5e7b91b942523e8af671c59c3a4c75f612": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "privacy-pool-core",
+          "packages/circuits": "@privacy-pool-core/circuits",
+          "packages/contracts": "@privacy-pool-core/contracts",
+          "packages/relayer": "@privacy-pool-core/relayer",
+          "packages/relayer/test/integration/relay": "api-test",
+          "packages/sdk": "@defi-wonderland/privacy-pool-core-sdk"
+        }
+      }
+    },
+    "ProofOfInnocence/privacy-pools-v1": {
+      "e221f0b88e52fb5c214726e765997ef4067793a9": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "tornado-pool",
+          "membership-proof": "membership-proof"
+        }
+      }
+    }
+  },
+  "dependencies": {}
 }

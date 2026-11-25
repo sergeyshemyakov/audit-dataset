@@ -1,5 +1,5 @@
 {
-  "schema_version": "2.0.0",
+  "schema_version": "2.1.0",
   "collection": "_libs/solady",
   "sources": [
     {
@@ -1594,5 +1594,58 @@
     }
   ],
   "skipped": [],
-  "unavailable": []
+  "unavailable": [],
+  "imports": {
+    "Vectorized/solady": {
+      "7175c21f95255dc7711ce84cc32080a41864abd6": {
+        "src/tokens/ERC721.sol": []
+      },
+      "89101d53b7c8784cca935c1f2f6403639cee48b2": {
+        "src/tokens/ERC1155.sol": [],
+        "src/tokens/ERC20.sol": [],
+        "src/tokens/ERC721.sol": [],
+        "src/utils/ECDSA.sol": [],
+        "src/utils/ERC1967Factory.sol": [],
+        "src/utils/LibClone.sol": [],
+        "src/utils/MerkleProofLib.sol": [],
+        "src/utils/SignatureCheckerLib.sol": []
+      },
+      "e158762ba98db40a06411db7f80a54b93e951818": {
+        "src/tokens/ERC1155.sol": [],
+        "src/tokens/ERC20.sol": [],
+        "src/tokens/ERC721.sol": [],
+        "src/utils/EIP712.sol": [],
+        "src/utils/ERC1967Factory.sol": [],
+        "src/utils/MerkleProofLib.sol": [],
+        "src/utils/SafeTransferLib.sol": [],
+        "src/utils/SignatureCheckerLib.sol": []
+      }
+    }
+  },
+  "trees": {
+    "Vectorized/solady": {
+      "7175c21f95255dc7711ce84cc32080a41864abd6": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "solady"
+        }
+      },
+      "89101d53b7c8784cca935c1f2f6403639cee48b2": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "solady"
+        }
+      },
+      "e158762ba98db40a06411db7f80a54b93e951818": {
+        "mounts": {},
+        "vendored": [],
+        "packages": {
+          "": "solady"
+        }
+      }
+    }
+  },
+  "dependencies": {}
 }

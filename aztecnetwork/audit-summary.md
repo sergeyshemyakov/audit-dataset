@@ -9,6 +9,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: ConsenSys Diligence
 - Date: 2019-04-08
 - Description: Smart contract security audit of the AZTEC v1 confidential-asset protocol (ACE, NoteRegistry, JoinSplit validator, ZkAsset variants, ERC20Mintable, LibEIP712) in packages/protocol of AztecProtocol/AZTEC at commit 7a020f4c, with tool-based analysis and a threat model. Zero-knowledge proof algorithms, trusted setup and the underlying mathematics were out of scope.
+- Code the report does not list: excluded by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/AZTEC"><code>AztecProtocol/AZTEC</code></a>
 
@@ -23,6 +24,7 @@ Commit dates use Git committer timestamps (UTC). Paths are EVM contracts unless 
 - Auditor: Sentnl
 - Date: 2022-03-26
 - Description: Sentnl differential-fuzzing audit of the Barretenberg C++ cryptographic library (native uint256/uintx arithmetic, BN254/secp256k1/secp256r1 curve operations, ECDSA verification) compared against Botan, libff and libsecp256k1. It reports memory bugs, incorrect arithmetic results and invalid-point handling issues without assigning per-finding severities.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/barretenberg"><code>AztecProtocol/barretenberg</code></a>
 
@@ -44,6 +46,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Solidified
 - Date: 2022-04-12
 - Description: Audit of the Aztec Connect Lido bridge (LidoBridge.sol and its Foundry test Lido.t.sol) that wraps ETH into wstETH via Lido or Curve and unwraps back through Curve. One Major issue (unchecked stETH output from Lido) and two Minor issues were reported, all marked Resolved without a fix commit being identified.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-connect-bridges"><code>AztecProtocol/aztec-connect-bridges</code></a>
 
@@ -57,6 +60,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Solidified
 - Date: 2022-05-11
 - Description: Audit of the Aztec Connect Element Finance bridge (ElementBridge.sol, MinHeap.sol and interfaces) that buys fixed-yield tranches via Balancer and redeems them by expiry using a min-heap. One Minor issue was reported and fixed in a follow-up commit; no Critical or Major issues.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-connect-bridges"><code>AztecProtocol/aztec-connect-bridges</code></a>
 
@@ -71,6 +75,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Solidified
 - Date: 2022-05-11
 - Description: Audit of the Aztec Connect Set Protocol bridge (IssuanceBridge.sol and interfaces) that issues and redeems Set tokens through ExchangeIssuance. Two Minor issues (zero minimum output and unchecked received amount) were reported; no Critical or Major issues.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-connect-bridges"><code>AztecProtocol/aztec-connect-bridges</code></a>
 
@@ -84,6 +89,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Solidified
 - Date: 2022-05-18
 - Description: Audit of the Aztec Connect Aave lending bridge (AaveLendingBridge, configurator, accounting token, Aave imports and interfaces) that deposits into and redeems from Aave via an internal accounting token. Covers src/bridges/aave at a single commit; no Critical or Major issues were found.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-connect-bridges"><code>AztecProtocol/aztec-connect-bridges</code></a>
 
@@ -97,6 +103,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Solidified
 - Date: 2022-06-14
 - Description: Audit of the Aztec Connect Liquity bridges (TroveBridge, StabilityPoolBridge, StakingBridge and interfaces) that open a shared Trove, deposit to the Stability Pool and stake LQTY on behalf of rollup users. Three Critical issues in the Trove accounting (partial redemption, redistribution, recovery-mode liquidation surplus) were reported and left Pending.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-connect-bridges"><code>AztecProtocol/aztec-connect-bridges</code></a>
 
@@ -110,6 +117,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Solidified
 - Date: 2022-06-17
 - Description: Audit of the Aztec Connect Compound bridge (CompoundBridge.sol and its cToken interfaces) that mints and redeems Compound cTokens for rollup users. One Minor and one Note-level issue were reported; no Critical or Major issues.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-connect-bridges"><code>AztecProtocol/aztec-connect-bridges</code></a>
 
@@ -123,6 +131,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Solidified
 - Date: 2022-07-05
 - Description: Audit of the Aztec Connect Curve stETH bridge (CurveStEthBridge.sol) that swaps ETH and stETH/wstETH through the Curve pool. One Minor issue (missing minimum output amount) was reported; no Critical or Major issues.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-connect-bridges"><code>AztecProtocol/aztec-connect-bridges</code></a>
 
@@ -136,6 +145,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Solidified
 - Date: 2022-08-10
 - Description: Audit of the Aztec Connect Subsidy.sol contract that lets third parties fund ETH subsidies for bridge interactions, accrued per criteria at a gas-per-minute rate. Three Minor issues and several Notes were reported; no Critical or Major issues.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-connect-bridges"><code>AztecProtocol/aztec-connect-bridges</code></a>
 
@@ -149,6 +159,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Solidified
 - Date: 2022-09-21
 - Description: Audit of the Aztec Connect dollar-cost-averaging bridge (BiDCABridge, UniswapDCABridge, SafeCastLib) that matches user orders internally over time ticks and sources remaining liquidity from Uniswap. Two Minor issues were reported and resolved in follow-up commits; no Critical or Major issues.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-connect-bridges"><code>AztecProtocol/aztec-connect-bridges</code></a>
 
@@ -164,6 +175,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Solidified
 - Date: 2022-11-21
 - Description: Re-audit of the Aztec Connect Liquity TroveBridge.sol after the team reworked the repayment logic following the first Liquity bridge audit. One Critical issue (ETH-deposit attack causing an underflow revert in _repayWithCollateral) was reported and resolved in a follow-up commit.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-connect-bridges"><code>AztecProtocol/aztec-connect-bridges</code></a>
 
@@ -178,12 +190,13 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: zkSecurity
 - Date: 2024-07-01
 - Description: zkSecurity line-by-line review (June 10-28, 2024) of the Barretenberg bigfield and field stdlib modules in aztec-packages, using symbolic simplification of custom gate expressions to check non-native field arithmetic soundness. Found 4 High, 4 Medium, 4 Low and 7 Informational issues; developer responses indicate fixes but no fix commits are cited.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
 | Revision | Commit date | Audited files or directories |
 | --- | --- | --- |
-| <a href="https://github.com/AztecProtocol/aztec-packages/commit/4ba553ba3170838de3b6c4cf47b609b0198443d0"><code>4ba553ba3170838de3b6c4cf47b609b0198443d0</code></a> | June 9, 2024 | <code>barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield</code> (recursive directory) (zk)<br><code>barretenberg/cpp/src/barretenberg/stdlib/primitives/field</code> (recursive directory) (zk)<br><code>barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.cpp</code> (zk) |
+| <a href="https://github.com/AztecProtocol/aztec-packages/commit/4ba553ba3170838de3b6c4cf47b609b0198443d0"><code>4ba553ba3170838de3b6c4cf47b609b0198443d0</code></a> | June 9, 2024 | <code>barretenberg/cpp/src/barretenberg/stdlib/primitives/bigfield</code> (recursive directory) (zk)<br><code>barretenberg/cpp/src/barretenberg/stdlib/primitives/field</code> (recursive directory) (zk)<br><code>barretenberg/cpp/src/barretenberg/stdlib_circuit_builders/ultra_circuit_builder.cpp</code> (zk)<br><code>barretenberg/cpp/src/barretenberg/stdlib/primitives/biggroup</code> (recursive directory) (zk) (explicitly not audited) |
 
 ## Barretenberg Bigfield Proof Circuit Security Assessment
 
@@ -191,6 +204,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Zellic
 - Date: 2024-07-25
 - Description: Zellic assessment (June 20 - July 9, 2024) of the Barretenberg bigfield circuits in aztec-packages (bigfield_impl.hpp, bigfield.hpp, constants.hpp), checking that constructors and arithmetic are properly constrained and complete. Found 5 Critical, 2 High, 8 Low and 2 Informational findings; time did not suffice to review all of bigfield_impl.hpp thoroughly and a re-audit was recommended.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
@@ -204,6 +218,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2024-10-04
 - Description: Cantina Managed review (Sep 4-25, 2024) of the Barretenberg bigfield stdlib primitive in aztec-packages, covering non-native field arithmetic soundness (limb bounds, CRT reasoning, pow, constructors). Found 2 Critical, 1 High, 2 Medium, 2 Low and 10 Informational issues; no fix commits are recorded in the report.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
@@ -217,6 +232,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Igor Konnov, Thomas Pani (blltprf.xyz / konnov.phd)
 - Date: 2025-09-15
 - Description: Formal verification engagement by Igor Konnov and Thomas Pani (final report Sep 15, 2025) of the Aztec Governance protocol contracts in AztecProtocol/aztec-packages (l1-contracts, commit range ffc8af0c to 8b10b2b2), specifying and model-checking Governance, GovernanceProposer, GSE, Registry, RewardDistributor, Slasher and SlashingProposer with Quint and Apalache. The work produced 14 findings including five medium-severity issues alongside verified invariants.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
@@ -233,6 +249,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Veridise
 - Date: 2025-09-18
 - Description: Veridise assessment (July 14 - Aug 1, 2025; V2 Sep 18, 2025 incorporating fixes) of the Barretenberg bigfield library in aztec-packages (bigfield.hpp, bigfield_impl.hpp, bigfield.test.cpp) at commit 480f49d, using manual review, Z3 encoding and Semgrep. Found 3 Low, 3 Warning and 3 Informational issues (no Critical/High) and validated the developers&#x27; fix commits.
+- Code the report does not list: excluded by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
@@ -257,6 +274,8 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Veridise
 - Date: 2025-10-13
 - Description: Veridise security assessment (Aug 25 - Sep 4, 2025, 27 person-days) of the Aztec Governance Solidity contracts in AztecProtocol/aztec-packages at commit a6eebac, covering Governance, GSE, GSEPayload, CoinIssuer, Registry, RewardDistributor, the EmpireBase/GovernanceProposer proposers and the governance and shared libraries under l1-contracts. Manual and tool-assisted review identified one medium, two low and seven warning-severity issues.
+- Code the report does not list: excluded by the report
+- Third-party dependencies: the report says they were not reviewed
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
@@ -277,6 +296,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2025-11-10
 - Description: Cantina Managed review of the Barretenberg stdlib bool and byte_array circuit primitives in aztec-packages (Sep 28 - Oct 4, 2025). Two Critical underconstrained byte_array constructor issues were found and fixed in PR 17838.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
@@ -291,6 +311,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2025-11-12
 - Description: Cantina solo security review (Nov 2-3, 2025) of the CoinIssuer.sol governance contract in AztecProtocol/aztec-packages (l1-contracts/src/governance) at commit bd31f776, covering the capped annual minting logic for the Aztec token. The review yielded only gas and informational findings.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
@@ -305,6 +326,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2025-11-12
 - Description: Cantina security review (Aug 5-12, 2025) of the Aztec governance contracts in AztecProtocol/aztec-packages at commit 6496e59d, focusing on Governance.sol, GSE.sol, GSEPayload.sol, EmpireBase and governance libraries under l1-contracts/src/governance. The team identified 20 issues, including four medium-severity findings.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
@@ -332,6 +354,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2025-11-12
 - Description: Cantina security review (Aug 14 - Sep 11) of the Aztec L1 rollup contracts in AztecProtocol/aztec-packages at commit 270e2a58 plus the EmpireSlashingProposer PR 16357, covering RollupCore and its libraries (StakingLib, RewardLib, ProposeLib, BlobLib, STFLib, InvalidateLib, ValidatorSelectionLib), the message bridge Inbox/Outbox and crypto libraries. 23 issues were found including one critical and two high severity findings. The stated scope is the whole repository at 270e2a58, so l1-contracts/src is recorded as a directory scope, and every l1-contracts source PR 16357 changes is recorded at its head commit 474754f.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
@@ -354,6 +377,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2025-12-16
 - Description: Cantina Managed review of the Barretenberg stdlib field_t primitive (field.hpp/field.cpp and its tests) in aztec-packages, conducted Jul 8-22, 2025. Only Low and Informational issues were found, all fixed in commit 4433c06a.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
@@ -368,6 +392,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Sherlock
 - Date: 2026-01-28
 - Description: Sherlock collaborative audit (Jan 14-28, 2026) of Barretenberg&#x27;s cycle_group in-circuit Grumpkin elliptic curve module and the ROM/RAM memory module in aztec-packages, including the elliptic and memory relations, circuit builder logic and ACIR bridges. One High soundness issue (unconstrained scalar limbs in batch_mul) was found and resolved at the final commit.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
@@ -388,6 +413,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2026-02-24
 - Description: Cantina security review (Jan 25-27) of the escape hatch functionality in the Aztec L1 rollup contracts in AztecProtocol/aztec-packages at commit 0092f9f0, covering EscapeHatch.sol, Rollup.sol, RollupCore.sol, rollup libraries (EpochProofLib, FeeLib, InvalidateLib, ProposeLib, RewardLib, ValidatorSelectionLib, HatchMath), the Inbox and TallySlashingProposer. 31 issues were identified including one high and six medium severity findings.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
@@ -413,6 +439,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cantina
 - Date: 2026-03-05
 - Description: Cantina security review (Feb 27-28) of the Alpha upgrade payload in AztecProtocol/aztec-packages at commit ed3f61d6, covering the onchain AlphaPayload.sol and AlphaVerifier.sol contracts together with the DeployAlpha.s.sol deployment script and run_alpha_upgrade.sh, plus the follow-up VK-tree-root constant change in PR 21066. The review found one high-severity issue and four informational notes.
+- Code the report does not list: not mentioned by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
@@ -429,6 +456,7 @@ _Commit dates unavailable: 1 revision(s) have no timestamp._
 - Auditor: Cyfrin
 - Date: 2026-04-06
 - Description: Cyfrin manual review (Mar 16-19, 2026) of the Barretenberg stdlib logic module (plookup-based bitwise AND/XOR constraints) and its ACIR DSL bridge in aztec-packages. Only Low and Informational issues were found; three were fixed in follow-up commits.
+- Code the report does not list: excluded by the report
 
 ### Repository: <a href="https://github.com/AztecProtocol/aztec-packages"><code>AztecProtocol/aztec-packages</code></a>
 
